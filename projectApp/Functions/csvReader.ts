@@ -1,13 +1,21 @@
 import Papa from 'papaparse';
 import * as fs from 'fs';
 
+//Number of headers in a csv file
 export interface CSVHeaders {
     headers: string[];
 }
+
+//Assigning a key(header) to values
 export interface TimeSeriesData {
     [key: string]: string | number;
 }
 
+/* This function reads the headers of a csv file and stores it
+*       (Might have to include a way to read url, Or jsut make a new function for url reading)
+* @param: {String} File path for csv file 
+* returns: {Promise<CSVHeaders>}
+*/
 export function getCSVHeaders(file:string): Promise<CSVHeaders> {
     return new Promise((resolve, reject) => {
         fs.readFile(file, 'utf8', (err, data) => { 
@@ -16,11 +24,12 @@ export function getCSVHeaders(file:string): Promise<CSVHeaders> {
                 reject(err);
                 return;
             }
-            
             Papa.parse(data, {
                 header: true,
                 dynamicTyping: true,
                 complete: function(parsed) {
+                    //If the csv file is empty, resolves null (just so program wont end)
+                    //Might be uneeded since LocalCsvReader might also check for empty csv file
                     if(parsed.data.length == 0){
                         console.log("EMPTY CSV FILE");
                         resolve(null);
@@ -28,6 +37,7 @@ export function getCSVHeaders(file:string): Promise<CSVHeaders> {
                     }
                     const headers = Object.keys(parsed.data[0]);
                     headers.forEach((head: string) => {
+                        //Checking if csv file has a "Time"/"time" header
                         if(head === "Time" || head === "time"){
                             resolve({headers});
                         }
@@ -44,6 +54,10 @@ export function getCSVHeaders(file:string): Promise<CSVHeaders> {
     });
 }
 
+/* This function reads the values of a csv file, and stores it
+* @param: {String} File path for csv file 
+* returns: {Promise<TimeSeriesData[]>}
+*/
 export function LocalCSVReader(file:string): Promise<TimeSeriesData[]>{
     return new Promise((resolve, reject) => {
         fs.readFile(file, 'utf8', (err, data) => {
@@ -61,6 +75,7 @@ export function LocalCSVReader(file:string): Promise<TimeSeriesData[]>{
                 header: true,
                 dynamicTyping: true,
                 complete: function(parsed){
+                    //Getting the headers of csv file
                     getCSVHeaders(file).then((csvHeaders: CSVHeaders) => {
                         if(csvHeaders === null){
                             resolve(null);
@@ -68,12 +83,14 @@ export function LocalCSVReader(file:string): Promise<TimeSeriesData[]>{
                         }
                         console.log("Headers: ", csvHeaders.headers);
                         
+                        //Using headers as keys to assign values
                         const typedData: TimeSeriesData[] = parsed.data.map((row:any) => (
                             Object.fromEntries(
                                 csvHeaders.headers.map((header: string) => [header,row[header]])
                             )
                             
                         ))
+                        //Just for seeing if the proper values are stored
                         console.log("---------------")
                         console.log(typedData);
                         console.log("---------------")

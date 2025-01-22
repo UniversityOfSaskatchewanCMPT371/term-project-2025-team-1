@@ -1,0 +1,27 @@
+{
+  "name": "term-project-2025-team-1",
+  "version": "1.0.0",
+  "description": "We have chosen the 3D Oculus based Time Series Embedding Tool for 2025 Winter Term",
+  "type": "module",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "papaparse": "^5.5.1"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.7"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/UniversityOfSaskatchewanCMPT371/term-project-2025-team-1.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/UniversityOfSaskatchewanCMPT371/term-project-2025-team-1/issues"
+  },
+  "homepage": "https://github.com/UniversityOfSaskatchewanCMPT371/term-project-2025-team-1#readme"
+}

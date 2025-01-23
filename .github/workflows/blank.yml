@@ -30,4 +30,4 @@ jobs:
         run: |
           npm install
           working-directory: /projectApp/src
-          npx tsx app.ts
+          npx tsx ./app.ts

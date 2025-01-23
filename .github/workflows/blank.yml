@@ -28,6 +28,5 @@ jobs:
       # Runs a set of commands using the runners shell
       - name: Run a multi-line script
         run: |
-          working-directory: /projectApp/src
           npm ci
-          npx tsx app.ts
+          npx tsx /projectApp/src/app.ts

@@ -33,4 +33,4 @@ jobs:
       - name: Run a multi-line script
         run: |
           npm install -g ts-node typescript 
-          npx ts-node example.ts projectApp/src/app.ts
+          npx ts-node ./projectApp/src/app.ts

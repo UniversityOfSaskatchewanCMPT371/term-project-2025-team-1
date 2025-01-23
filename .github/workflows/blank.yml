@@ -25,9 +25,8 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v4
 
-      # Runs a set of commands using the runners shell
-      - name: Install
-        run: npm ci
-        working-directory: /projectApp/src
-      - name: Run App
-        run: npx tsx /projectApp/src/app.ts
+      - name: Clean install dependencies and build
+        run: |
+          npm ci
+          npm run build
+          working-directory: /projectApp/src

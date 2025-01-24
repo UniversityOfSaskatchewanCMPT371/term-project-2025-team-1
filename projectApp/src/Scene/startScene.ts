@@ -8,11 +8,6 @@ import { VRButton } from 'three/addons/webxr/VRButton.js';
 import { XRControllerModelFactory } from 'three/addons/webxr/XRControllerModelFactory.js';
 
 export async function startScene(){
-    let nativeWebXRSupport = false;
-    if(navigator.xr){
-        nativeWebXRSupport = await navigator.xr.isSessionSupported('immersive-vr');
-    }
-    
     const container = document.createElement('div');
     document.body.appendChild(container);
 

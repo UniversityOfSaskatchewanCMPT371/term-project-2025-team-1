@@ -31,7 +31,7 @@ module.exports = {
 			overrideConfigFile: path.resolve(__dirname, './eslint.config.cjs'),
 		}),
 		new HtmlWebpackPlugin({
-			template: './out/src/HTML/app.html',
+			template: './src/HTML/app.html',
 		}),
     ],
     devtool: 'source-map',

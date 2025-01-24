@@ -9,6 +9,9 @@ export function mainScene({scene, camera, renderer, player, controllers}){
     cube.rotateY(Math.PI / 4);
 }
 
+/*
+* Just blank for now
+*/
 export function onFrame(
     delta,
     time,

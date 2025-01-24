@@ -11,7 +11,7 @@
   },
   "scripts": {
     "test": "npx tsx ./test/csvTesting.ts",
-    "build": "webpack && tsc && npm install",
+    "build": "npm install && tsc && webpack",
     "dev": "webpack serve"
   },
   "dependencies": {

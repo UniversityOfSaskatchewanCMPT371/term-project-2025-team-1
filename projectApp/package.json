@@ -10,8 +10,8 @@
     "os": false
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack",
+    "test": "node ./out/test/csvTesting.js",
+    "build": "webpack && tsc npm && install",
     "dev": "webpack serve"
   },
   "dependencies": {

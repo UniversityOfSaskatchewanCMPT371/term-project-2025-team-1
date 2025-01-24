@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "We have chosen the 3D Oculus based Time Series Embedding Tool for 2025 Winter Term",
   "type": "module",
-  "main": "app.js",
+  "main": "app.ts",
   "browser":{
     "fs": false,
     "path": false,

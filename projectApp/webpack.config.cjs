@@ -5,7 +5,7 @@ const ESLintPlugin = require('eslint-webpack-plugin');
 module.exports = {
     mode: 'development',
     entry: {
-        app: './out/app.js',
+        app: './out/src/app.js',
     },
     devServer: {
         static: {

@@ -11,7 +11,7 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "npx tsx ./src/app.ts",
+    "build": "webpack",
     "dev": "webpack serve"
   },
   "dependencies": {

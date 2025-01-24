@@ -18,7 +18,7 @@ export async function startScene(){
 
     //Starting the Scene
     const scene = new THREE.Scene();
-    scene.background = new THREE.Color(0x808080);
+    scene.background = new THREE.Color(0x000000);
 
     //Creating the camera
     const camera = new THREE.PerspectiveCamera(

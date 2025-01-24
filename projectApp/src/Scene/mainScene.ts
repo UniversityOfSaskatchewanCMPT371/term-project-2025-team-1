@@ -1,12 +1,23 @@
 import * as THREE from 'three';
 
 export function mainScene({scene, camera, renderer, player, controllers}){
-    const cubeGeometry = new THREE.BoxGeometry(1,1,1);
-    const cubeMaterial = new THREE.MeshStandardMaterial({color: 'red'});
-    const cube = new THREE.Mesh(cubeGeometry,cubeMaterial);
-    scene.add(cube);
-    cube.position.set(-1.5, 0.5, -1.5);
-    cube.rotateY(Math.PI / 4);
+    const boardBorderGeometry = new THREE.BoxGeometry(16.5,11.5,1);
+    const boardBorderMaterial = new THREE.MeshStandardMaterial({color: 'darkslategray'});
+    const boardBorder = new THREE.Mesh(boardBorderGeometry,boardBorderMaterial);
+    scene.add(boardBorder);
+    boardBorder.position.set(0, 2, -15.05);
+
+    const frontBoardGeometry = new THREE.BoxGeometry(15,10,1);
+    const frontBoardMaterial = new THREE.MeshStandardMaterial({color: 'dimgray'});
+    const frontBoard = new THREE.Mesh(frontBoardGeometry,frontBoardMaterial);
+    scene.add(frontBoard);
+    frontBoard.position.set(0, 2, -15.0);
+    
+    const floorGeometry = new THREE.BoxGeometry(15, 1, 15);
+    const floorMaterial = new THREE.MeshStandardMaterial({color:'darkslategray'});
+    const floor = new THREE.Mesh(floorGeometry,floorMaterial);
+    scene.add(floor);
+    floor.position.set(0,-1,0);
 }
 
 /*

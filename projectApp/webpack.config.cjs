@@ -5,7 +5,7 @@ const ESLintPlugin = require('eslint-webpack-plugin');
 module.exports = {
     mode: 'development',
     entry: {
-        app: './src/app.js',
+        app: './out/src/app.js',
     },
     devServer: {
         static: {
@@ -31,7 +31,7 @@ module.exports = {
 			overrideConfigFile: path.resolve(__dirname, './eslint.config.cjs'),
 		}),
 		new HtmlWebpackPlugin({
-			template: './src/HTML/app.html',
+			template: './out/src/HTML/app.html',
 		}),
     ],
     devtool: 'source-map',

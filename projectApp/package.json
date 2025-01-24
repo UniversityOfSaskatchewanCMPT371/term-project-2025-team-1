@@ -10,7 +10,7 @@
     "os": false
   },
   "scripts": {
-    "test": "npx tsx ./test/csvTesting.ts",
+    "test": "node ./out/test/csvTesting.js",
     "build": "npm install && tsc && webpack",
     "dev": "webpack serve"
   },

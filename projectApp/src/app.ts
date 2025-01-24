@@ -11,8 +11,6 @@ async function app() {
     catch(error) {
         console.error("Error", error);
     }
-
-    startScene();
 }
 
 

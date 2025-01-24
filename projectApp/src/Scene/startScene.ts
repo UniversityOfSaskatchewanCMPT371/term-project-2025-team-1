@@ -12,6 +12,7 @@ export async function startScene(){
     if(navigator.xr){
         nativeWebXRSupport = await navigator.xr.isSessionSupported('immersive-vr');
     }
+    
     const container = document.createElement('div');
     document.body.appendChild(container);
 

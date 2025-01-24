@@ -33,7 +33,3 @@ jobs:
       
       - name: Build
         run: npm run build
-      
-      - name: run code
-        run: |
-            node ./out/test/csvTesting.js

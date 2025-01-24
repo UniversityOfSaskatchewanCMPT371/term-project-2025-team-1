@@ -1,4 +1,5 @@
 import { LocalCSVReader as reader } from "./Functions/csvReader.js"
+import { startScene } from "./Scene/startScene.js";
 
 console.log("connected");
 
@@ -10,6 +11,8 @@ async function app() {
     catch(error) {
         console.error("Error", error);
     }
+
+    startScene();
 }
 
 

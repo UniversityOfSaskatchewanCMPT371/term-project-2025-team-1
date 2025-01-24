@@ -1,5 +1,4 @@
 import * as THREE from 'three';
-import { startScene } from './startScene';
 
 export function mainScene({scene, camera, renderer, player, controllers}){
     const cubeGeometry = new THREE.BoxGeometry(1,1,1);
@@ -16,6 +15,4 @@ export function onFrame(
     {scene, camera, renderer, player, controllers},
 ){
 
-}
-
-startScene();
+};

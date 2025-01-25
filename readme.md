@@ -10,6 +10,7 @@ We have chosen the 3D Oculus based Time Series Embedding Tool for 2025 Winter Te
   * On Terminal type and enter: **tsc**
   * After that, the projectApp directory will have a new directory: "out"
     * The "out" directory will have the new JS files created from TS files
+    * To delete tsc generated files type and enter: **tsc --build --clean**
 * Thats all!
 
 ### Running The Program and Files

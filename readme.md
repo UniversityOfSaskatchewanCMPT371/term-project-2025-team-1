@@ -17,3 +17,9 @@ We have chosen the 3D Oculus based Time Series Embedding Tool for 2025 Winter Te
 * To BUILD the program type and enter: **npm run build**
 * To run the program on https://localhost:8800: **npm run dev**
 * To run singular JS files after executing tsc: **./out/(pathToFile)/(fileName.js)**
+
+
+
+### React Vite Project instructions
+* Install node modules using **npm install**
+* run **npm build dev** to run app

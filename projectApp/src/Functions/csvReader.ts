@@ -1,5 +1,6 @@
-import Papa from 'papaparse';
 import * as fs from 'fs';
+
+import Papa from 'papaparse';
 
 //Number of headers in a csv file
 export interface CSVHeaders {

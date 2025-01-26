@@ -10,7 +10,7 @@
   },
   "scripts": {
     "test": "npx tsx ./test/csvTesting.tsx",
-    "build": "tsc -b && vite build",
+    "build": "tsc -p tsconfig.node.json && vite build",
     "dev": "vite"
   },
   "dependencies": {

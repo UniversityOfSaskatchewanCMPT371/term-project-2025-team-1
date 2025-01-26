@@ -1,4 +1,4 @@
-import { LocalCSVReader as reader } from "../src/Functions/csvReader.js"
+import { LocalCSVReader as reader } from "../src/Functions/LocalCSVReader.tsx"
 
 console.log("connected");
 

@@ -9,7 +9,7 @@ function App() {
 
   return (
     <>
-    <Canvas style = {{backgroundColor: '#20232a'}}>
+    <Canvas className="logo">
       <InitScene>
 
       </InitScene>

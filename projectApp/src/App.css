@@ -6,10 +6,10 @@
 }
 
 .logo {
-  height: 6em;
+  max-height: 100%;
+  width: 100%;
   padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
+  background-color: aquamarine;
 }
 .logo:hover {
   filter: drop-shadow(0 0 2em #646cffaa);

@@ -7,6 +7,7 @@ import { VRButton } from 'three/addons/webxr/VRButton.js';
 import { XRControllerModelFactory } from 'three/addons/webxr/XRControllerModelFactory.js';
 import { useFrame, useThree } from '@react-three/fiber';
 
+//Starting scene
 export default function InitScene(){
     const { camera, scene, gl } = useThree();
     const player = useRef<THREE.Object3D | null>(null);

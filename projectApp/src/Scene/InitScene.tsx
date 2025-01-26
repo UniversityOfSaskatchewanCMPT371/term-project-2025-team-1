@@ -1,14 +1,16 @@
 import * as THREE from 'three';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { GamepadWrapper } from 'gamepad-wrapper';
-import { Box, OrbitControls } from '@react-three/drei';
+import { OrbitControls } from '@react-three/drei';
 import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
 import { VRButton } from 'three/addons/webxr/VRButton.js';
 import { XRControllerModelFactory } from 'three/addons/webxr/XRControllerModelFactory.js';
 import { useFrame, useThree } from '@react-three/fiber';
 
+//Starting scene
 export default function InitScene(){
     const { camera, scene, gl } = useThree();
+    const player = useRef<THREE.Object3D | null>(null);
     const [controllers, setControllers] = useState<{ [ key: string]: any}>({
         left: null,
         right: null,
@@ -22,7 +24,10 @@ export default function InitScene(){
             }
             document.body.appendChild(VRButton.createButton(gl));
 
-            camera.position.set(0, 1.6, 3);
+            if(player.current){
+                camera.position.set(player.current.position.x, player.current.position.y, player.current.position.z);
+                camera.lookAt(player.current.position);
+            }
 
             //Background environment for the scene
             const environment = new RoomEnvironment();
@@ -72,7 +77,7 @@ export default function InitScene(){
         return () => {
 
         }
-    }, [gl,scene]);
+    }, [gl,scene, player.current]);
 
     useFrame(() => {
         Object.values(controllers).forEach((controller) => {
@@ -86,7 +91,10 @@ export default function InitScene(){
     return (
         <>
             <OrbitControls />
-            <Box scale={[2, 2, 2]} position={[0, 0, 0]}/>
+            <mesh position={[4, 1,1]}>
+            <boxGeometry args={[2, 2, 2]}></boxGeometry>
+            <meshBasicMaterial color="red"></meshBasicMaterial>
+            </mesh>
         </>
     )
     

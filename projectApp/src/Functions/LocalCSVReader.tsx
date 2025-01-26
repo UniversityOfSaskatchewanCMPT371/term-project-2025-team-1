@@ -28,7 +28,7 @@ export function getCSVHeaders(file:string): Promise<CSVHeaders | null> {
             Papa.parse(data, {
                 header: true,
                 dynamicTyping: true,
-                complete: function(parsed) {
+                complete: function(parsed: any) {
                     //If the csv file is empty, resolves null (just so program wont end)
                     //Might be uneeded since LocalCsvReader might also check for empty csv file
                     if(parsed.data.length == 0){
@@ -46,7 +46,7 @@ export function getCSVHeaders(file:string): Promise<CSVHeaders | null> {
                     console.log("CSV file does not contain Time");
                     resolve(null);
                 },
-                error: function(parseError: NodeJS.ErrnoException){
+                error: function(parseError: Error){
                     reject(parseError);
                 }
             });
@@ -75,7 +75,7 @@ export function LocalCSVReader(file:string): Promise<TimeSeriesData[] | null>{
             Papa.parse(data, {
                 header: true,
                 dynamicTyping: true,
-                complete: function(parsed){
+                complete: function(parsed: any){
                     //Getting the headers of csv file
                     getCSVHeaders(file).then((csvHeaders: CSVHeaders | null) => {
                         if(csvHeaders === null){
@@ -104,7 +104,7 @@ export function LocalCSVReader(file:string): Promise<TimeSeriesData[] | null>{
                         resolve(typedData);
                     })
                 },
-                error: function(parseError: NodeJS.ErrnoException) {
+                error: function(parseError: Error) {
                     reject(parseError);
                 }
             });

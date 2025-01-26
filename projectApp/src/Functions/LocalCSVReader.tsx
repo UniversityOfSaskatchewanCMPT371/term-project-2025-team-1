@@ -17,7 +17,7 @@ export interface TimeSeriesData {
 * @param: {String} File path for csv file 
 * returns: {Promise<CSVHeaders>}
 */
-export function getCSVHeaders(file:string): Promise<CSVHeaders> {
+export function getCSVHeaders(file:string): Promise<CSVHeaders | null> {
     return new Promise((resolve, reject) => {
         fs.readFile(file, 'utf8', (err, data) => { 
             if(err) {
@@ -28,7 +28,7 @@ export function getCSVHeaders(file:string): Promise<CSVHeaders> {
             Papa.parse(data, {
                 header: true,
                 dynamicTyping: true,
-                complete: function(parsed) {
+                complete: function(parsed: any) {
                     //If the csv file is empty, resolves null (just so program wont end)
                     //Might be uneeded since LocalCsvReader might also check for empty csv file
                     if(parsed.data.length == 0){
@@ -46,7 +46,7 @@ export function getCSVHeaders(file:string): Promise<CSVHeaders> {
                     console.log("CSV file does not contain Time");
                     resolve(null);
                 },
-                error: function(parseError){
+                error: function(parseError: Error){
                     reject(parseError);
                 }
             });
@@ -59,7 +59,7 @@ export function getCSVHeaders(file:string): Promise<CSVHeaders> {
 * @param: {String} File path for csv file 
 * returns: {Promise<TimeSeriesData[]>}
 */
-export function LocalCSVReader(file:string): Promise<TimeSeriesData[]>{
+export function LocalCSVReader(file:string): Promise<TimeSeriesData[] | null>{
     return new Promise((resolve, reject) => {
         fs.readFile(file, 'utf8', (err, data) => {
             if(!fs.existsSync(file)){
@@ -75,9 +75,9 @@ export function LocalCSVReader(file:string): Promise<TimeSeriesData[]>{
             Papa.parse(data, {
                 header: true,
                 dynamicTyping: true,
-                complete: function(parsed){
+                complete: function(parsed: any){
                     //Getting the headers of csv file
-                    getCSVHeaders(file).then((csvHeaders: CSVHeaders) => {
+                    getCSVHeaders(file).then((csvHeaders) => {
                         if(csvHeaders === null){
                             resolve(null);
                             return;
@@ -104,7 +104,7 @@ export function LocalCSVReader(file:string): Promise<TimeSeriesData[]>{
                         resolve(typedData);
                     })
                 },
-                error: function(parseError) {
+                error: function(parseError: Error) {
                     reject(parseError);
                 }
             });

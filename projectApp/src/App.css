@@ -1,5 +1,6 @@
 #root {
-  max-width: 1280px;
+  max-width: 1280vh;
+  max-height: 1000vh;
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
@@ -39,4 +40,9 @@
 
 .read-the-docs {
   color: #888;
+}
+.canvas-container{
+  height: 100vh;
+  width: 100vh;
+  background-color: black;
 }

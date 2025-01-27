@@ -6,6 +6,7 @@ import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
 import { VRButton } from 'three/addons/webxr/VRButton.js';
 import { XRControllerModelFactory } from 'three/addons/webxr/XRControllerModelFactory.js';
 import { useFrame, useThree } from '@react-three/fiber';
+import MainScene from './mainScene';
 
 //Starting scene
 export default function InitScene(){
@@ -80,21 +81,22 @@ export default function InitScene(){
     }, [gl,scene, player.current]);
 
     useFrame(() => {
+        const clock = new THREE.Clock();
         Object.values(controllers).forEach((controller) => {
+            const delta = clock.getDelta();
+            const time = clock.getElapsedTime()
             if(controller?.gamepad){
                 controllers.gamepad.update();
             }
         });
+        
     });
     
 
     return (
         <>
-            <OrbitControls />
-            <mesh position={[4, 1,1]}>
-            <boxGeometry args={[2, 2, 2]}></boxGeometry>
-            <meshBasicMaterial color="red"></meshBasicMaterial>
-            </mesh>
+        <OrbitControls />
+        <MainScene></MainScene>
         </>
     )
     

@@ -58,6 +58,7 @@ export function UrlCSVReader(url:string): Promise<TimeSeriesData[] | null>{
         console.log('UrlCSVReader read successfully:',url);
         return response.text();
     }).then((csvData: string) => {
+        console.log(csvData);
         const timeSeries: Promise<TimeSeriesData[] | null> = new Promise((resolve, reject) => {
             Papa.parse(csvData, {
                 header: true,
@@ -69,7 +70,7 @@ export function UrlCSVReader(url:string): Promise<TimeSeriesData[] | null>{
                             resolve(null);
                             return;
                         }
-                        console.log("Headers: ", csvHeaders.headers);
+                        console.log("UrlCSVReader: Headers: ", csvHeaders.headers);
                         
                         //Using headers as keys to assign values
                         const typedData: TimeSeriesData[] = parsed.data.map((row:any) => 

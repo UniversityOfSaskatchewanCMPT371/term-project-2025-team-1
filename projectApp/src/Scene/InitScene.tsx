@@ -18,15 +18,15 @@ export default function InitScene(){
 
     useEffect(() => {
         const startScene = async () => {
-            let nativeWebXRSupport = false;
-            if(navigator.xr){
-                nativeWebXRSupport = await navigator.xr.isSessionSupported('immersive-vr');
-            }
+            // let nativeWebXRSupport = false;
+            // if(navigator.xr){
+            //     nativeWebXRSupport = await navigator.xr.isSessionSupported('immersive-vr');
+            // }
             //document.body.appendChild(VRButton.createButton(gl));
-            camera.position.set(0, 1.6, 3);
-            const player = new THREE.Group();
-            scene.add(player);
-            player.add(camera);
+            //camera.position.set(0, 1.6, 3);
+            // const player = new THREE.Group();
+            // scene.add(player);
+            // player.add(camera);
             // if(player.current){
             //     player.current.add(camera);
             //      player.current.position.set(0, 1.6, 5);
@@ -40,42 +40,42 @@ export default function InitScene(){
             scene.environment = pmremGenerator.fromScene(environment).texture;
 
             //Setting the controller models for left and right controllers
-            const controllerModelFactory = new XRControllerModelFactory();
-            for(var i = 0; i < 2; i++){
-                const raySpace = gl.xr.getController(i);
-                const gripSpace = gl.xr.getControllerGrip(i);
-                const mesh = controllerModelFactory.createControllerModel(gripSpace);
+            // const controllerModelFactory = new XRControllerModelFactory();
+            // for(var i = 0; i < 2; i++){
+            //     const raySpace = gl.xr.getController(i);
+            //     const gripSpace = gl.xr.getControllerGrip(i);
+            //     const mesh = controllerModelFactory.createControllerModel(gripSpace);
         
-                gripSpace.add(mesh);
-                scene.add(raySpace, gripSpace);
-                raySpace.visible = false;
-                gripSpace.visible = false;
+            //     gripSpace.add(mesh);
+            //     scene.add(raySpace, gripSpace);
+            //     raySpace.visible = false;
+            //     gripSpace.visible = false;
         
-                gripSpace.addEventListener('connected', (e: any) => {
-                    raySpace.visible = true;
-                    gripSpace.visible = true;
-                    const handedness =e.data.handedness;
+            //     gripSpace.addEventListener('connected', (e: any) => {
+            //         raySpace.visible = true;
+            //         gripSpace.visible = true;
+            //         const handedness =e.data.handedness;
         
-                    setControllers((controller) => ({
-                        ...controller,[handedness]: {
-                            raySpace,
-                            gripSpace,
-                            mesh,
-                            gamepad: new GamepadWrapper(e.data.gamepad),
-                        },
-                    }));
-                });
+            //         setControllers((controller) => ({
+            //             ...controller,[handedness]: {
+            //                 raySpace,
+            //                 gripSpace,
+            //                 mesh,
+            //                 gamepad: new GamepadWrapper(e.data.gamepad),
+            //             },
+            //         }));
+            //     });
         
-                gripSpace.addEventListener('disconnected', (e: any) => {
-                    raySpace.visible = false;
-                    gripSpace.visible = false;
-                    const handedness = e.data.handedness;
+            //     gripSpace.addEventListener('disconnected', (e: any) => {
+            //         raySpace.visible = false;
+            //         gripSpace.visible = false;
+            //         const handedness = e.data.handedness;
         
-                    setControllers((controller) => ({
-                        ...controller,[handedness]: null,
-                    }));
-                });
-            };
+            //         setControllers((controller) => ({
+            //             ...controller,[handedness]: null,
+            //         }));
+            //     });
+            //};
         };
         startScene();
 
@@ -85,15 +85,16 @@ export default function InitScene(){
     }, [gl,scene]);
 
     useFrame(() => {
-        
-        Object.values(controllers).forEach((controller) => {
-            const delta = clock.getDelta();
-            const time = clock.getElapsedTime()
-            if(controller?.gamepad){
-                controllers.gamepad.update();
-            }
-        });
-        gl.render(scene, camera);
+        //if(gl.xr.isPresenting){
+            Object.values(controllers).forEach((controller) => {
+                const delta = clock.getDelta();
+                const time = clock.getElapsedTime()
+                if(controller?.gamepad){
+                    controllers.gamepad.update();
+                }
+            });
+            gl.render(scene, camera);
+        //}
         
     });
     

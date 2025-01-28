@@ -3,13 +3,13 @@ import { useEffect } from 'react';
 
 export default function MainScene() {
 
-    useEffect(() => {
+   // useEffect(() => {
+        
+    //});
 
-    });
+   // useFrame((delta, time) => {
 
-    useFrame((state, delta) => {
-
-    });
+    //});
 
     return (
         <>
@@ -25,10 +25,10 @@ export default function MainScene() {
             <boxGeometry args={[10,0,10]}></boxGeometry>
             <meshBasicMaterial color="grey"></meshBasicMaterial>
         </mesh>*/}
-        <mesh rotation={[-Math.PI / 2, 0, 0]}>
-      <planeGeometry args={[100, 100]} />
+        {/*<mesh rotation={[-Math.PI / 2, 0, 0]}>
+      <planeGeometry args={[200, 200]} />
       <meshStandardMaterial color="gray" />
-    </mesh>
+    </mesh>*/}
         </>
     );
 };

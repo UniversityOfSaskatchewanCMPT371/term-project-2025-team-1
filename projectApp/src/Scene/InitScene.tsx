@@ -3,15 +3,14 @@ import { useEffect, useRef, useState } from 'react';
 import { GamepadWrapper } from 'gamepad-wrapper';
 import { OrbitControls, PerspectiveCamera } from '@react-three/drei';
 import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
-import { VRButton } from 'three/addons/webxr/VRButton.js';
 import { XRControllerModelFactory } from 'three/addons/webxr/XRControllerModelFactory.js';
 import { Canvas, useFrame, useThree } from '@react-three/fiber';
 import MainScene from './MainScene';
 
 //Starting scene
 export default function InitScene(){
-    const { camera, scene, gl } = useThree();
-    const player = useRef<THREE.Object3D | null>(null);
+    const { camera, scene, gl, clock } = useThree();
+    //const player = useRef<THREE.Object3DEventMap | null>(null);
     const [controllers, setControllers] = useState<{ [ key: string]: any}>({
         left: null,
         right: null,
@@ -24,7 +23,10 @@ export default function InitScene(){
                 nativeWebXRSupport = await navigator.xr.isSessionSupported('immersive-vr');
             }
             //document.body.appendChild(VRButton.createButton(gl));
-
+            camera.position.set(0, 1.6, 3);
+            const player = new THREE.Group();
+            scene.add(player);
+            player.add(camera);
             // if(player.current){
             //     player.current.add(camera);
             //      player.current.position.set(0, 1.6, 5);
@@ -77,13 +79,13 @@ export default function InitScene(){
         };
         startScene();
 
-        return () => {
+       // return () => {
 
-        }
-    }, [gl,scene, player.current]);
+       // }
+    }, [gl,scene]);
 
     useFrame(() => {
-        const clock = new THREE.Clock();
+        
         Object.values(controllers).forEach((controller) => {
             const delta = clock.getDelta();
             const time = clock.getElapsedTime()
@@ -91,12 +93,14 @@ export default function InitScene(){
                 controllers.gamepad.update();
             }
         });
+        gl.render(scene, camera);
         
     });
     
 
     return (
         <>
+        
         <OrbitControls />
         <MainScene></MainScene>
         </>

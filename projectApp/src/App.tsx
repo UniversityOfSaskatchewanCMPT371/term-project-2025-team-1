@@ -1,15 +1,21 @@
 import './App.css'
-import { Canvas } from '@react-three/fiber';
+import { Canvas, useThree } from '@react-three/fiber';
 import InitScene from './Scene/InitScene';
 import { OrbitControls } from '@react-three/drei';
-import MainScene from './Scene/mainScene';
-function App() {
+import { VRButton, XR } from '@react-three/xr';
 
+function App() {
   return (
     <>
+    <div>CMPT 371: Team #1</div>
+    <VRButton></VRButton>
     <div className="canvas-container">
-    <Canvas flat linear>
-      <InitScene></InitScene>
+      <Canvas
+      camera={{position:[0,1.6,5]}}>
+        <XR>
+          <ambientLight/>
+          <InitScene/>
+        </XR>
       </Canvas>
       </div>
     </>

@@ -6,8 +6,7 @@ import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
 import { VRButton } from 'three/addons/webxr/VRButton.js';
 import { XRControllerModelFactory } from 'three/addons/webxr/XRControllerModelFactory.js';
 import { Canvas, useFrame, useThree } from '@react-three/fiber';
-import MainScene from './mainScene';
-import { color } from 'three/tsl';
+import MainScene from './MainScene';
 
 //Starting scene
 export default function InitScene(){
@@ -24,7 +23,7 @@ export default function InitScene(){
             if(navigator.xr){
                 nativeWebXRSupport = await navigator.xr.isSessionSupported('immersive-vr');
             }
-            document.body.appendChild(VRButton.createButton(gl));
+            //document.body.appendChild(VRButton.createButton(gl));
 
             // if(player.current){
             //     player.current.add(camera);
@@ -98,12 +97,8 @@ export default function InitScene(){
 
     return (
         <>
-        
-        
         <OrbitControls />
         <MainScene></MainScene>
-        
-        
         </>
     )
     

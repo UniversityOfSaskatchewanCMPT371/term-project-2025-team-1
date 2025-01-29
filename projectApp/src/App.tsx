@@ -2,7 +2,7 @@ import './App.css'
 import { Canvas, useThree } from '@react-three/fiber';
 import InitScene from './Scene/InitScene';
 import { OrbitControls, Sky } from '@react-three/drei';
-import { VRButton, XR } from '@react-three/xr';
+import { Controllers, VRButton, XR } from '@react-three/xr';
 
 function App() {
   
@@ -17,6 +17,7 @@ function App() {
         <XR>
           <Sky sunPosition={[0.5,0,0.5]}/>
           <ambientLight/>
+          <Controllers/>
           <InitScene/>
         </XR>
         

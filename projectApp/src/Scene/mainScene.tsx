@@ -1,5 +1,7 @@
+import { extend } from '@react-three/fiber';
 import { useFrame } from '@react-three/fiber';
 import { useEffect } from 'react';
+import { Text } from '@react-three/drei';
 
 export default function MainScene() {
 
@@ -17,9 +19,17 @@ export default function MainScene() {
             <boxGeometry args={[2, 2, 2]}></boxGeometry>
             <meshBasicMaterial color="red"></meshBasicMaterial>
         </mesh>
+        <mesh rotation={[0, 3.14, 0]} position={[0,1,4.8]}>
+            <Text>
+                Look Back
+            </Text>
+        </mesh>
         <mesh position={[1,1,-6]}>
             <boxGeometry args={[2, 2, 2]}></boxGeometry>
             <meshBasicMaterial color="red"></meshBasicMaterial>
+        </mesh>
+        <mesh position={[1,1,-4.9]}>
+            <Text> Front </Text>
         </mesh>
         {/*<mesh position={[0,0,0]}>
             <boxGeometry args={[10,0,10]}></boxGeometry>

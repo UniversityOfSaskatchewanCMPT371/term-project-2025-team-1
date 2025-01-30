@@ -2,6 +2,11 @@ import { TimeSeriesData, CSVHeaders } from './LocalCSVReader';
 
 import Papa from 'papaparse';
 
+/**
+ * Get the headers of a file at a url
+ * @param url address of the file
+ * @returns Headers of the file
+ */
 export function UrlCSVHeaders(url:string): Promise<CSVHeaders | null> {
     if(!url.endsWith('.csv') && !url.endsWith('.txt')){
         throw new Error('url must be .csv or .txt');
@@ -25,14 +30,15 @@ export function UrlCSVHeaders(url:string): Promise<CSVHeaders | null> {
                         return;
                     }
                     const headers = Object.keys((parsed.data as string[])[0]);
-                    headers.forEach((head: string) => {
-                        if(head === "Time" || head === "time"){
-                            console.log("UrlCSVHeaders: Time found");
-                            resolve({headers});
-                        }
-                    });
-                    console.log("UrlCSVHeaders: CSV file does not contain Time");
-                    resolve(null);
+                    //if any header is time
+                    if(headers.some((head:string) => head.toLowerCase() === "time")){
+                        console.log("UrlCSVHeaders: Time found");
+                        resolve({headers});
+                    }
+                    else{
+                        console.log("UrlCSVHeaders: CSV file does not contain Time");
+                        resolve(null);
+                    }
                 },
                 error: function(parseError: Error){
                     reject(parseError);
@@ -46,6 +52,11 @@ export function UrlCSVHeaders(url:string): Promise<CSVHeaders | null> {
     })
 }
 
+/**
+ * Get the time series data from a file at a url
+ * @param url address of the file
+ * @returns 
+ */
 export function UrlCSVReader(url:string): Promise<TimeSeriesData[] | null>{
     if(!url.endsWith('.csv') && !url.endsWith('.txt')){
         throw new Error('url must be .csv or .txt');
@@ -70,7 +81,7 @@ export function UrlCSVReader(url:string): Promise<TimeSeriesData[] | null>{
                             resolve(null);
                             return;
                         }
-                        console.log("UrlCSVReader: Headers: ", csvHeaders.headers);
+                        console.log("UrlCSVReader received Headers: ", csvHeaders.headers);
                         
                         //Using headers as keys to assign values
                         const typedData: TimeSeriesData[] = parsed.data.map((row:any) => 

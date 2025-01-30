@@ -28,7 +28,7 @@ export default function InitScene(){
     }, [gl,scene]);
 
     //This code is for updating the controls and looping animation
-    //Again might not need!
+    //Again might not need! 
     useFrame(() => {
             Object.values(controllers).forEach((controller) => {
                 const delta = clock.getDelta();

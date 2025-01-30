@@ -53,8 +53,7 @@ export default function DropDownUI({x, y, z}: DropDownProps){
                 <Text 
                     position = {[posX + 2, posY - 1, posZ - 1.29]}
                     fontSize = {0.06}
-                    color = {"black"}
-                >
+                    color = {"black"}>
                     {label}
                 </Text>
 

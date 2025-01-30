@@ -3,7 +3,6 @@ import { Canvas } from '@react-three/fiber';
 import InitScene from './Scene/InitScene';
 import { Sky } from '@react-three/drei';
 import { Controllers, VRButton, XR } from '@react-three/xr';
-import { color } from 'three/tsl';
 
 function App() {
   

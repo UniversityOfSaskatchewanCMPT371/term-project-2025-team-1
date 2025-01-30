@@ -19,6 +19,9 @@ interface AlertProps {
     
 }
 
+/*
+* This function is for the sample Drop Down UI
+*/
 export default function DropDownUI({x, y, z}: DropDownProps){
     const posX = x;
     const posY = y;
@@ -36,11 +39,11 @@ export default function DropDownUI({x, y, z}: DropDownProps){
                 onPointerOut = {(e) => hover(false)}>
 
                 <planeGeometry 
-                    attach="geometry" 
-                    args={[0.4,0.1]}
+                    attach = "geometry" 
+                    args = {[0.4,0.1]}
                 />
                 <meshStandardMaterial 
-                    attach="material" 
+                    attach = "material" 
                     color ={hovered ? "grey" : "white"}
                 />
 

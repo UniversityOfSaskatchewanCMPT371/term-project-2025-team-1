@@ -1,28 +1,32 @@
 import { LocalCSVReader as reader } from "../src/Functions/LocalCSVReader.tsx"
-import { UrlCSVReader as urlReader } from "../src/Functions/UrlCSVReader.tsx"
+import { UrlCSVReader as urlReader, UrlCSVHeaders as urlHeaders } from "../src/Functions/UrlCSVReader.tsx"
 
 console.log("connected");
 
-function csvTesting() {
+async function csvTesting() {
     try{
         console.log("---------CSV1------------");
-        reader("../csvTestFiles/test.csv");
+        const localReader = await reader("../csvTestFiles/test.csv");
+        console.log("data:",localReader);
     }
     catch(error) {
         console.error("Error", error);
     }
 };
-function urlCsvTesting() {
+async function urlCsvTesting() {
     try{
         console.log("---------UrlCSV---------");
         const url = "https://raw.githubusercontent.com/UniversityOfSaskatchewanCMPT371/term-project-2025-team-1/refs/heads/reactViteSpike-urlReader/csvTestFiles/test.csv";
-        const readUrl = urlReader(url);
-        readUrl.then((data) => console.log("data:",data))
+        const readUrl = await urlReader(url);
+        console.log("data:",readUrl);
+        const headers = await urlHeaders(url);
+        console.log("headers:",headers);
     }
     catch(err){
         console.error("Error:",err);
     }
 }
 
-csvTesting();
-urlCsvTesting();
+//do these in order, no syncronous
+await csvTesting();
+await urlCsvTesting();

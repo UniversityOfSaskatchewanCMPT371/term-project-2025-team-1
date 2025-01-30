@@ -1,6 +1,9 @@
 import { useEffect } from "react";
 import { useThree } from '@react-three/fiber';
 
+/*
+* Might not need this function!!!
+*/
 export default function windowsResizing(){
     const { camera, gl } = useThree();
 

@@ -1,6 +1,3 @@
-import { extend } from '@react-three/fiber';
-import { useFrame } from '@react-three/fiber';
-import { useEffect } from 'react';
 import { Text } from '@react-three/drei';
 
 export default function MainScene() {

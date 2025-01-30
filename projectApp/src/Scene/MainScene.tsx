@@ -6,7 +6,7 @@ export default function MainScene() {
     return (
         <>
         <mesh 
-            position = {[0,1,6]}
+            position = {[3,1,6]}
         >
             <boxGeometry 
                 args = {[5, 2, 2]}
@@ -18,14 +18,14 @@ export default function MainScene() {
 
         <mesh 
             rotation = {[0, 3.14, 0]} 
-            position = {[0,1,4.8]}>
+            position = {[3,1,4.8]}>
             <Text>
                 Look Back
             </Text>
         </mesh>
 
         <mesh 
-            position = {[1,1,-6]}
+            position = {[3,1,-6]}
         >
             <boxGeometry 
                 args = {[4, 2, 2]}
@@ -36,7 +36,7 @@ export default function MainScene() {
         </mesh>
 
         <mesh 
-            position = {[1,1,-4.9]}
+            position = {[3,1,-4.9]}
         >
             <Text> 
                 Front 
@@ -55,8 +55,8 @@ export default function MainScene() {
         </mesh>
         <DropDownUI 
             x={-2} 
-            y={2} 
-            z={0}
+            y={1} 
+            z={1.3}
         ></DropDownUI>
         </>
     );

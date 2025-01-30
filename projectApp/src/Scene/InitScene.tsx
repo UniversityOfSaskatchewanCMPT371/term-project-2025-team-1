@@ -30,9 +30,9 @@ export default function InitScene(){
             Object.values(controllers).forEach((controller) => {
                 const delta = clock.getDelta();
                 const time = clock.getElapsedTime()
-                if(controller?.gamepad){
-                    controllers.gamepad.update();
-                }
+                // if(controller?.gamepad){
+                //     controllers.gamepad.update();
+                // }
             });
             gl.render(scene, camera);
     });

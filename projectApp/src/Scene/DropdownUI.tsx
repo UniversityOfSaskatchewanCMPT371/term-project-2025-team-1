@@ -1,5 +1,6 @@
+import * as THREE from 'three';
 import { Text } from "@react-three/drei";
-import { useState } from "react";
+import { useState, useRef } from "react";
 
 interface DropDownProps {
     x: number;
@@ -29,14 +30,16 @@ export default function DropDownUI({x, y, z}: DropDownProps){
     const [ alertActive, alert ] = useState('');
 
     function DropDownButton({buttonPosition, label, type}: DropDownButtonProps){
-        const [hovered,hover] = useState(false);
+        const [ hovered, hover ] = useState(false);
+        const mesh = useRef<THREE.Mesh>(null);
 
         return(
             <mesh 
+                ref={mesh}
                 position = {buttonPosition}
-                onClick = {(e) => alert(type)}
-                onPointerOver = {(e) => hover(true)}
-                onPointerOut = {(e) => hover(false)}>
+                onClick = {() => alert(type)}
+                onPointerOver = {() => hover(true)}
+                onPointerOut = {() => hover(false)}>
 
                 <planeGeometry 
                     attach = "geometry" 
@@ -48,7 +51,7 @@ export default function DropDownUI({x, y, z}: DropDownProps){
                 />
 
                 <Text 
-                    position = {[posX + 2, posY -2, posZ + 0.01]}
+                    position = {[posX + 2, posY - 1, posZ - 1.29]}
                     fontSize = {0.06}
                     color = {"black"}
                 >
@@ -68,7 +71,7 @@ export default function DropDownUI({x, y, z}: DropDownProps){
         return(
             <>
             <mesh 
-                position = {[posX -buttonPosition[0] + 2, posY - buttonPosition[1], posZ]}
+                position = {[posX -buttonPosition[0] + 2, posY - buttonPosition[1], posZ - 1.29]}
                 visible = {type == alertActive}
             >
                 <planeGeometry 
@@ -79,7 +82,7 @@ export default function DropDownUI({x, y, z}: DropDownProps){
                     color = {"burlywood"}
                 />
                 <Text 
-                    position = {[posX + 2, posY -2, posZ + 0.01]}
+                    position = {[posX + 2, posY - 1, posZ - 1.29]}
                     fontSize = {0.06}
                     color = {"black"}
                 >
@@ -87,12 +90,12 @@ export default function DropDownUI({x, y, z}: DropDownProps){
                 </Text>
             </mesh>
             <mesh 
-                position = {[posX + 4.5, posY, posZ]}
+                position = {[posX -  buttonPosition[0] + 2, posY - buttonPosition[1], posZ - 1.29]}
                 rotation = {[0, 3.14,0]}
                 visible = {type == alertActive}
             >
                 <planeGeometry 
-                    args={[1,1]}
+                    args={[0.8,0.5]}
                 />
                 <meshStandardMaterial 
                     attach="material" 
@@ -117,11 +120,11 @@ export default function DropDownUI({x, y, z}: DropDownProps){
                 position = {[posX, posY, posZ]}
             >
                 <planeGeometry 
-                    attach="geometry" 
-                    args={[2.8,1.7]}
+                    attach = "geometry" 
+                    args = {[2.5,1.4]}
                 />
                 <meshStandardMaterial 
-                    attach="material" 
+                    attach = "material" 
                     color = "burlywood"
                 />
             </mesh>
@@ -130,11 +133,11 @@ export default function DropDownUI({x, y, z}: DropDownProps){
                 position = {[posX, posY, posZ]}
             >
                 <planeGeometry 
-                    attach="geometry" 
-                    args={[2.8,1.7]}
+                    attach = "geometry" 
+                    args = {[2.8,1.7]}
                 />
                 <meshStandardMaterial 
-                    attach="material" 
+                    attach ="material" 
                     color = "burlywood"
                 />
             </mesh>

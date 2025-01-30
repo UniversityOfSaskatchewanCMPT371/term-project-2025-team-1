@@ -14,7 +14,7 @@ export default function MainScene() {
     return (
         <>
         <mesh position={[0,1,6]}>
-            <boxGeometry args={[2, 2, 2]}></boxGeometry>
+            <boxGeometry args={[5, 2, 2]}></boxGeometry>
             <meshBasicMaterial color="red"></meshBasicMaterial>
         </mesh>
         <mesh rotation={[0, 3.14, 0]} position={[0,1,4.8]}>
@@ -23,7 +23,7 @@ export default function MainScene() {
             </Text>
         </mesh>
         <mesh position={[1,1,-6]}>
-            <boxGeometry args={[2, 2, 2]}></boxGeometry>
+            <boxGeometry args={[4, 2, 2]}></boxGeometry>
             <meshBasicMaterial color="red"></meshBasicMaterial>
         </mesh>
         <mesh position={[1,1,-4.9]}>

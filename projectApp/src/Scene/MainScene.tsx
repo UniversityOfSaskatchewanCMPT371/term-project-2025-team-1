@@ -1,4 +1,5 @@
 import { Text } from '@react-three/drei';
+import DropDownUI from './DropdownUI';
 
 export default function MainScene() {
 
@@ -31,7 +32,8 @@ export default function MainScene() {
         <mesh rotation={[-Math.PI / 2, 0, 0]}>
       <planeGeometry args={[200, 200]} />
       <meshStandardMaterial color="gray" />
-    </mesh>
+        </mesh>
+        <DropDownUI></DropDownUI>
         </>
     );
 };

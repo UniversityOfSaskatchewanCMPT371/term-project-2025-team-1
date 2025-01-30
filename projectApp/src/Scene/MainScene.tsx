@@ -33,7 +33,7 @@ export default function MainScene() {
       <planeGeometry args={[200, 200]} />
       <meshStandardMaterial color="gray" />
         </mesh>
-        <DropDownUI></DropDownUI>
+        <DropDownUI x={-2} y={2} z={0}></DropDownUI>
         </>
     );
 };

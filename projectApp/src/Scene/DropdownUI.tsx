@@ -1,49 +1,85 @@
 import { Text } from "@react-three/drei";
 import { events } from "@react-three/fiber";
 import { useState } from "react";
+import { label } from "three/tsl";
 
-export default function DropDownUI(){
+interface DropDownProps {
+    x: number;
+    y: number;
+    z: number;
+}
 
-    function DropDownButton(props: any){
+interface DropDownButtonProps {
+    buttonPosition: [number, number, number];
+    label: string
+}
+export default function DropDownUI({x, y, z}: DropDownProps){
+    const posX = x;
+    const posY = y;
+    const posZ = z;
+
+    function DropDownButton({buttonPosition, label}: DropDownButtonProps){
         const [hovered,hover]=useState(false);
 
         return(
             <mesh 
-            {...props}
+            position={buttonPosition}
             onPointerOver={(e) => hover(true)}
             onPointerOut={(e) => hover(false)}>
             <planeGeometry attach="geometry" args={[0.4,0.1]}/>
             <meshStandardMaterial attach="material" color ={hovered ? "grey" : "white"}/>
+
+            <Text 
+            position={[posX + 2, posY -2, posZ + 0.01]}
+            fontSize={0.06}
+            color={"black"}>
+                {label}
+            </Text>
             </mesh>
+            
         )
     }
 
     return(
         <>
-        <mesh position={[-2, 2, 0]}>
-            <planeGeometry attach="geometry" args={[4,2]}/>
+        <mesh 
+        rotation={[0, 1.57, 0]}
+        position={[posX - 1, posY - 1, posZ - 2]}>
+        <mesh position={[posX, posY, posZ]}>
+            <planeGeometry attach="geometry" args={[2.8,1.7]}/>
             <meshStandardMaterial attach="material" color = "blue"/>
         </mesh>
-        <mesh rotation={[0,0,0]} position={[-2,2.6,0.01]}>
-            <Text fontSize={0.1}>
+        <mesh rotation={[0, 3.14,0]} position={[posX, posY, posZ]}>
+            <planeGeometry attach="geometry" args={[2.8,1.7]}/>
+            <meshStandardMaterial attach="material" color = "blue"/>
+        </mesh>
+        <mesh rotation={[0,0,0]} position={[posX,posY + 0.5, posZ + 0.01]}>
+            <Text fontSize={0.2}>
                 Add a CSV File
             </Text>
         </mesh>
-        <mesh rotation={[0,0,0]} position={[-2,2.1,0.01]}>
+        <mesh rotation={[0,0,0]} position={[posX - 0.8 ,posY + 0.1,posZ + 0.01]}>
             <Text fontSize={0.1}>
-                Enter a CSV File URL
+                Enter By URL:
             </Text>
         </mesh>
-        <mesh rotation={[0,0,0]} position={[-2,1.9,0.01]}>
+        <mesh rotation={[0,0,0]} position={[posX + 0.1,posY + 0.1,posZ + 0.01]}>
             <planeGeometry attach="geometry" args={[1,0.1]}/>
             <meshStandardMaterial attach="material" color = "white"/>
         </mesh>
-        <mesh rotation={[0,0,0]} position={[-2,1.65,0.01]}>
+        <DropDownButton
+        buttonPosition={[posX + 0.9, posY + 0.1, posZ + 0.01]}
+        label={"Enter"}/>
+
+        <mesh rotation={[0,0,0]} position={[posX- 0.9,posY - 0.35,posZ + 0.01]}>
             <Text fontSize={0.1}>
-                Browse for local CSV File
+                Load Local File: 
             </Text>
         </mesh>
-        <DropDownButton position={[-2,1.4,0.01]}/>
+        <DropDownButton 
+        buttonPosition={[posX - 0.25,posY - 0.35,posZ + 0.01]}
+        label={'Load File'}/>
+        </mesh>
         </>
     )
 };

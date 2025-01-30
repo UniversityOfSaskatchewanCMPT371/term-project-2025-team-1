@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import { OrbitControls } from '@react-three/drei';
 import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
 import { useFrame, useThree } from '@react-three/fiber';
-import MainScene from './MainScene';
+import MainScene from './MainScene.tsx';
 
 //Starting scene
 export default function InitScene(){

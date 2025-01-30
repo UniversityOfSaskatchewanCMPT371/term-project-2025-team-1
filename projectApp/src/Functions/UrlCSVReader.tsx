@@ -5,7 +5,7 @@ import Papa from 'papaparse';
 /**
  * Get the headers of a file at a url
  * @param url address of the file
- * @returns Headers of the file
+ * @returns Headers of the file as a CSVHeaders
  */
 export function UrlCSVHeaders(url:string): Promise<CSVHeaders | null> {
     return UrlCSVReader(url).then((timeSeries) => {
@@ -23,7 +23,7 @@ export function UrlCSVHeaders(url:string): Promise<CSVHeaders | null> {
 /**
  * Get the time series data from a file at a url
  * @param url address of the file
- * @returns 
+ * @returns data of file formatted as TimeSeriesData[]
  */
 export function UrlCSVReader(url:string): Promise<TimeSeriesData[] | null>{
     if(!url.endsWith('.csv') && !url.endsWith('.txt')){

@@ -36,7 +36,7 @@ export function getCSVHeaders(file:string): Promise<CSVHeaders | null> {
                         resolve(null);
                         return;
                     }
-                    const headers = Object.keys(parsed.data[0]);
+                    const headers = Object.keys((parsed.data as string[])[0]);
                     headers.forEach((head: string) => {
                         //Checking if csv file has a "Time"/"time" header
                         if(head === "Time" || head === "time"){
@@ -77,7 +77,7 @@ export function LocalCSVReader(file:string): Promise<TimeSeriesData[] | null>{
                 dynamicTyping: true,
                 complete: function(parsed: any){
                     //Getting the headers of csv file
-                    getCSVHeaders(file).then((csvHeaders) => {
+                    getCSVHeaders(file).then((csvHeaders: CSVHeaders | null) => {
                         if(csvHeaders === null){
                             resolve(null);
                             return;

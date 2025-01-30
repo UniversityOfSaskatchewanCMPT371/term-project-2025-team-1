@@ -1,5 +1,4 @@
-# Updated from starter code
-
+#  continuous integration (CI) workflow to build and test our TS/JS project
 name: BuildandTest
 
 # Controls when the workflow will run

@@ -6,6 +6,7 @@ import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
 import { VRButton } from 'three/addons/webxr/VRButton.js';
 import { XRControllerModelFactory } from 'three/addons/webxr/XRControllerModelFactory.js';
 import { useFrame, useThree } from '@react-three/fiber';
+import DropdownUI from './dropdownUI';
 
 //Starting scene
 export default function InitScene(){
@@ -95,6 +96,7 @@ export default function InitScene(){
             <boxGeometry args={[2, 2, 2]}></boxGeometry>
             <meshBasicMaterial color="red"></meshBasicMaterial>
             </mesh>
+            <DropdownUI/>
         </>
     )
     

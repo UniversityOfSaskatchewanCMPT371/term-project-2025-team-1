@@ -21,10 +21,7 @@ export default function InitScene(){
             scene.environment = pmremGenerator.fromScene(environment).texture;
         };
         startScene();
-
-       // return () => {
-
-       // }
+        
     }, [gl,scene]);
 
     //This code is for updating the controls and looping animation
@@ -38,10 +35,8 @@ export default function InitScene(){
                 }
             });
             gl.render(scene, camera);
-        
     });
     
-
     return (
         <>
             <OrbitControls />

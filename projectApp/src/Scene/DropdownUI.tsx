@@ -1,7 +1,5 @@
 import { Text } from "@react-three/drei";
-import { events } from "@react-three/fiber";
 import { useState } from "react";
-import { label } from "three/tsl";
 
 interface DropDownProps {
     x: number;

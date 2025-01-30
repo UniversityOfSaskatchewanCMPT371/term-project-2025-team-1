@@ -3,14 +3,6 @@ import DropDownUI from './DropdownUI';
 
 export default function MainScene() {
 
-   // useEffect(() => {
-        
-    //});
-
-   // useFrame((delta, time) => {
-
-    //});
-
     return (
         <>
         <mesh position={[0,1,6]}>

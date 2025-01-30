@@ -44,8 +44,8 @@ export default function InitScene(){
 
     return (
         <>
-        <OrbitControls />
-        <MainScene></MainScene>
+            <OrbitControls />
+            <MainScene></MainScene>
         </>
     )
     

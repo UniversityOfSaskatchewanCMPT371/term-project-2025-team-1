@@ -23,18 +23,19 @@ export default function DropDownUI({x, y, z}: DropDownProps){
 
         return(
             <mesh 
-            position={buttonPosition}
-            onPointerOver={(e) => hover(true)}
-            onPointerOut={(e) => hover(false)}>
-            <planeGeometry attach="geometry" args={[0.4,0.1]}/>
-            <meshStandardMaterial attach="material" color ={hovered ? "grey" : "white"}/>
+                position={buttonPosition}
+                onPointerOver={(e) => hover(true)}
+                onPointerOut={(e) => hover(false)}>
 
-            <Text 
-            position={[posX + 2, posY -2, posZ + 0.01]}
-            fontSize={0.06}
-            color={"black"}>
-                {label}
-            </Text>
+                <planeGeometry attach="geometry" args={[0.4,0.1]}/>
+                <meshStandardMaterial attach="material" color ={hovered ? "grey" : "white"}/>
+
+                <Text 
+                    position={[posX + 2, posY -2, posZ + 0.01]}
+                    fontSize={0.06}
+                    color={"black"}>
+                    {label}
+                </Text>
             </mesh>
             
         )
@@ -49,6 +50,7 @@ export default function DropDownUI({x, y, z}: DropDownProps){
             rotation={[0, 1.57, 0]}
             position={[posX - 1, posY - 1, posZ - 2]}
             visible={true}>
+
             <mesh position={[posX, posY, posZ]}>
                 <planeGeometry attach="geometry" args={[2.8,1.7]}/>
                 <meshStandardMaterial attach="material" color = "blue"/>
@@ -62,6 +64,8 @@ export default function DropDownUI({x, y, z}: DropDownProps){
                     Add a CSV File
                 </Text>
             </mesh>
+
+            {/* For Entering File By URL */}
             <mesh rotation={[0,0,0]} position={[posX - 0.8 ,posY + 0.1,posZ + 0.01]}>
                 <Text fontSize={0.1}>
                     Enter By URL:
@@ -75,6 +79,7 @@ export default function DropDownUI({x, y, z}: DropDownProps){
                 buttonPosition={[posX + 0.9, posY + 0.1, posZ + 0.01]}
                 label={"Enter"}/>
 
+            {/* For Loading Local File */}
             <mesh rotation={[0,0,0]} position={[posX- 0.9,posY - 0.35,posZ + 0.01]}>
                 <Text fontSize={0.1}>
                     Load Local File: 

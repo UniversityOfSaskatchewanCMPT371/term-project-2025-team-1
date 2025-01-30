@@ -12,14 +12,12 @@ export function UrlCSVHeaders(url:string): Promise<CSVHeaders | null> {
         if(timeSeries === null){
             throw new Error("Time Series is null");
         }
-        return Object.keys(timeSeries[0]);
-    }).then((heads) => {
-        const newCSVHeaders: CSVHeaders = { headers: heads };
-        return newCSVHeaders; 
+        console.log(`UrlCSVHeaders headers found: ${Object.keys(timeSeries[0])}`);
+        return { headers: Object.keys(timeSeries[0]) };
     }).catch((err) => {
         console.error("UrlCSVHeaders Error:",err);
         return null;
-    })
+    });
 }
 
 /**

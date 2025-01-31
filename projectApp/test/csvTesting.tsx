@@ -1,4 +1,4 @@
-import { LocalCSVReader as reader } from "../src/Functions/LocalCSVReader.tsx"
+import { LocalCSVReader as reader, getCSVHeaders as localHeader } from "../src/Functions/LocalCSVReader.tsx"
 import { UrlCSVReader as urlReader, UrlCSVHeaders as urlHeaders } from "../src/Functions/UrlCSVReader.tsx"
 
 /*
@@ -16,6 +16,8 @@ async function csvTesting() {
         console.log("---------CSV1------------");
         const localReader = await reader("../csvTestFiles/test.csv");
         console.log("data:",localReader);
+        const localheader = await localHeader("../csvTestFiles/test.csv");
+        console.log("data:",localheader);
     }
     catch(error) {
         console.error("Error", error);

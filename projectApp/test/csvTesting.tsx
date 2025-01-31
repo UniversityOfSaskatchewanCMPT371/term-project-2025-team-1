@@ -12,6 +12,7 @@ import { UrlCSVReader as urlReader, UrlCSVHeaders as urlHeaders } from "../src/F
 console.log("Test Script For CSV reader");
 
 async function csvTesting() {
+    //Testing reading a csv file that exists
     try{
         console.log("---------CSV1------------");
         const localReader = await reader("../csvTestFiles/test.csv");
@@ -23,6 +24,7 @@ async function csvTesting() {
         console.error("Error", error);
     }
 
+    //Testing reading a csv file that doesn't exists
     try{
         console.log("---------Local Reader non-existing file");
         const localReader = await reader("../csvTestFiles/FakeCSV.csv");

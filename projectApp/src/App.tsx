@@ -1,4 +1,4 @@
-import './App.css'
+import './styles/App.css'
 import { Canvas } from '@react-three/fiber';
 import InitScene from './Scene/InitScene';
 import { Sky } from '@react-three/drei';

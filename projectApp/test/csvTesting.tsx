@@ -22,6 +22,17 @@ async function csvTesting() {
     catch(error) {
         console.error("Error", error);
     }
+
+    try{
+        console.log("---------Local Reader non-existing file");
+        const localReader = await reader("../csvTestFiles/FakeCSV.csv");
+        console.log("data:",localReader);
+        const localheader = await localHeader("../csvTestFiles/FakeCSV.csv");
+        console.log("data:",localheader);
+    }
+    catch(error) {
+        console.error("Error", error);
+    }
 };
 async function urlCsvTesting() {
     try{

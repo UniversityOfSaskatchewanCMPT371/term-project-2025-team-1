@@ -1,4 +1,4 @@
-import { LocalCSVReader as reader } from "../src/Functions/LocalCSVReader.tsx"
+import { LocalCSVReader as reader, getCSVHeaders as localHeader } from "../src/Functions/LocalCSVReader.tsx"
 import { UrlCSVReader as urlReader, UrlCSVHeaders as urlHeaders } from "../src/Functions/UrlCSVReader.tsx"
 
 /*
@@ -12,10 +12,25 @@ import { UrlCSVReader as urlReader, UrlCSVHeaders as urlHeaders } from "../src/F
 console.log("Test Script For CSV reader");
 
 async function csvTesting() {
+    //Testing reading a csv file that exists
     try{
         console.log("---------CSV1------------");
         const localReader = await reader("../csvTestFiles/test.csv");
         console.log("data:",localReader);
+        const localheader = await localHeader("../csvTestFiles/test.csv");
+        console.log("data:",localheader);
+    }
+    catch(error) {
+        console.error("Error", error);
+    }
+
+    //Testing reading a csv file that doesn't exists
+    try{
+        console.log("---------Local Reader non-existing file");
+        const localReader = await reader("../csvTestFiles/FakeCSV.csv");
+        console.log("data:",localReader);
+        const localheader = await localHeader("../csvTestFiles/FakeCSV.csv");
+        console.log("data:",localheader);
     }
     catch(error) {
         console.error("Error", error);

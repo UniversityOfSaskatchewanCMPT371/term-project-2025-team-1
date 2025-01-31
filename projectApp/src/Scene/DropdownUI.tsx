@@ -43,15 +43,13 @@ export default function DropDownUI({x, y, z}: DropDownProps){
 
                 <planeGeometry 
                     attach = "geometry" 
-                    args = {[0.4,0.1]}
-                />
+                    args = {[0.4,0.1]}/>
                 <meshStandardMaterial 
                     attach = "material" 
-                    color ={hovered ? "grey" : "white"}
-                />
+                    color ={hovered ? "grey" : "white"}/>
 
                 <Text 
-                    position = {[posX + 2, posY - 1, posZ - 1.29]}
+                    position = {[0, 0, 0.01]}
                     fontSize = {0.06}
                     color = {"black"}>
                     {label}
@@ -59,8 +57,7 @@ export default function DropDownUI({x, y, z}: DropDownProps){
 
                 <SelectionAlert 
                     buttonPosition = {buttonPosition}
-                    type = {type}
-                ></SelectionAlert>
+                    type = {type}/>
             </mesh>
         )
     }
@@ -70,36 +67,32 @@ export default function DropDownUI({x, y, z}: DropDownProps){
         return(
             <>
             <mesh 
-                position = {[posX -buttonPosition[0] + 2, posY - buttonPosition[1], posZ - 1.29]}
-                visible = {type == alertActive}
-            >
+                position = {[posX -buttonPosition[0] + 2, posY - buttonPosition[1], 0.01]}
+                visible = {type == alertActive}>
+
                 <planeGeometry 
-                    args = {[0.8,0.5]}
-                />
+                    args = {[0.8,0.5]}/>
                 <meshStandardMaterial 
                     attach = "material" 
-                    color = {"burlywood"}
-                />
+                    color = {"burlywood"}/>
                 <Text 
-                    position = {[posX + 2, posY - 1, posZ - 1.29]}
+                    position = {[0, 0, 0.01]}
                     fontSize = {0.06}
-                    color = {"black"}
-                >
+                    color = {"black"}>
                         {type} Reader Clicked !
                 </Text>
             </mesh>
+
             <mesh 
-                position = {[posX -  buttonPosition[0] + 2, posY - buttonPosition[1], posZ - 1.29]}
+                position = {[posX -  buttonPosition[0] + 2, posY - buttonPosition[1], 0.01]}
                 rotation = {[0, 3.14,0]}
-                visible = {type == alertActive}
-            >
+                visible = {type == alertActive}>
+
                 <planeGeometry 
-                    args={[0.8,0.5]}
-                />
+                    args={[0.8,0.5]}/>
                 <meshStandardMaterial 
                     attach="material" 
-                    color ={"burlywood"}
-                />
+                    color ={"burlywood"}/>
             </mesh>
             </>
         )
@@ -116,38 +109,32 @@ export default function DropDownUI({x, y, z}: DropDownProps){
             visible = {true}>
 
             <mesh 
-                position = {[posX, posY, posZ]}
-            >
+                position = {[posX, posY, posZ]}>
                 <planeGeometry 
                     attach = "geometry" 
-                    args = {[2.5,1.4]}
-                />
+                    args = {[2.5,1.4]}/>
                 <meshStandardMaterial 
                     attach = "material" 
-                    color = "burlywood"
-                />
+                    color = "burlywood"/>
             </mesh>
+
             <mesh 
                 rotation = {[0, 3.14,0]} 
-                position = {[posX, posY, posZ]}
-            >
+                position = {[posX, posY, posZ]}>
                 <planeGeometry 
                     attach = "geometry" 
-                    args = {[2.8,1.7]}
-                />
+                    args = {[2.8,1.7]}/>
                 <meshStandardMaterial 
                     attach ="material" 
-                    color = "burlywood"
-                />
+                    color = "burlywood"/>
             </mesh>
+
             <mesh 
                 rotation = {[0,0,0]} 
-                position = {[posX,posY + 0.5, posZ + 0.01]}
-            >
+                position = {[posX,posY + 0.5, posZ + 0.01]}>
                 <Text 
                     fontSize = {0.2}
-                    color = {"black"}
-                >
+                    color = {"black"}>
                     Add a CSV File
                 </Text>
             </mesh>
@@ -155,28 +142,25 @@ export default function DropDownUI({x, y, z}: DropDownProps){
             {/* For Entering File By URL */}
             <mesh 
                 rotation = {[0,0,0]} 
-                position = {[posX - 0.8 ,posY + 0.1,posZ + 0.01]}
-            >
+                position = {[posX - 0.8 ,posY + 0.1,posZ + 0.01]}>
                 <Text 
                     fontSize = {0.1}
-                    color = {"black"}
-                >
+                    color = {"black"}>
                     Enter By URL:
                 </Text>
             </mesh>
+
             <mesh 
                 rotation = {[0,0,0]} 
-                position = {[posX + 0.1,posY + 0.1,posZ + 0.01]}
-            >
+                position = {[posX + 0.1,posY + 0.1,posZ + 0.01]}>
                 <planeGeometry 
                     attach="geometry" 
-                    args={[1,0.1]}
-                />
+                    args={[1,0.1]}/>
                 <meshStandardMaterial 
                     attach="material" 
-                    color = "white"
-                />
+                    color = "white"/>
             </mesh>
+
             <DropDownButton
                 buttonPosition = {[posX + 0.9, posY + 0.1, posZ + 0.01]}
                 label = {"Enter"}
@@ -185,12 +169,10 @@ export default function DropDownUI({x, y, z}: DropDownProps){
             {/* For Loading Local File */}
             <mesh 
                 rotation = {[0,0,0]} 
-                position = {[posX- 0.9,posY - 0.35,posZ + 0.01]}
-            >
+                position = {[posX- 0.9,posY - 0.35,posZ + 0.01]}>
                 <Text 
                     fontSize = {0.1}
-                    color = {"black"}
-                >
+                    color = {"black"}>
                     Load Local File: 
                 </Text>
             </mesh>

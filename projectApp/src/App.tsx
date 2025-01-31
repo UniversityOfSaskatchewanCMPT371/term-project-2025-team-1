@@ -1,19 +1,27 @@
 import './App.css'
 import { Canvas } from '@react-three/fiber';
 import InitScene from './Scene/InitScene';
-function App() {
+import { Sky } from '@react-three/drei';
+import { createXRStore, XR } from '@react-three/xr';
 
+const store = createXRStore()
+
+function App() {
+  
   return (
     <>
-    <div className="canvas-container">
-    <Canvas flat linear>
-      
-      <mesh>
-      <InitScene>
-
-      </InitScene>
-      </mesh>
-      </Canvas>
+      <div>
+        CMPT 371: Team #1
+      </div>
+      <button onClick={() => store.enterAR()}>Enter AR</button>
+      <div className="canvas-container">
+        <Canvas>
+          <XR store={store}>
+            <Sky sunPosition={[0.5,0,0.5]}/>
+            <ambientLight/>
+            <InitScene/>
+          </XR>
+        </Canvas>
       </div>
     </>
   )

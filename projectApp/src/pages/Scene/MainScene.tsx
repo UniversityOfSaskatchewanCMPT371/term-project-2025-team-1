@@ -1,5 +1,5 @@
 import { Text } from '@react-three/drei';
-import DropDownUI from './DropdownUI';
+import DropDownUI from '../UI/DropdownUI';
 
 /*
 * The main scene being used in the current program

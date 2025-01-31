@@ -67,16 +67,16 @@ export function LocalCSVReader(file:string): Promise<TimeSeriesData[] | null>{
                 complete: function(parsed: any){
                     const typedData: TimeSeriesData[] = parsed.data;
                     resolve(typedData);
-                    },
-                    error: function(parseError: Error){
+                },
+                error: function(parseError: Error){
                         reject(parseError);
-                    }
-                })
-            });
+                }
+            })
+        });
         
-        }).catch((err) => {
-            //Rethrow the error
-            console.error("Error in LocalCSV Reader: ", err);
-            throw err;
+    }).catch((err) => {
+        //Rethrow the error
+        console.error("Error in LocalCSV Reader: ", err);
+        throw err;
     });
 };

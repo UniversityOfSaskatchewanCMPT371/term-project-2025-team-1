@@ -63,41 +63,17 @@ export function LocalCSVReader(file:string): Promise<TimeSeriesData[] | null>{
                 header: true,
                 dynamicTyping: true,
                 complete: function(parsed: any){
-                    //Getting the headers of csv file
-                    // getCSVHeaders(file).then((csvHeaders: CSVHeaders | null) => {
-                    //     if(csvHeaders === null){
-                    //         resolve(null);
-                    //         return;
-                    //     }
-                    //     console.log("Headers: ", csvHeaders.headers);
-                        
-                    //     //Using headers as keys to assign values
-                    //     const typedData: TimeSeriesData[] = parsed.data.map((row:any) => (
-                    //         Object.fromEntries(
-                    //             csvHeaders.headers.map((header: string) => [header,row[header]])
-                    //         )
-                            
-                    //     ))
                     const typedData: TimeSeriesData[] = parsed.data;
-                        //Just for seeing if the proper values are stored
-                        // console.log("---------------")
-                        // console.log(typedData);
-                        // console.log("---------------")
-                        // console.log("Length Of", typedData.length);
-                        
-                        resolve(typedData);
-                    },error: function(parseError: Error){
+                    resolve(typedData);
+                    },
+                    error: function(parseError: Error){
                         reject(parseError);
                     }
                 })
-            //     error: function(parseError: Error) {
-            //         reject(parseError);
-            //     }
-            // });
-        });
+            });
         
-    }).catch((err) => {
-        console.error("Error in LocalCSV Reader: ", err);
-        throw err;
+        }).catch((err) => {
+            console.error("Error in LocalCSV Reader: ", err);
+            throw err;
     });
 };

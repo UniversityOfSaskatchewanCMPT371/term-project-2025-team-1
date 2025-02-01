@@ -13,14 +13,14 @@ import TimeSeriesData from '../data_structures/TimeSeriesData';
 export function LocalCSVHeaders(file:string): Promise<CSVHeaders | null> {
     return LocalCSVReader(file).then((timeSeries) => {
         if(timeSeries === null){
-            throw new Error("Time Serues is null");
+            throw new Error("Time Series is null");
         }
         //if LocalCSVReader is tested, then above should be fine
         //test if output is expected
         return { headers: Object.keys(timeSeries[0]) };
     }).catch((err) => {
         console.error("LocalCSVHeaders Error:",err);
-        return null;
+        throw err;
     });
 }
 
@@ -30,35 +30,32 @@ export function LocalCSVHeaders(file:string): Promise<CSVHeaders | null> {
 * @returns: {Promise<CSVHeaders>}
 **/
 export function LocalCSVReader(file:string): Promise<TimeSeriesData[] | null>{
-    const timeSeries: Promise<TimeSeriesData[] | null> = new Promise((resolve, reject) => {
+    return new Promise<TimeSeriesData[]>((resolve, reject) => {
         if(!fs.existsSync(file)){
             //test for nonexistant files
-            reject("file doesn't exist");
+            return reject(new Error("file doesn't exist"));
         }
         else if(!file.endsWith('.csv') && !file.endsWith('.txt')){
             //test for files that are NOT .csv
-            reject('file must be .csv or .txt');
+            return reject(new Error('file must be .csv or .txt'));
         }
-        else{
-            fsPromise.readFile(file, 'utf8').then((data: string) => {
-                Papa.parse(data, {
-                    header: true,
-                    dynamicTyping: true,
-                    complete: function(parsed: any){
-                        const typedData: TimeSeriesData[] = parsed.data;
-                        //test if casting works
-                        resolve(typedData);
-                    },
-                    error: function(parseError: Error) {
-                        reject(parseError);
-                    }
-                });
-            }).catch((err) => {
-                //test for possible error catching
-                console.error("LocalCSVReader Error:",err);
-                reject(err);
+        fsPromise.readFile(file, 'utf8').then((data: string) => {
+            Papa.parse(data, {
+                header: true,
+                dynamicTyping: true,
+                complete: function(parsed: any){
+                    const typedData: TimeSeriesData[] = parsed.data;
+                    //test if casting works
+                    resolve(typedData);
+                },
+                error: function(parseError: Error) {
+                    return reject(parseError);
+                }
             });
-        }
+        });
+    }).catch((err) => {
+        //test for possible error catching
+        console.error("LocalCSVReader Error:",err);
+        throw(err);
     });
-    return timeSeries;
 };

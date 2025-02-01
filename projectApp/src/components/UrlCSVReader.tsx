@@ -18,7 +18,7 @@ export function UrlCSVHeaders(url:string): Promise<CSVHeaders | null> {
         return { headers: Object.keys(timeSeries[0]) };
     }).catch((err) => {
         console.error("UrlCSVHeaders Error:",err);
-        return null;
+        throw(err);
     });
 }
 

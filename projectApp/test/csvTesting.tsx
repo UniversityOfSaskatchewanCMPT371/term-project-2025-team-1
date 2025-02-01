@@ -27,17 +27,10 @@ async function csvTesting() {
     //Testing reading a csv file that doesn't exists
     try{
         console.log("---------Local Reader non-existing file");
-        const readLocal = await localReader("../csvTestFiles/FakeCSV.csv");
-        console.log("data:",readLocal);
-    }
-    catch(error) {
-        console.error("Error", error);
-    }
-
-    try{
-        console.log("---------Local Headers non-existing file");
-        const headers = await localHeaders("../csvTestFiles/FakeCSV.csv");
-        console.log("data:",headers);
+        const treadLocal = await localReader("../csvTestFiles/FakeCSV.csv");
+        console.log("data:", treadLocal);
+        const theaders = await localHeaders("../csvTestFiles/FakeCSV.csv");
+        console.log("headers:",theaders);
     }
     catch(error) {
         console.error("Error", error);
@@ -63,17 +56,6 @@ async function urlCsvTesting() {
         console.log(`Entering URL: ${url}`)
         const readUrl = await urlReader(url);
         console.log("data:",readUrl);
-    }
-    catch(err){
-        console.error("Error:",err);
-    }
-
-    try{
-        console.log("---------URL Headers non-existing file");
-        const url = "https://raw.githubusercontent.com/UniversityOfSaskatchewanCMPT371/term-project-2025-team-1/refs/heads/reactViteSpike-urlReader/csvTestFiles/FakeCSV.csv";
-        console.log(`Entering URL: ${url}`)
-        const headers = await urlHeaders(url);
-        console.log("headers:",headers);
     }
     catch(err){
         console.error("Error:",err);

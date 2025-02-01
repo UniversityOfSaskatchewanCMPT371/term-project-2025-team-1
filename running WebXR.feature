@@ -15,6 +15,13 @@ Feature: WebXR Vite Spike Manual Test Cases
     And the second URL should be for hosting over the network
 
 
+  Scenario: Verifying Controls in the Browser emulator
+    Given I am in the WebXR environment in the browser emulator
+    When I use my mouse and keyboard
+    Then I should be able to navigate and interact with the environment
+    And the controls should mimic the functionality of the Meta Quest controllers
+  
+
   Scenario: Running the Program on the Meta Quest
     Given I have started the program using "npm run dev"
     And I have the network URL from the terminal
@@ -49,3 +56,39 @@ Feature: WebXR Vite Spike Manual Test Cases
     And the handle button should move the tab it is pointing at when the button is held
     And while the handle button is held, the analog stick should minimize or maximize the tab
     And the back bumper should be used for scrolling when held and moved up or down
+
+
+# Looking left, right, up, and down.
+# Implicit Signifier: an average user should automatically know that they will need to move their head to look anywhere in a VR.
+  Scenario: Looking to the left in VR
+    Given I am in the VR environment
+    When I move my head to the left
+    Then the camera orientation should change to face left
+    And the change in orientation should be detectable by the emulator
+
+
+  Scenario: Looking to the right in VR
+    Given I am in the VR environment
+    When I move my head to the right
+    Then the camera orientation should change to face right
+    And the change in orientation should be detectable by the emulator
+
+
+  Scenario: Looking up in VR
+    Given I am in the VR environment
+    When I move my head up
+    Then the camera orientation should change to face upward
+    And the change in orientation should be detectable by the emulator
+
+  Scenario: Looking down in VR
+    Given I am in the VR environment
+    When I move my head down
+    Then the camera orientation should change to face downward
+    And the change in orientation should be detectable by the emulator
+
+
+  Scenario: Moving in VR
+    Given I am in the VR environment
+    When I move using the thumbstick
+    Then the camera position should change to reflect movement
+    And the change in position should be detectable by the emulator

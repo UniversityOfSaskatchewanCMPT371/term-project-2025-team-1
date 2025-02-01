@@ -30,7 +30,7 @@ export function UrlCSVHeaders(url:string): Promise<CSVHeaders | null> {
 export function UrlCSVReader(url:string): Promise<TimeSeriesData[] | null>{
     const timeSeries: Promise<TimeSeriesData[] | null> = new Promise((resolve,reject) => {
         if(!url.endsWith('.csv') && !url.endsWith('.txt')){
-            reject('url must be .csv or .txt');
+            reject(new Error('url must be .csv or .txt'));
             return;
         }
         else{
@@ -38,7 +38,7 @@ export function UrlCSVReader(url:string): Promise<TimeSeriesData[] | null>{
             //test with other urls?
             fetch(url).then((response) =>{
                 if (!response.ok) {
-                    reject(`Failed to fetch the file. Status: ${response.status}`);
+                    reject(new Error(`Failed to fetch the file. Status: ${response.status}`));
                 }
                 //test for responses that are not ok?
                 return response.text();
@@ -55,7 +55,7 @@ export function UrlCSVReader(url:string): Promise<TimeSeriesData[] | null>{
                         reject(parseError);
                     }
                 });
-            }).catch((err) => {
+            }).catch((err: Error) => {
                 //test for possible error catching
                 console.error("UrlCSVReader Error:",err);
                 return null;

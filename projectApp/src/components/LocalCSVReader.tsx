@@ -1,14 +1,27 @@
+import * as fsPromise from 'fs/promises';
 import * as fs from 'fs';
 import Papa from 'papaparse';
 
-//Number of headers in a csv file
-export interface CSVHeaders {
-    headers: string[];
-}
+import CSVHeaders from '../data_structures/CSVHeaders';
+import TimeSeriesData from '../data_structures/TimeSeriesData';
 
-//Assigning a key(header) to values
-export interface TimeSeriesData {
-    [key: string]: string | number;
+/**  
+* This function reads the headers of a csv file and stores it
+* @param file File path for csv file 
+* @returns: {Promise<CSVHeaders>}
+**/
+export function LocalCSVHeaders(file:string): Promise<CSVHeaders | null> {
+    return LocalCSVReader(file).then((timeSeries) => {
+        if(timeSeries === null){
+            throw new Error("Time Serues is null");
+        }
+        //if LocalCSVReader is tested, then above should be fine
+        //test if output is expected
+        return { headers: Object.keys(timeSeries[0]) };
+    }).catch((err) => {
+        console.error("LocalCSVHeaders Error:",err);
+        return null;
+    });
 }
 
 /**  
@@ -16,67 +29,36 @@ export interface TimeSeriesData {
 * @param file File path for csv file 
 * @returns: {Promise<CSVHeaders>}
 **/
-export function getCSVHeaders(file:string): Promise<CSVHeaders | null> {
-    return LocalCSVReader(file).then((data) => {
-        if(data === null){
-            throw new Error("Empty data set");
-        }
-
-        //Finding if the csv file has a Time column
-        let timeCol = false;
-        Object.keys(data[0]).forEach((header) => {
-            if(header === "Time" || header === "time"){
-                timeCol = true;
-            };
-        });
-
-        //If no time column throw error
-        if(!timeCol){
-            throw new Error("Can't Find Time Column");
-        }
-
-        console.log(`LocalCSV File Headers: ${Object.keys(data[0])}`);
-        return { headers: Object.keys(data[0])};
-    }).catch((err) => {
-        console.error("LocalCSVHeaders Error: ", err);
-        //Rethrow error
-        throw err;
-    })
-}
-
-/**  
-* This function reads the values of a csv file, and stores it
-* Uses the local file path to read csv file
-* @param file File path for csv file 
-* @returns: {Promise<TimeSeriesData[]>}
-**/
 export function LocalCSVReader(file:string): Promise<TimeSeriesData[] | null>{
-    return new Promise<TimeSeriesData[]>((resolve, reject) => {
-        if(!file.endsWith('.csv')){
-            return reject(new Error("Not a csv file"));
+    const timeSeries: Promise<TimeSeriesData[] | null> = new Promise((resolve, reject) => {
+        if(!fs.existsSync(file)){
+            //test for nonexistant files
+            reject("file doesn't exist");
         }
-
-        fs.readFile(file, 'utf8', (err, data) => {
-            if(err) {
-                return reject(new Error("Failed reading the file"));
-            }
-            
-            Papa.parse(data, {
-                header: true,
-                dynamicTyping: true,
-                complete: function(parsed: any){
-                    const typedData: TimeSeriesData[] = parsed.data;
-                    resolve(typedData);
-                },
-                error: function(parseError: Error){
+        else if(!file.endsWith('.csv') && !file.endsWith('.txt')){
+            //test for files that are NOT .csv
+            reject('file must be .csv or .txt');
+        }
+        else{
+            fsPromise.readFile(file, 'utf8').then((data: string) => {
+                Papa.parse(data, {
+                    header: true,
+                    dynamicTyping: true,
+                    complete: function(parsed: any){
+                        const typedData: TimeSeriesData[] = parsed.data;
+                        //test if casting works
+                        resolve(typedData);
+                    },
+                    error: function(parseError: Error) {
                         reject(parseError);
-                }
-            })
-        });
-        
-    }).catch((err) => {
-        //Rethrow the error
-        console.error("Error in LocalCSV Reader: ", err);
-        throw err;
+                    }
+                });
+            }).catch((err) => {
+                //test for possible error catching
+                console.error("LocalCSVReader Error:",err);
+                reject(err);
+            });
+        }
     });
+    return timeSeries;
 };

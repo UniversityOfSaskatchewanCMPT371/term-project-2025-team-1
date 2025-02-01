@@ -1,4 +1,4 @@
-import { LocalCSVReader as reader } from "../src/Functions/LocalCSVReader.tsx"
+import { LocalCSVReader as localReader, LocalCSVHeaders as localHeaders } from "../src/Functions/LocalCSVReader.tsx"
 import { UrlCSVReader as urlReader, UrlCSVHeaders as urlHeaders } from "../src/Functions/UrlCSVReader.tsx"
 
 /*
@@ -14,8 +14,10 @@ console.log("Test Script For CSV reader");
 async function csvTesting() {
     try{
         console.log("---------CSV1------------");
-        const localReader = await reader("../csvTestFiles/test.csv");
-        console.log("data:",localReader);
+        const readLocal = await localReader("../csvTestFiles/test.csv");
+        console.log("data:",readLocal);
+        const headers = await localHeaders("../csvTestFiles/test.csv");
+        console.log("headers:",headers);
     }
     catch(error) {
         console.error("Error", error);
@@ -24,8 +26,8 @@ async function csvTesting() {
 async function urlCsvTesting() {
     try{
         console.log("---------UrlCSV---------");
-        console.log("Entering URL: https://raw.githubusercontent.com/UniversityOfSaskatchewanCMPT371/term-project-2025-team-1/refs/heads/reactViteSpike-urlReader/csvTestFiles/test.csv")
         const url = "https://raw.githubusercontent.com/UniversityOfSaskatchewanCMPT371/term-project-2025-team-1/refs/heads/reactViteSpike-urlReader/csvTestFiles/test.csv";
+        console.log(`Entering URL: ${url}`)
         const readUrl = await urlReader(url);
         console.log("data:",readUrl);
         const headers = await urlHeaders(url);

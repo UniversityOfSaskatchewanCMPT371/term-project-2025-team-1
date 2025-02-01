@@ -56,8 +56,8 @@ export function LocalCSVReader(file:string): Promise<TimeSeriesData[] | null>{
         });
         
     }).catch((err: Error) => {
-                //test for possible error catching
-                console.error("LocalCSVReader Error:",err);
-                throw err;
+            //test for possible error catching
+            console.error("LocalCSVReader Error:",err);
+            throw err;
     });
 };

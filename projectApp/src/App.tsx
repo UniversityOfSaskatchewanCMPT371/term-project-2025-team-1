@@ -1,6 +1,6 @@
-import './App.css'
+import './styles/App.css'
 import { Canvas } from '@react-three/fiber';
-import InitScene from './Scene/InitScene';
+import InitScene from './pages/Scene/InitScene';
 import { Sky } from '@react-three/drei';
 import { createXRStore, XR } from '@react-three/xr';
 

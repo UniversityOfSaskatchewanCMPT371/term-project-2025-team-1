@@ -5,11 +5,11 @@ import Papa from 'papaparse';
 import CSVHeaders from '../data_structures/CSVHeaders';
 import TimeSeriesData from '../data_structures/TimeSeriesData';
 
-/* This function reads the headers of a csv file and stores it
-*       (Might have to include a way to read url, Or jsut make a new function for url reading)
-* @param: {String} File path for csv file 
-* returns: {Promise<CSVHeaders>}
-*/
+/**  
+* This function reads the headers of a csv file and stores it
+* @param file File path for csv file 
+* @returns: {Promise<CSVHeaders>}
+**/
 export function LocalCSVHeaders(file:string): Promise<CSVHeaders | null> {
     return LocalCSVReader(file).then((timeSeries) => {
         if(timeSeries === null){
@@ -24,10 +24,11 @@ export function LocalCSVHeaders(file:string): Promise<CSVHeaders | null> {
     });
 }
 
-/* This function reads the values of a csv file, and stores it
-* @param: {String} File path for csv file 
-* returns: {Promise<TimeSeriesData[]>}
-*/
+/**  
+* This function reads the headers of a csv file and stores it
+* @param file File path for csv file 
+* @returns: {Promise<CSVHeaders>}
+**/
 export function LocalCSVReader(file:string): Promise<TimeSeriesData[] | null>{
     const timeSeries: Promise<TimeSeriesData[] | null> = new Promise((resolve, reject) => {
         if(!fs.existsSync(file)){

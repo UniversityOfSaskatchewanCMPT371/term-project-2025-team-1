@@ -1,5 +1,5 @@
 import { Text } from '@react-three/drei';
-import DropDownUI from './DropDownUI';
+import DropDownUI from '../UI/DropdownUI';
 
 /*
 * The main scene being used in the current program
@@ -48,7 +48,7 @@ export default function MainScene() {
                 color="gray"/>
         </mesh>
 
-        
+
         <DropDownUI 
             x={-2} 
             y={1} 

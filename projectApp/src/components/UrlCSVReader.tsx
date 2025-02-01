@@ -16,6 +16,7 @@ export function UrlCSVHeaders(url:string): Promise<CSVHeaders | null> {
         //if UrlCSVReader is tested, then above should be fine
         //test if output is expected
         return { headers: Object.keys(timeSeries[0]) };
+    //Rethrowing errors
     }).catch((err) => {
         console.error("UrlCSVHeaders Error:",err);
         throw err;
@@ -56,6 +57,7 @@ export function UrlCSVReader(url:string): Promise<TimeSeriesData[] | null>{
                 });
             })
         };
+    //Rethrowing errors
     }).catch((err: Error) => {
         //test for possible error catching
         console.error("UrlCSVReader Error:",err);

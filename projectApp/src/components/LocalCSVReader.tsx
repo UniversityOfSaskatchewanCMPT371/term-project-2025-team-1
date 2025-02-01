@@ -18,6 +18,7 @@ export function LocalCSVHeaders(file:string): Promise<CSVHeaders | null> {
         //if LocalCSVReader is tested, then above should be fine
         //test if output is expected
         return { headers: Object.keys(timeSeries[0]) };
+    // Rethrowing errors
     }).catch((err) => {
         console.error("LocalCSVHeaders Error:",err);
         throw err;
@@ -55,6 +56,7 @@ export function LocalCSVReader(file:string): Promise<TimeSeriesData[] | null>{
             });
         });
         
+    // Re-throwing errors
     }).catch((err: Error) => {
             //test for possible error catching
             console.error("LocalCSVReader Error:",err);

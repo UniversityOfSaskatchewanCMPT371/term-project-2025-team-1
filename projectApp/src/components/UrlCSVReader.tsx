@@ -18,7 +18,7 @@ export function UrlCSVHeaders(url:string): Promise<CSVHeaders | null> {
         return { headers: Object.keys(timeSeries[0]) };
     }).catch((err) => {
         console.error("UrlCSVHeaders Error:",err);
-        return null;
+        throw err;
     });
 }
 
@@ -28,10 +28,9 @@ export function UrlCSVHeaders(url:string): Promise<CSVHeaders | null> {
  * @returns data of file formatted as TimeSeriesData[]
  */
 export function UrlCSVReader(url:string): Promise<TimeSeriesData[] | null>{
-    const timeSeries: Promise<TimeSeriesData[] | null> = new Promise((resolve,reject) => {
+    return new Promise<TimeSeriesData[]>((resolve,reject) => {
         if(!url.endsWith('.csv') && !url.endsWith('.txt')){
-            reject(new Error('url must be .csv or .txt'));
-            return;
+            return reject(new Error('url must be .csv or .txt'));
         }
         else{
             //will only work if url gives permissions
@@ -52,15 +51,14 @@ export function UrlCSVReader(url:string): Promise<TimeSeriesData[] | null>{
                         resolve(typedData);
                     },
                     error: function(parseError: Error){
-                        reject(parseError);
+                        return reject(parseError);
                     }
                 });
-            }).catch((err: Error) => {
-                //test for possible error catching
-                console.error("UrlCSVReader Error:",err);
-                return null;
-            });
+            })
         };
+    }).catch((err: Error) => {
+        //test for possible error catching
+        console.error("UrlCSVReader Error:",err);
+        throw err;
     });
-    return timeSeries;
 }

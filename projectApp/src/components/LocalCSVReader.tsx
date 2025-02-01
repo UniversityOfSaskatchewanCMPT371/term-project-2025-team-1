@@ -33,11 +33,11 @@ export function LocalCSVReader(file:string): Promise<TimeSeriesData[] | null>{
     const timeSeries: Promise<TimeSeriesData[] | null> = new Promise((resolve, reject) => {
         if(!fs.existsSync(file)){
             //test for nonexistant files
-            reject("file doesn't exist");
+            reject(new Error("file doesn't exist"));
         }
         else if(!file.endsWith('.csv') && !file.endsWith('.txt')){
             //test for files that are NOT .csv
-            reject('file must be .csv or .txt');
+            reject(new Error('file must be .csv or .txt'));
         }
         else{
             fsPromise.readFile(file, 'utf8').then((data: string) => {
@@ -53,7 +53,7 @@ export function LocalCSVReader(file:string): Promise<TimeSeriesData[] | null>{
                         reject(parseError);
                     }
                 });
-            }).catch((err) => {
+            }).catch((err: Error) => {
                 //test for possible error catching
                 console.error("LocalCSVReader Error:",err);
                 reject(err);

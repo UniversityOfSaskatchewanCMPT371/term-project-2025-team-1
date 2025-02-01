@@ -38,7 +38,7 @@ export function UrlCSVReader(url:string): Promise<TimeSeriesData[] | null>{
             //test with other urls?
             fetch(url).then((response) =>{
                 if (!response.ok) {
-                    throw new Error(`Failed to fetch the file. Status: ${response.status}`);
+                    reject(`Failed to fetch the file. Status: ${response.status}`);
                 }
                 //test for responses that are not ok?
                 return response.text();

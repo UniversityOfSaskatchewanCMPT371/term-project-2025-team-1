@@ -58,7 +58,7 @@ async function urlCsvTesting() {
     }
 
     try{
-        console.log("---------URL Headers non-existing file");
+        console.log("---------URL Reader non-existing file");
         const url = "https://raw.githubusercontent.com/UniversityOfSaskatchewanCMPT371/term-project-2025-team-1/refs/heads/reactViteSpike-urlReader/csvTestFiles/FakeCSV.csv";
         console.log(`Entering URL: ${url}`)
         const readUrl = await urlReader(url);

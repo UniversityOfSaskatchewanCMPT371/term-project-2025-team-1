@@ -51,14 +51,14 @@ export function UrlCSVReader(url:string): Promise<TimeSeriesData[] | null>{
                         resolve(typedData);
                     },
                     error: function(parseError: Error){
-                        reject(parseError);
+                        return reject(parseError);
                     }
                 });
-            }).catch((err: Error) => {
-                //test for possible error catching
-                console.error("UrlCSVReader Error:",err);
-                return null;
             });
         };
+    }).catch((err: Error) => {
+        //test for possible error catching
+        console.error("UrlCSVReader Error:",err);
+        throw err;
     });
 }

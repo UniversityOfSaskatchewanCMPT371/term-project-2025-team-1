@@ -28,10 +28,9 @@ export function UrlCSVHeaders(url:string): Promise<CSVHeaders | null> {
  * @returns data of file formatted as TimeSeriesData[]
  */
 export function UrlCSVReader(url:string): Promise<TimeSeriesData[] | null>{
-    const timeSeries: Promise<TimeSeriesData[] | null> = new Promise((resolve,reject) => {
+    return new Promise<TimeSeriesData[]>((resolve,reject) => {
         if(!url.endsWith('.csv') && !url.endsWith('.txt')){
-            reject(new Error('url must be .csv or .txt'));
-            return;
+            return reject(new Error('url must be .csv or .txt'));
         }
         else{
             //will only work if url gives permissions
@@ -62,5 +61,4 @@ export function UrlCSVReader(url:string): Promise<TimeSeriesData[] | null>{
             });
         };
     });
-    return timeSeries;
 }

@@ -38,7 +38,7 @@ const elasticTransport = (spanTracerId, indexPrefix) => {
             };
         },
         clientOpts: {
-            node: 'http://localhost:9200',
+            node: 'http://129.213.110.14:9200',
             maxRetries: 5,
             requestTimeout: 10000,
             sniffOnStart: false,

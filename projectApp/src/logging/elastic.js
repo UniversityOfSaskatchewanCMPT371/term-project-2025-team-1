@@ -1,14 +1,16 @@
 /* eslint-disable no-undef */
-const { createLogger, format, transports } = require('winston');
-const { ElasticsearchTransport } = require('winston-elasticsearch');
-require('dotenv').config();
-require('winston-daily-rotate-file');
-const uuid = require('uuid');
-const packagejson = require('../../package.json');
+import { createLogger, format, transports } from 'winston';
+import { ElasticsearchTransport } from 'winston-elasticsearch';
+import dotenv from 'dotenv';
+import 'winston-daily-rotate-file';
+import {v4 as uuidv4} from 'uuid';
+import packagejson from '../../package.json';
+
+dotenv.config();
 
 const LOG_FILENAME = 'demo-output';
 const { combine, timestamp, errors, json } = format;
-const DIRNAME = __dirname;
+const DIRNAME = import.meta.dirname;
 const ENV = process.env;
 const levels = {
     error: 0,
@@ -38,7 +40,7 @@ const elasticTransport = (spanTracerId, indexPrefix) => {
             };
         },
         clientOpts: {
-            node: 'http://129.213.110.14:9200',
+            node: 'http://129.213.110.14:50000',
             maxRetries: 5,
             requestTimeout: 10000,
             sniffOnStart: false,
@@ -51,8 +53,8 @@ const elasticTransport = (spanTracerId, indexPrefix) => {
     return esTransportOpts;
 };
 
-module.exports.logTransport = (indexPrefix) => {
-    const spanTracerId = uuid.v1();
+export const logTransport = (indexPrefix) => {
+    const spanTracerId = uuidv4();
     const transport = new transports.DailyRotateFile({
         filename: `${DIRNAME}/../../logs/${LOG_FILENAME}-%DATE%.log`,
         datePattern: 'YYYY-MM-DD-HH',
@@ -73,7 +75,7 @@ module.exports.logTransport = (indexPrefix) => {
         ],
         handleExceptions: true,
     });
-    if (ENV.NODE_ENV === 'localhost') {
+    if (ENV.NODE_ENV === '129.213.110.14') {
         logger.add(
             new transports.Console({ format: format.splat(), level: 'debug' })
         );

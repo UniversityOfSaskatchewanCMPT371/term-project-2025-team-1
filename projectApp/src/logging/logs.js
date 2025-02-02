@@ -1,4 +1,4 @@
-const { logTransport } = require("./elastic");
+import { logTransport } from "./elastic";
 
 const ENV = process.env;
 let indexPrefix = "demo-logging-api-";
@@ -12,7 +12,7 @@ if (ENV.NODE_ENV === "localhost") {
     indexPrefix = indexPrefix.concat("prod");
 }
 
-class Logger {
+export class Logger {
   
     info(msg, data) {
         const logger = logTransport(indexPrefix);
@@ -52,4 +52,4 @@ class Logger {
     }
 }
 
-module.exports = new Logger();
+export default Logger = new Logger();

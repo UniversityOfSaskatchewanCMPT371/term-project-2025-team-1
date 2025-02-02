@@ -24,9 +24,7 @@ dist-ssr
 *.sln
 *.sw?
 
-# env files
-.env
-
 #keys & perms
 *.key
 *.pem
+.env

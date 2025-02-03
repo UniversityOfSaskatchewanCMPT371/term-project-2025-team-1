@@ -66,7 +66,7 @@ async function csvTesting() {
     //Testing reading a csv file that has one less header
     //Testing for Local Reader
     numTests++;
-    expectedErrors++;
+    expectedSuccess++;
     try{
         console.log("---------Local Reader one less header file");
         const readLocal = await localReader("../csvTestFiles/oneLessHeader.csv");
@@ -80,7 +80,7 @@ async function csvTesting() {
 
     //Testing for Local Header
     numTests++;
-    expectedErrors++;
+    expectedSuccess++;
     try{
         console.log("---------Local Headers one less header file");
         const headers = await localHeaders("../csvTestFiles/oneLessHeader.csv");
@@ -95,6 +95,7 @@ async function csvTesting() {
     //Testing reading a csv file that has one more header
     //Testing for Local Reader
     numTests++;
+    expectedSuccess++;
     try{
         console.log("---------Local Reader one more header file");
         const readLocal = await localReader("../csvTestFiles/oneMoreHeader.csv");
@@ -108,6 +109,7 @@ async function csvTesting() {
 
     //Testing for Local Header
     numTests++;
+    expectedSuccess++;
     try{
         console.log("---------Local Headers one more header file");
         const headers = await localHeaders("../csvTestFiles/oneMoreHeader.csv");
@@ -122,6 +124,7 @@ async function csvTesting() {
     //Testing reading a csv file that has unequal number of columns
     //Testing for Local Reader
     numTests++;
+    expectedSuccess++;
     try{
         console.log("---------Local Reader uneven data file");
         const readLocal = await localReader("../csvTestFiles/unevenData.csv");
@@ -135,6 +138,7 @@ async function csvTesting() {
 
     //Testing for Local Header
     numTests++;
+    expectedSuccess++;
     try{
         console.log("---------Local Headers uneven data file");
         const headers = await localHeaders("../csvTestFiles/unevenData.csv");
@@ -149,6 +153,7 @@ async function csvTesting() {
     //Testing reading a csv file that has different data types for each line
     //Testing for Local Reader
     numTests++;
+    expectedSuccess++;
     try{
         console.log("---------Local Reader different data types file");
         const readLocal = await localReader("../csvTestFiles/differentTypes.csv");
@@ -162,6 +167,7 @@ async function csvTesting() {
 
     //Testing for Local Header
     numTests++;
+    expectedSuccess++;
     try{
         console.log("---------Local Headers different data types file");
         const headers = await localHeaders("../csvTestFiles/differentTypes.csv");
@@ -230,7 +236,7 @@ async function urlCsvTesting() {
     //Testing reading a csv file that has one less header
     //Testing for Local Reader
     numTests++;
-    expectedErrors++;
+    expectedSuccess++;
     try{
         console.log("---------URL Reader one less header file");
         const url = "https://raw.githubusercontent.com/UniversityOfSaskatchewanCMPT371/term-project-2025-team-1/refs/heads/ID1CodeFreezeSpike-urlReader/csvTestFiles/oneLessHeader.csv";
@@ -246,7 +252,7 @@ async function urlCsvTesting() {
 
     //Testing for Local Header
     numTests++;
-    expectedErrors++;
+    expectedSuccess++;
     try{
         console.log("---------URL Headers one less header file");
         const url = "https://raw.githubusercontent.com/UniversityOfSaskatchewanCMPT371/term-project-2025-team-1/refs/heads/ID1CodeFreezeSpike-urlReader/csvTestFiles/oneLessHeader.csv";
@@ -263,6 +269,7 @@ async function urlCsvTesting() {
     //Testing reading a csv file that has one more header
     //Testing for Local Reader
     numTests++;
+    expectedSuccess++;
     try{
         console.log("---------URL Reader one more header file");
         const url = "https://raw.githubusercontent.com/UniversityOfSaskatchewanCMPT371/term-project-2025-team-1/refs/heads/ID1CodeFreezeSpike-urlReader/csvTestFiles/oneMoreHeader.csv";
@@ -278,6 +285,7 @@ async function urlCsvTesting() {
 
     //Testing for Local Header
     numTests++;
+    expectedSuccess++;
     try{
         console.log("---------URL Headers one more header file");
         const url = "https://raw.githubusercontent.com/UniversityOfSaskatchewanCMPT371/term-project-2025-team-1/refs/heads/ID1CodeFreezeSpike-urlReader/csvTestFiles/oneMoreHeader.csv";
@@ -294,6 +302,7 @@ async function urlCsvTesting() {
     //Testing reading a csv file that has unequal number of columns
     //Testing for Local Reader
     numTests++;
+    expectedSuccess++;
     try{
         console.log("---------URL Reader uneven data file");
         const url = "https://raw.githubusercontent.com/UniversityOfSaskatchewanCMPT371/term-project-2025-team-1/refs/heads/ID1CodeFreezeSpike-urlReader/csvTestFiles/unevenData.csv";
@@ -309,6 +318,7 @@ async function urlCsvTesting() {
 
     //Testing for Local Header
     numTests++;
+    expectedSuccess++;
     try{
         console.log("---------URL Headers uneven data file");
         const url = "https://raw.githubusercontent.com/UniversityOfSaskatchewanCMPT371/term-project-2025-team-1/refs/heads/ID1CodeFreezeSpike-urlReader/csvTestFiles/unevenData.csv";
@@ -325,6 +335,7 @@ async function urlCsvTesting() {
     //Testing reading a csv file that has different data types for each line
     //Testing for Local Reader
     numTests++;
+    expectedSuccess++;
     try{
         console.log("---------URL Reader different data types file");
         const url = "https://raw.githubusercontent.com/UniversityOfSaskatchewanCMPT371/term-project-2025-team-1/refs/heads/ID1CodeFreezeSpike-urlReader/csvTestFiles/differentTypes.csv";
@@ -340,6 +351,7 @@ async function urlCsvTesting() {
 
     //Testing for Local Header
     numTests++;
+    expectedSuccess++;
     try{
         console.log("---------URL Headers different data types file");
         const url = "https://raw.githubusercontent.com/UniversityOfSaskatchewanCMPT371/term-project-2025-team-1/refs/heads/ID1CodeFreezeSpike-urlReader/csvTestFiles/differentTypes.csv";

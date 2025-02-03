@@ -16,12 +16,12 @@ export async function LocalCSVHeaders(file:string): Promise<CSVHeaders | null> {
     logger.info("Calling LocalCSVHeader ", file)
     return LocalCSVReader(file).then((timeSeries) => {
         if(timeSeries === null){
-            logger.error("LocalCSVHeader Time Series is null", file)
+            logger.error("LocalCSVHeader Time Series is null", file);
             throw new Error("Time Series is null");
         }
         //if LocalCSVReader is tested, then above should be fine
         //test if output is expected
-        logger.info("Successful LocalCSVHeader", Object.keys(timeSeries[0]))
+        logger.info("Successful LocalCSVHeader", Object.keys(timeSeries[0]));
         return { headers: Object.keys(timeSeries[0]) };
     // Rethrowing errors
     }).catch((err) => {
@@ -40,13 +40,15 @@ export async function LocalCSVReader(file:string): Promise<TimeSeriesData[] | nu
     return new Promise<TimeSeriesData[]>((resolve, reject) => {
         if(!fs.existsSync(file)){
             //test for nonexistant files
-            logger.error("LocalCSVReader File doesn't exist", file)
-            return reject(("File doesn't exist"));
+            logger.error("LocalCSVReader File doesn't exist", file);
+            reject(("File doesn't exist"));
+            return;
         }
         else if(!file.endsWith('.csv') && !file.endsWith('.txt')){
             //test for files that are NOT .csv
-            logger.error("LocalCSVReader File isn't .csv or .txt file", file)
-            return reject(('File must be .csv or .txt'));
+            logger.error("LocalCSVReader File isn't .csv or .txt file", file);
+            reject(('File must be .csv or .txt'));
+            return;
         }
         logger.info("LocalCSVReader Reading file", file);
         fsPromise.readFile(file, 'utf8').then((data: string) => {
@@ -59,18 +61,20 @@ export async function LocalCSVReader(file:string): Promise<TimeSeriesData[] | nu
                     const typedData: TimeSeriesData[] = parsed.data;
                     //test if casting works
                     resolve(typedData);
+                    return;
                 },
                 error: function(parseError: Error) {
                     logger.error("LocalCSVReader Failed Parse", file);
-                    return reject(parseError);
+                    reject(parseError);
+                    return;
                 }
             });
         });
         
     // Re-throwing errors
     }).catch((err: Error) => {
-            //test for possible error catching
-            logger.error("LocalCSVReader Error", err);
-            throw err;
+        //test for possible error catching
+        logger.error("LocalCSVReader Error", err);
+        throw err;
     });
 };

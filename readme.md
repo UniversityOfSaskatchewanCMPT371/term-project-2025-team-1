@@ -10,9 +10,7 @@ We have chosen the 3D Oculus based Time Series Embedding Tool for 2025 Winter Te
   * On Terminal type and enter: **npm install**
 
 ### Running The Program and Files
-* To BUILD the program type and enter: **npm run build**
 * To run the TEST scripts: **npm run test**
 * To run the program: **npm run dev**
   * The Terminal will display the link to the web app
      * ctrl + click
-* To run singular TSX files: **npx tsx ./(pathToFile)/(fileName.tsx)**

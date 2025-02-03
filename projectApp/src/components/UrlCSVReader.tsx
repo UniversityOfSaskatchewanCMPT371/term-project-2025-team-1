@@ -1,8 +1,7 @@
 import Papa from 'papaparse';
 import logger from '../logging/logs';
 
-import CSVHeaders from '../data_structures/CSVHeaders';
-import TimeSeriesData from '../data_structures/TimeSeriesData';
+import { CSVHeaders, TimeSeriesData} from '../data_structures/CSVInterfaces';
 
 /**
  * Get the headers of a file at a url

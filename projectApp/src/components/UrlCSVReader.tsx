@@ -9,7 +9,7 @@ import TimeSeriesData from '../data_structures/TimeSeriesData';
  * @param url address of the file
  * @returns Headers of the file as a CSVHeaders
  */
-export async function UrlCSVHeaders(url:string): Promise<CSVHeaders | null> {
+export async function UrlCSVHeaders(url:string): Promise<CSVHeaders> {
     logger.info("Calling URLCSVHeader ", url);
     return UrlCSVReader(url).then((timeSeries) => {
         if(timeSeries === null){
@@ -32,9 +32,9 @@ export async function UrlCSVHeaders(url:string): Promise<CSVHeaders | null> {
  * @param url address of the file
  * @returns data of file formatted as TimeSeriesData[]
  */
-export async function UrlCSVReader(url:string): Promise<TimeSeriesData[] | null>{
+export async function UrlCSVReader(url:string): Promise<TimeSeriesData[]>{
     logger.info("Calling URLCSVReader ", url);
-    return new Promise<TimeSeriesData[] | null>((resolve,reject) => {
+    return new Promise<TimeSeriesData[]>((resolve,reject) => {
         if(!url.endsWith('.csv') && !url.endsWith('.txt')){
             logger.error("URLCSVReader File isn't .csv or .txt file", url);
             reject(('url must be .csv or .txt'));

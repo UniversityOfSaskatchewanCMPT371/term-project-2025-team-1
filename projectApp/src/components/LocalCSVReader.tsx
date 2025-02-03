@@ -12,8 +12,8 @@ import TimeSeriesData from '../data_structures/TimeSeriesData';
 * @param file File path for csv file 
 * @returns: {Promise<CSVHeaders>}
 **/
-export async function LocalCSVHeaders(file:string): Promise<CSVHeaders | null> {
-    logger.info("Calling LocalCSVHeader ", file)
+export async function LocalCSVHeaders(file:string): Promise<CSVHeaders> {
+    logger.info("Calling LocalCSVHeader ", file);
     return LocalCSVReader(file).then((timeSeries) => {
         if(timeSeries === null){
             logger.error("LocalCSVHeader Time Series is null", file);
@@ -35,7 +35,7 @@ export async function LocalCSVHeaders(file:string): Promise<CSVHeaders | null> {
 * @param file File path for csv file 
 * @returns: {Promise<CSVHeaders>}
 **/
-export async function LocalCSVReader(file:string): Promise<TimeSeriesData[] | null>{
+export async function LocalCSVReader(file:string): Promise<TimeSeriesData[]>{
     logger.info("Calling LocalCSVHeader", file);
     return new Promise<TimeSeriesData[]>((resolve, reject) => {
         if(!fs.existsSync(file)){

@@ -11,7 +11,7 @@
   "scripts": {
     "test": "npx tsx ./test/csvTesting.tsx",
     "build": "tsc -p tsconfig.node.json && vite build",
-    "dev": "vite"
+    "dev": "vite --host"
   },
   "dependencies": {
     "@react-three/drei": "^9.121.4",

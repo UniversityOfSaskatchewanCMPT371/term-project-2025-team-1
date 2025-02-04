@@ -9,6 +9,8 @@ export default function MainScene() {
 
     return (
         <>
+        {/* This block of code is the sign behind the user
+        A red box with the text Look Back */}
         <mesh 
             position = {[3,1,6]}>
             <boxGeometry 
@@ -16,7 +18,6 @@ export default function MainScene() {
             <meshBasicMaterial 
                 color = "red"/>
         </mesh>
-
         <mesh 
             rotation = {[0, 3.14, 0]} 
             position = {[3,1,4.8]}>
@@ -25,6 +26,8 @@ export default function MainScene() {
             </Text>
         </mesh>
 
+        {/* This block of code is the sign in front of the user
+        A red box with the text Front */}
         <mesh 
             position = {[3,1,-6]}>
             <boxGeometry 
@@ -32,7 +35,6 @@ export default function MainScene() {
             <meshBasicMaterial 
                 color="red"/>
         </mesh>
-
         <mesh 
             position = {[3,1,-4.9]}>
             <Text> 
@@ -40,6 +42,7 @@ export default function MainScene() {
             </Text>
         </mesh>
 
+        {/* This is the floor of the Scene */}
         <mesh 
             rotation = {[-Math.PI / 2, 0, 0]}>
             <planeGeometry 
@@ -48,7 +51,7 @@ export default function MainScene() {
                 color="gray"/>
         </mesh>
 
-
+        {/* Displays the Sample Drop Down UI */}
         <DropDownUI 
             x={-2} 
             y={1} 

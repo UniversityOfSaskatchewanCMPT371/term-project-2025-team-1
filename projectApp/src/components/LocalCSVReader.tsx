@@ -3,8 +3,7 @@ import * as fs from 'fs';
 import Papa from 'papaparse';
 import logger from '../logging/logs';
 
-import CSVHeaders from '../data_structures/CSVHeaders';
-import TimeSeriesData from '../data_structures/TimeSeriesData';
+import {CSVHeaders, TimeSeriesData} from '../data_structures/CSVInterfaces';
 
 
 /**  

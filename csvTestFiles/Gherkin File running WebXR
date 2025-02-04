@@ -1,0 +1,16 @@
+Feature: WebXR Vite Spike Manual Test Cases
+  As a developer or tester, I want to ensure the WebXR Vite Spike runs correctly,
+  on the Meta Quest and browser emulator to verify the functionality and controls work as expected.
+
+  Background:
+    Given an account username named "team1cmpt371@gmail.com"
+    And a password "Osgoodstudents371"
+    And a Meta Link 4-digit pin (if needed) "6566"
+
+  Scenario: Starting the Program
+
+
+  Scenario: Running the Program on the Meta Quest
+
+
+  Scenario: Running the Program on the browser emulator

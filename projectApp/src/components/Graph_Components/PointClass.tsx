@@ -6,6 +6,13 @@ export class PointClass implements PointRef{
     xData: string;
     yData: number;
 
+    //TODO
+    //Maybe Add A color aspect
+    //Then add UpdatePoint(), this function is used to update the point
+    //EX. if the selected = false, color is set to skyblue, else blue
+    //This could also be probably used to update on zooming
+    // color: string;
+
     constructor(ref: PointRef){
         this.position = ref.position;
         this.selected = ref.selected;

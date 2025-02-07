@@ -7,7 +7,10 @@ import { Create2DPoint } from '../../components/Graph_Components/Create2DPoint';
 * For now contains shapes the could help with testing looking around in a VR Space
 */
 export default function MainScene() {
-
+    //TODO
+    //Add a UI to the MainScene
+    //Then make it possible for the ui to stay in view of the camera
+    
     return (
         <>
         {/* This block of code is the sign behind the user

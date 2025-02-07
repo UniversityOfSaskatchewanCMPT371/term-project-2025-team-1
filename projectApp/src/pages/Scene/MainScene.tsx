@@ -1,5 +1,6 @@
 import { Text } from '@react-three/drei';
 import DropDownUI from '../UI/DropdownUI';
+import { Create2DPoint } from '../../components/Graph_Components/Create2DPoint';
 
 /*
 * The main scene being used in the current program
@@ -56,6 +57,8 @@ export default function MainScene() {
             x={-2} 
             y={1} 
             z={1.3}/>
+
+        <Create2DPoint position={[0, 1, -2]} selected={false} xData={'Time'} yData={89}></Create2DPoint>
         </>
     );
 };

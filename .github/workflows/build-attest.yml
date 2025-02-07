@@ -36,4 +36,4 @@ jobs:
       - name: Attest
         uses: actions/attest-build-provenance@v2
         with:
-          subject-path: '${{ github.workspace }}/projectApp'
+          subject-path: '${{ github.workspace }}/archive/refs/tags/ID1.tar.gz'

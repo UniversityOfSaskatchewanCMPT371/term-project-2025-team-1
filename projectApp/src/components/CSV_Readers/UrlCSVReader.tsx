@@ -17,8 +17,14 @@ export async function UrlCSVHeaders(url:string): Promise<CSVHeaders> {
         }
         //if UrlCSVReader is tested, then above should be fine
         //test if output is expected
-        logger.info("Successful URLCSVHeader", Object.keys(timeSeries[0]))
-        return { headers: Object.keys(timeSeries[0]) };
+        if(timeSeries.length === 0){
+            logger.info("UrlCSVHeader received empty timeSeries");
+            return { headers: [] };
+        }
+        else{
+            logger.info("Successful URLCSVHeader", Object.keys(timeSeries[0]))
+            return { headers: Object.keys(timeSeries[0]) };
+        }
     //Rethrowing errors
     }).catch((err) => {
         logger.error("UrlCSVHeaders Error");

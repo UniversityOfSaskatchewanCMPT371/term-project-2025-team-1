@@ -20,8 +20,15 @@ export async function LocalCSVHeaders(file:string): Promise<CSVHeaders> {
         }
         //if LocalCSVReader is tested, then above should be fine
         //test if output is expected
-        logger.info("Successful LocalCSVHeader", Object.keys(timeSeries[0]));
-        return { headers: Object.keys(timeSeries[0]) };
+        //if no data, no headers
+        if(timeSeries.length === 0){
+            logger.info("LocalCSVHeader received empty timeSeries");
+            return { headers: [] };
+        }
+        else{
+            logger.info("Successful LocalCSVHeader", Object.keys(timeSeries[0]));
+            return { headers: Object.keys(timeSeries[0]) };
+        }
     // Rethrowing errors
     }).catch((err) => {
         logger.error("LocalCSVHeaders Error", err);

@@ -22,6 +22,7 @@ export class CSVReaderModel implements CSVReaderInterface{
     }
     deleteFile(name:string){
         //Use name to find the array and delete it using index
-        delete this.csvFiles[0];
+       // delete this.csvFiles[0]; NOPE: Unsafe use splice instead
+       this.csvFiles.splice(1, 1); //( startAtIndex, deleteCount )
     };
 }

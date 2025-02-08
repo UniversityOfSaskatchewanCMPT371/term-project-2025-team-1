@@ -6,7 +6,7 @@ export interface CSVHeaders {
 }
 
 export interface TimeSeriesData {
-    [key: string]: string | number;
+    key: Record<string,string | number>;
 }
 
 
@@ -15,7 +15,7 @@ export interface TimeSeriesData {
 export interface CSVData {
     name: string;               //Name of the graph
     csvHeaders: string[];
-    data: {[key:string]: string | number}[];
+    data: {key: Record<string,string | number>}[];
 
     //Variables specialized for 2D Time series
     yHeader: string;

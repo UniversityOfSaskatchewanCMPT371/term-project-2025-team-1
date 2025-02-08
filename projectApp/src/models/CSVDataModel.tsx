@@ -3,7 +3,7 @@ import { CSVData } from "../types/CSVInterfaces";
 export class CSVDataModels implements CSVData{
     name: string;
     csvHeaders: string[];
-    data: { [key: string]: string | number; }[];
+    data: { key: Record<string,string | number> }[];
     yHeader: string;
     constructor(){
         this.name = "Will use number of models for naming";

@@ -44,13 +44,14 @@ export async function LocalCSVHeaders(file:string): Promise<CSVHeaders> {
 export async function LocalCSVReader(file:string): Promise<TimeSeriesData[]>{
     logger.info("Calling LocalCSVReader", file);
     return new Promise<TimeSeriesData[]>((resolve, reject) => {
-        if(!fs.existsSync(file)){
-            //test for nonexistant files
-            logger.error("LocalCSVReader File doesn't exist", file);
-            reject(new Error("File doesn't exist"));
-            return;
-        }
-        else if(!file.endsWith('.csv') && !file.endsWith('.txt')){
+        // if(!fs.existsSync(file)){
+        //     //test for nonexistant files
+        //     logger.error("LocalCSVReader File doesn't exist", file);
+        //     reject(new Error("File doesn't exist"));
+        //     return;
+        // }
+        //else 
+        if(!file.endsWith('.csv') && !file.endsWith('.txt')){
             //test for files that are NOT .csv
             logger.error("LocalCSVReader File isn't .csv or .txt file", file);
             reject(new Error('File must be .csv or .txt'));

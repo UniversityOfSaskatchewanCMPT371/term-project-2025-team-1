@@ -17,6 +17,13 @@ let expectedErrors = 0;
 let expectedSuccess = 0;
 console.log("Test Script For CSV reader");
 
+let urlTest = "https://raw.githubusercontent.com/UniversityOfSaskatchewanCMPT371/term-project-2025-team-1/refs/heads/main/csvTestFiles/test.csv";
+let urlFake = "https://raw.githubusercontent.com/UniversityOfSaskatchewanCMPT371/term-project-2025-team-1/refs/heads/main/csvTestFiles/FakeCSV.csv";
+let urlDifferent = "https://raw.githubusercontent.com/UniversityOfSaskatchewanCMPT371/term-project-2025-team-1/refs/heads/main/csvTestFiles/differentTypes.csv";;
+let urlUneven = "https://raw.githubusercontent.com/UniversityOfSaskatchewanCMPT371/term-project-2025-team-1/refs/heads/main/csvTestFiles/unevenData.csv";
+let urlOneLess = "https://raw.githubusercontent.com/UniversityOfSaskatchewanCMPT371/term-project-2025-team-1/refs/heads/main/csvTestFiles/oneLessHeader.csv";
+let urlOneMOre = "https://raw.githubusercontent.com/UniversityOfSaskatchewanCMPT371/term-project-2025-team-1/refs/heads/main/csvTestFiles/oneMoreHeader.csv";
+
 async function csvTesting() {
     //Testing reading a csv file that exist
     numTests++;
@@ -186,7 +193,7 @@ async function urlCsvTesting() {
     expectedSuccess++;
     try{
         console.log("---------UrlCSV---------");
-        const url = "https://raw.githubusercontent.com/UniversityOfSaskatchewanCMPT371/term-project-2025-team-1/refs/heads/ID1CodeFreezeSpike-urlReader/csvTestFiles/test.csv";
+        const url = urlTest;
         console.log(`Entering URL: ${url}`)
         const readUrl = await urlReader(url);
         console.log("data:",readUrl);
@@ -205,7 +212,7 @@ async function urlCsvTesting() {
     expectedErrors++;
     try{
         console.log("---------URL Reader non-existing file");
-        const url = "https://raw.githubusercontent.com/UniversityOfSaskatchewanCMPT371/term-project-2025-team-1/refs/heads/ID1CodeFreezeSpike-urlReader/csvTestFiles/FakeCSV.csv";
+        const url = urlFake;
         console.log(`Entering URL: ${url}`);
         const readUrl = await urlReader(url);
         console.log("data:",readUrl);
@@ -222,7 +229,7 @@ async function urlCsvTesting() {
     expectedErrors++;
     try{
         console.log("---------URL Headers non-existing file");
-        const url = "https://raw.githubusercontent.com/UniversityOfSaskatchewanCMPT371/term-project-2025-team-1/refs/heads/ID1CodeFreezeSpike-urlReader/csvTestFiles/FakeCSV.csv";
+        const url = urlFake;
         console.log(`Entering URL: ${url}`);
         const headers = await urlHeaders(url);
         console.log("headers:",headers);
@@ -239,7 +246,7 @@ async function urlCsvTesting() {
     expectedSuccess++;
     try{
         console.log("---------URL Reader one less header file");
-        const url = "https://raw.githubusercontent.com/UniversityOfSaskatchewanCMPT371/term-project-2025-team-1/refs/heads/ID1CodeFreezeSpike-urlReader/csvTestFiles/oneLessHeader.csv";
+        const url = urlOneLess;
         console.log(`Entering URL: ${url}`);
         const readUrl = await urlReader(url);
         console.log("data:",readUrl);
@@ -255,7 +262,7 @@ async function urlCsvTesting() {
     expectedSuccess++;
     try{
         console.log("---------URL Headers one less header file");
-        const url = "https://raw.githubusercontent.com/UniversityOfSaskatchewanCMPT371/term-project-2025-team-1/refs/heads/ID1CodeFreezeSpike-urlReader/csvTestFiles/oneLessHeader.csv";
+        const url = urlOneLess;
         console.log(`Entering URL: ${url}`);
         const headers = await urlHeaders(url);
         console.log("headers:",headers);
@@ -272,7 +279,7 @@ async function urlCsvTesting() {
     expectedSuccess++;
     try{
         console.log("---------URL Reader one more header file");
-        const url = "https://raw.githubusercontent.com/UniversityOfSaskatchewanCMPT371/term-project-2025-team-1/refs/heads/ID1CodeFreezeSpike-urlReader/csvTestFiles/oneMoreHeader.csv";
+        const url = urlOneMOre;
         console.log(`Entering URL: ${url}`);
         const readUrl = await urlReader(url);
         console.log("data:",readUrl);
@@ -288,7 +295,7 @@ async function urlCsvTesting() {
     expectedSuccess++;
     try{
         console.log("---------URL Headers one more header file");
-        const url = "https://raw.githubusercontent.com/UniversityOfSaskatchewanCMPT371/term-project-2025-team-1/refs/heads/ID1CodeFreezeSpike-urlReader/csvTestFiles/oneMoreHeader.csv";
+        const url = urlOneMOre;
         console.log(`Entering URL: ${url}`);
         const headers = await urlHeaders(url);
         console.log("headers:",headers);
@@ -305,7 +312,7 @@ async function urlCsvTesting() {
     expectedSuccess++;
     try{
         console.log("---------URL Reader uneven data file");
-        const url = "https://raw.githubusercontent.com/UniversityOfSaskatchewanCMPT371/term-project-2025-team-1/refs/heads/ID1CodeFreezeSpike-urlReader/csvTestFiles/unevenData.csv";
+        const url = urlUneven;
         console.log(`Entering URL: ${url}`);
         const readUrl = await urlReader(url);
         console.log("data:",readUrl);
@@ -321,7 +328,7 @@ async function urlCsvTesting() {
     expectedSuccess++;
     try{
         console.log("---------URL Headers uneven data file");
-        const url = "https://raw.githubusercontent.com/UniversityOfSaskatchewanCMPT371/term-project-2025-team-1/refs/heads/ID1CodeFreezeSpike-urlReader/csvTestFiles/unevenData.csv";
+        const url = urlUneven;
         console.log(`Entering URL: ${url}`);
         const headers = await urlHeaders(url);
         console.log("headers:",headers);
@@ -338,7 +345,7 @@ async function urlCsvTesting() {
     expectedSuccess++;
     try{
         console.log("---------URL Reader different data types file");
-        const url = "https://raw.githubusercontent.com/UniversityOfSaskatchewanCMPT371/term-project-2025-team-1/refs/heads/ID1CodeFreezeSpike-urlReader/csvTestFiles/differentTypes.csv";
+        const url = urlDifferent;
         console.log(`Entering URL: ${url}`);
         const readUrl = await urlReader(url);
         console.log("data:",readUrl);
@@ -354,7 +361,7 @@ async function urlCsvTesting() {
     expectedSuccess++;
     try{
         console.log("---------URL Headers different data types file");
-        const url = "https://raw.githubusercontent.com/UniversityOfSaskatchewanCMPT371/term-project-2025-team-1/refs/heads/ID1CodeFreezeSpike-urlReader/csvTestFiles/differentTypes.csv";
+        const url = urlDifferent;
         console.log(`Entering URL: ${url}`);
         const headers = await urlHeaders(url);
         console.log("headers:",headers);

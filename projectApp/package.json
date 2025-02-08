@@ -9,6 +9,7 @@
     "os": false
   },
   "scripts": {
+    "lint": npx eslint .
     "test": "npx tsx ./test/csvTesting.tsx",
     "build": "tsc -p tsconfig.node.json && vite build",
     "dev": "vite --host"

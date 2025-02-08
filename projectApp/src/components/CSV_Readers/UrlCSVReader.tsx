@@ -26,7 +26,7 @@ export async function UrlCSVHeaders(url:string): Promise<CSVHeaders> {
             return { headers: Object.keys(timeSeries[0]) };
         }
     //Rethrowing errors
-    }).catch((err) => {
+    }).catch((err:unknown) => {
         logger.error("UrlCSVHeaders Error");
         throw err;
     });
@@ -77,7 +77,7 @@ export async function UrlCSVReader(url:string): Promise<TimeSeriesData[]>{
             })
         };
     //Rethrowing errors
-    }).catch((err: Error) => {
+    }).catch((err: unknown) => {
         //test for possible error catching
         logger.error("UrlCSVReader Error", err);
         throw err;

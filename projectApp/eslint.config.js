@@ -9,8 +9,16 @@ export default tseslint.config(
   { ignores: ['dist'] },
   {
     extends: [eslint.configs.recommended, 
-      tseslint.configs.strict, 
-      tseslint.configs.stylistic
+      tseslint.configs.recommendedTypeChecked,{
+        languageOptions: {
+          parserOptions: {
+            projectService: true,
+            tsconfigRootDir: import.meta.dirname,
+          }
+        }
+      },
+      tseslint.configs.strictTypeChecked, 
+      tseslint.configs.stylisticTypeChecked
     ],
     files: ['**/*.{ts,tsx}'],
     languageOptions: {

@@ -11,16 +11,16 @@ import { CSVHeaders, TimeSeriesData} from '../data_structures/CSVInterfaces';
 export async function UrlCSVHeaders(url:string): Promise<CSVHeaders> {
     logger.info("Calling URLCSVHeader ", url);
     return UrlCSVReader(url).then((timeSeries) => {
-        if(timeSeries === null){
-            logger.error("URLCSVHeader Time Series is null", url);
-            throw new Error("Time Series is null");
-        }
+        // if(timeSeries === null){
+        //     logger.error("URLCSVHeader Time Series is null", url);
+        //     throw new Error("Time Series is null");
+        // }
         //if UrlCSVReader is tested, then above should be fine
         //test if output is expected
         logger.info("Successful URLCSVHeader", Object.keys(timeSeries[0]))
         return { headers: Object.keys(timeSeries[0]) };
     //Rethrowing errors
-    }).catch((err) => {
+    }).catch((err: unknown) => {
         logger.error("UrlCSVHeaders Error");
         throw err;
     });
@@ -36,7 +36,7 @@ export async function UrlCSVReader(url:string): Promise<TimeSeriesData[]>{
     return new Promise<TimeSeriesData[]>((resolve,reject) => {
         if(!url.endsWith('.csv') && !url.endsWith('.txt')){
             logger.error("URLCSVReader File isn't .csv or .txt file", url);
-            reject(('url must be .csv or .txt'));
+            reject(new Error('url must be .csv or .txt'));
             return;
         }
         else{
@@ -46,7 +46,7 @@ export async function UrlCSVReader(url:string): Promise<TimeSeriesData[]>{
             fetch(url).then((response: Response) =>{
                 if (!response.ok) {
                     logger.error("URLCSVReader Failed Parse", url);
-                    reject((`Failed to fetch the file. Status: ${response.status}`));
+                    reject(new Error(`Failed to fetch the file. Status:  ${response.status.toString()}`));
                 }
                 //test for responses that are not ok?
                 return response.text();
@@ -71,7 +71,7 @@ export async function UrlCSVReader(url:string): Promise<TimeSeriesData[]>{
             })
         };
     //Rethrowing errors
-    }).catch((err: Error) => {
+    }).catch((err: unknown) => {
         //test for possible error catching
         logger.error("UrlCSVReader Error", err);
         throw err;

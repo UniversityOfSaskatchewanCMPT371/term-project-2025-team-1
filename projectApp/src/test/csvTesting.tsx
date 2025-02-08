@@ -1,5 +1,5 @@
-import { LocalCSVReader as localReader, LocalCSVHeaders as localHeaders } from "../src/components/LocalCSVReader.tsx"
-import { UrlCSVReader as urlReader, UrlCSVHeaders as urlHeaders } from "../src/components/UrlCSVReader.tsx"
+import { LocalCSVReader as localReader, LocalCSVHeaders as localHeaders } from "../components/LocalCSVReader.tsx";
+import { UrlCSVReader as urlReader, UrlCSVHeaders as urlHeaders } from "../components/UrlCSVReader.tsx";
 
 /*
 * This File is for testing the CSV readers
@@ -10,7 +10,7 @@ import { UrlCSVReader as urlReader, UrlCSVHeaders as urlHeaders } from "../src/c
 */
 
 let numTests = 0;
-let totalTests = 22;
+const totalTests = 22;
 let successFound = 0;
 let errorsFound = 0;
 let expectedErrors = 0;

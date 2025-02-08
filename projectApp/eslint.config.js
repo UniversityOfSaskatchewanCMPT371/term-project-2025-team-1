@@ -9,7 +9,17 @@ export default tseslint.config(
   { ignores: ['dist'] },
   {
     extends: [eslint.configs.recommended, 
-      ...tseslint.configs.recommended],
+      tseslint.configs.recommendedTypeChecked,{
+        languageOptions: {
+          parserOptions: {
+            projectService: true,
+            tsconfigRootDir: import.meta.dirname,
+          }
+        }
+      },
+      tseslint.configs.strictTypeChecked, 
+      tseslint.configs.stylisticTypeChecked
+    ],
     files: ['**/*.{ts,tsx}'],
     languageOptions: {
       ecmaVersion: 2020,

@@ -22,6 +22,8 @@ export interface CSVData {
     //Will use the TIME and yHeader to get data
 
     getDataFromHeader: () => (string | number);
+    loadLocalCSVFile: (index:number,file: string) => (void);
+    loadUrlCSVFile: (index: number, file: string) => (void);
 }
 
 export interface CSVReaderInterface{
@@ -29,6 +31,7 @@ export interface CSVReaderInterface{
     csvFiles: CSVData[];                        //Array of loaded CSV files
 
     getCSVFile: (name: string) => (CSVData);      //Uses name to find the CSVData
-    readFile: (file:string) => (void);          //Will read the csv and add it
+    readLocalFile: (file:string) => (void);          //Will read the csv and add it
+    readURLFile: (file: string) => (void);
     deleteFile: (name:string) => (void);        //Get the array and delete it
 }

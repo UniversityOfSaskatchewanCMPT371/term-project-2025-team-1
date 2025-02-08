@@ -9,7 +9,7 @@
     "os": false
   },
   "scripts": {
-    "test": "npx tsx ./test/csvTesting.tsx",
+    "test": "npx tsx ./src/test/csvTesting.tsx",
     "build": "tsc -p tsconfig.node.json && vite build",
     "dev": "vite --host",
     "lint": "npx eslint ."

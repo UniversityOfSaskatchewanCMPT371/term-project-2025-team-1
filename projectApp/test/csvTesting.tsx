@@ -9,7 +9,7 @@ import { UrlCSVReader as urlReader, UrlCSVHeaders as urlHeaders } from "../src/c
 * same file but different file paths/types
 */
 
-const totalTests = 34;
+const totalTests = 2;
 let numTests = 0;
 let successFound = 0;
 let errorsFound = 0;

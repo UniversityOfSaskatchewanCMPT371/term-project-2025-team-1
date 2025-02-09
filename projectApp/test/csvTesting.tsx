@@ -1,6 +1,7 @@
 import { LocalCSVReader as localReader, LocalCSVHeaders as localHeaders } from "../src/components/CSV_Readers/LocalCSVReader.tsx"
 import { UrlCSVReader as urlReader, UrlCSVHeaders as urlHeaders } from "../src/components/CSV_Readers/UrlCSVReader.tsx"
 
+import logger from "../src/logging/logs.js"
 /*
 * This File is for testing the CSV readers
 * First It will testing running the Local CSV Reader
@@ -16,15 +17,15 @@ let errorsFound = 0;
 let expectedErrors = 0;
 let expectedSuccess = 0;
 
-let urlTest = "https://raw.githubusercontent.com/UniversityOfSaskatchewanCMPT371/term-project-2025-team-1/refs/heads/main/csvTestFiles/test.csv";
-let urlFake = "https://raw.githubusercontent.com/UniversityOfSaskatchewanCMPT371/term-project-2025-team-1/refs/heads/main/csvTestFiles/FakeCSV.csv";
-let urlOneLess = "https://raw.githubusercontent.com/UniversityOfSaskatchewanCMPT371/term-project-2025-team-1/refs/heads/main/csvTestFiles/oneLessHeader.csv";
-let urlOneMore = "https://raw.githubusercontent.com/UniversityOfSaskatchewanCMPT371/term-project-2025-team-1/refs/heads/main/csvTestFiles/oneMoreHeader.csv";
-let urlUneven = "https://raw.githubusercontent.com/UniversityOfSaskatchewanCMPT371/term-project-2025-team-1/refs/heads/main/csvTestFiles/unevenData.csv";
-let urlDifferent = "https://raw.githubusercontent.com/UniversityOfSaskatchewanCMPT371/term-project-2025-team-1/refs/heads/main/csvTestFiles/differentTypes.csv";
-let urlNotCSV = "https://raw.githubusercontent.com/UniversityOfSaskatchewanCMPT371/term-project-2025-team-1/refs/heads/ID2Dev/csvTestFiles/notCsv.html";
-let urlEmpty = "https://raw.githubusercontent.com/UniversityOfSaskatchewanCMPT371/term-project-2025-team-1/refs/heads/ID2Dev/csvTestFiles/empty.csv";
-let urlWebsite = "https://www.w3schools.com/python/pandas/data.csv";
+const urlTest = "https://raw.githubusercontent.com/UniversityOfSaskatchewanCMPT371/term-project-2025-team-1/refs/heads/main/csvTestFiles/test.csv";
+const urlFake = "https://raw.githubusercontent.com/UniversityOfSaskatchewanCMPT371/term-project-2025-team-1/refs/heads/main/csvTestFiles/FakeCSV.csv";
+const urlOneLess = "https://raw.githubusercontent.com/UniversityOfSaskatchewanCMPT371/term-project-2025-team-1/refs/heads/main/csvTestFiles/oneLessHeader.csv";
+const urlOneMore = "https://raw.githubusercontent.com/UniversityOfSaskatchewanCMPT371/term-project-2025-team-1/refs/heads/main/csvTestFiles/oneMoreHeader.csv";
+const urlUneven = "https://raw.githubusercontent.com/UniversityOfSaskatchewanCMPT371/term-project-2025-team-1/refs/heads/main/csvTestFiles/unevenData.csv";
+const urlDifferent = "https://raw.githubusercontent.com/UniversityOfSaskatchewanCMPT371/term-project-2025-team-1/refs/heads/main/csvTestFiles/differentTypes.csv";
+const urlNotCSV = "https://raw.githubusercontent.com/UniversityOfSaskatchewanCMPT371/term-project-2025-team-1/refs/heads/ID2Dev/csvTestFiles/notCsv.html";
+const urlEmpty = "https://raw.githubusercontent.com/UniversityOfSaskatchewanCMPT371/term-project-2025-team-1/refs/heads/ID2Dev/csvTestFiles/empty.csv";
+const urlWebsite = "https://www.w3schools.com/python/pandas/data.csv";
 
 function incrementExpectedErrors() {
     expectedErrors++;
@@ -46,7 +47,7 @@ async function localCsvReaderTestFormat(file:string ,expected:(()=>void), logMes
         successFound++;
     }
     catch(error) {
-        console.log(`Error Found: ${file}`);
+        logger.error(`Error Found: ${file}`, error);
         errorsFound++;
     }
 }
@@ -64,7 +65,7 @@ async function localCsvHeadersTestFormat(file:string ,expected:(()=>void), logMe
         console.log(headers.headers[2])
     }
     catch(error) {
-        console.log(`Error Found: ${file}`);
+        logger.error(`Error Found: ${file}`, error);
         errorsFound++;
     }
 }
@@ -126,7 +127,7 @@ async function urlCsvReaderTestFormat(url:string ,expected:(()=>void), logMessag
         successFound++;
     }
     catch(error) {
-        console.log(`Error Found: ${url}`);
+        logger.error(`Error Found: ${url}`, error);
         errorsFound++;
     }
 }
@@ -141,14 +142,14 @@ async function urlCsvHeadersTestFormat(url:string ,expected:(()=>void), logMessa
         successFound++;
     }
     catch(error) {
-        console.log(`Error Found: ${url}`);
+        logger.error(`Error Found: ${url}`, error);
         errorsFound++;
     }
 }
 
 async function urlCsvTesting() {
     //NOTE: these tests are for testing if it can read the file, not for if the csv is formatted correctly
-    let url: string = "no url";
+    let url = "no url";
 
     //Testing reading a csv file that exist by URL
     //Expected: both pass, should act normally
@@ -207,18 +208,18 @@ async function urlCsvTesting() {
 }
 
 function FinishTest(){
-    console.log(`Number of Tests: ${totalTests}, Expected Errors: ${expectedErrors}, Expected Successes: ${expectedSuccess}`);
-    console.log(`Tests completed: ${numTests}, Errors Found: ${errorsFound}, Successful Tests: ${successFound}`);
+    console.log(`Number of Tests: ${totalTests.toString()}, Expected Errors: ${expectedErrors.toString()}, Expected Successes: ${expectedSuccess.toString()}`);
+    console.log(`Tests completed: ${numTests.toString()}, Errors Found: ${errorsFound.toString()}, Successful Tests: ${successFound.toString()}`);
     if(numTests != totalTests){
-        console.log(`All Tests Not Completed: Finished (${numTests}) -> Expected (${totalTests})`);
+        console.log(`All Tests Not Completed: Finished (${numTests.toString()}) -> Expected (${totalTests.toString()})`);
         process.exit(1);
     }
     else if(errorsFound != expectedErrors){
-        console.log(`Errors Expected Does Not Match: Found (${errorsFound}) -> Expected (${expectedErrors})`);
+        console.log(`Errors Expected Does Not Match: Found (${errorsFound.toString()}) -> Expected (${expectedErrors.toString()})`);
         process.exit(1);
     }
     else if(successFound != expectedSuccess){
-        console.log(`Success Expected Does Not Match: Found (${successFound}) -> Expected (${expectedSuccess})`);
+        console.log(`Success Expected Does Not Match: Found (${successFound.toString()}) -> Expected (${expectedSuccess.toString()})`);
         process.exit(1);
     }
     console.log("Test passed!");

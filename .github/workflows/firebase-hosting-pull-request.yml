@@ -3,6 +3,9 @@
 
 name: Deploy to Firebase Hosting on PR
 on: pull_request
+defaults:
+  run:
+    working-directory: ./projectApp
 permissions:
   checks: write
   contents: read
@@ -18,4 +21,5 @@ jobs:
         with:
           repoToken: ${{ secrets.GITHUB_TOKEN }}
           firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_CMPT371_2025_T1 }}
+          entryPoint: './projectApp'
           projectId: cmpt371-2025-t1

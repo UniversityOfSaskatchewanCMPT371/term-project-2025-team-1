@@ -69,7 +69,7 @@ export const logTransport = (indexPrefix) => {
         format: combine(timestamp(), errors({ stack: true }), json()),
         transports: [
             transport,
-            new ElasticsearchTransport({
+            new ElasticsearchTransport({                //Sends to elastic
             ...elasticTransport(spanTracerId, indexPrefix),
             }),
         ],

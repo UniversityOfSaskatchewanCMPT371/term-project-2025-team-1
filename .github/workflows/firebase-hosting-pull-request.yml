@@ -3,6 +3,9 @@
 
 name: Deploy to Firebase Hosting on PR
 on: pull_request
+defaults:
+  run:
+    working-directory: ./projectApp
 permissions:
   checks: write
   contents: read

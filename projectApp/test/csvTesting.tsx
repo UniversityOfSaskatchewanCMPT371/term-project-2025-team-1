@@ -1,6 +1,7 @@
 import { LocalCSVReader as localReader, LocalCSVHeaders as localHeaders } from "../src/components/CSV_Readers/LocalCSVReader.tsx"
 import { UrlCSVReader as urlReader, UrlCSVHeaders as urlHeaders } from "../src/components/CSV_Readers/UrlCSVReader.tsx"
 
+import logger from "../src/logging/logs.js"
 /*
 * This File is for testing the CSV readers
 * First It will testing running the Local CSV Reader
@@ -16,15 +17,15 @@ let errorsFound = 0;
 let expectedErrors = 0;
 let expectedSuccess = 0;
 
-let urlTest = "https://raw.githubusercontent.com/UniversityOfSaskatchewanCMPT371/term-project-2025-team-1/refs/heads/main/csvTestFiles/test.csv";
-let urlFake = "https://raw.githubusercontent.com/UniversityOfSaskatchewanCMPT371/term-project-2025-team-1/refs/heads/main/csvTestFiles/FakeCSV.csv";
-let urlOneLess = "https://raw.githubusercontent.com/UniversityOfSaskatchewanCMPT371/term-project-2025-team-1/refs/heads/main/csvTestFiles/oneLessHeader.csv";
-let urlOneMore = "https://raw.githubusercontent.com/UniversityOfSaskatchewanCMPT371/term-project-2025-team-1/refs/heads/main/csvTestFiles/oneMoreHeader.csv";
-let urlUneven = "https://raw.githubusercontent.com/UniversityOfSaskatchewanCMPT371/term-project-2025-team-1/refs/heads/main/csvTestFiles/unevenData.csv";
-let urlDifferent = "https://raw.githubusercontent.com/UniversityOfSaskatchewanCMPT371/term-project-2025-team-1/refs/heads/main/csvTestFiles/differentTypes.csv";
-let urlNotCSV = "https://raw.githubusercontent.com/UniversityOfSaskatchewanCMPT371/term-project-2025-team-1/refs/heads/ID2Dev/csvTestFiles/notCsv.html";
-let urlEmpty = "https://raw.githubusercontent.com/UniversityOfSaskatchewanCMPT371/term-project-2025-team-1/refs/heads/ID2Dev/csvTestFiles/empty.csv";
-let urlWebsite = "https://www.w3schools.com/python/pandas/data.csv";
+const urlTest = "https://raw.githubusercontent.com/UniversityOfSaskatchewanCMPT371/term-project-2025-team-1/refs/heads/main/csvTestFiles/test.csv";
+const urlFake = "https://raw.githubusercontent.com/UniversityOfSaskatchewanCMPT371/term-project-2025-team-1/refs/heads/main/csvTestFiles/FakeCSV.csv";
+const urlOneLess = "https://raw.githubusercontent.com/UniversityOfSaskatchewanCMPT371/term-project-2025-team-1/refs/heads/main/csvTestFiles/oneLessHeader.csv";
+const urlOneMore = "https://raw.githubusercontent.com/UniversityOfSaskatchewanCMPT371/term-project-2025-team-1/refs/heads/main/csvTestFiles/oneMoreHeader.csv";
+const urlUneven = "https://raw.githubusercontent.com/UniversityOfSaskatchewanCMPT371/term-project-2025-team-1/refs/heads/main/csvTestFiles/unevenData.csv";
+const urlDifferent = "https://raw.githubusercontent.com/UniversityOfSaskatchewanCMPT371/term-project-2025-team-1/refs/heads/main/csvTestFiles/differentTypes.csv";
+const urlNotCSV = "https://raw.githubusercontent.com/UniversityOfSaskatchewanCMPT371/term-project-2025-team-1/refs/heads/ID2Dev/csvTestFiles/notCsv.html";
+const urlEmpty = "https://raw.githubusercontent.com/UniversityOfSaskatchewanCMPT371/term-project-2025-team-1/refs/heads/ID2Dev/csvTestFiles/empty.csv";
+const urlWebsite = "https://www.w3schools.com/python/pandas/data.csv";
 
 function incrementExpectedErrors() {
     expectedErrors++;
@@ -45,8 +46,8 @@ async function localCsvReaderTestFormat(file:string ,expected:(()=>void), logMes
         console.log("data:",readLocal);
         successFound++;
     }
-    catch(error) {
-        console.log(`Error Found: ${file}`);
+    catch(error: unknown) {
+        logger.error(`Error Found: ${file} Error: ${error}`);
         errorsFound++;
     }
 }
@@ -60,8 +61,8 @@ async function localCsvHeadersTestFormat(file:string ,expected:(()=>void), logMe
         console.log("data:",headers);
         successFound++;
     }
-    catch(error) {
-        console.log(`Error Found: ${file}`);
+    catch(error: unknown) {
+        logger.error(`Error Found: ${file} Error: ${error}`);
         errorsFound++;
     }
 }
@@ -122,8 +123,8 @@ async function urlCsvReaderTestFormat(url:string ,expected:(()=>void), logMessag
         console.log("data:",readLocal);
         successFound++;
     }
-    catch(error) {
-        console.log(`Error Found: ${url}`);
+    catch(error: unknown) {
+        logger.error(`Error Found: ${url} Error: ${error}`);
         errorsFound++;
     }
 }
@@ -137,8 +138,8 @@ async function urlCsvHeadersTestFormat(url:string ,expected:(()=>void), logMessa
         console.log("data:",headers);
         successFound++;
     }
-    catch(error) {
-        console.log(`Error Found: ${url}`);
+    catch(error: unknown) {
+        logger.error(`Error Found: ${url} Error: ${error}`);
         errorsFound++;
     }
 }

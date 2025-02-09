@@ -7,7 +7,7 @@ import { PointRef } from "../../types/PointInterface";
 import { PointClass } from "./PointClass";
 
 export function Create2DPoint(pointRef: PointRef){
-    let point = new PointClass(pointRef);
+    const point = new PointClass(pointRef);
 
     //TODO
     //Track point class, maybe only generate the points on graph once

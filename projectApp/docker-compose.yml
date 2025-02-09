@@ -1,0 +1,12 @@
+version: '3.4'
+
+services:
+  sampleproject:
+    image: 371-image-demo:latest
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    environment:
+      NODE_ENV: production
+    ports:
+      - 5173:5173

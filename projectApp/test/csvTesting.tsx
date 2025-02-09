@@ -46,8 +46,8 @@ async function localCsvReaderTestFormat(file:string ,expected:(()=>void), logMes
         console.log("data:",readLocal);
         successFound++;
     }
-    catch(error: unknown) {
-        logger.error(`Error Found: ${file} Error: ${error}`);
+    catch(error) {
+        logger.error(`Error Found: ${file}`, error);
         errorsFound++;
     }
 }
@@ -64,8 +64,8 @@ async function localCsvHeadersTestFormat(file:string ,expected:(()=>void), logMe
         console.log(headers.headers[1])
         console.log(headers.headers[2])
     }
-    catch(error: unknown) {
-        logger.error(`Error Found: ${file} Error: ${error}`);
+    catch(error) {
+        logger.error(`Error Found: ${file}`, error);
         errorsFound++;
     }
 }
@@ -126,8 +126,8 @@ async function urlCsvReaderTestFormat(url:string ,expected:(()=>void), logMessag
         console.log("data:",readLocal);
         successFound++;
     }
-    catch(error: unknown) {
-        logger.error(`Error Found: ${url} Error: ${error}`);
+    catch(error) {
+        logger.error(`Error Found: ${url}`, error);
         errorsFound++;
     }
 }
@@ -141,15 +141,15 @@ async function urlCsvHeadersTestFormat(url:string ,expected:(()=>void), logMessa
         console.log("data:",headers);
         successFound++;
     }
-    catch(error: unknown) {
-        logger.error(`Error Found: ${url} Error: ${error}`);
+    catch(error) {
+        logger.error(`Error Found: ${url}`, error);
         errorsFound++;
     }
 }
 
 async function urlCsvTesting() {
     //NOTE: these tests are for testing if it can read the file, not for if the csv is formatted correctly
-    let url: string = "no url";
+    let url = "no url";
 
     //Testing reading a csv file that exist by URL
     //Expected: both pass, should act normally
@@ -208,18 +208,18 @@ async function urlCsvTesting() {
 }
 
 function FinishTest(){
-    console.log(`Number of Tests: ${totalTests}, Expected Errors: ${expectedErrors}, Expected Successes: ${expectedSuccess}`);
-    console.log(`Tests completed: ${numTests}, Errors Found: ${errorsFound}, Successful Tests: ${successFound}`);
+    console.log(`Number of Tests: ${totalTests.toString()}, Expected Errors: ${expectedErrors.toString()}, Expected Successes: ${expectedSuccess.toString()}`);
+    console.log(`Tests completed: ${numTests.toString()}, Errors Found: ${errorsFound.toString()}, Successful Tests: ${successFound.toString()}`);
     if(numTests != totalTests){
-        console.log(`All Tests Not Completed: Finished (${numTests}) -> Expected (${totalTests})`);
+        console.log(`All Tests Not Completed: Finished (${numTests.toString()}) -> Expected (${totalTests.toString()})`);
         process.exit(1);
     }
     else if(errorsFound != expectedErrors){
-        console.log(`Errors Expected Does Not Match: Found (${errorsFound}) -> Expected (${expectedErrors})`);
+        console.log(`Errors Expected Does Not Match: Found (${errorsFound.toString()}) -> Expected (${expectedErrors.toString()})`);
         process.exit(1);
     }
     else if(successFound != expectedSuccess){
-        console.log(`Success Expected Does Not Match: Found (${successFound}) -> Expected (${expectedSuccess})`);
+        console.log(`Success Expected Does Not Match: Found (${successFound.toString()}) -> Expected (${expectedSuccess.toString()})`);
         process.exit(1);
     }
     console.log("Test passed!");

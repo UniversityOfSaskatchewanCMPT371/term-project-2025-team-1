@@ -14,6 +14,7 @@ export class CSVReaderModel implements CSVReaderInterface{
 
     //This should get the csv file using name
     getCSVFile(name:string): CSVData{
+        console.log(name);
         return new CSVDataModels();
     }
 
@@ -23,7 +24,7 @@ export class CSVReaderModel implements CSVReaderInterface{
     async readLocalFile(file: string){
         //This should read the string value and try to load a csv file
         //On success add to array
-        let data:CSVDataModels = new CSVDataModels;
+        const data:CSVDataModels = new CSVDataModels;
         try{
             await data.loadLocalCSVFile(this.num, file);
         }
@@ -34,7 +35,7 @@ export class CSVReaderModel implements CSVReaderInterface{
         this.csvFiles.push(data);
     }
     async readURLFile(file: string){
-        let data:CSVDataModels = new CSVDataModels;
+        const data:CSVDataModels = new CSVDataModels;
         try{
             await data.loadUrlCSVFile(this.num, file);
         }
@@ -48,6 +49,7 @@ export class CSVReaderModel implements CSVReaderInterface{
     deleteFile(name:string){
         //Use name to find the array and delete it using index
        // delete this.csvFiles[0]; NOPE: Unsafe use splice instead
+       console.log(name);
        this.csvFiles.splice(1, 1); //( startAtIndex, deleteCount )
     };
 }

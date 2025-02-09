@@ -14,10 +14,10 @@ import {CSVHeaders, TimeSeriesData} from '../../types/CSVInterfaces';
 export async function LocalCSVHeaders(file:string): Promise<CSVHeaders> {
     logger.info("Calling LocalCSVHeader ", file);
     return LocalCSVReader(file).then((timeSeries) => {
-        if(timeSeries === null){
-            logger.error("LocalCSVHeader Time Series is null", file);
-            throw new Error("Time Series is null");
-        }
+        // if(timeSeries === null){
+        //     logger.error("LocalCSVHeader Time Series is null", file);
+        //     throw new Error("Time Series is null");
+        // }
         //if LocalCSVReader is tested, then above should be fine
         //test if output is expected
         //if no data, no headers

@@ -3,13 +3,13 @@ import { Canvas } from '@react-three/fiber';
 import InitScene from './pages/Scene/InitScene';
 import { Sky } from '@react-three/drei';
 import { createXRStore, XR } from '@react-three/xr';
+import { MainController } from './controller/MainController';
 
 //Initializes and configures various parts integral to a VR experience
 const store = createXRStore()
 
 //The main function for the program
 function App() {
-  
   return (
     <>
       <div>

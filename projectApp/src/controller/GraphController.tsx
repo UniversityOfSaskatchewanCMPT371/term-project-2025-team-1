@@ -10,7 +10,7 @@ export class GraphController {
     async readLocalFile(file: string){
         await this.graphModel.readLocalFile(file);
     }
-    async readCSVFile(file: string){
+    async readURLFile(file: string){
         await this.graphModel.readURLFile(file);
     }
 }

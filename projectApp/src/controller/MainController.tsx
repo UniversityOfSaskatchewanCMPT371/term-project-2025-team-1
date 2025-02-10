@@ -1,7 +1,16 @@
-// import logger from '../logging/logs'
+import { GraphController } from "./GraphController";
 
-// let target = "";
+export class MainController {
+    private graphController: GraphController
+    constructor(){
+        this.graphController = new GraphController();
+    }
 
-// function logger(level: string){
+    getGraphController(){
+        return this.graphController;
+    }
 
-// }
+}
+
+const mainController = new MainController();
+export default mainController;

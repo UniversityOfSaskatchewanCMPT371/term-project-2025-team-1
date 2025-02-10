@@ -1,5 +1,8 @@
 name: Caching with npm
 on: push
+defaults:
+  run:
+    working-directory: ./projectApp
 jobs:
   build:
     runs-on: ubuntu-latest

@@ -10,9 +10,9 @@ export function Point2D({pointRef} : {pointRef: PointClass}){
     return (
         <mesh
             position={pointRef.getPosition()}
-            onClick={() => pointRef.setSelected(!(pointRef.getSelected()))}
-            onPointerOver={()=>hover(true)}
-            onPointerOut={()=>hover(false)}>
+            onClick={() => {pointRef.setSelected(!(pointRef.getSelected()))}}
+            onPointerOver={()=>{hover(true)}}
+            onPointerOut={()=>{hover(false)}}>
 
                 <circleGeometry 
                 attach = "geometry"

@@ -14,10 +14,10 @@ import {CSVHeaders, TimeSeriesData} from '../../types/CSVInterfaces';
 export async function LocalCSVHeaders(file:string): Promise<CSVHeaders> {
     logger.info("Calling LocalCSVHeader ", file);
     return LocalCSVReader(file).then((timeSeries) => {
-        if(timeSeries === null){
-            logger.error("LocalCSVHeader Time Series is null", file);
-            throw new Error("Time Series is null");
-        }
+        // if(timeSeries === null){
+        //     logger.error("LocalCSVHeader Time Series is null", file);
+        //     throw new Error("Time Series is null");
+        // }
         //if LocalCSVReader is tested, then above should be fine
         //test if output is expected
         //if no data, no headers
@@ -30,7 +30,7 @@ export async function LocalCSVHeaders(file:string): Promise<CSVHeaders> {
             return { headers: Object.keys(timeSeries[0]) };
         }
     // Rethrowing errors
-    }).catch((err) => {
+    }).catch((err:unknown) => {
         logger.error("LocalCSVHeaders Error", err);
         throw err;
     });
@@ -42,18 +42,19 @@ export async function LocalCSVHeaders(file:string): Promise<CSVHeaders> {
 * @returns: {Promise<CSVHeaders>}
 **/
 export async function LocalCSVReader(file:string): Promise<TimeSeriesData[]>{
-    logger.info("Calling LocalCSVHeader", file);
+    logger.info("Calling LocalCSVReader", file);
     return new Promise<TimeSeriesData[]>((resolve, reject) => {
-        if(!fs.existsSync(file)){
-            //test for nonexistant files
-            logger.error("LocalCSVReader File doesn't exist", file);
-            reject(("File doesn't exist"));
-            return;
-        }
-        else if(!file.endsWith('.csv') && !file.endsWith('.txt')){
+        // if(!fs.existsSync(file)){
+        //     //test for nonexistant files
+        //     logger.error("LocalCSVReader File doesn't exist", file);
+        //     reject(new Error("File doesn't exist"));
+        //     return;
+        // }
+        //else 
+        if(!file.endsWith('.csv') && !file.endsWith('.txt')){
             //test for files that are NOT .csv
             logger.error("LocalCSVReader File isn't .csv or .txt file", file);
-            reject(('File must be .csv or .txt'));
+            reject(new Error('File must be .csv or .txt'));
             return;
         }
         logger.info("LocalCSVReader Reading file", file);
@@ -78,7 +79,7 @@ export async function LocalCSVReader(file:string): Promise<TimeSeriesData[]>{
         });
         
     // Re-throwing errors
-    }).catch((err: Error) => {
+    }).catch((err: unknown) => {
         //test for possible error catching
         logger.error("LocalCSVReader Error", err);
         throw err;

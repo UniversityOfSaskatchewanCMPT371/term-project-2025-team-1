@@ -47,9 +47,9 @@ export default function DropDownUI({x, y, z}: DropDownProps){
             // Assigning position, and usestates for the button
                 ref={mesh}
                 position = {buttonPosition}
-                onClick = {() => alert(type)}
-                onPointerOver = {() => hover(true)}
-                onPointerOut = {() => hover(false)}>
+                onClick = {() => {alert(type)}}
+                onPointerOver = {() => {hover(true)}}
+                onPointerOut = {() => {hover(false)}}>
 
                 {/* The Button Object with the text */}
                 <planeGeometry 

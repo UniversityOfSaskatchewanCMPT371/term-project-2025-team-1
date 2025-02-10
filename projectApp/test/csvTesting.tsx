@@ -37,7 +37,7 @@ function incrementExpectedSuccess() {
 
 console.log("Test Script For CSV reader");
 
-async function localCsvReaderTestFormat(file:string ,expected:(()=>void), logMessage:string){
+export async function localCsvReaderTestFormat(file:string ,expected:(()=>void), logMessage:string){
     numTests++;
     expected();
     try{
@@ -52,7 +52,7 @@ async function localCsvReaderTestFormat(file:string ,expected:(()=>void), logMes
     }
 }
 
-async function localCsvHeadersTestFormat(file:string ,expected:(()=>void), logMessage:string){
+export async function localCsvHeadersTestFormat(file:string ,expected:(()=>void), logMessage:string){
     numTests++;
     expected();
     try{
@@ -117,7 +117,7 @@ async function localCsvTesting() {
 
 console.log("Test Script For CSV reader");
 
-async function urlCsvReaderTestFormat(url:string ,expected:(()=>void), logMessage:string){
+export async function urlCsvReaderTestFormat(url:string ,expected:(()=>void), logMessage:string){
     numTests++;
     expected();
     try{
@@ -132,7 +132,7 @@ async function urlCsvReaderTestFormat(url:string ,expected:(()=>void), logMessag
     }
 }
 
-async function urlCsvHeadersTestFormat(url:string ,expected:(()=>void), logMessage:string){
+export async function urlCsvHeadersTestFormat(url:string ,expected:(()=>void), logMessage:string){
     numTests++;
     expected();
     try{

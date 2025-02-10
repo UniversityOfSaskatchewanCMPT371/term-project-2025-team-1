@@ -74,12 +74,12 @@ export async function UrlCSVReader(url:string): Promise<TimeSeriesData[]>{
                         return;
                     }
                 });
-            })
+            }).catch((err: unknown) => {
+                //test for possible error catching
+                logger.error("UrlCSVReader Error", err);
+                reject(err);
+            });
         };
     //Rethrowing errors
-    }).catch((err: unknown) => {
-        //test for possible error catching
-        logger.error("UrlCSVReader Error", err);
-        throw err;
     });
 }

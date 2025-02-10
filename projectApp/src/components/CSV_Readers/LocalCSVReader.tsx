@@ -1,5 +1,4 @@
 import * as fsPromise from 'fs/promises';
-import * as fs from 'fs';
 import Papa from 'papaparse';
 import logger from '../../logging/logs';
 
@@ -76,12 +75,11 @@ export async function LocalCSVReader(file:string): Promise<TimeSeriesData[]>{
                     return;
                 }
             });
+        }).catch((err: unknown) => {
+            //test for possible error catching
+            logger.error("LocalCSVReader Error", err);
+            reject(err);
         });
-        
     // Re-throwing errors
-    }).catch((err: unknown) => {
-        //test for possible error catching
-        logger.error("LocalCSVReader Error", err);
-        throw err;
     });
 };

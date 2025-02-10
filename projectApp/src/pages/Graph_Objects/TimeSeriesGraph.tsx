@@ -4,48 +4,41 @@
 //More expected
 import React, { useRef } from 'react';
 import { Point2D } from './Point2D'; // Point2D file in the same directory
-import { GraphClass } from "./GraphClass"; // GraphClass file isn't currently in the same direction
+import { GraphClass } from "../../components/Graph_Components/GraphClass"; // GraphClass file isn't currently in the same direction
 import { Canvas } from "@react-three/fiber"; // For the 3D canvas, since code will run on meta quest 3
-import { Box } from "@react-three/drei";     // For the cube (box geometry)
+import { PointClass } from '../../components/Graph_Components/PointClass';
+import * as THREE from 'three';
 
 
-const TimeSeriesGraph = () => {
+export class TimeSeriesGraph {
+  private scene: THREE.Scene;
+  private graph: GraphClass;
+  private pointsMesh: THREE.Group;
 
-// Test array.
-    const timeSeriesData = [
-    { x: "2023-10-01", y: 1 },
-    { x: "2023-10-02", y: 3 },
-    { x: "2023-10-03", y: 2 },
-    { x: "2023-10-04", y: 4 },
-    { x: "2023-10-05", y: 5 },
-  ];
+  constructor(graph: GraphClass, scene: THREE.Scene) {
+    this.graph = graph;
+    this.scene = scene;
+    this.pointsMesh = new THREE.Group();
+    this.scene.add(this.pointsMesh);
+    this.updateGraph();
+  }
 
-  // each GraphClass represents one point in graph
-  const points = timeSeriesData.map((data, index) => {
-    return new GraphClass(
-      [index, data.y, 0], // Position: [x, y, z]
-      false,              // Selected: false by default
-      data.x,             // xData: Time value
-      data.y              // yData: Data value
-    );
-  });
+  public updateGraph(rows?: number): void {
+    this.pointsMesh.clear();
+    const points = this.graph.getPoints();
+    points.forEach((pointRef, index) => {
+      const point = pointRef.getPoint();
+      const x = point.x;
+      const y = point.y;
+      const sphereGeometry = new THREE.SphereGeometry(0.1, 32, 32);
+      const sphereMaterial = new THREE.MeshBasicMaterial({ color: 0xff0000 });
+      const sphere = new THREE.Mesh(sphereGeometry, sphereMaterial);
+      sphere.position.set(x, y, 0);
+      this.pointsMesh.add(sphere);
+    });
+  }
 
-  return (
-    <Canvas>
-      <ambientLight intensity={0.5} />
-      <pointLight position={[10, 10, 10]} intensity={0.5} />
-
-      {/* Draw each point on the graph */}
-      {points.map((point, idx) => (
-        <Point2D key={idx} pointRef={point} />
-      ))}
-
-      {/* Test cube, I will remove it later */}
-      <Box position={[0, 0, 0]}>
-        <meshStandardMaterial color="gray" />
-      </Box>
-    </Canvas>
-  );
-
-};
-export default TimeSeriesGraph;
+  public clearGraph(): void {
+    this.pointsMesh.clear();
+  }
+}

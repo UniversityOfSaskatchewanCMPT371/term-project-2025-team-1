@@ -5,9 +5,9 @@ name: Attest
 on:
   # Allows this workflow to be run manually from the Actions tab
   workflow_dispatch:
-  release:
-  push:
-    branches: ['loop1dev-dev']
+  # release:
+  #push:
+   # branches: ['loop1dev-dev']
 
 defaults:
   run:

@@ -12,7 +12,7 @@ async function expectEmpty(input){
     });
 }
 
-describe("Testing the localCSVReader function", () => {
+describe("empty should resolve", () => {
     test("data should be read from valid file", async () => {
         return expect(expectEmpty("")).resolves.toBe("string is empty");
     })

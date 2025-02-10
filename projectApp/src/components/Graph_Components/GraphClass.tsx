@@ -1,7 +1,9 @@
 import { PointRef } from "../../types/PointInterface";
 import { GraphInterface } from "../../types/GraphInterface";
 
-
+/**
+ * The GraphClass represents a graph structure that manages points, dimensions, styling, and interactivity.
+ */
 export class GraphClass implements GraphInterface {
   id: string;
   type: '2D' | '3D';
@@ -139,7 +141,7 @@ export class GraphClass implements GraphInterface {
       this.axes.xLabel = label;
     } else if (axis === 'y') {
       this.axes.yLabel = label;
-    } else if (axis === 'z') {
+    } else if (this.axes.zLabel !== undefined) {
       this.axes.zLabel = label;
     }
   }
@@ -148,7 +150,7 @@ export class GraphClass implements GraphInterface {
       this.axes.xRange = range;
     } else if (axis === 'y') {
       this.axes.yRange = range;
-    } else if (axis === 'z') {
+    } else if (this.axes.zLabel !== undefined) {
       this.axes.zRange = range;
     }
   }

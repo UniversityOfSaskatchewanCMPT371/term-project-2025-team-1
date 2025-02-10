@@ -13,8 +13,13 @@ export class CSVReaderModel implements CSVReaderInterface{
     }
 
     //This should get the csv file using name
-    getCSVFile(name:string): CSVData{
-        return new CSVDataModels();
+    getCSVFileByName(name:string): CSVData | null{
+        this.csvFiles.forEach(data => {
+            if(data.name == name){
+                return data;
+            }
+        });
+        return null;
     }
 
     //Use the number of graphs in model, for naming
@@ -33,6 +38,7 @@ export class CSVReaderModel implements CSVReaderInterface{
 
         this.csvFiles.push(data);
     }
+
     async readURLFile(file: string){
         let data:CSVDataModels = new CSVDataModels;
         try{
@@ -48,6 +54,19 @@ export class CSVReaderModel implements CSVReaderInterface{
     deleteFile(name:string){
         //Use name to find the array and delete it using index
        // delete this.csvFiles[0]; NOPE: Unsafe use splice instead
-       this.csvFiles.splice(1, 1); //( startAtIndex, deleteCount )
+       for(let i = 0; i < this.csvFiles.length; i++){
+        if(this.csvFiles[i].name == name){
+            this.csvFiles.splice(i, 1);
+            return;
+        }
+       }
+    };
+
+    getNum(){
+        return this.num;
+    }
+
+    getCSVFiles() {
+        return this.csvFiles;
     };
 }

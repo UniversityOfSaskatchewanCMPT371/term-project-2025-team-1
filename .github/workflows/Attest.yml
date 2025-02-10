@@ -31,4 +31,4 @@ jobs:
       - name: Attest
         uses: actions/attest-build-provenance@v2
         with:
-            subject-path: 'https://github.com/UniversityOfSaskatchewanCMPT371/term-project-2025-team-1/archive/refs/tags/ID1.tar.gz'
+            subject-path: '/releases/tag/ID1**/'

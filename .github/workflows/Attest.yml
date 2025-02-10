@@ -31,4 +31,4 @@ jobs:
       - name: Attest
         uses: actions/attest-build-provenance@v2
         with:
-            subject-path: './releases/tag/ID1/**'
+            subject-path: './releases/tag/ID1/*'

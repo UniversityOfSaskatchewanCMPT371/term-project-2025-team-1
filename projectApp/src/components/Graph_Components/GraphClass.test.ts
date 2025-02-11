@@ -178,11 +178,11 @@ describe('GraphClass', () => {
     expect(graph.getMetadata()?.description).toBe('Updated description');
   });
 
-//   Test cases for GraphClass onPointSelect handler
-    it('should set onPointSelect handler correctly', () => {
-        const graph = new GraphClass(mockGraphData);
-        const handler = (point: PointRef) => console.log(point);
-        graph.setOnPointSelect(handler);
-        expect(graph.onPointSelect).toBe(handler);
-    });
+// Test cases for GraphClass onPointSelect handler
+it('should set onPointSelect handler correctly', () => {
+    const graph = new GraphClass(mockGraphData);
+    const handler = (point: PointRef) => { console.log(point); }; 
+    graph.setOnPointSelect(handler);
+    expect(graph.onPointSelect).toBe(handler);
+});
 });

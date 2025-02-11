@@ -30,7 +30,18 @@ export class TimeSeriesGraph {
     this.scene.add(this.pointsMesh);
 
     // Initialize the graph
+    this.addGraphBackground();
     this.updateGraph();
+  }
+
+    /**
+   * Square object for time series graph to represent the graph
+   */
+  private addGraphBackground(): void {
+    const boxGeometry = new THREE.BoxGeometry(10, 10, 0.1); // A square grid box (flattened on the Z-axis)
+    const boxMaterial = new THREE.MeshBasicMaterial({ color: 0x00ff00, wireframe: true });
+    const box = new THREE.Mesh(boxGeometry, boxMaterial);
+    this.scene.add(box); // Adds the box to the scene as the background for the graph
   }
 
   /**
@@ -48,9 +59,8 @@ export class TimeSeriesGraph {
 
     // Create a "mesh" for each point
     points.forEach((pointRef, index) => {
-      const point = pointRef.getPoint(); // Will ask Randall if we can have this method to get the actual point data, will make it easier for me but I can adjust the line
-      const x = point.x;
-      const y = point.y;
+      const x = pointRef.xData;
+      const y = pointRef.yData;
 
       // Adjust the position based on the number of rows (if needed)
       // const z = rows ? index * rowSpacing : 0;

@@ -13,7 +13,7 @@ describe("Testing the localCSVReader function", () => {
         console.log("yeehaw");
     })
     afterEach(async (test) => {
-        const result: RunnerTaskResult = test.task.result as RunnerTaskResult;
+        const result: RunnerTaskResult = test.task.result!;
         if(result.state==='pass'){
             console.log("this is shown on test = expected");
             try{
@@ -21,8 +21,8 @@ describe("Testing the localCSVReader function", () => {
                 console.log(data);
                 logger.info(test.task.name+"; "+result.state.toString(),data);
             }
-            catch(error){
-                const data = "expected error: "+error
+            catch(error: unknown){
+                const data = "expected error: "+(error as Error).message;
                 console.log(data);
                 logger.info(test.task.name+"; "+result.state.toString(),data);
             }

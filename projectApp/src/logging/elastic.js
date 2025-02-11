@@ -1,4 +1,4 @@
-/* eslint-disable no-undef */
+ 
 import { createLogger, format, transports } from 'winston';
 import { ElasticsearchTransport } from 'winston-elasticsearch';
 import dotenv from 'dotenv';

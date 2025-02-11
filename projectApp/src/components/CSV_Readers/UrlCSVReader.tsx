@@ -2,6 +2,7 @@ import Papa from 'papaparse';
 import logger from '../../logging/logs';
 
 import { CSVHeaders, TimeSeriesData} from '../../types/CSVInterfaces';
+import { resolve } from 'path';
 
 /**
  * Get the headers of a file at a url
@@ -10,7 +11,7 @@ import { CSVHeaders, TimeSeriesData} from '../../types/CSVInterfaces';
  */
 export async function UrlCSVHeaders(url:string): Promise<CSVHeaders> {
     logger.info("Calling URLCSVHeader ", url);
-    return UrlCSVReader(url).then((timeSeries) => {
+    return new Promise<CSVHeaders>((resolve, reject) =>UrlCSVReader(url).then((timeSeries) => {
         // if(timeSeries === null){
         //     logger.error("URLCSVHeader Time Series is null", url);
         //     throw new Error("Time Series is null");
@@ -19,17 +20,19 @@ export async function UrlCSVHeaders(url:string): Promise<CSVHeaders> {
         //test if output is expected
         if(timeSeries.length === 0){
             logger.info("UrlCSVHeader received empty timeSeries");
-            return { headers: [] };
+            resolve({ headers: [] });
+            return;
         }
         else{
             logger.info("Successful URLCSVHeader", Object.keys(timeSeries[0]))
-            return { headers: Object.keys(timeSeries[0]) };
+            resolve({ headers: Object.keys(timeSeries[0]) });
+            return;
         }
     //Rethrowing errors
-    }).catch((err:unknown) => {
+    }).catch((err: unknown) => {
         logger.error("UrlCSVHeaders Error");
-        throw err;
-    });
+        reject((err as Error));
+    }));
 }
 
 /**
@@ -60,7 +63,7 @@ export async function UrlCSVReader(url:string): Promise<TimeSeriesData[]>{
                 Papa.parse(csvData, {
                     header: true,
                     dynamicTyping: true,
-                    complete: function(parsed: any) {
+                    complete: function(parsed: Papa.ParseResult<TimeSeriesData>) {
                         logger.info("URLCSVReader Successfully parsed", url);
                         logger.info("URLCSVReader Parsed value", parsed);
                         const typedData: TimeSeriesData[] = parsed.data;
@@ -77,7 +80,7 @@ export async function UrlCSVReader(url:string): Promise<TimeSeriesData[]>{
             }).catch((err: unknown) => {
                 //test for possible error catching
                 logger.error("UrlCSVReader Error", err);
-                reject(err);
+                reject((err as Error));
             });
         };
     //Rethrowing errors

@@ -12,7 +12,7 @@ import {CSVHeaders, TimeSeriesData} from '../../types/CSVInterfaces';
 **/
 export async function LocalCSVHeaders(file:string): Promise<CSVHeaders> {
     logger.info("Calling LocalCSVHeader ", file);
-    return LocalCSVReader(file).then((timeSeries) => {
+    return new Promise((resolve, reject) => LocalCSVReader(file).then((timeSeries) => {
         // if(timeSeries === null){
         //     logger.error("LocalCSVHeader Time Series is null", file);
         //     throw new Error("Time Series is null");
@@ -22,17 +22,20 @@ export async function LocalCSVHeaders(file:string): Promise<CSVHeaders> {
         //if no data, no headers
         if(timeSeries.length === 0){
             logger.info("LocalCSVHeader received empty timeSeries");
-            return { headers: [] };
+            resolve({ headers: [] });
+            return;
         }
         else{
             logger.info("Successful LocalCSVHeader", Object.keys(timeSeries[0]));
-            return { headers: Object.keys(timeSeries[0]) };
+            resolve({ headers: Object.keys(timeSeries[0]) });
+            return;
         }
     // Rethrowing errors
     }).catch((err:unknown) => {
         logger.error("LocalCSVHeaders Error", err);
-        throw err;
-    });
+        reject((err as Error));
+        return;
+    }));
 }
 
 /**  
@@ -61,7 +64,7 @@ export async function LocalCSVReader(file:string): Promise<TimeSeriesData[]>{
             Papa.parse(data, {
                 header: true,
                 dynamicTyping: true,
-                complete: function(parsed: any){
+                complete: function(parsed: Papa.ParseResult<TimeSeriesData>){
                     logger.info("LocalCSVReader Successfully parsed", file);
                     logger.info("LocalCSVReader Parsed value", parsed.data);
                     const typedData: TimeSeriesData[] = parsed.data;
@@ -78,7 +81,7 @@ export async function LocalCSVReader(file:string): Promise<TimeSeriesData[]>{
         }).catch((err: unknown) => {
             //test for possible error catching
             logger.error("LocalCSVReader Error", err);
-            reject(err);
+            reject((err as Error));
         });
     // Re-throwing errors
     });

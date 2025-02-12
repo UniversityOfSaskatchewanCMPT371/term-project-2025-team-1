@@ -19,10 +19,12 @@
   "dependencies": {
     "@react-three/drei": "^9.121.4",
     "@react-three/fiber": "^8.17.13",
-    "@react-three/xr": "^6.6.0",
     "@react-three/uikit": "^0.8.7",
+    "@react-three/xr": "^6.6.0",
     "@types/papaparse": "^5.3.15",
+    "cors": "^2.8.5",
     "dotenv": "^16.4.7",
+    "express": "^4.21.2",
     "firebase": "^11.3.0",
     "leva": "^0.9.34",
     "papaparse": "^5.5.1",

@@ -1,6 +1,7 @@
 import * as THREE from 'three';
 import { Text } from "@react-three/drei";
 import { useState, useRef } from "react";
+import { sendLog } from '../../logger-frontend';
 
 //Interface which tracks the location of the Sample DropDown UI
 interface DropDownProps {
@@ -36,6 +37,10 @@ export default function DropDownUI({x, y, z}: DropDownProps){
     const posZ = z;
     const [ alertActive, alert ] = useState('');
 
+    function clicked() {
+        sendLog("it worked");
+    }
+
     //This function creates the interactable button, takes an interface of DropDownButtonProps
     function DropDownButton({buttonPosition, label, type}: DropDownButtonProps){
         const [ hovered, hover ] = useState(false);
@@ -47,7 +52,7 @@ export default function DropDownUI({x, y, z}: DropDownProps){
             // Assigning position, and usestates for the button
                 ref={mesh}
                 position = {buttonPosition}
-                onClick = {() => {alert(type)}}
+                onClick = {clicked}
                 onPointerOver = {() => {hover(true)}}
                 onPointerOut = {() => {hover(false)}}>
 

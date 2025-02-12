@@ -1,6 +1,6 @@
 import { GraphController } from "./GraphController";
 
-export class MainController {
+class MainController {
     private graphController: GraphController
     constructor(){
         this.graphController = new GraphController();
@@ -9,7 +9,9 @@ export class MainController {
     getGraphController(){
         return this.graphController;
     }
-
+    printConsole(test:string){
+        console.log(test);
+    }
 }
 
 const mainController = new MainController();

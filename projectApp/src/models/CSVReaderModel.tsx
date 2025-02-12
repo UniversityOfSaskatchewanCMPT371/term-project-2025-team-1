@@ -37,6 +37,7 @@ export class CSVReaderModel implements CSVReaderInterface{
         }
 
         this.csvFiles.push(data);
+        this.num++;
     }
 
     async readURLFile(file: string){
@@ -49,6 +50,7 @@ export class CSVReaderModel implements CSVReaderInterface{
         }
 
         this.csvFiles.push(data);
+        this.num++;
     }
 
     deleteFile(name:string){

@@ -7,6 +7,9 @@ export class GraphController {
         this.graphModel = new CSVReaderModel();
     }
 
+    getReaderModel(){
+        return this.graphModel;
+    }
     async readLocalFile(file: string){
         await this.graphModel.readLocalFile(file);
     }

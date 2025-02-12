@@ -85,3 +85,39 @@ export async function LocalCSVReader(file:string): Promise<TimeSeriesData[]>{
         throw err;
     });
 };
+
+
+//This one is for local reader but refactored to read a file
+
+// export function LocalCsvReader(file: File): Promise<TimeSeriesData[]>{
+//     return new Promise<TimeSeriesData[]>((resolve, reject) => {
+//         if(!file.name.endsWith('.csv') && !file.name.endsWith('.txt')){
+//             reject(new Error("file must be csv or txt"));
+//             return;
+//         }
+
+//         const reader = new FileReader();
+
+//         reader.onload = (e) => {
+//             const fileContent = e.target?.result as string;
+
+//             Papa.parse(fileContent, {
+//                 header: true,
+//                 dynamicTyping: true,
+//                 complete: function (parsed:any){
+//                     console.log("Successfully parsed CSV data", parsed.data);
+//                     const typedData: TimeSeriesData[] = parsed.data;
+//                     resolve(typedData); // Resolve the promise with parsed data
+//                 },
+//                 error: function (parseError: Error) {
+//                     console.error("Failed to parse CSV", file.name);
+//                     reject(parseError); // Reject the promise on parsing error
+//                 }
+//             });
+//         };
+
+//         reader.onerror = () => {
+//             reject(new Error("Error"))
+//         }
+//     })
+// }

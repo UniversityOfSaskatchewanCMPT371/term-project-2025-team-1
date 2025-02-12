@@ -8,8 +8,10 @@ app.use(cors());
 app.use(express.json());
 
 app.post('/log', (req, res) => {
-    const message = req.body;
-    console.log(message);
+    let m = req.body.message;
+    console.log(m);
+
+    res.sendStatus(200);
 });
 
 app.listen(PORT, () => {

@@ -1,6 +1,5 @@
 import { LocalCSVReader } from "../components/CSV_Readers/LocalCSVReader";
 import { CSVData } from "../types/CSVInterfaces";
-import logger from "../logging/logs";
 import { UrlCSVReader } from "../components/CSV_Readers/UrlCSVReader";
 
 export class CSVDataModels implements CSVData{
@@ -21,7 +20,7 @@ export class CSVDataModels implements CSVData{
             this.data = await LocalCSVReader(file);
         }
         catch {
-            logger.error("Failed Loading");
+            // logger.error("Failed Loading");
             return;
         }
         this.name = ("Graph" + index.toString());
@@ -32,7 +31,7 @@ export class CSVDataModels implements CSVData{
             this.data = await UrlCSVReader(file)
         }
         catch {
-            logger.error("Failed Loading");
+            // logger.error("Failed Loading");
             return;
         }
         this.name = ("Graph" + index.toString());

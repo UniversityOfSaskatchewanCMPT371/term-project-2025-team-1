@@ -1,8 +1,6 @@
 import { CSVData, CSVReaderInterface } from "../types/CSVInterfaces";
 import { CSVDataModels } from "./CSVDataModel";
 
-import logger from "../logging/logs";
-
 export class CSVReaderModel implements CSVReaderInterface{
     num : number;
     csvFiles: CSVData[];
@@ -29,7 +27,7 @@ export class CSVReaderModel implements CSVReaderInterface{
             await data.loadLocalCSVFile(this.num, file);
         }
         catch{
-            logger.error("Failed to read Local to get CSV file");
+            // logger.error("Failed to read Local to get CSV file");
         }
 
         this.csvFiles.push(data);
@@ -40,7 +38,7 @@ export class CSVReaderModel implements CSVReaderInterface{
             await data.loadUrlCSVFile(this.num, file);
         }
         catch{
-            logger.error("Failed to read Local to get CSV file");
+            // logger.error("Failed to read Local to get CSV file");
         }
 
         this.csvFiles.push(data);

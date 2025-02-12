@@ -1,7 +1,6 @@
 import { LocalCSVReader as localReader, LocalCSVHeaders as localHeaders } from "../src/components/CSV_Readers/LocalCSVReader.tsx"
 import { UrlCSVReader as urlReader, UrlCSVHeaders as urlHeaders } from "../src/components/CSV_Readers/UrlCSVReader.tsx"
 
-import logger from "../src/logging/logs.js"
 /*
 * This File is for testing the CSV readers
 * First It will testing running the Local CSV Reader
@@ -47,7 +46,7 @@ async function localCsvReaderTestFormat(file:string ,expected:(()=>void), logMes
         successFound++;
     }
     catch(error) {
-        logger.error(`Error Found: ${file}`, error);
+        // logger.error(`Error Found: ${file}`, error);
         errorsFound++;
     }
 }
@@ -65,7 +64,7 @@ async function localCsvHeadersTestFormat(file:string ,expected:(()=>void), logMe
         console.log(headers.headers[2])
     }
     catch(error) {
-        logger.error(`Error Found: ${file}`, error);
+        // logger.error(`Error Found: ${file}`, error);
         errorsFound++;
     }
 }
@@ -127,7 +126,7 @@ async function urlCsvReaderTestFormat(url:string ,expected:(()=>void), logMessag
         successFound++;
     }
     catch(error) {
-        logger.error(`Error Found: ${url}`, error);
+        // logger.error(`Error Found: ${url}`, error);
         errorsFound++;
     }
 }
@@ -142,7 +141,7 @@ async function urlCsvHeadersTestFormat(url:string ,expected:(()=>void), logMessa
         successFound++;
     }
     catch(error) {
-        logger.error(`Error Found: ${url}`, error);
+        // logger.error(`Error Found: ${url}`, error);
         errorsFound++;
     }
 }

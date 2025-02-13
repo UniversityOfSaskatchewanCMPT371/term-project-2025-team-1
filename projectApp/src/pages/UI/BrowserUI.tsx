@@ -18,18 +18,16 @@ export function BrowserUI(){
         type='file' 
         ref={fileInputRef} 
         style={{display:'none'}} 
-        onChange={(e) => {
+        onChange={async (e) => {
             const files = e.target.files;
             if(files && files.length > 0){
                 const file = files[0];
                 console.log(file.name.toString());
                 
-                // LocalCsvReader(file).then((data) => {
-                //   console.log("Parsed data", data);
-                // })
-                // .catch((error) => {
-                //   console.error("Error", error);
-                // });
+                let test = mainController.getGraphController().getReaderModel();
+                await mainController.getGraphController().readLocalFile(file);
+                //undefined
+                // console.log("File:", test.getCSVFiles()[0].getDataByTime("2025-01-19")?.toString());
             }
             else{
               console.log("No files selected")

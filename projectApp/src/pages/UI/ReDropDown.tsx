@@ -1,7 +1,6 @@
 import { Root, Container, Text } from '@react-three/uikit';
 import { useState } from 'react';
-// import { Text } from "@react-three/drei";
-import mainController from '../../controller/MainController';
+import mainController from "../../controller/MainController.tsx";
 
 interface dropDownProps {
     position : [number, number, number];
@@ -12,17 +11,13 @@ interface dropDownProps {
 export default function ReDropDown(props: dropDownProps){
     const [pressed, press] = useState(false);
     const [ active, setActive ] = useState(false);
-    //const handlButtonClick = () => {
-        //Works
-        //console.log("Maybe?")
-        //But calling printConsole from mainController doesn't
-
-    //}
+    
     function DropDownBody(){
         
         return (
             <>
-            {/* USE THE COMPONENT Fullscreen of uikit */}
+            {/* USE THE COMPONENT Fullscreen of uikit 
+                For Now its okay to keep it static*/}
             <mesh position={props.position}>
                 
             <mesh position={[(-0.5) - (props.xSize/2), 0, 0]}>
@@ -53,6 +48,11 @@ export default function ReDropDown(props: dropDownProps){
                         backgroundColor={pressed? "pink" : "lightgray"}
                         backgroundOpacity={0.5}
                         hover={{backgroundOpacity: 1}}>
+                            {/* Create objects representing loaded graphs in model 
+                                Each will have a button that sets a use state for selected
+                                Then a button for loading selected graph, activate use state
+                                Then on a useFrame if activated true, try using backend function*/}
+
                     </Container>
                 </Root>
             </mesh>

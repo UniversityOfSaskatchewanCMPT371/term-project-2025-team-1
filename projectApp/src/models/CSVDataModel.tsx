@@ -1,6 +1,6 @@
-import { LocalCSVReader } from "../components/CSV_Readers/LocalCSVReader";
+import { LocalCsvReader } from "../components/CSV_Readers/LocalCSVReader";
 import { CSVData } from "../types/CSVInterfaces";
-import logger from "../logging/logs";
+// import logger from "../logging/logs";
 import { UrlCSVReader } from "../components/CSV_Readers/UrlCSVReader";
 
 export class CSVDataModels implements CSVData{
@@ -15,16 +15,21 @@ export class CSVDataModels implements CSVData{
         this.yHeader = ""; //Will attempt for the second header [1]
         
     }
+    setData(data: { key: Record<string,string | number> }[]){
+        this.data = data;
+    }
     //Initial creation, for loading a graph in the scene, set the yHeader
-    async loadLocalCSVFile(index: number,file: string){
+    async loadLocalCSVFile(index: number,file: File){
         try {
-            this.data = await LocalCSVReader(file);
+            const data = await LocalCsvReader(file);
+            this.setData(data);
+            this.name = ("Graph" + index.toString());
         }
         catch {
-            logger.error("Failed Loading");
+           // logger.error("Failed Loading");
+           
             return;
         }
-        this.name = ("Graph" + index.toString());
     }
 
     async loadUrlCSVFile(index: number,file: string){
@@ -32,7 +37,7 @@ export class CSVDataModels implements CSVData{
             this.data = await UrlCSVReader(file)
         }
         catch {
-            logger.error("Failed Loading");
+            //logger.error("Failed Loading");
             return;
         }
         this.name = ("Graph" + index.toString());

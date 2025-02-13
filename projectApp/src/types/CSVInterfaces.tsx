@@ -22,7 +22,7 @@ export interface CSVData {
     //Will use the TIME and yHeader to get data
 
     getDataByTime: (time:string) => Record<string, string | number> | null;
-    loadLocalCSVFile: (index:number,file: string) => (void);
+    loadLocalCSVFile: (index:number,file: File) => (void);
     loadUrlCSVFile: (index: number, file: string) => (void);
     getName: () => string;
     getCSVHeaders: () => string[];
@@ -33,7 +33,7 @@ export interface CSVReaderInterface{
     csvFiles: CSVData[];                        //Array of loaded CSV files
 
     getCSVFileByName: (name: string) => (CSVData | null);      //Uses name to find the CSVData
-    readLocalFile: (file:string) => (void);          //Will read the csv and add it
+    readLocalFile: (file:File) => (void);          //Will read the csv and add it
     readURLFile: (file: string) => (void);
     deleteFile: (name:string) => (void);        //Get the array and delete it
     getNum: () => (number);

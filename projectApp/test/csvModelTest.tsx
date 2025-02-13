@@ -1,10 +1,8 @@
-import {CSVReaderModel} from "../src/models/CSVReaderModel";
 import mainController from "../src/controller/MainController";
-import * as fs from 'fs';
 
 let test = mainController.getGraphController().getReaderModel();
 
-await test.readLocalFile("../csvTestFiles/test.csv");
+// await mainController.getGraphController().readLocalFile("../csvTestFiles/test.csv");
 let headers = test.getCSVFiles()[0].data[0];
 
 //return { headers: Object.keys(timeSeries[0]) };

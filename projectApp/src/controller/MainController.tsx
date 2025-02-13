@@ -1,7 +1,8 @@
 import { GraphController } from "./GraphController";
 
+//Commenting out graph works its in graph
 class MainController {
-    private graphController: GraphController
+    private graphController: GraphController;
     constructor(){
         this.graphController = new GraphController();
     }

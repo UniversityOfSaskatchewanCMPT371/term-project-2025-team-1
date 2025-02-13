@@ -45,7 +45,7 @@ export default function MainScene() {
 
         {/* Displays the Sample Drop Down UI */}
         {/* <DropDownUI x={-2} y={1} z={1.3}/> */}
-        <ReDropDown position={[0, 1, -1]}></ReDropDown>
+        <ReDropDown position={[-2, 1.5, -4]} xSize={4} ySize={3}></ReDropDown>
         <Create2DPoint position={[0, 1, -2]} selected={false} xData={'Time'} yData={89}/>
         </>
     );

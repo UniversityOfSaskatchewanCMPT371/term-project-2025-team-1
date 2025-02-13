@@ -1,5 +1,4 @@
 import * as fsPromise from 'fs/promises';
-import * as fs from 'fs';
 import Papa from 'papaparse';
 
 import {CSVHeaders, TimeSeriesData} from '../../types/CSVInterfaces';

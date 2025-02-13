@@ -12,12 +12,6 @@ import { CSVHeaders, TimeSeriesData} from '../../types/CSVInterfaces';
 export async function UrlCSVHeaders(url:string): Promise<CSVHeaders> {
     logger.info("Calling URLCSVHeader ", url);
     return new Promise<CSVHeaders>((resolve, reject) =>UrlCSVReader(url).then((timeSeries) => {
-        // if(timeSeries === null){
-        //     logger.error("URLCSVHeader Time Series is null", url);
-        //     throw new Error("Time Series is null");
-        // }
-        //if UrlCSVReader is tested, then above should be fine
-        //test if output is expected
         if(timeSeries.length === 0){
             logger.info("UrlCSVHeader received empty timeSeries");
             resolve({ headers: [] });

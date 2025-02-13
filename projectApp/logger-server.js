@@ -6,11 +6,14 @@ import pino from 'pino';
 const logger = pino({
     transport: {
         targets: [
-            {target: 'pino-pretty'}, // outputs logs to console
+            {target: 'pino-pretty', options: {colorize: true}}, // outputs logs to console
             {target: 'pino/file', options: {destination: 'mylogs.txt'}} // writes logs to a file
         ]
     }
 });
+
+// changes the level of log output that gets viewed
+logger.level = "trace";
 
 // server code
 const app = express();
@@ -20,9 +23,32 @@ app.use(cors());
 app.use(express.json());
 
 app.post('/log', (req, res) => {
-    let m = req.body.message;
-    // console.log(m);
-    logger.info(m);
+    let message = req.body.message;
+    let level = req.body.level;
+
+    switch (level) {
+        case "trace":
+            logger.trace(message);
+            break;
+        case "debug":
+            logger.debug(message);
+            console.log("debug");
+            break;
+        case "info":
+            logger.info(message);
+            break;
+        case "warn":
+            logger.warn(message);
+            break;
+        case "error":
+            logger.error(message);
+            break;
+        case "fatal":
+            logger.fatal(message);
+        default:
+            console.log("error: not a level of logs")
+            break;
+    }
 
     res.sendStatus(200);
 });

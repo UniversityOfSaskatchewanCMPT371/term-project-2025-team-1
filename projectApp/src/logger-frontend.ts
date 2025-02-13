@@ -1,9 +1,12 @@
 
-export function sendLog(message: string) {
+export function sendLog(level: string, message: string) {
     console.log(message);
     fetch('http://localhost:3030/log', {
         method: 'POST', 
-        body: JSON.stringify({ message }), 
+        body: JSON.stringify({ 
+            level: level,
+            message: message
+            }), 
         headers: {'Content-type': 'application/json'}})
     // .then(() => {alert("log sent")});
 }

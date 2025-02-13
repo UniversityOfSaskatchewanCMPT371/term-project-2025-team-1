@@ -38,7 +38,8 @@ export default function DropDownUI({x, y, z}: DropDownProps){
     const [ alertActive, alert ] = useState('');
 
     function clicked() {
-        sendLog("it worked");
+        console.log("front end");
+        sendLog("info", "🦖🦕🦖🦕🦖🦕🦖🦕🦖🦕");
     }
 
     //This function creates the interactable button, takes an interface of DropDownButtonProps

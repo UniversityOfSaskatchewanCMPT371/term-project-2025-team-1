@@ -11,22 +11,20 @@ import { CSVHeaders, TimeSeriesData} from '../../types/CSVInterfaces';
  */
 export async function UrlCSVHeaders(url:string): Promise<CSVHeaders> {
     logger.info("Calling URLCSVHeader ", url);
-    return new Promise<CSVHeaders>((resolve, reject) =>UrlCSVReader(url).then((timeSeries) => {
+    return UrlCSVReader(url).then((timeSeries) => {
         if(timeSeries.length === 0){
             logger.info("UrlCSVHeader received empty timeSeries");
-            resolve({ headers: [] });
-            return;
+            return ({ headers: [] } as CSVHeaders);
         }
         else{
             logger.info("Successful URLCSVHeader", Object.keys(timeSeries[0]))
-            resolve({ headers: Object.keys(timeSeries[0]) });
-            return;
+            return ({ headers: Object.keys(timeSeries[0]) } as CSVHeaders);
         }
     //Rethrowing errors
     }).catch((err: unknown) => {
         logger.error("UrlCSVHeaders Error");
-        reject((err as Error));
-    }));
+        throw (err as Error);
+    });
 }
 
 /**
@@ -36,47 +34,43 @@ export async function UrlCSVHeaders(url:string): Promise<CSVHeaders> {
  */
 export async function UrlCSVReader(url:string): Promise<TimeSeriesData[]>{
     logger.info("Calling URLCSVReader ", url);
-    return new Promise<TimeSeriesData[]>((resolve,reject) => {
-        if(!url.endsWith('.csv') && !url.endsWith('.txt')){
-            logger.error("URLCSVReader File isn't .csv or .txt file", url);
-            reject(new Error('url must be .csv or .txt'));
-            return;
-        }
-        else{
-            //will only work if url gives permissions
-            //test with other urls?
-            logger.info("URLCSVReader Reading file", url);
-            fetch(url).then((response: Response) =>{
-                if (!response.ok) {
+    if(!url.endsWith('.csv') && !url.endsWith('.txt')){
+        logger.error("URLCSVReader File isn't .csv or .txt file", url);
+        throw new Error('url must be .csv or .txt');
+    }
+    else{
+        //will only work if url gives permissions
+        //test with other urls?
+        logger.info("URLCSVReader Reading file", url);
+        return fetch(url).then((response: Response) =>{
+            if (!response.ok) {
+                logger.error("URLCSVReader Failed Parse", url);
+                throw new Error(`Failed to fetch the file. Status: ${response.status.toString()}`);
+            }
+            //test for responses that are not ok?
+            return response.text();
+        }).then((csvData: string) => {
+            let timeSeries: TimeSeriesData[] = [];
+            Papa.parse(csvData, {
+                header: true,
+                dynamicTyping: true,
+                complete: function(parsed: Papa.ParseResult<TimeSeriesData>) {
+                    logger.info("URLCSVReader Successfully parsed", url);
+                    logger.info("URLCSVReader Parsed value", parsed);
+                    const typedData: TimeSeriesData[] = parsed.data;
+                    //test if casting works
+                    timeSeries = typedData;
+                },
+                error: function(parseError: Error){
                     logger.error("URLCSVReader Failed Parse", url);
-                    reject(new Error(`Failed to fetch the file. Status: ${response.status.toString()}`));
+                    throw parseError;
                 }
-                //test for responses that are not ok?
-                return response.text();
-            }).then((csvData: string) => {
-                Papa.parse(csvData, {
-                    header: true,
-                    dynamicTyping: true,
-                    complete: function(parsed: Papa.ParseResult<TimeSeriesData>) {
-                        logger.info("URLCSVReader Successfully parsed", url);
-                        logger.info("URLCSVReader Parsed value", parsed);
-                        const typedData: TimeSeriesData[] = parsed.data;
-                        //test if casting works
-                        resolve(typedData);
-                        return;
-                    },
-                    error: function(parseError: Error){
-                        logger.error("URLCSVReader Failed Parse", url);
-                        reject(parseError);
-                        return;
-                    }
-                });
-            }).catch((err: unknown) => {
-                //test for possible error catching
-                logger.error("UrlCSVReader Error", err);
-                reject((err as Error));
             });
-        };
-    //Rethrowing errors
-    });
+            return timeSeries;
+        }).catch((err: unknown) => {
+            //test for possible error catching
+            logger.error("UrlCSVReader Error", err);
+            throw ((err as Error));
+        });
+    };
 }

@@ -13,14 +13,8 @@ import {CSVHeaders, TimeSeriesData} from '../../types/CSVInterfaces';
 export async function LocalCSVHeaders(file:string): Promise<CSVHeaders> {
     logger.info("Calling LocalCSVHeader ", file);
     return LocalCSVReader(file).then((timeSeries) => {
-        if(timeSeries.length === 0){
-            logger.info("LocalCSVHeader received empty timeSeries");
-            return ({ headers: [] } as CSVHeaders);
-        }
-        else{
-            logger.info("Successful LocalCSVHeader", Object.keys(timeSeries[0]));
-            return ({ headers: Object.keys(timeSeries[0]) } as CSVHeaders);
-        }
+        logger.info("Successful LocalCSVHeader", Object.keys(timeSeries[0]));
+        return ({ headers: Object.keys(timeSeries[0]) } as CSVHeaders);
     // Rethrowing errors
     }).catch((err:unknown) => {
         logger.error("LocalCSVHeaders Error", err);
@@ -48,10 +42,12 @@ export async function LocalCSVReader(file:string): Promise<TimeSeriesData[]>{
             dynamicTyping: true,
             complete: function(parsed: Papa.ParseResult<TimeSeriesData>){
                 logger.info("LocalCSVReader Successfully parsed", file);
-                logger.info("LocalCSVReader Parsed value", parsed.data);
-                const typedData: TimeSeriesData[] = parsed.data;
                 //test if casting works
-                timeSeries = typedData;
+                timeSeries = parsed.data;
+                if(timeSeries.length === 0){
+                    throw new Error("LocalCSVReader is empty");
+                }
+                logger.info("LocalCSVReader Parsed value", timeSeries);
             },
             error: function(parseError: Error) {
                 logger.error("LocalCSVReader Failed Parse", file);

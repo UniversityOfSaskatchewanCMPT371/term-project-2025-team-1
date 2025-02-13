@@ -12,14 +12,8 @@ import { CSVHeaders, TimeSeriesData} from '../../types/CSVInterfaces';
 export async function UrlCSVHeaders(url:string): Promise<CSVHeaders> {
     logger.info("Calling URLCSVHeader ", url);
     return UrlCSVReader(url).then((timeSeries) => {
-        if(timeSeries.length === 0){
-            logger.info("UrlCSVHeader received empty timeSeries");
-            return ({ headers: [] } as CSVHeaders);
-        }
-        else{
-            logger.info("Successful URLCSVHeader", Object.keys(timeSeries[0]))
-            return ({ headers: Object.keys(timeSeries[0]) } as CSVHeaders);
-        }
+        logger.info("Successful URLCSVHeader", Object.keys(timeSeries[0]))
+        return ({ headers: Object.keys(timeSeries[0]) } as CSVHeaders);
     //Rethrowing errors
     }).catch((err: unknown) => {
         logger.error("UrlCSVHeaders Error");
@@ -56,10 +50,12 @@ export async function UrlCSVReader(url:string): Promise<TimeSeriesData[]>{
                 dynamicTyping: true,
                 complete: function(parsed: Papa.ParseResult<TimeSeriesData>) {
                     logger.info("URLCSVReader Successfully parsed", url);
-                    logger.info("URLCSVReader Parsed value", parsed);
-                    const typedData: TimeSeriesData[] = parsed.data;
                     //test if casting works
-                    timeSeries = typedData;
+                    timeSeries = parsed.data;
+                    if(timeSeries.length === 0){
+                        throw new Error("URLCSVReader is empty");
+                    }
+                    logger.info("URLCSVReader Parsed value", parsed);
                 },
                 error: function(parseError: Error){
                     logger.error("URLCSVReader Failed Parse", url);

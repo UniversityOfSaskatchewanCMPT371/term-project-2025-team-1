@@ -1,4 +1,4 @@
-import { LocalCsvReader } from "../components/CSV_Readers/LocalCSVReader";
+import { LocalCSVReader, LocalCsvReader } from "../components/CSV_Readers/LocalCSVReader";
 import { CSVData } from "../types/CSVInterfaces";
 // import logger from "../logging/logs";
 import { UrlCSVReader } from "../components/CSV_Readers/UrlCSVReader";
@@ -8,12 +8,15 @@ export class CSVDataModels implements CSVData{
     csvHeaders: string[];
     data: { key: Record<string,string | number> }[];
     yHeader: string;
+    browserSelected: boolean;
+    vrSelected: boolean;
     constructor(){
         this.name = "";
         this.csvHeaders = [];
         this.data = [];
         this.yHeader = ""; //Will attempt for the second header [1]
-        
+        this.browserSelected = false;
+        this.vrSelected = false;
     }
     setData(data: { key: Record<string,string | number> }[]){
         this.data = data;
@@ -23,7 +26,7 @@ export class CSVDataModels implements CSVData{
         try {
             const data = await LocalCsvReader(file);
             this.setData(data);
-            this.name = ("Graph" + index.toString());
+            this.setName("Graph" + index.toString());
         }
         catch {
            // logger.error("Failed Loading");
@@ -34,13 +37,27 @@ export class CSVDataModels implements CSVData{
 
     async loadUrlCSVFile(index: number,file: string){
         try {
-            this.data = await UrlCSVReader(file)
+            const data = await UrlCSVReader(file)
+            this.setData(data);
+            this.setName("Graph" + index.toString());
         }
         catch {
             //logger.error("Failed Loading");
             return;
         }
-        this.name = ("Graph" + index.toString());
+    }
+
+    //Keeping for now in testing
+    async loadLocalByPath(index: number,file: string){
+        try {
+            const data = await LocalCSVReader(file);
+            this.setData(data);
+            this.name = ("Graph" + index.toString());
+        }
+        catch {
+           // logger.error("Failed Loading");
+            return;
+        }
     }
     getDataByTime(time:string): Record<string, string | number> | null{
         let result: Record<string, string | number> | null = null;
@@ -58,10 +75,27 @@ export class CSVDataModels implements CSVData{
         }
         return result;
     }
+
     getName(){
         return this.name;
     }
     getCSVHeaders(){
         return this.csvHeaders;
+    }
+    getBrowserSelected(){
+        return this.browserSelected;
+    }
+    getVRSelected(){
+        return this.vrSelected;
+    }
+
+    setName(name: string){
+        this.name = name;
+    }
+    setBrowserSelected(bool: boolean){
+        this.browserSelected = bool;
+    }
+    setVRSelected(bool: boolean){
+        this.browserSelected = bool;
     }
 }

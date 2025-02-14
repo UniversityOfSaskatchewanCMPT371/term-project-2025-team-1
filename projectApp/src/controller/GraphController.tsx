@@ -16,4 +16,7 @@ export class GraphController {
     async readURLFile(file: string){
         await this.graphModel.readURLFile(file);
     }
+    async readLocalFileByPath(file: string){
+        await this.graphModel.readLocalByPath(file);
+    }
 }

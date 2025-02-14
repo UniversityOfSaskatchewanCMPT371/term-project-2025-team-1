@@ -2,7 +2,7 @@ import mainController from "../src/controller/MainController";
 
 let test = mainController.getGraphController().getReaderModel();
 
-// await mainController.getGraphController().readLocalFile("../csvTestFiles/test.csv");
+await mainController.getGraphController().readLocalFileByPath("../csvTestFiles/test.csv");
 let headers = test.getCSVFiles()[0].data[0];
 
 //return { headers: Object.keys(timeSeries[0]) };

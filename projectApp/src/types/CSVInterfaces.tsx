@@ -16,6 +16,8 @@ export interface CSVData {
     name: string;               //Name of the graph
     csvHeaders: string[];
     data: {key: Record<string,string | number>}[];
+    browserSelected: boolean;
+    vrSelected: boolean;
 
     //Variables specialized for 2D Time series
     yHeader: string;
@@ -26,6 +28,11 @@ export interface CSVData {
     loadUrlCSVFile: (index: number, file: string) => (void);
     getName: () => string;
     getCSVHeaders: () => string[];
+    getBrowserSelected: () => (boolean);
+    getVRSelected: () => (boolean);
+    setBrowserSelected: (bool: boolean) => (void);
+    setVRSelected: (bool: boolean) => (void);
+
 }
 
 export interface CSVReaderInterface{

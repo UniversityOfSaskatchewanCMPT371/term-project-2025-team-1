@@ -32,6 +32,7 @@ export class CSVReaderModel implements CSVReaderInterface{
          }
          catch{
             // logger.error("Failed to read Local to get CSV file");
+            return;
         }
 
          this.csvFiles.push(data);
@@ -42,15 +43,30 @@ export class CSVReaderModel implements CSVReaderInterface{
          let data:CSVDataModels = new CSVDataModels;
         try{
             await data.loadUrlCSVFile(this.num, file);
-            console.log("Te")
         }
         catch{
             //logger.error("Failed to read Local to get CSV file");
+            return;
         }
 
          this.csvFiles.push(data);
          this.num++;
      }
+
+     //Keeping url reading by path for reading
+     async readLocalByPath(file:string){
+        let data:CSVDataModels = new CSVDataModels;
+         try{
+             await data.loadLocalByPath(this.num, file);
+         }
+         catch{
+            // logger.error("Failed to read Local to get CSV file");
+        }
+
+         this.csvFiles.push(data);
+         this.num++;
+     }
+     
 
     deleteFile(name:string){
         //Use name to find the array and delete it using index
@@ -63,6 +79,18 @@ export class CSVReaderModel implements CSVReaderInterface{
        }
     };
 
+    loadedCsvBrowser():[string, boolean][]{
+        let csvBrowser:[string,boolean][] = []
+        if(!(this.csvFiles.length > 0)){
+            return csvBrowser;
+        }
+
+        this.csvFiles.forEach((file) => {
+            const arrVal = file.getName();
+            csvBrowser.push([arrVal,file.getBrowserSelected()])
+        })
+        return csvBrowser;
+    }
     getNum(){
         return this.num;
     }

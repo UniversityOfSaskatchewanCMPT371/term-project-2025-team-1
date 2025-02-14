@@ -6,6 +6,10 @@ import React, { useState } from 'react';
 //The UI that appears when the webpage is opened
 export function BrowserUI(){
     const fileInputRef = React.useRef<HTMLInputElement>(null);
+    const urlInputRef = React.useRef<HTMLInputElement>(null);
+
+    //Using dynamic key change for unmounted component
+    const [ controlKey, setControlKey] = useState(0);
     
     function LoadComponent(){
       useControls({
@@ -13,49 +17,71 @@ export function BrowserUI(){
         fileInputRef.current?.click()
       })})
       
-      return <>
-      <input 
-        type='file' 
-        ref={fileInputRef} 
-        style={{display:'none'}} 
-        onChange={async (e) => {
+      return( 
+      <>
+        <input 
+          type='file' 
+          ref={fileInputRef} 
+          style={{display:'none'}} 
+          onChange={async (e) => {
             const files = e.target.files;
             if(files && files.length > 0){
-                const file = files[0];
-                console.log(file.name.toString());
+              const file = files[0];
+              console.log(file.name.toString());
                 
-                let test = mainController.getGraphController().getReaderModel();
-                await mainController.getGraphController().readLocalFile(file);
-                //undefined
-                // console.log("File:", test.getCSVFiles()[0].getDataByTime("2025-01-19")?.toString());
+              //let test = mainController.getGraphController().getReaderModel();
+              await mainController.getGraphController().readLocalFile(file);
+                
+              //Same test as csvModeTest
+              // let headers = test.getCSVFiles()[0].data[0];
+              // console.log(headers);
+              setControlKey(controlKey + 1);
             }
             else{
               console.log("No files selected")
             }
-        }}>
-      </input></>
+          }}>
+        </input>
+      </>
+      )
     }
   
   function URLComponent(){
     let { csv } = useControls(
-      {csv: { label: 'CSV by URL', value: "Enter URL"}} 
-    )
-    useControls({
-      'Enter URL': button(() => {alert("To")})})
-    return null;
-  }
+      {csv: { label: "CSV by URL", value: "Enter URL"},
+    "Enter URL": button(() => {
+      urlInputRef.current?.click();
+    })});
 
+    return (
+    <>
+    <input 
+      type='button'
+      ref={urlInputRef}
+      style={{display: 'none'}}
+      onClick={(async () => {
+        alert(csv)
+        await mainController.getGraphController().readURLFile(csv);
+        setControlKey(controlKey + 1);
+      })}></input>
+    </>
+    )
+  }
+  
   function UnmountedComponents(){
-    const names:[string, boolean][] = [['barvalue', false], ['second',false]];
+    let names:[string, boolean][] = mainController.getGraphController().getReaderModel().loadedCsvBrowser();
     
-    const controlsObject: Record<string, boolean | ButtonInput> = names.reduce((acc, [name, value]) => {
+    let controlsObject: Record<string, boolean | ButtonInput> = names.reduce((acc, [name, value]) => {
       acc[name] = value;
+
+      console.log("Unmount ", acc)
       return acc;
     }, {} as Record<string, boolean | ButtonInput>
   );
     controlsObject['delete'] = button(() => alert("delete"));
+
     useControls(
-      'Loaded Graphs', controlsObject, {collapsed: true}
+      `Loaded Graphs ${controlKey}`, controlsObject, {collapsed: true}
     );
     return null;
   }

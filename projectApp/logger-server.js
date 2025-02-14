@@ -9,6 +9,9 @@ const logger = pino({
             {target: 'pino-pretty', options: {colorize: true}}, // outputs logs to console
             {target: 'pino/file', options: {destination: 'mylogs.txt'}} // writes logs to a file
         ]
+    },
+    customLevels: {
+        test: 35
     }
 });
 
@@ -45,6 +48,9 @@ app.post('/log', (req, res) => {
             break;
         case "fatal":
             logger.fatal(message);
+            break;
+        case "test":
+            logger.test(message);
         default:
             console.log("error: not a level of logs")
             break;

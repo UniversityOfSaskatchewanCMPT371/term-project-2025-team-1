@@ -3,6 +3,8 @@ import cors from 'cors';
 import pino from 'pino';
 
 // logger code
+// we can customize the output of the logs more, i just wanted to get this out to everyone and that
+// can be changed later on - Madison
 const logger = pino({
     transport: {
         targets: [

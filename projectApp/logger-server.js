@@ -6,6 +6,7 @@ import pino from 'pino';
 const logger = pino({
     transport: {
         targets: [
+            // {target: 'pino/console'},
             {target: 'pino-pretty', options: {colorize: true}}, // outputs logs to console
             {target: 'pino/file', options: {destination: 'mylogs.txt'}} // writes logs to a file
         ]
@@ -51,6 +52,7 @@ app.post('/log', (req, res) => {
             break;
         case "test":
             logger.test(message);
+            break;
         default:
             console.log("error: not a level of logs")
             break;
@@ -58,6 +60,16 @@ app.post('/log', (req, res) => {
 
     res.sendStatus(200);
 });
+
+app.post('/error', (req, res) => {
+    let name = req.body.name;
+    let errmessage = req.body.errmessage;
+    let stack = req.body.stack;
+    let message = req.body.message;
+    logger.error({name, errmessage, stack}, message);
+
+    res.sendStatus(200);
+})
 
 app.listen(PORT, () => {
     console.log("log server running at http://localhost:" + PORT);

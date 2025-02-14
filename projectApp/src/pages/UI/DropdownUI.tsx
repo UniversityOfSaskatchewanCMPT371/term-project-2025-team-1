@@ -1,7 +1,7 @@
 import * as THREE from 'three';
 import { Text } from "@react-three/drei";
 import { useState, useRef } from "react";
-import { sendLog } from '../../logger-frontend';
+import { sendError, sendLog } from '../../logger-frontend';
 
 //Interface which tracks the location of the Sample DropDown UI
 interface DropDownProps {
@@ -38,8 +38,14 @@ export default function DropDownUI({x, y, z}: DropDownProps){
     const [ alertActive, alert ] = useState('');
 
     function clicked() {
-        console.log("front end");
-        sendLog("info", "🦖🦕🦖🦕🦖🦕🦖🦕🦖🦕");
+        try {
+            console.log("front end");
+            // sendLog("test", "testing should work");
+            sendLog("info", "🦖🦕🦖🦕🦖🦕🦖🦕🦖🦕");
+            // throw new Error("error occured here")
+        } catch (err) {
+            sendError(err, "This was an error");
+        }
     }
 
     //This function creates the interactable button, takes an interface of DropDownButtonProps

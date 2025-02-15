@@ -54,5 +54,5 @@ jobs:
 
       - name: Test
         run: |
-          npm run test -- --verbose
+          npm run test --verbose
         timeout-minutes: 3

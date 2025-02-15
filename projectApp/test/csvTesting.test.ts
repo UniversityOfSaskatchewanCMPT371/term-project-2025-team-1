@@ -28,9 +28,19 @@ function runReaderTest(testObject: ReaderTest<any>): void {
 describe("Testing the localCSVReader function", () => {
     //NOTE: these tests are for testing if it can read and recognize csv files, not for if the csv is formatted correctly
 
+    //filepaths for tests:
+    const localRegularFile    = `../csvTestFiles/test.csv`;
+    const localFakeFile       = `../csvTestFiles/fakeFile.csv`;
+    const localOneLessHeader  = `../csvTestFiles/oneLessHeader.csv`;
+    const localOneMoreHeader  = `../csvTestFiles/oneMoreHeader.csv`;
+    const localUnevenData     = `../csvTestFiles/unevenData.csv`;
+    const localDifferentTypes = `../csvTestFiles/differentTypes.csv`;
+    const localNotCSV         = `../csvTestFiles/notCsv.html`;
+    const localEmptyFile      = `../csvTestFiles/empty.csv`;
+
     const regularFileReader: ReaderTest<TimeSeriesData[]> = {
         description: "local reader:\tdata should be read from existing file",
-        filepath: "../csvTestFiles/test.csv",
+        filepath: localRegularFile,
         successful: true,
         testFunction: localReader
     };
@@ -38,7 +48,7 @@ describe("Testing the localCSVReader function", () => {
 
     const regularFileHeaders: ReaderTest<CSVHeaders> = {
         description: "local headers:\theaders should be read from existing file",
-        filepath: "../csvTestFiles/test.csv",
+        filepath: localRegularFile,
         successful: true,
         testFunction: localHeaders
     };
@@ -46,7 +56,7 @@ describe("Testing the localCSVReader function", () => {
 
     const fakeFileReader: ReaderTest<TimeSeriesData[]> = {
         description: "local reader:\tdata should not be read from nonexistant file",
-        filepath: "../csvTestFiles/fakeFile.csv",
+        filepath: localFakeFile,
         successful: false,
         testFunction: localReader
     };
@@ -54,7 +64,7 @@ describe("Testing the localCSVReader function", () => {
 
     const fakeFileHeaders: ReaderTest<CSVHeaders> = {
         description: "local headers:\theaders should not be read from nonexistant file",
-        filepath: "../csvTestFiles/fakeFile.csv",
+        filepath: localFakeFile,
         successful: false,
         testFunction: localHeaders
     };
@@ -62,7 +72,7 @@ describe("Testing the localCSVReader function", () => {
 
     const oneLessReader: ReaderTest<TimeSeriesData[]> = {
         description: "local reader:\tdata should be read from file with one less header",
-        filepath: "../csvTestFiles/oneLessHeader.csv",
+        filepath: localOneLessHeader,
         successful: true,
         testFunction: localReader
     }
@@ -70,7 +80,7 @@ describe("Testing the localCSVReader function", () => {
 
     const oneLessHeader: ReaderTest<CSVHeaders> = {
         description: "local headers:\theaders should be read from file with one less header",
-        filepath: "../csvTestFiles/oneLessHeader.csv",
+        filepath: localOneLessHeader,
         successful: true,
         testFunction: localHeaders
     }
@@ -78,7 +88,7 @@ describe("Testing the localCSVReader function", () => {
 
     const oneMoreReader: ReaderTest<TimeSeriesData[]> = {
         description: "local reader:\tdata should be read from file with one more header",
-        filepath: "../csvTestFiles/oneMoreHeader.csv",
+        filepath: localOneMoreHeader,
         successful: true,
         testFunction: localReader
     }
@@ -86,7 +96,7 @@ describe("Testing the localCSVReader function", () => {
 
     const oneMoreHeaders: ReaderTest<CSVHeaders> = {
         description: "local headers:\theaders should be read from file with one more header",
-        filepath: "../csvTestFiles/oneMoreHeader.csv",
+        filepath: localOneMoreHeader,
         successful: true,
         testFunction: localHeaders
     }
@@ -94,7 +104,7 @@ describe("Testing the localCSVReader function", () => {
 
     const unevenDataReader: ReaderTest<TimeSeriesData[]> = {
         description: "local reader:\tdata should be read from file with uneven data",
-        filepath: "../csvTestFiles/unevenData.csv",
+        filepath: localUnevenData,
         successful: true,
         testFunction: localReader
     }
@@ -102,7 +112,7 @@ describe("Testing the localCSVReader function", () => {
 
     const unevenDataHeaders: ReaderTest<CSVHeaders> = {
         description: "local headers:\theaders should be read from file with uneven data",
-        filepath: "../csvTestFiles/unevenData.csv",
+        filepath: localUnevenData,
         successful: true,
         testFunction: localHeaders
     }
@@ -110,7 +120,7 @@ describe("Testing the localCSVReader function", () => {
 
     const differentTypesReader: ReaderTest<TimeSeriesData[]> = {
         description: "local reader:\tdata should be read from file with different data types",
-        filepath: "../csvTestFiles/differentTypes.csv",
+        filepath: localDifferentTypes,
         successful: true,
         testFunction: localReader
     }
@@ -118,7 +128,7 @@ describe("Testing the localCSVReader function", () => {
 
     const differentTypesHeaders: ReaderTest<CSVHeaders> = {
         description: "local headers:\theaders should be read from file with different data types",
-        filepath: "../csvTestFiles/differentTypes.csv",
+        filepath: localDifferentTypes,
         successful: true,
         testFunction: localHeaders
     }
@@ -126,7 +136,7 @@ describe("Testing the localCSVReader function", () => {
 
     const inputHtmlReader: ReaderTest<TimeSeriesData[]> = {
         description: "local reader:\tdata should not be read from non-csv file",
-        filepath: "../csvTestFiles/notCsv.html",
+        filepath: localNotCSV,
         successful: false,
         testFunction: localReader
     }
@@ -134,7 +144,7 @@ describe("Testing the localCSVReader function", () => {
 
     const inputHtmlHeaders: ReaderTest<CSVHeaders> = {
         description: "local headers:\theaders should not be read from non-csv file",
-        filepath: "../csvTestFiles/notCsv.html",
+        filepath: localNotCSV,
         successful: false,
         testFunction: localHeaders
     }
@@ -142,7 +152,7 @@ describe("Testing the localCSVReader function", () => {
 
     const emptyFileReader: ReaderTest<TimeSeriesData[]> = {
         description: "local reader:\tdata should be not read from empty csv file",
-        filepath: "../csvTestFiles/empty.csv",
+        filepath: localEmptyFile,
         successful: false,
         testFunction: localReader
     }
@@ -150,7 +160,7 @@ describe("Testing the localCSVReader function", () => {
 
     const emptyFileHeaders: ReaderTest<CSVHeaders> = {
         description: "local headers:\theaders should not be read from empty csv file",
-        filepath: "../csvTestFiles/empty.csv",
+        filepath: localEmptyFile,
         successful: false,
         testFunction: localHeaders
     }
@@ -167,7 +177,7 @@ describe("Testing the urlCSVReader function", () => {
     //urls used in tests
     const githubID2Dev = "https://raw.githubusercontent.com/UniversityOfSaskatchewanCMPT371/term-project-2025-team-1/refs/heads/ID2Dev/csvTestFiles";
     const urlRegularFile    = `${githubID2Dev}/test.csv`;
-    const urlFakeFile       = `${githubID2Dev}/FakeCSV.csv`;
+    const urlFakeFile       = `${githubID2Dev}/fakeFile.csv`;
     const urlOneLessHeader  = `${githubID2Dev}/oneLessHeader.csv`;
     const urlOneMoreHeader  = `${githubID2Dev}/oneMoreHeader.csv`;
     const urlUnevenData     = `${githubID2Dev}/unevenData.csv`;

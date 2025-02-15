@@ -34,9 +34,8 @@ export class CSVReaderModel implements CSVReaderInterface{
             // logger.error("Failed to read Local to get CSV file");
             return;
         }
-
-         this.csvFiles.push(data);
-         this.num++;
+        this.csvFiles.push(data);
+        this.num++;
      }
 
      async readURLFile(file: string){
@@ -48,9 +47,8 @@ export class CSVReaderModel implements CSVReaderInterface{
             //logger.error("Failed to read Local to get CSV file");
             return;
         }
-
-         this.csvFiles.push(data);
-         this.num++;
+        this.csvFiles.push(data);
+        this.num++;
      }
 
      //Keeping url reading by path for reading

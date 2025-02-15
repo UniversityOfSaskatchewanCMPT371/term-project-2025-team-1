@@ -30,12 +30,12 @@ export function BrowserUI(){
               console.log(file.name.toString());
                 
               //let test = mainController.getGraphController().getReaderModel();
+              
               await mainController.getGraphController().readLocalFile(file);
-                
+              setControlKey(controlKey + 1);
               //Same test as csvModeTest
               // let headers = test.getCSVFiles()[0].data[0];
               // console.log(headers);
-              setControlKey(controlKey + 1);
             }
             else{
               console.log("No files selected")
@@ -51,7 +51,7 @@ export function BrowserUI(){
       {csv: { label: "CSV by URL", value: "Enter URL"},
     "Enter URL": button(() => {
       urlInputRef.current?.click();
-    })});
+    })}, {oneLineLabels: true});
 
     return (
     <>

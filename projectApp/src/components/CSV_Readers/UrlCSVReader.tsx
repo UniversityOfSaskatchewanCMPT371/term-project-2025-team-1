@@ -44,6 +44,7 @@ export async function UrlCSVReader(url:string): Promise<TimeSeriesData[]>{
            // logger.error("URLCSVReader File isn't .csv or .txt file", url);
             reject(new Error('url must be .csv or .txt'));
             return;
+        
         }
         else{
             //will only work if url gives permissions

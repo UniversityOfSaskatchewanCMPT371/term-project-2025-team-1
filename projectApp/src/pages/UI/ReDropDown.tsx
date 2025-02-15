@@ -14,16 +14,51 @@ export default function ReDropDown(props: dropDownProps){
 
     function GenerateRowObject({name} : {name: string}){
         //The list of objects/loaded csv files row by row
-
         return(
             <>
             
-                <Container flexDirection={"row"} hover={{backgroundColor: "gray"}}
-                alignItems={"flex-start"} justifyContent={"flex-start"} width={"100%"} height={"10%"}>
-                    <Text fontWeight={"bold"} positionLeft={20} positionTop={5}>{name}</Text>
-                    
+                <Container flexDirection={"row"} 
+                alignItems={"flex-start"} justifyContent={"flex-start"} width={"100%"} height={"10%"}
+                >
+                    <Container width={"50%"} height={"100%"}>
+                    <Text fontWeight={"bold"} positionLeft={20} >{name}</Text>
+                    </Container>
+                    {/* < for decreaing the number, used for board; 0 = None, past 0 goes to 4
+                        > For increasing number, past 4 goes to None (0)*/}
+                    <Container width={"50%"} height={"100%"}
+                    alignItems={"center"} justifyContent={"center"}>
+                        <RowObjectButtons/>
+                    </Container>
                 </Container>
             
+            </>
+        )
+    }
+    // For now Its probably okay to just display one graph
+    function RowObjectButtons(){
+        return (
+            <>
+            <Container>
+                {/* Displaying the < button */}
+                <Container backgroundColor={"gray"} width={"25%"} 
+                alignItems={"center"} justifyContent={"center"} positionRight={2}
+                backgroundOpacity={0.5}
+                hover={{backgroundOpacity: 0.75}}>
+                    <Text fontWeight={"bold"}>&lt;</Text>
+                </Container>
+                {/* Displaying the board number */}
+                <Container width={"30%"} alignItems={"center"} justifyContent={"center"}>
+                    <Text fontWeight={"bold"}>1</Text>
+                </Container>
+
+                {/* Displaying the > button */}
+                <Container backgroundColor={"gray"} width={"25%"} 
+                alignItems={"center"} justifyContent={"center"} positionLeft={2}
+                backgroundOpacity={0.5}
+                hover={{backgroundOpacity: 0.75}}>
+                    <Text fontWeight={"bold"}>&gt;</Text>
+                </Container>
+            </Container>
             </>
         )
     }
@@ -46,9 +81,9 @@ export default function ReDropDown(props: dropDownProps){
         height={"8%"} width={"95%"}> 
 
             {/* Attach ON Click here */}
-            <Container width={"25%"} height={"100%"} backgroundColor={"gray"} backgroundOpacity={0.5}
+            <Container width={"30%"} height={"100%"} backgroundColor={"gray"} backgroundOpacity={0.5}
             hover={{backgroundOpacity: 0.75}}>
-            <Text fontWeight={"bold"} positionLeft={"25%"} positionBottom={"5%"}>Load</Text>
+            <Text fontWeight={"bold"} positionLeft={"20%"} positionBottom={"5%"}>Generate</Text>
             </Container>
             
         </Container>
@@ -80,17 +115,19 @@ export default function ReDropDown(props: dropDownProps){
             </mesh>
             <mesh position={[0,0,0]} visible={active}>
                 <Root backgroundColor="grey" sizeX={props.xSize} sizeY={props.ySize} flexDirection={"column"}>   
-                    <Container flexGrow={0.25} margin={2} backgroundColor={"lightgray"}>
+                    <Container height={"10%"} width={"99%"} margin={1} backgroundColor={"lightgray"}>
                         
                     <Text fontWeight={"bold"} positionLeft={20}>
                         Loaded Graphs</Text>
                         </Container>
 
                     <Container
-                        flexGrow={1.25}
-                        margin={2}
+                        height={"88%"}
+                        width={"99%"}
+                        margin={1}
                         onClick={() => press(!pressed)}
-                        backgroundColor={ "lightgray"}
+                        backgroundColor={"lightgray"}
+                        backgroundOpacity={0.8}
                         >
                             {/* Create objects representing loaded graphs in model 
                                 Each will have a button that sets a use state for selected

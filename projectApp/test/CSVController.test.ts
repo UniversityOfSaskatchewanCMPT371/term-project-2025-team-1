@@ -3,7 +3,10 @@ import { CSVController } from "../src/controller/CSVController";
 import { CSVReaderModel } from "../src/models/CSVReaderModel";
 import { CSVDataObject } from "../src/models/CSVDataObject";
 
-
+/*
+* For testing CSVController
+* Which in turn tests, CSVReaderModel methods
+*/
 describe("CSVController Tests", () => {
     let csvController: CSVController;
 
@@ -18,14 +21,14 @@ describe("CSVController Tests", () => {
     })
 
     //Test getters
-    test("Getting Model data", () => {
+    test("Getting Model data by controller", () => {
         const model = csvController.getModel();
         expect(model.getData()).toStrictEqual([]);
         expect(model.getNum()).toBe(0);
     })
 
     //Testing parsing csv files locally and by url
-    test("Testing functions that parse csv files", async () => {
+    test("Testing methods of CSVReaderModel that parse csv files", async () => {
         //Maybe a proper file would work better
         //Does show that it still accepts blank files
         const fake = new File([""], "fake.csv", {type: "fake/csv"});

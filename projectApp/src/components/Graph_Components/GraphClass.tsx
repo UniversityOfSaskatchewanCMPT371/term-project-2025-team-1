@@ -1,8 +1,8 @@
-import { PointRef } from "../../types/PointInterface";
+import { GraphInterface } from "../../types/GraphInterface";
 
 // GraphClass is a class that represents a point in a graph
 // It temporarily implements the PointRef interface
-export class GraphClass implements PointRef{
+export class GraphClass implements GraphInterface{
     // position of the graph (maybe updated in the future)
     position: [number,number,number];
     // Indicates the status of the graph (selected or not)

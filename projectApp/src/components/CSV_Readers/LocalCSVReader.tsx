@@ -12,10 +12,10 @@ import {CSVHeaders, TimeSeriesData} from '../../types/CSVInterfaces';
 export async function LocalCSVHeaders(file:File): Promise<CSVHeaders> {
     //logger.info("Calling LocalCSVHeader ", file);
     return LocalCsvReader(file).then((timeSeries) => {
-        if(timeSeries === null){
-            //logger.error("LocalCSVHeader Time Series is null", file);
-            throw new Error("Time Series is null");
-        }
+        // if(timeSeries === null){
+        //     //logger.error("LocalCSVHeader Time Series is null", file);
+        //     throw new Error("Time Series is null");
+        // }
         //if LocalCSVReader is tested, then above should be fine
         //test if output is expected
         //if no data, no headers
@@ -57,7 +57,7 @@ export async function LocalCSVReader(file:string): Promise<TimeSeriesData[]>{
             Papa.parse(data, {
                 header: true,
                 dynamicTyping: true,
-                complete: function(parsed: any){
+                complete: function(parsed: {data: TimeSeriesData[]}){
                     const typedData: TimeSeriesData[] = parsed.data;
                     //test if casting works
                     resolve(typedData);
@@ -68,7 +68,10 @@ export async function LocalCSVReader(file:string): Promise<TimeSeriesData[]>{
                     return;
                 }
             });
-        });
+        }).catch((err: unknown) => {
+            reject(new Error("Error"));
+            throw err;
+        })
         
     // Re-throwing errors
     }).catch((err: unknown) => {
@@ -95,7 +98,7 @@ export function LocalCsvReader(file: File): Promise<TimeSeriesData[]>{
             Papa.parse(fileContent, {
                 header: true,
                 dynamicTyping: true,
-                complete: function (parsed:any){
+                complete: function (parsed: {data: TimeSeriesData[]}){
                     console.log("Successfully parsed CSV data", parsed.data);
                     const typedData: TimeSeriesData[] = parsed.data;
                     resolve(typedData); // Resolve the promise with parsed data

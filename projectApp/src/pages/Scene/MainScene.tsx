@@ -1,7 +1,7 @@
 import { Text } from '@react-three/drei';
-import DropDownUI from '../UI/DropdownUI';
+
 import { Create2DPoint } from '../../components/Graph_Components/Create2DPoint';
-import ReDropDown from '../UI/ReDropDown';
+import DropdownUI from "../UI/DropdownUI"
 
 /*
 * The main scene being used in the current program
@@ -45,7 +45,7 @@ export default function MainScene() {
 
         {/* Displays the Sample Drop Down UI */}
         {/* <DropDownUI x={-2} y={1} z={1.3}/> */}
-        <ReDropDown position={[-2, 1.5, -4]} xSize={4} ySize={3}></ReDropDown>
+        <DropdownUI position={[-2, 1.5, -4]} xSize={4} ySize={3}></DropdownUI>
         <Create2DPoint position={[0, 1, -2]} selected={false} xData={'Time'} yData={89}/>
         </>
     );

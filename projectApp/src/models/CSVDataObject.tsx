@@ -62,12 +62,12 @@ export class CSVDataObject implements CSVData{
     getDataByTime(time:string): Record<string, string | number> | null{
         let result: Record<string, string | number> | null = null;
         let val;
-        for(let i = 0; i < this.data.length; i++){
+        for(const value of this.data){
             //console.log(val);
-            val = this.data[i];
-            for(let header of Object.keys(val) ){
+            val = value;
+            for(const header of Object.keys(val) ){
                 if(val[header as keyof typeof val].toString() == time){
-                    console.log(val[header as keyof typeof val] + "  " + val[this.yHeader as keyof typeof val]);
+                    console.log(val[header as keyof typeof val], "  ", val[this.yHeader as keyof typeof val]);
                     result = val[this.yHeader as keyof typeof val];
                     return result;
                 }

@@ -23,12 +23,12 @@ export class CSVReaderModel implements CSVModelInterface{
     //Use the number of graphs in model, for naming
     //The read local | url files will attmept to create a new CSVDataModels object
     //These two will be called using the UI button
-     async readLocalFile(file: File){
+    async readLocalFile(file: File): Promise<void>{
     //     //This should read the string value and try to load a csv file
     //     //On success add to array
-         let data:CSVData = new CSVDataObject;
+         const data:CSVData = new CSVDataObject;
          try{
-             data.loadLocalCSVFile(this.num, file);
+            await data.loadLocalCSVFile(this.num, file);
          }
          catch{
             // logger.error("Failed to read Local to get CSV file");
@@ -38,10 +38,10 @@ export class CSVReaderModel implements CSVModelInterface{
         this.num++;
      }
 
-     async readURLFile(file: string){
-         let data:CSVData = new CSVDataObject;
+    async readURLFile(file: string) : Promise<void>{
+        const data:CSVData = new CSVDataObject;
         try{
-            data.loadUrlCSVFile(this.num, file);
+            await data.loadUrlCSVFile(this.num, file);
         }
         catch{
             //logger.error("Failed to read Local to get CSV file");
@@ -53,7 +53,7 @@ export class CSVReaderModel implements CSVModelInterface{
 
      //Keeping url reading by path for reading
      async readLocalByPath(file:string){
-        let data:CSVDataObject = new CSVDataObject;
+        const data:CSVDataObject = new CSVDataObject;
          try{
              await data.loadLocalByPath(this.num, file);
          }
@@ -78,7 +78,7 @@ export class CSVReaderModel implements CSVModelInterface{
     };
 
     loadedCsvBrowser():[string, boolean][]{
-        let csvBrowser:[string,boolean][] = []
+        const csvBrowser:[string,boolean][] = []
         if(!(this.getData().length > 0)){
             return csvBrowser;
         }

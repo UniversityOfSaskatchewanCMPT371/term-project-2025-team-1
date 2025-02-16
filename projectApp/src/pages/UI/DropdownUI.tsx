@@ -1,4 +1,4 @@
-import { Root, Container, Text, Input } from '@react-three/uikit';
+import { Root, Container, Text } from '@react-three/uikit';
 import { useState } from 'react';
 import mainController from "../../controller/MainController.tsx";
 
@@ -8,15 +8,16 @@ interface dropDownProps {
     ySize: number;
 }
 
-export default function ReDropDown(props: dropDownProps){
+//This function is for creating the Dropdown UI
+export default function DropdownUI(props: dropDownProps){
     const [pressed, press] = useState(false);
     const [ active, setActive ] = useState(false);
 
+    //This is the function for creating a object displayed in the DropDown UI
     function GenerateRowObject({name} : {name: string}){
         //The list of objects/loaded csv files row by row
         return(
             <>
-            
                 <Container flexDirection={"row"} 
                 alignItems={"flex-start"} justifyContent={"flex-start"} width={"100%"} height={"10%"}
                 >
@@ -71,7 +72,7 @@ export default function ReDropDown(props: dropDownProps){
             alignItems={"flex-start"} justifyContent={"flex-start"}>
 
                 {/* Assign board number to Model maybe? */}
-        {mainController.getCSVController().getModel().getData().map((graph, index) => (
+        {mainController.getCSVController().getModel().getData().map((graph, _index) => (
             
             <GenerateRowObject name={graph.getName()}></GenerateRowObject>
         ))}
@@ -125,7 +126,7 @@ export default function ReDropDown(props: dropDownProps){
                         height={"88%"}
                         width={"99%"}
                         margin={1}
-                        onClick={() => press(!pressed)}
+                        onClick={() => {press(!pressed)}}
                         backgroundColor={"lightgray"}
                         backgroundOpacity={0.8}
                         >

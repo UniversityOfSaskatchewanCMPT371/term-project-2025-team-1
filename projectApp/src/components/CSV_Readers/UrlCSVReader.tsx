@@ -61,7 +61,7 @@ export async function UrlCSVReader(url:string): Promise<TimeSeriesData[]>{
                 Papa.parse(csvData, {
                     header: true,
                     dynamicTyping: true,
-                    complete: function(parsed: any) {
+                    complete: function(parsed: {data: TimeSeriesData[]}) {
                         // logger.info("URLCSVReader Successfully parsed", url);
                         // logger.info("URLCSVReader Parsed value", parsed);
                         const typedData: TimeSeriesData[] = parsed.data;
@@ -75,6 +75,9 @@ export async function UrlCSVReader(url:string): Promise<TimeSeriesData[]>{
                         return;
                     }
                 });
+            }).catch((err: unknown) => {
+                reject(new Error("Error"));
+                throw err;
             })
         };
     //Rethrowing errors

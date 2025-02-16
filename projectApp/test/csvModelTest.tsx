@@ -1,20 +1,17 @@
 import mainController from "../src/controller/MainController";
 
-let test = mainController.getGraphController().getReaderModel();
+const test = mainController.getCSVController().getModel();
 
-await mainController.getGraphController().readLocalFileByPath("../csvTestFiles/test.csv");
-let headers = test.getCSVFiles()[0].data[0];
+await mainController.getCSVController().getModel().readLocalByPath("../csvTestFiles/test.csv");
+const headers = test.getData()[0].data[0];
 
 //return { headers: Object.keys(timeSeries[0]) };
-console.log(test.getCSVFiles());
+console.log(test.getData());
 console.log(headers);
-console.log(headers["X"].toString());
-console.log(Object.keys(headers)[0]);
 
-test.getCSVFiles()[0].yHeader = "X";
-console.log(test.getCSVFiles()[0].getDataByTime("2025-01-19")?.toString());
+test.getData()[0].yHeader = "X";
 
-console.log(test.getCSVFiles());
+console.log(test.getData());
 console.log(test.getNum());
 
 //FileReader is a Web API couldn't test here

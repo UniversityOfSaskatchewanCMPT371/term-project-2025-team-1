@@ -1,7 +1,7 @@
 import { describe, test, expect, beforeEach } from "vitest";
 import {MainController} from '../src/controller/MainController';
 import { CSVController } from "../src/controller/CSVController";
-import { ControllerInterface } from "../src/types/CSVInterfaces";
+import { ControllerInterface } from "../src/types/BaseInterfaces";
 
 /* 
 * Main Controller test, this test will only check if the Main Controller

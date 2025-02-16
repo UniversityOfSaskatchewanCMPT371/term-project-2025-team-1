@@ -1,5 +1,5 @@
 import { CSVReaderModel } from "../models/CSVReaderModel";
-import { ControllerInterface } from "../types/CSVInterfaces";
+import { ControllerInterface } from "../types/BaseInterfaces";
 
 export class CSVController implements ControllerInterface{
     model: CSVReaderModel;
@@ -11,13 +11,13 @@ export class CSVController implements ControllerInterface{
     getModel(){
         return this.model;
     }
-    async readLocalFile(file: File){
-        await this.model.readLocalFile(file);
-    }
-    async readURLFile(file: string){
-        await this.model.readURLFile(file);
-    }
-    async readLocalFileByPath(file: string){
-        await this.model.readLocalByPath(file);
-    }
+    // readLocalFile(file: File){
+    //     this.model.readLocalFile(file);
+    // }
+    // readURLFile(file: string){
+    //     this.model.readURLFile(file);
+    // }
+    // readLocalFileByPath(file: string){
+    //     this.model.readLocalByPath(file);
+    // }
 }

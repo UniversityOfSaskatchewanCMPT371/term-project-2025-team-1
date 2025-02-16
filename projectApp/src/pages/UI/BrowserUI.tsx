@@ -15,7 +15,10 @@ export function BrowserUI(){
     function LoadComponent(){
       useControls({
         'Load Local CSV' : button(() => {
+          const loadFile = () => {
         fileInputRef.current?.click()
+          };
+          loadFile();
       })})
       
       return( 
@@ -24,14 +27,14 @@ export function BrowserUI(){
           type='file' 
           ref={fileInputRef} 
           style={{display:'none'}} 
-          onChange={async (e) => {
+          onChange={async (e):Promise<void> => {
             const files = e.target.files;
             if(files && files.length > 0){
               const file = files[0];
               //console.log(file.name.toString());
 
               //If the file is valid, read the csv file
-              await mainController.getCSVController().readLocalFile(file);
+              await mainController.getCSVController().getModel().readLocalFile(file);
               setControlKey(controlKey + 1);
               //Same test as csvModeTest
               // let headers = test.getCSVFiles()[0].data[0];
@@ -49,10 +52,13 @@ export function BrowserUI(){
   
     //This one is for loading the csvfile through a url link
   function URLComponent(){
-    let { csv } = useControls(
+    const { csv } = useControls(
       {csv: { label: "CSV by URL", value: "Enter URL"},
     "Enter URL": button(() => {
+      const urlFile = () => {
       urlInputRef.current?.click();
+      };
+      urlFile();
     })}, {oneLineLabels: true});
 
     return (
@@ -61,9 +67,9 @@ export function BrowserUI(){
       type='button'
       ref={urlInputRef}
       style={{display: 'none'}}
-      onClick={(async () => {
+      onClick={( async (): Promise<void> => {
         alert(csv)
-        await mainController.getCSVController().readURLFile(csv);
+        await mainController.getCSVController().getModel().readURLFile(csv);
         setControlKey(controlKey + 1);
       })}></input>
     </>
@@ -72,8 +78,9 @@ export function BrowserUI(){
   
   //Component that displays the loaded csv files on the browser UI
   function UnmountedComponents(){
-    let names:[string, boolean][] = mainController.getCSVController().getModel().loadedCsvBrowser();
+    const names:[string, boolean][] = mainController.getCSVController().getModel().loadedCsvBrowser();
     
+    //setControlKey(controlKey + 1)
     //Setting the objects to be displayed
     const controlsObject: Record<string, boolean | ButtonInput> = names.reduce((acc, [name, value]) => {
       acc[name] = value;
@@ -83,11 +90,13 @@ export function BrowserUI(){
     }, {} as Record<string, boolean | ButtonInput>
   );
   //Button associated with the deleting files
-    controlsObject['delete'] = button(() => alert("delete"));
+    controlsObject.delete = button(() => {alert("delete")});
 
     useControls(
-      `Loaded Graphs ${controlKey}`, controlsObject, {collapsed: true}
+      `Loaded Graphs`, controlsObject, {collapsed: true}
     );
+
+    //Add the delete button useRef
     return null;
   }
 

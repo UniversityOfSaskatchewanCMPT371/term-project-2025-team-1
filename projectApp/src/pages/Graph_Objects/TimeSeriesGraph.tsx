@@ -169,8 +169,8 @@ export function TimeSeriesGraph(){
           color="black"
           lineWidth={2}
         />
-        <Create2DPoint position={[-1, 1, 0.1]} selected={false} xData={'Time'} yData={89}/>
-        <Create2DPoint position={[1, 0, 0.1]} selected={false} xData={'Time'} yData={89}/>
+        <Create2DPoint position={[-1, 1, 0.01]} selected={false} xData={'Time'} yData={89}/>
+        <Create2DPoint position={[1, 0, 0.01]} selected={false} xData={'Time'} yData={89}/>
     </mesh>
     
     </>

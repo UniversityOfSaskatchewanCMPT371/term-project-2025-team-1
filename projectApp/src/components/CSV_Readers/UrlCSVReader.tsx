@@ -52,7 +52,7 @@ export async function UrlCSVReader(url:string): Promise<TimeSeriesData[]>{
             //logger.info("URLCSVReader Reading file", url);
             fetch(url).then((response: Response) =>{
                 if (!response.ok) {
-                    //logger.error("URLCSVReader Failed Parse", url);
+                    // logger.error("URLCSVReader Failed Parse", url);
                     reject(new Error(`Failed to fetch the file. Status: ${response.status.toString()}`));
                 }
                 //test for responses that are not ok?
@@ -61,7 +61,7 @@ export async function UrlCSVReader(url:string): Promise<TimeSeriesData[]>{
                 Papa.parse(csvData, {
                     header: true,
                     dynamicTyping: true,
-                    complete: function(parsed: {data: TimeSeriesData[]}) {
+                    complete: function(parsed: any) {
                         // logger.info("URLCSVReader Successfully parsed", url);
                         // logger.info("URLCSVReader Parsed value", parsed);
                         const typedData: TimeSeriesData[] = parsed.data;
@@ -70,7 +70,7 @@ export async function UrlCSVReader(url:string): Promise<TimeSeriesData[]>{
                         return;
                     },
                     error: function(parseError: Error){
-                       // logger.error("URLCSVReader Failed Parse", url);
+                        // logger.error("URLCSVReader Failed Parse", url);
                         reject(parseError);
                         return;
                     }
@@ -83,7 +83,7 @@ export async function UrlCSVReader(url:string): Promise<TimeSeriesData[]>{
     //Rethrowing errors
     }).catch((err: unknown) => {
         //test for possible error catching
-        //logger.error("UrlCSVReader Error", err);
+        // logger.error("UrlCSVReader Error", err);
         throw err;
     });
 }

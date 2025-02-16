@@ -30,6 +30,7 @@ export async function LocalCSVHeaders(file:File): Promise<CSVHeaders> {
     // Rethrowing errors
     }).catch((err:unknown) => {
         //logger.error("LocalCSVHeaders Error", err);
+        // logger.error("LocalCSVHeaders Error", err);
         throw err;
     });
 }
@@ -40,6 +41,7 @@ export async function LocalCSVHeaders(file:File): Promise<CSVHeaders> {
 * @returns: {Promise<CSVHeaders>}
 **/
 export async function LocalCSVReader(file:string): Promise<TimeSeriesData[]>{
+    // logger.info("Calling LocalCSVReader", file);
     return new Promise<TimeSeriesData[]>((resolve, reject) => {
         // if(!fs.existsSync(file)){
         //     //test for nonexistant files
@@ -50,20 +52,25 @@ export async function LocalCSVReader(file:string): Promise<TimeSeriesData[]>{
         //else 
         if(!file.endsWith('.csv') && !file.endsWith('.txt')){
             //test for files that are NOT .csv
+            // logger.error("LocalCSVReader File isn't .csv or .txt file", file);
             reject(new Error('File must be .csv or .txt'));
             return;
         }
+        // logger.info("LocalCSVReader Reading file", file);
         fsPromise.readFile(file, 'utf8').then((data: string) => {
             Papa.parse(data, {
                 header: true,
                 dynamicTyping: true,
-                complete: function(parsed: {data: TimeSeriesData[]}){
+                complete: function(parsed: any){
+                    // logger.info("LocalCSVReader Successfully parsed", file);
+                    // logger.info("LocalCSVReader Parsed value", parsed.data);
                     const typedData: TimeSeriesData[] = parsed.data;
                     //test if casting works
                     resolve(typedData);
                     return;
                 },
                 error: function(parseError: Error) {
+                    // logger.error("LocalCSVReader Failed Parse", file);
                     reject(parseError);
                     return;
                 }
@@ -76,6 +83,7 @@ export async function LocalCSVReader(file:string): Promise<TimeSeriesData[]>{
     // Re-throwing errors
     }).catch((err: unknown) => {
         //test for possible error catching
+        // logger.error("LocalCSVReader Error", err);
         throw err;
     });
 };

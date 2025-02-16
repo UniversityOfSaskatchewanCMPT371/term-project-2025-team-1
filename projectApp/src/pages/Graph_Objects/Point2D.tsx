@@ -16,7 +16,7 @@ export function Point2D({pointRef} : {pointRef: PointClass}){
 
                 <circleGeometry 
                 attach = "geometry"
-                    args={[0.3, 32]}>
+                    args={[0.05, 32]}>
                     </circleGeometry>
 
                 <meshStandardMaterial

@@ -1,4 +1,5 @@
 import { Text } from '@react-three/drei';
+import { TimeSeriesGraph } from '../Graph_Objects/TimeSeriesGraph';
 
 import { Create2DPoint } from '../../components/Graph_Components/Create2DPoint';
 import DropdownUI from "../UI/DropdownUI"
@@ -44,7 +45,7 @@ export default function MainScene() {
         </mesh>
 
         {/* Displays the Sample Drop Down UI */}
-        {/* <DropDownUI x={-2} y={1} z={1.3}/> */}
+        <TimeSeriesGraph></TimeSeriesGraph>
         <DropdownUI position={[-2, 1.5, -4]} xSize={4} ySize={3}></DropdownUI>
         <Create2DPoint position={[0, 1, -2]} selected={false} xData={'Time'} yData={89}/>
         </>

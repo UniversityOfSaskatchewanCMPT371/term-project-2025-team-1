@@ -35,7 +35,7 @@ export interface CSVData {
 
 }
 
-export interface CSVReaderInterface extends ModelInterface{
+export interface CSVModelInterface extends ModelInterface{
     num: number;                                //number of graphs in loaded in model
                              //Array of loaded CSV files
 

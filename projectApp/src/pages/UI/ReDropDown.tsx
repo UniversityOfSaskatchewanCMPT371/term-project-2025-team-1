@@ -71,7 +71,7 @@ export default function ReDropDown(props: dropDownProps){
             alignItems={"flex-start"} justifyContent={"flex-start"}>
 
                 {/* Assign board number to Model maybe? */}
-        {mainController.getGraphController().getModel().getData().map((graph, index) => (
+        {mainController.getCSVController().getModel().getData().map((graph, index) => (
             
             <GenerateRowObject name={graph.getName()}></GenerateRowObject>
         ))}

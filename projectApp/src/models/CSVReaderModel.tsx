@@ -1,7 +1,7 @@
-import { CSVData, CSVReaderInterface } from "../types/CSVInterfaces";
+import { CSVData, CSVModelInterface } from "../types/CSVInterfaces";
 import { CSVDataObject } from "./CSVDataObject";
 
-export class CSVReaderModel implements CSVReaderInterface{
+export class CSVReaderModel implements CSVModelInterface{
     num : number;
     data: CSVData[];
 
@@ -79,11 +79,11 @@ export class CSVReaderModel implements CSVReaderInterface{
 
     loadedCsvBrowser():[string, boolean][]{
         let csvBrowser:[string,boolean][] = []
-        if(!(this.data.length > 0)){
+        if(!(this.getData().length > 0)){
             return csvBrowser;
         }
 
-        this.data.forEach((file) => {
+        this.getData().forEach((file) => {
             const arrVal = file.getName();
             csvBrowser.push([arrVal,file.getBrowserSelected()])
         })

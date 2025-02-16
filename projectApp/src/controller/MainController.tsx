@@ -7,7 +7,7 @@ export class MainController {
         this.csvController = new CSVController();
     }
 
-    getController(){
+    getCSVController(){
         return this.csvController;
     }
 }

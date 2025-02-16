@@ -5,14 +5,19 @@ import { ControllerInterface } from "../src/types/CSVInterfaces";
 
 /* 
 * Main Controller test, this test will only check if the Main Controller
-* Is able to get an INstance of program controllers
+* Is able to get an Instance of program controllers
 */
+
+//Interface for controller testing through MainController
 interface MCTests {
-    description: string;
-    controllerType: new () => ControllerInterface;
-    method: () => (ControllerInterface)
+    description: string;                            //String describing the test
+    controllerType: new () => ControllerInterface;  //The Instance of type of controller
+    method: () => (ControllerInterface)             //MainController function that gets the controller
 }
 
+/*
+* Tests the sepcified MainController function
+*/
 function MainControllerTest(testMC: MCTests) {
     test(testMC.description, () => {
         const controller = testMC.method();
@@ -28,10 +33,11 @@ describe("MainController Tests", () => {
         mainController = new MainController();
     });
 
+    //Testing to see if MainController can get an instance of CSV Controller
     const csvController: MCTests = {
         description: ("Test if able to get instance of Graph Controller"),
-        controllerType: CSVController,
-        method: () => mainController.getController(),
+        controllerType: CSVController,                  
+        method: () => mainController.getCSVController(),
     };
     MainControllerTest(csvController);
 

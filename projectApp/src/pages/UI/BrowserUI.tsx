@@ -11,6 +11,7 @@ export function BrowserUI(){
     //Using dynamic key change for unmounted component
     const [ controlKey, setControlKey] = useState(0);
     
+    //The botton component that opens file explorer and loads a local file
     function LoadComponent(){
       useControls({
         'Load Local CSV' : button(() => {
@@ -27,18 +28,18 @@ export function BrowserUI(){
             const files = e.target.files;
             if(files && files.length > 0){
               const file = files[0];
-              console.log(file.name.toString());
-                
-              //let test = mainController.getGraphController().getReaderModel();
-              
-              await mainController.getGraphController().readLocalFile(file);
+              //console.log(file.name.toString());
+
+              //If the file is valid, read the csv file
+              await mainController.getCSVController().readLocalFile(file);
               setControlKey(controlKey + 1);
               //Same test as csvModeTest
               // let headers = test.getCSVFiles()[0].data[0];
               // console.log(headers);
             }
             else{
-              console.log("No files selected")
+              //Logger or alert instead
+              console.log("Invalid File")
             }
           }}>
         </input>
@@ -46,6 +47,7 @@ export function BrowserUI(){
       )
     }
   
+    //This one is for loading the csvfile through a url link
   function URLComponent(){
     let { csv } = useControls(
       {csv: { label: "CSV by URL", value: "Enter URL"},
@@ -61,23 +63,26 @@ export function BrowserUI(){
       style={{display: 'none'}}
       onClick={(async () => {
         alert(csv)
-        await mainController.getGraphController().readURLFile(csv);
+        await mainController.getCSVController().readURLFile(csv);
         setControlKey(controlKey + 1);
       })}></input>
     </>
     )
   }
   
+  //Component that displays the loaded csv files on the browser UI
   function UnmountedComponents(){
-    let names:[string, boolean][] = mainController.getGraphController().getModel().loadedCsvBrowser();
+    let names:[string, boolean][] = mainController.getCSVController().getModel().loadedCsvBrowser();
     
-    let controlsObject: Record<string, boolean | ButtonInput> = names.reduce((acc, [name, value]) => {
+    //Setting the objects to be displayed
+    const controlsObject: Record<string, boolean | ButtonInput> = names.reduce((acc, [name, value]) => {
       acc[name] = value;
 
-      console.log("Unmount ", acc)
+      console.log("Unmount ", controlKey)
       return acc;
     }, {} as Record<string, boolean | ButtonInput>
   );
+  //Button associated with the deleting files
     controlsObject['delete'] = button(() => alert("delete"));
 
     useControls(

@@ -24,4 +24,4 @@ jobs:
           repoToken: ${{ secrets.GITHUB_TOKEN }}
           firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_CMPT371_2025_T1 }}
           entryPoint: './projectApp'
-          projectId: cmpt371-2025-t1
+          projectId: cmpt371-2025-t 1

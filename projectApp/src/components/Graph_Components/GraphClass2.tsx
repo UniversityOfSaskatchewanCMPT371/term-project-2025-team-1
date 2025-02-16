@@ -12,7 +12,9 @@ export class GraphClass2 {
 
     /**
      * Adds a new point to the graph.
-     * @param pointRef - Reference to the point data.
+     * pre-codition: pointRef is a valid PointRef object
+     * post-condition: a new PointClass instance is added to the graph
+     * @param {PointRef} pointRef - Reference to the point data.
      */
     addPoint(pointRef: PointRef) {
         const newPoint = new PointClass(pointRef);
@@ -21,9 +23,11 @@ export class GraphClass2 {
 
     /**
      * Finds a point based on given x and y data.
-     * @param xData - The x-coordinate (string representation).
-     * @param yData - The y-coordinate (numeric value).
-     * @returns The corresponding PointClass instance if found, otherwise undefined.
+     * pre-codition: xData is a string, yData is a number
+     * post-condition: returns the corresponding PointClass instance if found, otherwise undefined
+     * @param {string} xData - The x-coordinate (string representation).
+     * @param {number} yData - The y-coordinate (numeric value).
+     * @returns {PointClass | undefined} The corresponding PointClass instance if found, otherwise undefined.
      */
     findPoint(xData: string, yData: number): PointClass | undefined {
         return this.points.find(point => point.getXData() === xData && point.getYData() === yData);
@@ -32,6 +36,8 @@ export class GraphClass2 {
     /**
      * Updates all points' selection status.
      * If additional properties (like color) need updating, modify here.
+     * pre-codition: none
+     * post-condition: all points' selection status is updated
      */
     updatePoints() {
         this.points.forEach(point => {
@@ -42,7 +48,9 @@ export class GraphClass2 {
 
     /**
      * Retrieves all points in the graph.
-     * @returns Array of PointClass instances.
+     * pre-codition: none
+     * post-condition: returns an array of PointClass instances
+     * @returns {PointClass[]} Array of PointClass instances.
      */
     getPoints() {
         return this.points;
@@ -50,7 +58,9 @@ export class GraphClass2 {
 
     /**
      * Updates point positions based on a zooming factor.
-     * @param zoomFactor - The zoom level to scale points' positions.
+     * pre-codition: zoomFactor is a number
+     * post-condition: all points' positions are scaled based on the zoom factor
+     * @param {number} zoomFactor - The zoom level to scale points' positions.
      */
     updateOnZoom(zoomFactor: number) {
         this.points.forEach(point => {

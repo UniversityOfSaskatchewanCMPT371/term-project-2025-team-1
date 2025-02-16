@@ -57,6 +57,7 @@ export class GraphClass implements GraphInterface {
     this.onPointSelect = graphData.onPointSelect;
   }
 
+   // These methods are placeholders and should be implemented as needed
   // Basic getters and setters
   getId(): string {
     return this.id;

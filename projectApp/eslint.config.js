@@ -43,9 +43,11 @@ export default tseslint.config(
       "@typescript-eslint/no-unused-vars" : "warn",
       "@typescript-eslint/no-floating-promises" : "warn",
       "@typescript-eslint/no-unsafe-member-access" : "warn",
+      "@typescript-eslint/prefer-reduce-type-parameter": "warn",
       "@typescript-eslint/no-unsafe-assignment": "warn",
       "@typescript-eslint/no-non-null-assertion": "warn",
       "@typescript-eslint/no-misused-promises": "warn",
+      "@typescript-eslint/no-base-to-string": "warn",
     },
   },
 )

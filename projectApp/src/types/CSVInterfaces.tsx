@@ -35,14 +35,26 @@ export interface CSVData {
 
 }
 
-export interface CSVReaderInterface{
+export interface CSVReaderInterface extends ModelInterface{
     num: number;                                //number of graphs in loaded in model
-    csvFiles: CSVData[];                        //Array of loaded CSV files
+                             //Array of loaded CSV files
 
-    getCSVFileByName: (name: string) => (CSVData | null);      //Uses name to find the CSVData
+          //Uses name to find the CSVData
     readLocalFile: (file:File) => (void);          //Will read the csv and add it
     readURLFile: (file: string) => (void);
     deleteFile: (name:string) => (void);        //Get the array and delete it
     getNum: () => (number);
-    getCSVFiles: () => (CSVData[]);
+}
+
+export interface ModelInterface{
+    data: CSVData[];
+
+    getData: () => (CSVData[])
+    getCSVFileByName: (name: string) => (CSVData | null);
+}
+
+export interface ControllerInterface{
+    model: ModelInterface;
+
+    getModel: () => (ModelInterface);
 }

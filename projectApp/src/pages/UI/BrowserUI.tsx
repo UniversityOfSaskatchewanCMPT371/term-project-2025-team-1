@@ -69,7 +69,7 @@ export function BrowserUI(){
   }
   
   function UnmountedComponents(){
-    let names:[string, boolean][] = mainController.getGraphController().getReaderModel().loadedCsvBrowser();
+    let names:[string, boolean][] = mainController.getGraphController().getModel().loadedCsvBrowser();
     
     let controlsObject: Record<string, boolean | ButtonInput> = names.reduce((acc, [name, value]) => {
       acc[name] = value;

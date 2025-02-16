@@ -1,17 +1,14 @@
-import { GraphController } from "./GraphController";
+import { CSVController } from "./CSVController";
 
 //Commenting out graph works its in graph
-class MainController {
-    private graphController: GraphController;
+export class MainController {
+    private csvController: CSVController;
     constructor(){
-        this.graphController = new GraphController();
+        this.csvController = new CSVController();
     }
 
-    getGraphController(){
-        return this.graphController;
-    }
-    printConsole(test:string){
-        console.log(test);
+    getController(){
+        return this.csvController;
     }
 }
 

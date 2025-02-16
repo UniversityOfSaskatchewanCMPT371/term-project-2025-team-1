@@ -3,7 +3,7 @@ import { CSVData } from "../types/CSVInterfaces";
 // import logger from "../logging/logs";
 import { UrlCSVReader } from "../components/CSV_Readers/UrlCSVReader";
 
-export class CSVDataModels implements CSVData{
+export class CSVDataObject implements CSVData{
     name: string;
     csvHeaders: string[];
     data: { key: Record<string,string | number> }[];

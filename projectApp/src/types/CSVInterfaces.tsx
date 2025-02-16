@@ -30,10 +30,12 @@ export interface CSVData {
     loadUrlCSVFile: (index: number, file: string) => (Promise<void>);
     getName: () => string;
     getCSVHeaders: () => string[];
+    getYHeader: () => string;
     getBrowserSelected: () => (boolean);
     getVRSelected: () => (boolean);
     setBrowserSelected: (bool: boolean) => (void);
     setVRSelected: (bool: boolean) => (void);
+    setYHeader: (header:string) => (void);
 
 }
 

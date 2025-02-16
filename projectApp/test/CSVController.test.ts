@@ -5,7 +5,7 @@ import { CSVDataObject } from "../src/models/CSVDataObject";
 
 /*
 * For testing CSVController
-* Which in turn tests, CSVReaderModel methods
+* Which in turn tests, CSVReaderModel methods as well as CSVDataObject
 */
 describe("CSVController Tests", () => {
     let csvController: CSVController;
@@ -31,6 +31,8 @@ describe("CSVController Tests", () => {
     test("Testing methods of CSVReaderModel that parse csv files", async () => {
         //Maybe a proper file would work better
         //Does show that it still accepts blank files
+        //Then create a function that tests both Local and URl
+        //As well as methods of csv Objects
         const fake = new File([""], "fake.csv", {type: "fake/csv"});
 
         await csvController.getModel().readLocalFile(fake);
@@ -47,6 +49,19 @@ describe("CSVController Tests", () => {
         
         expect(getByName).toBeInstanceOf(CSVDataObject);
         expect(getByName?.getName()).toBe("Graph1");
+
+        getByName?.setYHeader("X");
+        expect(getByName?.getYHeader()).toBe("X");
+        expect(getByName?.getDataByTime("2025-01-19")).toBe(20);
+
+        expect(getByName?.getBrowserSelected()).toBe(false);
+        expect(getByName?.getVRSelected()).toBe(false);
+
+        getByName?.setBrowserSelected(true);
+        expect(getByName?.getBrowserSelected()).toBe(true);
+
+        getByName?.setVRSelected(true);
+        expect(getByName?.getVRSelected()).toBe(true);
     })
 
 })

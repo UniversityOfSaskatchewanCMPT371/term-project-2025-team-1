@@ -40,6 +40,11 @@ export class CSVDataObject implements CSVData{
             const data = await UrlCSVReader(file)
             this.setData(data);
             this.setName("Graph" + index.toString());
+
+            if(data.length > 0){
+                const headers = Object.keys(data[0]);
+                this.csvHeaders = headers;
+            }
         }
         catch {
             //logger.error("Failed Loading");
@@ -61,15 +66,15 @@ export class CSVDataObject implements CSVData{
     }
     getDataByTime(time:string): Record<string, string | number> | null{
         let result: Record<string, string | number> | null = null;
-        let val;
         for(const value of this.data){
             //console.log(val);
-            val = value;
-            for(const header of Object.keys(val) ){
+            const val = value;
+            for(const header of Object.keys(val)){
                 if(val[header as keyof typeof val].toString() == time){
-                    console.log(val[header as keyof typeof val], "  ", val[this.yHeader as keyof typeof val]);
+                    //console.log(val[header as keyof typeof val], "  ", val[this.yHeader as keyof typeof val]);
                     result = val[this.yHeader as keyof typeof val];
                     return result;
+                    
                 }
             }
         }
@@ -81,6 +86,9 @@ export class CSVDataObject implements CSVData{
     }
     getCSVHeaders(){
         return this.csvHeaders;
+    }
+    getYHeader(){
+        return this.yHeader;
     }
     getBrowserSelected(){
         return this.browserSelected;
@@ -96,6 +104,13 @@ export class CSVDataObject implements CSVData{
         this.browserSelected = bool;
     }
     setVRSelected(bool: boolean){
-        this.browserSelected = bool;
+        this.vrSelected = bool;
+    }
+    setYHeader(header:string){
+        for(const head of this.csvHeaders){
+            if(head == header){
+                this.yHeader = header;
+            }
+        }
     }
 }

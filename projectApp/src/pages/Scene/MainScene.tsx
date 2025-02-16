@@ -1,6 +1,4 @@
 import { Text } from '@react-three/drei';
-import DropDownUI from '../UI/DropdownUI';
-import { Create2DPoint } from '../../components/Graph_Components/Create2DPoint';
 import { TimeSeriesGraph } from '../Graph_Objects/TimeSeriesGraph';
 
 /*

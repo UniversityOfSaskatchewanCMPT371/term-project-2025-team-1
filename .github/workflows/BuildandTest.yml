@@ -55,4 +55,6 @@ jobs:
       - name: Test
         run: |
           CI=true npm run test
+        env:
+          CI: true
         timeout-minutes: 3

@@ -12,11 +12,11 @@ export class CSVReaderModel implements CSVModelInterface{
 
     //This should get the csv file using name
     getCSVFileByName(name:string): CSVData | null{
-        this.data.forEach(data => {
+        for(const data of this.data) {
             if(data.name == name){
                 return data;
             }
-        });
+        };
         return null;
     }
 

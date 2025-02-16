@@ -58,8 +58,13 @@ export class TimeSeriesGraph {
     // const rowSpacing = rows ? 1 / rows : 0;
 
     // Create a "mesh" for each point
-    points.forEach((pointRef, index) => {
-      <Point2D key={index} pointRef={pointRef} /> // Use the Point2D component
+    // Add Point2D components to the scene
+    points.forEach(point => {
+      const pointGeometry = new THREE.CircleGeometry(0.1, 32); // Smaller points
+      const pointMesh = new THREE.Mesh(pointGeometry);
+      pointMesh.position.set(point.position[0], point.position[1], point.position[2] || 0);
+      this.pointsMesh.add(pointMesh);
+    });
 
       // Add the sphere to the points group
       this.pointsMesh.add(pointRef);

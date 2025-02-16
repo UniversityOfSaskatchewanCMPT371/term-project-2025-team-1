@@ -1,6 +1,9 @@
 import { Text } from '@react-three/drei';
 import { TimeSeriesGraph } from '../Graph_Objects/TimeSeriesGraph';
 
+import { Create2DPoint } from '../../components/Graph_Components/Create2DPoint';
+import DropdownUI from "../UI/DropdownUI"
+
 /*
 * The main scene being used in the current program
 * For now contains shapes the could help with testing looking around in a VR Space
@@ -43,8 +46,8 @@ export default function MainScene() {
 
         {/* Displays the Sample Drop Down UI */}
         <TimeSeriesGraph></TimeSeriesGraph>
-        {/* <DropDownUI x={-2} y={1} z={1.3}/> */}
-        {/* <Create2DPoint position={[0, 1, -2]} selected={false} xData={'Time'} yData={89}/> */}
+        <DropdownUI position={[-2, 1.5, -4]} xSize={4} ySize={3}></DropdownUI>
+        <Create2DPoint position={[0, 1, -2]} selected={false} xData={'Time'} yData={89}/>
         </>
     );
 };

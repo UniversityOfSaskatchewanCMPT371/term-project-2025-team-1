@@ -9,7 +9,7 @@
 // * same file but different file paths/types
 // */
 
-// const totalTests = 34;
+// const totalTests = 2;
 // let numTests = 0;
 // let successFound = 0;
 // let errorsFound = 0;
@@ -59,6 +59,9 @@
 //         const headers = await localHeaders(file);
 //         console.log("data:",headers);
 //         successFound++;
+//         console.log(headers.headers[0])
+//         console.log(headers.headers[1])
+//         console.log(headers.headers[2])
 //     }
 //     catch(error) {
 //         console.log(`Error Found: ${file}`);
@@ -76,38 +79,38 @@
 
 //     //Testing reading a csv file that doesn't exists Locally
 //     //Expected: both fail, cannot read nonexistent
-//     await localCsvReaderTestFormat("../csvTestFiles/FakeCSV.csv",incrementExpectedErrors,"Local Reader non-existing file");
-//     await localCsvHeadersTestFormat("../csvTestFiles/FakeCSV.csv",incrementExpectedErrors,"Local Headers non-existing file");
+//     // await localCsvReaderTestFormat("../csvTestFiles/FakeCSV.csv",incrementExpectedErrors,"Local Reader non-existing file");
+//     // await localCsvHeadersTestFormat("../csvTestFiles/FakeCSV.csv",incrementExpectedErrors,"Local Headers non-existing file");
 
-//     //Testing reading a csv file that has one less header
-//     //Expected: both pass, with a 'ghost' header
-//     await localCsvReaderTestFormat("../csvTestFiles/oneLessHeader.csv",incrementExpectedSuccess,"Local Reader one less header file");
-//     await localCsvHeadersTestFormat("../csvTestFiles/oneLessHeader.csv",incrementExpectedSuccess,"Local Headers one less header file");
+//     // //Testing reading a csv file that has one less header
+//     // //Expected: both pass, with a 'ghost' header
+//     // await localCsvReaderTestFormat("../csvTestFiles/oneLessHeader.csv",incrementExpectedSuccess,"Local Reader one less header file");
+//     // await localCsvHeadersTestFormat("../csvTestFiles/oneLessHeader.csv",incrementExpectedSuccess,"Local Headers one less header file");
     
-//     //Testing reading a csv file that has one more header
-//     //Expected: both pass, with 'z' header not included
-//     await localCsvReaderTestFormat("../csvTestFiles/oneMoreHeader.csv",incrementExpectedSuccess,"Local Reader one more header file");
-//     await localCsvHeadersTestFormat("../csvTestFiles/oneMoreHeader.csv",incrementExpectedSuccess,"Local Headers one more header file");
+//     // //Testing reading a csv file that has one more header
+//     // //Expected: both pass, with 'z' header not included
+//     // await localCsvReaderTestFormat("../csvTestFiles/oneMoreHeader.csv",incrementExpectedSuccess,"Local Reader one more header file");
+//     // await localCsvHeadersTestFormat("../csvTestFiles/oneMoreHeader.csv",incrementExpectedSuccess,"Local Headers one more header file");
     
-//     //Testing reading a csv file that has unequal number of columns
-//     //Expected: both pass, with varying object sizes
-//     await localCsvReaderTestFormat("../csvTestFiles/unevenData.csv",incrementExpectedSuccess,"Local Reader uneven data file");
-//     await localCsvHeadersTestFormat("../csvTestFiles/unevenData.csv",incrementExpectedSuccess,"Local Headers uneven data file");
+//     // //Testing reading a csv file that has unequal number of columns
+//     // //Expected: both pass, with varying object sizes
+//     // await localCsvReaderTestFormat("../csvTestFiles/unevenData.csv",incrementExpectedSuccess,"Local Reader uneven data file");
+//     // await localCsvHeadersTestFormat("../csvTestFiles/unevenData.csv",incrementExpectedSuccess,"Local Headers uneven data file");
 
-//     //Testing reading a csv file that has different data types for each line
-//     //Expected: both pass, with varying data types
-//     await localCsvReaderTestFormat("../csvTestFiles/differentTypes.csv",incrementExpectedSuccess,"Local Reader different data types file");
-//     await localCsvHeadersTestFormat("../csvTestFiles/differentTypes.csv",incrementExpectedSuccess,"Local Headers different data types file");
+//     // //Testing reading a csv file that has different data types for each line
+//     // //Expected: both pass, with varying data types
+//     // await localCsvReaderTestFormat("../csvTestFiles/differentTypes.csv",incrementExpectedSuccess,"Local Reader different data types file");
+//     // await localCsvHeadersTestFormat("../csvTestFiles/differentTypes.csv",incrementExpectedSuccess,"Local Headers different data types file");
 
-//     //Testing reading a html file to see if it errors
-//     //Expected: both fail, rejects non-csv and non-txt
-//     await localCsvReaderTestFormat("../csvTestFiles/notCsv.html",incrementExpectedErrors,"Local Reader html file");
-//     await localCsvHeadersTestFormat("../csvTestFiles/notCsv.html",incrementExpectedErrors,"Local Headers html file");
+//     // //Testing reading a html file to see if it errors
+//     // //Expected: both fail, rejects non-csv and non-txt
+//     // await localCsvReaderTestFormat("../csvTestFiles/notCsv.html",incrementExpectedErrors,"Local Reader html file");
+//     // await localCsvHeadersTestFormat("../csvTestFiles/notCsv.html",incrementExpectedErrors,"Local Headers html file");
 
-//     //Testing reading an empty csv file
-//     //Expected: reader will pass, returns empty. headers should also pass, if no data, no headers
-//     await localCsvReaderTestFormat("../csvTestFiles/empty.csv",incrementExpectedSuccess,"Local Reader empty csv file");
-//     await localCsvHeadersTestFormat("../csvTestFiles/empty.csv",incrementExpectedSuccess,"Local Headers empty csv file");
+//     // //Testing reading an empty csv file
+//     // //Expected: reader will pass, returns empty. headers should also pass, if no data, no headers
+//     // await localCsvReaderTestFormat("../csvTestFiles/empty.csv",incrementExpectedSuccess,"Local Reader empty csv file");
+//     // await localCsvHeadersTestFormat("../csvTestFiles/empty.csv",incrementExpectedSuccess,"Local Headers empty csv file");
 
 // };
 

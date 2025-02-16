@@ -19,6 +19,7 @@
   "dependencies": {
     "@react-three/drei": "^9.121.4",
     "@react-three/fiber": "^8.17.13",
+    "@react-three/uikit": "^0.8.7",
     "@react-three/xr": "^6.6.0",
     "@types/papaparse": "^5.3.15",
     "dotenv": "^16.4.7",

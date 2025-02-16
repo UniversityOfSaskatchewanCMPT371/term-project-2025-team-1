@@ -14,7 +14,13 @@
     "dev": "vite --host",
     "test": "vitest",
     "coverage": "vitest run --coverage",
-    "lint": "npx eslint ."
+    "lint": "gts lint",
+    "clean": "gts clean",
+    "compile": "tsc -p tsconfig.node.json ",
+    "fix": "gts fix",
+    "prepare": "npm run compile",
+    "pretest": "npm run compile",
+    "posttest": "npm run lint"
   },
   "dependencies": {
     "@react-three/drei": "^9.121.4",
@@ -37,7 +43,7 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.17.0",
-    "@types/node": "^22.10.7",
+    "@types/node": "^22.7.5",
     "@types/papaparse": "^5.3.15",
     "@types/react": "^18.3.18",
     "@types/react-dom": "^18.3.5",
@@ -48,10 +54,11 @@
     "eslint-plugin-react-hooks": "^5.0.0",
     "eslint-plugin-react-refresh": "^0.4.16",
     "globals": "^15.14.0",
-    "typescript": "~5.6.2",
+    "typescript": "^5.6.3",
     "typescript-eslint": "^8.18.2",
     "vite": "^6.0.5",
-    "vitest": "^3.0.5"
+    "vitest": "^3.0.5",
+    "gts": "^6.0.2"
   },
   "repository": {
     "type": "git",

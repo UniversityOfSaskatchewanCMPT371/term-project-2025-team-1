@@ -1,7 +1,16 @@
-// import logger from '../logging/logs'
+import { CSVController } from "./CSVController";
 
-// let target = "";
+//Commenting out graph works its in graph
+export class MainController {
+    private csvController: CSVController;
+    constructor(){
+        this.csvController = new CSVController();
+    }
 
-// function logger(level: string){
+    getCSVController(){
+        return this.csvController;
+    }
+}
 
-// }
+const mainController = new MainController();
+export default mainController;

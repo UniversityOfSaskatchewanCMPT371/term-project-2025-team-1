@@ -1,8 +1,9 @@
 import { Text } from '@react-three/drei';
-import { TimeSeriesGraph } from '../Graph_Objects/TimeSeriesGraph';
-
-import { Create2DPoint } from '../../components/Graph_Components/Create2DPoint';
 import DropdownUI from "../UI/DropdownUI"
+import { GraphClass2 } from '../../components/Graph_Components/GraphClass2';
+import { CreateTimeSeries } from '../../components/Graph_Components/CreateTimeSeries';
+import { PointClass } from '../../components/Graph_Components/PointClass';
+import { PointRef } from '../../types/PointInterface';
 
 /*
 * The main scene being used in the current program
@@ -12,6 +13,25 @@ export default function MainScene() {
     //TODO
     //Add a UI to the MainScene
     //Then make it possible for the ui to stay in view of the camera (maybe top left)
+    const graph = new GraphClass2();
+    const point1Ref: PointRef = {
+        position: [0, 0, 0.01],
+        selected: false,
+        xData: "Time",
+        yData: 42
+    };
+    const point1 = new PointClass(point1Ref);
+
+    const point2Ref: PointRef = {
+        position: [0, 0, 0.01],
+        selected: false,
+        xData: "Time",
+        yData:50
+    };
+    const point2 = new PointClass(point2Ref);
+
+    graph.addPoint(point1);
+    graph.addPoint(point2);
 
     return (
         <>
@@ -27,15 +47,11 @@ export default function MainScene() {
 
         {/* This block of code is the sign in front of the user
         A red box with the text Front */}
-        <mesh position = {[3,1,-6]}>
-            <boxGeometry args = {[4, 2, 2]}/>
+        <mesh position = {[4.5,1,-4.55]}>
+            <boxGeometry args = {[6, 5.5, 2]}/>
             <meshBasicMaterial color="red"/>
         </mesh>
-        <mesh position = {[3,1,-4.9]}>
-            <Text> 
-                Front 
-            </Text>
-        </mesh>
+        
 
         {/* This is the floor of the Scene */}
         <mesh 
@@ -45,9 +61,9 @@ export default function MainScene() {
         </mesh>
 
         {/* Displays the Sample Drop Down UI */}
-        <TimeSeriesGraph></TimeSeriesGraph>
+        <CreateTimeSeries graphObject={graph}></CreateTimeSeries>
         <DropdownUI position={[-2, 1.5, -4]} xSize={4} ySize={3}></DropdownUI>
-        <Create2DPoint position={[0, 1, -2]} selected={false} xData={'Time'} yData={89}/>
+        
         </>
     );
 };

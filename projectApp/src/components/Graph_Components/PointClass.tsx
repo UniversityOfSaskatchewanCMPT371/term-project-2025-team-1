@@ -34,10 +34,22 @@ export class PointClass implements PointRef{
     getYData(){
         return this.yData;
     }
+    getXPosition(){
+        return this.getPosition()[0];
+    }
+    getYPosition(){
+        return this.getPosition()[1];
+    }
+    setXPosition(x: number){
+        this.position[0] = x;
+    }
+    setYPosition(y: number){
+        this.position[1] = y;
+    }
     //End of Getters
     
     //Setters
-    setPosition([x,y,z]: number[]){
+    setPosition([ x, y, z ]: number[]){
         this.position = [x,y,z];
     }
     setSelected(select: boolean){

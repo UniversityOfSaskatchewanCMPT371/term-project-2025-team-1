@@ -3,13 +3,16 @@
 //Takes GraphInterface as parameter
 //This should also generate the points
 
+import { TimeSeriesGraph } from "../../pages/Graph_Objects/TimeSeriesGraph";
 import { GraphInterface } from "../../types/GraphInterface";
 import { GraphClass } from "./GraphClass";
+import { GraphClass2 } from "./GraphClass2";
 
-export function CreateTimeSeries(graph: GraphInterface){
-    
+export function CreateTimeSeries({graphObject}:{graphObject: GraphClass2}){
+    //const graph = new GraphClass2();
     return(
         <>
+        <TimeSeriesGraph graph={graphObject}></TimeSeriesGraph>
         </>
     )
 }

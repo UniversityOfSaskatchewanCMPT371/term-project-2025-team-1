@@ -62,10 +62,11 @@ export class GraphClass2 {
      * post-condition: all points' positions are scaled based on the zoom factor
      * @param {number} zoomFactor - The zoom level to scale points' positions.
      */
-    updateOnZoom(zoomFactor: number) {
-        this.points.forEach(point => {
-            const [x, y, z] = point.getPosition(); // Retrieve current position
-            point.setPosition([x * zoomFactor, y * zoomFactor, z * zoomFactor]); // Adjust based on zoom factor
-        });
-    }
+    //We are not zooming for 2D
+    // updateOnZoom(zoomFactor: number) {
+    //     this.points.forEach(point => {
+    //         const {x, y, z] = point.getPosition(); // Retrieve current position
+    //         point.setPosition([x * zoomFactor, y * zoomFactor, z * zoomFactor]); // Adjust based on zoom factor
+    //     });
+    // }
 }

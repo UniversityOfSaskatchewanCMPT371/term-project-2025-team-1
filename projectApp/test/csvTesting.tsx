@@ -1,13 +1,13 @@
 // import { LocalCSVReader as localReader, LocalCSVHeaders as localHeaders } from "../src/components/CSV_Readers/LocalCSVReader.tsx"
 // import { UrlCSVReader as urlReader, UrlCSVHeaders as urlHeaders } from "../src/components/CSV_Readers/UrlCSVReader.tsx"
 
-// /*
-// * This File is for testing the CSV readers
-// * First It will testing running the Local CSV Reader
-// * Then It will test the URL CSV Reader
-// * Both Functions should output the same since, it runs on the 
-// * same file but different file paths/types
-// */
+/*
+* This File is for testing the CSV readers
+* First It will testing running the Local CSV Reader
+* Then It will test the URL CSV Reader
+* Both Functions should output the same since, it runs on the 
+* same file but different file paths/types
+*/
 
 // const totalTests = 2;
 // let numTests = 0;

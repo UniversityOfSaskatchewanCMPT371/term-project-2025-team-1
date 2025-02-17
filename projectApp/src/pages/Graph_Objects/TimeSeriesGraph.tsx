@@ -3,7 +3,6 @@ import { Line } from "@react-three/drei";
 import { Create2DPoint } from '../../components/Graph_Components/Create2DPoint';
 import { GraphClass2 } from '../../components/Graph_Components/GraphClass2';
 import { PointClass } from '../../components/Graph_Components/PointClass';
-import { useState } from 'react';
 
 /**
  * This class will handle creating and updating a 2D Time Series graph based on the GraphClass.
@@ -13,7 +12,7 @@ export function TimeSeriesGraph({graph}:{graph: GraphClass2}){
   const graphClass = graph;
   let totalSpace = 4;
   let divider = (totalSpace/graphClass.getPoints().length);
-  let current = totalSpace - (divider * 2);
+  let current = divider - (divider * 2);
   let currentLine:[number,number,number]= ([0,0,0]);
   let lastLine:[number,number,number] = ([0,0,0])
   // function HeaderSelection(){
@@ -26,26 +25,23 @@ export function TimeSeriesGraph({graph}:{graph: GraphClass2}){
   function GenerateSideBar(){
     return(
       <>
-      <Container width={"15%"} height={"100%"} backgroundColor={"skyblue"}
-      flexDirection={"column"}>
+        <Container width={"15%"} height={"100%"} backgroundColor={"skyblue"}
+        flexDirection={"column"}>
+          <Container height={"50%"} alignItems={"flex-start"} justifyContent={"center"}>
+            <Text positionTop={10}>Y Value </Text>
+          </Container>
         <Container height={"50%"} alignItems={"flex-start"} justifyContent={"center"}>
-          <Text positionTop={10}>
-            Y Value 
-          </Text>
+          <Text>X Value {graphClass.getPoints().length.toString()}</Text>
         </Container>
-        <Container height={"50%"} alignItems={"flex-start"} justifyContent={"center"}>
-        <Text>X Value {graphClass.getPoints().length.toString()}</Text>
-        </Container>
-
       </Container>
       </>
     )
   }
   function GeneratePoints({point}:{point: PointClass}){
     //Update the container values;
+    console.log(point.getPosition()[0])
     return (
       <>
-      
       {/* <Create2DPoint position={[-1, 1, 0.01]} selected={false} xData={'Time'} yData={89}/> */}
        <Create2DPoint position={point.getPosition()} selected={point.getSelected()} 
        xData={point.getXData()} yData={point.getYData()}></Create2DPoint>
@@ -55,49 +51,42 @@ export function TimeSeriesGraph({graph}:{graph: GraphClass2}){
   }
   function GenerateLines(){
     current = current + divider;
-          currentLine = (lastLine);
+    console.log("Current :", currentLine)
+    console.log("Last: ",lastLine)
+    currentLine = lastLine
     return(
       <>
-      <Line points={[[currentLine[0],currentLine[1],currentLine[2]], [lastLine[0],lastLine[1],lastLine[2]]]}
+        <Line points={[[currentLine[0],currentLine[1],currentLine[2]], [lastLine[0],lastLine[1],lastLine[2]]]}
             color={"black"} lineWidth={2}></Line>
       </>
     )
   }
-    function GenerateGraph(){
-      return (
+  function GenerateGraph(){
+    return (
       <>
-      <Container width={"85%"} height={"100%"} flexDirection={"row"}>
-        <Container width={"10%"} flexDirection={"row-reverse"}>
+        <Container width={"85%"} height={"100%"} flexDirection={"row"}>
+          <Container width={"10%"} flexDirection={"row-reverse"}>
           
-        <Container
-                width = {"4%"} 
-                height = {"85%"}
-                backgroundColor= {"black"} 
-              
-            ></Container>
-            
-        </Container>
-
-        <Container width={"90%"} flexDirection={"column"}>
-          <Container height={"85%"} alignItems={"center"} justifyContent={"center"}>
-            
+            <Container
+              width = {"4%"} 
+              height = {"85%"}
+              backgroundColor= {"black"} ></Container>
             
           </Container>
 
+        <Container width={"90%"} flexDirection={"column"}>
+          <Container height={"85%"} alignItems={"center"} justifyContent={"center"}></Container>
+          
           <Container height={"15%"}>
-          <Container
-                width = {"100%"} 
-                height = {"4%"}
-                backgroundColor= {"black"} 
-              >
-
-              </Container>
+            <Container
+              width = {"100%"} 
+              height = {"4%"}
+              backgroundColor= {"black"} >
             </Container>
+          </Container>
         </Container>
 
       </Container>
-
-      
       </>
       )
     
@@ -121,7 +110,7 @@ export function TimeSeriesGraph({graph}:{graph: GraphClass2}){
         {graphClass.getPoints().map((points) => {
           points.setXPosition(current);
           currentLine = lastLine;
-          lastLine = ([points.getXPosition(), points.getYPosition(), 0.01])
+          lastLine = ([points.getXPosition(), points.getYPosition(), -0.01])
           return(
             <>
             <GenerateLines/>

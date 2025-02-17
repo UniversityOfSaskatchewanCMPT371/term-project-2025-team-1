@@ -1,3 +1,4 @@
+import { CreateTimeSeries } from "../components/Graph_Components/CreateTimeSeries";
 import { CSVReaderModel } from "../models/CSVReaderModel";
 import { ControllerInterface } from "../types/BaseInterfaces";
 
@@ -14,5 +15,12 @@ export class CSVController implements ControllerInterface{
     //This method returns the Model, and allows the controller to use its methods
     getModel(){
         return this.model;
+    }
+    generate(){
+        for(let csv of this.model.getData()){
+            if(csv.getDisplayBoard() != 0){
+                
+            }
+        }
     }
 }

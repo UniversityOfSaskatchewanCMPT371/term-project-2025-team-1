@@ -57,6 +57,16 @@ export function TimeSeriesGraph({graph}:{graph: GraphClass2}){
       </>
     )
   }
+  function GenerateLines(){
+    current = current + divider;
+          currentLine = lastLine;
+    return(
+      <>
+      <Line points={[[currentLine[0],currentLine[1],currentLine[2]], [lastLine[0],lastLine[1],lastLine[2]]]}
+            color={"black"} lineWidth={2}></Line>
+      </>
+    )
+  }
     function GenerateGraph(){
       return (
       <>
@@ -111,27 +121,17 @@ export function TimeSeriesGraph({graph}:{graph: GraphClass2}){
         
       </Root>
 
-      {/* <Line
-          points={[[-1.8, -1, 0], [1, 0, 0]]}  // Line between two points
-          color="black"
-          lineWidth={2}
-        /> */}
         {lastLine=[-1.8, -1, 0]}
         {graphClass.getPoints().map((points) => {
           points.setXPosition(current);
-          current = current + divider;
-          currentLine = lastLine;
           lastLine = [points.getXPosition(), points.getYPosition(), 0]
           return(
             <>
-            <Line points={[[currentLine[0],currentLine[1],currentLine[2]], [lastLine[0],lastLine[1],lastLine[2]]]}
-            color={"black"} lineWidth={2}></Line>
+            <GenerateLines/>
             <GeneratePoints point={points}></GeneratePoints>
             </>
           )
         })}
-        {/* <Create2DPoint position={[-1, 1, 0.01]} selected={false} xData={'Time'} yData={89}/>
-        <Create2DPoint position={[1, 0, 0.01]} selected={false} xData={'Time'} yData={89}/>  */}
     </mesh>
     
     </>

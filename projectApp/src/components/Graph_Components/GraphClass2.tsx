@@ -1,13 +1,16 @@
+import { DataInterface } from "../../types/BaseInterfaces";
 import { PointRef } from "../../types/PointInterface";
 import { PointClass } from "./PointClass";
 
 // GraphClass2 is a class that represents a collection of multiple points
-export class GraphClass2 {
+export class GraphClass2 implements DataInterface{
+    name:string;
     points: PointClass[];
 
     constructor() {
         // Initialize an empty array to store PointClass instances
         this.points = [];
+        this.name = "";
     }
 
     /**
@@ -69,4 +72,12 @@ export class GraphClass2 {
     //         point.setPosition([x * zoomFactor, y * zoomFactor, z * zoomFactor]); // Adjust based on zoom factor
     //     });
     // }
+
+    getName(){
+        return this.name;
+    }
+
+    setName(name: string){
+        this.name = name;
+    } 
 }

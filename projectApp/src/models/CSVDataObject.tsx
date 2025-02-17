@@ -9,14 +9,14 @@ export class CSVDataObject implements CSVData{
     data: { key: Record<string,string | number> }[];
     yHeader: string;
     browserSelected: boolean;
-    vrSelected: boolean;
+    displayBoard: number;
     constructor(){
         this.name = "";
         this.csvHeaders = [];
         this.data = [];
         this.yHeader = ""; //Will attempt for the second header [1]
         this.browserSelected = false;
-        this.vrSelected = false;
+        this.displayBoard = 0;
     }
     setData(data: { key: Record<string,string | number> }[]){
         this.data = data;
@@ -93,8 +93,8 @@ export class CSVDataObject implements CSVData{
     getBrowserSelected(){
         return this.browserSelected;
     }
-    getVRSelected(){
-        return this.vrSelected;
+    getDisplayBoard(){
+        return this.displayBoard;
     }
 
     setName(name: string){
@@ -103,14 +103,28 @@ export class CSVDataObject implements CSVData{
     setBrowserSelected(bool: boolean){
         this.browserSelected = bool;
     }
-    setVRSelected(bool: boolean){
-        this.vrSelected = bool;
-    }
     setYHeader(header:string){
         for(const head of this.csvHeaders){
             if(head == header){
                 this.yHeader = header;
             }
+        }
+    }
+    //For now only one display board
+    incrementDisplayBoard(){
+        if(this.displayBoard < 1){
+            this.displayBoard++;
+        }
+        else{
+            this.displayBoard = 0;
+        }
+    }
+    decrementDisplayBoard(){
+        if(this.displayBoard == 0){
+            this.displayBoard = 1;
+        }
+        else{
+            this.displayBoard--;
         }
     }
 }

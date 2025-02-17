@@ -9,10 +9,8 @@ export class GraphModel implements ModelInterface{
         this.data = [];
     }   
 
-    createGraph(csv: CSVData){
-        const graph = new GraphClass2(csv);
-        graph.setPoints();
-        this.data.push(graph);
+    selectData(csv: CSVData){
+        csv.setVRSelected(true);
     }
 
     getData(){

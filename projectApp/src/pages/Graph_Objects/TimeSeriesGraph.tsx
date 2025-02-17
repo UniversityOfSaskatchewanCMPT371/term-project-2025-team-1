@@ -1,13 +1,9 @@
-//TODO
-//The Time Series Graph That Will Be Displayed on the Scene
-//Will require x, y positions and the number of rows
-//More expected
 import { Root, Container, Text } from '@react-three/uikit';
 import { Line } from "@react-three/drei";
 import { Create2DPoint } from '../../components/Graph_Components/Create2DPoint';
 import { GraphClass2 } from '../../components/Graph_Components/GraphClass2';
 import { PointClass } from '../../components/Graph_Components/PointClass';
-
+import { useState } from 'react';
 
 /**
  * This class will handle creating and updating a 2D Time Series graph based on the GraphClass.
@@ -18,8 +14,8 @@ export function TimeSeriesGraph({graph}:{graph: GraphClass2}){
   let totalSpace = 4;
   let divider = (totalSpace/graphClass.getPoints().length);
   let current = totalSpace - (divider * 2);
-  let currentLine:[number,number,number] = [0,0,0];
-  let lastLine:[number,number,number] = [0,0,0];
+  const [currentLine, setcurrentLine]= useState<[number,number,number]>([0,0,0]);
+  const [lastLine, setlastLine] = useState<[number,number,number]>([-1.8, -1, 0])
   // function HeaderSelection(){
   //   return(
   //     <>
@@ -59,7 +55,7 @@ export function TimeSeriesGraph({graph}:{graph: GraphClass2}){
   }
   function GenerateLines(){
     current = current + divider;
-          currentLine = lastLine;
+          setcurrentLine(lastLine);
     return(
       <>
       <Line points={[[currentLine[0],currentLine[1],currentLine[2]], [lastLine[0],lastLine[1],lastLine[2]]]}
@@ -121,10 +117,10 @@ export function TimeSeriesGraph({graph}:{graph: GraphClass2}){
         
       </Root>
 
-        {lastLine=[-1.8, -1, 0]}
+        {/* {setlastLine([-1.8, -1, 0])} */}
         {graphClass.getPoints().map((points) => {
           points.setXPosition(current);
-          lastLine = [points.getXPosition(), points.getYPosition(), 0]
+          setlastLine([points.getXPosition(), points.getYPosition(), 0])
           return(
             <>
             <GenerateLines/>

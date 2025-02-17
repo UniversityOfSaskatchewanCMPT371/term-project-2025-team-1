@@ -17,7 +17,8 @@ export interface TimeSeriesData {
 export interface CSVData extends DataInterface{                                   //Name of the graph (Graph has ID might switch to that)
     csvHeaders: string[];                           //Headers for csv File
     data: {key: Record<string,string | number>}[];  //Used for displaying csvfiles
-    browserSelected: boolean;                       //Checks if loaded file is selected on the Browser
+    browserSelected: boolean; 
+    vrSelected: boolean;                      //Checks if loaded file is selected on the Browser
     displayBoard: number;
                                //Checks if loaded file is selected on the VR drop down
 
@@ -33,6 +34,8 @@ export interface CSVData extends DataInterface{                                 
     getYHeader: () => string;
     getBrowserSelected: () => (boolean);
     setBrowserSelected: (bool: boolean) => (void);
+    getVRSelected: () => (boolean);
+    setVRSelected: (bool:boolean) => (void);
     setYHeader: (header:string) => (void);
     getDisplayBoard: () => (number);
     incrementDisplayBoard: () => (void);

@@ -1,9 +1,8 @@
 import { Text } from '@react-three/drei';
 import DropdownUI from "../UI/DropdownUI"
-import { GraphClass2 } from '../../components/Graph_Components/GraphClass2';
 import { CreateTimeSeries } from '../../components/Graph_Components/CreateTimeSeries';
-import { PointClass } from '../../components/Graph_Components/PointClass';
-import { PointRef } from '../../types/PointInterface';
+import { CSVDataObject } from '../../models/CSVDataObject';
+import { GraphClass2 } from '../../components/Graph_Components/GraphClass2';
 
 /*
 * The main scene being used in the current program
@@ -12,27 +11,27 @@ import { PointRef } from '../../types/PointInterface';
 export default function MainScene() {
     //TODO
     //Add a UI to the MainScene
-    //Then make it possible for the ui to stay in view of the camera (maybe top left)
-    // const graph = new GraphClass2();
-    // const point1Ref: PointRef = {
-    //     position: [0, 0, 0.01],
-    //     selected: false,
-    //     xData: "Time",
-    //     yData: 42
-    // };
-    // const point1 = new PointClass(point1Ref);
-
-    // const point2Ref: PointRef = {
-    //     position: [0, 0, 0.01],
-    //     selected: false,
-    //     xData: "Time",
-    //     yData:50
-    // };
-    // const point2 = new PointClass(point2Ref);
-
-    // graph.addPoint(point1);
-    // graph.addPoint(point2);
-
+    //Then make it possible for the ui to  stay in view of the camera (maybe top left)
+    
+    //Only runs on the begining, might keep graph on and update file on graph instead
+    // function AddGeneratedGraph(){
+    //     console.log("Is this running?")
+    //     if(!(mainController.getGraphController().getModel().getData().length > 0)){
+    //         console.log("Failed here", mainController.getGraphController().getModel().getData().length);
+    //         return null;
+    //     }
+    //     if(mainController.getCSVController().getVRSelected() == null) {
+    //         console.log("No Selected in VR")
+    //         return null;
+    //     }
+    //     console.log("Free to load Graph on MAIN", showGraph)
+    //     return(
+    //         <>
+    //         <CreateTimeSeries graphObject={mainController.getGraphController().generateTimeSeriesGraph(mainController.getCSVController().getVRSelected())}></CreateTimeSeries>
+    //         </>
+    //     )
+    // }
+    
     return (
         <>
         {/* This block of code is the sign behind the user
@@ -63,7 +62,7 @@ export default function MainScene() {
         {/* Displays the Sample Drop Down UI */}
         {/* <CreateTimeSeries graphObject={graph}></CreateTimeSeries> */}
         <DropdownUI position={[-2, 1.5, -4]} xSize={4} ySize={3}></DropdownUI>
-        
+        <CreateTimeSeries graphObject={new GraphClass2(new CSVDataObject())}></CreateTimeSeries>
         </>
     );
 };

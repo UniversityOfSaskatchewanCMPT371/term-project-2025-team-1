@@ -85,8 +85,7 @@ export class GraphClass2 implements DataInterface{
 
     setPoints(){
         this.csvData.getData().forEach(() => {
-            const point = new PointClass();
-            this.points.push(point);
+            this.addPoint();
         })
     }
 }

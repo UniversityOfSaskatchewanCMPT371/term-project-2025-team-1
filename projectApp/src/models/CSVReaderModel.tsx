@@ -3,7 +3,7 @@ import { CSVDataObject } from "./CSVDataObject";
 
 export class CSVReaderModel implements CSVModelInterface{
     num : number;
-    data: CSVData[];
+    data: CSVDataObject[];
 
     constructor(){
         this.num = 0;
@@ -26,7 +26,7 @@ export class CSVReaderModel implements CSVModelInterface{
     async readLocalFile(file: File): Promise<void>{
     //     //This should read the string value and try to load a csv file
     //     //On success add to array
-         const data:CSVData = new CSVDataObject;
+         const data:CSVDataObject = new CSVDataObject;
          try{
             await data.loadLocalCSVFile(this.num, file);
          }
@@ -39,7 +39,7 @@ export class CSVReaderModel implements CSVModelInterface{
      }
 
     async readURLFile(file: string) : Promise<void>{
-        const data:CSVData = new CSVDataObject;
+        const data:CSVDataObject = new CSVDataObject;
         try{
             await data.loadUrlCSVFile(this.num, file);
         }

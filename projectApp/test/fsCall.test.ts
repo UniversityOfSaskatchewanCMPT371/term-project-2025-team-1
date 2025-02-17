@@ -3,13 +3,14 @@
 // linting
 
 import { beforeEach, expect, it, vi } from 'vitest'
-import { fs, vol as memVol, DirectoryJSON } from 'memfs'
+import { vol as memVol, DirectoryJSON } from 'memfs'
+import * as fs from '../test/__mocks__/fs';
 import { readHello } from './fsCall.ts'
 
 // tell vitest to use fs mock from __mocks__ folder
 // this can be done in a setup file if fs should always be mocked
-vi.mock('node:fs')
-vi.mock('node:fs/promises')
+vi.mock('fs', () => import('../test/__mocks__/fs'));
+vi.mock('fs/promises', () => import('../test/__mocks__/fs/promises'));
 
 beforeEach(() => {
   // reset the state of in-memory fs

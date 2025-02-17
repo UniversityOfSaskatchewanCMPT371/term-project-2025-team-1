@@ -4,8 +4,6 @@
 //This should also generate the points
 
 import { TimeSeriesGraph } from "../../pages/Graph_Objects/TimeSeriesGraph";
-import { GraphInterface } from "../../types/GraphInterface";
-import { GraphClass } from "./GraphClass";
 import { GraphClass2 } from "./GraphClass2";
 
 export function CreateTimeSeries({graphObject}:{graphObject: GraphClass2}){

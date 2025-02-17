@@ -13,11 +13,11 @@ export class PointClass implements PointRef{
     //This could also be probably used to update on zooming
     // color: string;
 
-    constructor(ref: PointRef){
-        this.position = ref.position;
-        this.selected = ref.selected;
-        this.xData = ref.xData;
-        this.yData = ref.yData;
+    constructor(){
+        this.position =[0,0,0];
+        this.selected = false;
+        this.xData = "";
+        this.yData = 0;
     }
 
     //The setters and getters for the Point Class

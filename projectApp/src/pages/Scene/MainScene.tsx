@@ -13,25 +13,25 @@ export default function MainScene() {
     //TODO
     //Add a UI to the MainScene
     //Then make it possible for the ui to stay in view of the camera (maybe top left)
-    const graph = new GraphClass2();
-    const point1Ref: PointRef = {
-        position: [0, 0, 0.01],
-        selected: false,
-        xData: "Time",
-        yData: 42
-    };
-    const point1 = new PointClass(point1Ref);
+    // const graph = new GraphClass2();
+    // const point1Ref: PointRef = {
+    //     position: [0, 0, 0.01],
+    //     selected: false,
+    //     xData: "Time",
+    //     yData: 42
+    // };
+    // const point1 = new PointClass(point1Ref);
 
-    const point2Ref: PointRef = {
-        position: [0, 0, 0.01],
-        selected: false,
-        xData: "Time",
-        yData:50
-    };
-    const point2 = new PointClass(point2Ref);
+    // const point2Ref: PointRef = {
+    //     position: [0, 0, 0.01],
+    //     selected: false,
+    //     xData: "Time",
+    //     yData:50
+    // };
+    // const point2 = new PointClass(point2Ref);
 
-    graph.addPoint(point1);
-    graph.addPoint(point2);
+    // graph.addPoint(point1);
+    // graph.addPoint(point2);
 
     return (
         <>
@@ -61,7 +61,7 @@ export default function MainScene() {
         </mesh>
 
         {/* Displays the Sample Drop Down UI */}
-        <CreateTimeSeries graphObject={graph}></CreateTimeSeries>
+        {/* <CreateTimeSeries graphObject={graph}></CreateTimeSeries> */}
         <DropdownUI position={[-2, 1.5, -4]} xSize={4} ySize={3}></DropdownUI>
         
         </>

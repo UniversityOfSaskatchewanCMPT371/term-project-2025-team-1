@@ -81,6 +81,9 @@ export class CSVDataObject implements CSVData{
         return result;
     }
 
+    getData(){
+        return this.data;
+    };
     getName(){
         return this.name;
     }

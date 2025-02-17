@@ -1,16 +1,18 @@
 import { DataInterface } from "../../types/BaseInterfaces";
-import { PointRef } from "../../types/PointInterface";
+import { CSVData } from "../../types/CSVInterfaces";
 import { PointClass } from "./PointClass";
 
 // GraphClass2 is a class that represents a collection of multiple points
 export class GraphClass2 implements DataInterface{
     name:string;
     points: PointClass[];
+    csvData: CSVData;
 
-    constructor() {
+    constructor(csv: CSVData) {
         // Initialize an empty array to store PointClass instances
-        this.points = [];
         this.name = "";
+        this.csvData = csv;
+        this.points = [];
     }
 
     /**
@@ -19,8 +21,8 @@ export class GraphClass2 implements DataInterface{
      * post-condition: a new PointClass instance is added to the graph
      * @param {PointRef} pointRef - Reference to the point data.
      */
-    addPoint(pointRef: PointRef) {
-        const newPoint = new PointClass(pointRef);
+    addPoint() {
+        const newPoint = new PointClass();
         this.points.push(newPoint);
     }
 
@@ -80,4 +82,11 @@ export class GraphClass2 implements DataInterface{
     setName(name: string){
         this.name = name;
     } 
+
+    setPoints(){
+        this.csvData.getData().forEach(() => {
+            const point = new PointClass();
+            this.points.push(point);
+        })
+    }
 }

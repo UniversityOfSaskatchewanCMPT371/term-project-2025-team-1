@@ -36,5 +36,5 @@ jobs:
         run: npm run build
 
       - name: Test
-        working-directory: ./projectApp/src
+        working-directory: ./projectApp/test
         run: npm run test

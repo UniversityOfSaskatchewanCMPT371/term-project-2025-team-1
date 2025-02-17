@@ -14,7 +14,7 @@
     "server": "node logger-server.js",
     "client": "vite --host",
     "dev": "concurrently --kill-others \"npm run server\" \"npm run client\"",
-    "test": "vitest",
+    "test": "npx vitest",
     "coverage": "vitest run --coverage",
     "lint": "npx eslint ."
   },

@@ -14,8 +14,8 @@ export function TimeSeriesGraph({graph}:{graph: GraphClass2}){
   let totalSpace = 4;
   let divider = (totalSpace/graphClass.getPoints().length);
   let current = totalSpace - (divider * 2);
-  const [currentLine, setcurrentLine]= useState<[number,number,number]>([0,0,0]);
-  const [lastLine, setlastLine] = useState<[number,number,number]>([-1.8, -1, 0])
+  let currentLine:[number,number,number]= ([0,0,0]);
+  let lastLine:[number,number,number] = ([0,0,0])
   // function HeaderSelection(){
   //   return(
   //     <>
@@ -30,11 +30,11 @@ export function TimeSeriesGraph({graph}:{graph: GraphClass2}){
       flexDirection={"column"}>
         <Container height={"50%"} alignItems={"flex-start"} justifyContent={"center"}>
           <Text positionTop={10}>
-            Y Value
+            Y Value 
           </Text>
         </Container>
         <Container height={"50%"} alignItems={"flex-start"} justifyContent={"center"}>
-        <Text>X Value</Text>
+        <Text>X Value {graphClass.getPoints().length.toString()}</Text>
         </Container>
 
       </Container>
@@ -55,7 +55,7 @@ export function TimeSeriesGraph({graph}:{graph: GraphClass2}){
   }
   function GenerateLines(){
     current = current + divider;
-          setcurrentLine(lastLine);
+          currentLine = (lastLine);
     return(
       <>
       <Line points={[[currentLine[0],currentLine[1],currentLine[2]], [lastLine[0],lastLine[1],lastLine[2]]]}
@@ -117,10 +117,11 @@ export function TimeSeriesGraph({graph}:{graph: GraphClass2}){
         
       </Root>
 
-        {/* {setlastLine([-1.8, -1, 0])} */}
+        {lastLine = ([-1.8, -1, 0.01])}
         {graphClass.getPoints().map((points) => {
           points.setXPosition(current);
-          setlastLine([points.getXPosition(), points.getYPosition(), 0])
+          currentLine = lastLine;
+          lastLine = ([points.getXPosition(), points.getYPosition(), 0.01])
           return(
             <>
             <GenerateLines/>

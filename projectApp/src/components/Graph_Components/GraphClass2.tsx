@@ -23,6 +23,7 @@ export class GraphClass2 implements DataInterface{
      */
     addPoint() {
         const newPoint = new PointClass();
+        newPoint.setPosition([0,0,0.01])
         this.points.push(newPoint);
     }
 

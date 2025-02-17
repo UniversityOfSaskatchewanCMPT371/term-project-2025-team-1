@@ -14,10 +14,12 @@ export class GraphController implements ControllerInterface{
     }
 
     generateTimeSeriesGraph(csv: CSVData): GraphClass2{
-        const graph = new GraphClass2(csv);
-        graph.setPoints();
-        this.getModel().getData().push(graph)
-
-        return graph;
+        let result:GraphClass2 = new GraphClass2(csv);
+        for(let graph of this.getModel().getData()){
+            if(graph.getName() == csv.getName()){
+                return graph;
+            }
+        }
+        return result;
     }
 }

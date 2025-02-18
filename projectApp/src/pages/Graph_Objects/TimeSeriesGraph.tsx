@@ -14,7 +14,8 @@ export function TimeSeriesGraph({graph}:{graph: GraphClass2}){
   let divider = (totalSpace/graphClass.getPoints().length);
   let current = divider - (divider * 2);
   let currentLine:[number,number,number]= ([0,0,0]);
-  let lastLine:[number,number,number] = ([0,0,0])
+  let lastLine:[number,number,number] = ([-1.8, -1, 0.01])
+  //max =(min + totalSpace) (max - min)/length 
   // function HeaderSelection(){
   //   return(
   //     <>
@@ -42,7 +43,7 @@ export function TimeSeriesGraph({graph}:{graph: GraphClass2}){
     console.log(point.getPosition()[0])
     return (
       <>
-      {/* <Create2DPoint position={[-1, 1, 0.01]} selected={false} xData={'Time'} yData={89}/> */}
+      
        <Create2DPoint position={point.getPosition()} selected={point.getSelected()} 
        xData={point.getXData()} yData={point.getYData()}></Create2DPoint>
       
@@ -50,10 +51,10 @@ export function TimeSeriesGraph({graph}:{graph: GraphClass2}){
     )
   }
   function GenerateLines(){
-    current = current + divider;
+    current = current + (divider / 2);
     console.log("Current :", currentLine)
     console.log("Last: ",lastLine)
-    currentLine = lastLine
+    //currentLine = lastLine
     return(
       <>
         <Line points={[[currentLine[0],currentLine[1],currentLine[2]], [lastLine[0],lastLine[1],lastLine[2]]]}
@@ -106,7 +107,7 @@ export function TimeSeriesGraph({graph}:{graph: GraphClass2}){
         
       </Root>
 
-        {lastLine = ([-1.8, -1, 0.01])}
+        {/* {lastLine = ([-1.8, -1, 0.01])} */}
         {graphClass.getPoints().map((points) => {
           points.setXPosition(current);
           currentLine = lastLine;

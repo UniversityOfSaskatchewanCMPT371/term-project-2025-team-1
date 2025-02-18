@@ -4,7 +4,7 @@ import { CreateTimeSeries } from '../../components/Graph_Components/CreateTimeSe
 import { CSVDataObject } from '../../models/CSVDataObject';
 import { GraphClass2 } from '../../components/Graph_Components/GraphClass2';
 import mainController from '../../controller/MainController';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 /*
 * The main scene being used in the current program
@@ -16,7 +16,15 @@ export default function MainScene() {
     //Then make it possible for the ui to  stay in view of the camera (maybe top left)
     let [updateGraph, setUpdateGraph] = useState(false);
     let [graph, setGraph] = useState<(GraphClass2)>();
+    
     //Only runs on the begining, might keep graph on and update file on graph instead
+    function updateScene(){
+        setUpdateGraph(true);
+    }
+    const sceneRef = useRef({updateScene});
+    useEffect(() => {
+        mainController.setSceneRef(sceneRef);
+    },);
     useEffect(() => {
         if(updateGraph) {
             const vrSelected = mainController.getCSVController().getVRSelected();
@@ -25,10 +33,8 @@ export default function MainScene() {
                 setGraph(newGraph);
             }
         }
-    })
-    function updateScene(){
-        setUpdateGraph(true);
-    }
+        setUpdateGraph(false);
+    });
     return (
         <>
         {/* This block of code is the sign behind the user
@@ -43,7 +49,7 @@ export default function MainScene() {
 
         {/* This block of code is the sign in front of the user
         A red box with the text Front */}
-        <mesh position = {[4.5,1,-4.55]} onClick={() => updateScene()}>
+        <mesh position = {[4.5,1,-4.55]}>
             <boxGeometry args = {[6, 5.5, 2]}/>
             <meshBasicMaterial color="red"/>
         </mesh>

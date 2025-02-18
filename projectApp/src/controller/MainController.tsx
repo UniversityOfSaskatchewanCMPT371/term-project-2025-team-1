@@ -1,13 +1,17 @@
 import { CSVController } from "./CSVController";
 import { GraphController } from "./GraphController";
+import MainScene from "../pages/Scene/MainScene";
 
 //Commenting out graph works its in graph
 export class MainController {
     private csvController: CSVController;
     private graphController: GraphController;
+    private updateScene: any;
+
     constructor(){
         this.csvController = new CSVController();
         this.graphController = new GraphController();
+        this.updateScene = null;
     }
 
     getCSVController(){
@@ -15,6 +19,13 @@ export class MainController {
     }
     getGraphController(){
         return this.graphController;
+    }
+    setSceneRef(ref: any){
+        this.updateScene = ref.current;
+    }
+    updateMainScene(){
+        if(this.updateScene && this.updateScene.updateScene)
+        this.updateScene.updateScene();
     }
 }
 

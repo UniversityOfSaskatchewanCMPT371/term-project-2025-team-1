@@ -64,6 +64,10 @@ export default function DropdownUI(props: dropDownProps){
             </>
         )
     }
+    function update(){
+        mainController.getCSVController().generate();
+        mainController.updateMainScene();
+    }
     function GenerateList(){
         //Layout of the body, and loading of RowObjects, then a Generate button, bottom right
         return (
@@ -84,7 +88,7 @@ export default function DropdownUI(props: dropDownProps){
 
             {/* Attach ON Click here */}
             <Container width={"30%"} height={"100%"} backgroundColor={"gray"} backgroundOpacity={0.5}
-            hover={{backgroundOpacity: 0.75}} onClick={() => {mainController.getCSVController().generate()}}>
+            hover={{backgroundOpacity: 0.75}} onClick={() => {update()}}>
             <Text fontWeight={"bold"} positionLeft={"20%"} positionBottom={"5%"}>Generate</Text>
             </Container>
             

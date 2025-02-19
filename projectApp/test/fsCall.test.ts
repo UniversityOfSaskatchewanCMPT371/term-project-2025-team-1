@@ -40,4 +40,7 @@ describe("testing fs mocking", () => {
     expect(readHello('/tmp/dir1/hw.txt')).toBe('hello dir1')
     expect(readHello('/tmp/dir2/hw.txt')).toBe('hello dir2')
   })
-})
+}).catch((err: unknown) => {
+  console.error((err as Error));
+  throw (err as Error);
+});

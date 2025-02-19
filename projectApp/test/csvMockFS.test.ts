@@ -37,4 +37,7 @@ describe("testing fs mocking", () => {
         expect(Object.keys(line).sort()).toEqual(['Time', 'X', 'Y'].sort());
     });
   })
-})
+}).catch((err: unknown) => {
+  console.error((err as Error));
+  throw (err as Error);
+});

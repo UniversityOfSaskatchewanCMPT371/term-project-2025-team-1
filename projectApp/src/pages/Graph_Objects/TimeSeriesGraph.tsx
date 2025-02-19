@@ -12,10 +12,9 @@ export function TimeSeriesGraph({graph}:{graph: GraphClass2}){
   const graphClass = graph;
   let totalSpace = 4;
   let divider = (totalSpace/graphClass.getPoints().length);
-  let current = divider - (divider * 2);
-  let currentLine:[number,number,number]= ([0,0,0]);
+  let current = (-2) + (divider);
+  let currentLine:[number,number,number]= ([0,0,0.01]);
   let lastLine:[number,number,number] = ([-1.8, -1, 0.01])
-  //max =(min + totalSpace) (max - min)/length 
   // function HeaderSelection(){
   //   return(
   //     <>
@@ -23,6 +22,7 @@ export function TimeSeriesGraph({graph}:{graph: GraphClass2}){
   //   )
 
   // }
+  // console.log("Divider ", divider, " current :", current, " Cur + Div:", (current + (divider/2)))
   function GenerateSideBar(){
     return(
       <>
@@ -41,6 +41,10 @@ export function TimeSeriesGraph({graph}:{graph: GraphClass2}){
   function GeneratePoints({point}:{point: PointClass}){
     //Update the container values;
     console.log(point.getPosition()[0])
+    console.log("Generate: ",currentLine, lastLine)
+    point.setXPosition(current);
+    currentLine = lastLine;
+    lastLine = ([point.getXPosition(), point.getYPosition(), 0.01])
     return (
       <>
       
@@ -51,9 +55,10 @@ export function TimeSeriesGraph({graph}:{graph: GraphClass2}){
     )
   }
   function GenerateLines(){
-    current = current + (divider / 2);
+    current = current + (divider);
+    console.log("Cur: ", current);
     console.log("Current :", currentLine)
-    console.log("Last: ",lastLine)
+    console.log("Last: ",lastLine);
     //currentLine = lastLine
     return(
       <>
@@ -109,13 +114,10 @@ export function TimeSeriesGraph({graph}:{graph: GraphClass2}){
 
         {/* {lastLine = ([-1.8, -1, 0.01])} */}
         {graphClass.getPoints().map((points) => {
-          points.setXPosition(current);
-          currentLine = lastLine;
-          lastLine = ([points.getXPosition(), points.getYPosition(), -0.01])
           return(
             <>
-            <GenerateLines/>
             <GeneratePoints point={points}></GeneratePoints>
+            <GenerateLines/>
             </>
           )
         })}

@@ -1,3 +1,4 @@
+import { CSVDataObject } from "../../models/CSVDataObject";
 import { DataInterface } from "../../types/BaseInterfaces";
 import { CSVData } from "../../types/CSVInterfaces";
 import { PointClass } from "./PointClass";
@@ -6,14 +7,20 @@ import { PointClass } from "./PointClass";
 export class GraphClass2 implements DataInterface{
     name:string;
     points: PointClass[];
-    csvData: CSVData;
+    csvData: CSVDataObject;  //Probably wont need this
+    yHeader: string;
+    xHeader: string;
+    range: number;
 
-    constructor(csv: CSVData) {
+    constructor(csv: CSVDataObject) {
         // Initialize an empty array to store PointClass instances
         this.name = "";
         this.csvData = csv;
         this.points = [];
-    }
+        this.yHeader = this.csvData.getYHeader();
+        this.xHeader = this.csvData.getTimeHeader() as string;
+        this.range = 0;
+    }   
 
     /**
      * Adds a new point to the graph.
@@ -21,10 +28,17 @@ export class GraphClass2 implements DataInterface{
      * post-condition: a new PointClass instance is added to the graph
      * @param {PointRef} pointRef - Reference to the point data.
      */
-    addPoint() {
-        const newPoint = new PointClass();
-        newPoint.setPosition([0,0,0.01])
-        this.points.push(newPoint);
+    addPoints() {
+        this.csvData.getData().forEach((data) => {
+            const newPoint = new PointClass();
+            newPoint.setPosition([0,0,0.01])
+            
+            newPoint.setXData(data[this.xHeader as keyof typeof data] as unknown as string);
+            newPoint.setYData(data[this.yHeader as keyof typeof data] as unknown as number);
+            
+            //Get Header by key then assign
+            this.points.push(newPoint);
+        })
     }
 
     /**
@@ -79,14 +93,44 @@ export class GraphClass2 implements DataInterface{
     getName(){
         return this.name;
     }
+    getXHeader(){
+        return this.xHeader;
+    }
+    getYHeader(){
+        return this.yHeader;
+    }
+    getRange(){
+        return this.range;
+    }
 
     setName(name: string){
         this.name = name;
     } 
-
-    setPoints(){
-        this.csvData.getData().forEach(() => {
-            this.addPoint();
+    setRange(){
+        // this.yRange = this.csvData.getData().length;
+        let max = 0;
+        this.csvData.getData().forEach((data) => {
+            if(data[this.yHeader as keyof typeof data] as unknown as number > max){
+                max = data[this.yHeader as keyof typeof data] as unknown as number;
+            }
         })
+
+        while((max % 5 != 0) || (max % 10 != 0)){
+            max++;
+        }
+
+        this.range = max;
+    }
+    
+    timeSeriesRange():number[]{
+        let range:number[] = [];
+        let cur = 0;
+
+        while(cur < this.range){
+            cur = cur + 5;
+            range.push(cur);
+        }
+
+        return range;
     }
 }

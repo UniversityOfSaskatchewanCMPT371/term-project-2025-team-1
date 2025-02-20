@@ -24,7 +24,7 @@ export class CSVController implements ControllerInterface{
                 // mainController.getGraphController().generateTimeSeriesGraph(csv);
                 const graph = new GraphClass2(csv);
                 graph.setName(csv.getName());
-                graph.setPoints();
+                graph.addPoints();
                 mainController.getGraphController().getModel().getData().push(graph)
                 console.log("Success on generate?")
                 

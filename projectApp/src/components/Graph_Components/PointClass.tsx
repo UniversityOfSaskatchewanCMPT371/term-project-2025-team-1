@@ -55,11 +55,20 @@ export class PointClass implements PointRef{
     setSelected(select: boolean){
         this.selected = select;
     }
-    setXData(newXData: string){
-        this.xData = newXData;
+    setXData(x: string){
+        // for(let time of this.csvData.getCSVHeaders()){
+        //     if(time == "Time" || time == "time"){
+        //         this.xData = this.csvData.getDataByKey(time) as unknown as string;
+        //         return;
+        //     }
+        // }
+        this.xData = x;
+
+        //Error no Time Header
     }
-    setYData(newYData: number){
-        this.yData = newYData;
+
+    setYData(y: number){
+        this.yData = y;
     }
     //End of Setters
 }

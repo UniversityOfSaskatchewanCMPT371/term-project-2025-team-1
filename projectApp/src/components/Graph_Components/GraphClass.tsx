@@ -1,4 +1,5 @@
-import { PointRef } from "../../types/PointInterface";
+import { PointClass } from "./PointClass";
+import { CSVDataObject } from "../../models/CSVDataObject";
 import { GraphInterface } from "../../types/GraphInterface";
 
 /**
@@ -6,78 +7,45 @@ import { GraphInterface } from "../../types/GraphInterface";
  */
 export class GraphClass implements GraphInterface {
   id: string;
-  type: '2D' | '3D';
-  title?: string;
   dimensions: { width: number; height: number; depth?: number };
-  points: PointRef[];
-  position: { x: number; y: number; z?: number };
+  points: PointClass[];
+  position: { x: number; y: number; z: number };
   axes: {
     xLabel: string;
     yLabel: string;
-    zLabel?: string;
     xRange: [number, number];
     yRange: [number, number];
-    zRange?: [number, number];
   };
-  style?: {
-    backgroundColor?: string;
-    gridColor?: string;
-    pointColor?: string;
-    lineColor?: string;
-    fontFamily?: string;
-  };
-  interactivity?: {
-    isSelectable: boolean;
-    isDraggable: boolean;
-    isZoomable: boolean;
-    isRotatable?: boolean;
-  };
-  metadata?: {
-    dataSource?: string;
-    lastUpdated?: Date;
-    description?: string;
-  };
-  onPointSelect?: (point: PointRef) => void;
+
 
   /**
    * Constructs a new GraphClass instance.
-   * @param graphData - An object conforming to GraphInterface
+   * @param CSVDataObject - An object of the CSVDataObject class
    */
-  constructor(graphData: GraphInterface) {
-    this.id = graphData.id;
-    this.type = graphData.type;
-    this.title = graphData.title;
-    this.dimensions = graphData.dimensions;
-    this.points = graphData.points;
-    this.position = graphData.position;
-    this.axes = graphData.axes;
-    this.style = graphData.style;
-    this.interactivity = graphData.interactivity;
-    this.metadata = graphData.metadata;
-    this.onPointSelect = graphData.onPointSelect;
+  constructor(csvdata: CSVDataObject ) {
+    this.id = csvdata.getName();
+    this.dimensions = { width: 10, height: 10, depth: 10 };
+    this.points = [];
+    this.position ={ x: 1, y: 1, z: 0 };
+    this.axes = { 
+      xLabel: csvdata.getCSVHeaders()[0], // First column header
+      yLabel: csvdata.getCSVHeaders()[1], // Second column header
+      xRange: [0, 100], //Default values
+      yRange: [0, 100]  //Default values
+  };
+  csvdata.getData().forEach(() => {
+    const newPoint = new PointClass();
+    newPoint.setPosition([0,0,0.01])
+    this.points.push(newPoint);
+})
+
   }
 
-   // These methods are placeholders and should be implemented as needed
-  // Basic getters and setters
   getId(): string {
     return this.id;
   }
   setId(id: string): void {
     this.id = id;
-  }
-
-  getType(): '2D' | '3D' {
-    return this.type;
-  }
-  setType(type: '2D' | '3D'): void {
-    this.type = type;
-  }
-
-  getTitle(): string | undefined {
-    return this.title;
-  }
-  setTitle(title: string): void {
-    this.title = title;
   }
 
   // Dimension getters and setters
@@ -92,21 +60,21 @@ export class GraphClass implements GraphInterface {
   getPosition(): { x: number; y: number; z?: number } {
     return this.position;
   }
-  setPosition(x: number, y: number, z?: number): void {
+  setPosition(x: number, y: number, z: number): void {
     this.position = { x, y, z };
   }
 
-  // Points management
-  getPoints(): PointRef[] {
+  getPoints(): PointClass[] {
     return this.points;
   }
-  setPoints(points: PointRef[]): void {
+  
+  setPoints(points: PointClass[]): void {
     this.points = points;
   }
-  addPoint(point: PointRef): void {
+  addPoint(point: PointClass): void {
     this.points.push(point);
   }
-  removePoint(point: PointRef): void {
+  removePoint(point: PointClass): void {
     const index = this.points.indexOf(point);
     if (index !== -1) {
       this.points.splice(index, 1);
@@ -120,97 +88,18 @@ export class GraphClass implements GraphInterface {
   getAxes(): {
     xLabel: string;
     yLabel: string;
-    zLabel?: string;
     xRange: [number, number];
     yRange: [number, number];
-    zRange?: [number, number];
   } {
     return this.axes;
   }
   setAxes(axes: {
     xLabel: string;
     yLabel: string;
-    zLabel?: string;
     xRange: [number, number];
     yRange: [number, number];
-    zRange?: [number, number];
   }): void {
     this.axes = axes;
   }
-  setAxisLabel(axis: 'x' | 'y' | 'z', label: string): void {
-    if (axis === 'x') {
-      this.axes.xLabel = label;
-    } else if (axis === 'y') {
-      this.axes.yLabel = label;
-    } else if (this.axes.zLabel !== undefined) {
-      this.axes.zLabel = label;
-    }
-  }
-  setAxisRange(axis: 'x' | 'y' | 'z', range: [number, number]): void {
-    if (axis === 'x') {
-      this.axes.xRange = range;
-    } else if (axis === 'y') {
-      this.axes.yRange = range;
-    } else if (this.axes.zLabel !== undefined) {
-      this.axes.zRange = range;
-    }
-  }
 
-  // Style management
-  getStyle():
-    | {
-        backgroundColor?: string;
-        gridColor?: string;
-        pointColor?: string;
-        lineColor?: string;
-        fontFamily?: string;
-      }
-    | undefined {
-    return this.style;
-  }
-  setStyle(style: {
-    backgroundColor?: string;
-    gridColor?: string;
-    pointColor?: string;
-    lineColor?: string;
-    fontFamily?: string;
-  }): void {
-    this.style = style;
-  }
-
-  // Interactivity management
-  getInteractivity():
-    | { isSelectable: boolean; isDraggable: boolean; isZoomable: boolean; isRotatable?: boolean }
-    | undefined {
-    return this.interactivity;
-  }
-  setInteractivity(settings: {
-    isSelectable: boolean;
-    isDraggable: boolean;
-    isZoomable: boolean;
-    isRotatable?: boolean;
-  }): void {
-    this.interactivity = settings;
-  }
-
-  // Metadata management
-  getMetadata():
-    | { dataSource?: string; lastUpdated?: Date; description?: string }
-    | undefined {
-    return this.metadata;
-  }
-  setMetadata(metadata: { dataSource?: string; lastUpdated?: Date; description?: string }): void {
-    this.metadata = metadata;
-  }
-  updateMetadata(updates: Partial<{ dataSource: string; lastUpdated: Date; description: string }>): void {
-    if (!this.metadata) {
-      this.metadata = {};
-    }
-    this.metadata = { ...this.metadata, ...updates };
-  }
-
-  // Event handler
-  setOnPointSelect(handler: (point: PointRef) => void): void {
-    this.onPointSelect = handler;
-  }
 }

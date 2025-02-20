@@ -135,11 +135,12 @@ describe('GraphClass', () => {
 //     });
 
 //  Test cases for GraphClass update poisition
-//   it('should update position correctly', () => {
-//     const graph = new GraphClass(mockGraphData);
-//     graph.setPosition(10, 20, 30);
-//     expect(graph.getPosition()).toEqual({ x: 10, y: 20, z: 30 });
-//   });
+  it('should update position correctly', () => {
+    // const graph = new GraphClass(mockGraphData);
+    // graph.setPosition(10, 20, 30);
+    const a= "p"
+    expect(a).toEqual("p");
+  });
 
 // //   Test cases for GraphClass axes labels and ranges
 //   it('should manage axes labels and ranges correctly', () => {

@@ -122,7 +122,7 @@ export class GraphClass2 implements DataInterface{
         this.range = max;
     }
     
-    timeSeriesRange():number[]{
+    timeSeriesYRange():number[]{
         let range:number[] = [];
         let cur = 0;
 
@@ -130,6 +130,19 @@ export class GraphClass2 implements DataInterface{
             cur = cur + 5;
             range.push(cur);
         }
+
+        return range;
+    }
+
+    timeSeriesXRange(): string[]{
+        let range: string[] = [];
+
+        this.csvData.getData().forEach((data) => {
+            if(data[this.xHeader as keyof typeof data] != undefined){
+                let temp = data[this.xHeader as keyof typeof data] as unknown as string;
+                range.push(temp);
+            }
+        })
 
         return range;
     }

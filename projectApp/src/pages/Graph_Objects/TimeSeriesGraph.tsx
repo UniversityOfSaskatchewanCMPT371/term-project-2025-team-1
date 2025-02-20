@@ -12,13 +12,13 @@ export function TimeSeriesGraph({graph}:{graph: GraphClass2}){
   const graphClass = graph;
   let totalSpace = 5;
   let divider = (totalSpace/graphClass.getPoints().length);
-  let current = (-2) + (divider);
+  let current = (-1.8) + (divider/2);
   let currentLine:[number,number,number]= ([0,0,0.01]);
   let lastLine:[number,number,number] = ([-1.8, -1, 0.01])
   let separator = 100/graphClass.getPoints().length;
 
   let yRange = 0;
-  let ySpacing = 100/graphClass.timeSeriesRange().length -1;
+  let ySpacing = 100/graphClass.timeSeriesYRange().length -1;
   // function HeaderSelection(){
   //   return(
   //     <>
@@ -45,10 +45,8 @@ export function TimeSeriesGraph({graph}:{graph: GraphClass2}){
   function GeneratePoints({point}:{point: PointClass}){
     //Update the container values;
     console.log(point.getPosition()[0])
-    console.log("Generate: ",currentLine, lastLine)
-    point.setXPosition(current);
-    point.setYPosition(((point.getYData()/100) * 6) - 1)
-    console.log("THE Y POS", point.getYData())
+    point.setXPosition((current));
+    point.setYPosition(((point.getYData()/100) * 6) - 1);
     currentLine = lastLine;
     lastLine = ([point.getXPosition(), point.getYPosition(), 0.01])
     return (
@@ -61,13 +59,6 @@ export function TimeSeriesGraph({graph}:{graph: GraphClass2}){
   }
   function GenerateLines(){
     current = current + (divider);
-    console.log("Cur: ", current);
-    console.log("Current :", currentLine)
-    console.log("Last: ",lastLine);
-    console.log("Y Header: ", graphClass.getYHeader());
-    console.log("Time Head: ", graphClass.getXHeader())
-    console.log("Range", graphClass.getRange())
-    //currentLine = lastLine
     return(
       <>
         <Line points={[[currentLine[0],currentLine[1],currentLine[2]], [lastLine[0],lastLine[1],lastLine[2]]]}
@@ -76,7 +67,7 @@ export function TimeSeriesGraph({graph}:{graph: GraphClass2}){
     )
   }
 
-  function GenerateRange(){
+  function GenerateYRange(){
     yRange = yRange + 5;
     const curVal = yRange;
     return(
@@ -98,12 +89,12 @@ export function TimeSeriesGraph({graph}:{graph: GraphClass2}){
             <Container width={"100%"} height={"85%"} flexDirection={"column-reverse"}>
               <Container height={`${ySpacing}%`} alignContent={"baseline"} flexDirection={"row-reverse"}> 
                 <Text  positionTop={10}>0 -</Text></Container>
-              {graphClass.timeSeriesRange().map(() => {
+              {graphClass.timeSeriesYRange().map(() => {
                 return (
                   <>
                   <Container width={"100%"} height={`${ySpacing}%`} 
                   alignContent={"baseline"} flexDirection={"row-reverse"} hover={{backgroundColor:"blue"}}>
-                    <GenerateRange></GenerateRange>
+                    <GenerateYRange></GenerateYRange>
                   </Container>
                   </>
                 )
@@ -116,20 +107,25 @@ export function TimeSeriesGraph({graph}:{graph: GraphClass2}){
 
         <Container width={"90%"} flexDirection={"column"}>
           <Container height={"85%"} alignItems={"center"} justifyContent={"center"}>
-            {graphClass.getPoints().map(() => {
-              return(
-                <Container height={"100%"} width={`${separator}%`} hover={{backgroundColor:"red"}}>
-
-            </Container>
-              )
-            })}
           </Container>
           
-          <Container height={"15%"}>
+          <Container height={"15%"} flexDirection={"column"}>
             <Container
               width = {"100%"} 
               height = {"4%"}
               backgroundColor= {"black"} >
+            </Container>
+
+            <Container height={"96%"} width={"100%"}>
+            {graphClass.timeSeriesXRange().map((data) => {
+              console.log(data);
+              return(
+                <Container height={"100%"} width={`${separator}%`} hover={{backgroundColor:"red"}}>
+                  <Text>{data}</Text>
+
+            </Container>
+              )
+            })}
             </Container>
           </Container>
         </Container>

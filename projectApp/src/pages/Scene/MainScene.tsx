@@ -1,10 +1,9 @@
 import { Text } from '@react-three/drei';
 import DropdownUI from "../UI/DropdownUI"
 import { CreateTimeSeries } from '../../components/Graph_Components/CreateTimeSeries';
-import { CSVDataObject } from '../../models/CSVDataObject';
-import { GraphClass2 } from '../../components/Graph_Components/GraphClass2';
 import mainController from '../../controller/MainController';
 import { useEffect, useRef, useState } from 'react';
+import { TimeSeriesGraphClass } from '../../components/Graph_Components/TimeSeriesGraphClass';
 
 /*
 * The main scene being used in the current program
@@ -15,7 +14,7 @@ export default function MainScene() {
     //Add a UI to the MainScene
     //Then make it possible for the ui to  stay in view of the camera (maybe top left)
     let [updateGraph, setUpdateGraph] = useState(false);
-    let [graph, setGraph] = useState<(GraphClass2)>();
+    let [graph, setGraph] = useState<(TimeSeriesGraphClass)>();
     
     //Only runs on the begining, might keep graph on and update file on graph instead
     function updateScene(){

@@ -1,6 +1,5 @@
 import { CSVController } from "./CSVController";
 import { GraphController } from "./GraphController";
-import MainScene from "../pages/Scene/MainScene";
 
 //Commenting out graph works its in graph
 export class MainController {

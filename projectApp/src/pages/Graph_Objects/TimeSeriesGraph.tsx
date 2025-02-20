@@ -1,14 +1,14 @@
 import { Root, Container, Text } from '@react-three/uikit';
 import { Line } from "@react-three/drei";
 import { Create2DPoint } from '../../components/Graph_Components/Create2DPoint';
-import { GraphClass2 } from '../../components/Graph_Components/GraphClass2';
+import { TimeSeriesGraphClass } from '../../components/Graph_Components/TimeSeriesGraphClass';
 import { PointClass } from '../../components/Graph_Components/PointClass';
 
 /**
  * This class will handle creating and updating a 2D Time Series graph based on the GraphClass.
  */
 
-export function TimeSeriesGraph({graph}:{graph: GraphClass2}){
+export function TimeSeriesGraph({graph}:{graph: TimeSeriesGraphClass}){
   const graphClass = graph;
   let totalSpace = 5;
   let divider = (totalSpace/graphClass.getPoints().length);
@@ -19,24 +19,42 @@ export function TimeSeriesGraph({graph}:{graph: GraphClass2}){
 
   let yRange = 0;
   let ySpacing = 100/graphClass.timeSeriesYRange().length -1;
-  // function HeaderSelection(){
-  //   return(
-  //     <>
-  //     </>
-  //   )
+  function HeaderSelection(){
+    return(
+      <>
+      <Container height={"30%"}>
+      <Text>{graphClass.getYHeader()}</Text>
+      </Container>
+      <Container height={"50%"} width={"100%"} justifyContent={"space-evenly"}>
 
-  // }
+        {/* REFACTOR: Duplicate */}
+        <Container width={"40%"} height={"30%"} backgroundColor={"gray"} backgroundOpacity={0.8}
+        justifyContent={"center"} hover={{backgroundOpacity: 0.95}}>
+          <Text fontWeight={"bold"}>&lt;</Text>
+        </Container>
+        <Container width={"40%"} height={"30%"} backgroundColor={"gray"} backgroundOpacity={0.8}
+        justifyContent={"center"} hover={{backgroundOpacity: 0.95}}>
+          <Text fontWeight={"bold"}>&gt;</Text>
+        </Container>
+
+      </Container>
+      </>
+    )
+
+  }
   // console.log("Divider ", divider, " current :", current, " Cur + Div:", (current + (divider/2)))
   function GenerateSideBar(){
     return(
       <>
         <Container width={"15%"} height={"100%"} backgroundColor={"skyblue"}
         flexDirection={"column"}>
-          <Container height={"50%"} alignItems={"flex-start"} justifyContent={"center"}>
-            <Text positionTop={10}>Y Value </Text>
+          <Container height={"50%"} alignItems={"center"} justifyContent={"center"} flexDirection={"column"}>
+            <Text>Y Header </Text>
+            <HeaderSelection></HeaderSelection>
           </Container>
         <Container height={"50%"} alignItems={"flex-start"} justifyContent={"center"}>
-          <Text>X Value {graphClass.getPoints().length.toString()}</Text>
+          <Text> Point Value:</Text>
+          {/* For Each point, check selected and then print the data */}
         </Container>
       </Container>
       </>
@@ -93,7 +111,7 @@ export function TimeSeriesGraph({graph}:{graph: GraphClass2}){
                 return (
                   <>
                   <Container width={"100%"} height={`${ySpacing}%`} 
-                  alignContent={"baseline"} flexDirection={"row-reverse"} hover={{backgroundColor:"blue"}}>
+                  alignContent={"baseline"} flexDirection={"row-reverse"}>
                     <GenerateYRange></GenerateYRange>
                   </Container>
                   </>
@@ -118,9 +136,9 @@ export function TimeSeriesGraph({graph}:{graph: GraphClass2}){
 
             <Container height={"96%"} width={"100%"}>
             {graphClass.timeSeriesXRange().map((data) => {
-              console.log(data);
               return(
-                <Container height={"100%"} width={`${separator}%`} hover={{backgroundColor:"red"}}>
+                <Container height={"100%"} width={`${separator}%`}
+                justifyContent={"center"}>
                   <Text>{data}</Text>
 
             </Container>
@@ -137,7 +155,7 @@ export function TimeSeriesGraph({graph}:{graph: GraphClass2}){
   }
   return (
     <>
-    <mesh position={[4, 2,-3.5]}>
+    <mesh position={[4, 2,-3.5]} >
       <Root sizeX={7} sizeY={3} backgroundColor={"lightgrey"}>
         <Container 
           flexDirection={'row'}
@@ -147,7 +165,6 @@ export function TimeSeriesGraph({graph}:{graph: GraphClass2}){
             <GenerateSideBar/>
             <GenerateGraph/>
         </Container>
-        
       </Root>
 
         {/* {lastLine = ([-1.8, -1, 0.01])} */}

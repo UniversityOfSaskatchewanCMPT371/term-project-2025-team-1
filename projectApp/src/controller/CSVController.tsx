@@ -1,4 +1,4 @@
-import { GraphClass2 } from "../components/Graph_Components/GraphClass2";
+import { TimeSeriesGraphClass } from "../components/Graph_Components/TimeSeriesGraphClass";
 import { CSVDataObject } from "../models/CSVDataObject";
 import { CSVReaderModel } from "../models/CSVReaderModel";
 import { ControllerInterface } from "../types/BaseInterfaces";
@@ -21,8 +21,7 @@ export class CSVController implements ControllerInterface{
         for(let csv of this.model.getData()){
             if(csv.getDisplayBoard() == 1){
                 csv.setVRSelected(true);
-                // mainController.getGraphController().generateTimeSeriesGraph(csv);
-                const graph = new GraphClass2(csv);
+                const graph = new TimeSeriesGraphClass(csv);
                 graph.setName(csv.getName());
                 graph.addPoints();
                 mainController.getGraphController().getModel().getData().push(graph)

@@ -1,10 +1,9 @@
 import { CSVDataObject } from "../../models/CSVDataObject";
 import { DataInterface } from "../../types/BaseInterfaces";
-import { CSVData } from "../../types/CSVInterfaces";
 import { PointClass } from "./PointClass";
 
 // GraphClass2 is a class that represents a collection of multiple points
-export class GraphClass2 implements DataInterface{
+export class TimeSeriesGraphClass implements DataInterface{
     name:string;
     points: PointClass[];
     csvData: CSVDataObject;  //Probably wont need this
@@ -145,5 +144,12 @@ export class GraphClass2 implements DataInterface{
         })
 
         return range;
+    }
+
+    incrementYHeader(){
+
+    }
+    decrementYHeader(){
+        
     }
 }

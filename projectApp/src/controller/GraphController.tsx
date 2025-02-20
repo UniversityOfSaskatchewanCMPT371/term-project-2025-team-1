@@ -1,8 +1,7 @@
-import { GraphClass2 } from "../components/Graph_Components/GraphClass2";
+import { TimeSeriesGraphClass } from "../components/Graph_Components/TimeSeriesGraphClass";
 import { CSVDataObject } from "../models/CSVDataObject";
 import { GraphModel } from "../models/GraphModel";
 import { ControllerInterface } from "../types/BaseInterfaces";
-import { CSVData } from "../types/CSVInterfaces";
 
 export class GraphController implements ControllerInterface{
     model: GraphModel;
@@ -14,9 +13,9 @@ export class GraphController implements ControllerInterface{
         return this.model;
     }
 
-    generateTimeSeriesGraph(csv: CSVDataObject): GraphClass2{
+    generateTimeSeriesGraph(csv: CSVDataObject): TimeSeriesGraphClass{
         //Empy new graph
-        let result:GraphClass2 = new GraphClass2(csv);
+        let result:TimeSeriesGraphClass = new TimeSeriesGraphClass(csv);
         //result.setRange();
 
         for(let graph of this.getModel().getData()){

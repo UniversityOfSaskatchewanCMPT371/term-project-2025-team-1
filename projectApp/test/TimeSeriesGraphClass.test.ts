@@ -85,34 +85,6 @@ describe( 'Time Series Graph Class', async () => {
         expect(point.getSelected()).toEqual(true);
 
         graph.updatePoints();
+        expect(graph.getPoints()[0].getSelected()).toEqual(false);
     })
-
-    /**
-     * Tests whether a point can be successfully added to the graph.
-     */
-    // it('should add a point to the graph', () => {
-    //     graph.addPoints();
-    //     expect(graph.getPoints()).toHaveLength(1);
-    // });
-
-    /**
-     * Ensures that a point can be found based on its xData and yData values.
-     */
-    // it('should find a point by xData and yData', () => {
-    //     graph.addPoints();
-    //     const foundPoint = graph.findPoint('testX', 100);
-    //     expect(foundPoint).not.toBeUndefined();
-    //     expect(foundPoint?.getXData()).toBe('testX');
-    //     expect(foundPoint?.getYData()).toBe(100);
-    // });
-
-    /**
-     * Verifies that all points update their positions correctly when a zoom factor is applied.
-     */
-    // it('should update positions based on zoom factor', () => {
-    //     graph.addPoints();
-    //     graph.updateOnZoom(2);
-    //     const updatedPoint = graph.getPoints()[0];
-    //     expect(updatedPoint.getPosition()).toEqual([2, 4, 6]);
-    // });
 });

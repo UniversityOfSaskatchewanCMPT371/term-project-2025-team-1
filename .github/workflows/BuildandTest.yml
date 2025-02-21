@@ -1,4 +1,4 @@
-#  Continuous Integration (CI) workflow to build and test our TS/JS project
+#  Continuous Integration (CI) workflow to build and test our project
 name: BuildandTest
 
 # Controls when the workflow will run
@@ -15,15 +15,10 @@ on:
 defaults:
   run:
     working-directory: ./projectApp
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  build:
-    # The type of runner that the job will run on
+  job-linux:
     runs-on: ubuntu-latest
-
-    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      # Checks-out the repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v4
 
       - name: Install dependencies
@@ -37,3 +32,24 @@ jobs:
 
       - name: Test
         run: npm run test
+
+#  job-windows:
+#    runs-on: windows-latest
+#    steps:
+#      - uses: actions/checkout@v4
+#
+#      - name: Install dependencies
+#        run: npm ci
+#
+#      - name: Run linter
+#        run: npm run lint
+#
+#      - name: Build
+#        run: npm run build
+#
+#      - name: Test
+#        run: |
+#         npm run test
+#        env:
+#          CI: true
+#        timeout-minutes: 3

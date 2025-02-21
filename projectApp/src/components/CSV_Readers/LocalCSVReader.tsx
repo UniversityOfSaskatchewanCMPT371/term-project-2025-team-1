@@ -14,7 +14,6 @@ export async function LocalCSVHeaders(file:string): Promise<CSVHeaders> {
         return ({ headers: Object.keys(timeSeries[0]) } as CSVHeaders); // Extract headers from the first row.
     // Rethrowing errors
     }).catch((err:unknown) => {
-        //logger.error("LocalCSVHeaders Error", err);
         throw (err as Error);
     });
 }
@@ -26,7 +25,7 @@ export async function LocalCSVHeaders(file:string): Promise<CSVHeaders> {
 **/
 export async function LocalCSVReader(file:string): Promise<TimeSeriesData[]>{
     if(!file.endsWith('.csv') && !file.endsWith('.txt')){
-        // ensure input file is a csv
+        // Ensures input file is a csv
         throw new Error('File must be .csv or .txt');
     }
     return fsPromise.readFile(file, 'utf8').then((data: string) => {
@@ -35,7 +34,7 @@ export async function LocalCSVReader(file:string): Promise<TimeSeriesData[]>{
             header: true,
             dynamicTyping: true,
             complete: function(parsed: Papa.ParseResult<TimeSeriesData>){
-                // ensures casting works
+                // Ensures casting works
                 timeSeries = parsed.data;
                 if(timeSeries.length === 0){
                     throw new Error("LocalCSVReader is empty");
@@ -47,7 +46,7 @@ export async function LocalCSVReader(file:string): Promise<TimeSeriesData[]>{
         });
         return timeSeries;
     }).catch((err: unknown) => {
-        // test for possible error catching
+        // Test for possible error catching
         throw (err as Error);
     });
 };
@@ -89,6 +88,5 @@ export function LocalCsvReader(file: File): Promise<TimeSeriesData[]>{
             reject(new Error("Error")) // handles file reading errors
         }
         reader.readAsText(file);
-        
     });
 }

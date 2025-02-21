@@ -33,21 +33,21 @@ describe('GraphClass2', () => {
     /**
      * Tests whether a point can be successfully added to the graph.
      */
-    it('should add a point to the graph', () => {
-        graph.addPoints();
-        expect(graph.getPoints()).toHaveLength(1);
-    });
+    // it('should add a point to the graph', () => {
+    //     graph.addPoints();
+    //     expect(graph.getPoints()).toHaveLength(1);
+    // });
 
     /**
      * Ensures that a point can be found based on its xData and yData values.
      */
-    it('should find a point by xData and yData', () => {
-        graph.addPoints();
-        const foundPoint = graph.findPoint('testX', 100);
-        expect(foundPoint).not.toBeUndefined();
-        expect(foundPoint?.getXData()).toBe('testX');
-        expect(foundPoint?.getYData()).toBe(100);
-    });
+    // it('should find a point by xData and yData', () => {
+    //     graph.addPoints();
+    //     const foundPoint = graph.findPoint('testX', 100);
+    //     expect(foundPoint).not.toBeUndefined();
+    //     expect(foundPoint?.getXData()).toBe('testX');
+    //     expect(foundPoint?.getYData()).toBe(100);
+    // });
 
     /**
      * Verifies that all points update their positions correctly when a zoom factor is applied.

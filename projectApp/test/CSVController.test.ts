@@ -2,6 +2,7 @@ import { describe, test, expect, beforeEach } from "vitest";
 import { CSVController } from "../src/controller/CSVController";
 import { CSVReaderModel } from "../src/models/CSVReaderModel";
 import { CSVDataObject } from "../src/models/CSVDataObject";
+import mainController from "../src/controller/MainController";
 
 /*
 * For testing CSVController
@@ -12,7 +13,7 @@ describe("CSVController Tests", () => {
 
     //Before each test, initialize a new MainController
     beforeEach(() => {
-        csvController = new CSVController();
+        csvController = mainController.getCSVController();
     });
 
     test("Test if CSVController able to get instance of model", () => {

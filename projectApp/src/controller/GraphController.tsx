@@ -2,6 +2,7 @@ import { TimeSeriesGraphClass } from "../components/Graph_Components/TimeSeriesG
 import { CSVDataObject } from "../models/CSVDataObject";
 import { GraphModel } from "../models/GraphModel";
 import { ControllerInterface } from "../types/BaseInterfaces";
+import mainController from "./MainController";
 
 export class GraphController implements ControllerInterface{
     model: GraphModel;
@@ -19,11 +20,15 @@ export class GraphController implements ControllerInterface{
         //result.setRange();
 
         for(let graph of this.getModel().getData()){
+            console.log(graph);
             if(graph.getName() == csv.getName()){
                 graph.setRange()
                 return graph;
             }
         }
+        mainController.updateMainScene();
         return result;
     }
+
+    
 }

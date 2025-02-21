@@ -3,13 +3,15 @@ import { Line } from "@react-three/drei";
 import { Create2DPoint } from '../../components/Graph_Components/Create2DPoint';
 import { TimeSeriesGraphClass } from '../../components/Graph_Components/TimeSeriesGraphClass';
 import { PointClass } from '../../components/Graph_Components/PointClass';
+import { useState } from 'react';
 
 /**
  * This class will handle creating and updating a 2D Time Series graph based on the GraphClass.
  */
 
 export function TimeSeriesGraph({graph}:{graph: TimeSeriesGraphClass}){
-  const graphClass = graph;
+  const [ header, setHeader ] = useState("");
+  let graphClass = graph;
   let totalSpace = 5;
   let divider = (totalSpace/graphClass.getPoints().length);
   let current = (-1.8) + (divider/2);
@@ -19,21 +21,27 @@ export function TimeSeriesGraph({graph}:{graph: TimeSeriesGraphClass}){
 
   let yRange = 0;
   let ySpacing = 100/graphClass.timeSeriesYRange().length -1;
+
+  function UpdateGraph(){
+    setHeader(graphClass.getYHeader());
+  }
+
   function HeaderSelection(){
+    setHeader(graphClass.getYHeader());
     return(
       <>
       <Container height={"30%"}>
-      <Text>{graphClass.getYHeader()}</Text>
+      <Text>{header}</Text>
       </Container>
       <Container height={"50%"} width={"100%"} justifyContent={"space-evenly"}>
 
         {/* REFACTOR: Duplicate */}
         <Container width={"40%"} height={"30%"} backgroundColor={"gray"} backgroundOpacity={0.8}
-        justifyContent={"center"} hover={{backgroundOpacity: 0.95}}>
+        justifyContent={"center"} hover={{backgroundOpacity: 0.95}} onClick={() => {graphClass.decrementYHeader(); UpdateGraph()}}>
           <Text fontWeight={"bold"}>&lt;</Text>
         </Container>
         <Container width={"40%"} height={"30%"} backgroundColor={"gray"} backgroundOpacity={0.8}
-        justifyContent={"center"} hover={{backgroundOpacity: 0.95}}>
+        justifyContent={"center"} hover={{backgroundOpacity: 0.95}} onClick={() => {graphClass.incrementYHeader(); UpdateGraph()}}>
           <Text fontWeight={"bold"}>&gt;</Text>
         </Container>
 
@@ -60,9 +68,8 @@ export function TimeSeriesGraph({graph}:{graph: TimeSeriesGraphClass}){
       </>
     )
   }
+
   function GeneratePoints({point}:{point: PointClass}){
-    //Update the container values;
-    console.log(point.getPosition()[0])
     point.setXPosition((current));
     point.setYPosition(((point.getYData()/100) * 6) - 1);
     currentLine = lastLine;

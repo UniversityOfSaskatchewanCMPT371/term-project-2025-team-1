@@ -1,3 +1,4 @@
+import mainController from "../../controller/MainController";
 import { CSVDataObject } from "../../models/CSVDataObject";
 import { DataInterface } from "../../types/BaseInterfaces";
 import { PointClass } from "./PointClass";
@@ -147,9 +148,73 @@ export class TimeSeriesGraphClass implements DataInterface{
     }
 
     incrementYHeader(){
+        console.log("inc",this.yHeader);
+        if(this.csvData.getCSVHeaders().length < 3){
+            return;
+        }
+
+        let start = this.csvData.getCSVHeaders().indexOf(this.getYHeader());
+
+        //Cycle to the beginning
+        if(start == this.csvData.getCSVHeaders().length - 1){
+            console.log("NO way")
+            if(this.csvData.getCSVHeaders()[0] != this.getXHeader()){
+                this.yHeader = this.csvData.getCSVHeaders()[0];
+            }
+            else{
+                //Go to the next available header
+                this.yHeader = this.csvData.getCSVHeaders()[1];
+            }
+            return;
+        }
+
+        if(start == this.csvData.getCSVHeaders().length - 2 && this.csvData.getCSVHeaders()[this.csvData.getCSVHeaders().length - 1] == this.getXHeader()){
+            console.log("HRE");
+            this.yHeader =  this.csvData.getCSVHeaders()[0];
+            return;
+            
+        }
+        
+        for(start; start < this.csvData.getCSVHeaders().length; start++){
+            console.log(" SO HERE")
+            if(this.csvData.getCSVHeaders()[start] != this.getYHeader() && this.csvData.getCSVHeaders()[start] != this.getXHeader()){
+                this.yHeader = this.csvData.getCSVHeaders()[start];
+                break;
+            }
+        }
 
     }
     decrementYHeader(){
+        console.log("dec", this.yHeader);
+        if(this.csvData.getCSVHeaders().length < 3){
+            return;
+        }
+
+        let start = this.csvData.getCSVHeaders().indexOf(this.getYHeader());
+
+        //Cycle to the beginning
+        if(start == 0){
+            if(this.csvData.getCSVHeaders()[this.csvData.getCSVHeaders().length - 1] != this.getXHeader()){
+                this.yHeader = this.csvData.getCSVHeaders()[this.csvData.getCSVHeaders().length - 1];
+            }
+            else{
+                //Go to the next available header
+                this.yHeader =this.csvData.getCSVHeaders()[this.csvData.getCSVHeaders().length - 2];
+            }
+            return;
+        }
+
+        if(start == 1 && this.csvData.getCSVHeaders()[0] == this.getXHeader()){
+            this.yHeader = this.csvData.getCSVHeaders()[this.csvData.getCSVHeaders().length - 1];
+            return;
+            
+        }
         
+        for(start; start > 0; start--){
+            if(this.csvData.getCSVHeaders()[start] != this.getYHeader() && this.csvData.getCSVHeaders()[start] != this.getXHeader()){
+                this.yHeader = this.csvData.getCSVHeaders()[start];
+                break;
+            }
+        }
     }
 }

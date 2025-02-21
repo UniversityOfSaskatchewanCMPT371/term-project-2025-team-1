@@ -85,7 +85,7 @@ export class CSVDataObject implements CSVData{
             //console.log(val);
             const val = value;
             for(const header of Object.keys(val)){
-                if(val[header as keyof typeof val].toString() == time){
+                if(val[header as keyof typeof val] as unknown as string == time){
                     //console.log(val[header as keyof typeof val], "  ", val[this.yHeader as keyof typeof val]);
                     result = val[this.yHeader as keyof typeof val];
                     return result;
@@ -118,7 +118,7 @@ export class CSVDataObject implements CSVData{
         return this.displayBoard;
     }
     getTimeHeader(){
-        for(let head of this.getCSVHeaders()){
+        for(const head of this.getCSVHeaders()){
             if(head == "Time" || head =="time"){
                 return head;
             }
@@ -137,7 +137,7 @@ export class CSVDataObject implements CSVData{
         this.vrSelected = bool;
     }
     setYHeader(header:string){
-        for(let head of this.csvHeaders){
+        for(const head of this.getCSVHeaders()){
             if(head == header){
                 this.yHeader = header;
                 break;

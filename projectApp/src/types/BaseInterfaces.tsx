@@ -1,4 +1,3 @@
-import { CSVData } from "./CSVInterfaces";
 
 export interface ModelInterface{
     data: DataInterface[];                                        //Array of data assigned to model

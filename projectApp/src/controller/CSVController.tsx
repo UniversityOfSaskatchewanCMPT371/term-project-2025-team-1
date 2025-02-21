@@ -18,7 +18,7 @@ export class CSVController implements ControllerInterface{
         return this.model;
     }
     generate(){
-        for(let csv of this.model.getData()){
+        for(const csv of this.model.getData()){
             if(csv.getDisplayBoard() == 1){
                 csv.setVRSelected(true);
                 const graph = new TimeSeriesGraphClass(csv);
@@ -32,7 +32,7 @@ export class CSVController implements ControllerInterface{
     }
     getVRSelected(): CSVDataObject{
         let file:CSVDataObject = new CSVDataObject();
-        for(let csv of this.model.getData()){
+        for(const csv of this.model.getData()){
             if(csv.getVRSelected()){
                 file = csv;
                 return csv;

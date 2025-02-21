@@ -23,8 +23,9 @@ export class MainController {
         this.updateScene = ref.current;
     }
     updateMainScene(){
-        if(this.updateScene && this.updateScene.updateScene)
-        this.updateScene.updateScene();
+        if(this.updateScene?.updateScene){
+            this.updateScene.updateScene();
+        }
     }
 }
 

@@ -3,7 +3,7 @@ import { Line } from "@react-three/drei";
 import { Create2DPoint } from '../../components/Graph_Components/Create2DPoint';
 import { TimeSeriesGraphClass } from '../../components/Graph_Components/TimeSeriesGraphClass';
 import { PointClass } from '../../components/Graph_Components/PointClass';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import mainController from '../../controller/MainController';
 
 /**
@@ -14,20 +14,19 @@ export function TimeSeriesGraph({graph}:{graph: TimeSeriesGraphClass}){
   const [ header, setHeader ] = useState("");
   const [ isChanged, change ] = useState(false);
 
-  let graphClass = graph;
-  let totalSpace = 5;
-  let divider = (totalSpace/graphClass.getPoints().length);
+  const graphClass = graph;
+  const totalSpace = 5;
+  const divider = (totalSpace/graphClass.getPoints().length);
   let current = (-1.8) + (divider/2);
   let currentLine:[number,number,number]= ([0,0,0.01]);
   let lastLine:[number,number,number] = ([-1.8, -1, 0.01])
-  let separator = 100/graphClass.getPoints().length;
+  const separator = 100/graphClass.getPoints().length;
 
   let yRange = 0;
-  let ySpacing = 100/(graphClass.timeSeriesYRange().length + 1);
+  const ySpacing = 100/(graphClass.timeSeriesYRange().length + 1);
 
   function UpdateGraph(){
     graphClass.updatePointPosition();
-    ySpacing = (100/graphClass.timeSeriesYRange().length + 1);
     setHeader(graphClass.getYHeader());
     mainController.updateMainScene();
 
@@ -125,8 +124,7 @@ export function TimeSeriesGraph({graph}:{graph: TimeSeriesGraphClass}){
               {graphClass.timeSeriesYRange().map(() => {
                 return (
                   <>
-                  <Container width={"100%"} height={`${ySpacing}%`} 
-                  alignContent={"baseline"} flexDirection={"row-reverse"}>
+                  <Container width={"100%"} height={`${ySpacing}%`} alignContent={"baseline"} flexDirection={"row-reverse"}>
                     <GenerateYRange></GenerateYRange>
                   </Container>
                   </>
@@ -152,8 +150,7 @@ export function TimeSeriesGraph({graph}:{graph: TimeSeriesGraphClass}){
             <Container height={"96%"} width={"100%"}>
             {graphClass.timeSeriesXRange().map((data) => {
               return(
-                <Container height={"100%"} width={`${separator}%`}
-                justifyContent={"center"}>
+                <Container height={"100%"} width={`${separator}%`} justifyContent={"center"}>
                   <Text>{data}</Text>
 
             </Container>

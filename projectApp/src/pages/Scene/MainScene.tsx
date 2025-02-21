@@ -13,8 +13,8 @@ export default function MainScene() {
     //TODO
     //Add a UI to the MainScene
     //Then make it possible for the ui to  stay in view of the camera (maybe top left)
-    let [updateGraph, setUpdateGraph] = useState(false);
-    let [graph, setGraph] = useState<(TimeSeriesGraphClass)>();
+    const [updateGraph, setUpdateGraph] = useState(false);
+    const [graph, setGraph] = useState<(TimeSeriesGraphClass)>();
     
     //Only runs on the begining, might keep graph on and update file on graph instead
     function updateScene(){
@@ -27,7 +27,7 @@ export default function MainScene() {
     useEffect(() => {
         if(updateGraph) {
             const vrSelected = mainController.getCSVController().getVRSelected();
-            if(vrSelected && mainController.getGraphController().getModel().getData().length > 0){
+            if(mainController.getGraphController().getModel().getData().length > 0){
                 const newGraph = mainController.getGraphController().generateTimeSeriesGraph(vrSelected);
                 setGraph(newGraph);
             }

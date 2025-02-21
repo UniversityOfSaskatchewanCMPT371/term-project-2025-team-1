@@ -1,5 +1,4 @@
 import { TimeSeriesGraphClass } from "../components/Graph_Components/TimeSeriesGraphClass";
-import { TimeSeriesGraph } from "../pages/Graph_Objects/TimeSeriesGraph";
 import { ModelInterface } from "../types/BaseInterfaces";
 import { CSVData } from "../types/CSVInterfaces";
 

@@ -16,10 +16,10 @@ export class GraphController implements ControllerInterface{
 
     generateTimeSeriesGraph(csv: CSVDataObject): TimeSeriesGraphClass{
         //Empy new graph
-        let result:TimeSeriesGraphClass = new TimeSeriesGraphClass(csv);
+        const result:TimeSeriesGraphClass = new TimeSeriesGraphClass(csv);
         //result.setRange();
 
-        for(let graph of this.getModel().getData()){
+        for(const graph of this.getModel().getData()){
             console.log(graph);
             if(graph.getName() == csv.getName()){
                 graph.setRange()

@@ -1,4 +1,3 @@
-import mainController from "../../controller/MainController";
 import { CSVDataObject } from "../../models/CSVDataObject";
 import { DataInterface } from "../../types/BaseInterfaces";
 import { PointClass } from "./PointClass";
@@ -126,7 +125,7 @@ export class TimeSeriesGraphClass implements DataInterface{
     }
     
     timeSeriesYRange():number[]{
-        let range:number[] = [];
+        const range:number[] = [];
         let cur = 0;
 
         while(cur < this.range){
@@ -138,13 +137,13 @@ export class TimeSeriesGraphClass implements DataInterface{
     }
 
     timeSeriesXRange(): string[]{
-        let range: string[] = [];
+        const range: string[] = [];
 
         this.csvData.getData().forEach((data) => {
-            if(data[this.xHeader as keyof typeof data] != undefined){
-                let temp = data[this.xHeader as keyof typeof data] as unknown as string;
-                range.push(temp);
-            }
+            
+            const temp = data[this.xHeader as keyof typeof data] as unknown as string;
+            range.push(temp);
+            
         })
 
         return range;
@@ -222,8 +221,8 @@ export class TimeSeriesGraphClass implements DataInterface{
     }
 
     updatePointPosition(){
-        let totalSpace = 5;
-        let divider = (totalSpace/this.timeSeriesYRange().length);
+        const totalSpace = 5;
+        const divider = (totalSpace/this.timeSeriesYRange().length);
         let current = (-1.8) + (divider/2);
 
         this.resetPoints();

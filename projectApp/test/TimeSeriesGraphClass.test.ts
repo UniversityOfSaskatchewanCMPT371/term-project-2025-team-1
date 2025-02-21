@@ -68,18 +68,22 @@ describe( 'Time Series Graph Class', async () => {
         graph.clearPoints()
         graph.addPoint();
 
+        //First point in the graph
         const point = graph.getPoints()[0];
         expect(graph.getPoints()[0]).toBe(point);
 
+        //The expected values of the first point in the graph
         expect(point.getYData()).toBe(10);
         expect(point.getXData()).toBe("2025-01-18");
 
+        //Testing to see if a Point's position is modifiable
         point.setPosition([-1.8,1,0.01]);
         expect(point.getPosition()).toEqual([-1.8,1,0.01]);
 
         expect(point.getXPosition()).toEqual(-1.8);
         expect(point.getYPosition()).toEqual(1);
 
+        //Selected Status of Point
         expect(point.getSelected()).toEqual(false);
         point.setSelected(true);
         expect(point.getSelected()).toEqual(true);

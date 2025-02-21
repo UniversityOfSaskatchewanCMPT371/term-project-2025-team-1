@@ -69,12 +69,6 @@ describe('GraphClass', async () => {
     expect(graph.getName()).toBe('NewName');
   });
 
-  // it('sets and gets dimensions correctly', () => {
-  //   const graph = new GraphClass(csvDataMock);
-  //   graph.setDimensions(20, 30, 40);
-  //   expect(graph.getDimensions()).toEqual({ width: 20, height: 30, depth: 40 });
-  // });
-
   it('sets and gets position correctly', () => {
     const graph = new GraphClass(csvDataMock);
     graph.setPosition(5, 6, 7);

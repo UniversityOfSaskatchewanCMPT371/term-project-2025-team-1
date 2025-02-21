@@ -1,6 +1,5 @@
 import { LocalCSVReader, LocalCsvReader } from "../components/CSV_Readers/LocalCSVReader";
 import { CSVData } from "../types/CSVInterfaces";
-// import logger from "../logging/logs";
 import { UrlCSVReader } from "../components/CSV_Readers/UrlCSVReader";
 
 export class CSVDataObject implements CSVData{
@@ -21,7 +20,14 @@ export class CSVDataObject implements CSVData{
     setData(data: { key: Record<string,string | number> }[]){
         this.data = data;
     }
-    //Initial creation, for loading a graph in the scene, set the yHeader
+    /**
+    * Loads a CSV file from a local file input and sets the graph data.
+    * @param index - The index used to generate a unique graph name.
+    * @param file - The local CSV file to be loaded.
+    * 
+    * @returns void
+    * @throws Will silently fail if an error occurs while loading the file.
+    */
     async loadLocalCSVFile(index: number,file: File){
         try {
             const data = await LocalCsvReader(file);
@@ -29,12 +35,19 @@ export class CSVDataObject implements CSVData{
             this.setName("Graph" + index.toString());
         }
         catch {
-           // logger.error("Failed Loading");
-           
+            // Error: failed logging
             return;
         }
     }
 
+    /**
+     * Loads a CSV file from a URL and sets the graph data.
+     * @param index - The index used to generate a unique graph name.
+     * @param file - The URL of the CSV file.
+     * 
+     * @returns void
+     * @throws Will silently fail if an error occurs while loading the file.
+     */
     async loadUrlCSVFile(index: number,file: string){
         try {
             const data = await UrlCSVReader(file)
@@ -47,12 +60,12 @@ export class CSVDataObject implements CSVData{
             }
         }
         catch {
-            //logger.error("Failed Loading");
+            // Error: failed logging
             return;
         }
     }
 
-    //Keeping for now in testing
+    // Loads a CSV file from a local file path (for testing purposes)
     async loadLocalByPath(index: number,file: string){
         try {
             const data = await LocalCSVReader(file);
@@ -60,26 +73,32 @@ export class CSVDataObject implements CSVData{
             this.name = ("Graph" + index.toString());
         }
         catch {
-           // logger.error("Failed Loading");
+           // Error: failed logging
             return;
         }
     }
+    
+    /**
+    * Retrieves data corresponding to a specific time value.
+    * @param time - The time value to search for in the dataset.
+    * @returns The corresponding record as a key-value pair, or `null` if no match is found.
+    */
     getDataByTime(time:string): Record<string, string | number> | null{
         let result: Record<string, string | number> | null = null;
         for(const value of this.data){
-            //console.log(val);
+            // If a matching time value is found, return the corresponding yHeader value
             const val = value;
             for(const header of Object.keys(val)){
                 if(val[header as keyof typeof val].toString() == time){
-                    //console.log(val[header as keyof typeof val], "  ", val[this.yHeader as keyof typeof val]);
                     result = val[this.yHeader as keyof typeof val];
                     return result;
-                    
                 }
             }
         }
         return result;
     }
+    
+    // Getter methods
     getData(){
         return this.data;
     };
@@ -100,6 +119,7 @@ export class CSVDataObject implements CSVData{
         return this.vrSelected;
     }
 
+    // Setter methods
     setName(name: string){
         this.name = name;
     }
@@ -109,6 +129,7 @@ export class CSVDataObject implements CSVData{
     setVRSelected(bool: boolean){
         this.vrSelected = bool;
     }
+    // Sets the Y-axis header for graphing (must match one of the CSV headers)
     setYHeader(header:string){
         for(const head of this.csvHeaders){
             if(head == header){

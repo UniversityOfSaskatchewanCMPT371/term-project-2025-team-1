@@ -51,6 +51,7 @@ jobs:
 
   send-logs-to-elastic:
       runs-on: ubuntu-latest
+      needs: [job-linux, job-windows]
       steps:
         - name: Upload GitHub Action workflows logs to elastic
           uses: knutfr/github-actions-to-elk@v1.0.4

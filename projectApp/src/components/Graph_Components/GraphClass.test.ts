@@ -1,169 +1,120 @@
-import { describe, it, expect } from 'vitest';
-import { GraphClass } from './GraphClass'; 
-import { PointClass } from './PointClass';
-import { GraphInterface } from '../../types/GraphInterface';
+import { describe, it, expect, beforeEach, vi } from 'vitest';
+import { GraphClass } from './GraphClass';
+import { CSVDataObject } from '../../models/CSVDataObject';
 
-
-// Mock data for testing
-describe('GraphClass', () => {
-  const mockGraphData: GraphInterface = {
-      id: 'graph1',
-      dimensions: { width: 500, height: 400 },
-      points: [],
-      position: { x: 0, y: 0 ,z:0},
-      axes: {
-          xLabel: 'X-Axis',
-          yLabel: 'Y-Axis',
-          xRange: [0, 10],
-          yRange: [0, 10],
-      },
-      
-      getId: function (): string {
-          throw new Error('Function not implemented.');
-      },
-      setId: function (id: string): void {
-          throw new Error('Function not implemented.');
-      },
-      
-      getDimensions: function (): { width: number; height: number; depth?: number; } {
-          throw new Error('Function not implemented.');
-      },
-      setDimensions: function (width: number, height: number, depth?: number): void {
-          throw new Error('Function not implemented.');
-      },
-      getPosition: function (): { x: number; y: number; z?: number; } {
-          throw new Error('Function not implemented.');
-      },
-      setPosition: function (x: number, y: number, z?: number): void {
-          throw new Error('Function not implemented.');
-      },
-      getPoints: function (): PointClass[] {
-          throw new Error('Function not implemented.');
-      },
-      setPoints: function (points: PointClass[]): void {
-          throw new Error('Function not implemented.');
-      },
-      clearPoints: function (): void {
-          throw new Error('Function not implemented.');
-      },
-      getAxes: function (): { xLabel: string; yLabel: string; zLabel?: string; xRange: [number, number]; yRange: [number, number]; zRange?: [number, number]; } {
-          throw new Error('Function not implemented.');
-      },
-      setAxes: function (axes: { xLabel: string; yLabel: string; zLabel?: string; xRange: [number, number]; yRange: [number, number]; zRange?: [number, number]; }): void {
-          throw new Error('Function not implemented.');
-      },
-    //   setAxisLabel: function (axis: 'x' | 'y' | 'z', label: string): void {
-    //       throw new Error('Function not implemented.');
-    //   },
-    //   setAxisRange: function (axis: 'x' | 'y' | 'z', range: [number, number]): void {
-    //       throw new Error('Function not implemented.');
-    //   },
-    //   getStyle: function (): { backgroundColor?: string; gridColor?: string; pointColor?: string; lineColor?: string; fontFamily?: string; } | undefined {
-    //       throw new Error('Function not implemented.');
-    //   },
-    //   setStyle: function (style: { backgroundColor?: string; gridColor?: string; pointColor?: string; lineColor?: string; fontFamily?: string; }): void {
-    //       throw new Error('Function not implemented.');
-    //   },
-    //   getInteractivity: function (): { isSelectable: boolean; isDraggable: boolean; isZoomable: boolean; isRotatable?: boolean; } | undefined {
-    //       throw new Error('Function not implemented.');
-    //   },
-    //   setInteractivity: function (settings: { isSelectable: boolean; isDraggable: boolean; isZoomable: boolean; isRotatable?: boolean; }): void {
-    //       throw new Error('Function not implemented.');
-    //   },
-    //   getMetadata: function (): { dataSource?: string; lastUpdated?: Date; description?: string; } | undefined {
-    //       throw new Error('Function not implemented.');
-    //   },
-    //   setMetadata: function (metadata: { dataSource?: string; lastUpdated?: Date; description?: string; }): void {
-    //       throw new Error('Function not implemented.');
-    //   },
-    //   updateMetadata: function (updates: Partial<{ dataSource: string; lastUpdated: Date; description: string; }>): void {
-    //       throw new Error('Function not implemented.');
-    //   },
-    //   setOnPointSelect: function (handler: (point: PointRef) => void): void {
-    //       throw new Error('Function not implemented.');
-    //   }
+// Mock the PointClass so that its constructor does not require any arguments.
+// This prevents errors due to the constructor expecting a parameter (ref)
+vi.mock('./PointClass', () => {
+  return {
+    PointClass: class {
+      position: number[];
+      selected: boolean;
+      xData: any;
+      constructor(ref?: { position?: number[]; selected?: boolean; xData?: any }) {
+        // Provide default values if no ref is passed.
+        this.position = ref?.position ?? [0, 0, 0];
+        this.selected = ref?.selected ?? false;
+        this.xData = ref?.xData ?? [];
+      }
+      setPosition(pos: number[]) {
+        this.position = pos;
+      }
+    },
   };
+});
 
-// Test cases for GraphClass methods and properties
-// Initialize graph with mock data
-//   it('should initialize correctly', () => {
-//     const graph = new GraphClass(mockGraphData);
-//     expect(graph.getId()).toBe('graph1');
-//     expect(graph.getType()).toBe('2D');
-//     expect(graph.getTitle()).toBe('Test Graph');
-//     expect(graph.getDimensions()).toEqual({ width: 500, height: 400 });
-//     expect(graph.getPosition()).toEqual({ x: 0, y: 0 });
-//     expect(graph.getAxes()).toEqual(mockGraphData.axes);
-//     expect(graph.getStyle()).toEqual(mockGraphData.style);
-//     expect(graph.getInteractivity()).toEqual(mockGraphData.interactivity);
-//     expect(graph.getMetadata()).toEqual(mockGraphData.metadata);
-//   });
+// Test Suite for GraphClass
+describe('GraphClass', () => {
+  let csvDataMock: CSVDataObject;
 
-//   Test cases for GraphClass set properties  
-//   it('should set and get properties correctly', () => {
-//     const graph = new GraphClass(mockGraphData);
-//     graph.setId('graph2');
-//     expect(graph.getId()).toBe('graph2');
-
-//     graph.setType('3D');
-//     expect(graph.getType()).toBe('3D');
-
-//     graph.setTitle('New Title');
-//     expect(graph.getTitle()).toBe('New Title');
-//   });
-
-// //   Test cases for GraphClass dimensions
-//     it('should update dimensions correctly', () => {
-//         const graph = new GraphClass(mockGraphData);
-//         graph.setDimensions(800, 600);
-//         expect(graph.getDimensions()).toEqual({ width: 800, height: 600 });
-//     });
-
-
-// //   Test cases for GraphClass points management, 
-//     it('should manage points correctly', () => {
-//         const graph = new GraphClass(mockGraphData);
-//         const point: PointRef = { id: 'point1', x: 5, y: 5 };
-//         graph.addPoint(point);
-//         expect(graph.getPoints()).toContain(point);
-
-//         graph.removePoint(point);
-//         expect(graph.getPoints()).not.toContain(point);
-
-//         graph.clearPoints();
-//         expect(graph.getPoints()).toEqual([]);
-//     });
-
-//  Test cases for GraphClass update poisition
-  it('should update position correctly', () => {
-    // const graph = new GraphClass(mockGraphData);
-    // graph.setPosition(10, 20, 30);
-    const a= "p"
-    expect(a).toEqual("p");
+  beforeEach(() => {
+    // Create a mock CSVDataObject
+    csvDataMock = {
+      getName: vi.fn(() => 'TestGraph'),
+      getCSVHeaders: vi.fn(() => ['X', 'Y']),
+      getData: vi.fn(() => [1, 2, 3]) // simulate 3 rows of data to generate 3 points
+    } as unknown as CSVDataObject;
   });
 
-// //   Test cases for GraphClass axes labels and ranges
-//   it('should manage axes labels and ranges correctly', () => {
-//     const graph = new GraphClass(mockGraphData);
-//     graph.setAxisLabel('x', 'New X');
-//     expect(graph.getAxes().xLabel).toBe('New X');
+  /**
+   * Test: Initialization with CSVDataObject
+   */
 
-//     graph.setAxisRange('y', [5, 15]);
-//     expect(graph.getAxes().yRange).toEqual([5, 15]);
+  it('initializes with correct properties from CSVDataObject', () => {
+    const graph = new GraphClass(csvDataMock);
+
+    // Verify id, dimensions, position, and axes set by the constructor
+    expect(graph.getId()).toBe('TestGraph');
+    expect(graph.getDimensions()).toEqual({ width: 10, height: 10, depth: 10 });
+    expect(graph.getPosition()).toEqual({ x: 1, y: 1, z: 0 });
+    expect(graph.getAxes()).toEqual({
+      xLabel: 'X',
+      yLabel: 'Y',
+      xRange: [0, 100],
+      yRange: [0, 100],
+    });
+
+    // Verify that points were created for each element in the CSV data
+    expect(graph.getPoints()).toHaveLength(3);
+  });
+
+  /**
+   * Test: Setting and Getting the ID, Dimensions, Position, and Axes
+   */
+
+  it('sets and gets the id correctly', () => {
+    const graph = new GraphClass(csvDataMock);
+    graph.setId('NewGraphID');
+    expect(graph.getId()).toBe('NewGraphID');
+  });
+
+  it('sets and gets dimensions correctly', () => {
+    const graph = new GraphClass(csvDataMock);
+    graph.setDimensions(20, 30, 40);
+    expect(graph.getDimensions()).toEqual({ width: 20, height: 30, depth: 40 });
+  });
+
+  it('sets and gets position correctly', () => {
+    const graph = new GraphClass(csvDataMock);
+    graph.setPosition(5, 6, 7);
+    expect(graph.getPosition()).toEqual({ x: 5, y: 6, z: 7 });
+  });
+
+  it('sets and gets axes correctly', () => {
+    const graph = new GraphClass(csvDataMock);
+    const newAxes = {
+      xLabel: 'NewX',
+      yLabel: 'NewY',
+      xRange: [10, 20],
+      yRange: [30, 40],
+    };
+    graph.setAxes(newAxes);
+    expect(graph.getAxes()).toEqual(newAxes);
+  });
+
+  /**
+   * Test: Managing Points
+   */
+
+//   it('manages points correctly', () => {
+//     const graph = new GraphClass(csvDataMock);
+//     // Import the mocked PointClass
+//     const { PointClass } = require('./PointClass');
+//     const newPoint = new PointClass();
+//     newPoint.setPosition([10, 20, 30]);
+
+//     // Add a point and verify it is added
+//     graph.addPoint(newPoint);
+//     expect(graph.getPoints()).toContain(newPoint);
+
+//     // Remove the point and verify it is removed
+//     graph.removePoint(newPoint);
+//     expect(graph.getPoints()).not.toContain(newPoint);
+
+//     // Clear points and verify the points array is empty
+//     graph.clearPoints();
+//     expect(graph.getPoints()).toHaveLength(0);
 //   });
 
-// //   Test cases for GraphClass metadata
-//   it('should update metadata correctly', () => {
-//     const graph = new GraphClass(mockGraphData);
-//     graph.updateMetadata({ description: 'Updated description' });
-//     expect(graph.getMetadata()?.description).toBe('Updated description');
-//   });
-
-// // Test cases for GraphClass onPointSelect handler
-// it('should set onPointSelect handler correctly', () => {
-//     const graph = new GraphClass(mockGraphData);
-//     const handler = (point: PointRef) => { console.log(point); }; 
-//     graph.setOnPointSelect(handler);
-//     expect(graph.onPointSelect).toBe(handler);
-// });
+  
 });

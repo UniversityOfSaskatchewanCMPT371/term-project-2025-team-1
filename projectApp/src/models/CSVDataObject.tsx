@@ -95,6 +95,9 @@ export class CSVDataObject implements CSVData{
         }
         return result;
     }
+    getData(){
+        return this.data;
+    };
 
     getData(){
         return this.data;

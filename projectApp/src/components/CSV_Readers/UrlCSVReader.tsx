@@ -3,6 +3,7 @@ import Papa from 'papaparse';
 
 import { CSVHeaders, TimeSeriesData} from '../../types/CSVInterfaces';
 
+
 /**
  * Get the headers of a file at a url
  * @param url address of the file
@@ -11,24 +12,12 @@ import { CSVHeaders, TimeSeriesData} from '../../types/CSVInterfaces';
 export async function UrlCSVHeaders(url:string): Promise<CSVHeaders> {
    // logger.info("Calling URLCSVHeader ", url);
     return UrlCSVReader(url).then((timeSeries) => {
-        // if(timeSeries === null){
-        //     logger.error("URLCSVHeader Time Series is null", url);
-        //     throw new Error("Time Series is null");
-        // }
-        //if UrlCSVReader is tested, then above should be fine
-        //test if output is expected
-        if(timeSeries.length === 0){
-           // logger.info("UrlCSVHeader received empty timeSeries");
-            return { headers: [] };
-        }
-        else{
-           // logger.info("Successful URLCSVHeader", Object.keys(timeSeries[0]))
-            return { headers: Object.keys(timeSeries[0]) };
-        }
+        //logger.info("Successful URLCSVHeader", Object.keys(timeSeries[0]))
+        return ({ headers: Object.keys(timeSeries[0]) } as CSVHeaders);
     //Rethrowing errors
-    }).catch((err:unknown) => {
+    }).catch((err: unknown) => {
         //logger.error("UrlCSVHeaders Error");
-        throw err;
+        throw (err as Error);
     });
 }
 
@@ -38,52 +27,46 @@ export async function UrlCSVHeaders(url:string): Promise<CSVHeaders> {
  * @returns data of file formatted as TimeSeriesData[]
  */
 export async function UrlCSVReader(url:string): Promise<TimeSeriesData[]>{
-   // logger.info("Calling URLCSVReader ", url);
-    return new Promise<TimeSeriesData[]>((resolve,reject) => {
-        if(!url.endsWith('.csv') && !url.endsWith('.txt')){
-           // logger.error("URLCSVReader File isn't .csv or .txt file", url);
-            reject(new Error('url must be .csv or .txt'));
-            return;
-        
-        }
-        else{
-            //will only work if url gives permissions
-            //test with other urls?
-            //logger.info("URLCSVReader Reading file", url);
-            fetch(url).then((response: Response) =>{
-                if (!response.ok) {
-                    // logger.error("URLCSVReader Failed Parse", url);
-                    reject(new Error(`Failed to fetch the file. Status: ${response.status.toString()}`));
-                }
-                //test for responses that are not ok?
-                return response.text();
-            }).then((csvData: string) => {
-                Papa.parse(csvData, {
-                    header: true,
-                    dynamicTyping: true,
-                    complete: function(parsed: any) {
-                        // logger.info("URLCSVReader Successfully parsed", url);
-                        // logger.info("URLCSVReader Parsed value", parsed);
-                        const typedData: TimeSeriesData[] = parsed.data;
-                        //test if casting works
-                        resolve(typedData);
-                        return;
-                    },
-                    error: function(parseError: Error){
-                        // logger.error("URLCSVReader Failed Parse", url);
-                        reject(parseError);
-                        return;
+    //logger.info("Calling URLCSVReader ", url);
+    if(!url.endsWith('.csv') && !url.endsWith('.txt')){
+        //logger.error("URLCSVReader File isn't .csv or .txt file", url);
+        throw new Error('url must be .csv or .txt');
+    }
+    else{
+        //will only work if url gives permissions
+        //test with other urls?
+        //logger.info("URLCSVReader Reading file", url);
+        return fetch(url).then((response: Response) =>{
+            if (!response.ok) {
+                //logger.error("URLCSVReader Failed Parse", url);
+                throw new Error(`Failed to fetch the file. Status: ${response.status.toString()}`);
+            }
+            //test for responses that are not ok?
+            return response.text();
+        }).then((csvData: string) => {
+            let timeSeries: TimeSeriesData[] = [];
+            Papa.parse(csvData, {
+                header: true,
+                dynamicTyping: true,
+                complete: function(parsed: Papa.ParseResult<TimeSeriesData>) {
+                    //logger.info("URLCSVReader Successfully parsed", url);
+                    //test if casting works
+                    timeSeries = parsed.data;
+                    if(timeSeries.length === 0){
+                        throw new Error("URLCSVReader is empty");
                     }
-                });
-            }).catch((err: unknown) => {
-                reject(new Error("Error"));
-                throw err;
-            })
-        };
-    //Rethrowing errors
-    }).catch((err: unknown) => {
-        //test for possible error catching
-        // logger.error("UrlCSVReader Error", err);
-        throw err;
-    });
+                    //logger.info("URLCSVReader Parsed value", parsed);
+                },
+                error: function(parseError: Error){
+                    //logger.error("URLCSVReader Failed Parse", url);
+                    throw parseError;
+                }
+            });
+            return timeSeries;
+        }).catch((err: unknown) => {
+            //test for possible error catching
+            //logger.error("UrlCSVReader Error", err);
+            throw ((err as Error));
+        });
+    };
 }

@@ -3,8 +3,7 @@
 import fs from "fs"
 import readline from "readline";
 
-export async function hasText(text: string): Promise<boolean> {
-    const filePath = "./test/logs.txt";
+export async function hasText(filePath: string, text: string): Promise<boolean> {
 
     const fileStream = fs.createReadStream(filePath);
     const lineReader = readline.createInterface({

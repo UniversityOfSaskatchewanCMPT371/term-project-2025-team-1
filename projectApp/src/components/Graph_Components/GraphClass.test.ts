@@ -64,6 +64,9 @@ describe('GraphClass', async () => {
     const graph = new GraphClass(csvDataMock);
     graph.setId('NewGraphID');
     expect(graph.getId()).toBe('NewGraphID');
+
+    graph.setName('NewName');
+    expect(graph.getName()).toBe('NewName');
   });
 
   // it('sets and gets dimensions correctly', () => {
@@ -89,30 +92,5 @@ describe('GraphClass', async () => {
     graph.setAxes(newAxes);
     expect(graph.getAxes()).toEqual(newAxes);
   });
-
-  /**
-   * Test: Managing Points
-   */
-
-//   it('manages points correctly', () => {
-//     const graph = new GraphClass(csvDataMock);
-//     // Import the mocked PointClass
-//     const { PointClass } = require('./PointClass');
-//     const newPoint = new PointClass();
-//     newPoint.setPosition([10, 20, 30]);
-
-//     // Add a point and verify it is added
-//     graph.addPoint(newPoint);
-//     expect(graph.getPoints()).toContain(newPoint);
-
-//     // Remove the point and verify it is removed
-//     graph.removePoint(newPoint);
-//     expect(graph.getPoints()).not.toContain(newPoint);
-
-//     // Clear points and verify the points array is empty
-//     graph.clearPoints();
-//     expect(graph.getPoints()).toHaveLength(0);
-//   });
-
   
 });

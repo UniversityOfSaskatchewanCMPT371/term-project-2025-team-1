@@ -63,7 +63,7 @@ export class TimeSeriesGraphClass extends GraphClass implements TimeSeriesGraphI
      * post-condition: returns an array of PointClass instances
      * @returns {PointClass[]} Array of PointClass instances.
      */
-    getPoints() {
+    getPoints(): PointClass[] {
         return this.points;
     }
 
@@ -204,7 +204,7 @@ export class TimeSeriesGraphClass extends GraphClass implements TimeSeriesGraphI
 
         this.clearPoints();
         this.addPoint();
-
+        this.updatePoints();
         
 
         this.getPoints().forEach((point) => {

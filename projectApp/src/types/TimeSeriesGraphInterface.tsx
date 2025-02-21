@@ -5,7 +5,7 @@ import { GraphInterface } from "./GraphInterface";
  * Interface for enhanced graph objects with additional point manipulation capabilities.
  * Extends basic GraphInterface with point-specific operations.
  */
-export interface GraphClass2Interface extends GraphInterface {
+export interface TimeSeriesGraphInterface extends GraphInterface {
     /**
      * Adds a new point to the graph
      * pre-condition: none
@@ -36,7 +36,7 @@ export interface GraphClass2Interface extends GraphInterface {
      * post-condition: all points' positions are scaled by the zoom factor
      * @param {number} zoomFactor - The scaling factor for point positions
      */
-    updateOnZoom(zoomFactor: number): void;
+    // updateOnZoom(zoomFactor: number): void;
 
     /**
      * Gets all points in the graph

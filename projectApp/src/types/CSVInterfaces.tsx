@@ -31,6 +31,7 @@ export interface CSVData extends DataInterface{                                 
     loadLocalCSVFile: (index:number,file: File) => (Promise<void>);
     loadUrlCSVFile: (index: number, file: string) => (Promise<void>);
     getCSVHeaders: () => string[];
+    getTimeHeader: () => string;
     getYHeader: () => string;
     getBrowserSelected: () => (boolean);
     setBrowserSelected: (bool: boolean) => (void);

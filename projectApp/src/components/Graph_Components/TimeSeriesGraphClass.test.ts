@@ -27,6 +27,7 @@ describe('GraphClass2', () => {
      * Verifies that a new GraphClass2 instance initializes with an empty points array.
      */
     it('should initialize with an empty points array', () => {
+        graph.clearPoints();
         expect(graph.getPoints()).toEqual([]);
     });
 

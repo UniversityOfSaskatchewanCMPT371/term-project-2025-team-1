@@ -20,7 +20,6 @@ export class GraphController implements ControllerInterface{
         //result.setRange();
 
         for(const graph of this.getModel().getData()){
-            console.log(graph);
             if(graph.getName() == csv.getName()){
                 graph.setRange()
                 return graph;

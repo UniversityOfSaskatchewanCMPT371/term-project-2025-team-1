@@ -78,7 +78,7 @@ export function TimeSeriesGraph({graph}:{graph: TimeSeriesGraphClass}){
 
   function GeneratePoints({point}:{point: PointClass}){
     point.setXPosition((current));
-    point.setYPosition(((point.getYData()/100) * (graphClass.getRange()/(graphClass.timeSeriesYRange().length))) - (1));
+    point.setYPosition(((point.getYData()/100) * (graphClass.getYRange()/(graphClass.timeSeriesYRange().length))) - (1));
     currentLine = lastLine;
     lastLine = ([point.getXPosition(), point.getYPosition(), 0.01])
     return (

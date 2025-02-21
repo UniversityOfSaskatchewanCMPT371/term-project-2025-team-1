@@ -1,12 +1,13 @@
 import { PointClass } from "./PointClass";
-import { CSVDataObject } from "../../models/CSVDataObject";
 import { GraphInterface } from "../../types/GraphInterface";
+import { CSVDataObject } from "../../models/CSVDataObject";
 
 /**
  * The GraphClass represents a graph structure that manages points, dimensions, styling, and interactivity.
  */
 export class GraphClass implements GraphInterface {
   id: string;
+  name: string;
   dimensions: { width: number; height: number; depth?: number };
   points: PointClass[];
   position: { x: number; y: number; z: number };
@@ -15,23 +16,24 @@ export class GraphClass implements GraphInterface {
     yLabel: string;
     xRange: [number, number];
     yRange: [number, number];
-  };
+  }; 
 
 
   /**
    * Constructs a new GraphClass instance.
    * @param CSVDataObject - An object of the CSVDataObject class
    */
-  constructor(csvdata: CSVDataObject ) {
+  constructor(csvdata: CSVDataObject) {
     this.id = csvdata.getName();
+    this.name = csvdata.getName();
     this.dimensions = { width: 10, height: 10, depth: 10 };
     this.points = [];
     this.position ={ x: 1, y: 1, z: 0 };
     this.axes = { 
-      xLabel: csvdata.getCSVHeaders()[0], // First column header
-      yLabel: csvdata.getCSVHeaders()[1], // Second column header
-      xRange: [0, 100], //Default values
-      yRange: [0, 100]  //Default values
+      xLabel: csvdata.getTimeHeader(), // Time columne for x header
+      yLabel: csvdata.getYHeader(), // Second column header
+      xRange: [0, 0], //Default values
+      yRange: [0, 0]  //Default values
   };
   csvdata.getData().forEach(() => {
     const newPoint = new PointClass();
@@ -48,12 +50,11 @@ export class GraphClass implements GraphInterface {
     this.id = id;
   }
 
-  // Dimension getters and setters
-  getDimensions(): { width: number; height: number; depth?: number } {
-    return this.dimensions;
+  getName(): string{
+      return this.name;
   }
-  setDimensions(width: number, height: number, depth?: number): void {
-    this.dimensions = { width, height, depth };
+  setName(title: string): void {
+      this.name = title;
   }
 
   // Position getters and setters
@@ -70,9 +71,6 @@ export class GraphClass implements GraphInterface {
   
   setPoints(points: PointClass[]): void {
     this.points = points;
-  }
-  addPoint(point: PointClass): void {
-    this.points.push(point);
   }
   removePoint(point: PointClass): void {
     const index = this.points.indexOf(point);

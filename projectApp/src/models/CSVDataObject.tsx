@@ -98,10 +98,6 @@ export class CSVDataObject implements CSVData{
     getData(){
         return this.data;
     };
-
-    getData(){
-        return this.data;
-    };
     getName(){
         return this.name;
     }
@@ -120,7 +116,7 @@ export class CSVDataObject implements CSVData{
     getDisplayBoard(){
         return this.displayBoard;
     }
-    getTimeHeader(){
+    getTimeHeader():string{
         for(const head of this.getCSVHeaders()){
             if(head == "Time" || head =="time"){
                 return head;

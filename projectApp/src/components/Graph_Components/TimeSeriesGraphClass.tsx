@@ -1,24 +1,16 @@
 import { CSVDataObject } from "../../models/CSVDataObject";
-import { DataInterface } from "../../types/BaseInterfaces";
+import { TimeSeriesGraphInterface } from "../../types/TimeSeriesGraphInterface";
+import { GraphClass } from "./GraphClass";
 import { PointClass } from "./PointClass";
 
 // GraphClass2 is a class that represents a collection of multiple points
-export class TimeSeriesGraphClass implements DataInterface{
-    name:string;
-    points: PointClass[];
+export class TimeSeriesGraphClass extends GraphClass implements TimeSeriesGraphInterface{
     csvData: CSVDataObject;  //Probably wont need this
-    yHeader: string;
-    xHeader: string;
-    range: number;
-
+    
     constructor(csv: CSVDataObject) {
+        super(csv);
         // Initialize an empty array to store PointClass instances
-        this.name = "";
         this.csvData = csv;
-        this.points = [];
-        this.yHeader = this.csvData.getYHeader();
-        this.xHeader = this.csvData.getTimeHeader() as string;
-        this.range = 0;
     }   
 
     /**
@@ -27,13 +19,13 @@ export class TimeSeriesGraphClass implements DataInterface{
      * post-condition: a new PointClass instance is added to the graph
      * @param {PointRef} pointRef - Reference to the point data.
      */
-    addPoints() {
+    addPoint() {
         this.csvData.getData().forEach((data) => {
             const newPoint = new PointClass();
             newPoint.setPosition([0,0,0.01])
             
-            newPoint.setXData(data[this.xHeader as keyof typeof data] as unknown as string);
-            newPoint.setYData(data[this.yHeader as keyof typeof data] as unknown as number);
+            newPoint.setXData(data[this.axes.xLabel as keyof typeof data] as unknown as string);
+            newPoint.setYData(data[this.axes.yLabel as keyof typeof data] as unknown as number);
             
             //Get Header by key then assign
             this.points.push(newPoint);
@@ -89,31 +81,21 @@ export class TimeSeriesGraphClass implements DataInterface{
     //     });
     // }
 
-    getName(){
-        return this.name;
-    }
     getXHeader(){
-        return this.xHeader;
+        return this.axes.xLabel;
     }
     getYHeader(){
-        return this.yHeader;
+        return this.axes.yLabel;
     }
-    getRange(){
-        return this.range;
-    }
-
-    setName(name: string){
-        this.name = name;
-    } 
-    resetPoints(){
-        this.points = [];
+    getYRange(){
+        return this.axes.yRange[1];
     }
     setRange(){
         // this.yRange = this.csvData.getData().length;
         let max = 0;
         this.csvData.getData().forEach((data) => {
-            if(data[this.yHeader as keyof typeof data] as unknown as number >= max){
-                max = data[this.yHeader as keyof typeof data] as unknown as number;
+            if(data[this.axes.yLabel as keyof typeof data] as unknown as number >= max){
+                max = data[this.axes.yLabel as keyof typeof data] as unknown as number;
             }
         })
 
@@ -121,14 +103,14 @@ export class TimeSeriesGraphClass implements DataInterface{
             max++;
         }
 
-        this.range = max;
+        this.axes.yRange[1] = max;
     }
     
     timeSeriesYRange():number[]{
         const range:number[] = [];
         let cur = 0;
 
-        while(cur < this.range){
+        while(cur < this.axes.yRange[1]){
             cur = cur + 5;
             range.push(cur);
         }
@@ -141,7 +123,7 @@ export class TimeSeriesGraphClass implements DataInterface{
 
         this.csvData.getData().forEach((data) => {
             
-            const temp = data[this.xHeader as keyof typeof data] as unknown as string;
+            const temp = data[this.axes.xLabel as keyof typeof data] as unknown as string;
             range.push(temp);
             
         })
@@ -150,7 +132,6 @@ export class TimeSeriesGraphClass implements DataInterface{
     }
 
     incrementYHeader(){
-        console.log("inc",this.yHeader);
         if(this.csvData.getCSVHeaders().length < 3){
             return;
         }
@@ -159,35 +140,31 @@ export class TimeSeriesGraphClass implements DataInterface{
 
         //Cycle to the beginning
         if(start == this.csvData.getCSVHeaders().length - 1){
-            console.log("NO way")
             if(this.csvData.getCSVHeaders()[0] != this.getXHeader()){
-                this.yHeader = this.csvData.getCSVHeaders()[0];
+                this.axes.yLabel = this.csvData.getCSVHeaders()[0];
             }
             else{
                 //Go to the next available header
-                this.yHeader = this.csvData.getCSVHeaders()[1];
+                this.axes.yLabel = this.csvData.getCSVHeaders()[1];
             }
             return;
         }
 
         if(start == this.csvData.getCSVHeaders().length - 2 && this.csvData.getCSVHeaders()[this.csvData.getCSVHeaders().length - 1] == this.getXHeader()){
-            console.log("HRE");
-            this.yHeader =  this.csvData.getCSVHeaders()[0];
+            this.axes.yLabel =  this.csvData.getCSVHeaders()[0];
             return;
             
         }
         
         for(start; start < this.csvData.getCSVHeaders().length; start++){
-            console.log(" SO HERE")
             if(this.csvData.getCSVHeaders()[start] != this.getYHeader() && this.csvData.getCSVHeaders()[start] != this.getXHeader()){
-                this.yHeader = this.csvData.getCSVHeaders()[start];
+                this.axes.yLabel = this.csvData.getCSVHeaders()[start];
                 break;
             }
         }
 
     }
     decrementYHeader(){
-        console.log("dec", this.yHeader);
         if(this.csvData.getCSVHeaders().length < 3){
             return;
         }
@@ -197,24 +174,24 @@ export class TimeSeriesGraphClass implements DataInterface{
         //Cycle to the beginning
         if(start == 0){
             if(this.csvData.getCSVHeaders()[this.csvData.getCSVHeaders().length - 1] != this.getXHeader()){
-                this.yHeader = this.csvData.getCSVHeaders()[this.csvData.getCSVHeaders().length - 1];
+                this.axes.yLabel = this.csvData.getCSVHeaders()[this.csvData.getCSVHeaders().length - 1];
             }
             else{
                 //Go to the next available header
-                this.yHeader =this.csvData.getCSVHeaders()[this.csvData.getCSVHeaders().length - 2];
+                this.axes.yLabel =this.csvData.getCSVHeaders()[this.csvData.getCSVHeaders().length - 2];
             }
             return;
         }
 
         if(start == 1 && this.csvData.getCSVHeaders()[0] == this.getXHeader()){
-            this.yHeader = this.csvData.getCSVHeaders()[this.csvData.getCSVHeaders().length - 1];
+            this.axes.yLabel = this.csvData.getCSVHeaders()[this.csvData.getCSVHeaders().length - 1];
             return;
             
         }
         
         for(start; start > 0; start--){
             if(this.csvData.getCSVHeaders()[start] != this.getYHeader() && this.csvData.getCSVHeaders()[start] != this.getXHeader()){
-                this.yHeader = this.csvData.getCSVHeaders()[start];
+                this.axes.yLabel= this.csvData.getCSVHeaders()[start];
                 break;
             }
         }
@@ -225,14 +202,14 @@ export class TimeSeriesGraphClass implements DataInterface{
         const divider = (totalSpace/this.timeSeriesYRange().length);
         let current = (-1.8) + (divider/2);
 
-        this.resetPoints();
-        this.addPoints();
+        this.clearPoints();
+        this.addPoint();
 
         
 
         this.getPoints().forEach((point) => {
             point.setXPosition(current);
-            point.setYPosition(((point.getYData()/100) * (this.getRange()/(this.timeSeriesYRange().length))) - (1));
+            point.setYPosition(((point.getYData()/100) * (this.getYRange()/(this.timeSeriesYRange().length))) - (1));
 
             current += divider;
         })

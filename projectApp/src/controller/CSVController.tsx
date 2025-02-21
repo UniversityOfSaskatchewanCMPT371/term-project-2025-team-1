@@ -23,7 +23,7 @@ export class CSVController implements ControllerInterface{
                 csv.setVRSelected(true);
                 const graph = new TimeSeriesGraphClass(csv);
                 graph.setName(csv.getName());
-                graph.addPoints();
+                graph.addPoint();
                 mainController.getGraphController().getModel().getData().push(graph)
                 console.log("Success on generate?")
                 

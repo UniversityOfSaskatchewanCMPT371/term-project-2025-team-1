@@ -2,12 +2,11 @@
  * Interface for graph objects that can be used in both 2D and 3D contexts.
  * Provides a standardized structure for graph representation and manipulation.
  */
-import { PointRef } from "./PointInterface";
+import { PointClass } from "../../src/components/Graph_Components/PointClass";
+
 export interface GraphInterface {
     // Basic graph properties
     id: string;                          // identifier for the graph
-    type: '2D' | '3D';                   // Graph type for flexibility
-    title?: string;                      // Optional graph title
     
     // Dimension properties
     dimensions: {
@@ -17,92 +16,111 @@ export interface GraphInterface {
     };
     
     // Data points and configuration
-    points: PointRef[];                  // Array of points using PointRef interface
+    points: PointClass[];                  // Array of points using PointRef interface
     
     position: {
         x: number;
         y: number;
-        z?: number;                  // Optional for possible 3D implementation
+        z: number;                  // Optional for possible 3D implementation
     };
 
     // Axes configuration
     axes: {
         xLabel: string;
         yLabel: string;
-        zLabel?: string;                 //for 3D graphs?
         xRange: [number, number];        // Min and max values for x-axis
         yRange: [number, number];        // Min and max values for y-axis
-        zRange?: [number, number];       // for 3D graphs?
-    };
-    
-    // Possible Visual customization
-    style?: {
-        backgroundColor?: string;
-        gridColor?: string;
-        pointColor?: string;
-        lineColor?: string;
-        fontFamily?: string;
-    };
-    
-    // Interaction settings
-    interactivity?: {
-        isSelectable: boolean;
-        isDraggable: boolean;
-        isZoomable: boolean;
-        isRotatable?: boolean;           //for 3D?
-    };
-    
-    // Other Added/Optional metadata
-    metadata?: {
-        dataSource?: string;             // CSV file name or URl Source
-        lastUpdated?: Date;              // Last data update timestamp?
-        description?: string;            // Graph description/title?
     };
 
-    onPointSelect?: (point: PointRef) => void;
-
-// getters 
+    // Basic getters and setters
+    /**
+     * Gets the graph's unique identifier
+     * pre-condition: none
+     * post-condition: returns the current id string, unchanged
+     */
     getId(): string;
+
+    /**
+     * Sets the graph's unique identifier
+     * pre-condition: id must be a non-empty string
+     * post-condition: graph's id is updated to the new value
+     */
     setId(id: string): void;
-    getType(): '2D' | '3D';
-    setType(type: '2D' | '3D'): void;
+
+    /**
+     * Gets the graph's title
+     * pre-condition: none
+     * post-condition: returns the current title or undefined if not set
+     */
     getTitle(): string | undefined;
+
+    /**
+     * Sets the graph's title
+     * pre-condition: title must be a string
+     * post-condition: graph's title is updated to the new value
+     */
     setTitle(title: string): void;
 
-    // Dimension getters and setters
+    /**
+     * Gets the graph's dimensions
+     * pre-condition: none
+     * post-condition: returns the current dimensions object
+     */
     getDimensions(): { width: number; height: number; depth?: number };
+
+    /**
+     * Sets the graph's dimensions
+     * pre-condition: width and height must be positive numbers
+     * post-condition: graph's dimensions are updated to the new values
+     */
     setDimensions(width: number, height: number, depth?: number): void;
 
-    // Position getters and setters
+    /**
+     * Gets the graph's position
+     * pre-condition: none
+     * post-condition: returns the current position object
+     */
     getPosition(): { x: number; y: number; z?: number };
+
+    /**
+     * Sets the graph's position
+     * pre-condition: x, y must be valid numbers
+     * post-condition: graph's position is updated to the new values
+     */
     setPosition(x: number, y: number, z?: number): void;
 
-    // Points management
-    getPoints(): PointRef[];
-    setPoints(points: PointRef[]): void;
-    addPoint(point: PointRef): void;
-    removePoint(point: PointRef): void;
+    /**
+     * Gets all points in the graph
+     * pre-condition: none
+     * post-condition: returns array of current points, unchanged
+     */
+    getPoints(): PointClass[];
+
+    /**
+     * Sets the graph's points
+     * pre-condition: points must be an array of valid PointClass instances
+     * post-condition: graph's points are replaced with the new array
+     */
+    setPoints(points: PointClass[]): void;
+
+    /**
+     * Removes all points from the graph
+     * pre-condition: none
+     * post-condition: graph's points array is empty
+     */
     clearPoints(): void;
 
-    // Axes management
-    getAxes(): { xLabel: string; yLabel: string; zLabel?: string; xRange: [number, number]; yRange: [number, number]; zRange?: [number, number] };
-    setAxes(axes: { xLabel: string; yLabel: string; zLabel?: string; xRange: [number, number]; yRange: [number, number]; zRange?: [number, number] }): void;
-    setAxisLabel(axis: 'x' | 'y' | 'z', label: string): void;
-    setAxisRange(axis: 'x' | 'y' | 'z', range: [number, number]): void;
+    /**
+     * Gets the axes configuration
+     * pre-condition: none
+     * post-condition: returns the current axes configuration object
+     */
+    getAxes(): { xLabel: string; yLabel: string; xRange: [number, number]; yRange: [number, number] };
 
-    // Style management
-    getStyle(): { backgroundColor?: string; gridColor?: string; pointColor?: string; lineColor?: string; fontFamily?: string } | undefined;
-    setStyle(style: { backgroundColor?: string; gridColor?: string; pointColor?: string; lineColor?: string; fontFamily?: string }): void;
-
-    // Interactivity management
-    getInteractivity(): { isSelectable: boolean; isDraggable: boolean; isZoomable: boolean; isRotatable?: boolean } | undefined;
-    setInteractivity(settings: { isSelectable: boolean; isDraggable: boolean; isZoomable: boolean; isRotatable?: boolean }): void;
-    
-    // Metadata management
-    getMetadata(): { dataSource?: string; lastUpdated?: Date; description?: string } | undefined;
-    setMetadata(metadata: { dataSource?: string; lastUpdated?: Date; description?: string }): void;
-    updateMetadata(updates: Partial<{ dataSource: string; lastUpdated: Date; description: string }>): void;
-
-    // Event handlers
-    setOnPointSelect(handler: (point: PointRef) => void): void;
+    /**
+     * Sets the axes configuration
+     * pre-condition: axes object must contain valid labels and ranges
+     * post-condition: graph's axes configuration is updated to the new values
+     */
+    setAxes(axes: { xLabel: string; yLabel: string; xRange: [number, number]; yRange: [number, number] }): void;
 }

@@ -11,10 +11,10 @@
   "scripts": {
     "csvtest": "npx tsx ./test/csvTesting.tsx",
     "build": "tsc -p tsconfig.node.json && vite build",
-    "server": "node logger-server.js",
+    "server": "pm2 start logger-server.js --name logger",
     "client": "vite --host",
     "dev": "concurrently --kill-others \"npm run server\" \"npm run client\"",
-    "test": "vitest",
+    "test": "vitest && pm2 stop logger",
     "coverage": "vitest run --coverage",
     "lint": "npx eslint ."
   },
@@ -32,6 +32,7 @@
     "papaparse": "^5.5.1",
     "pino": "^9.6.0",
     "pino-pretty": "^13.0.0",
+    "pm2": "^5.4.3",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "three": "^0.172.0",

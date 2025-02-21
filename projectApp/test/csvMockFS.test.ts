@@ -35,10 +35,10 @@ describe("testing fs mocking", () => {
 
     fs.writeFileSync(path,data);
     //assert that mock writeFile was called
-    await expect(fs.writeFileSync).toBeCalledTimes(1);
+    expect(fs.writeFileSync).toBeCalledTimes(1);
     const localReaderPromise: Promise<TimeSeriesData[]> = localReader(path);
     //assert that mock promise.readFile was called
-    await expect(fsPromise.readFile).toBeCalledTimes(1);
+    expect(fsPromise.readFile).toBeCalledTimes(1);
     //assert that promised data is defined
     await expect(localReaderPromise).resolves.toBeDefined();
     const localReaderData: TimeSeriesData[] = await localReaderPromise;
@@ -49,7 +49,7 @@ describe("testing fs mocking", () => {
 
     const localHeadersPromise: Promise<CSVHeaders> = localHeaders(path);
     //assert that mock promise.readFile was called a second time
-    await expect(fsPromise.readFile).toBeCalledTimes(2);
+    expect(fsPromise.readFile).toBeCalledTimes(2);
     //assert that promise is defined
     await expect(localHeadersPromise).resolves.toBeDefined();
     const localHeadersData: CSVHeaders = await localHeadersPromise;
@@ -92,11 +92,11 @@ describe("testing fs mocking", () => {
     //write it to mockfs
     fs.writeFileSync(path, writeFileString);
     //assert that mock writeFile was called
-    await expect(fs.writeFileSync).toHaveBeenCalled();
+    expect(fs.writeFileSync).toBeCalledTimes(1);
 
     const localReaderPromise = localReader(path);
     //assert that mock promise.readFile was called
-    await expect(fsPromise.readFile).toHaveBeenCalled();
+    expect(fsPromise.readFile).toBeCalledTimes(1);
     //assert that promised data is defined
     await expect(localReaderPromise).resolves.toBeDefined();
     const localReaderData: TimeSeriesData[] = await localReaderPromise;
@@ -121,7 +121,7 @@ describe("testing fs mocking", () => {
 
     const localHeadersPromise: Promise<CSVHeaders> = localHeaders(path);
     //assert that mock promise.readFile was called a second time
-    await expect(fsPromise.readFile).toBeCalledTimes(2);
+    expect(fsPromise.readFile).toBeCalledTimes(2);
     //assert that promise is defined
     await expect(localHeadersPromise).resolves.toBeDefined();
     const localHeadersData: CSVHeaders = await localHeadersPromise;

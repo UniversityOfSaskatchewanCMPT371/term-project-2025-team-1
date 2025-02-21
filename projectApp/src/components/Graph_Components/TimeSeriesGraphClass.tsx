@@ -61,7 +61,7 @@ export class TimeSeriesGraphClass implements DataInterface{
      */
     updatePoints() {
         this.points.forEach(point => {
-            point.setSelected(point.getSelected()); // Update selection status
+            point.setSelected(false); // Update selection status
             // TODO: Add color update logic if necessary
         });
     }
@@ -106,16 +106,19 @@ export class TimeSeriesGraphClass implements DataInterface{
     setName(name: string){
         this.name = name;
     } 
+    resetPoints(){
+        this.points = [];
+    }
     setRange(){
         // this.yRange = this.csvData.getData().length;
         let max = 0;
         this.csvData.getData().forEach((data) => {
-            if(data[this.yHeader as keyof typeof data] as unknown as number > max){
+            if(data[this.yHeader as keyof typeof data] as unknown as number >= max){
                 max = data[this.yHeader as keyof typeof data] as unknown as number;
             }
         })
 
-        while((max % 5 != 0) || (max % 10 != 0)){
+        while((max % 5 != 0)){
             max++;
         }
 
@@ -216,5 +219,23 @@ export class TimeSeriesGraphClass implements DataInterface{
                 break;
             }
         }
+    }
+
+    updatePointPosition(){
+        let totalSpace = 5;
+        let divider = (totalSpace/this.timeSeriesYRange().length);
+        let current = (-1.8) + (divider/2);
+
+        this.resetPoints();
+        this.addPoints();
+
+        
+
+        this.getPoints().forEach((point) => {
+            point.setXPosition(current);
+            point.setYPosition(((point.getYData()/100) * (this.getRange()/(this.timeSeriesYRange().length))) - (1));
+
+            current += divider;
+        })
     }
 }

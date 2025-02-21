@@ -3,7 +3,8 @@ import { Line } from "@react-three/drei";
 import { Create2DPoint } from '../../components/Graph_Components/Create2DPoint';
 import { TimeSeriesGraphClass } from '../../components/Graph_Components/TimeSeriesGraphClass';
 import { PointClass } from '../../components/Graph_Components/PointClass';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import mainController from '../../controller/MainController';
 
 /**
  * This class will handle creating and updating a 2D Time Series graph based on the GraphClass.
@@ -11,6 +12,8 @@ import { useState } from 'react';
 
 export function TimeSeriesGraph({graph}:{graph: TimeSeriesGraphClass}){
   const [ header, setHeader ] = useState("");
+  const [ isChanged, change ] = useState(false);
+
   let graphClass = graph;
   let totalSpace = 5;
   let divider = (totalSpace/graphClass.getPoints().length);
@@ -20,10 +23,15 @@ export function TimeSeriesGraph({graph}:{graph: TimeSeriesGraphClass}){
   let separator = 100/graphClass.getPoints().length;
 
   let yRange = 0;
-  let ySpacing = 100/graphClass.timeSeriesYRange().length -1;
+  let ySpacing = 100/(graphClass.timeSeriesYRange().length + 1);
 
   function UpdateGraph(){
+    graphClass.updatePointPosition();
+    ySpacing = (100/graphClass.timeSeriesYRange().length + 1);
     setHeader(graphClass.getYHeader());
+    mainController.updateMainScene();
+
+    change(!isChanged)
   }
 
   function HeaderSelection(){
@@ -71,7 +79,7 @@ export function TimeSeriesGraph({graph}:{graph: TimeSeriesGraphClass}){
 
   function GeneratePoints({point}:{point: PointClass}){
     point.setXPosition((current));
-    point.setYPosition(((point.getYData()/100) * 6) - 1);
+    point.setYPosition(((point.getYData()/100) * (graphClass.getRange()/(graphClass.timeSeriesYRange().length))) - (1));
     currentLine = lastLine;
     lastLine = ([point.getXPosition(), point.getYPosition(), 0.01])
     return (

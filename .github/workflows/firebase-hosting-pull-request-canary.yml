@@ -3,10 +3,10 @@
 
 name: Deploy Canary branch to Firebase Hosting on PR
 on:
-  push:
-    branches: ['**']
-  pull_request:
-    branches: ['**']
+#  push:
+#    branches: ['**']
+#  pull_request:
+#    branches: ['**']
   workflow_dispatch:
 defaults:
   run:

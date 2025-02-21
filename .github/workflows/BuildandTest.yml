@@ -38,18 +38,46 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Debug Before Install (Temporary)
+        run: echo "Before Install"
+
       - name: Install dependencies
-        run: npm ci
+        run: npm ci --verbose # Added verbosity
+
+      - name: Debug After Install (Temporary)
+        run: echo "After Install"
+
+      - name: Debug Before Lint (Temporary)
+        run: echo "Before Lint"
 
       - name: Run linter
         run: npm run lint
 
+      - name: Debug After Lint (Temporary)
+        run: echo "After Lint"
+
+      - name: Debug Before Build (Temporary)
+        run: echo "Before Build"
+
       - name: Build
         run: npm run build
 
+      - name: Debug After Build (Temporary)
+        run: echo "After Build"
+
+      - name: Debug Before Test (Temporary)
+        run: echo "Before Test"
+
       - name: Test
-        run: |
-         npm run test
+        run: npm run test
         env:
-          CI: true
+          CI: true  # Keep this
         timeout-minutes: 3
+
+      - name: Debug After Test (Temporary)
+        run: echo "After test"

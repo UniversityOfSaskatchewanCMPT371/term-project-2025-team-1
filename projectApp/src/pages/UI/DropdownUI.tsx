@@ -64,6 +64,9 @@ export default function DropdownUI(props: dropDownProps){
             </>
         )
     }
+    /*
+    * Generates the graph, and then updates main scene
+    */
     function update(){
         mainController.getCSVController().generate();
         mainController.updateMainScene();

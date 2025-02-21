@@ -1,10 +1,11 @@
+# Will send build logs to the elastic server
 name: Logstash-CI
 
 on:
-#  push:
-#    branches: [loop1dev-]
-#  pull_request:
-#    branches: [loop1dev]
+  push:
+    branches: ['**']
+  pull_request:
+    branches: ['**']
   workflow_dispatch:
 
 jobs:

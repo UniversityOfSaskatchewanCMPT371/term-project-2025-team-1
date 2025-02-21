@@ -1,8 +1,12 @@
+# Will sign the image with the GitHub Actions runner's GPG key and push the
+#  attestation to the GitHub Container Registry.
 name: build-attested-image
 
 on:
-  #push:
-  #  branches: [main]
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
   workflow_dispatch:
 jobs:
   build:

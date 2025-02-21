@@ -35,12 +35,6 @@ export class GraphClass implements GraphInterface {
       xRange: [0, 0], //Default values
       yRange: [0, 0]  //Default values
   };
-  csvdata.getData().forEach(() => {
-    const newPoint = new PointClass();
-    newPoint.setPosition([0,0,0.01])
-    this.points.push(newPoint);
-})
-
   }
 
   getId(): string {

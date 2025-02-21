@@ -18,6 +18,11 @@ describe('log file parser tests', () => {
     test("file contains matching text ignoring case", async() => {
         const response = await hasText(filePath, "hello");
         expect(response).toBe(true);
-    })
+    });
+
+    test("file does not exist", async() => {
+        const response = await hasText("./jeakldsf.txt", "TEST");
+        expect(response).toBeFalsy();
+    });
 
 });

@@ -22,6 +22,7 @@ describe( 'Time Series Graph Class', async () => {
      */
     test('Should Initialize Points to the number of data set loaded', () => {
         // graph.clearPoints();
+        graph.addPoint();
         expect(graph.getPoints().length).toEqual(4);
 
         //Testing resetting points

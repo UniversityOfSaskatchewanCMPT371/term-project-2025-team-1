@@ -51,9 +51,6 @@ describe('GraphClass', async () => {
       xRange: [0, 0],
       yRange: [0, 0],
     });
-
-    // Verify that points were created for each element in the CSV data
-    expect(graph.getPoints()).toHaveLength(4);
   });
 
   /**

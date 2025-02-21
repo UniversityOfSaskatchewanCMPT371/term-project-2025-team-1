@@ -30,7 +30,12 @@ jobs:
 
       - name: Configure Logstash
         run: |
-          echo 'input { stdin { } } output { elasticsearch { hosts => ["http://129.213.110.14:9200"] user => "${{ secrets.ELASTIC_USER }}" password => "${{ secrets.ELASTIC_PASSWORD }}" } }' > /usr/share/logstash/config/logstash.conf
+          echo 'input { stdin { } } output { elasticsearch { hosts => 
+          ["http://129.213.110.14:9200"] user => "${{ secrets.ELASTIC_USER 
+          }}" password => "${{ secrets.ELASTIC_PASSWORD }}" id => 
+          "github_runner_logstash-ci" } 
+          }' > 
+          /usr/share/logstash/config/logstash.conf
 
       - name: Run Logstash
         run: |

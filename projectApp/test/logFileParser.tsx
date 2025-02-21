@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/prefer-promise-reject-errors */
+
 import fs from "fs"
 import readline from "readline";
 
@@ -19,6 +21,8 @@ export async function hasText(text: string): Promise<boolean> {
         lineReader.on('close', () => {
             resolve(false)
         });
-        lineReader.on('error', () => reject());
+        lineReader.on('error', () => {
+            reject()
+        });
     });
 }

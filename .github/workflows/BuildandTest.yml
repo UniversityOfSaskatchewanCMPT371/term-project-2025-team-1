@@ -26,10 +26,10 @@ jobs:
         run: npm run lint
       - name: Build
         run: npm run build
-      - name: Run node Server
-        run: npm run server | npm run test
-#      - name: Test
-#        run: npm run test
+#      - name: Run node Server
+#        run: npm run server | npm run test
+      - name: Test
+        run: npm run test
 
 #  job-windows:
 #    runs-on: windows-latest

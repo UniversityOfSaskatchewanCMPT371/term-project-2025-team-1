@@ -11,19 +11,17 @@ on:
 
   # Allows this workflow to be run manually from the Actions tab
   workflow_dispatch:
-#
-#defaults:
-#  run:
-#    working-directory: ./projectApp
+
+defaults:
+  run:
+    working-directory: ./projectApp
 jobs:
   job-linux:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - name: Install dependencies
-        run: |
-          cd ./projectApp 
-          npm ci
+        run: npm ci
       - name: Run linter
         run: npm run lint
       - name: Build
@@ -46,9 +44,7 @@ jobs:
       - name: Build
         run: npm run build
       - name: Test
-        run: | 
-          cd .\projectApp
-          npm run test
+        run: npm run test
         env:
           CI: true  # Keep this
         timeout-minutes: 3

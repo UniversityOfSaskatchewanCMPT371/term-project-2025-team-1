@@ -14,9 +14,9 @@
     "server": "node logger-server.js",
     "client": "vite --host",
     "dev": "concurrently --kill-others \"npm run server\" \"npm run client\"",
-    "test": "npx vitest",
+    "test": "vitest",
     "coverage": "vitest run --coverage",
-    "lint": "npx eslint ."
+    "lint": "eslint"
   },
   "dependencies": {
     "@react-three/drei": "^9.121.4",

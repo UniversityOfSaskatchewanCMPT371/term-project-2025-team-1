@@ -13,7 +13,7 @@ export async function hasText(text: string): Promise<boolean> {
 
     return new Promise((resolve, reject) => {
         lineReader.on('line', (line) => {
-            if (line.includes(text)) {
+            if (line.toLowerCase().includes(text.toLowerCase())) {
                 resolve(true)
             }
         });

@@ -14,4 +14,9 @@ describe('log file parser tests', () => {
         expect(response).toBe(false);
     });
 
+    test("file contains matching text ignoring case", async() => {
+        const response = await hasText("hello");
+        expect(response).toBe(true);
+    })
+
 });

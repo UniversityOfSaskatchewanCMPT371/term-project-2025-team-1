@@ -1,6 +1,6 @@
 import { CSVController } from "./CSVController";
 
-//Commenting out graph works its in graph
+// Main controller for managing application logic.
 export class MainController {
     private csvController: CSVController;
     constructor(){

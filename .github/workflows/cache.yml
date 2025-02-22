@@ -34,5 +34,6 @@ jobs:
           npm ci
           npm run lint
           npm run build
-          npm run server 
+          pm2 start logger-server.js --name logger
           npm run test
+          pm2 stop logger

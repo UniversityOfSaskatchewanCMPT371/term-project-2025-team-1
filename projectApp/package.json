@@ -11,10 +11,10 @@
   "scripts": {
     "csvtest": "npx tsx ./test/csvTesting.tsx",
     "build": "tsc -p tsconfig.node.json && vite build",
-    "server": "pm2 start logger-server.js --name logger",
+    "server": "node logger-server.js",
     "client": "vite --host",
     "dev": "concurrently --kill-others \"npm run server\" \"npm run client\"",
-    "test": "vitest && pm2 stop logger",
+    "test": "vitest",
     "coverage": "vitest run --coverage",
     "lint": "npx eslint ."
   },

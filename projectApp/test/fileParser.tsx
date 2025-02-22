@@ -13,7 +13,7 @@ import readline from "readline";
  *                             otherwise, false (returns false if file does not exist)
  * NOTE: function is to be used for testing only
 */
-export async function hasText(filePath: string, text: string): Promise<boolean> {
+export async function fileContainsText(filePath: string, text: string): Promise<boolean> {
     return new Promise((resolve, reject) => {
         // checks if file exists at given path
         if (fs.existsSync(filePath)) {

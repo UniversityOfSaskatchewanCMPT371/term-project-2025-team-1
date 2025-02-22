@@ -9,11 +9,14 @@ export class CSVDataObject implements CSVData{
     yHeader: string;
     browserSelected: boolean;
     vrSelected: boolean;
+    displayBoard: number;
+    
     constructor(){
         this.name = "";
         this.csvHeaders = [];
         this.data = [];
         this.yHeader = ""; //Will attempt for the second header [1]
+        this.displayBoard = 0;
         this.browserSelected = false;
         this.vrSelected = false;
     }

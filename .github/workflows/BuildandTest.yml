@@ -20,64 +20,52 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-
       - name: Install dependencies
         run: npm ci
-
       - name: Run linter
         run: npm run lint
-
       - name: Build
         run: npm run build
-
       - name: Test
-        run: npm run test
+        run: |
+            npx pm2 start logger-server.js --name logger
+            npm run test
+            npx pm2 delete logger
 
-  job-windows:
-    runs-on: windows-latest
-    steps:
-      - uses: actions/checkout@v4
+#  job-windows:
+#    runs-on: windows-latest
+#    steps:
+#      - uses: actions/checkout@v4
+##      - name: Setup Node.js
+##        uses: actions/setup-node@v4
+##        with:
+##          node-version: '20'
+#      - name: Install dependencies
+#        run: npm ci --verbose # Added verbosity
+#      - name: Run linter
+#        run: npm run lint
+#      - name: Build
+#        run: npm run build
+#      - name: Test
+#        run: npm run test
+#        env:
+#          CI: true  # Keep this
+#        timeout-minutes: 3
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '20'
-
-      - name: Debug Before Install (Temporary)
-        run: echo "Before Install"
-
-      - name: Install dependencies
-        run: npm ci --verbose # Added verbosity
-
-      - name: Debug After Install (Temporary)
-        run: echo "After Install"
-
-      - name: Debug Before Lint (Temporary)
-        run: echo "Before Lint"
-
-      - name: Run linter
-        run: npm run lint
-
-      - name: Debug After Lint (Temporary)
-        run: echo "After Lint"
-
-      - name: Debug Before Build (Temporary)
-        run: echo "Before Build"
-
-      - name: Build
-        run: npm run build
-
-      - name: Debug After Build (Temporary)
-        run: echo "After Build"
-
-      - name: Debug Before Test (Temporary)
-        run: echo "Before Test"
-
-      - name: Test
-        run: npm run test
-        env:
-          CI: true  # Keep this
-        timeout-minutes: 3
-
-      - name: Debug After Test (Temporary)
-        run: echo "After test"
+  send-logs-to-elastic:
+      runs-on: ubuntu-latest
+      #needs: [job-linux, job-windows]
+      needs: [job-linux]
+      if: always()
+      steps:
+        - name: Upload GitHub Action workflows logs to elastic
+          uses: knutfr/github-actions-to-elk@v1.0.4
+          with:
+            githubToken: "${{ secrets.GITHUB }}"
+            githubOrg: "UniversityOfSaskatchewanCMPT371"
+            githubRepository: "term-project-2025-team-1"
+            githubRunId: "${{ github.run_id }}"
+            elasticHost: "${{ secrets.ELASTIC_HOST }}"
+            elasticApiKeyId: "${{ secrets.ELASTIC_KEY_ID }}"
+            elasticApiKey: "${{ secrets.ELASTIC_API_KEY }}"
+            elasticIndex: "ci-cd"

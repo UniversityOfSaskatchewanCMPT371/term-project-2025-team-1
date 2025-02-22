@@ -27,7 +27,10 @@ jobs:
       - name: Build
         run: npm run build
       - name: Test
-        run: npm run test
+        run: |
+            npx pm2 start logger-server.js --name logger
+            npm run test
+            npx pm2 delete logger
 
 #  job-windows:
 #    runs-on: windows-latest

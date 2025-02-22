@@ -2,6 +2,7 @@ import { describe, test, expect, beforeEach } from "vitest";
 import {MainController} from '../src/controller/MainController';
 import { CSVController } from "../src/controller/CSVController";
 import { ControllerInterface } from "../src/types/BaseInterfaces";
+import { GraphController } from "../src/controller/GraphController";
 
 /* 
 * Main Controller test, this test will only check if the Main Controller
@@ -35,10 +36,17 @@ describe("MainController Tests", () => {
 
     //Testing to see if MainController can get an instance of CSV Controller
     const csvController: MCTests = {
-        description: ("Test if able to get instance of Graph Controller"),
+        description: ("Test if able to get instance of CSV Controller"),
         controllerType: CSVController,                  
         method: () => mainController.getCSVController(),
     };
     MainControllerTest(csvController);
 
+    //Testing to see if MainController can get an instance of CSV Controller
+    const graphController: MCTests = {
+        description: ("Test if able to get instance of Graph Controller"),
+        controllerType: GraphController,
+        method: () => mainController.getGraphController(),
+    }
+    MainControllerTest(graphController);
 })

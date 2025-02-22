@@ -3,17 +3,11 @@
  * Provides a standardized structure for graph representation and manipulation.
  */
 import { PointClass } from "../../src/components/Graph_Components/PointClass";
+import { DataInterface } from "./BaseInterfaces";
 
-export interface GraphInterface {
+export interface GraphInterface extends DataInterface{
     // Basic graph properties
     id: string;                          // identifier for the graph
-    
-    // Dimension properties
-    dimensions: {
-        width: number;
-        height: number;
-        depth?: number;                  //for 3D graphs?
-    };
     
     // Data points and configuration
     points: PointClass[];                  // Array of points using PointRef interface
@@ -47,33 +41,19 @@ export interface GraphInterface {
      */
     setId(id: string): void;
 
-    /**
-     * Gets the graph's title
-     * pre-condition: none
-     * post-condition: returns the current title or undefined if not set
-     */
-    getTitle(): string | undefined;
+    // /**
+    //  * Gets the graph's title
+    //  * pre-condition: none
+    //  * post-condition: returns the current title or undefined if not set
+    //  */
+    // getTitle(): string | undefined;
 
-    /**
-     * Sets the graph's title
-     * pre-condition: title must be a string
-     * post-condition: graph's title is updated to the new value
-     */
-    setTitle(title: string): void;
-
-    /**
-     * Gets the graph's dimensions
-     * pre-condition: none
-     * post-condition: returns the current dimensions object
-     */
-    getDimensions(): { width: number; height: number; depth?: number };
-
-    /**
-     * Sets the graph's dimensions
-     * pre-condition: width and height must be positive numbers
-     * post-condition: graph's dimensions are updated to the new values
-     */
-    setDimensions(width: number, height: number, depth?: number): void;
+    // /**
+    //  * Sets the graph's title
+    //  * pre-condition: title must be a string
+    //  * post-condition: graph's title is updated to the new value
+    //  */
+    // setTitle(title: string): void;
 
     /**
      * Gets the graph's position

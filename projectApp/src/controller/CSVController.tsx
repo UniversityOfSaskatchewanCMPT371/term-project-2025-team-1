@@ -1,6 +1,8 @@
+import { TimeSeriesGraphClass } from "../components/Graph_Components/TimeSeriesGraphClass";
+import { CSVDataObject } from "../models/CSVDataObject";
 import { CSVReaderModel } from "../models/CSVReaderModel";
 import { ControllerInterface } from "../types/BaseInterfaces";
-
+import mainController from "./MainController";
 /*
 * The controller for CSV related actions
 */
@@ -15,4 +17,28 @@ export class CSVController implements ControllerInterface{
     getModel(){
         return this.model;
     }
+    generate(){
+        for(const csv of this.model.getData()){
+            if(csv.getDisplayBoard() == 1){
+                csv.setVRSelected(true);
+                const graph = new TimeSeriesGraphClass(csv);
+                graph.setName(csv.getName());
+                graph.addPoint();
+                mainController.getGraphController().getModel().getData().push(graph)
+                console.log("Success on generate?")
+                
+            }
+        }   
+    }
+    getVRSelected(): CSVDataObject{
+        let file:CSVDataObject = new CSVDataObject();
+        for(const csv of this.model.getData()){
+            if(csv.getVRSelected()){
+                file = csv;
+                return csv;
+            }
+        }
+        return file;
+    }
+    
 }

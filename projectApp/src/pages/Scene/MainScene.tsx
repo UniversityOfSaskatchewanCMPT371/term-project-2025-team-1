@@ -1,8 +1,9 @@
 import { Text } from '@react-three/drei';
-import { TimeSeriesGraph } from '../Graph_Objects/TimeSeriesGraph';
-
-import { Create2DPoint } from '../../components/Graph_Components/Create2DPoint';
 import DropdownUI from "../UI/DropdownUI"
+import { CreateTimeSeries } from '../../components/Graph_Components/CreateTimeSeries';
+import mainController from '../../controller/MainController';
+import { useEffect, useRef, useState } from 'react';
+import { TimeSeriesGraphClass } from '../../components/Graph_Components/TimeSeriesGraphClass';
 
 /*
 * The main scene being used in the current program
@@ -11,8 +12,28 @@ import DropdownUI from "../UI/DropdownUI"
 export default function MainScene() {
     //TODO
     //Add a UI to the MainScene
-    //Then make it possible for the ui to stay in view of the camera (maybe top left)
-
+    //Then make it possible for the ui to  stay in view of the camera (maybe top left)
+    const [updateGraph, setUpdateGraph] = useState(false);
+    const [graph, setGraph] = useState<(TimeSeriesGraphClass)>();
+    
+    //Only runs on the begining, might keep graph on and update file on graph instead
+    function updateScene(){
+        setUpdateGraph(true);
+    }
+    const sceneRef = useRef({updateScene});
+    useEffect(() => {
+        mainController.setSceneRef(sceneRef);
+    },);
+    useEffect(() => {
+        if(updateGraph) {
+            const vrSelected = mainController.getCSVController().getVRSelected();
+            if(mainController.getGraphController().getModel().getData().length > 0){
+                const newGraph = mainController.getGraphController().generateTimeSeriesGraph(vrSelected);
+                setGraph(newGraph);
+            }
+        }
+        setUpdateGraph(false);
+    });
     return (
         <>
         {/* This block of code is the sign behind the user
@@ -27,15 +48,11 @@ export default function MainScene() {
 
         {/* This block of code is the sign in front of the user
         A red box with the text Front */}
-        <mesh position = {[3,1,-6]}>
-            <boxGeometry args = {[4, 2, 2]}/>
+        <mesh position = {[4.5,1,-4.55]}>
+            <boxGeometry args = {[6, 5.5, 2]}/>
             <meshBasicMaterial color="red"/>
         </mesh>
-        <mesh position = {[3,1,-4.9]}>
-            <Text> 
-                Front 
-            </Text>
-        </mesh>
+        
 
         {/* This is the floor of the Scene */}
         <mesh 
@@ -45,9 +62,9 @@ export default function MainScene() {
         </mesh>
 
         {/* Displays the Sample Drop Down UI */}
-        <TimeSeriesGraph></TimeSeriesGraph>
+        {/* <CreateTimeSeries graphObject={graph}></CreateTimeSeries> */}
         <DropdownUI position={[-2, 1.5, -4]} xSize={4} ySize={3}></DropdownUI>
-        <Create2DPoint position={[0, 1, -2]} selected={false} xData={'Time'} yData={89}/>
+        {graph && <CreateTimeSeries graphObject={graph}></CreateTimeSeries>}
         </>
     );
 };

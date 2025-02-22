@@ -48,6 +48,8 @@ export default tseslint.config(
       "@typescript-eslint/no-non-null-assertion": "warn",
       "@typescript-eslint/no-misused-promises": "warn",
       "@typescript-eslint/no-base-to-string": "warn",
+      "@typescript-eslint/no-unsafe-call": "warn",
+      "@typescript-eslint/restrict-template-expressions": "warn",
     },
   },
 )

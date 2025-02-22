@@ -1,6 +1,7 @@
 import { Root, Container, Text } from '@react-three/uikit';
 import { useState } from 'react';
 import mainController from "../../controller/MainController.tsx";
+import { CSVData } from '../../types/CSVInterfaces.tsx';
 
 interface dropDownProps {
     position : [number, number, number];
@@ -14,7 +15,7 @@ export default function DropdownUI(props: dropDownProps){
     const [ active, setActive ] = useState(false);
 
     //This is the function for creating a object displayed in the DropDown UI
-    function GenerateRowObject({name} : {name: string}){
+    function GenerateRowObject({data} : {data: CSVData}){
         //The list of objects/loaded csv files row by row
         return(
             <>
@@ -22,13 +23,13 @@ export default function DropdownUI(props: dropDownProps){
                 alignItems={"flex-start"} justifyContent={"flex-start"} width={"100%"} height={"10%"}
                 >
                     <Container width={"50%"} height={"100%"}>
-                    <Text fontWeight={"bold"} positionLeft={20} >{name}</Text>
+                    <Text fontWeight={"bold"} positionLeft={20} >{data.getName()}</Text>
                     </Container>
                     {/* < for decreaing the number, used for board; 0 = None, past 0 goes to 4
                         > For increasing number, past 4 goes to None (0)*/}
                     <Container width={"50%"} height={"100%"}
                     alignItems={"center"} justifyContent={"center"}>
-                        <RowObjectButtons/>
+                        <RowObjectButtons data={data}/>
                     </Container>
                 </Container>
             
@@ -36,7 +37,7 @@ export default function DropdownUI(props: dropDownProps){
         )
     }
     // For now Its probably okay to just display one graph
-    function RowObjectButtons(){
+    function RowObjectButtons({data}:{data: CSVData}){
         return (
             <>
             <Container>
@@ -44,24 +45,31 @@ export default function DropdownUI(props: dropDownProps){
                 <Container backgroundColor={"gray"} width={"25%"} 
                 alignItems={"center"} justifyContent={"center"} positionRight={2}
                 backgroundOpacity={0.5}
-                hover={{backgroundOpacity: 0.75}}>
+                hover={{backgroundOpacity: 0.75}} onClick={() => {data.decrementDisplayBoard()}}>
                     <Text fontWeight={"bold"}>&lt;</Text>
                 </Container>
                 {/* Displaying the board number */}
                 <Container width={"30%"} alignItems={"center"} justifyContent={"center"}>
-                    <Text fontWeight={"bold"}>1</Text>
+                    <Text fontWeight={"bold"}>{data.getDisplayBoard().toString()}</Text>
                 </Container>
 
                 {/* Displaying the > button */}
                 <Container backgroundColor={"gray"} width={"25%"} 
                 alignItems={"center"} justifyContent={"center"} positionLeft={2}
                 backgroundOpacity={0.5}
-                hover={{backgroundOpacity: 0.75}}>
+                hover={{backgroundOpacity: 0.75}} onClick={() => {data.incrementDisplayBoard()}}>
                     <Text fontWeight={"bold"}>&gt;</Text>
                 </Container>
             </Container>
             </>
         )
+    }
+    /*
+    * Generates the graph, and then updates main scene
+    */
+    function update(){
+        mainController.getCSVController().generate();
+        mainController.updateMainScene();
     }
     function GenerateList(){
         //Layout of the body, and loading of RowObjects, then a Generate button, bottom right
@@ -72,9 +80,9 @@ export default function DropdownUI(props: dropDownProps){
             alignItems={"flex-start"} justifyContent={"flex-start"}>
 
                 {/* Assign board number to Model maybe? */}
-        {mainController.getCSVController().getModel().getData().map((graph, _index) => (
+        {mainController.getCSVController().getModel().getData().map((graph) => (
             
-            <GenerateRowObject name={graph.getName()}></GenerateRowObject>
+            <GenerateRowObject data={graph} key={graph.getName()}></GenerateRowObject>
         ))}
         </Container>
 
@@ -83,7 +91,7 @@ export default function DropdownUI(props: dropDownProps){
 
             {/* Attach ON Click here */}
             <Container width={"30%"} height={"100%"} backgroundColor={"gray"} backgroundOpacity={0.5}
-            hover={{backgroundOpacity: 0.75}}>
+            hover={{backgroundOpacity: 0.75}} onClick={() => {update()}}>
             <Text fontWeight={"bold"} positionLeft={"20%"} positionBottom={"5%"}>Generate</Text>
             </Container>
             

@@ -25,7 +25,7 @@ function App() {
         {/* Everything encapsulated by Canvas and XR will contain the Scene to be displayed in VR */}
         <Canvas>
           <XR store={store}>
-            <Sky sunPosition={[0.5,0,0.5]}/>
+          <Sky sunPosition={[0.5,0,0.5]}/>
             <ambientLight/>
             {/* InitScene starts up the scene displayed */}
             <InitScene/> 

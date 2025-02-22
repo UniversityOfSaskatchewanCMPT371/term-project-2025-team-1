@@ -6,18 +6,11 @@ export class PointClass implements PointRef{
     xData: string;
     yData: number;
 
-    //TODO
-    //Maybe Add A color aspect
-    //Then add UpdatePoint(), this function is used to update the point
-    //EX. if the selected = false, color is set to skyblue, else blue
-    //This could also be probably used to update on zooming
-    // color: string;
-
-    constructor(ref: PointRef){
-        this.position = ref.position;
-        this.selected = ref.selected;
-        this.xData = ref.xData;
-        this.yData = ref.yData;
+    constructor(){
+        this.position =[0,0,0];
+        this.selected = false;
+        this.xData = "";
+        this.yData = 0;
     }
 
     //The setters and getters for the Point Class
@@ -34,20 +27,34 @@ export class PointClass implements PointRef{
     getYData(){
         return this.yData;
     }
+    getXPosition(){
+        return this.getPosition()[0];
+    }
+    getYPosition(){
+        return this.getPosition()[1];
+    }
+    setXPosition(x: number){
+        this.position[0] = x;
+    }
+    setYPosition(y: number){
+        this.position[1] = y;
+    }
     //End of Getters
     
     //Setters
-    setPosition([x,y,z]: number[]){
+    setPosition([ x, y, z ]: number[]){
         this.position = [x,y,z];
     }
     setSelected(select: boolean){
         this.selected = select;
     }
-    setXData(newXData: string){
-        this.xData = newXData;
+    setXData(x: string){
+        this.xData = x;
+        //Error no Time Header
     }
-    setYData(newYData: number){
-        this.yData = newYData;
+
+    setYData(y: number){
+        this.yData = y;
     }
     //End of Setters
 }

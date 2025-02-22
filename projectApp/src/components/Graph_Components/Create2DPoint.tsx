@@ -7,7 +7,11 @@ import { PointRef } from "../../types/PointInterface";
 import { PointClass } from "./PointClass";
 
 export function Create2DPoint(pointRef: PointRef){
-    const point = new PointClass(pointRef);
+    const point = new PointClass();
+    point.setPosition(pointRef.position);
+    point.setSelected(pointRef.selected);
+    point.setXData(pointRef.xData);
+    point.setYData(pointRef.yData);
 
     //TODO
     //Track point class, maybe only generate the points on graph once

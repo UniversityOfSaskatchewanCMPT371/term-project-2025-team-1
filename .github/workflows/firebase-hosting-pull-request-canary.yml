@@ -25,9 +25,9 @@ jobs:
           npm ci
           npm run lint
           npm run build
-          pm2 start logger-server.js --name logger
+          npx pm2 start logger-server.js --name logger
           npm run test
-          pm2 stop logger
+          npx pm2 delete logger
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: ${{ secrets.GITHUB_TOKEN }}

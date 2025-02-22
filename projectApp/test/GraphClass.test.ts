@@ -1,7 +1,7 @@
 import { describe, it, expect, beforeEach, vi } from 'vitest';
-import { GraphClass } from './GraphClass';
-import { CSVDataObject } from '../../models/CSVDataObject';
-import mainController from '../../controller/MainController';
+import { GraphClass } from '../src/components/Graph_Components/GraphClass';
+import { CSVDataObject } from '../src/models/CSVDataObject';
+import mainController from '../src/controller/MainController';
 
 // Mock the PointClass so that its constructor does not require any arguments.
 // This prevents errors due to the constructor expecting a parameter (ref)

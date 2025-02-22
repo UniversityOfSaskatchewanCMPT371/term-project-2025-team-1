@@ -10,7 +10,7 @@ const logger = pino({
         targets: [
             // {target: 'pino/console'},
             {target: 'pino-pretty', options: {colorize: true}}, // outputs logs to console
-            {target: 'pino/file', options: {destination: 'mylogs.txt'}} // writes logs to a file
+            {target: 'pino/file', options: {destination: 'logs.txt'}} // writes logs to a file
         ]
     },
     customLevels: {

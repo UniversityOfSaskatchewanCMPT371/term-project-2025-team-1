@@ -1,8 +1,7 @@
-Hello
-hi
+NOTE: don't modify this file it will break the test script
 
-did it work
+test
 
-something
 
-{dfkldjkf, :jkfkd, jfkdja: fkljd}
+
+end of test file

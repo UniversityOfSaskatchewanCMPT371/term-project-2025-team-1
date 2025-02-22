@@ -2,15 +2,13 @@ import { OrbitControls } from '@react-three/drei';
 import MainScene from './MainScene';
 
 /* Starting scene
-* Not really needed anymore since we are using modules that deals with initialization
-* However, could be useful for future testing when working with different scenes
+* Can only be used for future testing when working with different scenes
 */
 export default function InitScene(){
     
     return (
         <>
             <OrbitControls/>
-            {/* Over here we could specify the scene */}
             <MainScene/>
         </>
     )

@@ -9,7 +9,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - run: npm ci && npm run lint && npm run build && npm run test
+      - name: Run the build, lint, test flow
+        run: |
+          npm ci
+          npm run lint
+          npm run build
+          npx pm2 start logger-server.js --name logger
+          npm run test
+          npx pm2 delete logger
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: ${{ secrets.GITHUB_TOKEN }}

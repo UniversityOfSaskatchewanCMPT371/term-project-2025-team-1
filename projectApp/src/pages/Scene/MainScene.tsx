@@ -6,17 +6,12 @@ import DropdownUI from "../UI/DropdownUI"
 
 /*
 * The main scene being used in the current program
-* For now contains shapes the could help with testing looking around in a VR Space
+* Contains shapes that helps user look around in a VR Space
 */
 export default function MainScene() {
-    //TODO
-    //Add a UI to the MainScene
-    //Then make it possible for the ui to stay in view of the camera (maybe top left)
-
     return (
         <>
-        {/* This block of code is the sign behind the user
-        A red box with the text Look Back */}
+        {/* A red box with the text "Look Back" */}
         <mesh position = {[3,1,6]}>
             <boxGeometry args = {[5, 2, 2]}/>
             <meshBasicMaterial color = "red"/>
@@ -25,8 +20,7 @@ export default function MainScene() {
             <Text>Look Back</Text>
         </mesh>
 
-        {/* This block of code is the sign in front of the user
-        A red box with the text Front */}
+        {/* A red box with the text "Front" */}
         <mesh position = {[3,1,-6]}>
             <boxGeometry args = {[4, 2, 2]}/>
             <meshBasicMaterial color="red"/>
@@ -37,7 +31,7 @@ export default function MainScene() {
             </Text>
         </mesh>
 
-        {/* This is the floor of the Scene */}
+        {/* The floor of the Scene */}
         <mesh 
             rotation = {[-Math.PI / 2, 0, 0]}>
             <planeGeometry args={[200, 200]} />

@@ -29,5 +29,10 @@ jobs:
         continue-on-error: true
         run: npm list
 
-      - name: Build
-        run: npm ci && npm run lint && npm run build && npm run test
+      - name: Run the build, lint, test flow
+        run: |
+          npm ci
+          npm run lint
+          npm run build
+          npm run server 
+          npm run test

@@ -8,12 +8,12 @@ interface dropDownProps {
     ySize: number;
 }
 
-//This function is for creating the Dropdown UI
+// Dropdown UI component
 export default function DropdownUI(props: dropDownProps){
     const [pressed, press] = useState(false);
     const [ active, setActive ] = useState(false);
 
-    //This is the function for creating a object displayed in the DropDown UI
+    // Creates an object to be displayed in the DropDown UI
     function GenerateRowObject({name} : {name: string}){
         //The list of objects/loaded csv files row by row
         return(
@@ -35,7 +35,8 @@ export default function DropdownUI(props: dropDownProps){
             </>
         )
     }
-    // For now Its probably okay to just display one graph
+    
+    // Buttons for row object in dropdown
     function RowObjectButtons(){
         return (
             <>
@@ -63,6 +64,8 @@ export default function DropdownUI(props: dropDownProps){
             </>
         )
     }
+
+    // Generates list of row objects
     function GenerateList(){
         //Layout of the body, and loading of RowObjects, then a Generate button, bottom right
         return (
@@ -92,13 +95,12 @@ export default function DropdownUI(props: dropDownProps){
         </>
         )
     }
-    
+
+    // Creates the dropdown UI with a button to open it and a list of loaded graphs when it's active.
     function DropDownBody(){
         
         return (
             <>
-            {/* USE THE COMPONENT Fullscreen of uikit 
-                For Now its okay to keep it static*/}
             <mesh position={props.position}>
                 
             <mesh position={[(-0.5) - (props.xSize/2), 0, 0]}>
@@ -130,10 +132,6 @@ export default function DropdownUI(props: dropDownProps){
                         backgroundColor={"lightgray"}
                         backgroundOpacity={0.8}
                         >
-                            {/* Create objects representing loaded graphs in model 
-                                Each will have a button that sets a use state for selected
-                                Then a button for loading selected graph, activate use state
-                                Then on a useFrame if activated true, try using backend function*/}
                                 <GenerateList></GenerateList>
 
                     </Container>

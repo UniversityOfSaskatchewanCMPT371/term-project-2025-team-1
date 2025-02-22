@@ -1,7 +1,3 @@
-//TODO
-//The 2D Point that will be displayed on the Time Series Graph
-//Will require x, y positions and possibly size (depends on total number of Time values)
-
 import { useState } from "react";
 import { PointClass } from "../../components/Graph_Components/PointClass";
 
@@ -21,7 +17,6 @@ export function Point2D({pointRef} : {pointRef: PointClass}){
 
                 <meshStandardMaterial
                     color={hovered? "blue": "skyblue"}
-                    // opacity={ hovered? 1.00 : 0.50}
                     ></meshStandardMaterial>
         </mesh>
     )

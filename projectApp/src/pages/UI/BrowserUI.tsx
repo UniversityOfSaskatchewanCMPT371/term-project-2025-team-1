@@ -3,106 +3,129 @@ import mainController from '../../controller/MainController';
 import { ButtonInput } from 'leva/dist/declarations/src/types';
 import React, { useState } from 'react';
 
+import { sendLog, sendError } from '../../logger-frontend.ts'
+
 //The UI that appears when the webpage is opened
-export function BrowserUI(){
+export function BrowserUI(): JSX.Element {
     const fileInputRef = React.useRef<HTMLInputElement>(null);
     const urlInputRef = React.useRef<HTMLInputElement>(null);
 
     //Using dynamic key change for unmounted component
-    const [ controlKey, setControlKey] = useState(0);
+    const [ controlKey, setControlKey ] = useState(0);
     
     //The botton component that opens file explorer and loads a local file
-    function LoadComponent(){
-      useControls({
-        'Load Local CSV' : button(() => {
-          const loadFile = () => {
-        fileInputRef.current?.click()
-          };
-          loadFile();
-      })})
-      
-      return( 
-      <>
-        <input 
-          type='file' 
-          ref={fileInputRef} 
-          style={{display:'none'}} 
-          onChange={async (e):Promise<void> => {
-            const files = e.target.files;
-            if(files && files.length > 0){
-              const file = files[0];
-              //console.log(file.name.toString());
+    function LoadComponent(): JSX.Element {
+		useControls({
+			'Load Local CSV' : button(() => {
+				try{
+					const loadFile: () => void = () => {
+						fileInputRef.current?.click();
+					};
+					loadFile();
+				} catch(error: unknown){
+					sendError(error, "BrowserUI LoadComponent Button Error");
+				}
+			})
+		});
+		
+		return(<input 
+			type='file' 
+			ref={fileInputRef} 
+			style={{display:'none'}} 
+			onChange={async (event) => {
+			try {
+				const files = event.target.files;
+				if(!files){
+					throw new TypeError("files list is null");
+				}
+				else if(files.length === 0){
+					throw new RangeError("files list is empty");
+				}
+				else{
+					const file = files[0];
+					//console.log(file.name.toString());
 
-              //If the file is valid, read the csv file
-              await mainController.getCSVController().getModel().readLocalFile(file);
-              setControlKey(controlKey + 1);
-              //Same test as csvModeTest
-              // let headers = test.getCSVFiles()[0].data[0];
-              // console.log(headers);
-            }
-            else{
-              //Logger or alert instead
-              console.log("Invalid File")
-            }
-          }}>
-        </input>
-      </>
-      )
-    }
+					//If the file is valid, read the csv file
+					await mainController.getCSVController().getModel().readLocalFile(file);
+					sendLog("info",`BrowserUI LoadComponent read: ${file.name.toString()}`);
+					setControlKey(controlKey + 1);
+					//Same test as csvModeTest
+					// let headers = test.getCSVFiles()[0].data[0];
+					// console.log(headers);
+				}
+			} catch(error: unknown){
+				//Logger or alert instead
+				sendError(error,"BrowserUI LoadComponent Return Error");
+			}
+		}}/>);
+	}
   
-    //This one is for loading the csvfile through a url link
-  function URLComponent(){
-    const { csv } = useControls(
-      {csv: { label: "CSV by URL", value: "Enter URL"},
-    "Enter URL": button(() => {
-      const urlFile = () => {
-      urlInputRef.current?.click();
-      };
-      urlFile();
-    })}, {oneLineLabels: true});
+	//This one is for loading the csvfile through a url link
+	function URLComponent(): JSX.Element {
+		const { csv } = useControls({
+			csv: {
+				label: "CSV by URL", value: "Enter URL"},
+				"Enter URL": button(() => {
+					try{
+						const urlFile: () => void = () => {
+							urlInputRef.current?.click();
+						};
+						urlFile();
+					} catch(error: unknown){
+						sendError(error, "BrowserUI URLComponent Button Error");
+					}
+				})
+			},
+			{oneLineLabels: true}
+		);
 
-    return (
-    <>
-    <input 
-      type='button'
-      ref={urlInputRef}
-      style={{display: 'none'}}
-      onClick={( async (): Promise<void> => {
-        alert(csv)
-        await mainController.getCSVController().getModel().readURLFile(csv);
-        setControlKey(controlKey + 1);
-      })}></input>
-    </>
-    )
-  }
+		return (<input 
+			type='button'
+			ref={urlInputRef}
+			style={{display: 'none'}}
+			onClick={(async () => {
+				try{
+					alert(csv);
+					await mainController.getCSVController().getModel().readURLFile(csv);
+					sendLog("info",`BrowserUI URLComponent read: ${csv}`);
+					setControlKey(controlKey + 1);
+				} catch(error: unknown) {
+					sendError(error,"BrowserUI URLComponent Return Error");
+				}
+			})
+		}/>);
+	}
   
-  //Component that displays the loaded csv files on the browser UI
-  function UnmountedComponents(){
-    const names:[string, boolean][] = mainController.getCSVController().getModel().loadedCsvBrowser();
-    
-    //setControlKey(controlKey + 1)
-    //Setting the objects to be displayed
-    const controlsObject: Record<string, boolean | ButtonInput> = names.reduce((acc, [name, value]) => {
-      acc[name] = value;
+	//Component that displays the loaded csv files on the browser UI
+	function UnmountedComponents(): null{
+		const names:[string, boolean][] = mainController.getCSVController().getModel().loadedCsvBrowser();
 
-      console.log("Unmount ", controlKey)
-      return acc;
-    }, {} as Record<string, boolean | ButtonInput>
-  );
-  //Button associated with the deleting files
-    controlsObject.delete = button(() => {alert("delete")});
+		//setControlKey(controlKey + 1)
+		//Setting the objects to be displayed
+		const controlsObject: Record<string, boolean | ButtonInput> = names.reduce(
+			(acc, [name, value]) => {
+				acc[name] = value;
 
-    useControls(
-      `Loaded Graphs`, controlsObject, {collapsed: true}
-    );
+				console.log("Unmount ", controlKey)
+				sendLog("info",`BrowserUI UnmountedComponents unmount: ${controlKey}`);
+				return acc;
+			},
+			{} as Record<string, boolean | ButtonInput>
+		);
+		//Button associated with the deleting files
+		controlsObject.delete = button(() => {alert("delete")});
 
-    //Add the delete button useRef
-    return null;
-  }
+		useControls(
+			`Loaded Graphs`, controlsObject, {collapsed: true}
+		);
+
+		//Add the delete button useRef
+		return null;
+	}
 
     return <>
-              <URLComponent/>
-              <LoadComponent/>
-              <UnmountedComponents/>
-            </>
-  }
+		<URLComponent/>
+		<LoadComponent/>
+		<UnmountedComponents/>
+	</>
+}

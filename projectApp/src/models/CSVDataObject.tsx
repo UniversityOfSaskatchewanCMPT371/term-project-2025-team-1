@@ -1,6 +1,5 @@
 import { LocalCSVReader, LocalCsvReader } from "../components/CSV_Readers/LocalCSVReader";
 import { CSVData } from "../types/CSVInterfaces";
-// import logger from "../logging/logs";
 import { UrlCSVReader } from "../components/CSV_Readers/UrlCSVReader";
 
 export class CSVDataObject implements CSVData{
@@ -16,7 +15,7 @@ export class CSVDataObject implements CSVData{
         this.name = "";
         this.csvHeaders = [];
         this.data = [];
-        this.yHeader = ""; //Will attempt for the second header [1]
+        this.yHeader = ""; // Will attempt for the second header [1]
         this.browserSelected = false;
         this.displayBoard = 0;
         this.vrSelected = false;
@@ -24,7 +23,16 @@ export class CSVDataObject implements CSVData{
     setData(data: { key: Record<string,string | number> }[]){
         this.data = data;
     }
-    //Initial creation, for loading a graph in the scene, set the yHeader
+    
+    /**
+     * Loads CSV data from either a local file or a URL.
+     * 
+     * @param {number} index - The index used to generate a name for the dataset.
+     * @param {File | string} file - The CSV file (local file or URL as a string).
+     * @param {boolean} isUrl - Whether the provided file is a URL (true) or a local file (false).
+     * 
+     * @returns {Promise<void>} A promise that resolves once the data is loaded.
+     */
     async loadCSVData(index: number, file: (File | string), isUrl: boolean){
         try {
             
@@ -39,18 +47,21 @@ export class CSVDataObject implements CSVData{
             }
         }
         catch {
-            //logger.error("Failed Loading");
             return;
         }
     }
+    
+    // Loads a CSV file from a local file input and sets the graph data.
     async loadLocalCSVFile(index: number,file: File){
         await this.loadCSVData(index, file, false);
     }
+    
+    // Loads a CSV file from a URL and sets the graph data.
     async loadUrlCSVFile(index: number,file: string){
         await this.loadCSVData(index, file, true);
     }
 
-    //Keeping for now in testing
+    // Loads a CSV file from a local file path (for testing purposes)
     async loadLocalByPath(index: number,file: string){
         try {
             const data = await LocalCSVReader(file);
@@ -58,10 +69,17 @@ export class CSVDataObject implements CSVData{
             this.name = ("Graph" + index.toString());
         }
         catch {
-           // logger.error("Failed Loading");
             return;
         }
     }
+
+    /**
+     * Searches through each record and checks for the specified key in the headers.
+     * If a matching key is found, it returns the associated value from that record.
+     * 
+     * @param key - The key to search for in the dataset.
+     * @returns The corresponding value as a key-value pair (Record) from the dataset, or `null` if no match is found.
+     */
     getDataByKey(key: string): Record<string, string | number> | null{
         let result: Record<string, string | number> | null = null;
         for(const value of this.data){
@@ -79,14 +97,17 @@ export class CSVDataObject implements CSVData{
         return result;
     }
 
+    /**
+    * Retrieves data corresponding to a specific time value.
+    * @param time - The time value to search for in the dataset.
+    * @returns The corresponding record as a key-value pair, or `null` if no match is found.
+    */
     getDataByTime(time:string): Record<string, string | number> | null{
         let result: Record<string, string | number> | null = null;
         for(const value of this.data){
-            //console.log(val);
             const val = value;
             for(const header of Object.keys(val)){
                 if(val[header as keyof typeof val] as unknown as string == time){
-                    //console.log(val[header as keyof typeof val], "  ", val[this.yHeader as keyof typeof val]);
                     result = val[this.yHeader as keyof typeof val];
                     return result;
                     
@@ -95,6 +116,8 @@ export class CSVDataObject implements CSVData{
         }
         return result;
     }
+
+    // Getter methods
     getData(){
         return this.data;
     };
@@ -126,6 +149,7 @@ export class CSVDataObject implements CSVData{
         throw new Error("No allowed time header in csv file");
     }
 
+    // Setter getters
     setName(name: string){
         this.name = name;
     }
@@ -143,6 +167,7 @@ export class CSVDataObject implements CSVData{
             }
         }
     }
+    // End of setters
 
     //For now only one display board
     incrementDisplayBoard(){

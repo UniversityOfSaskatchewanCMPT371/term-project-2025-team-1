@@ -11,12 +11,12 @@ import { sendError, sendLog } from '../../logger-frontend';
  * @returns Headers of the file as a CSVHeaders
  */
 export async function UrlCSVHeaders(url:string): Promise<CSVHeaders> {
+    //this might be deleted due to no use, will add loggers anyway
     return UrlCSVReader(url).then((timeSeries) => {
-        const csvheaders: CSVHeaders = { headers: Object.keys(timeSeries[0]) }
-        sendLog("info",`UrlCSVReader.UrlCSVHeaders() has returned ${JSON.stringify(csvheaders)}`);
-        return csvheaders;
+        sendLog("info",`UrlCSVHeaders has returned ${JSON.stringify({ headers: Object.keys(timeSeries[0]) })}`);
+        return ({ headers: Object.keys(timeSeries[0]) } as CSVHeaders);
     }).catch((err: unknown) => {
-        sendError(err,`UrlCSVReader.UrlCSVHeaders() error for url ${url}`);
+        sendError(err,`UrlCSVHeaders error for url ${url}`);
         throw (err as Error);
     });
 }
@@ -28,37 +28,37 @@ export async function UrlCSVHeaders(url:string): Promise<CSVHeaders> {
  */
 export async function UrlCSVReader(url:string): Promise<TimeSeriesData[]>{
     if(!url.endsWith('.csv') && !url.endsWith('.txt')){
-        const typeError = new TypeError('url must be .csv or .txt');
-        sendError(typeError,`UrlCSVReader.LocalCSVHeader() ${url} is not .csv or .txt`);
-        throw typeError;
+        sendError(Error('url must be .csv or .txt'),`UrlCSVReader ${url} is not .csv or .txt`);
+        throw new Error('url must be .csv or .txt');
     }
-    return fetch(url).then((response: Response) =>{
-        if (!response.ok) {
-            const responseError = new Error(`Failed to fetch the file. Status: ${response.status.toString()}`);
-            sendError(responseError,"LocalCSVReader.LocalCSVReader() response is not ok");
-            throw responseError;
-        }
-        return response.text();
-    }).then((csvData: string) => {
-        let timeSeries: TimeSeriesData[] = [];
-        Papa.parse(csvData, {
-            header: true,
-            dynamicTyping: true,
-            complete: function(parsed: Papa.ParseResult<TimeSeriesData>) {
-                timeSeries = parsed.data;
-                if(timeSeries.length === 0){
-                    throw new RangeError("URLCSVReader is empty");
-                }
-                sendLog("info",`URLCSVReader.URLCSVReader() has successfully parsed\n${JSON.stringify(timeSeries)}`);
-            },
-            error: function(parseError: Error){
-                //this will be caught by promise.catch
-                throw parseError;
+    else{
+        return fetch(url).then((response: Response) =>{
+            if (!response.ok) {
+                sendError(Error(`Failed to fetch the file. Status: ${response.status.toString()}`),"UrlCSVReader response is not ok");
+                throw new Error(`Failed to fetch the file. Status: ${response.status.toString()}`);
             }
+            return response.text();
+        }).then((csvData: string) => {
+            let timeSeries: TimeSeriesData[] = [];
+            Papa.parse(csvData, {
+                header: true,
+                dynamicTyping: true,
+                complete: function(parsed: Papa.ParseResult<TimeSeriesData>) {
+                    timeSeries = parsed.data;
+                    if(timeSeries.length === 0){
+                        throw new Error("URLCSVReader is empty");
+                    }
+                    sendLog("info",`URLCSVReader has successfully parsed\n${JSON.stringify(timeSeries)}`);
+                },
+                error: function(parseError: Error){
+                    //this will be caught by promise.catch
+                    throw parseError;
+                }
+            });
+            return timeSeries;
+        }).catch((err: unknown) => {
+            sendError(err,"URLCSVReader error");
+            throw ((err as Error));
         });
-        return timeSeries;
-    }).catch((err: unknown) => {
-        sendError(err,"URLCSVReader.URLCSVReader() error");
-        throw ((err as Error));
-    });
+    };
 }

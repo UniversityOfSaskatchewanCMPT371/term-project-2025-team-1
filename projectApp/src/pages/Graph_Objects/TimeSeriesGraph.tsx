@@ -12,47 +12,44 @@ import mainController from '../../controller/MainController';
 
 export function TimeSeriesGraph({graph}:{graph: TimeSeriesGraphClass}){
   const [ header, setHeader ] = useState("");
-  const [ isChanged, change ] = useState(false);
 
-  const graphClass = graph;
   const totalSpace = 5;
-  const divider = (totalSpace/graphClass.getPoints().length);
+  const divider = (totalSpace/graph.getNumPoints());
   let current = (-1.8) + (divider/2);
+
   let currentLine:[number,number,number]= ([0,0,0.01]);
   let lastLine:[number,number,number] = ([-1.8, -1, 0.01])
-  const separator = 100/graphClass.getPoints().length;
 
-  let yRange = 0;
-  const ySpacing = 100/(graphClass.timeSeriesYRange().length + 1);
+  const xSpacing = 100/graph.getNumPoints();
+  const ySpacing = 100/(graph.timeSeriesYRange().length + 1);
 
   function UpdateGraph(){
-    graphClass.updatePointPosition();
-    setHeader(graphClass.getYHeader());
+    graph.updatePointPosition();
+    setHeader(graph.getYHeader());
     mainController.updateMainScene();
-
-    change(!isChanged)
   }
 
   function HeaderSelection(){
-    setHeader(graphClass.getYHeader());
+    setHeader(graph.getYHeader());
+
     return(
       <>
-      <Container height={"30%"}>
-      <Text>{header}</Text>
-      </Container>
-      <Container height={"50%"} width={"100%"} justifyContent={"space-evenly"}>
-
-        {/* REFACTOR: Duplicate */}
-        <Container width={"40%"} height={"30%"} backgroundColor={"gray"} backgroundOpacity={0.8}
-        justifyContent={"center"} hover={{backgroundOpacity: 0.95}} onClick={() => {graphClass.decrementYHeader(); UpdateGraph()}}>
-          <Text fontWeight={"bold"}>&lt;</Text>
-        </Container>
-        <Container width={"40%"} height={"30%"} backgroundColor={"gray"} backgroundOpacity={0.8}
-        justifyContent={"center"} hover={{backgroundOpacity: 0.95}} onClick={() => {graphClass.incrementYHeader(); UpdateGraph()}}>
-          <Text fontWeight={"bold"}>&gt;</Text>
+        <Container height={"30%"}>
+          <Text>{header}</Text>
         </Container>
 
-      </Container>
+        <Container height={"50%"} width={"100%"} justifyContent={"space-evenly"}>
+
+          <Container width={"40%"} height={"30%"} backgroundColor={"gray"} backgroundOpacity={0.8}
+          justifyContent={"center"} hover={{backgroundOpacity: 0.95}} onClick={() => {graph.decrementYHeader(); UpdateGraph()}}>
+            <Text fontWeight={"bold"}>&lt;</Text>
+          </Container>
+          <Container width={"40%"} height={"30%"} backgroundColor={"gray"} backgroundOpacity={0.8}
+          justifyContent={"center"} hover={{backgroundOpacity: 0.95}} onClick={() => {graph.incrementYHeader(); UpdateGraph()}}>
+            <Text fontWeight={"bold"}>&gt;</Text>
+          </Container>
+
+        </Container>
       </>
     )
 
@@ -78,7 +75,7 @@ export function TimeSeriesGraph({graph}:{graph: TimeSeriesGraphClass}){
 
   function GeneratePoints({point}:{point: PointClass}){
     point.setXPosition((current));
-    point.setYPosition(((point.getYData()/100) * (graphClass.getYRange()/(graphClass.timeSeriesYRange().length))) - (1));
+    point.setYPosition(((point.getYData()/100) * (graph.getYRange()/(graph.timeSeriesYRange().length))) - (1));
     currentLine = lastLine;
     lastLine = ([point.getXPosition(), point.getYPosition(), 0.01])
     return (
@@ -99,12 +96,10 @@ export function TimeSeriesGraph({graph}:{graph: TimeSeriesGraphClass}){
     )
   }
 
-  function GenerateYRange(){
-    yRange = yRange + 5;
-    const curVal = yRange;
+  function GenerateYRange({num} : {num:number}){
     return(
       <>
-      <Text positionTop={10}>{curVal.toString()} -</Text>
+      <Text positionTop={10}>{num.toString()} -</Text>
       </>
     )
   }
@@ -121,11 +116,11 @@ export function TimeSeriesGraph({graph}:{graph: TimeSeriesGraphClass}){
             <Container width={"100%"} height={"85%"} flexDirection={"column-reverse"}>
               <Container height={`${ySpacing}%`} alignContent={"baseline"} flexDirection={"row-reverse"}> 
                 <Text  positionTop={10}>0 -</Text></Container>
-              {graphClass.timeSeriesYRange().map(() => {
+              {graph.timeSeriesYRange().map((range) => {
                 return (
                   <>
                   <Container width={"100%"} height={`${ySpacing}%`} alignContent={"baseline"} flexDirection={"row-reverse"}>
-                    <GenerateYRange></GenerateYRange>
+                    <GenerateYRange num={range}></GenerateYRange>
                   </Container>
                   </>
                 )
@@ -148,9 +143,9 @@ export function TimeSeriesGraph({graph}:{graph: TimeSeriesGraphClass}){
             </Container>
 
             <Container height={"96%"} width={"100%"}>
-            {graphClass.timeSeriesXRange().map((data) => {
+            {graph.timeSeriesXRange().map((data) => {
               return(
-                <Container height={"100%"} width={`${separator}%`} justifyContent={"center"}>
+                <Container height={"100%"} width={`${xSpacing}%`} justifyContent={"center"}>
                   <Text>{data}</Text>
 
             </Container>
@@ -180,7 +175,7 @@ export function TimeSeriesGraph({graph}:{graph: TimeSeriesGraphClass}){
       </Root>
 
         {/* {lastLine = ([-1.8, -1, 0.01])} */}
-        {graphClass.getPoints().map((points) => {
+        {graph.getPoints().map((points) => {
           return(
             <>
             <GeneratePoints point={points}></GeneratePoints>

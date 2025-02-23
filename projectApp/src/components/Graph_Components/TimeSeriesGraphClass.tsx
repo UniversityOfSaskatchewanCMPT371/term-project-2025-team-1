@@ -67,6 +67,10 @@ export class TimeSeriesGraphClass extends GraphClass implements TimeSeriesGraphI
         return this.points;
     }
 
+    getNumPoints():number{
+        return this.points.length;
+    }
+
     /**
      * Updates point positions based on a zooming factor.
      * pre-codition: zoomFactor is a number
@@ -109,7 +113,7 @@ export class TimeSeriesGraphClass extends GraphClass implements TimeSeriesGraphI
     timeSeriesYRange():number[]{
         const range:number[] = [];
         let cur = 0;
-
+        
         while(cur < this.axes.yRange[1]){
             cur = cur + 5;
             range.push(cur);

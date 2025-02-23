@@ -34,32 +34,29 @@ export function BrowserUI(): React.JSX.Element {
 			style={{display:'none'}} 
 			onChange={(reactEvent: React.ChangeEvent<HTMLInputElement>) => {
 				const asyncLocalFile = async (event: React.ChangeEvent<HTMLInputElement>) => {
-					try {
-						const files = event.target.files;
-						if(!files){
-							throw new TypeError("files list is null");
-						}
-						else if(files.length === 0){
-							throw new RangeError("files list is empty");
-						}
-						else{
-							const file = files[0];
-							//console.log(file.name.toString());
+					const files = event.target.files;
+					if(!files){
+						throw new TypeError("files list is null");
+					}
+					else if(files.length === 0){
+						throw new RangeError("files list is empty");
+					}
+					else{
+						const file = files[0];
+						//console.log(file.name.toString());
 
-							//If the file is valid, read the csv file
-							await mainController.getCSVController().getModel().readLocalFile(file);
-							sendLog("info",`BrowserUI LoadComponent read: ${file.name.toString()}`);
-							setControlKey(controlKey + 1);
-							//Same test as csvModeTest
-							// let headers = test.getCSVFiles()[0].data[0];
-							// console.log(headers);
-						}
-					} catch(error: unknown){
-						//Logger or alert instead
-						sendError(error,"BrowserUI LoadComponent Return Error");
+						//If the file is valid, read the csv file
+						await mainController.getCSVController().getModel().readLocalFile(file);
+						sendLog("info",`BrowserUI LoadComponent read: ${file.name.toString()}`);
+						setControlKey(controlKey + 1);
+						//Same test as csvModeTest
+						// let headers = test.getCSVFiles()[0].data[0];
+						// console.log(headers);
 					}
 				}
-				return asyncLocalFile(reactEvent);
+				asyncLocalFile(reactEvent).catch((error: unknown) => {
+					sendError(error,"BrowserUI LoadComponent Return Error");
+				});
 			}
 		}/>);
 	}
@@ -89,16 +86,14 @@ export function BrowserUI(): React.JSX.Element {
 			style={{display: 'none'}}
 			onClick={() => {
 				const asyncUrlFile = (async () => {
-					try{
-						alert(csv);
-						await mainController.getCSVController().getModel().readURLFile(csv);
-						sendLog("info",`BrowserUI URLComponent read: ${csv}`);
-						setControlKey(controlKey + 1);
-					} catch(error: unknown) {
-						sendError(error,"BrowserUI URLComponent Return Error");
-					}
+					alert(csv);
+					await mainController.getCSVController().getModel().readURLFile(csv);
+					sendLog("info",`BrowserUI URLComponent read: ${csv}`);
+					setControlKey(controlKey + 1);
 				});
-				asyncUrlFile();
+				asyncUrlFile().catch((error: unknown) => {
+					sendError(error,"BrowserUI URLComponent Return Error");
+				});
 			}
 		}/>);
 	}
@@ -110,14 +105,14 @@ export function BrowserUI(): React.JSX.Element {
 		//setControlKey(controlKey + 1)
 		//Setting the objects to be displayed
 		const controlsObject: Record<string, boolean | ButtonInput> = names.reduce(
-			(acc, [name, value]) => {
+			(acc: Record<string, boolean | ButtonInput>, [name, value]) => {
 				acc[name] = value;
 
 				console.log("Unmount ", controlKey)
-				sendLog("info",`BrowserUI UnmountedComponents unmount: ${controlKey}`);
+				sendLog("info",`BrowserUI UnmountedComponents unmount: ${String(controlKey)}`);
 				return acc;
 			},
-			{} as Record<string, boolean | ButtonInput>
+			{}
 		);
 		//Button associated with the deleting files
 		controlsObject.delete = button(() => {alert("delete")});

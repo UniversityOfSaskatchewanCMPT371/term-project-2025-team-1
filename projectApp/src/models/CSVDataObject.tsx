@@ -28,7 +28,7 @@ export class CSVDataObject implements CSVData{
     //Initial creation, for loading a graph in the scene, set the yHeader
     async loadCSVData(index: number, file: (File | string), isUrl: boolean){
         try {
-            //tester comment: I think it would be better to just use file instance of
+            //tester comment: I think it would be better to just use instanceof operator
             //instead of adding a boolean for isUrl     --Steven
             
             const data = isUrl ? await UrlCSVReader(file as string) : await LocalCsvReader(file as File)

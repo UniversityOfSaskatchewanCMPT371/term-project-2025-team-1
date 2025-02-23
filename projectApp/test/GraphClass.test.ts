@@ -34,6 +34,13 @@ describe('GraphClass', async () => {
   });
 
   /**
+   * Test: Constructor Error Handling
+   */
+  it('throws error when constructed with invalid CSVDataObject', () => {
+    expect(() => new GraphClass(null as any)).toThrowError("CSVDataObject is required to create a GraphClass instance.");
+  });
+  
+  /**
    * Test: Initialization with CSVDataObject
    */
 
@@ -83,5 +90,57 @@ describe('GraphClass', async () => {
     graph.setAxes(newAxes);
     expect(graph.getAxes()).toEqual(newAxes);
   });
+
+  /**
+   * Test: Error Handling for invalid ID and Name
+   */
+  it('throws error when setting invalid id', () => {
+    const graph = new GraphClass(csvDataMock);
+    expect(() => graph.setId("")).toThrowError("ID must be a non-empty string.");
+  });
+
+  it('throws error when setting invalid name', () => {
+    const graph = new GraphClass(csvDataMock);
+    expect(() => graph.setName("")).toThrowError("Name must be a non-empty string.");
+  });
+
+  /**
+   * Test: Error Handling for invalid position
+   */
+  it('throws error when setting invalid position', () => {
+    const graph = new GraphClass(csvDataMock);
+    expect(() => graph.setPosition("a" as any, 6, 7)).toThrowError("Position coordinates must be numbers.");
+    expect(() => graph.setPosition(5, "b" as any, 7)).toThrowError("Position coordinates must be numbers.");
+    expect(() => graph.setPosition(5, 6, "c" as any)).toThrowError("Position coordinates must be numbers.");
+  });
+
+  /**
+   * Test: Error Handling for invalid axes configuration
+   */
+  it('throws error when setting invalid axes', () => {
+    const graph = new GraphClass(csvDataMock);
+    const invalidAxes1 = { xLabel: "", yLabel: "Y", xRange: [0, 10] as [number, number], yRange: [0, 10] as [number, number] };
+    expect(() => graph.setAxes(invalidAxes1)).toThrowError("Invalid xLabel: must be a non-empty string");
+
+    const invalidAxes2 = { xLabel: "X", yLabel: "", xRange: [0, 10] as [number, number], yRange: [0, 10] as [number, number] };
+    expect(() => graph.setAxes(invalidAxes2)).toThrowError("Invalid yLabel: must be a non-empty string");
+
+    const invalidAxes3 = { xLabel: "X", yLabel: "Y", xRange: [10, 0] as [number, number], yRange: [0, 10] as [number, number] };
+    expect(() => graph.setAxes(invalidAxes3)).toThrowError("Invalid xRange: must be an array of two numbers in non-decreasing order");
+
+    const invalidAxes4 = { xLabel: "X", yLabel: "Y", xRange: [0, 10] as [number, number], yRange: [10, 0] as [number, number] };
+    expect(() => graph.setAxes(invalidAxes4)).toThrowError("Invalid yRange: must be an array of two numbers in non-decreasing order");
+  });
+
+  /**
+   * Test: Error Handling for invalid points array
+   */
+  it('throws error when setting invalid points array', () => {
+    const graph = new GraphClass(csvDataMock);
+    expect(() => graph.setPoints(null as any)).toThrowError("Invalid points: must be an array of PointClass instances");
+    expect(() => graph.setPoints([{}] as any)).toThrowError("Invalid point: each element must be an instance of PointClass");
+  });
+
+  
   
 });

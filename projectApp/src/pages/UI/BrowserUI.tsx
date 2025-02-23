@@ -23,7 +23,7 @@ export function BrowserUI(): React.JSX.Element {
 					};
 					loadFile();
 				} catch(error: unknown){
-					sendError(error, "BrowserUI LoadComponent Button Error");
+					sendError(error, "BrowserUI.LoadComponent() Button Error");
 				}
 			})
 		});
@@ -47,7 +47,7 @@ export function BrowserUI(): React.JSX.Element {
 
 						//If the file is valid, read the csv file
 						await mainController.getCSVController().getModel().readLocalFile(file);
-						sendLog("info",`BrowserUI LoadComponent read: ${file.name.toString()}`);
+						sendLog("info",`BrowserUI.LoadComponent() read: ${file.name.toString()}`);
 						setControlKey(controlKey + 1);
 						//Same test as csvModeTest
 						// let headers = test.getCSVFiles()[0].data[0];
@@ -55,7 +55,7 @@ export function BrowserUI(): React.JSX.Element {
 					}
 				}
 				asyncLocalFile(reactEvent).catch((error: unknown) => {
-					sendError(error,"BrowserUI LoadComponent Return Error");
+					sendError(error,"BrowserUI.LoadComponent() Return Error");
 				});
 			}
 		}/>);
@@ -73,7 +73,7 @@ export function BrowserUI(): React.JSX.Element {
 						};
 						urlFile();
 					} catch(error: unknown){
-						sendError(error, "BrowserUI URLComponent Button Error");
+						sendError(error, "BrowserUI.URLComponent() Button Error");
 					}
 				})
 			},
@@ -88,11 +88,11 @@ export function BrowserUI(): React.JSX.Element {
 				const asyncUrlFile = (async () => {
 					alert(csv);
 					await mainController.getCSVController().getModel().readURLFile(csv);
-					sendLog("info",`BrowserUI URLComponent read: ${csv}`);
+					sendLog("info",`BrowserUI.URLComponent() read: ${csv}`);
 					setControlKey(controlKey + 1);
 				});
 				asyncUrlFile().catch((error: unknown) => {
-					sendError(error,"BrowserUI URLComponent Return Error");
+					sendError(error,"BrowserUI.URLComponent() Return Error");
 				});
 			}
 		}/>);
@@ -109,7 +109,7 @@ export function BrowserUI(): React.JSX.Element {
 				acc[name] = value;
 
 				console.log("Unmount ", controlKey)
-				sendLog("info",`BrowserUI UnmountedComponents unmount: ${String(controlKey)}`);
+				sendLog("info",`BrowserUI.UnmountedComponents() unmount: ${String(controlKey)}`);
 				return acc;
 			},
 			{}

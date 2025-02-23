@@ -40,10 +40,11 @@ export class CSVDataObject implements CSVData{
                 this.csvHeaders = headers;
                 this.setYHeader("X");
             }
+            sendLog("info",`CSVDataObject.loadCSVData() has loaded csv data\n${JSON.stringify(this.data)}}`);
         }
         catch(error: unknown) {
             //logger.error("Failed Loading");
-            sendError(error, "CSVDataObject loadCSVData error");
+            sendError(error, "CSVDataObject.loadCSVData() error");
             return;
         }
     }
@@ -60,10 +61,11 @@ export class CSVDataObject implements CSVData{
             const data = await LocalCSVReader(file);
             this.setData(data);
             this.name = ("Graph" + index.toString());
+            sendLog("info",`CSVDataObject.loadLocalByPath() has loaded csv data\n${JSON.stringify(this.data)}}`);
         }
         catch(error: unknown) {
            // logger.error("Failed Loading");
-            sendError(error, "CSVDataObject loadLocalByPath error");
+            sendError(error, "CSVDataObject.loadLocalByPath() error");
             return;
         }
     }
@@ -76,11 +78,13 @@ export class CSVDataObject implements CSVData{
                 if([header as keyof typeof val].toString() == key){
                     //console.log(val[header as keyof typeof val], "  ", val[this.yHeader as keyof typeof val]);
                     result = val[header as keyof typeof val];
+                    sendLog("info","CSVDataObject.getDataByKey() has found data");
                     return result;
                     
                 }
             }
         }
+        sendLog("info","CSVDataObject.getDataByKey() has returned null, is this expected?");
         return result;
     }
 
@@ -93,11 +97,13 @@ export class CSVDataObject implements CSVData{
                 if(val[header as keyof typeof val] as unknown as string == time){
                     //console.log(val[header as keyof typeof val], "  ", val[this.yHeader as keyof typeof val]);
                     result = val[this.yHeader as keyof typeof val];
+                    sendLog("info","CSVDataObject.getDataByKey() has found data");
                     return result;
                     
                 }
             }
         }
+        sendLog("info","CSVDataObject.getDataByTime() has returned null, is this expected?");
         return result;
     }
     //tester comment: recommend putting all getters and setters together
@@ -135,19 +141,22 @@ export class CSVDataObject implements CSVData{
     }
 
     setName(name: string){
-        sendLog("info",`${this.name} will now be called ${name}`);
+        sendLog("info",`CSVDataObject.setName(), ${this.name} will now be called ${name}`);
         this.name = name;
     }
     setBrowserSelected(bool: boolean){
-        sendLog("info",`${this.name} browser is set to ${bool.toString()}`);
+        sendLog("info",`CSVDataObject.setBrowserSelected(), ${this.name} browser is set to ${bool.toString()}`);
         this.browserSelected = bool;
     }
+    //side note: why are both booleans?
+    //is it possible for both browser and vr to be selected?
+    //is it possible for neither to be selected? 
     setVRSelected(bool:boolean){
-        sendLog("info",`${this.name} vr is set to ${bool.toString()}`);
+        sendLog("info",`CSVDataObject.setVRSelected(), ${this.name} vr is set to ${bool.toString()}`);
         this.vrSelected = bool;
     }
     setYHeader(header:string){
-        sendLog("info",`${this.name} yHeader is set to ${header}`);
+        sendLog("info",`CSVDataObject.setYHeader(), ${this.name} yHeader is set to ${header}`);
         for(const head of this.getCSVHeaders()){
             if(head == header){
                 this.yHeader = header;
@@ -158,7 +167,7 @@ export class CSVDataObject implements CSVData{
 
     //For now only one display board
     incrementDisplayBoard(){
-        sendLog("info",`${this.name} increase displays by 1`);
+        sendLog("info",`CSVDataObject.incrementDisplayBoard(), ${this.name} increase displays by 1`);
         if(this.displayBoard == 0){
             this.displayBoard++;
         }
@@ -167,7 +176,7 @@ export class CSVDataObject implements CSVData{
         }
     }
     decrementDisplayBoard(){
-        sendLog("info",`${this.name} decrease displays by 1`);
+        sendLog("info",`CSVDataObject.decrementDisplayBoard(), ${this.name} decrease displays by 1`);
         if(this.displayBoard == 0){
             this.displayBoard = 1;
         }

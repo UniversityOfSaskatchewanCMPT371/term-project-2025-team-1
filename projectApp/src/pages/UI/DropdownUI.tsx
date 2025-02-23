@@ -48,7 +48,7 @@ export default function DropdownUI(props: dropDownProps){
                 hover={{backgroundOpacity: 0.75}}
                 onClick={() => {
                     data.decrementDisplayBoard();
-                    sendLog("info","DropdownUI RowObjectButtons < pressed");
+                    sendLog("info","DropdownUI.RowObjectButtons() [<] pressed");
                     }}>
                     <Text fontWeight={"bold"}>
                         &lt;
@@ -72,7 +72,7 @@ export default function DropdownUI(props: dropDownProps){
                 hover={{backgroundOpacity: 0.75}}
                 onClick={() => {
                     data.incrementDisplayBoard();
-                    sendLog("info","DropdownUI RowObjectButtons > pressed");
+                    sendLog("info","DropdownUI.RowObjectButtons() []>] pressed");
                     }}>
                     <Text fontWeight={"bold"}>
                         &gt;
@@ -111,7 +111,7 @@ export default function DropdownUI(props: dropDownProps){
                 hover={{backgroundOpacity: 0.75}}
                 onClick={() => {
                     update();
-                    sendLog("info","DropdownUI GenerateList BUTTON? pressed");
+                    sendLog("info","DropdownUI.GenerateList() [BUTTON]? pressed");
                     }}>
                     <Text fontWeight={"bold"} positionLeft={"20%"} positionBottom={"5%"}>
                         Generate
@@ -133,7 +133,7 @@ export default function DropdownUI(props: dropDownProps){
                     flexGrow={1}
                     onClick={() => {
                         setActive(!active)
-                        sendLog("info","DropdownUI DropDownBody active button pressed");
+                        sendLog("info","DropdownUI.DropDownBody() [active] button pressed");
                     }}
                     hover={{backgroundOpacity: 1}}/>
                 </Root>
@@ -158,7 +158,7 @@ export default function DropdownUI(props: dropDownProps){
                         margin={1}
                         onClick={() => {
                             press(!pressed);
-                            sendLog("info","DropdownUI DropDownBody create button pressed");
+                            sendLog("info","DropdownUI.DropDownBody() [create] button pressed");
                             }}>
                         {/* Create objects representing loaded graphs in model 
                             Each will have a button that sets a use state for selected

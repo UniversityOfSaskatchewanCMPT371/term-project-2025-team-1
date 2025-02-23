@@ -17,6 +17,7 @@ export class CSVController implements ControllerInterface{
     getModel(){
         return this.model;
     }
+    // Generates graph and adds points from model
     generate(){
         for(const csv of this.model.getData()){
             if(csv.getDisplayBoard() == 1){
@@ -28,8 +29,13 @@ export class CSVController implements ControllerInterface{
                 console.log("Success on generate?")
                 
             }
-        }   
+        }
     }
+    
+    /*
+     * Returns the first CSVDataObject that has VR selected.
+     * If no such object is found, returns a new empty CSVDataObject.
+     */
     getVRSelected(): CSVDataObject{
         let file:CSVDataObject = new CSVDataObject();
         for(const csv of this.model.getData()){
@@ -39,6 +45,5 @@ export class CSVController implements ControllerInterface{
             }
         }
         return file;
-    }
-    
+    } 
 }

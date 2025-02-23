@@ -6,7 +6,7 @@ import React, { useState } from 'react';
 import { sendLog, sendError } from '../../logger-frontend.ts'
 
 //The UI that appears when the webpage is opened
-export function BrowserUI(): JSX.Element {
+export function BrowserUI(): React.JSX.Element {
     const fileInputRef = React.useRef<HTMLInputElement>(null);
     const urlInputRef = React.useRef<HTMLInputElement>(null);
 
@@ -14,7 +14,7 @@ export function BrowserUI(): JSX.Element {
     const [ controlKey, setControlKey ] = useState(0);
     
     //The botton component that opens file explorer and loads a local file
-    function LoadComponent(): JSX.Element {
+    function LoadComponent(): React.JSX.Element {
 		useControls({
 			'Load Local CSV' : button(() => {
 				try{
@@ -32,36 +32,40 @@ export function BrowserUI(): JSX.Element {
 			type='file' 
 			ref={fileInputRef} 
 			style={{display:'none'}} 
-			onChange={async (event) => {
-			try {
-				const files = event.target.files;
-				if(!files){
-					throw new TypeError("files list is null");
-				}
-				else if(files.length === 0){
-					throw new RangeError("files list is empty");
-				}
-				else{
-					const file = files[0];
-					//console.log(file.name.toString());
+			onChange={(reactEvent: React.ChangeEvent<HTMLInputElement>) => {
+				const asyncLocalFile = async (event: React.ChangeEvent<HTMLInputElement>) => {
+					try {
+						const files = event.target.files;
+						if(!files){
+							throw new TypeError("files list is null");
+						}
+						else if(files.length === 0){
+							throw new RangeError("files list is empty");
+						}
+						else{
+							const file = files[0];
+							//console.log(file.name.toString());
 
-					//If the file is valid, read the csv file
-					await mainController.getCSVController().getModel().readLocalFile(file);
-					sendLog("info",`BrowserUI LoadComponent read: ${file.name.toString()}`);
-					setControlKey(controlKey + 1);
-					//Same test as csvModeTest
-					// let headers = test.getCSVFiles()[0].data[0];
-					// console.log(headers);
+							//If the file is valid, read the csv file
+							await mainController.getCSVController().getModel().readLocalFile(file);
+							sendLog("info",`BrowserUI LoadComponent read: ${file.name.toString()}`);
+							setControlKey(controlKey + 1);
+							//Same test as csvModeTest
+							// let headers = test.getCSVFiles()[0].data[0];
+							// console.log(headers);
+						}
+					} catch(error: unknown){
+						//Logger or alert instead
+						sendError(error,"BrowserUI LoadComponent Return Error");
+					}
 				}
-			} catch(error: unknown){
-				//Logger or alert instead
-				sendError(error,"BrowserUI LoadComponent Return Error");
+				return asyncLocalFile(reactEvent);
 			}
-		}}/>);
+		}/>);
 	}
   
 	//This one is for loading the csvfile through a url link
-	function URLComponent(): JSX.Element {
+	function URLComponent(): React.JSX.Element {
 		const { csv } = useControls({
 			csv: {
 				label: "CSV by URL", value: "Enter URL"},
@@ -83,16 +87,19 @@ export function BrowserUI(): JSX.Element {
 			type='button'
 			ref={urlInputRef}
 			style={{display: 'none'}}
-			onClick={(async () => {
-				try{
-					alert(csv);
-					await mainController.getCSVController().getModel().readURLFile(csv);
-					sendLog("info",`BrowserUI URLComponent read: ${csv}`);
-					setControlKey(controlKey + 1);
-				} catch(error: unknown) {
-					sendError(error,"BrowserUI URLComponent Return Error");
-				}
-			})
+			onClick={() => {
+				const asyncUrlFile = (async () => {
+					try{
+						alert(csv);
+						await mainController.getCSVController().getModel().readURLFile(csv);
+						sendLog("info",`BrowserUI URLComponent read: ${csv}`);
+						setControlKey(controlKey + 1);
+					} catch(error: unknown) {
+						sendError(error,"BrowserUI URLComponent Return Error");
+					}
+				});
+				asyncUrlFile();
+			}
 		}/>);
 	}
   

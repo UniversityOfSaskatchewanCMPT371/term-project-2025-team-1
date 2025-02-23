@@ -74,7 +74,7 @@ export function BrowserUI(){
       onClick={( async (): Promise<void> => {
         alert(csv)
         await mainController.getCSVController().getModel().readURLFile(csv);
-        sendLog("info",`BrowserUI.URLComponent() read: ${csv}`);
+        sendLog("info",`URLComponent read: ${csv}`);
         // eslint HATES this!!! no async catch
         setControlKey(controlKey + 1);
         // no error catching, no sendError
@@ -92,7 +92,7 @@ export function BrowserUI(){
     const controlsObject: Record<string, boolean | ButtonInput> = names.reduce((acc, [name, value]) => {
       acc[name] = value;
 
-      sendLog("info",`BrowserUI.UnmountedComponents() unmount: ${String(controlKey)}`);
+      sendLog("info",`UnmountedComponents unmount: ${String(controlKey)}`);
       return acc;
       // eslint HATES {} as ~ for Array.reduce 
     }, {} as Record<string, boolean | ButtonInput>

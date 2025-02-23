@@ -32,7 +32,7 @@ export class CSVController implements ControllerInterface{
                 //these constants will only exist in this if statement
                 mainController.getGraphController().getModel().getData().push(graph)
                 console.log("Success on generate?")
-                sendLog("info","CSVController.generate() has pushed a new graph");
+                sendLog("info","generate has pushed a new graph");
             }
         }   
     }
@@ -44,12 +44,12 @@ export class CSVController implements ControllerInterface{
                 file = csv;
                 //file is not returned, csv is
                 //what is the point of this file variable?
-                sendLog("info",`CSVController.getVRSelected() has returned ${csv.name}`);
+                sendLog("info",`getVRSelected has returned ${csv.name}`);
                 return csv;
             }
         }
         //is this not an error? is it supposed to return an empty object? is this intentional?
-        sendLog("info","CSVController.getVRSelected() has returned an empty CSVDataObject");
+        sendLog("info","getVRSelected has returned an empty CSVDataObject");
         return file;
     }
     

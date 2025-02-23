@@ -32,7 +32,6 @@ export async function LocalCSVReader(file:string): Promise<TimeSeriesData[]>{
         sendError(new Error('File must be .csv or .txt'),`LocalCSVReader ${file} is not .csv or .txt`);
         throw new Error('File must be .csv or .txt');
     }
-    //logger.info("LocalCSVReader Reading file", file);
     return fsPromise.readFile(file, 'utf8').then((data: string) => {
         let timeSeries: TimeSeriesData[] = []
         Papa.parse(data, {

@@ -48,7 +48,7 @@ export default function DropdownUI(props: dropDownProps){
                 backgroundOpacity={0.5}
                 hover={{backgroundOpacity: 0.75}} onClick={() => {
                     data.decrementDisplayBoard();
-                    sendLog("info","DropdownUI.RowObjectButtons() [<] pressed");
+                    sendLog("info","RowObjectButtons [<] pressed");
                 }}>
                     <Text fontWeight={"bold"}>&lt;</Text>
                 </Container>
@@ -63,7 +63,7 @@ export default function DropdownUI(props: dropDownProps){
                 backgroundOpacity={0.5}
                 hover={{backgroundOpacity: 0.75}} onClick={() => {
                     data.incrementDisplayBoard();
-                    sendLog("info","DropdownUI.RowObjectButtons() []>] pressed");
+                    sendLog("info","RowObjectButtons []>] pressed");
                 }}>
                     <Text fontWeight={"bold"}>&gt;</Text>
                 </Container>
@@ -100,7 +100,7 @@ export default function DropdownUI(props: dropDownProps){
             <Container width={"30%"} height={"100%"} backgroundColor={"gray"} backgroundOpacity={0.5}
             hover={{backgroundOpacity: 0.75}} onClick={() => {
                 update();
-                sendLog("info","DropdownUI.GenerateList() [BUTTON]? pressed");
+                sendLog("info","GenerateList [BUTTON]? pressed");
                 }}>
             <Text fontWeight={"bold"} positionLeft={"20%"} positionBottom={"5%"}>Generate</Text>
             </Container>
@@ -125,7 +125,7 @@ export default function DropdownUI(props: dropDownProps){
                     flexGrow={1}
                     onClick={() => {
                         setActive(!active);
-                        sendLog("info","DropdownUI.DropDownBody() [active] button pressed");
+                        sendLog("info","DropDownBody [active] button pressed");
                     }}
                     backgroundColor={"grey"}
                     backgroundOpacity={0.5}
@@ -149,7 +149,7 @@ export default function DropdownUI(props: dropDownProps){
                         margin={1}
                         onClick={() => {
                             press(!pressed);
-                            sendLog("info","DropdownUI.DropDownBody() [create] button pressed");
+                            sendLog("info","DropDownBody [create] button pressed");
                         }}
                         backgroundColor={"lightgray"}
                         backgroundOpacity={0.8}

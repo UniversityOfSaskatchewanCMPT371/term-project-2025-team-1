@@ -25,7 +25,7 @@ export class CSVReaderModel implements CSVModelInterface{
                 return data;
             }
         };
-        sendLog("info",`CSVReaderModel.getCSVRileByName() could not find file ${name}`);
+        sendLog("info",`getCSVRileByName could not find file ${name}, is this expected behavior?`);
         return null;
     }
 
@@ -38,11 +38,10 @@ export class CSVReaderModel implements CSVModelInterface{
         const data:CSVDataObject = new CSVDataObject(); //this looks like an error so i added ()
         try{
             await data.loadLocalCSVFile(this.num, file);
-            sendLog("info",`CSVReaderModel.readLocalFile() read a file\n${JSON.stringify(data.getData())}`);
+            sendLog("info",`readLocalFile read a file\n${JSON.stringify(data.getData())}`);
         }
         catch(error: unknown){
-            // logger.error("Failed to read Local to get CSV file");
-            sendError(error,"CSVReaderModel.readLocalFile() error");
+            sendError(error,"readLocalFile error");
             return;
         }
         this.data.push(data);
@@ -53,11 +52,10 @@ export class CSVReaderModel implements CSVModelInterface{
         const data:CSVDataObject = new CSVDataObject;
         try{
             await data.loadUrlCSVFile(this.num, file);
-            sendLog("info",`CSVReaderModel.readURLFile() read a file\n${JSON.stringify(data.getData())}`);
+            sendLog("info",`readURLFile read a file\n${JSON.stringify(data.getData())}`);
         }
         catch(error: unknown){
-            //logger.error("Failed to read Local to get CSV file");
-            sendError(error,"CSVReaderModel.readURLFile() error");
+            sendError(error,"readURLFile error");
             return;
         }
         this.data.push(data);
@@ -69,11 +67,10 @@ export class CSVReaderModel implements CSVModelInterface{
         const data:CSVDataObject = new CSVDataObject;
         try{
             await data.loadLocalByPath(this.num, file);
-            sendLog("info",`CSVReaderModel.readLocalByPath() read a file\n${JSON.stringify(data.getData())}`);
+            sendLog("info",`readLocalByPath read a file\n${JSON.stringify(data.getData())}`);
         }
         catch(error: unknown){
-            // logger.error("Failed to read Local to get CSV file");
-            sendError(error,"CSVReaderModel.readLocalByPath() error");
+            sendError(error,"readLocalByPath error");
             //tester comment: this one doesnt have a return, is this intentional?
         }
 
@@ -88,11 +85,11 @@ export class CSVReaderModel implements CSVModelInterface{
         for(let i = 0; i < this.data.length; i++){
             if(this.data[i].name == name){
                 this.data.splice(i, 1);
-                sendLog("info",`CSVReaderModel.deleteFile() ${name} has been deleted from CSVReaderModel`);
+                sendLog("info",`deleteFile() ${name} has been deleted from CSVReaderModel`);
                 return;
             }
         }
-        sendLog("info",`CSVReaderModel.deleteFile(), ${name} was not found in CSVReaderModel`);
+        sendLog("info",`deleteFile(), ${name} was not found in CSVReaderModel`);
         //tester comment: what happends when a file does not exist?
         //what does the user expect it to do when this happens?
     };
@@ -101,7 +98,7 @@ export class CSVReaderModel implements CSVModelInterface{
         const csvBrowser:[string,boolean][] = [];
         if(!(this.getData().length > 0)){
             //aka this.getData().length === 0 (cannot be negative)
-            sendLog("info","CSVReaderModel.loadedCsvBrowser() returns empty list");
+            sendLog("info","loadedCsvBrowser() returns empty list, i think this is intentional");
             return csvBrowser;
         }
 
@@ -109,7 +106,7 @@ export class CSVReaderModel implements CSVModelInterface{
             const arrVal = file.getName();
             csvBrowser.push([arrVal,file.getBrowserSelected()])
         })
-        sendLog("info",`CSVReaderModel.loadedCsvBrowser() returns list\n${JSON.stringify(csvBrowser)}`)
+        sendLog("info",`loadedCsvBrowser() returns list\n${JSON.stringify(csvBrowser)}`)
         return csvBrowser;
     }
     //tester comment: for formatting and ease of use, i suggest all get and set functions should be grouped

@@ -2,6 +2,7 @@ import * as fsPromise from 'fs/promises';
 import Papa from 'papaparse';
 
 import {CSVHeaders, TimeSeriesData} from '../../types/CSVInterfaces';
+import { sendError, sendLog } from '../../logger-frontend';
 
 
 /**  
@@ -10,13 +11,12 @@ import {CSVHeaders, TimeSeriesData} from '../../types/CSVInterfaces';
 * @returns: {Promise<CSVHeaders>}
 **/
 export async function LocalCSVHeaders(file:string): Promise<CSVHeaders> {
-    //logger.info("Calling LocalCSVHeader ", file);
+    //this will be removed in a later version, but for now ill add logging to it
     return LocalCSVReader(file).then((timeSeries) => {
-        //logger.info("Successful LocalCSVHeader", Object.keys(timeSeries[0]));
+        sendLog("info",`LocalCSVHeader has returned ${JSON.stringify({ headers: Object.keys(timeSeries[0]) })}`);
         return ({ headers: Object.keys(timeSeries[0]) } as CSVHeaders);
-    // Rethrowing errors
     }).catch((err:unknown) => {
-        //logger.error("LocalCSVHeaders Error", err);
+        sendError(err,`LocalCSVHeader error for file ${file}`);
         throw (err as Error);
     });
 }
@@ -27,35 +27,31 @@ export async function LocalCSVHeaders(file:string): Promise<CSVHeaders> {
 * @returns: {Promise<CSVHeaders>}
 **/
 export async function LocalCSVReader(file:string): Promise<TimeSeriesData[]>{
-    //logger.info("Calling LocalCSVReader", file);
     if(!file.endsWith('.csv') && !file.endsWith('.txt')){
-        //test for files that are NOT .csv
-        //logger.error("LocalCSVReader File isn't .csv or .txt file", file);
+        //sorry! cant add new variables! just have to live with repeating repetitions
+        sendError(new Error('File must be .csv or .txt'),`LocalCSVReader ${file} is not .csv or .txt`);
         throw new Error('File must be .csv or .txt');
     }
-    //logger.info("LocalCSVReader Reading file", file);
     return fsPromise.readFile(file, 'utf8').then((data: string) => {
         let timeSeries: TimeSeriesData[] = []
         Papa.parse(data, {
             header: true,
             dynamicTyping: true,
             complete: function(parsed: Papa.ParseResult<TimeSeriesData>){
-                //logger.info("LocalCSVReader Successfully parsed", file);
-                //test if casting works
                 timeSeries = parsed.data;
                 if(timeSeries.length === 0){
                     throw new Error("LocalCSVReader is empty");
                 }
-                //logger.info("LocalCSVReader Parsed value", timeSeries);
+                sendLog("info",`LocalCSVReader has successfully parsed\n${JSON.stringify(timeSeries)}`);
             },
             error: function(parseError: Error) {
-                //logger.error("LocalCSVReader Failed Parse", file);
+                //this will be caught by promise.catch
                 throw parseError;
             }
         });
         return timeSeries;
     }).catch((err: unknown) => {
-        //test for possible error catching
+        sendError(err,"LocalCSVReader error");
         throw (err as Error);
     });
 };
@@ -66,6 +62,7 @@ export async function LocalCSVReader(file:string): Promise<TimeSeriesData[]>{
 export function LocalCsvReader(file: File): Promise<TimeSeriesData[]>{
     return new Promise<TimeSeriesData[]>((resolve, reject) => {
         if(!file.name.endsWith('.csv') && !file.name.endsWith('.txt')){
+            sendError(new Error("file must be csv or txt"),`LocalCsvReader(file) ${file.name} is not .csv or .txt`);
             reject(new Error("file must be csv or txt"));
             return;
         }
@@ -79,18 +76,19 @@ export function LocalCsvReader(file: File): Promise<TimeSeriesData[]>{
                 header: true,
                 dynamicTyping: true,
                 complete: function (parsed: {data: TimeSeriesData[]}){
-                    console.log("Successfully parsed CSV data", parsed.data);
+                    sendLog("info",`LocalCsvReader(file) has read data\n${JSON.stringify(parsed.data)}`);
                     const typedData: TimeSeriesData[] = parsed.data;
                     resolve(typedData); // Resolve the promise with parsed data
                 },
                 error: function (parseError: Error) {
-                    console.error("Failed to parse CSV", file.name);
+                    sendError(parseError,`LocalCsvReader(file) has errored for ${file.name}`);
                     reject(parseError); // Reject the promise on parsing error
                 }
             });
         };
 
         reader.onerror = () => {
+            sendError(new Error("sorry no better description for this, it just says \"Error\""),`LocalCsvReader(file) has errored for ${file.name}`);
             reject(new Error("Error"))
         }
         reader.readAsText(file);

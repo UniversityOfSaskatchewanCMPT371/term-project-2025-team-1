@@ -2,6 +2,7 @@ import { Root, Container, Text } from '@react-three/uikit';
 import { useState } from 'react';
 import mainController from "../../controller/MainController.tsx";
 import { CSVData } from '../../types/CSVInterfaces.tsx';
+import { sendLog } from '../../logger-frontend.ts';
 
 interface dropDownProps {
     position : [number, number, number];
@@ -45,7 +46,10 @@ export default function DropdownUI(props: dropDownProps){
                 <Container backgroundColor={"gray"} width={"25%"} 
                 alignItems={"center"} justifyContent={"center"} positionRight={2}
                 backgroundOpacity={0.5}
-                hover={{backgroundOpacity: 0.75}} onClick={() => {data.decrementDisplayBoard()}}>
+                hover={{backgroundOpacity: 0.75}} onClick={() => {
+                    data.decrementDisplayBoard();
+                    sendLog("info","RowObjectButtons [<] pressed");
+                }}>
                     <Text fontWeight={"bold"}>&lt;</Text>
                 </Container>
                 {/* Displaying the board number */}
@@ -57,7 +61,10 @@ export default function DropdownUI(props: dropDownProps){
                 <Container backgroundColor={"gray"} width={"25%"} 
                 alignItems={"center"} justifyContent={"center"} positionLeft={2}
                 backgroundOpacity={0.5}
-                hover={{backgroundOpacity: 0.75}} onClick={() => {data.incrementDisplayBoard()}}>
+                hover={{backgroundOpacity: 0.75}} onClick={() => {
+                    data.incrementDisplayBoard();
+                    sendLog("info","RowObjectButtons []>] pressed");
+                }}>
                     <Text fontWeight={"bold"}>&gt;</Text>
                 </Container>
             </Container>
@@ -91,7 +98,10 @@ export default function DropdownUI(props: dropDownProps){
 
             {/* Attach ON Click here */}
             <Container width={"30%"} height={"100%"} backgroundColor={"gray"} backgroundOpacity={0.5}
-            hover={{backgroundOpacity: 0.75}} onClick={() => {update()}}>
+            hover={{backgroundOpacity: 0.75}} onClick={() => {
+                update();
+                sendLog("info","GenerateList [BUTTON]? pressed");
+                }}>
             <Text fontWeight={"bold"} positionLeft={"20%"} positionBottom={"5%"}>Generate</Text>
             </Container>
             
@@ -113,7 +123,10 @@ export default function DropdownUI(props: dropDownProps){
                 <Root  sizeX={0.5} sizeY={0.5}>
                     <Container
                     flexGrow={1}
-                    onClick={() => {setActive(!active)}}
+                    onClick={() => {
+                        setActive(!active);
+                        sendLog("info","DropDownBody [active] button pressed");
+                    }}
                     backgroundColor={"grey"}
                     backgroundOpacity={0.5}
                     hover={{backgroundOpacity: 1}}>
@@ -134,7 +147,10 @@ export default function DropdownUI(props: dropDownProps){
                         height={"88%"}
                         width={"99%"}
                         margin={1}
-                        onClick={() => {press(!pressed)}}
+                        onClick={() => {
+                            press(!pressed);
+                            sendLog("info","DropDownBody [create] button pressed");
+                        }}
                         backgroundColor={"lightgray"}
                         backgroundOpacity={0.8}
                         >

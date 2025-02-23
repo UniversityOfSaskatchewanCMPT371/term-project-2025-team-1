@@ -3,6 +3,8 @@ import mainController from '../../controller/MainController';
 import { ButtonInput } from 'leva/dist/declarations/src/types';
 import React, { useState } from 'react';
 
+import { sendLog, sendError } from '../../logger-frontend.ts'
+
 //The UI that appears when the webpage is opened
 export function BrowserUI(){
     const fileInputRef = React.useRef<HTMLInputElement>(null);
@@ -19,6 +21,7 @@ export function BrowserUI(){
         fileInputRef.current?.click()
           };
           loadFile();
+          //i guess erroring is unecessary given there is no try/catch here originally
       })})
       
       return( 
@@ -31,18 +34,18 @@ export function BrowserUI(){
             const files = e.target.files;
             if(files && files.length > 0){
               const file = files[0];
-              //console.log(file.name.toString());
 
               //If the file is valid, read the csv file
               await mainController.getCSVController().getModel().readLocalFile(file);
+              sendLog("info",`LoadComponent read: ${file.name.toString()}`);
               setControlKey(controlKey + 1);
               //Same test as csvModeTest
               // let headers = test.getCSVFiles()[0].data[0];
-              // console.log(headers);
             }
             else{
               //Logger or alert instead
-              console.log("Invalid File")
+              sendError(new Error("Invalid File"),"LoadComponent Return Error");
+
             }
           }}>
         </input>
@@ -59,6 +62,7 @@ export function BrowserUI(){
       urlInputRef.current?.click();
       };
       urlFile();
+      //no more longging here
     })}, {oneLineLabels: true});
 
     return (
@@ -70,7 +74,10 @@ export function BrowserUI(){
       onClick={( async (): Promise<void> => {
         alert(csv)
         await mainController.getCSVController().getModel().readURLFile(csv);
+        sendLog("info",`URLComponent read: ${csv}`);
+        // eslint HATES this!!! no async catch
         setControlKey(controlKey + 1);
+        // no error catching, no sendError
       })}></input>
     </>
     )
@@ -85,8 +92,9 @@ export function BrowserUI(){
     const controlsObject: Record<string, boolean | ButtonInput> = names.reduce((acc, [name, value]) => {
       acc[name] = value;
 
-      console.log("Unmount ", controlKey)
+      sendLog("info",`UnmountedComponents unmount: ${String(controlKey)}`);
       return acc;
+      // eslint HATES {} as ~ for Array.reduce 
     }, {} as Record<string, boolean | ButtonInput>
   );
   //Button associated with the deleting files

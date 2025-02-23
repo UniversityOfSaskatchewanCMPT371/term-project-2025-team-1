@@ -10,13 +10,10 @@ import {CSVHeaders, TimeSeriesData} from '../../types/CSVInterfaces';
 * @returns: {Promise<CSVHeaders>}
 **/
 export async function LocalCSVHeaders(file:string): Promise<CSVHeaders> {
-    //logger.info("Calling LocalCSVHeader ", file);
     return LocalCSVReader(file).then((timeSeries) => {
-        //logger.info("Successful LocalCSVHeader", Object.keys(timeSeries[0]));
         return ({ headers: Object.keys(timeSeries[0]) } as CSVHeaders);
     // Rethrowing errors
     }).catch((err:unknown) => {
-        //logger.error("LocalCSVHeaders Error", err);
         throw (err as Error);
     });
 }
@@ -27,29 +24,23 @@ export async function LocalCSVHeaders(file:string): Promise<CSVHeaders> {
 * @returns: {Promise<CSVHeaders>}
 **/
 export async function LocalCSVReader(file:string): Promise<TimeSeriesData[]>{
-    //logger.info("Calling LocalCSVReader", file);
     if(!file.endsWith('.csv') && !file.endsWith('.txt')){
-        //test for files that are NOT .csv
-        //logger.error("LocalCSVReader File isn't .csv or .txt file", file);
+        // Ensures input file is a csv
         throw new Error('File must be .csv or .txt');
     }
-    //logger.info("LocalCSVReader Reading file", file);
     return fsPromise.readFile(file, 'utf8').then((data: string) => {
         let timeSeries: TimeSeriesData[] = []
         Papa.parse(data, {
             header: true,
             dynamicTyping: true,
             complete: function(parsed: Papa.ParseResult<TimeSeriesData>){
-                //logger.info("LocalCSVReader Successfully parsed", file);
-                //test if casting works
+                // Ensures casting works
                 timeSeries = parsed.data;
                 if(timeSeries.length === 0){
                     throw new Error("LocalCSVReader is empty");
                 }
-                //logger.info("LocalCSVReader Parsed value", timeSeries);
             },
             error: function(parseError: Error) {
-                //logger.error("LocalCSVReader Failed Parse", file);
                 throw parseError;
             }
         });
@@ -61,8 +52,11 @@ export async function LocalCSVReader(file:string): Promise<TimeSeriesData[]>{
 };
 
 
-//This one is for local reader but refactored to read a file
-
+/**  
+* Reads a CSV file from a File Object (local reader) and returns an array of time series data.
+* @param file File path for csv file 
+* @returns: {Promise<CSVHeaders>}
+**/
 export function LocalCsvReader(file: File): Promise<TimeSeriesData[]>{
     return new Promise<TimeSeriesData[]>((resolve, reject) => {
         if(!file.name.endsWith('.csv') && !file.name.endsWith('.txt')){
@@ -90,6 +84,7 @@ export function LocalCsvReader(file: File): Promise<TimeSeriesData[]>{
             });
         };
 
+        // handles file reading errors
         reader.onerror = () => {
             reject(new Error("Error"))
         }

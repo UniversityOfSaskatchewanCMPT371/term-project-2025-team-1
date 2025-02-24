@@ -12,7 +12,6 @@ vi.mock('./PointClass', () => {
       selected: boolean;
       xData: any;
       constructor(ref?: { position?: number[]; selected?: boolean; xData?: any }) {
-        // Provide default values if no ref is passed.
         // replace || with ?? to avoid nullish coalescing error for linting
         this.position = ref?.position ?? [0, 0, 0];
         this.selected = ref?.selected ?? false;
@@ -30,7 +29,6 @@ describe('GraphClass', async () => {
   let csvDataMock: CSVDataObject;
   await mainController.getCSVController().getModel().readURLFile("https://raw.githubusercontent.com/UniversityOfSaskatchewanCMPT371/term-project-2025-team-1/refs/heads/main/csvTestFiles/test.csv");
   beforeEach(() => {
-    // Create a mock CSVDataObject
     csvDataMock = mainController.getCSVController().getModel().getData()[0];
   });
 
@@ -42,10 +40,9 @@ describe('GraphClass', async () => {
   it('initializes with correct properties from CSVDataObject', () => {
     const graph = new GraphClass(csvDataMock);
 
-    // Verify id, dimensions, position, and axes set by the constructor
+    // Verify id, position, and axes set by the constructor
     graph.setId('TestGraph');
     expect(graph.getId()).toBe('TestGraph');
-    // expect(graph.getDimensions()).toEqual({ width: 10, height: 10, depth: 10 });
     expect(graph.getPosition()).toEqual({ x: 1, y: 1, z: 0 });
     expect(graph.getAxes()).toEqual({
       xLabel: 'Time',

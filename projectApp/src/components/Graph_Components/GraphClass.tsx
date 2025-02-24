@@ -50,10 +50,10 @@ export class GraphClass implements GraphInterface {
     this.points = [];
     this.position ={ x: 1, y: 1, z: 0 };
     this.axes = { 
-      xLabel: csvdata.getTimeHeader(), // Time columne for x header
-      yLabel: csvdata.getYHeader(), // Second column header
-      xRange: [0, 0], //Default values
-      yRange: [0, 0]  //Default values
+      xLabel: csvdata.getTimeHeader(), 
+      yLabel: csvdata.getYHeader(), 
+      xRange: [0, 0], 
+      yRange: [0, 0]
   };
   }
 

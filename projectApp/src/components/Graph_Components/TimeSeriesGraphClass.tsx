@@ -31,7 +31,7 @@ export class TimeSeriesGraphClass extends GraphClass implements TimeSeriesGraphI
             //Get Header by key then assign
             this.points.push(newPoint);
         })
-        sendLog("info", "addPoint() has added new points to the graph");
+        sendLog("info", "addPoint() has added new points to the graph (TimeSeriesGraphClass.tsx)");
     }
 
     /**
@@ -43,7 +43,7 @@ export class TimeSeriesGraphClass extends GraphClass implements TimeSeriesGraphI
      * @returns {PointClass | undefined} The corresponding PointClass instance if found, otherwise undefined.
      */
     findPoint(xData: string, yData: number): PointClass | undefined {
-        sendLog("info",`findPoint() is searching for a point at ${xData}, ${yData}`);
+        sendLog("info",`findPoint() is searching for a point at ${xData}, ${yData} (TimeSeriesGraphClass.tsx)`);
         return this.points.find(point => point.getXData() === xData && point.getYData() === yData);
     }
 
@@ -58,7 +58,7 @@ export class TimeSeriesGraphClass extends GraphClass implements TimeSeriesGraphI
             point.setSelected(false); // Update selection status
             // TODO: Add color update logic if necessary
         });
-        sendLog("info","all points have been unselected");
+        sendLog("info","all points have been unselected (TimeSeriesGraphClass.tsx)");
     }
 
     /**
@@ -86,15 +86,15 @@ export class TimeSeriesGraphClass extends GraphClass implements TimeSeriesGraphI
     // }
 
     getXHeader(){
-        sendLog("info", `getXHeader returned ${this.axes.xLabel}`);
+        sendLog("info", `getXHeader returned ${this.axes.xLabel} (TimeSeriesGraphClass.tsx)`);
         return this.axes.xLabel;
     }
     getYHeader(){
-        sendLog("info", `getYHeader returned ${this.axes.yLabel}`);
+        sendLog("info", `getYHeader returned ${this.axes.yLabel} (TimeSeriesGraphClass.tsx)`);
         return this.axes.yLabel;
     }
     getYRange(){
-        sendLog("info", `getYRange returned ${this.axes.yRange[1]}`);
+        sendLog("info", `getYRange returned ${this.axes.yRange[1]} (TimeSeriesGraphClass.tsx)`);
         return this.axes.yRange[1];
     }
     setRange(){
@@ -111,7 +111,7 @@ export class TimeSeriesGraphClass extends GraphClass implements TimeSeriesGraphI
         }
 
         this.axes.yRange[1] = max;
-        sendLog("info", "setRange() was called");
+        sendLog("info", `setRange() was called; yRange was set to ${this.axes.yRange[1]} (TimeSeriesGraphClass.tsx)`);
     }
     
     timeSeriesYRange():number[]{
@@ -122,7 +122,7 @@ export class TimeSeriesGraphClass extends GraphClass implements TimeSeriesGraphI
             cur = cur + 5;
             range.push(cur);
         }
-        sendLog("info", `timeSeriesYRange() returned ${range}`);
+        sendLog("info", `timeSeriesYRange() returned ${range} (TimeSeriesGraphClass.tsx)`);
         return range;
     }
 
@@ -135,14 +135,14 @@ export class TimeSeriesGraphClass extends GraphClass implements TimeSeriesGraphI
             range.push(temp);
             
         })
-        sendLog("info", `timeSeriesXRange() was called and returned ${range}`);
+        sendLog("info", `timeSeriesXRange() was called and returned ${range} (TimeSeriesGraphClass.tsx)`);
         return range;
     }
 
-    // Please add more documentation for the increment and decrement functions!
+    // Please add more comments for the increment and decrement functions!
     incrementYHeader(){
         if(this.csvData.getCSVHeaders().length < 3){
-            sendLog("info", "incrementYHeader() was called but no changes were made (length < 3)");
+            sendLog("info", "incrementYHeader() was called but no changes were made (length < 3) (TimeSeriesGraphClass.tsx)");
             return;
         }
 
@@ -157,13 +157,13 @@ export class TimeSeriesGraphClass extends GraphClass implements TimeSeriesGraphI
                 //Go to the next available header
                 this.axes.yLabel = this.csvData.getCSVHeaders()[1];
             }
-            sendLog("info", "incrementYHeader() was called and successfully incremented");
+            sendLog("info", "incrementYHeader() was called and successfully incremented (TimeSeriesGraphClass.tsx)");
             return;
         }
 
         if(start == this.csvData.getCSVHeaders().length - 2 && this.csvData.getCSVHeaders()[this.csvData.getCSVHeaders().length - 1] == this.getXHeader()){
             this.axes.yLabel =  this.csvData.getCSVHeaders()[0];
-            sendLog("info", "incrementYHeader() was called and successfully incremented");
+            sendLog("info", "incrementYHeader() was called and successfully incremented (TimeSeriesGraphClass.tsx)");
             return;
             
         }
@@ -178,7 +178,7 @@ export class TimeSeriesGraphClass extends GraphClass implements TimeSeriesGraphI
     }
     decrementYHeader(){
         if(this.csvData.getCSVHeaders().length < 3){
-            sendLog("info", "decrementYHeader() was called but no changes were made (length < 3)");
+            sendLog("info", "decrementYHeader() was called but no changes were made (length < 3) (TimeSeriesGraphClass.tsx)");
             return;
         }
 
@@ -193,13 +193,13 @@ export class TimeSeriesGraphClass extends GraphClass implements TimeSeriesGraphI
                 //Go to the next available header
                 this.axes.yLabel =this.csvData.getCSVHeaders()[this.csvData.getCSVHeaders().length - 2];
             }
-            sendLog("info", "decrementYHeader() was called and successfully deccremented");
+            sendLog("info", "decrementYHeader() was called and successfully deccremented (TimeSeriesGraphClass.tsx)");
             return;
         }
 
         if(start == 1 && this.csvData.getCSVHeaders()[0] == this.getXHeader()){
             this.axes.yLabel = this.csvData.getCSVHeaders()[this.csvData.getCSVHeaders().length - 1];
-            sendLog("info", "decrementYHeader() was called and successfully deccremented");
+            sendLog("info", "decrementYHeader() was called and successfully deccremented (TimeSeriesGraphClass.tsx)");
             return;
             
         }
@@ -228,6 +228,6 @@ export class TimeSeriesGraphClass extends GraphClass implements TimeSeriesGraphI
 
             current += divider;
         })
-        sendLog("info", "updatePointPosition() has been called to update the graph");
+        sendLog("info", "updatePointPosition() has been called to update the graph (TimeSeriesGraphClass.tsx)");
     }
 }

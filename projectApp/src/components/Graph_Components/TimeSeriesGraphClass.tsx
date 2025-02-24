@@ -5,12 +5,9 @@ import { PointClass } from "./PointClass";
 
 // GraphClass2 is a class that represents a collection of multiple points
 export class TimeSeriesGraphClass extends GraphClass implements TimeSeriesGraphInterface{
-    csvData: CSVDataObject;  //Probably wont need this
-    
     constructor(csv: CSVDataObject) {
         super(csv);
         // Initialize an empty array to store PointClass instances
-        this.csvData = csv;
     }   
 
     /**
@@ -57,43 +54,6 @@ export class TimeSeriesGraphClass extends GraphClass implements TimeSeriesGraphI
         });
     }
 
-    /**
-     * Retrieves all points in the graph.
-     * pre-codition: none
-     * post-condition: returns an array of PointClass instances
-     * @returns {PointClass[]} Array of PointClass instances.
-     */
-    getPoints(): PointClass[] {
-        return this.points;
-    }
-
-    getNumPoints():number{
-        return this.points.length;
-    }
-
-    /**
-     * Updates point positions based on a zooming factor.
-     * pre-codition: zoomFactor is a number
-     * post-condition: all points' positions are scaled based on the zoom factor
-     * @param {number} zoomFactor - The zoom level to scale points' positions.
-     */
-    //We are not zooming for 2D
-    // updateOnZoom(zoomFactor: number) {
-    //     this.points.forEach(point => {
-    //         const {x, y, z] = point.getPosition(); // Retrieve current position
-    //         point.setPosition([x * zoomFactor, y * zoomFactor, z * zoomFactor]); // Adjust based on zoom factor
-    //     });
-    // }
-
-    getXHeader(){
-        return this.axes.xLabel;
-    }
-    getYHeader(){
-        return this.axes.yLabel;
-    }
-    getYRange(){
-        return this.axes.yRange[1];
-    }
     setRange(){
         // this.yRange = this.csvData.getData().length;
         let max = 0;
@@ -114,6 +74,7 @@ export class TimeSeriesGraphClass extends GraphClass implements TimeSeriesGraphI
         const range:number[] = [];
         let cur = 0;
         
+        //For larger data sets, it would be possible to create a case statement
         while(cur < this.axes.yRange[1]){
             cur = cur + 5;
             range.push(cur);
@@ -126,7 +87,6 @@ export class TimeSeriesGraphClass extends GraphClass implements TimeSeriesGraphI
         const range: string[] = [];
 
         this.csvData.getData().forEach((data) => {
-            
             const temp = data[this.axes.xLabel as keyof typeof data] as unknown as string;
             range.push(temp);
             
@@ -163,7 +123,7 @@ export class TimeSeriesGraphClass extends GraphClass implements TimeSeriesGraphI
         for(start; start < this.csvData.getCSVHeaders().length; start++){
             if(this.csvData.getCSVHeaders()[start] != this.getYHeader() && this.csvData.getCSVHeaders()[start] != this.getXHeader()){
                 this.axes.yLabel = this.csvData.getCSVHeaders()[start];
-                break;
+                return;
             }
         }
 
@@ -196,7 +156,7 @@ export class TimeSeriesGraphClass extends GraphClass implements TimeSeriesGraphI
         for(start; start > 0; start--){
             if(this.csvData.getCSVHeaders()[start] != this.getYHeader() && this.csvData.getCSVHeaders()[start] != this.getXHeader()){
                 this.axes.yLabel= this.csvData.getCSVHeaders()[start];
-                break;
+                return;
             }
         }
     }
@@ -217,5 +177,29 @@ export class TimeSeriesGraphClass extends GraphClass implements TimeSeriesGraphI
 
             current += divider;
         })
+    }
+
+    /**
+     * Retrieves all points in the graph.
+     * pre-codition: none
+     * post-condition: returns an array of PointClass instances
+     * @returns {PointClass[]} Array of PointClass instances.
+     */
+    getPoints(): PointClass[] {
+        return this.points;
+    }
+
+    getNumPoints():number{
+        return this.points.length;
+    }
+
+    getXHeader(){
+        return this.axes.xLabel;
+    }
+    getYHeader(){
+        return this.axes.yLabel;
+    }
+    getYRange(){
+        return this.axes.yRange[1];
     }
 }

@@ -2,11 +2,9 @@ import { CSVData, CSVModelInterface } from "../types/CSVInterfaces";
 import { CSVDataObject } from "./CSVDataObject";
 
 export class CSVReaderModel implements CSVModelInterface{
-    num : number;
     data: CSVDataObject[];
 
     constructor(){
-        this.num = 0;
         this.data = [];
     }
 
@@ -28,41 +26,38 @@ export class CSVReaderModel implements CSVModelInterface{
     //     //On success add to array
          const data:CSVDataObject = new CSVDataObject;
          try{
-            await data.loadLocalCSVFile(this.num, file);
+            await data.loadCSVData(this.data.length, file, false);
          }
          catch{
             // logger.error("Failed to read Local to get CSV file");
             return;
         }
         this.data.push(data);
-        this.num++;
      }
 
     async readURLFile(file: string) : Promise<void>{
         const data:CSVDataObject = new CSVDataObject;
         try{
-            await data.loadUrlCSVFile(this.num, file);
+            await data.loadCSVData(this.data.length, file, true);
         }
         catch{
             //logger.error("Failed to read Local to get CSV file");
             return;
         }
         this.data.push(data);
-        this.num++;
      }
 
      //Keeping url reading by path for reading
      async readLocalByPath(file:string){
         const data:CSVDataObject = new CSVDataObject;
          try{
-             await data.loadLocalByPath(this.num, file);
+             await data.loadLocalByPath(this.data.length, file);
          }
          catch{
             // logger.error("Failed to read Local to get CSV file");
         }
 
          this.data.push(data);
-         this.num++;
      }
      
 
@@ -78,19 +73,15 @@ export class CSVReaderModel implements CSVModelInterface{
     };
 
     loadedCsvBrowser():[string, boolean][]{
-        const csvBrowser:[string,boolean][] = []
-        if(!(this.getData().length > 0)){
-            return csvBrowser;
-        }
+        const csvBrowser:[string,boolean][] = [];
 
-        this.getData().forEach((file) => {
-            const arrVal = file.getName();
-            csvBrowser.push([arrVal,file.getBrowserSelected()])
-        })
+        if(this.getData().length > 0){
+            this.getData().forEach((file) => {
+                const arrVal = file.getName();
+                csvBrowser.push([arrVal,file.getBrowserSelected()])
+            })
+        }
         return csvBrowser;
-    }
-    getNum(){
-        return this.num;
     }
 
     getData() {

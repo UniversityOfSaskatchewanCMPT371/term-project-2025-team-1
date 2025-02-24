@@ -5,14 +5,15 @@ import { TimeSeriesGraphClass } from '../src/components/Graph_Components/TimeSer
 
 describe( 'Time Series Graph Class', async () => {
     let graph: TimeSeriesGraphClass;
-    await mainController.getCSVController().getModel().readURLFile("https://raw.githubusercontent.com/UniversityOfSaskatchewanCMPT371/term-project-2025-team-1/refs/heads/main/csvTestFiles/test.csv");
+    const url = "https://raw.githubusercontent.com/UniversityOfSaskatchewanCMPT371/term-project-2025-team-1/refs/heads/main/csvTestFiles/test.csv";
+    await mainController.getCSVController().loadURLFile(url);
     
     /**
      * Sets up a new instance of GraphClass2 and a sample point before each test.
      */
     beforeEach(() => {
 
-        const csv = mainController.getCSVController().getModel().getData()[0];
+        const csv = mainController.getCSVController().getModelData()[0];
         graph = new TimeSeriesGraphClass(csv);
         
     });

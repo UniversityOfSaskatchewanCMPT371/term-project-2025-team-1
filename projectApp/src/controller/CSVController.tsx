@@ -2,6 +2,7 @@ import { TimeSeriesGraphClass } from "../components/Graph_Components/TimeSeriesG
 import { CSVDataObject } from "../models/CSVDataObject";
 import { CSVReaderModel } from "../models/CSVReaderModel";
 import { ControllerInterface } from "../types/BaseInterfaces";
+import { CSVData } from "../types/CSVInterfaces";
 import mainController from "./MainController";
 /*
 * The controller for CSV related actions
@@ -13,10 +14,6 @@ export class CSVController implements ControllerInterface{
         this.model = new CSVReaderModel();
     }
 
-    //This method returns the Model, and allows the controller to use its methods
-    getModel(){
-        return this.model;
-    }
     generate(){
         for(const csv of this.model.getData()){
             if(csv.getDisplayBoard() == 1){
@@ -24,12 +21,22 @@ export class CSVController implements ControllerInterface{
                 const graph = new TimeSeriesGraphClass(csv);
                 graph.setName(csv.getName());
                 graph.addPoint();
-                mainController.getGraphController().getModel().getData().push(graph)
+                mainController.getGraphController().pushDataToModel(graph)
                 console.log("Success on generate?")
                 
             }
         }   
     }
+
+    //This method returns the Model, and allows the controller to use its methods
+    getModel(){
+        return this.model;
+    }
+
+    getModelData(){
+        return this.model.getData();
+    }
+
     getVRSelected(): CSVDataObject{
         let file:CSVDataObject = new CSVDataObject();
         for(const csv of this.model.getData()){
@@ -39,6 +46,22 @@ export class CSVController implements ControllerInterface{
             }
         }
         return file;
+    }
+
+    async loadLocalFile(file: File){
+        await this.getModel().readLocalFile(file);
+    }
+
+    async loadURLFile(csv: string){
+        await this.getModel().readURLFile(csv);
+    }
+
+    browserCSVFiles():[string, boolean][]{
+        return this.getModel().loadedCsvBrowser();
+    }
+
+    getDataByName(name:string): CSVData | null{
+        return this.model.getCSVFileByName(name);
     }
     
 }

@@ -33,17 +33,11 @@ export class PointClass implements PointRef{
     getYPosition(){
         return this.getPosition()[1];
     }
-    setXPosition(x: number){
-        this.position[0] = x;
-    }
-    setYPosition(y: number){
-        this.position[1] = y;
-    }
     //End of Getters
     
     //Setters
-    setPosition([ x, y, z ]: number[]){
-        this.position = [x,y,z];
+    setPosition(position: [number,number,number]){
+        this.position = position;
     }
     setSelected(select: boolean){
         this.selected = select;
@@ -55,6 +49,12 @@ export class PointClass implements PointRef{
 
     setYData(y: number){
         this.yData = y;
+    }
+    setXPosition(x: number){
+        this.position[0] = x;
+    }
+    setYPosition(y: number){
+        this.position[1] = y;
     }
     //End of Setters
 }

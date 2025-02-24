@@ -43,12 +43,6 @@ export class CSVDataObject implements CSVData{
             return;
         }
     }
-    async loadLocalCSVFile(index: number,file: File){
-        await this.loadCSVData(index, file, false);
-    }
-    async loadUrlCSVFile(index: number,file: string){
-        await this.loadCSVData(index, file, true);
-    }
 
     //Keeping for now in testing
     async loadLocalByPath(index: number,file: string){

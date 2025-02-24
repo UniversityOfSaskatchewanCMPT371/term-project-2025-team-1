@@ -3,6 +3,7 @@
  * Provides a standardized structure for graph representation and manipulation.
  */
 import { PointClass } from "../../src/components/Graph_Components/PointClass";
+import { CSVDataObject } from "../models/CSVDataObject";
 import { DataInterface } from "./BaseInterfaces";
 
 export interface GraphInterface extends DataInterface{
@@ -12,6 +13,9 @@ export interface GraphInterface extends DataInterface{
     // Data points and configuration
     points: PointClass[];                  // Array of points using PointRef interface
     
+    //The csv data used by the graph
+    csvData: CSVDataObject;
+
     position: {
         x: number;
         y: number;

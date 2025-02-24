@@ -80,7 +80,7 @@ export default function DropdownUI(props: dropDownProps){
             alignItems={"flex-start"} justifyContent={"flex-start"}>
 
                 {/* Assign board number to Model maybe? */}
-        {mainController.getCSVController().getModel().getData().map((graph) => (
+        {mainController.getCSVController().getModelData().map((graph) => (
             
             <GenerateRowObject data={graph} key={graph.getName()}></GenerateRowObject>
         ))}

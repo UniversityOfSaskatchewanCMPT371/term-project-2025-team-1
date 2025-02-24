@@ -8,6 +8,7 @@ import { CSVDataObject } from "../../models/CSVDataObject";
 export class GraphClass implements GraphInterface {
   id: string;
   name: string;
+  csvData: CSVDataObject;
   dimensions: { width: number; height: number; depth?: number };
   points: PointClass[];
   position: { x: number; y: number; z: number };
@@ -26,6 +27,7 @@ export class GraphClass implements GraphInterface {
   constructor(csvdata: CSVDataObject) {
     this.id = csvdata.getName();
     this.name = csvdata.getName();
+    this.csvData = csvdata;
     this.dimensions = { width: 10, height: 10, depth: 10 };
     this.points = [];
     this.position ={ x: 1, y: 1, z: 0 };

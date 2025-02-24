@@ -27,10 +27,11 @@ vi.mock('./PointClass', () => {
 // Test Suite for GraphClass
 describe('GraphClass', async () => {
   let csvDataMock: CSVDataObject;
-  await mainController.getCSVController().getModel().readURLFile("https://raw.githubusercontent.com/UniversityOfSaskatchewanCMPT371/term-project-2025-team-1/refs/heads/main/csvTestFiles/test.csv");
+  const url = "https://raw.githubusercontent.com/UniversityOfSaskatchewanCMPT371/term-project-2025-team-1/refs/heads/main/csvTestFiles/test.csv";
+  await mainController.getCSVController().loadURLFile(url);
   beforeEach(() => {
     // Create a mock CSVDataObject
-    csvDataMock = mainController.getCSVController().getModel().getData()[0];
+    csvDataMock = mainController.getCSVController().getModelData()[0];
   });
 
   /**

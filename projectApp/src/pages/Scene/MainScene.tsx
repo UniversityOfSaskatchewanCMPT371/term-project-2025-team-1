@@ -27,7 +27,7 @@ export default function MainScene() {
     useEffect(() => {
         if(updateGraph) {
             const vrSelected = mainController.getCSVController().getVRSelected();
-            if(mainController.getGraphController().getModel().getData().length > 0){
+            if(mainController.getGraphController().getDataLength() > 0){
                 const newGraph = mainController.getGraphController().generateTimeSeriesGraph(vrSelected);
                 setGraph(newGraph);
             }

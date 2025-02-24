@@ -34,7 +34,7 @@ export function BrowserUI(){
               //console.log(file.name.toString());
 
               //If the file is valid, read the csv file
-              await mainController.getCSVController().getModel().readLocalFile(file);
+              await mainController.getCSVController().loadLocalFile(file);
               setControlKey(controlKey + 1);
               //Same test as csvModeTest
               // let headers = test.getCSVFiles()[0].data[0];
@@ -69,7 +69,7 @@ export function BrowserUI(){
       style={{display: 'none'}}
       onClick={( async (): Promise<void> => {
         alert(csv)
-        await mainController.getCSVController().getModel().readURLFile(csv);
+        await mainController.getCSVController().loadURLFile(csv);
         setControlKey(controlKey + 1);
       })}></input>
     </>
@@ -78,7 +78,7 @@ export function BrowserUI(){
   
   //Component that displays the loaded csv files on the browser UI
   function UnmountedComponents(){
-    const names:[string, boolean][] = mainController.getCSVController().getModel().loadedCsvBrowser();
+    const names:[string, boolean][] = mainController.getCSVController().browserCSVFiles();
     
     //setControlKey(controlKey + 1)
     //Setting the objects to be displayed

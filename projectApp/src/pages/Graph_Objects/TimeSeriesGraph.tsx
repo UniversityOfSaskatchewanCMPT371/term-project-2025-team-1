@@ -78,11 +78,10 @@ export function TimeSeriesGraph({graph}:{graph: TimeSeriesGraphClass}){
     point.setYPosition(((point.getYData()/100) * (graph.getYRange()/(graph.timeSeriesYRange().length))) - (1));
     currentLine = lastLine;
     lastLine = ([point.getXPosition(), point.getYPosition(), 0.01])
+
     return (
       <>
-      
-       <Create2DPoint position={point.getPosition()} selected={point.getSelected()} 
-       xData={point.getXData()} yData={point.getYData()}></Create2DPoint>
+       <Create2DPoint pointRef={point}></Create2DPoint>
       </>
     )
   }
@@ -178,7 +177,7 @@ export function TimeSeriesGraph({graph}:{graph: TimeSeriesGraphClass}){
         {graph.getPoints().map((points) => {
           return(
             <>
-            <GeneratePoints point={points}></GeneratePoints>
+            <GeneratePoints point={points}/>
             <GenerateLines/>
             </>
           )

@@ -26,29 +26,25 @@ export interface CSVData extends DataInterface{                                 
     yHeader: string;
     //Will use the TIME and yHeader to get data
 
-    getData:() => ({key: Record<string,string | number>}[]);
-    getDataByTime: (time:string) => Record<string, string | number> | null;
-    loadLocalCSVFile: (index:number,file: File) => (Promise<void>);
-    loadUrlCSVFile: (index: number, file: string) => (Promise<void>);
-    getCSVHeaders: () => string[];
-    getTimeHeader: () => string;
-    getYHeader: () => string;
-    getBrowserSelected: () => (boolean);
-    setBrowserSelected: (bool: boolean) => (void);
-    getVRSelected: () => (boolean);
-    setVRSelected: (bool:boolean) => (void);
-    setYHeader: (header:string) => (void);
-    getDisplayBoard: () => (number);
-    incrementDisplayBoard: () => (void);
-    decrementDisplayBoard: () => (void);
+    getData(): {key: Record<string,string | number>}[];
+    getDataByTime(time:string): Record<string, string | number> | null;
+    loadCSVData(index:number,file: File, isUrl: boolean): Promise<void>;
+    getCSVHeaders(): string[];
+    getTimeHeader(): string;
+    getYHeader(): string;
+    getBrowserSelected(): boolean;
+    setBrowserSelected(bool: boolean): void;
+    getVRSelected(): (boolean);
+    setVRSelected(bool:boolean): void;
+    setYHeader(header:string): void;
+    getDisplayBoard(): number;
+    incrementDisplayBoard(): void;
+    decrementDisplayBoard(): void;
 }
 
 export interface CSVModelInterface extends ModelInterface{
-    num: number;                                            //number of graphs in loaded in model
-
-    readLocalFile: (file:File) => (Promise<void>);                   //Will read the csv through local file and load it
-    readURLFile: (file: string) => (Promise<void>);                  //Will read the csv file through url link and load it
-    deleteFile: (name:string) => (void);                    //Get the array and delete it
-    getNum: () => (number);
-    getCSVFileByName: (name: string) => (CSVData | null);
+    readLocalFile(file:File): Promise<void>;                   //Will read the csv through local file and load it
+    readURLFile(file: string): Promise<void>;                  //Will read the csv file through url link and load it
+    deleteFile(name:string): void;                    //Get the array and delete it
+    getCSVFileByName(name: string): CSVData | null;
 }

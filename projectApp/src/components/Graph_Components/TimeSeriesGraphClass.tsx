@@ -68,7 +68,6 @@ export class TimeSeriesGraphClass extends GraphClass implements TimeSeriesGraphI
      * @returns {PointClass[]} Array of PointClass instances.
      */
     getPoints(): PointClass[] {
-        // Should the logger list each point when this is called?
         return this.points;
     }
 
@@ -86,7 +85,6 @@ export class TimeSeriesGraphClass extends GraphClass implements TimeSeriesGraphI
     //     });
     // }
 
-    // Should these get() calls be logged? Or will that create pointless clutter?
     getXHeader(){
         sendLog("info", `getXHeader returned ${this.axes.xLabel}`);
         return this.axes.xLabel;
@@ -141,9 +139,7 @@ export class TimeSeriesGraphClass extends GraphClass implements TimeSeriesGraphI
         return range;
     }
 
-    // Lack of comments make the increment and decrement functions difficult to understand.
-    // Getters should probably be used here rather than directly accessing attributes!
-    // EX.: "this.axes" vs "getAxes()" in super 
+    // Please add more documentation for the increment and decrement functions!
     incrementYHeader(){
         if(this.csvData.getCSVHeaders().length < 3){
             sendLog("info", "incrementYHeader() was called but no changes were made (length < 3)");

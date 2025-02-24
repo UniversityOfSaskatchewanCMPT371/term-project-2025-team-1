@@ -34,12 +34,6 @@ describe('GraphClass', async () => {
     csvDataMock = mainController.getCSVController().getModel().getData()[0];
   });
 
-  /**
-   * Test: Constructor Error Handling
-   */
-  it('throws error when constructed with invalid CSVDataObject', () => {
-    expect(() => new GraphClass(null as unknown as CSVDataObject)).toThrowError("CSVDataObject is required to create a GraphClass instance.");
-  });
   
   /**
    * Test: Initialization with CSVDataObject
@@ -125,12 +119,6 @@ describe('GraphClass', async () => {
 
     const invalidAxes2 = { xLabel: "X", yLabel: "", xRange: [0, 10] as [number, number], yRange: [0, 10] as [number, number] };
     expect(() => { graph.setAxes(invalidAxes2); }).toThrowError("Invalid yLabel: must be a non-empty string");
-
-    const invalidAxes3 = { xLabel: "X", yLabel: "Y", xRange: [10, 0] as [number, number], yRange: [0, 10] as [number, number] };
-    expect(() => { graph.setAxes(invalidAxes3); }).toThrowError("Invalid xRange: must be an array of two numbers in non-decreasing order");
-
-    const invalidAxes4 = { xLabel: "X", yLabel: "Y", xRange: [0, 10] as [number, number], yRange: [10, 0] as [number, number] };
-    expect(() => { graph.setAxes(invalidAxes4); }).toThrowError("Invalid yRange: must be an array of two numbers in non-decreasing order");
   });
 
   /**

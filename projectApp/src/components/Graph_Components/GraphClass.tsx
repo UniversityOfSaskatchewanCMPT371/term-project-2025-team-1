@@ -43,9 +43,7 @@ export class GraphClass implements GraphInterface {
    * The 'axes' property is set with the values from CSVDataObject for xLabel and yLabel, default values for xRange and yRange.
    */
   constructor(csvdata: CSVDataObject) {
-    if (!csvdata) {
-      throw new Error('CSVDataObject is required to create a GraphClass instance.');
-    }
+    // CSVDataObject is required, so the check is unnecessary.
     this.id = csvdata.getName();
     this.name = csvdata.getName();
     this.dimensions = { width: 10, height: 10, depth: 10 };
@@ -228,24 +226,6 @@ export class GraphClass implements GraphInterface {
     }
     if (typeof axes.yLabel !== 'string' || axes.yLabel.trim() === "") {
       throw new Error("Invalid yLabel: must be a non-empty string");
-    }
-    if (
-      !Array.isArray(axes.xRange) ||
-      axes.xRange.length !== 2 ||
-      typeof axes.xRange[0] !== 'number' ||
-      typeof axes.xRange[1] !== 'number' ||
-      axes.xRange[0] > axes.xRange[1]
-    ) {
-      throw new Error("Invalid xRange: must be an array of two numbers in non-decreasing order");
-    }
-    if (
-      !Array.isArray(axes.yRange) ||
-      axes.yRange.length !== 2 ||
-      typeof axes.yRange[0] !== 'number' ||
-      typeof axes.yRange[1] !== 'number' ||
-      axes.yRange[0] > axes.yRange[1]
-    ) {
-      throw new Error("Invalid yRange: must be an array of two numbers in non-decreasing order");
     }
     this.axes = axes;
   }

@@ -4,7 +4,7 @@ import { sendLog } from "../../logger-frontend";
 
 export function CreateTimeSeries({graphObject}:{graphObject: TimeSeriesGraphClass}){
     //const graph = new GraphClass2();
-    sendLog("info", "an TimeSeriesGraph has been created");
+    sendLog("info", "a TimeSeriesGraph has been created (CreateTimeSeries.tsx)");
     return(
         <>
         <TimeSeriesGraph graph={graphObject}></TimeSeriesGraph>

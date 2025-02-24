@@ -2,6 +2,7 @@ import { CSVDataObject } from "../../models/CSVDataObject";
 import { TimeSeriesGraphInterface } from "../../types/TimeSeriesGraphInterface";
 import { GraphClass } from "./GraphClass";
 import { PointClass } from "./PointClass";
+import { sendLog } from "../../logger-frontend";
 
 // GraphClass2 is a class that represents a collection of multiple points
 export class TimeSeriesGraphClass extends GraphClass implements TimeSeriesGraphInterface{
@@ -30,6 +31,7 @@ export class TimeSeriesGraphClass extends GraphClass implements TimeSeriesGraphI
             //Get Header by key then assign
             this.points.push(newPoint);
         })
+        sendLog("info", "addPoint() has added new points to the graph");
     }
 
     /**
@@ -41,6 +43,7 @@ export class TimeSeriesGraphClass extends GraphClass implements TimeSeriesGraphI
      * @returns {PointClass | undefined} The corresponding PointClass instance if found, otherwise undefined.
      */
     findPoint(xData: string, yData: number): PointClass | undefined {
+        sendLog("info",`findPoint() is searching for a point at ${xData}, ${yData}`);
         return this.points.find(point => point.getXData() === xData && point.getYData() === yData);
     }
 
@@ -55,6 +58,7 @@ export class TimeSeriesGraphClass extends GraphClass implements TimeSeriesGraphI
             point.setSelected(false); // Update selection status
             // TODO: Add color update logic if necessary
         });
+        sendLog("info","all points have been unselected");
     }
 
     /**
@@ -64,6 +68,7 @@ export class TimeSeriesGraphClass extends GraphClass implements TimeSeriesGraphI
      * @returns {PointClass[]} Array of PointClass instances.
      */
     getPoints(): PointClass[] {
+        // Should the logger list each point when this is called?
         return this.points;
     }
 
@@ -81,6 +86,7 @@ export class TimeSeriesGraphClass extends GraphClass implements TimeSeriesGraphI
     //     });
     // }
 
+    // Should these get() calls be logged? Or will that create pointless clutter?
     getXHeader(){
         return this.axes.xLabel;
     }
@@ -104,6 +110,7 @@ export class TimeSeriesGraphClass extends GraphClass implements TimeSeriesGraphI
         }
 
         this.axes.yRange[1] = max;
+        sendLog("info", "setRange() was called");
     }
     
     timeSeriesYRange():number[]{
@@ -114,7 +121,7 @@ export class TimeSeriesGraphClass extends GraphClass implements TimeSeriesGraphI
             cur = cur + 5;
             range.push(cur);
         }
-
+        sendLog("info", `timeSeriesYRange() returned ${range}`);
         return range;
     }
 
@@ -127,12 +134,16 @@ export class TimeSeriesGraphClass extends GraphClass implements TimeSeriesGraphI
             range.push(temp);
             
         })
-
+        sendLog("info", `timeSeriesXRange() was called and returned ${range}`);
         return range;
     }
 
+    // Lack of comments make the increment and decrement functions difficult to understand.
+    // Getters should probably be used here rather than directly accessing attributes!
+    // EX.: "this.axes" vs "getAxes()" in super 
     incrementYHeader(){
         if(this.csvData.getCSVHeaders().length < 3){
+            sendLog("info", "incrementYHeader() was called but no changes were made (length < 3)");
             return;
         }
 
@@ -147,11 +158,13 @@ export class TimeSeriesGraphClass extends GraphClass implements TimeSeriesGraphI
                 //Go to the next available header
                 this.axes.yLabel = this.csvData.getCSVHeaders()[1];
             }
+            sendLog("info", "incrementYHeader() was called and successfully incremented");
             return;
         }
 
         if(start == this.csvData.getCSVHeaders().length - 2 && this.csvData.getCSVHeaders()[this.csvData.getCSVHeaders().length - 1] == this.getXHeader()){
             this.axes.yLabel =  this.csvData.getCSVHeaders()[0];
+            sendLog("info", "incrementYHeader() was called and successfully incremented");
             return;
             
         }
@@ -166,6 +179,7 @@ export class TimeSeriesGraphClass extends GraphClass implements TimeSeriesGraphI
     }
     decrementYHeader(){
         if(this.csvData.getCSVHeaders().length < 3){
+            sendLog("info", "decrementYHeader() was called but no changes were made (length < 3)");
             return;
         }
 
@@ -180,11 +194,13 @@ export class TimeSeriesGraphClass extends GraphClass implements TimeSeriesGraphI
                 //Go to the next available header
                 this.axes.yLabel =this.csvData.getCSVHeaders()[this.csvData.getCSVHeaders().length - 2];
             }
+            sendLog("info", "decrementYHeader() was called and successfully deccremented");
             return;
         }
 
         if(start == 1 && this.csvData.getCSVHeaders()[0] == this.getXHeader()){
             this.axes.yLabel = this.csvData.getCSVHeaders()[this.csvData.getCSVHeaders().length - 1];
+            sendLog("info", "decrementYHeader() was called and successfully deccremented");
             return;
             
         }
@@ -213,5 +229,6 @@ export class TimeSeriesGraphClass extends GraphClass implements TimeSeriesGraphI
 
             current += divider;
         })
+        sendLog("info", "updatePointPosition() has been called to update the graph");
     }
 }

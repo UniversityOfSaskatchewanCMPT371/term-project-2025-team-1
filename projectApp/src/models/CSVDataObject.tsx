@@ -1,6 +1,5 @@
 import { LocalCSVReader, LocalCsvReader } from "../components/CSV_Readers/LocalCSVReader";
 import { CSVData } from "../types/CSVInterfaces";
-// import logger from "../logging/logs";
 import { UrlCSVReader } from "../components/CSV_Readers/UrlCSVReader";
 
 export class CSVDataObject implements CSVData{
@@ -16,16 +15,14 @@ export class CSVDataObject implements CSVData{
         this.name = "";
         this.csvHeaders = [];
         this.data = [];
-        this.yHeader = ""; //Will attempt for the second header [1]
+        this.yHeader = "";
         this.browserSelected = false;
         this.displayBoard = 0;
         this.vrSelected = false;
     }
-    setData(data: { key: Record<string,string | number> }[]){
-        this.data = data;
-    }
+
     //Initial creation, for loading a graph in the scene, set the yHeader
-    async loadCSVData(index: number, file: (File | string), isUrl: boolean){
+    async loadCSVData(index: number, file: (File | string), isUrl: boolean): Promise<void>{
         try {
             
             const data = isUrl ? await UrlCSVReader(file as string) : await LocalCsvReader(file as File)
@@ -45,7 +42,7 @@ export class CSVDataObject implements CSVData{
     }
 
     //Keeping for now in testing
-    async loadLocalByPath(index: number,file: string){
+    async loadLocalByPath(index: number,file: string): Promise<void>{
         try {
             const data = await LocalCSVReader(file);
             this.setData(data);
@@ -56,6 +53,25 @@ export class CSVDataObject implements CSVData{
             return;
         }
     }
+
+    //For now only one display board
+    incrementDisplayBoard(): void{
+        if(this.displayBoard == 0){
+            this.displayBoard++;
+        }
+        else{
+            this.displayBoard = 0;
+        }
+    }
+    decrementDisplayBoard(): void{
+        if(this.displayBoard == 0){
+            this.displayBoard = 1;
+        }
+        else{
+            this.displayBoard--;
+        }
+    }
+
     getDataByKey(key: string): Record<string, string | number> | null{
         let result: Record<string, string | number> | null = null;
         for(const value of this.data){
@@ -89,28 +105,28 @@ export class CSVDataObject implements CSVData{
         }
         return result;
     }
-    getData(){
+    getData(): {key: Record<string, string | number>}[]{
         return this.data;
     };
-    getName(){
+    getName(): string{
         return this.name;
     }
-    getCSVHeaders(){
+    getCSVHeaders(): string[]{
         return this.csvHeaders;
     }
-    getYHeader(){
+    getYHeader(): string{
         return this.yHeader;
     }
-    getBrowserSelected(){
+    getBrowserSelected(): boolean{
         return this.browserSelected;
     }
-    getVRSelected(){
+    getVRSelected(): boolean{
         return this.vrSelected;
     };
-    getDisplayBoard(){
+    getDisplayBoard(): number{
         return this.displayBoard;
     }
-    getTimeHeader():string{
+    getTimeHeader(): string{
         for(const head of this.getCSVHeaders()){
             if(head == "Time" || head =="time"){
                 return head;
@@ -120,39 +136,25 @@ export class CSVDataObject implements CSVData{
         throw new Error("No allowed time header in csv file");
     }
 
-    setName(name: string){
+    setData(data: { key: Record<string,string | number> }[]): void{
+        this.data = data;
+    }
+
+    setName(name: string): void{
         this.name = name;
     }
-    setBrowserSelected(bool: boolean){
+    setBrowserSelected(bool: boolean): void{
         this.browserSelected = bool;
     }
-    setVRSelected(bool:boolean){
+    setVRSelected(bool:boolean): void{
         this.vrSelected = bool;
     }
-    setYHeader(header:string){
+    setYHeader(header:string): void{
         for(const head of this.getCSVHeaders()){
             if(head == header){
                 this.yHeader = header;
                 break;
             }
-        }
-    }
-
-    //For now only one display board
-    incrementDisplayBoard(){
-        if(this.displayBoard == 0){
-            this.displayBoard++;
-        }
-        else{
-            this.displayBoard = 0;
-        }
-    }
-    decrementDisplayBoard(){
-        if(this.displayBoard == 0){
-            this.displayBoard = 1;
-        }
-        else{
-            this.displayBoard--;
         }
     }
 }

@@ -48,7 +48,7 @@ export class CSVReaderModel implements CSVModelInterface{
      }
 
      //Keeping url reading by path for reading
-     async readLocalByPath(file:string){
+     async readLocalByPath(file:string): Promise<void>{
         const data:CSVDataObject = new CSVDataObject;
          try{
              await data.loadLocalByPath(this.data.length, file);
@@ -61,7 +61,7 @@ export class CSVReaderModel implements CSVModelInterface{
      }
      
 
-    deleteFile(name:string){
+    deleteFile(name:string): void{
         //Use name to find the array and delete it using index
        // delete this.csvFiles[0]; NOPE: Unsafe use splice instead
        for(let i = 0; i < this.data.length; i++){
@@ -72,7 +72,7 @@ export class CSVReaderModel implements CSVModelInterface{
        }
     };
 
-    loadedCsvBrowser():[string, boolean][]{
+    loadedCsvBrowser(): [string, boolean][]{
         const csvBrowser:[string,boolean][] = [];
 
         if(this.getData().length > 0){
@@ -84,7 +84,7 @@ export class CSVReaderModel implements CSVModelInterface{
         return csvBrowser;
     }
 
-    getData() {
+    getData(): CSVDataObject[]{
         return this.data;
     };
 }

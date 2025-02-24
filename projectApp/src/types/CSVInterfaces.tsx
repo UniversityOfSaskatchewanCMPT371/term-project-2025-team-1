@@ -27,6 +27,7 @@ export interface CSVData extends DataInterface{                                 
     //Will use the TIME and yHeader to get data
 
     getData(): {key: Record<string,string | number>}[];
+    setData(data: { key: Record<string,string | number> }[]): void;
     getDataByTime(time:string): Record<string, string | number> | null;
     loadCSVData(index:number,file: File, isUrl: boolean): Promise<void>;
     getCSVHeaders(): string[];

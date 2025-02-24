@@ -11,9 +11,7 @@ export class GraphController implements ControllerInterface{
     }
 
     generateTimeSeriesGraph(csv: CSVDataObject): TimeSeriesGraphClass{
-        //Empy new graph
         const result:TimeSeriesGraphClass = new TimeSeriesGraphClass(csv);
-        //result.setRange();
 
         for(const graph of this.getModel().getData()){
             if(graph.getName() == csv.getName()){
@@ -25,19 +23,19 @@ export class GraphController implements ControllerInterface{
         return result;
     }
 
-    getModel(){
+    pushDataToModel(graph: TimeSeriesGraphClass): void{
+        this.getModel().getData().push(graph);
+    }
+
+    getModel(): GraphModel{
         return this.model;
     }
-    getModelData(){
+    getModelData(): TimeSeriesGraphClass[]{
         return this.model.getData();
     };
 
-    getDataLength(){
+    getDataLength(): number{
         return this.getModel().getData().length;
-    }
-
-    pushDataToModel(graph: TimeSeriesGraphClass){
-        this.getModel().getData().push(graph);
     }
     
 }

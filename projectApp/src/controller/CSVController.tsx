@@ -14,7 +14,7 @@ export class CSVController implements ControllerInterface{
         this.model = new CSVReaderModel();
     }
 
-    generate(){
+    generate(): void{
         for(const csv of this.model.getData()){
             if(csv.getDisplayBoard() == 1){
                 csv.setVRSelected(true);
@@ -28,12 +28,24 @@ export class CSVController implements ControllerInterface{
         }   
     }
 
+    async loadLocalFile(file: File): Promise<void>{
+        await this.getModel().readLocalFile(file);
+    }
+
+    async loadURLFile(csv: string): Promise<void>{
+        await this.getModel().readURLFile(csv);
+    }
+
+    browserCSVFiles():[string, boolean][]{
+        return this.getModel().loadedCsvBrowser();
+    }
+
     //This method returns the Model, and allows the controller to use its methods
-    getModel(){
+    getModel(): CSVReaderModel{
         return this.model;
     }
 
-    getModelData(){
+    getModelData(): CSVDataObject[]{
         return this.model.getData();
     }
 
@@ -46,18 +58,6 @@ export class CSVController implements ControllerInterface{
             }
         }
         return file;
-    }
-
-    async loadLocalFile(file: File){
-        await this.getModel().readLocalFile(file);
-    }
-
-    async loadURLFile(csv: string){
-        await this.getModel().readURLFile(csv);
-    }
-
-    browserCSVFiles():[string, boolean][]{
-        return this.getModel().loadedCsvBrowser();
     }
 
     getDataByName(name:string): CSVData | null{

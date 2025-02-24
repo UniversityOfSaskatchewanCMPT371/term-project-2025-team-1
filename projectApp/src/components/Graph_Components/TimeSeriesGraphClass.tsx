@@ -16,7 +16,7 @@ export class TimeSeriesGraphClass extends GraphClass implements TimeSeriesGraphI
      * post-condition: a new PointClass instance is added to the graph
      * @param {PointRef} pointRef - Reference to the point data.
      */
-    addPoint() {
+    addPoint(): void{
         this.csvData.getData().forEach((data) => {
             const newPoint = new PointClass();
             newPoint.setPosition([0,0,0.01])
@@ -47,14 +47,14 @@ export class TimeSeriesGraphClass extends GraphClass implements TimeSeriesGraphI
      * pre-codition: none
      * post-condition: all points' selection status is updated
      */
-    updatePoints() {
+    updatePoints(): void{
         this.points.forEach(point => {
             point.setSelected(false); // Update selection status
             // TODO: Add color update logic if necessary
         });
     }
 
-    setRange(){
+    setRange(): void{
         // this.yRange = this.csvData.getData().length;
         let max = 0;
         this.csvData.getData().forEach((data) => {
@@ -95,7 +95,7 @@ export class TimeSeriesGraphClass extends GraphClass implements TimeSeriesGraphI
         return range;
     }
 
-    incrementYHeader(){
+    incrementYHeader(): void{
         if(this.csvData.getCSVHeaders().length < 3){
             return;
         }
@@ -128,7 +128,7 @@ export class TimeSeriesGraphClass extends GraphClass implements TimeSeriesGraphI
         }
 
     }
-    decrementYHeader(){
+    decrementYHeader(): void{
         if(this.csvData.getCSVHeaders().length < 3){
             return;
         }
@@ -161,7 +161,7 @@ export class TimeSeriesGraphClass extends GraphClass implements TimeSeriesGraphI
         }
     }
 
-    updatePointPosition(){
+    updatePointPosition(): void{
         const totalSpace = 5;
         const divider = (totalSpace/this.timeSeriesYRange().length);
         let current = (-1.8) + (divider/2);
@@ -193,13 +193,13 @@ export class TimeSeriesGraphClass extends GraphClass implements TimeSeriesGraphI
         return this.points.length;
     }
 
-    getXHeader(){
+    getXHeader(): string{
         return this.axes.xLabel;
     }
-    getYHeader(){
+    getYHeader(): string{
         return this.axes.yLabel;
     }
-    getYRange(){
+    getYRange(): number{
         return this.axes.yRange[1];
     }
 }

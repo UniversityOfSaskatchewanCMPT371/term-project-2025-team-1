@@ -13,6 +13,7 @@ vi.mock('./PointClass', () => {
       xData: any;
       constructor(ref?: { position?: number[]; selected?: boolean; xData?: any }) {
         // Provide default values if no ref is passed.
+        // replace || with ?? to avoid nullish coalescing error for linting
         this.position = ref?.position ?? [0, 0, 0];
         this.selected = ref?.selected ?? false;
         this.xData = ref?.xData ?? [];

@@ -2,6 +2,8 @@ import { PointClass } from "./PointClass";
 import { GraphInterface } from "../../types/GraphInterface";
 import { CSVDataObject } from "../../models/CSVDataObject";
 
+
+
 /**
  * The GraphClass represents a graph structure that manages points, dimensions, styling, and interactivity.
  * @invariant
@@ -70,7 +72,7 @@ export class GraphClass implements GraphInterface {
 
   /**
    * Sets the ID of the graph.
-   * @param id - A string representing the ID of the graph.
+   * @param {string} id - A string representing the ID of the graph.
    * 
    * @precondition 
    * @postcondition 
@@ -96,7 +98,7 @@ export class GraphClass implements GraphInterface {
 
   /**
    * Sets the name of the graph.
-   * @param  title - A string representing the name of the graph.
+   * @param {string} title - A string representing the name of the graph.
    * 
    * @precondition 'title' must be a non-empty string.
    * @postcondition 'name' property is set to the provided title.
@@ -122,9 +124,9 @@ export class GraphClass implements GraphInterface {
 
   /**
    * Set the position of the graph.
-   * @param x - A number representing the x-coordinate of the graph.
-   * @param y - A number representing the y-coordinate of the graph.
-   * @param z - A number representing the z-coordinate of the graph.
+   * @param {number} x - A number representing the x-coordinate of the graph.
+   * @param {number} y - A number representing the y-coordinate of the graph.
+   * @param {number} z - A number representing the z-coordinate of the graph.
    * 
    * @precondition The 'x', 'y', and 'z' parameters must be numbers.
    * @postcondition The 'position' property is set to an object with 'x', 'y', and 'z' properties.
@@ -149,7 +151,7 @@ export class GraphClass implements GraphInterface {
   
   /**
    * Set the points array of the graph.
-   * @param the points array - An array of PointClass instances.
+   * @param {PointClass[]} points the points array - An array of PointClass instances.
    * 
    * @precondition The 'points' parameter must be an array of PointClass instances.
    * @postcondition The 'points' property is set to the provided array.
@@ -168,7 +170,7 @@ export class GraphClass implements GraphInterface {
 
   /**
    * Remove a point from the graph.
-   * @param the point to remove - A PointClass instance.
+   * @param {PointClass[]} points the point to remove - A PointClass instance.
    * 
    * @precondition the 'point' parameter must be a valid PointClass instance.
    * @postcondition the 'point' is removed from the 'points' array.
@@ -183,7 +185,7 @@ export class GraphClass implements GraphInterface {
 
   /**
    * Clear all points from the graph.
-   * @param the points array - An array of PointClass instances.
+   * @param none
    * 
    * @precondition the 'points' parameter must be an array of PointClass instances.
    * @postcondition the 'points' array is cleared.
@@ -210,8 +212,8 @@ export class GraphClass implements GraphInterface {
   }
   /**
    * Set the axes of the graph.
-   * @param axes - An object with 'xLabel', 'yLabel', 'xRange', and 'yRange' properties.
-   * 
+   * @param {xLabel: string; yLabel: string; xRange: [number, number]; yRange: [number, number]} axes 
+   * - An object with 'xLabel', 'yLabel', 'xRange', and 'yRange' properties.
    * @precondition the 'axes' parameter must be an object with 'xLabel', 'yLabel', 'xRange', and 'yRange' properties.
    * @postcondition the 'axes' property is set to the provided object.
    */

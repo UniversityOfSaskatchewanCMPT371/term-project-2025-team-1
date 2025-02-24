@@ -5,6 +5,7 @@ import { TimeSeriesGraphClass } from '../../components/Graph_Components/TimeSeri
 import { PointClass } from '../../components/Graph_Components/PointClass';
 import { useState } from 'react';
 import mainController from '../../controller/MainController';
+import { sendLog } from '../../logger-frontend';
 
 /**
  * This class will handle creating and updating a 2D Time Series graph based on the GraphClass.
@@ -31,10 +32,12 @@ export function TimeSeriesGraph({graph}:{graph: TimeSeriesGraphClass}){
     mainController.updateMainScene();
 
     change(!isChanged)
+    sendLog("info", "a TimeSeriesGraph object was updated");
   }
 
   function HeaderSelection(){
     setHeader(graphClass.getYHeader());
+    sendLog("info", "a TimeSeriesGraph object header was selected and visually updated to reflect selection");
     return(
       <>
       <Container height={"30%"}>
@@ -59,6 +62,7 @@ export function TimeSeriesGraph({graph}:{graph: TimeSeriesGraphClass}){
   }
   // console.log("Divider ", divider, " current :", current, " Cur + Div:", (current + (divider/2)))
   function GenerateSideBar(){
+    sendLog("info", "a TimeSeriesGraph object sidebar was created");
     return(
       <>
         <Container width={"15%"} height={"100%"} backgroundColor={"skyblue"}
@@ -81,6 +85,7 @@ export function TimeSeriesGraph({graph}:{graph: TimeSeriesGraphClass}){
     point.setYPosition(((point.getYData()/100) * (graphClass.getYRange()/(graphClass.timeSeriesYRange().length))) - (1));
     currentLine = lastLine;
     lastLine = ([point.getXPosition(), point.getYPosition(), 0.01])
+    sendLog("info", "a visual representation of points was created for a TimeSeriesGraph object");
     return (
       <>
       
@@ -91,6 +96,7 @@ export function TimeSeriesGraph({graph}:{graph: TimeSeriesGraphClass}){
   }
   function GenerateLines(){
     current = current + (divider);
+    sendLog("info", "the lines on a TimeSeriesGraph object were created");
     return(
       <>
         <Line points={[[currentLine[0],currentLine[1],currentLine[2]], [lastLine[0],lastLine[1],lastLine[2]]]}
@@ -102,6 +108,7 @@ export function TimeSeriesGraph({graph}:{graph: TimeSeriesGraphClass}){
   function GenerateYRange(){
     yRange = yRange + 5;
     const curVal = yRange;
+    sendLog("info", "a visual representation of the Y range was created for a TimeSeriesGraph object");
     return(
       <>
       <Text positionTop={10}>{curVal.toString()} -</Text>
@@ -109,6 +116,7 @@ export function TimeSeriesGraph({graph}:{graph: TimeSeriesGraphClass}){
     )
   }
   function GenerateGraph(){
+    sendLog("info", "a TimeSeriesGraph visualization is being created");
     return (
       <>
         <Container width={"85%"} height={"100%"} flexDirection={"row"}>

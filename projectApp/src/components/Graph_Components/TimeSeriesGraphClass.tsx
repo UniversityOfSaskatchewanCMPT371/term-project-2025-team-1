@@ -88,12 +88,15 @@ export class TimeSeriesGraphClass extends GraphClass implements TimeSeriesGraphI
 
     // Should these get() calls be logged? Or will that create pointless clutter?
     getXHeader(){
+        sendLog("info", `getXHeader returned ${this.axes.xLabel}`);
         return this.axes.xLabel;
     }
     getYHeader(){
+        sendLog("info", `getYHeader returned ${this.axes.yLabel}`);
         return this.axes.yLabel;
     }
     getYRange(){
+        sendLog("info", `getYRange returned ${this.axes.yRange[1]}`);
         return this.axes.yRange[1];
     }
     setRange(){

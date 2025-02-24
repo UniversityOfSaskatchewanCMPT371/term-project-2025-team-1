@@ -12,7 +12,7 @@ export function BrowserUI(){
     const [ controlKey, setControlKey] = useState(0);
     
     //The botton component that opens file explorer and loads a local file
-    function LoadComponent(){
+    function LoadComponent(): JSX.Element{
       useControls({
         'Load Local CSV' : button(() => {
           const loadFile = () => {
@@ -51,7 +51,7 @@ export function BrowserUI(){
     }
   
     //This one is for loading the csvfile through a url link
-  function URLComponent(){
+  function URLComponent(): JSX.Element{
     const { csv } = useControls(
       {csv: { label: "CSV by URL", value: "Enter URL"},
     "Enter URL": button(() => {
@@ -77,7 +77,7 @@ export function BrowserUI(){
   }
   
   //Component that displays the loaded csv files on the browser UI
-  function UnmountedComponents(){
+  function UnmountedComponents(): null{
     const names:[string, boolean][] = mainController.getCSVController().browserCSVFiles();
     
     //setControlKey(controlKey + 1)
@@ -100,9 +100,11 @@ export function BrowserUI(){
     return null;
   }
 
-    return <>
-              <URLComponent/>
-              <LoadComponent/>
-              <UnmountedComponents/>
-            </>
+    return (
+      <>
+        <URLComponent/>
+        <LoadComponent/>
+        <UnmountedComponents/>
+      </>
+    )
   }

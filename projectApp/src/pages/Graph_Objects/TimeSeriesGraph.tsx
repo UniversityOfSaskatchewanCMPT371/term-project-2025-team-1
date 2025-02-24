@@ -23,13 +23,13 @@ export function TimeSeriesGraph({graph}:{graph: TimeSeriesGraphClass}){
   const xSpacing = 100/graph.getNumPoints();
   const ySpacing = 100/(graph.timeSeriesYRange().length + 1);
 
-  function UpdateGraph(){
+  function UpdateGraph(): void{
     graph.updatePointPosition();
     setHeader(graph.getYHeader());
     mainController.updateMainScene();
   }
 
-  function HeaderSelection(){
+  function HeaderSelection(): JSX.Element{
     setHeader(graph.getYHeader());
 
     return(
@@ -55,7 +55,7 @@ export function TimeSeriesGraph({graph}:{graph: TimeSeriesGraphClass}){
 
   }
   // console.log("Divider ", divider, " current :", current, " Cur + Div:", (current + (divider/2)))
-  function GenerateSideBar(){
+  function GenerateSideBar(): JSX.Element{
     return(
       <>
         <Container width={"15%"} height={"100%"} backgroundColor={"skyblue"}
@@ -73,7 +73,7 @@ export function TimeSeriesGraph({graph}:{graph: TimeSeriesGraphClass}){
     )
   }
 
-  function GeneratePoints({point}:{point: PointClass}){
+  function GeneratePoints({point}:{point: PointClass}): JSX.Element{
     point.setXPosition((current));
     point.setYPosition(((point.getYData()/100) * (graph.getYRange()/(graph.timeSeriesYRange().length))) - (1));
     currentLine = lastLine;
@@ -85,7 +85,7 @@ export function TimeSeriesGraph({graph}:{graph: TimeSeriesGraphClass}){
       </>
     )
   }
-  function GenerateLines(){
+  function GenerateLines(): JSX.Element{
     current = current + (divider);
     return(
       <>
@@ -95,14 +95,14 @@ export function TimeSeriesGraph({graph}:{graph: TimeSeriesGraphClass}){
     )
   }
 
-  function GenerateYRange({num} : {num:number}){
+  function GenerateYRange({num} : {num:number}): JSX.Element{
     return(
       <>
       <Text positionTop={10}>{num.toString()} -</Text>
       </>
     )
   }
-  function GenerateGraph(){
+  function GenerateGraph(): JSX.Element{
     return (
       <>
         <Container width={"85%"} height={"100%"} flexDirection={"row"}>

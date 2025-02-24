@@ -9,15 +9,15 @@ export class GraphModel implements ModelInterface{
         this.data = [];
     }   
 
-    selectData(csv: CSVData){
+    selectData(csv: CSVData): void{
         csv.setVRSelected(true);
     }
 
-    addTimeSeriesGraph(graph: TimeSeriesGraphClass){
+    addTimeSeriesGraph(graph: TimeSeriesGraphClass): void{
         this.data.push(graph);
     }
 
-    getData(){
+    getData(): TimeSeriesGraphClass[]{
         return this.data;
     }
 }

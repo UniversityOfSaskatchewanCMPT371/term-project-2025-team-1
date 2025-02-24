@@ -5,7 +5,7 @@ export function Point2D({pointRef} : {pointRef: PointClass}){
     const [ hovered, hover ] = useState(false);
     const [ clicked, click ] = useState(false);
 
-    function setOnClick(){
+    function setOnClick(): void{
         click(!(clicked));
         pointRef.setSelected(!(pointRef.getSelected()))
     }

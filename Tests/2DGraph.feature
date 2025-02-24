@@ -5,7 +5,7 @@ Feature: 2DGraph
     Background:
       Given the user is in the VR environment
       And the user has uploaded the valid local CSV file "test.csv"
-      And the user has uploaded a valid URL-based CSV file with address "testcsvfile.csv" 
+      And the user has uploaded a valid URL-based CSV file with address "test.csv" 
 
     # This case covers visual confirmation that a 2D graph is loaded and able to be displayed from the 2D graph menu
     Scenario: Finding a loaded local/URL graph in the 2D graph menu

@@ -4,7 +4,7 @@ Feature: csvLoader
   # Will add example information into background  
   Background:
     Given the user has a local example CSV file "test.csv"
-    And the user has a URL-based example CSV file with address "testcsvfile.csv"
+    And the user has a URL-based example CSV file with address "test.csv"
     And the user is in the VR environment
     
   # These assume I have entered the VR environment in its current state, and that a popup vr keyboard is utilized 

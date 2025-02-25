@@ -8,10 +8,15 @@ import { fileContainsText } from "./fileParser";
 describe('emulating csvLoader.feature', () => {
     const path = './logsCsv.txt';
     test('log file exists', () => {
-        //const testInfo = `path to log file is ${path}`;
-        //sendLog("info",testInfo);
+        //const testInfo = `test for log at path ${path}`;
+        //const testError = new Error("test error");
+        //const testErrMessage = `test for error at path ${path}`;
         expect(fs.existsSync(path)).toBe(true);
+        //sendLog("info",testInfo);
         //expect(fileContinsText(path,testInfo));
+        //sendError(testError,testErrMessage);
+        //expect(fileContinsText(path,testError));
+        //expect(fileContinsText(path,testErrMessage));
         //re-add these when actual gherkin testing is done
     });
     test('emulating scenario: Confirming URL CSV entry', async () => {

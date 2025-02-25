@@ -121,10 +121,11 @@ describe('emulating csvLoader.feature', () => {
         await expect(fileContainsText(path,LoadComponentLog)).resolves.toBe(true);
         //let me know if some other logs are left out
     });
-
-    test('emulating scenario: Deleting a loaded CSV file', () => {
-        //nothing? for now, since button has yet to have delete code implemented
-        expect("There is no delete button yet").toBe("There is no delete button yet");
+    /*
+    test('emulating scenario: Deleting a loaded CSV file', async () => {
+        const deleteButtonLog = "log for delete button"
+        await expect(fileContainsText(path,deleteButtonLog)).resolves.toBe(true);
     });
+    */
 
 });

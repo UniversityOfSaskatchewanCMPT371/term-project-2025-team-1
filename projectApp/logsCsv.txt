@@ -1,0 +1,8 @@
+{"level":30,"time":1740445243264,"pid":24201,"hostname":"Stevens-MacBook-Pro.local","msg":"URLComponent read: ${csv}"}
+{"level":30,"time":1740445243264,"pid":24201,"hostname":"Stevens-MacBook-Pro.local","msg":"readURLFile read a file\n${JSON.stringify(data.getData())}"}
+{"level":30,"time":1740445243264,"pid":24201,"hostname":"Stevens-MacBook-Pro.local","msg":"loadCSVData has loaded csv data\n${JSON.stringify(this.data)}"}
+{"level":30,"time":1740445243264,"pid":24201,"hostname":"Stevens-MacBook-Pro.local","msg":"${this.name} data is set to ${JSON.stringify(data)}"}
+{"level":30,"time":1740445243264,"pid":24201,"hostname":"Stevens-MacBook-Pro.local","msg":"URLCSVReader has successfully parsed\n${JSON.stringify(timeSeries)}"}
+{"level":30,"time":1740445243264,"pid":24201,"hostname":"Stevens-MacBook-Pro.local","msg":"setName, ${this.name} will now be called ${name}"}
+{"level":30,"time":1740445243264,"pid":24201,"hostname":"Stevens-MacBook-Pro.local","msg":"setYHeader, ${this.name} yHeader is set to ${header}"}
+

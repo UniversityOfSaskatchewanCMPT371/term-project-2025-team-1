@@ -8,7 +8,13 @@ import {CSVHeaders, TimeSeriesData} from '../../types/CSVInterfaces';
 * This function reads the headers of a csv file and stores it
 * @param file File path for csv file 
 * @returns: {Promise<CSVHeaders>}
-**/
+*
+* Pre-conditions: file path must be a valid file path to a .csv or .txt file.
+* Post-conditions:
+*    None (the function does not modify any external state).
+*    The returned promise resolves to an object containing the headers of the CSV file.
+*    If the file is empty or cannot be parsed, an error is thrown.
+**/    
 export async function LocalCSVHeaders(file:string): Promise<CSVHeaders> {
     return LocalCSVReader(file).then((timeSeries) => {
         return ({ headers: Object.keys(timeSeries[0]) } as CSVHeaders);
@@ -22,6 +28,12 @@ export async function LocalCSVHeaders(file:string): Promise<CSVHeaders> {
 * This function reads the headers of a csv file and stores it
 * @param file File path for csv file 
 * @returns: {Promise<CSVHeaders>}
+*
+* Pre-conditions: file path must be a valid file path to a .csv or .txt file.
+* Post-conditions:
+*    None (the function does not modify any external state).
+*    The returned promise resolves to an object containing the headers of the CSV file.
+*    If the file is empty or cannot be parsed, an error is thrown.
 **/
 export async function LocalCSVReader(file:string): Promise<TimeSeriesData[]>{
     if(!file.endsWith('.csv') && !file.endsWith('.txt')){
@@ -56,6 +68,12 @@ export async function LocalCSVReader(file:string): Promise<TimeSeriesData[]>{
 * Reads a CSV file from a File Object (local reader) and returns an array of time series data.
 * @param file File path for csv file 
 * @returns: {Promise<CSVHeaders>}
+*
+* Pre-conditions: file path must be a valid file path to a .csv or .txt file.
+* Post-conditions:
+*    None (the function does not modify any external state).
+*    The returned promise resolves to an object containing the headers of the CSV file.
+*    If the file is empty or cannot be parsed, an error is thrown.
 **/
 export function LocalCsvReader(file: File): Promise<TimeSeriesData[]>{
     return new Promise<TimeSeriesData[]>((resolve, reject) => {

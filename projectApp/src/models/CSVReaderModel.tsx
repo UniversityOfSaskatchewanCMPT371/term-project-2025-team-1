@@ -1,4 +1,4 @@
-import { CSVData, CSVModelInterface } from "../types/CSVInterfaces";
+import { CSVDataInterface, CSVModelInterface } from "../types/CSVInterfaces";
 import { CSVDataObject } from "./CSVDataObject";
 
 export class CSVReaderModel implements CSVModelInterface{
@@ -9,7 +9,7 @@ export class CSVReaderModel implements CSVModelInterface{
     }
 
     //This should get the csv file using name
-    getCSVFileByName(name:string): CSVData | null{
+    getCSVFileByName(name:string): CSVDataInterface | null{
         for(const data of this.data) {
             if(data.name == name){
                 return data;

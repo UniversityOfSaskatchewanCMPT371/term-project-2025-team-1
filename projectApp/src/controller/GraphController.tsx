@@ -1,4 +1,4 @@
-import { TimeSeriesGraphClass } from "../components/Graph_Components/TimeSeriesGraphClass";
+import { TimeSeriesGraphObject } from "../components/Graph_Components/TimeSeriesGraphObject";
 import { CSVDataObject } from "../models/CSVDataObject";
 import { GraphModel } from "../models/GraphModel";
 import { ControllerInterface } from "../types/BaseInterfaces";
@@ -10,8 +10,8 @@ export class GraphController implements ControllerInterface{
         this.model = new GraphModel()
     }
 
-    generateTimeSeriesGraph(csv: CSVDataObject): TimeSeriesGraphClass{
-        const result:TimeSeriesGraphClass = new TimeSeriesGraphClass(csv);
+    generateTimeSeriesGraph(csv: CSVDataObject): TimeSeriesGraphObject{
+        const result:TimeSeriesGraphObject = new TimeSeriesGraphObject(csv);
 
         for(const graph of this.getModel().getData()){
             if(graph.getName() == csv.getName()){
@@ -23,14 +23,14 @@ export class GraphController implements ControllerInterface{
         return result;
     }
 
-    pushDataToModel(graph: TimeSeriesGraphClass): void{
+    pushDataToModel(graph: TimeSeriesGraphObject): void{
         this.getModel().getData().push(graph);
     }
 
     getModel(): GraphModel{
         return this.model;
     }
-    getModelData(): TimeSeriesGraphClass[]{
+    getModelData(): TimeSeriesGraphObject[]{
         return this.model.getData();
     };
 

@@ -1,23 +1,23 @@
-import { TimeSeriesGraphClass } from "../components/Graph_Components/TimeSeriesGraphClass";
+import { TimeSeriesGraphObject } from "../components/Graph_Components/TimeSeriesGraphObject";
 import { ModelInterface } from "../types/BaseInterfaces";
-import { CSVData } from "../types/CSVInterfaces";
+import { CSVDataInterface } from "../types/CSVInterfaces";
 
 export class GraphModel implements ModelInterface{
     //Probably will swap this out with a list of Graphs
-    data: TimeSeriesGraphClass[];
+    data: TimeSeriesGraphObject[];
     constructor(){
         this.data = [];
     }   
 
-    selectData(csv: CSVData): void{
+    selectData(csv: CSVDataInterface): void{
         csv.setVRSelected(true);
     }
 
-    addTimeSeriesGraph(graph: TimeSeriesGraphClass): void{
+    addTimeSeriesGraph(graph: TimeSeriesGraphObject): void{
         this.data.push(graph);
     }
 
-    getData(): TimeSeriesGraphClass[]{
+    getData(): TimeSeriesGraphObject[]{
         return this.data;
     }
 }

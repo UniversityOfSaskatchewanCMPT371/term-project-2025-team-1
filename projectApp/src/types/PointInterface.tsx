@@ -3,7 +3,7 @@
 * Could be further specialized to be used by both graph (Creating a base interface)
 */
 
-export interface PointRef {
+export interface PointInterface {
     position: [number, number, number];
     selected: boolean;
     xData: string;

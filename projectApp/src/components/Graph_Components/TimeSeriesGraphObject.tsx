@@ -1,24 +1,23 @@
 import { CSVDataObject } from "../../models/CSVDataObject";
 import { TimeSeriesGraphInterface } from "../../types/TimeSeriesGraphInterface";
-import { GraphClass } from "./GraphClass";
-import { PointClass } from "./PointClass";
+import { GraphObject } from "./GraphObject";
+import { PointObject } from "./PointObject";
 
 // GraphClass2 is a class that represents a collection of multiple points
-export class TimeSeriesGraphClass extends GraphClass implements TimeSeriesGraphInterface{
+export class TimeSeriesGraphObject extends GraphObject implements TimeSeriesGraphInterface{
     constructor(csv: CSVDataObject) {
         super(csv);
-        // Initialize an empty array to store PointClass instances
+        // Initialize an empty array to store PointInterface instances
     }   
 
     /**
      * Adds a new point to the graph.
-     * pre-codition: pointRef is a valid PointRef object
-     * post-condition: a new PointClass instance is added to the graph
-     * @param {PointRef} pointRef - Reference to the point data.
+     * pre-codition: valid points in GraphObject
+     * post-condition: a new PointInterface instance is added to the graph
      */
     addPoint(): void{
         this.csvData.getData().forEach((data) => {
-            const newPoint = new PointClass();
+            const newPoint = new PointObject();
             newPoint.setPosition([0,0,0.01])
             
             newPoint.setXData(data[this.axes.xLabel as keyof typeof data] as unknown as string);
@@ -32,12 +31,12 @@ export class TimeSeriesGraphClass extends GraphClass implements TimeSeriesGraphI
     /**
      * Finds a point based on given x and y data.
      * pre-codition: xData is a string, yData is a number
-     * post-condition: returns the corresponding PointClass instance if found, otherwise undefined
+     * post-condition: returns the corresponding Points instance if found, otherwise undefined
      * @param {string} xData - The x-coordinate (string representation).
      * @param {number} yData - The y-coordinate (numeric value).
-     * @returns {PointClass | undefined} The corresponding PointClass instance if found, otherwise undefined.
+     * @returns {PointInterface | undefined} The corresponding Points instance if found, otherwise undefined.
      */
-    findPoint(xData: string, yData: number): PointClass | undefined {
+    findPoint(xData: string, yData: number): PointObject | undefined {
         return this.points.find(point => point.getXData() === xData && point.getYData() === yData);
     }
 
@@ -182,10 +181,10 @@ export class TimeSeriesGraphClass extends GraphClass implements TimeSeriesGraphI
     /**
      * Retrieves all points in the graph.
      * pre-codition: none
-     * post-condition: returns an array of PointClass instances
-     * @returns {PointClass[]} Array of PointClass instances.
+     * post-condition: returns an array of PointInterface instances
+     * @returns {PointInterface[]} Array of PointInterface instances.
      */
-    getPoints(): PointClass[] {
+    getPoints(): PointObject[] {
         return this.points;
     }
 

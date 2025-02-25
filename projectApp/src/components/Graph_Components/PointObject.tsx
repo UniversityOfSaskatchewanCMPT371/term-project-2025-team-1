@@ -1,6 +1,6 @@
-import { PointRef } from "../../types/PointInterface";
+import { PointInterface } from "../../types/PointInterface";
 
-export class PointClass implements PointRef{
+export class PointObject implements PointInterface{
     position: [number,number,number];
     selected: boolean;
     xData: string;

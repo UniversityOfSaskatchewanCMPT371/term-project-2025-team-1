@@ -1,8 +1,8 @@
 import { LocalCSVReader, LocalCsvReader } from "../components/CSV_Readers/LocalCSVReader";
-import { CSVData } from "../types/CSVInterfaces";
+import { CSVDataInterface } from "../types/CSVInterfaces";
 import { UrlCSVReader } from "../components/CSV_Readers/UrlCSVReader";
 
-export class CSVDataObject implements CSVData{
+export class CSVDataObject implements CSVDataInterface{
     name: string;
     csvHeaders: string[];
     data: { key: Record<string,string | number> }[];

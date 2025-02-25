@@ -1,8 +1,8 @@
 import { Root, Container, Text } from '@react-three/uikit';
 import { Line } from "@react-three/drei";
 import { Create2DPoint } from '../../components/Graph_Components/Create2DPoint';
-import { TimeSeriesGraphClass } from '../../components/Graph_Components/TimeSeriesGraphClass';
-import { PointClass } from '../../components/Graph_Components/PointClass';
+import { TimeSeriesGraphObject } from '../../components/Graph_Components/TimeSeriesGraphObject';
+import { PointObject } from '../../components/Graph_Components/PointObject';
 import { useState } from 'react';
 import mainController from '../../controller/MainController';
 
@@ -10,7 +10,7 @@ import mainController from '../../controller/MainController';
  * This class will handle creating and updating a 2D Time Series graph based on the GraphClass.
  */
 
-export function TimeSeriesGraph({graph}:{graph: TimeSeriesGraphClass}){
+export function TimeSeriesGraph({graph}:{graph: TimeSeriesGraphObject}){
   const [ header, setHeader ] = useState("");
 
   const totalSpace = 5;
@@ -29,7 +29,7 @@ export function TimeSeriesGraph({graph}:{graph: TimeSeriesGraphClass}){
     mainController.updateMainScene();
   }
 
-  function HeaderSelection(): JSX.Element{
+  function HeaderSelection(): React.JSX.Element{
     setHeader(graph.getYHeader());
 
     return(
@@ -55,7 +55,7 @@ export function TimeSeriesGraph({graph}:{graph: TimeSeriesGraphClass}){
 
   }
   // console.log("Divider ", divider, " current :", current, " Cur + Div:", (current + (divider/2)))
-  function GenerateSideBar(): JSX.Element{
+  function GenerateSideBar(): React.JSX.Element{
     return(
       <>
         <Container width={"15%"} height={"100%"} backgroundColor={"skyblue"}
@@ -73,7 +73,7 @@ export function TimeSeriesGraph({graph}:{graph: TimeSeriesGraphClass}){
     )
   }
 
-  function GeneratePoints({point}:{point: PointClass}): JSX.Element{
+  function GeneratePoints({point}:{point: PointObject}): React.JSX.Element{
     point.setXPosition((current));
     point.setYPosition(((point.getYData()/100) * (graph.getYRange()/(graph.timeSeriesYRange().length))) - (1));
     currentLine = lastLine;
@@ -85,7 +85,7 @@ export function TimeSeriesGraph({graph}:{graph: TimeSeriesGraphClass}){
       </>
     )
   }
-  function GenerateLines(): JSX.Element{
+  function GenerateLines(): React.JSX.Element{
     current = current + (divider);
     return(
       <>
@@ -95,14 +95,14 @@ export function TimeSeriesGraph({graph}:{graph: TimeSeriesGraphClass}){
     )
   }
 
-  function GenerateYRange({num} : {num:number}): JSX.Element{
+  function GenerateYRange({num} : {num:number}): React.JSX.Element{
     return(
       <>
       <Text positionTop={10}>{num.toString()} -</Text>
       </>
     )
   }
-  function GenerateGraph(): JSX.Element{
+  function GenerateGraph(): React.JSX.Element{
     return (
       <>
         <Container width={"85%"} height={"100%"} flexDirection={"row"}>

@@ -1,16 +1,16 @@
-import { PointClass } from "./PointClass";
 import { GraphInterface } from "../../types/GraphInterface";
 import { CSVDataObject } from "../../models/CSVDataObject";
+import { PointInterface } from "../../types/PointInterface";
 
 /**
  * The GraphClass represents a graph structure that manages points, dimensions, styling, and interactivity.
  */
-export class GraphClass implements GraphInterface {
+export class GraphObject implements GraphInterface {
   id: string;
   name: string;
   csvData: CSVDataObject;
   dimensions: { width: number; height: number; depth?: number };
-  points: PointClass[];
+  points: PointInterface[];
   position: { x: number; y: number; z: number };
   axes: {
     xLabel: string;
@@ -61,14 +61,14 @@ export class GraphClass implements GraphInterface {
     this.position = { x, y, z };
   }
 
-  getPoints(): PointClass[] {
+  getPoints(): PointInterface[] {
     return this.points;
   }
   
-  setPoints(points: PointClass[]): void {
+  setPoints(points: PointInterface[]): void {
     this.points = points;
   }
-  removePoint(point: PointClass): void {
+  removePoint(point: PointInterface): void {
     const index = this.points.indexOf(point);
     if (index !== -1) {
       this.points.splice(index, 1);

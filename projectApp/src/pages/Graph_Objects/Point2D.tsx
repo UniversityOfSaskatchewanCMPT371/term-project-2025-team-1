@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { PointClass } from "../../components/Graph_Components/PointClass";
+import { PointObject } from "../../components/Graph_Components/PointObject";
 
-export function Point2D({pointRef} : {pointRef: PointClass}){
+export function Point2D({pointRef} : {pointRef: PointObject}){
     const [ hovered, hover ] = useState(false);
     const [ clicked, click ] = useState(false);
 

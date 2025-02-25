@@ -1,13 +1,13 @@
 import { describe, it, expect, beforeEach, vi } from 'vitest';
-import { GraphClass } from '../src/components/Graph_Components/GraphClass';
+import { GraphObject } from '../src/components/Graph_Components/GraphObject';
 import { CSVDataObject } from '../src/models/CSVDataObject';
 import mainController from '../src/controller/MainController';
 
-// Mock the PointClass so that its constructor does not require any arguments.
+// Mock the PointObject so that its constructor does not require any arguments.
 // This prevents errors due to the constructor expecting a parameter (ref)
-vi.mock('./PointClass', () => {
+vi.mock('./PointObject', () => {
   return {
-    PointClass: class {
+    PointObject: class {
       position: number[];
       selected: boolean;
       xData: any;
@@ -39,7 +39,7 @@ describe('GraphClass', async () => {
    */
 
   it('initializes with correct properties from CSVDataObject', () => {
-    const graph = new GraphClass(csvDataMock);
+    const graph = new GraphObject(csvDataMock);
 
     // Verify id, dimensions, position, and axes set by the constructor
     graph.setId('TestGraph');
@@ -59,7 +59,7 @@ describe('GraphClass', async () => {
    */
 
   it('sets and gets the id correctly', () => {
-    const graph = new GraphClass(csvDataMock);
+    const graph = new GraphObject(csvDataMock);
     graph.setId('NewGraphID');
     expect(graph.getId()).toBe('NewGraphID');
 
@@ -68,13 +68,13 @@ describe('GraphClass', async () => {
   });
 
   it('sets and gets position correctly', () => {
-    const graph = new GraphClass(csvDataMock);
+    const graph = new GraphObject(csvDataMock);
     graph.setPosition(5, 6, 7);
     expect(graph.getPosition()).toEqual({ x: 5, y: 6, z: 7 });
   });
 
   it('sets and gets axes correctly', () => {
-    const graph = new GraphClass(csvDataMock);
+    const graph = new GraphObject(csvDataMock);
     const newAxes = {
       xLabel: 'NewX',
       yLabel: 'NewY',

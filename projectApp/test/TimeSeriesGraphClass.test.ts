@@ -1,20 +1,20 @@
 import { describe, test, expect, beforeEach } from 'vitest';
 
 import mainController from '../src/controller/MainController';
-import { TimeSeriesGraphClass } from '../src/components/Graph_Components/TimeSeriesGraphClass';
+import { TimeSeriesGraphObject } from '../src/components/Graph_Components/TimeSeriesGraphObject';
 
 describe( 'Time Series Graph Class', async () => {
-    let graph: TimeSeriesGraphClass;
+    let graph: TimeSeriesGraphObject;
     const url = "https://raw.githubusercontent.com/UniversityOfSaskatchewanCMPT371/term-project-2025-team-1/refs/heads/main/csvTestFiles/test.csv";
     await mainController.getCSVController().loadURLFile(url);
     
     /**
-     * Sets up a new instance of GraphClass2 and a sample point before each test.
+     * Sets up a new instance of TimeSeriesGraph and a sample point before each test.
      */
     beforeEach(() => {
 
         const csv = mainController.getCSVController().getModelData()[0];
-        graph = new TimeSeriesGraphClass(csv);
+        graph = new TimeSeriesGraphObject(csv);
         
     });
 

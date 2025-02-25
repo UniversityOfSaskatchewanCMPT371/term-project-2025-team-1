@@ -1,7 +1,7 @@
 import { TimeSeriesGraph } from "../../pages/Graph_Objects/TimeSeriesGraph";
-import { TimeSeriesGraphClass } from "./TimeSeriesGraphClass";
+import { TimeSeriesGraphObject } from "./TimeSeriesGraphObject";
 
-export function CreateTimeSeries({graphObject}:{graphObject: TimeSeriesGraphClass}): JSX.Element{
+export function CreateTimeSeries({graphObject}:{graphObject: TimeSeriesGraphObject}): React.JSX.Element{
     return(
         <>
             <TimeSeriesGraph graph={graphObject}></TimeSeriesGraph>

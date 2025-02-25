@@ -14,7 +14,7 @@ export interface TimeSeriesData {
 
 //Planned new interfaces for csv files
 //For now, specialized for 2D Time Series
-export interface CSVData extends DataInterface{                                   //Name of the graph (Graph has ID might switch to that)
+export interface CSVDataInterface extends DataInterface{                                   //Name of the graph (Graph has ID might switch to that)
     csvHeaders: string[];                           //Headers for csv File
     data: {key: Record<string,string | number>}[];  //Used for displaying csvfiles
     browserSelected: boolean; 
@@ -47,5 +47,5 @@ export interface CSVModelInterface extends ModelInterface{
     readLocalFile(file:File): Promise<void>;                   //Will read the csv through local file and load it
     readURLFile(file: string): Promise<void>;                  //Will read the csv file through url link and load it
     deleteFile(name:string): void;                    //Get the array and delete it
-    getCSVFileByName(name: string): CSVData | null;
+    getCSVFileByName(name: string): CSVDataInterface | null;
 }

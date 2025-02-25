@@ -13,8 +13,9 @@ describe('emulating csvLoader.feature', () => {
         expect(fs.existsSync(path)).toBe(true);
     });
     test('emulating scenario: Confirming URL CSV entry', () => {
-        //CSVDataObject
+        //UrlCsvReader
         const URLCSVReaderSuccess = "URLCSVReader has successfully parsed";
+        //CSVDataObject
         const CSVDataObjectSetData = "data is set to";
         const CSVDataObjectSetName = "will now be called";
         const CSVDataObjectSetYHeader = "yHeader is set to";

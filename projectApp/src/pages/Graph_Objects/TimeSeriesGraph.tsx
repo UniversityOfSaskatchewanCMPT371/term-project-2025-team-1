@@ -7,7 +7,7 @@ import { useState } from 'react';
 import mainController from '../../controller/MainController';
 
 /**
- * This class will handle creating and updating a 2D Time Series graph based on the GraphClass.
+ * This class will handle creating and updating a 2D Time Series graph based on the Graph Object.
  */
 
 export function TimeSeriesGraph({graph}:{graph: TimeSeriesGraphObject}){

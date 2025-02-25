@@ -19,7 +19,7 @@ describe( 'Time Series Graph Class', async () => {
     });
 
     /**
-     * Verifies that a new GraphClass2 instance initializes with an empty points array.
+     * Verifies that a new GraphObject instance initializes with an empty points array.
      */
     test('Should Initialize Points to the number of data set loaded', () => {
         // graph.clearPoints();

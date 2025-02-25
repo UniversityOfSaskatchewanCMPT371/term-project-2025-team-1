@@ -7,7 +7,7 @@ import { describe } from 'node:test';
 import { vol as memVol } from 'memfs'
 import * as fs from '../test/__mocks__/fs';
 import * as fsPromise from '../test/__mocks__/fs/promises';
-import { LocalCSVReader as localReader, LocalCSVHeaders as localHeaders } from '../src/components/CSV_Readers/LocalCSVReader'
+import { LocalCSVReader as localReader, LocalCSVHeaders as localHeaders } from '../src/components/CSV_Readers/CSVReaders'
 import { TimeSeriesData, CSVHeaders } from '../src/types/CSVInterfaces';
 
 // tell vitest to use fs mock from __mocks__ folder

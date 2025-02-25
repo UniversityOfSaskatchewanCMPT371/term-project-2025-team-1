@@ -24,8 +24,8 @@ vi.mock('./PointObject', () => {
   };
 });
 
-// Test Suite for GraphClass
-describe('GraphClass', async () => {
+// Test Suite for GraphObject
+describe('GraphObject', async () => {
   let csvDataMock: CSVDataObject;
   const url = "https://raw.githubusercontent.com/UniversityOfSaskatchewanCMPT371/term-project-2025-team-1/refs/heads/main/csvTestFiles/test.csv";
   await mainController.getCSVController().loadURLFile(url);

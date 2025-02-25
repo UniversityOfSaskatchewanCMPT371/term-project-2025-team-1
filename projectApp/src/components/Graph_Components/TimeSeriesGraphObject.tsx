@@ -3,7 +3,7 @@ import { TimeSeriesGraphInterface } from "../../types/TimeSeriesGraphInterface";
 import { GraphObject } from "./GraphObject";
 import { PointObject } from "./PointObject";
 
-// GraphClass2 is a class that represents a collection of multiple points
+// TimeSeriesGraphObject is a class that represents a collection of multiple points
 export class TimeSeriesGraphObject extends GraphObject implements TimeSeriesGraphInterface{
     constructor(csv: CSVDataObject) {
         super(csv);

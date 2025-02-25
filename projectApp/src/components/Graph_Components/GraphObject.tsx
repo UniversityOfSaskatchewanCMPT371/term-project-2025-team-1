@@ -3,7 +3,7 @@ import { CSVDataObject } from "../../models/CSVDataObject";
 import { PointInterface } from "../../types/PointInterface";
 
 /**
- * The GraphClass represents a graph structure that manages points, dimensions, styling, and interactivity.
+ * The GraphObject represents a graph structure that manages points, dimensions, styling, and interactivity.
  */
 export class GraphObject implements GraphInterface {
   id: string;
@@ -21,7 +21,7 @@ export class GraphObject implements GraphInterface {
 
 
   /**
-   * Constructs a new GraphClass instance.
+   * Constructs a new GraphObject instance.
    * @param CSVDataObject - An object of the CSVDataObject class
    */
   constructor(csvdata: CSVDataObject) {

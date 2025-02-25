@@ -10,6 +10,21 @@ export class GraphController implements ControllerInterface{
         this.model = new GraphModel()
     }
 
+    /**
+    * Generates a time series graph for the given CSV data object.
+    * 
+    * @param csv The CSV data object for which to generate or retrieve the graph.
+    * @returns {TimeSeriesGraphClass} The generated or retrieved time series graph.
+    * 
+    * Pre-Conditions:
+    *    The `csv` parameter must be a valid `CSVDataObject`.
+    *    The `model` property must be initialized and contain valid graph data.
+    *    The `mainController` must be initialized and valid.
+    * 
+    * Post-Conditions:
+    *    If a graph with the same name as `csv` exists, its range is updated, a new graph is created and returned otherwise
+    *    The mainController's main scene is updated.
+    */
     generateTimeSeriesGraph(csv: CSVDataObject): TimeSeriesGraphObject{
         const result:TimeSeriesGraphObject = new TimeSeriesGraphObject(csv);
 

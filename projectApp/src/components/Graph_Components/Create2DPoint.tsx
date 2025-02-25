@@ -1,4 +1,4 @@
-import { Point2D } from "../../pages/Graph_Objects/Point2D";
+import { Point2D } from "../../pages/Graph_Elements/Point2D";
 import { PointInterface } from "../../types/PointInterface";
 import { PointObject } from "./PointObject";
 

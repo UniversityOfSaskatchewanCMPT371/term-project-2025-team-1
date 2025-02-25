@@ -19,8 +19,16 @@ export class CSVDataObject implements CSVDataInterface{
         this.displayBoard = 0;
         this.vrSelected = false;
     }
-
-    //Initial creation, for loading a graph in the scene, set the yHeader
+    
+    /**
+     * Loads CSV data from either a local file or a URL.
+     * 
+     * @param {number} index - The index used to generate a name for the dataset.
+     * @param {File | string} file - The CSV file (local file or URL as a string).
+     * @param {boolean} isUrl - Whether the provided file is a URL (true) or a local file (false).
+     * 
+     * @returns {Promise<void>} A promise that resolves once the data is loaded.
+     */
     async loadCSVData(index: number, file: (File | string), isUrl: boolean): Promise<void>{
         try {
             
@@ -35,7 +43,6 @@ export class CSVDataObject implements CSVDataInterface{
             }
         }
         catch {
-            //logger.error("Failed Loading");
             return;
         }
     }
@@ -48,7 +55,6 @@ export class CSVDataObject implements CSVDataInterface{
             this.name = ("Graph" + index.toString());
         }
         catch {
-           // logger.error("Failed Loading");
             return;
         }
     }
@@ -71,6 +77,13 @@ export class CSVDataObject implements CSVDataInterface{
         }
     }
 
+    /**
+     * Searches through each record and checks for the specified key in the headers.
+     * If a matching key is found, it returns the associated value from that record.
+     * 
+     * @param key - The key to search for in the dataset.
+     * @returns The corresponding value as a key-value pair (Record) from the dataset, or `null` if no match is found.
+     */
     getDataByKey(key: string): Record<string, string | number> | null{
         let result: Record<string, string | number> | null = null;
         for(const value of this.data){
@@ -88,14 +101,17 @@ export class CSVDataObject implements CSVDataInterface{
         return result;
     }
 
+    /**
+    * Retrieves data corresponding to a specific time value.
+    * @param time - The time value to search for in the dataset.
+    * @returns The corresponding record as a key-value pair, or `null` if no match is found.
+    */
     getDataByTime(time:string): Record<string, string | number> | null{
         let result: Record<string, string | number> | null = null;
         for(const value of this.data){
-            //console.log(val);
             const val = value;
             for(const header of Object.keys(val)){
                 if(val[header as keyof typeof val] as unknown as string == time){
-                    //console.log(val[header as keyof typeof val], "  ", val[this.yHeader as keyof typeof val]);
                     result = val[this.yHeader as keyof typeof val];
                     return result;
                     
@@ -138,17 +154,21 @@ export class CSVDataObject implements CSVDataInterface{
     setData(data: { key: Record<string,string | number> }[]): void{
         this.data = data;
     }
-
-    setName(name: string): void{
+    // Setter getters
+    // Post-condition: The `name` property is updated to the provided name.
+    setName(name: string){
         this.name = name;
     }
-    setBrowserSelected(bool: boolean): void{
+    // Post-condition: The `browserSelected` property is updated to the provided boolean value.
+    setBrowserSelected(bool: boolean){
         this.browserSelected = bool;
     }
-    setVRSelected(bool:boolean): void{
+    // Post-condition: The `vrSelected` property is updated to the provided boolean value.
+    setVRSelected(bool:boolean){
         this.vrSelected = bool;
     }
-    setYHeader(header:string): void{
+    // Post-condition: The `yHeader` property is updated to the provided value if it exists in the CSV headers.
+    setYHeader(header:string){
         for(const head of this.getCSVHeaders()){
             if(head == header){
                 this.yHeader = header;

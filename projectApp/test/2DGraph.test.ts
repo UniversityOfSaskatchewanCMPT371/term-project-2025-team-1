@@ -6,7 +6,7 @@ import { fileContainsText } from "./fileParser";
 
 describe('2D graph log tests', () => {
     // The log in question is located here
-    const filePath = "./logs.txt"
+    const filePath = "../logs.txt"
 
     // Check if the addPoint() log calls are being reached
     test('file contains addPoint() logging', async() => {

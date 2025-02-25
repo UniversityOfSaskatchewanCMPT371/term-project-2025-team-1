@@ -5,6 +5,7 @@ import { TimeSeriesGraphObject } from '../../components/Graph_Components/TimeSer
 import { PointObject } from '../../components/Graph_Components/PointObject';
 import { useState } from 'react';
 import mainController from '../../controller/MainController';
+import { sendLog } from '../../logger-frontend';
 
 /**
  * This class will handle creating and updating a 2D Time Series graph based on the Graph Object.
@@ -27,10 +28,12 @@ export function TimeSeriesGraph({graph}:{graph: TimeSeriesGraphObject}){
     graph.updatePointPosition();
     setHeader(graph.getYHeader());
     mainController.updateMainScene();
+    sendLog("info", "a TimeSeriesGraph object was updated (TimeSeriesGraph.tsx)");
   }
 
   function HeaderSelection(): React.JSX.Element{
     setHeader(graph.getYHeader());
+    sendLog("info", "a TimeSeriesGraph object header was selected and visually updated to reflect selection (TimeSeriesGraph.tsx)");
 
     return(
       <>
@@ -56,6 +59,7 @@ export function TimeSeriesGraph({graph}:{graph: TimeSeriesGraphObject}){
   }
   // console.log("Divider ", divider, " current :", current, " Cur + Div:", (current + (divider/2)))
   function GenerateSideBar(): React.JSX.Element{
+    sendLog("info", "a TimeSeriesGraph object sidebar was created (TimeSeriesGraph.tsx)");
     return(
       <>
         <Container width={"15%"} height={"100%"} backgroundColor={"skyblue"}
@@ -78,7 +82,7 @@ export function TimeSeriesGraph({graph}:{graph: TimeSeriesGraphObject}){
     point.setYPosition(((point.getYData()/100) * (graph.getYRange()/(graph.timeSeriesYRange().length))) - (1));
     currentLine = lastLine;
     lastLine = ([point.getXPosition(), point.getYPosition(), 0.01])
-
+    sendLog("info", "a visual representation of points was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)");
     return (
       <>
        <Create2DPoint pointRef={point}></Create2DPoint>
@@ -87,6 +91,7 @@ export function TimeSeriesGraph({graph}:{graph: TimeSeriesGraphObject}){
   }
   function GenerateLines(): React.JSX.Element{
     current = current + (divider);
+    sendLog("info", "the lines on a TimeSeriesGraph object were created (TimeSeriesGraph.tsx)");
     return(
       <>
         <Line points={[[currentLine[0],currentLine[1],currentLine[2]], [lastLine[0],lastLine[1],lastLine[2]]]}
@@ -102,7 +107,9 @@ export function TimeSeriesGraph({graph}:{graph: TimeSeriesGraphObject}){
       </>
     )
   }
+
   function GenerateGraph(): React.JSX.Element{
+    sendLog("info", "a TimeSeriesGraph visualization is being created (TimeSeriesGraph.tsx)");
     return (
       <>
         <Container width={"85%"} height={"100%"} flexDirection={"row"}>

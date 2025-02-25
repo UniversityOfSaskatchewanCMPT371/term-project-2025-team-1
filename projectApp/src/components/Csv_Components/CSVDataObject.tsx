@@ -1,5 +1,6 @@
 import { CSVDataInterface } from "../../types/CSVInterfaces";
 import { LocalCSVReader, LocalCsvReader, UrlCSVReader } from "./CSVReaders";
+import { sendError, sendLog } from "../../logger-frontend";
 
 export class CSVDataObject implements CSVDataInterface{
     name: string;
@@ -31,6 +32,9 @@ export class CSVDataObject implements CSVDataInterface{
      */
     async loadCSVData(index: number, file: (File | string), isUrl: boolean): Promise<void>{
         try {
+            //tester comment: I think it would be better to just use instanceof operator
+            //instead of adding a boolean for isUrl     --Steven
+            
             const data = isUrl ? await UrlCSVReader(file as string) : await LocalCsvReader(file as File)
             this.setData(data);
             this.setName("Graph" + index.toString());
@@ -40,9 +44,11 @@ export class CSVDataObject implements CSVDataInterface{
                 this.csvHeaders = headers;
                 this.setYHeader("X");
             }
+            sendLog("info",`loadCSVData has loaded csv data\n${JSON.stringify(this.data)}`);
         }
         catch(error: unknown) {
             //Log the error
+            sendError(error, "loadCSVData error");
             throw error;
         }
     }
@@ -53,9 +59,11 @@ export class CSVDataObject implements CSVDataInterface{
             const data = await LocalCSVReader(file);
             this.setData(data);
             this.name = ("Graph" + index.toString());
+            sendLog("info",`loadLocalByPath has loaded csv data\n${JSON.stringify(this.data)}}`);
         }
         catch(error: unknown) {
             //Log the error
+            sendError(error, "loadLocalByPath error");
             throw error;
         }
     }
@@ -94,11 +102,13 @@ export class CSVDataObject implements CSVDataInterface{
                 if([header as keyof typeof val].toString() == key){
                     //console.log(val[header as keyof typeof val], "  ", val[this.yHeader as keyof typeof val]);
                     result = val[header as keyof typeof val];
+                    sendLog("info","getDataByKey has found data");
                     return result;
                     
                 }
             }
         }
+        sendLog("info","getDataByKey has returned null, is this expected?");
         return result;
     }
 
@@ -114,13 +124,16 @@ export class CSVDataObject implements CSVDataInterface{
             for(const header of Object.keys(val)){
                 if(val[header as keyof typeof val] as unknown as string == time){
                     result = val[this.yHeader as keyof typeof val];
+                    sendLog("info","getDataByKey has found data");
                     return result;
                     
                 }
             }
         }
+        sendLog("info","CSVDataObject.getDataByTime() has returned null, is this expected?");
         return result;
     }
+
     getData(): {key: Record<string, string | number>}[]{
         return this.data;
     };
@@ -150,6 +163,7 @@ export class CSVDataObject implements CSVDataInterface{
         }
         //Error handling
         throw new Error("No allowed time header in csv file");
+        //this should be caught by the function that uses getTimeHeader with sendError
     }
 
     setData(data: { key: Record<string,string | number> }[]): void{
@@ -158,18 +172,26 @@ export class CSVDataObject implements CSVDataInterface{
     // Setter getters
     // Post-condition: The `name` property is updated to the provided name.
     setName(name: string){
+        sendLog("info",`setName, ${this.name} will now be called ${name}`);
         this.name = name;
     }
     // Post-condition: The `browserSelected` property is updated to the provided boolean value.
     setBrowserSelected(bool: boolean){
+        sendLog("info",`setBrowserSelected, ${this.name} browser is set to ${bool.toString()}`);
         this.browserSelected = bool;
     }
+
     // Post-condition: The `vrSelected` property is updated to the provided boolean value.
+    //side note: why are both booleans?
+    //is it possible for both browser and vr to be selected?
+    //is it possible for neither to be selected? 
     setVRSelected(bool:boolean){
+        sendLog("info",`setVRSelected, ${this.name} vr is set to ${bool.toString()}`);
         this.vrSelected = bool;
     }
     // Post-condition: The `yHeader` property is updated to the provided value if it exists in the CSV headers.
     setYHeader(header:string){
+        sendLog("info",`setYHeader, ${this.name} yHeader is set to ${header}`);
         for(const head of this.getCSVHeaders()){
             if(head == header){
                 this.yHeader = header;

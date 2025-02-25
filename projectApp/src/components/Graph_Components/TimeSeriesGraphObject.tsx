@@ -2,6 +2,7 @@ import { TimeSeriesGraphInterface } from "../../types/TimeSeriesGraphInterface";
 import { CSVDataObject } from "../Csv_Components/CSVDataObject";
 import { GraphObject } from "./GraphObject";
 import { PointObject } from "./PointObject";
+import { sendLog } from "../../logger-frontend";
 
 // TimeSeriesGraphObject is a class that represents a collection of multiple points
 export class TimeSeriesGraphObject extends GraphObject implements TimeSeriesGraphInterface{
@@ -26,6 +27,7 @@ export class TimeSeriesGraphObject extends GraphObject implements TimeSeriesGrap
             //Get Header by key then assign
             this.points.push(newPoint);
         })
+        sendLog("info", "addPoint() has added new points to the graph (TimeSeriesGraphClass.tsx)");
     }
 
     /**
@@ -37,6 +39,7 @@ export class TimeSeriesGraphObject extends GraphObject implements TimeSeriesGrap
      * @returns {PointInterface | undefined} The corresponding Points instance if found, otherwise undefined.
      */
     findPoint(xData: string, yData: number): PointObject | undefined {
+        sendLog("info",`findPoint() is searching for a point at ${xData}, ${yData} (TimeSeriesGraphClass.tsx)`);
         return this.points.find(point => point.getXData() === xData && point.getYData() === yData);
     }
 
@@ -51,6 +54,7 @@ export class TimeSeriesGraphObject extends GraphObject implements TimeSeriesGrap
             point.setSelected(false); // Update selection status
             // TODO: Add color update logic if necessary
         });
+        sendLog("info","all points have been unselected (TimeSeriesGraphClass.tsx)");
     }
 
     setRange(): void{
@@ -67,6 +71,7 @@ export class TimeSeriesGraphObject extends GraphObject implements TimeSeriesGrap
         }
 
         this.axes.yRange[1] = max;
+        sendLog("info", `setRange() was called; yRange was set to ${this.axes.yRange[1]} (TimeSeriesGraphClass.tsx)`);
     }
     
     timeSeriesYRange():number[]{
@@ -78,7 +83,7 @@ export class TimeSeriesGraphObject extends GraphObject implements TimeSeriesGrap
             cur = cur + 5;
             range.push(cur);
         }
-
+        sendLog("info", `timeSeriesYRange() returned ${range} (TimeSeriesGraphClass.tsx)`);
         return range;
     }
 
@@ -90,12 +95,13 @@ export class TimeSeriesGraphObject extends GraphObject implements TimeSeriesGrap
             range.push(temp);
             
         })
-
+        sendLog("info", `timeSeriesXRange() was called and returned ${range} (TimeSeriesGraphClass.tsx)`);
         return range;
     }
 
     incrementYHeader(): void{
         if(this.csvData.getCSVHeaders().length < 3){
+            sendLog("info", "incrementYHeader() was called but no changes were made (length < 3) (TimeSeriesGraphClass.tsx)");
             return;
         }
 
@@ -110,11 +116,13 @@ export class TimeSeriesGraphObject extends GraphObject implements TimeSeriesGrap
                 //Go to the next available header
                 this.axes.yLabel = this.csvData.getCSVHeaders()[1];
             }
+            sendLog("info", "incrementYHeader() was called and successfully incremented (TimeSeriesGraphClass.tsx)");
             return;
         }
 
         if(start == this.csvData.getCSVHeaders().length - 2 && this.csvData.getCSVHeaders()[this.csvData.getCSVHeaders().length - 1] == this.getXHeader()){
             this.axes.yLabel =  this.csvData.getCSVHeaders()[0];
+            sendLog("info", "incrementYHeader() was called and successfully incremented (TimeSeriesGraphClass.tsx)");
             return;
             
         }
@@ -129,6 +137,7 @@ export class TimeSeriesGraphObject extends GraphObject implements TimeSeriesGrap
     }
     decrementYHeader(): void{
         if(this.csvData.getCSVHeaders().length < 3){
+            sendLog("info", "decrementYHeader() was called but no changes were made (length < 3) (TimeSeriesGraphClass.tsx)");
             return;
         }
 
@@ -143,11 +152,13 @@ export class TimeSeriesGraphObject extends GraphObject implements TimeSeriesGrap
                 //Go to the next available header
                 this.axes.yLabel =this.csvData.getCSVHeaders()[this.csvData.getCSVHeaders().length - 2];
             }
+            sendLog("info", "decrementYHeader() was called and successfully deccremented (TimeSeriesGraphClass.tsx)");
             return;
         }
 
         if(start == 1 && this.csvData.getCSVHeaders()[0] == this.getXHeader()){
             this.axes.yLabel = this.csvData.getCSVHeaders()[this.csvData.getCSVHeaders().length - 1];
+            sendLog("info", "decrementYHeader() was called and successfully deccremented (TimeSeriesGraphClass.tsx)");
             return;
             
         }
@@ -176,6 +187,7 @@ export class TimeSeriesGraphObject extends GraphObject implements TimeSeriesGrap
 
             current += divider;
         })
+        sendLog("info", "updatePointPosition() has been called to update the graph (TimeSeriesGraphClass.tsx)");
     }
 
     /**

@@ -28,8 +28,6 @@ export class CSVDataObject implements CSVData{
     //Initial creation, for loading a graph in the scene, set the yHeader
     async loadCSVData(index: number, file: (File | string), isUrl: boolean){
         try {
-            //tester comment: I think it would be better to just use instanceof operator
-            //instead of adding a boolean for isUrl     --Steven
             
             const data = isUrl ? await UrlCSVReader(file as string) : await LocalCsvReader(file as File)
             this.setData(data);
@@ -104,8 +102,6 @@ export class CSVDataObject implements CSVData{
         sendLog("info","CSVDataObject.getDataByTime() has returned null, is this expected?");
         return result;
     }
-    //tester comment: recommend putting all getters and setters together
-    // and in the same order as defined in constructor      --Steven
     getData(){
         return this.data;
     };
@@ -146,9 +142,6 @@ export class CSVDataObject implements CSVData{
         sendLog("info",`setBrowserSelected, ${this.name} browser is set to ${bool.toString()}`);
         this.browserSelected = bool;
     }
-    //side note: why are both booleans?
-    //is it possible for both browser and vr to be selected?
-    //is it possible for neither to be selected? 
     setVRSelected(bool:boolean){
         sendLog("info",`setVRSelected, ${this.name} vr is set to ${bool.toString()}`);
         this.vrSelected = bool;

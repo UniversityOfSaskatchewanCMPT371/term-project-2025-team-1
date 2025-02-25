@@ -8,15 +8,19 @@ import { fileContainsText } from "./fileParser";
 describe('emulating csvLoader.feature', () => {
     const path = './logsCsv.txt';
     test('log file exists', () => {
-        //const testInfo = `test for log at path ${path}`;
-        //const testError = new Error("test error");
-        //const testErrMessage = `test for error at path ${path}`;
+        /*
+        const testInfo = `test for log at path ${path}`;
+        const testError = new Error("test error");
+        const testErrMessage = `test for error at path ${path}`;
+        */
         expect(fs.existsSync(path)).toBe(true);
-        //sendLog("info",testInfo);
-        //expect(fileContinsText(path,testInfo));
-        //sendError(testError,testErrMessage);
-        //expect(fileContinsText(path,testError));
-        //expect(fileContinsText(path,testErrMessage));
+        /*
+        sendLog("info",testInfo);
+        expect(fileContinsText(path,testInfo));
+        sendError(testError,testErrMessage);
+        expect(fileContinsText(path,testError));
+        expect(fileContinsText(path,testErrMessage));
+        */
         //re-add these when actual gherkin testing is done
     });
     test('emulating scenario: Confirming URL CSV entry', async () => {
@@ -38,40 +42,33 @@ describe('emulating csvLoader.feature', () => {
         await expect(fileContainsText(path,loadCSVDataSuccess)).resolves.toBe(true);
         await expect(fileContainsText(path,readURLFileSuccess)).resolves.toBe(true);
         await expect(fileContainsText(path,URLComponentLog)).resolves.toBe(true);
-        //let me know if some other logs are left out
     });
 
     test('emulating scenario: Confirming invalid URL CSV entry', async () => {
         //depends on what counts as invalid
-        //was it a non .csv file?
-        //either it was not .csv, or fetch could not find url, or file was empty, or other error
+        //it was not .csv, or fetch could not find url, or file was empty, or other error
         //UrlCsvReader
         const UrlReaderNotCSV = "is not .csv or .txt";
         const UrlReaderIsEmpty = "URLCSVReader is empty";
         const UrlCSVReaderError = "URLCSVReader error";
         //CSVDataObject
         const loadCSVDataError = "loadCSVData error";
-        //the error SHOULD be propegated to readURLFile, but it was caught and not rethrown by localCSVData
         //CSVReaderModel
         const readURLFileError = "readURLFile error";
-        //again, if the error was caught by readURLFile, it wouldnt be rethrown to BrowserUI
-        //also BrowserUI doesnt have a try/catch method, so there is no way to display the error message
         //BrowserUI
         const URLComponentLog = "URLComponent read:";
-
-        const anyTrue = Promise.all([
+        const urlAnyInvalid = Promise.all([
             fileContainsText(path,UrlReaderNotCSV),
             fileContainsText(path,UrlReaderIsEmpty),
             fileContainsText(path,UrlCSVReaderError)
         ]).then((items) => items.includes(true));
-        await expect(anyTrue).resolves.toBe(true);
-        //expect that loadCSVDataError actually rethrows errors
+        await expect(urlAnyInvalid).resolves.toBe(true);
+        //expect that loadCSVDataError rethrows errors
         await expect(fileContainsText(path,loadCSVDataError)).resolves.toBe(true);
-        //expect that readURLFileError ctually rethrows errors
+        //expect that readURLFileError rethrows errors
         await expect(fileContainsText(path,readURLFileError)).resolves.toBe(true);
-        //maybe replace this with whatever the error dialog should be
+        //when URLComponent implements try/catch error, replace with its message
         await expect(fileContainsText(path,URLComponentLog)).resolves.toBe(true);
-        //let me know if some other logs are left out
     });
 
     test('emulating scenario: Confirming Local CSV entry', async () => {
@@ -93,37 +90,32 @@ describe('emulating csvLoader.feature', () => {
         await expect(fileContainsText(path,loadCSVDataSuccess)).resolves.toBe(true);
         await expect(fileContainsText(path,readLocalFileSuccess)).resolves.toBe(true);
         await expect(fileContainsText(path,LoadComponentLog)).resolves.toBe(true);
-        //let me know if some other logs are left out
     });
 
     test('emulating scenario: Confirming invalid Local CSV entry', async () => {
         //depends on what counts as invalid
-        //either it was not .csv, or fetch could not find url, or file was empty, or other error
+        //it was not .csv, or fetch could not find url, or file was empty, or other error
         //LocalCsvReader
         const LocalReaderNotCSV = "is not .csv or .txt";
         //there is no method of checking if the file is empty with LocalCsvReader(file:File)
         const LocalCSVReaderError = "LocalCsvReader(file) has errored for";
         //CSVDataObject
         const loadCSVDataError = "loadCSVData error";
-        //the error SHOULD be propegated to readURLFile, but it was caught and not rethrown by localCSVData
         //CSVReaderModel
         const readLocalFileError = "readLocalFile error";
-        //again, if the error was caught by readURLFile, it wouldnt be rethrown to BrowserUI
-        //also BrowserUI doesnt have a try/catch method, so there is no way to display the error message
         //BrowserUI
         const LoadComponentLog = "LoadComponent read:";
 
-        const anyTrue = Promise.all([
+        const localAnyInvalid = Promise.all([
             fileContainsText(path,LocalReaderNotCSV),
             fileContainsText(path,LocalCSVReaderError)
         ]).then((items) => items.includes(true));
-        await expect(anyTrue).resolves.toBe(true);
-        //expect that loadCSVDataError actually rethrows errors
+        await expect(localAnyInvalid).resolves.toBe(true);
+        //expect that loadCSVDataError rethrows errors
         await expect(fileContainsText(path,loadCSVDataError)).resolves.toBe(true);
-        //expect that readURLFileError ctually rethrows errors
+        //expect that readURLFileError rethrows errors
         await expect(fileContainsText(path,readLocalFileError)).resolves.toBe(true);
-        //maybe replace this with whatever the error dialog should be
+        //when LoadComponent implements try/catch error, replace with its message
         await expect(fileContainsText(path,LoadComponentLog)).resolves.toBe(true);
-        //let me know if some other logs are left out
     });
 });

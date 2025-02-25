@@ -21,7 +21,6 @@ export function BrowserUI(){
         fileInputRef.current?.click()
           };
           loadFile();
-          //i guess erroring is unecessary given there is no try/catch here originally
       })})
       
       return( 
@@ -62,7 +61,6 @@ export function BrowserUI(){
       urlInputRef.current?.click();
       };
       urlFile();
-      //no more longging here
     })}, {oneLineLabels: true});
 
     return (
@@ -75,9 +73,7 @@ export function BrowserUI(){
         alert(csv)
         await mainController.getCSVController().getModel().readURLFile(csv);
         sendLog("info",`URLComponent read: ${csv}`);
-        // eslint HATES this!!! no async catch
         setControlKey(controlKey + 1);
-        // no error catching, no sendError
       })}></input>
     </>
     )
@@ -94,7 +90,6 @@ export function BrowserUI(){
 
       sendLog("info",`UnmountedComponents unmount: ${String(controlKey)}`);
       return acc;
-      // eslint HATES {} as ~ for Array.reduce 
     }, {} as Record<string, boolean | ButtonInput>
   );
   //Button associated with the deleting files

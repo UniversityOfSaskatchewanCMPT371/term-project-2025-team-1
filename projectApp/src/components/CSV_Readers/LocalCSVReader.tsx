@@ -28,7 +28,6 @@ export async function LocalCSVHeaders(file:string): Promise<CSVHeaders> {
 **/
 export async function LocalCSVReader(file:string): Promise<TimeSeriesData[]>{
     if(!file.endsWith('.csv') && !file.endsWith('.txt')){
-        //sorry! cant add new variables! just have to live with repeating repetitions
         sendError(new Error('File must be .csv or .txt'),`LocalCSVReader ${file} is not .csv or .txt`);
         throw new Error('File must be .csv or .txt');
     }

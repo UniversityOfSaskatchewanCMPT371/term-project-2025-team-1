@@ -3,11 +3,6 @@ import { CSVData, CSVModelInterface } from "../types/CSVInterfaces";
 import { CSVDataObject } from "./CSVDataObject";
 
 export class CSVReaderModel implements CSVModelInterface{
-    //tester comment: num is very undescriptive, what does it do?
-    //it LOOKS like num counts the number of data objects, so why not this.data.length
-    //from looking at data.loadCsvFile(), i see that it is supposed to be used for indexing
-    //but it is only used in name?
-    //why does this model need to know the index?
     num : number;
     data: CSVDataObject[];
 
@@ -18,8 +13,6 @@ export class CSVReaderModel implements CSVModelInterface{
 
     //This should get the csv file using name
     getCSVFileByName(name:string): CSVData | null{
-        //tester comment: if i call this function, should i expect that data is returned
-        //if i enter a name and it returns null, is that expected behavior?
         for(const data of this.data) {
             if(data.name == name){
                 return data;
@@ -35,7 +28,7 @@ export class CSVReaderModel implements CSVModelInterface{
     async readLocalFile(file: File): Promise<void>{
         //This should read the string value and try to load a csv file
         //On success add to array
-        const data:CSVDataObject = new CSVDataObject(); //this looks like an error so i added ()
+        const data:CSVDataObject = new CSVDataObject();
         try{
             await data.loadLocalCSVFile(this.num, file);
             sendLog("info",`readLocalFile read a file\n${JSON.stringify(data.getData())}`);
@@ -71,7 +64,6 @@ export class CSVReaderModel implements CSVModelInterface{
         }
         catch(error: unknown){
             sendError(error,"readLocalByPath error");
-            //tester comment: this one doesnt have a return, is this intentional?
         }
 
         this.data.push(data);
@@ -90,14 +82,11 @@ export class CSVReaderModel implements CSVModelInterface{
             }
         }
         sendLog("info",`deleteFile(), ${name} was not found in CSVReaderModel`);
-        //tester comment: what happends when a file does not exist?
-        //what does the user expect it to do when this happens?
     };
 
     loadedCsvBrowser():[string, boolean][]{
         const csvBrowser:[string,boolean][] = [];
         if(!(this.getData().length > 0)){
-            //aka this.getData().length === 0 (cannot be negative)
             sendLog("info","loadedCsvBrowser() returns empty list, i think this is intentional");
             return csvBrowser;
         }
@@ -109,7 +98,7 @@ export class CSVReaderModel implements CSVModelInterface{
         sendLog("info",`loadedCsvBrowser() returns list\n${JSON.stringify(csvBrowser)}`)
         return csvBrowser;
     }
-    //tester comment: for formatting and ease of use, i suggest all get and set functions should be grouped
+
     getNum(){
         return this.num;
     }

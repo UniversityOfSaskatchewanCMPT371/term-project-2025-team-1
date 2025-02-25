@@ -63,33 +63,29 @@ describe("testing fs mocking", () => {
 
     const tsd: TimeSeriesData[] = [];
     //feels weird to have an object that only holds one data type
-    //could it have been just be {Time,X,Y} instead of {key:{Time,X,Y}}
+    //TimeSeriesData is {key:Record(key,val)}
+    //couldnt it be TimeSeriesData extends Record, i think its ok to use extend as "renaming"
     const line1: TimeSeriesData = {key: {Time: '2025-01-01', X: 10, Y: 20}};
     const line2: TimeSeriesData = {key: {Time: '2025-01-03', X: 12, Y: 25}};
     const line3: TimeSeriesData = {key: {Time: '2025-01-05', X: 14, Y: 30}};
     const line4: TimeSeriesData = {key: {Time: '2025-01-07', X: 16, Y: 35}};
     tsd.push(line1,line2,line3,line4);
 
-    //translating tsd to a string
     let writeFileString = '';
 
-    //defining the CSVHeader
+    //defining CSVHeader
     const csvheaders: CSVHeaders = {headers: Object.keys(line1.key).map(String)};
     const headersString: string = csvheaders.headers.toString();
-    //add the header as first line
     writeFileString += headersString+'\n';
 
     tsd.forEach((line: TimeSeriesData, index: number) => {
       const writeLine = Object.values(line.key).toString();
-      //add each line one by one
       writeFileString += writeLine;
       if(index != tsd.length - 1){
-        //if not the last line, add new line
         writeFileString += '\n';
       }
     });
 
-    //write it to mockfs
     fs.writeFileSync(path, writeFileString);
     //assert that mock writeFile was called
     expect(fs.writeFileSync).toBeCalledTimes(1);
@@ -100,10 +96,8 @@ describe("testing fs mocking", () => {
     //assert that promised data is defined
     await expect(localReaderPromise).resolves.toBeDefined();
     const localReaderData: TimeSeriesData[] = await localReaderPromise;
-    //each line of tsd holds the record in property {key:{Time,X,Y}}
     //map each line to line.key cause that is what holds {Time,X,Y}
     const records = Object.values(tsd).map((line) => line.key);
-    //{key1:{key2:{key3:{Actually Usable Data buried in Matrioska}}}}
     localReaderData.forEach((line: TimeSeriesData) => {
       //assert that each line has correct keys
       expect(Object.keys(line).sort()).toEqual(['Time', 'X', 'Y'].sort());
@@ -116,8 +110,6 @@ describe("testing fs mocking", () => {
     });
     //assert that each line.key equals localReaderData
     expect(records).toEqual(localReaderData);
-    //note: list of (key that holds data) != list of data
-    //can you tell I dont like unwrapping something with unnecessary wrapping 
 
     const localHeadersPromise: Promise<CSVHeaders> = localHeaders(path);
     //assert that mock promise.readFile was called a second time

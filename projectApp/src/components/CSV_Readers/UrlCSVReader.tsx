@@ -1,5 +1,4 @@
 import Papa from 'papaparse';
-//import logger from '../../logging/logs';
 
 import { CSVHeaders, TimeSeriesData} from '../../types/CSVInterfaces';
 import { sendError, sendLog } from '../../logger-frontend';

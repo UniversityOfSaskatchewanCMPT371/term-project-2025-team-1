@@ -1,7 +1,7 @@
 import { describe } from 'node:test';
 import { expect, test } from 'vitest';
 
-import { LocalCSVReader as localReader, LocalCSVHeaders as localHeaders, UrlCSVReader as urlReader, UrlCSVHeaders as urlHeaders } from "../src/components/CSV_Readers/CSVReaders.tsx";
+import { LocalCSVReader as localReader, LocalCSVHeaders as localHeaders, UrlCSVReader as urlReader, UrlCSVHeaders as urlHeaders } from "../src/components/Csv_Components/CSVReaders.tsx";
 import { CSVHeaders, TimeSeriesData } from '../src/types/CSVInterfaces.tsx';
 
 

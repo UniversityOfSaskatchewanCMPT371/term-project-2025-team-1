@@ -1,5 +1,5 @@
-import { CSVDataObject } from "../../models/CSVDataObject";
 import { TimeSeriesGraphInterface } from "../../types/TimeSeriesGraphInterface";
+import { CSVDataObject } from "../Csv_Components/CSVDataObject";
 import { GraphObject } from "./GraphObject";
 import { PointObject } from "./PointObject";
 

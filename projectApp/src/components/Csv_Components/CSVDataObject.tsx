@@ -1,6 +1,5 @@
-import { LocalCSVReader, LocalCsvReader, UrlCSVReader } from "../components/CSV_Readers/CSVReaders";
-import { CSVDataInterface } from "../types/CSVInterfaces";
-
+import { CSVDataInterface } from "../../types/CSVInterfaces";
+import { LocalCSVReader, LocalCsvReader, UrlCSVReader } from "./CSVReaders";
 
 export class CSVDataObject implements CSVDataInterface{
     name: string;

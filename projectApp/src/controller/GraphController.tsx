@@ -1,5 +1,5 @@
+import { CSVDataObject } from "../components/Csv_Components/CSVDataObject";
 import { TimeSeriesGraphObject } from "../components/Graph_Components/TimeSeriesGraphObject";
-import { CSVDataObject } from "../models/CSVDataObject";
 import { GraphModel } from "../models/GraphModel";
 import { ControllerInterface } from "../types/BaseInterfaces";
 import mainController from "./MainController";

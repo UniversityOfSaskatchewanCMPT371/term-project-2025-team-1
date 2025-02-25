@@ -1,6 +1,6 @@
 import { GraphInterface } from "../../types/GraphInterface";
-import { CSVDataObject } from "../../models/CSVDataObject";
 import { PointInterface } from "../../types/PointInterface";
+import { CSVDataObject } from "../Csv_Components/CSVDataObject";
 
 /**
  * The GraphObject represents a graph structure that manages points, dimensions, styling, and interactivity.

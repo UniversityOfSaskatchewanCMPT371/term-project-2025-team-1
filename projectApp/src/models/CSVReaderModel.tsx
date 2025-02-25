@@ -1,5 +1,5 @@
+import { CSVDataObject } from "../components/Csv_Components/CSVDataObject";
 import { CSVDataInterface, CSVModelInterface } from "../types/CSVInterfaces";
-import { CSVDataObject } from "./CSVDataObject";
 
 export class CSVReaderModel implements CSVModelInterface{
     data: CSVDataObject[];

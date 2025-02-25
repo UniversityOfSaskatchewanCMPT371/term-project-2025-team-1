@@ -73,7 +73,7 @@ export class GraphClass implements GraphInterface {
    * @param {string} id - A string representing the ID of the graph.
    * 
    * @precondition The 'id' parameter must be a non-empty string.
-   * @postcondition The 'id' property is set to the provided ID.
+   * @postcondition The 'id' property is set to the provided ID. If the ID is empty or not a string, an error is thrown.
    */
   setId(id: string): void {
     if (id.trim() === "" || typeof id !== 'string') {
@@ -99,7 +99,7 @@ export class GraphClass implements GraphInterface {
    * @param {string} title - A string representing the name of the graph.
    * 
    * @precondition 'title' must be a non-empty string.
-   * @postcondition 'name' property is set to the provided title.
+   * @postcondition 'name' property is set to the provided title. If the title is empty or not a string, an error is thrown.
    */
   setName(title: string): void {
     if (title.trim() === "" || typeof title !== 'string') {
@@ -127,7 +127,7 @@ export class GraphClass implements GraphInterface {
    * @param {number} z - A number representing the z-coordinate of the graph.
    * 
    * @precondition The 'x', 'y', and 'z' parameters must be numbers.
-   * @postcondition The 'position' property is set to an object with 'x', 'y', and 'z' properties.
+   * @postcondition The 'position' property is set to an object with 'x', 'y', and 'z' properties. If any of the parameters are not numbers, an error is thrown.
    */
   setPosition(x: number, y: number, z: number): void {
     if (typeof x !== 'number' || typeof y !== 'number' || typeof z !== 'number') {
@@ -152,7 +152,7 @@ export class GraphClass implements GraphInterface {
    * @param {PointClass[]} points the points array - An array of PointClass instances.
    * 
    * @precondition The 'points' parameter must be an array of PointClass instances.
-   * @postcondition The 'points' property is set to the provided array.
+   * @postcondition The 'points' property is set to the provided array. If the 'points' parameter is not an array of PointClass instances, an error is thrown.
    */
   setPoints(points: PointClass[]): void {
     if (!Array.isArray(points)) {
@@ -171,7 +171,7 @@ export class GraphClass implements GraphInterface {
    * @param {PointClass[]} points the point to remove - A PointClass instance.
    * 
    * @precondition the 'point' parameter must be a valid PointClass instance.
-   * @postcondition the 'point' is removed from the 'points' array.
+   * @postcondition the 'point' is removed from the 'points' array. If the point does not exist in the array, an error is thrown.
    */
   removePoint(point: PointClass): void {
     const index = this.points.indexOf(point);
@@ -213,7 +213,7 @@ export class GraphClass implements GraphInterface {
    * @param {xLabel: string; yLabel: string; xRange: [number, number]; yRange: [number, number]} axes 
    * - An object with 'xLabel', 'yLabel', 'xRange', and 'yRange' properties.
    * @precondition the 'axes' parameter must be an object with 'xLabel', 'yLabel', 'xRange', and 'yRange' properties.
-   * @postcondition the 'axes' property is set to the provided object.
+   * @postcondition the 'axes' property is set to the provided object. If the 'axes' parameter is invalid, an error is thrown.
    */
   setAxes(axes: {
     xLabel: string;

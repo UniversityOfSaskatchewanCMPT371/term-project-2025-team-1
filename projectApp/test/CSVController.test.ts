@@ -34,21 +34,17 @@ describe("CSVController Tests", () => {
         //Does show that it still accepts blank files
         //Then create a function that tests both Local and URl
         //As well as methods of csv Objects
-        const fake = new File([""], "fake.csv", {type: "fake/csv"});
-
-        await csvController.loadLocalFile(fake);
-        expect(csvController.getModelData().length).toBe(1);
 
         //URL link for testing
         const url = "https://raw.githubusercontent.com/UniversityOfSaskatchewanCMPT371/term-project-2025-team-1/refs/heads/main/csvTestFiles/test.csv";
 
         await csvController.loadURLFile(url);
-        expect(csvController.getModelData().length).toBe(2);
+        expect(csvController.getModelData().length).toBe(1);
 
-        const getByName = csvController.getDataByName("Graph1");
+        const getByName = csvController.getDataByName("Graph0");
         
         expect(getByName).toBeInstanceOf(CSVDataObject);
-        expect(getByName?.getName()).toBe("Graph1");
+        expect(getByName?.getName()).toBe("Graph0");
 
         getByName?.setYHeader("X");
         expect(getByName?.getYHeader()).toBe("X");

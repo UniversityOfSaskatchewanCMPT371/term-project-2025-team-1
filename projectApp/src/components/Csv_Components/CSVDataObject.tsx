@@ -31,7 +31,6 @@ export class CSVDataObject implements CSVDataInterface{
      */
     async loadCSVData(index: number, file: (File | string), isUrl: boolean): Promise<void>{
         try {
-            
             const data = isUrl ? await UrlCSVReader(file as string) : await LocalCsvReader(file as File)
             this.setData(data);
             this.setName("Graph" + index.toString());
@@ -42,8 +41,9 @@ export class CSVDataObject implements CSVDataInterface{
                 this.setYHeader("X");
             }
         }
-        catch {
-            return;
+        catch(error: unknown) {
+            //Log the error
+            throw error;
         }
     }
 
@@ -54,8 +54,9 @@ export class CSVDataObject implements CSVDataInterface{
             this.setData(data);
             this.name = ("Graph" + index.toString());
         }
-        catch {
-            return;
+        catch(error: unknown) {
+            //Log the error
+            throw error;
         }
     }
 

@@ -34,7 +34,14 @@ export function BrowserUI(){
               //console.log(file.name.toString());
 
               //If the file is valid, read the csv file
-              await mainController.getCSVController().loadLocalFile(file);
+              try{
+                await mainController.getCSVController().loadLocalFile(file);
+                alert(`Successfully Loaded: ${file.name}`);
+              }
+              catch(error: unknown){
+                alert(`${error} Failed Loading: ${file.name}`)
+              }
+
               setControlKey(controlKey + 1);
               //Same test as csvModeTest
               // let headers = test.getCSVFiles()[0].data[0];
@@ -68,8 +75,13 @@ export function BrowserUI(){
       ref={urlInputRef}
       style={{display: 'none'}}
       onClick={( async (): Promise<void> => {
-        alert(csv)
-        await mainController.getCSVController().loadURLFile(csv);
+        try{
+          await mainController.getCSVController().loadURLFile(csv);
+          alert(`Successfully Loaded: ${csv}`);
+        }
+        catch(error: unknown){
+          alert(`${error} Failed Loading: ${csv}`);
+        }
         setControlKey(controlKey + 1);
       })}></input>
     </>

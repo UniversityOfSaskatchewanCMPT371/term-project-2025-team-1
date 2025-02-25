@@ -35,11 +35,23 @@ export class CSVController implements ControllerInterface{
     }
 
     async loadLocalFile(file: File): Promise<void>{
-        await this.getModel().readLocalFile(file);
+        try {
+            await this.getModel().readLocalFile(file);
+        }
+        catch(error: unknown){
+            //Log the error
+            throw error;
+        }
     }
 
     async loadURLFile(csv: string): Promise<void>{
-        await this.getModel().readURLFile(csv);
+        try{
+            await this.getModel().readURLFile(csv);
+        }
+        catch(error: unknown){
+            //Log the error
+            throw error;
+        }
     }
 
     browserCSVFiles():[string, boolean][]{

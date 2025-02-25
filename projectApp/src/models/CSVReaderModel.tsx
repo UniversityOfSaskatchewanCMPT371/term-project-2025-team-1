@@ -31,9 +31,9 @@ export class CSVReaderModel implements CSVModelInterface{
          try{
             await data.loadCSVData(this.data.length, file, false);
          }
-         catch{
-            // If there is a failure in reading local to get CSV file
-            return;
+         catch(error: unknown){
+            // Log the Error
+            throw error;
         }
         this.data.push(data);
      }
@@ -47,9 +47,9 @@ export class CSVReaderModel implements CSVModelInterface{
         try{
             await data.loadCSVData(this.data.length, file, true);
         }
-        catch{
-            // If there is a failure in reading local to get CSV file
-            return;
+        catch(error: unknown){
+            //  Log the error
+            throw error;
         }
         this.data.push(data);
      }
@@ -59,8 +59,9 @@ export class CSVReaderModel implements CSVModelInterface{
          try{
              await data.loadLocalByPath(this.data.length, file);
          }
-         catch{
-            // If there is a failure in reading local to get CSV file
+         catch(error: unknown){
+            // Log the error
+            throw error;
         }
 
          this.data.push(data);

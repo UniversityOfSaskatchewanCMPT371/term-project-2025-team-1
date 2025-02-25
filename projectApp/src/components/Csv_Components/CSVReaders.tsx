@@ -102,6 +102,11 @@ export function LocalCsvReader(file: File): Promise<TimeSeriesData[]>{
         reader.onload = (e) => {
             const fileContent = e.target?.result as string;
 
+            if(!fileContent.trim()){
+                reject(new Error("Empty file set"));
+                return;
+            }
+
             Papa.parse(fileContent, {
                 header: true,
                 dynamicTyping: true,

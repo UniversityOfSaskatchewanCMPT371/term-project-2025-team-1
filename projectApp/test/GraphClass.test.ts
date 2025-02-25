@@ -12,7 +12,7 @@ vi.mock('./PointClass', () => {
       selected: boolean;
       xData: any;
       constructor(ref?: { position?: number[]; selected?: boolean; xData?: any }) {
-        // Provide default values if no ref is passed.
+        // replace || with ?? to avoid nullish coalescing error for linting
         this.position = ref?.position ?? [0, 0, 0];
         this.selected = ref?.selected ?? false;
         this.xData = ref?.xData ?? [];
@@ -29,10 +29,10 @@ describe('GraphClass', async () => {
   let csvDataMock: CSVDataObject;
   await mainController.getCSVController().getModel().readURLFile("https://raw.githubusercontent.com/UniversityOfSaskatchewanCMPT371/term-project-2025-team-1/refs/heads/main/csvTestFiles/test.csv");
   beforeEach(() => {
-    // Create a mock CSVDataObject
     csvDataMock = mainController.getCSVController().getModel().getData()[0];
   });
 
+  
   /**
    * Test: Initialization with CSVDataObject
    */
@@ -40,10 +40,9 @@ describe('GraphClass', async () => {
   it('initializes with correct properties from CSVDataObject', () => {
     const graph = new GraphClass(csvDataMock);
 
-    // Verify id, dimensions, position, and axes set by the constructor
+    // Verify id, position, and axes set by the constructor
     graph.setId('TestGraph');
     expect(graph.getId()).toBe('TestGraph');
-    // expect(graph.getDimensions()).toEqual({ width: 10, height: 10, depth: 10 });
     expect(graph.getPosition()).toEqual({ x: 1, y: 1, z: 0 });
     expect(graph.getAxes()).toEqual({
       xLabel: 'Time',
@@ -83,5 +82,53 @@ describe('GraphClass', async () => {
     graph.setAxes(newAxes);
     expect(graph.getAxes()).toEqual(newAxes);
   });
+
+  /**
+   * Test: Error Handling for invalid ID and Name
+   */
+  it('throws error when setting invalid id', () => {
+    const graph = new GraphClass(csvDataMock);
+    expect(() => { graph.setId(""); }).toThrowError("ID must be a non-empty string.");
+  });
+
+  it('throws error when setting invalid name', () => {
+    const graph = new GraphClass(csvDataMock);
+    expect(() => { graph.setName(""); }).toThrowError("Name must be a non-empty string.");
+  });
+
+  /**
+   * Test: Error Handling for invalid position
+   */
+  it('throws error when setting invalid position', () => {
+    const graph = new GraphClass(csvDataMock);
+    expect(() => { graph.setPosition("a" as unknown as number, 6, 7); }).toThrowError("Position coordinates must be numbers.");
+    expect(() => { graph.setPosition(5, "b" as unknown as number, 7); }).toThrowError("Position coordinates must be numbers.");
+    expect(() => {graph.setPosition(5, 6, "c" as unknown as number); }).toThrowError("Position coordinates must be numbers.");
+  });
+
+  /**
+   * Test: Error Handling for invalid axes configuration
+   */
+  it('throws error when setting invalid axes', () => {
+    const graph = new GraphClass(csvDataMock);
+    const invalidAxes1 = { xLabel: "", yLabel: "Y", xRange: [0, 10] as [number, number], yRange: [0, 10] as [number, number] };
+    expect(() => { graph.setAxes(invalidAxes1); }).toThrowError("Invalid xLabel: must be a non-empty string");
+
+    const invalidAxes2 = { xLabel: "X", yLabel: "", xRange: [0, 10] as [number, number], yRange: [0, 10] as [number, number] };
+    expect(() => { graph.setAxes(invalidAxes2); }).toThrowError("Invalid yLabel: must be a non-empty string");
+  });
+
+  /**
+   * Test: Error Handling for invalid points array
+   */
+  it('throws error when setting invalid points array', () => {
+    const graph = new GraphClass(csvDataMock);
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
+    expect(() => { graph.setPoints(null as unknown as any[]); }).toThrowError("Invalid points: must be an array of PointClass instances");
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
+    expect(() => { graph.setPoints([{}] as unknown as any[]); }).toThrowError("Invalid point: each element must be an instance of PointClass");
+  });
+
+  
   
 });

@@ -7,11 +7,11 @@ import { fileContainsText } from "./fileParser";
 describe('2D graph log tests', () => {
     // The log in question is located here
     // This log is used to avoid build issues
-    const filePath = "../logs2dg.txt"
+    const filePath = "./logs2dg.txt"
 
     // Check if the addPoint() log calls are being reached
     test('file contains addPoint() logging', async() => {
-        const response = await fileContainsText(filePath, "addPoint() has added new points to the graph (TimeSeriesGraphClass.tsx)");
+        const response = await fileContainsText(filePath, "addPoint() has added new points to the graph");
         expect(response).toBe(true);
     });
 

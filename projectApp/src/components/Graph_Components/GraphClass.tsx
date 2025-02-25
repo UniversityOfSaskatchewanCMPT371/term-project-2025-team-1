@@ -72,8 +72,8 @@ export class GraphClass implements GraphInterface {
    * Sets the ID of the graph.
    * @param {string} id - A string representing the ID of the graph.
    * 
-   * @precondition 
-   * @postcondition 
+   * @precondition The 'id' parameter must be a non-empty string.
+   * @postcondition The 'id' property is set to the provided ID.
    */
   setId(id: string): void {
     if (id.trim() === "" || typeof id !== 'string') {

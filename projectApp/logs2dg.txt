@@ -1,0 +1,107 @@
+{"level":30,"time":1740439000501,"pid":5476,"hostname":"LAPTOP-8HAPGTLF","msg":"loadedCsvBrowser() returns empty list, i think this is intentional"}
+{"level":30,"time":1740439000504,"pid":5476,"hostname":"LAPTOP-8HAPGTLF","msg":"loadedCsvBrowser() returns empty list, i think this is intentional"}
+{"level":30,"time":1740439311895,"pid":5476,"hostname":"LAPTOP-8HAPGTLF","msg":"LocalCsvReader(file) has read data\n[{\"Time\":\"2025-01-18\",\"X\":10,\"Y\":15},{\"Time\":\"2025-01-19\",\"X\":40,\"Y\":25},{\"Time\":\"2025-01-20\",\"X\":30,\"Y\":35},{\"Time\":\"2025-01-21\",\"X\":20,\"Y\":45}]"}
+{"level":30,"time":1740439311896,"pid":5476,"hostname":"LAPTOP-8HAPGTLF","msg":"setName,  will now be called Graph0"}
+{"level":30,"time":1740439311897,"pid":5476,"hostname":"LAPTOP-8HAPGTLF","msg":"setYHeader, Graph0 yHeader is set to X"}
+{"level":30,"time":1740439311899,"pid":5476,"hostname":"LAPTOP-8HAPGTLF","msg":"loadCSVData has loaded csv data\n[{\"Time\":\"2025-01-18\",\"X\":10,\"Y\":15},{\"Time\":\"2025-01-19\",\"X\":40,\"Y\":25},{\"Time\":\"2025-01-20\",\"X\":30,\"Y\":35},{\"Time\":\"2025-01-21\",\"X\":20,\"Y\":45}]}"}
+{"level":30,"time":1740439311900,"pid":5476,"hostname":"LAPTOP-8HAPGTLF","msg":"readLocalFile read a file\n[{\"Time\":\"2025-01-18\",\"X\":10,\"Y\":15},{\"Time\":\"2025-01-19\",\"X\":40,\"Y\":25},{\"Time\":\"2025-01-20\",\"X\":30,\"Y\":35},{\"Time\":\"2025-01-21\",\"X\":20,\"Y\":45}]"}
+{"level":30,"time":1740439311901,"pid":5476,"hostname":"LAPTOP-8HAPGTLF","msg":"LoadComponent read: test.csv"}
+{"level":30,"time":1740439311902,"pid":5476,"hostname":"LAPTOP-8HAPGTLF","msg":"loadedCsvBrowser() returns list\n[[\"Graph0\",false]]"}
+{"level":30,"time":1740439311902,"pid":5476,"hostname":"LAPTOP-8HAPGTLF","msg":"UnmountedComponents unmount: 1"}
+{"level":30,"time":1740439311903,"pid":5476,"hostname":"LAPTOP-8HAPGTLF","msg":"loadedCsvBrowser() returns list\n[[\"Graph0\",false]]"}
+{"level":30,"time":1740439311904,"pid":5476,"hostname":"LAPTOP-8HAPGTLF","msg":"UnmountedComponents unmount: 1"}
+{"level":30,"time":1740439315136,"pid":5476,"hostname":"LAPTOP-8HAPGTLF","msg":"DropDownBody [active] button pressed"}
+{"level":30,"time":1740439316457,"pid":5476,"hostname":"LAPTOP-8HAPGTLF","msg":"decrementDisplayBoard, Graph0 decrease displays by 1"}
+{"level":30,"time":1740439316459,"pid":5476,"hostname":"LAPTOP-8HAPGTLF","msg":"RowObjectButtons [<] pressed"}
+{"level":30,"time":1740439316461,"pid":5476,"hostname":"LAPTOP-8HAPGTLF","msg":"DropDownBody [create] button pressed"}
+{"level":30,"time":1740439316463,"pid":5476,"hostname":"LAPTOP-8HAPGTLF","msg":"DropDownBody [create] button pressed"}
+{"level":30,"time":1740439316465,"pid":5476,"hostname":"LAPTOP-8HAPGTLF","msg":"DropDownBody [create] button pressed"}
+{"level":30,"time":1740439316466,"pid":5476,"hostname":"LAPTOP-8HAPGTLF","msg":"DropDownBody [create] button pressed"}
+{"level":30,"time":1740439316467,"pid":5476,"hostname":"LAPTOP-8HAPGTLF","msg":"DropDownBody [create] button pressed"}
+{"level":30,"time":1740439316468,"pid":5476,"hostname":"LAPTOP-8HAPGTLF","msg":"DropDownBody [create] button pressed"}
+{"level":30,"time":1740439316469,"pid":5476,"hostname":"LAPTOP-8HAPGTLF","msg":"DropDownBody [create] button pressed"}
+{"level":30,"time":1740439318258,"pid":5476,"hostname":"LAPTOP-8HAPGTLF","msg":"setVRSelected, Graph0 vr is set to true"}
+{"level":30,"time":1740439318259,"pid":5476,"hostname":"LAPTOP-8HAPGTLF","msg":"DropDownBody [create] button pressed"}
+{"level":30,"time":1740439318261,"pid":5476,"hostname":"LAPTOP-8HAPGTLF","msg":"setVRSelected, Graph0 vr is set to true"}
+{"level":30,"time":1740439318263,"pid":5476,"hostname":"LAPTOP-8HAPGTLF","msg":"addPoint() has added new points to the graph (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740439318264,"pid":5476,"hostname":"LAPTOP-8HAPGTLF","msg":"addPoint() has added new points to the graph (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740439318265,"pid":5476,"hostname":"LAPTOP-8HAPGTLF","msg":"generate has pushed a new graph"}
+{"level":30,"time":1740439318266,"pid":5476,"hostname":"LAPTOP-8HAPGTLF","msg":"generate has pushed a new graph"}
+{"level":30,"time":1740439318267,"pid":5476,"hostname":"LAPTOP-8HAPGTLF","msg":"GenerateList [BUTTON]? pressed"}
+{"level":30,"time":1740439318268,"pid":5476,"hostname":"LAPTOP-8HAPGTLF","msg":"DropDownBody [create] button pressed"}
+{"level":30,"time":1740439318269,"pid":5476,"hostname":"LAPTOP-8HAPGTLF","msg":"DropDownBody [create] button pressed"}
+{"level":30,"time":1740439318269,"pid":5476,"hostname":"LAPTOP-8HAPGTLF","msg":"DropDownBody [create] button pressed"}
+{"level":30,"time":1740439318270,"pid":5476,"hostname":"LAPTOP-8HAPGTLF","msg":"GenerateList [BUTTON]? pressed"}
+{"level":30,"time":1740439318271,"pid":5476,"hostname":"LAPTOP-8HAPGTLF","msg":"DropDownBody [create] button pressed"}
+{"level":30,"time":1740439318272,"pid":5476,"hostname":"LAPTOP-8HAPGTLF","msg":"getVRSelected has returned Graph0"}
+{"level":30,"time":1740439318273,"pid":5476,"hostname":"LAPTOP-8HAPGTLF","msg":"setRange() was called; yRange was set to 40 (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740439318277,"pid":5476,"hostname":"LAPTOP-8HAPGTLF","msg":"a TimeSeriesGraph has been created (CreateTimeSeries.tsx)"}
+{"level":30,"time":1740439318277,"pid":5476,"hostname":"LAPTOP-8HAPGTLF","msg":"timeSeriesYRange() returned 5,10,15,20,25,30,35,40 (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740439318282,"pid":5476,"hostname":"LAPTOP-8HAPGTLF","msg":"a TimeSeriesGraph object sidebar was created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740439318282,"pid":5476,"hostname":"LAPTOP-8HAPGTLF","msg":"getYHeader returned X (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740439318284,"pid":5476,"hostname":"LAPTOP-8HAPGTLF","msg":"getYHeader returned X (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740439318285,"pid":5476,"hostname":"LAPTOP-8HAPGTLF","msg":"a TimeSeriesGraph object header was selected and visually updated to reflect selection (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740439318287,"pid":5476,"hostname":"LAPTOP-8HAPGTLF","msg":"a TimeSeriesGraph object sidebar was created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740439318288,"pid":5476,"hostname":"LAPTOP-8HAPGTLF","msg":"a TimeSeriesGraph object header was selected and visually updated to reflect selection (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740439318290,"pid":5476,"hostname":"LAPTOP-8HAPGTLF","msg":"a TimeSeriesGraph visualization is being created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740439318292,"pid":5476,"hostname":"LAPTOP-8HAPGTLF","msg":"timeSeriesYRange() returned 5,10,15,20,25,30,35,40 (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740439318293,"pid":5476,"hostname":"LAPTOP-8HAPGTLF","msg":"a TimeSeriesGraph visualization is being created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740439318294,"pid":5476,"hostname":"LAPTOP-8HAPGTLF","msg":"timeSeriesYRange() returned 5,10,15,20,25,30,35,40 (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740439318295,"pid":5476,"hostname":"LAPTOP-8HAPGTLF","msg":"timeSeriesXRange() was called and returned 2025-01-18,2025-01-19,2025-01-20,2025-01-21 (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740439318295,"pid":5476,"hostname":"LAPTOP-8HAPGTLF","msg":"timeSeriesXRange() was called and returned 2025-01-18,2025-01-19,2025-01-20,2025-01-21 (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740439318297,"pid":5476,"hostname":"LAPTOP-8HAPGTLF","msg":"a visual representation of the Y range was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740439318299,"pid":5476,"hostname":"LAPTOP-8HAPGTLF","msg":"a visual representation of the Y range was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740439318301,"pid":5476,"hostname":"LAPTOP-8HAPGTLF","msg":"a visual representation of the Y range was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740439318302,"pid":5476,"hostname":"LAPTOP-8HAPGTLF","msg":"a visual representation of the Y range was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740439318302,"pid":5476,"hostname":"LAPTOP-8HAPGTLF","msg":"a visual representation of the Y range was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740439318303,"pid":5476,"hostname":"LAPTOP-8HAPGTLF","msg":"a visual representation of the Y range was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740439318303,"pid":5476,"hostname":"LAPTOP-8HAPGTLF","msg":"a visual representation of the Y range was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740439318305,"pid":5476,"hostname":"LAPTOP-8HAPGTLF","msg":"a visual representation of the Y range was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740439318305,"pid":5476,"hostname":"LAPTOP-8HAPGTLF","msg":"getYRange returned 40 (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740439318306,"pid":5476,"hostname":"LAPTOP-8HAPGTLF","msg":"timeSeriesYRange() returned 5,10,15,20,25,30,35,40 (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740439318307,"pid":5476,"hostname":"LAPTOP-8HAPGTLF","msg":"a visual representation of points was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740439318307,"pid":5476,"hostname":"LAPTOP-8HAPGTLF","msg":"the lines on a TimeSeriesGraph object were created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740439318309,"pid":5476,"hostname":"LAPTOP-8HAPGTLF","msg":"getYRange returned 40 (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740439318309,"pid":5476,"hostname":"LAPTOP-8HAPGTLF","msg":"timeSeriesYRange() returned 5,10,15,20,25,30,35,40 (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740439318312,"pid":5476,"hostname":"LAPTOP-8HAPGTLF","msg":"a visual representation of points was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740439318312,"pid":5476,"hostname":"LAPTOP-8HAPGTLF","msg":"the lines on a TimeSeriesGraph object were created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740439318313,"pid":5476,"hostname":"LAPTOP-8HAPGTLF","msg":"getYRange returned 40 (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740439318314,"pid":5476,"hostname":"LAPTOP-8HAPGTLF","msg":"timeSeriesYRange() returned 5,10,15,20,25,30,35,40 (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740439318314,"pid":5476,"hostname":"LAPTOP-8HAPGTLF","msg":"a visual representation of points was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740439318315,"pid":5476,"hostname":"LAPTOP-8HAPGTLF","msg":"the lines on a TimeSeriesGraph object were created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740439318316,"pid":5476,"hostname":"LAPTOP-8HAPGTLF","msg":"getYRange returned 40 (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740439318317,"pid":5476,"hostname":"LAPTOP-8HAPGTLF","msg":"timeSeriesYRange() returned 5,10,15,20,25,30,35,40 (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740439318318,"pid":5476,"hostname":"LAPTOP-8HAPGTLF","msg":"a visual representation of points was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740439318319,"pid":5476,"hostname":"LAPTOP-8HAPGTLF","msg":"the lines on a TimeSeriesGraph object were created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740439318363,"pid":5476,"hostname":"LAPTOP-8HAPGTLF","msg":"timeSeriesYRange() returned 5,10,15,20,25,30,35,40 (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740439318368,"pid":5476,"hostname":"LAPTOP-8HAPGTLF","msg":"a TimeSeriesGraph object sidebar was created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740439318369,"pid":5476,"hostname":"LAPTOP-8HAPGTLF","msg":"getYHeader returned X (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740439318370,"pid":5476,"hostname":"LAPTOP-8HAPGTLF","msg":"a TimeSeriesGraph object header was selected and visually updated to reflect selection (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740439318371,"pid":5476,"hostname":"LAPTOP-8HAPGTLF","msg":"a TimeSeriesGraph visualization is being created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740439318373,"pid":5476,"hostname":"LAPTOP-8HAPGTLF","msg":"timeSeriesYRange() returned 5,10,15,20,25,30,35,40 (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740439318373,"pid":5476,"hostname":"LAPTOP-8HAPGTLF","msg":"timeSeriesXRange() was called and returned 2025-01-18,2025-01-19,2025-01-20,2025-01-21 (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740439318374,"pid":5476,"hostname":"LAPTOP-8HAPGTLF","msg":"a visual representation of the Y range was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740439318375,"pid":5476,"hostname":"LAPTOP-8HAPGTLF","msg":"a visual representation of the Y range was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740439318376,"pid":5476,"hostname":"LAPTOP-8HAPGTLF","msg":"a visual representation of the Y range was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740439318377,"pid":5476,"hostname":"LAPTOP-8HAPGTLF","msg":"a visual representation of the Y range was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740439318377,"pid":5476,"hostname":"LAPTOP-8HAPGTLF","msg":"a visual representation of the Y range was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740439318378,"pid":5476,"hostname":"LAPTOP-8HAPGTLF","msg":"a visual representation of the Y range was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740439318379,"pid":5476,"hostname":"LAPTOP-8HAPGTLF","msg":"a visual representation of the Y range was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740439318380,"pid":5476,"hostname":"LAPTOP-8HAPGTLF","msg":"a visual representation of the Y range was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740439318381,"pid":5476,"hostname":"LAPTOP-8HAPGTLF","msg":"getYRange returned 40 (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740439318382,"pid":5476,"hostname":"LAPTOP-8HAPGTLF","msg":"timeSeriesYRange() returned 5,10,15,20,25,30,35,40 (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740439318382,"pid":5476,"hostname":"LAPTOP-8HAPGTLF","msg":"a visual representation of points was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740439318383,"pid":5476,"hostname":"LAPTOP-8HAPGTLF","msg":"the lines on a TimeSeriesGraph object were created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740439318386,"pid":5476,"hostname":"LAPTOP-8HAPGTLF","msg":"getYRange returned 40 (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740439318386,"pid":5476,"hostname":"LAPTOP-8HAPGTLF","msg":"timeSeriesYRange() returned 5,10,15,20,25,30,35,40 (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740439318387,"pid":5476,"hostname":"LAPTOP-8HAPGTLF","msg":"a visual representation of points was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740439318387,"pid":5476,"hostname":"LAPTOP-8HAPGTLF","msg":"the lines on a TimeSeriesGraph object were created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740439318388,"pid":5476,"hostname":"LAPTOP-8HAPGTLF","msg":"getYRange returned 40 (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740439318389,"pid":5476,"hostname":"LAPTOP-8HAPGTLF","msg":"timeSeriesYRange() returned 5,10,15,20,25,30,35,40 (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740439318390,"pid":5476,"hostname":"LAPTOP-8HAPGTLF","msg":"a visual representation of points was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740439318390,"pid":5476,"hostname":"LAPTOP-8HAPGTLF","msg":"the lines on a TimeSeriesGraph object were created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740439318391,"pid":5476,"hostname":"LAPTOP-8HAPGTLF","msg":"getYRange returned 40 (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740439318391,"pid":5476,"hostname":"LAPTOP-8HAPGTLF","msg":"timeSeriesYRange() returned 5,10,15,20,25,30,35,40 (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740439318392,"pid":5476,"hostname":"LAPTOP-8HAPGTLF","msg":"a visual representation of points was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740439318392,"pid":5476,"hostname":"LAPTOP-8HAPGTLF","msg":"the lines on a TimeSeriesGraph object were created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740439318402,"pid":5476,"hostname":"LAPTOP-8HAPGTLF","msg":"timeSeriesYRange() returned 5,10,15,20,25,30,35,40 (TimeSeriesGraphClass.tsx)"}

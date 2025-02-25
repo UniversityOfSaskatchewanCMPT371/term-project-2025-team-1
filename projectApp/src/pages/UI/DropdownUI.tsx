@@ -1,7 +1,7 @@
 import { Root, Container, Text } from '@react-three/uikit';
 import { useState } from 'react';
 import mainController from "../../controller/MainController.tsx";
-import { CSVData } from '../../types/CSVInterfaces.tsx';
+import { CSVDataInterface } from '../../types/CSVInterfaces.tsx';
 import { sendLog } from '../../logger-frontend.ts';
 
 interface dropDownProps {
@@ -16,7 +16,7 @@ export default function DropdownUI(props: dropDownProps){
     const [ active, setActive ] = useState(false);
 
     //This is the function for creating a object displayed in the DropDown UI
-    function GenerateRowObject({data} : {data: CSVData}){
+    function GenerateRowObject({data} : {data: CSVDataInterface}): React.JSX.Element{
         //The list of objects/loaded csv files row by row
         return(
             <>
@@ -38,7 +38,7 @@ export default function DropdownUI(props: dropDownProps){
         )
     }
     // For now Its probably okay to just display one graph
-    function RowObjectButtons({data}:{data: CSVData}){
+    function RowObjectButtons({data}:{data: CSVDataInterface}): React.JSX.Element{
         return (
             <>
             <Container>
@@ -74,11 +74,11 @@ export default function DropdownUI(props: dropDownProps){
     /*
     * Generates the graph, and then updates main scene
     */
-    function update(){
+    function update(): void{
         mainController.getCSVController().generate();
         mainController.updateMainScene();
     }
-    function GenerateList(){
+    function GenerateList(): React.JSX.Element{
         //Layout of the body, and loading of RowObjects, then a Generate button, bottom right
         return (
         <>
@@ -87,7 +87,7 @@ export default function DropdownUI(props: dropDownProps){
             alignItems={"flex-start"} justifyContent={"flex-start"}>
 
                 {/* Assign board number to Model maybe? */}
-        {mainController.getCSVController().getModel().getData().map((graph) => (
+        {mainController.getCSVController().getModelData().map((graph) => (
             
             <GenerateRowObject data={graph} key={graph.getName()}></GenerateRowObject>
         ))}
@@ -111,7 +111,7 @@ export default function DropdownUI(props: dropDownProps){
         )
     }
     
-    function DropDownBody(){
+    function DropDownBody(): React.JSX.Element{
         
         return (
             <>

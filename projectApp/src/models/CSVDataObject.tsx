@@ -40,7 +40,7 @@ export class CSVDataObject implements CSVData{
                 this.csvHeaders = headers;
                 this.setYHeader("X");
             }
-            sendLog("info",`loadCSVData has loaded csv data\n${JSON.stringify(this.data)}}`);
+            sendLog("info",`loadCSVData has loaded csv data\n${JSON.stringify(this.data)}`);
         }
         catch(error: unknown) {
             sendError(error, "loadCSVData error");

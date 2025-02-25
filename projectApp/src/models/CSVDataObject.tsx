@@ -150,15 +150,19 @@ export class CSVDataObject implements CSVData{
     }
 
     // Setter getters
+    // Post-condition: The `name` property is updated to the provided name.
     setName(name: string){
         this.name = name;
     }
+    // Post-condition: The `browserSelected` property is updated to the provided boolean value.
     setBrowserSelected(bool: boolean){
         this.browserSelected = bool;
     }
+    // Post-condition: The `vrSelected` property is updated to the provided boolean value.
     setVRSelected(bool:boolean){
         this.vrSelected = bool;
     }
+    // Post-condition: The `yHeader` property is updated to the provided value if it exists in the CSV headers.
     setYHeader(header:string){
         for(const head of this.getCSVHeaders()){
             if(head == header){

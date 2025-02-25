@@ -1,17 +1,14 @@
-import { Point2D } from "../../pages/Graph_Objects/Point2D";
-import { PointRef } from "../../types/PointInterface";
-import { PointClass } from "./PointClass";
+import { Point2D } from "../../pages/Graph_Elements/Point2D";
+import { PointInterface } from "../../types/PointInterface";
+import { PointObject } from "./PointObject";
 
-export function Create2DPoint(pointRef: PointRef){
-    const point = new PointClass();
-    point.setPosition(pointRef.position);
-    point.setSelected(pointRef.selected);
-    point.setXData(pointRef.xData);
-    point.setYData(pointRef.yData);
+export function Create2DPoint({pointRef} : {pointRef: PointInterface}): React.JSX.Element{
+    const point = new PointObject();
+    point.setPosition(pointRef.getPosition());
+    point.setSelected(pointRef.getSelected());
+    point.setXData(pointRef.getXData());
+    point.setYData(pointRef.getYData());
 
-    //TODO
-    //Track point class, maybe only generate the points on graph once
-    //All Point class objects are made?
     return (
         <Point2D pointRef = {point}></Point2D>
     )

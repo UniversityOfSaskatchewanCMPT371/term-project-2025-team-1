@@ -2,16 +2,20 @@
  * Interface for graph objects that can be used in both 2D and 3D contexts.
  * Provides a standardized structure for graph representation and manipulation.
  */
-import { PointClass } from "../../src/components/Graph_Components/PointClass";
 import { DataInterface } from "./BaseInterfaces";
+import { CSVDataInterface } from "./CSVInterfaces";
+import { PointInterface } from "./PointInterface";
 
 export interface GraphInterface extends DataInterface{
     // Basic graph properties
     id: string;                          // identifier for the graph
     
     // Data points and configuration
-    points: PointClass[];                  // Array of points using PointRef interface
+    points: PointInterface[];                  // Array of points using Point interface
     
+    //The csv data used by the graph
+    csvData: CSVDataInterface;
+
     position: {
         x: number;
         y: number;
@@ -74,14 +78,14 @@ export interface GraphInterface extends DataInterface{
      * pre-condition: none
      * post-condition: returns array of current points, unchanged
      */
-    getPoints(): PointClass[];
+    getPoints(): PointInterface[];
 
     /**
      * Sets the graph's points
-     * pre-condition: points must be an array of valid PointClass instances
+     * pre-condition: points must be an array of valid PointInterface instances
      * post-condition: graph's points are replaced with the new array
      */
-    setPoints(points: PointClass[]): void;
+    setPoints(points: PointInterface[]): void;
 
     /**
      * Removes all points from the graph

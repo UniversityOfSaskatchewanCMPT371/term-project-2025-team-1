@@ -1,8 +1,7 @@
-import { PointClass } from "./PointClass";
 import { GraphInterface } from "../../types/GraphInterface";
-import { CSVDataObject } from "../../models/CSVDataObject";
-
-
+import { PointInterface } from "../../types/PointInterface";
+import { CSVDataObject } from "../Csv_Components/CSVDataObject";
+import { PointObject } from "./PointObject";
 
 /**
  * The GraphClass represents a graph structure that manages points, dimensions, styling, and interactivity.
@@ -17,11 +16,12 @@ import { CSVDataObject } from "../../models/CSVDataObject";
  * Although the 'id' and 'name' can be updated, they must always remain non-empty.
  * The 'points' array is mutable.
  */
-export class GraphClass implements GraphInterface {
+export class GraphObject implements GraphInterface {
   id: string;
   name: string;
+  csvData: CSVDataObject;
   dimensions: { width: number; height: number; depth?: number };
-  points: PointClass[];
+  points: PointInterface[];
   position: { x: number; y: number; z: number };
   axes: {
     xLabel: string;
@@ -32,7 +32,7 @@ export class GraphClass implements GraphInterface {
 
 
   /**
-   * Constructs a new GraphClass instance.
+   * Constructs a new GraphObject instance.
    * @param CSVDataObject - An object of the CSVDataObject class
    * 
    * @precondition The 'csvdata' parameter must be a valid instance of the CSVDataObject class.
@@ -46,6 +46,7 @@ export class GraphClass implements GraphInterface {
     // CSVDataObject is required, so the check is unnecessary.
     this.id = csvdata.getName();
     this.name = csvdata.getName();
+    this.csvData = csvdata;
     this.dimensions = { width: 10, height: 10, depth: 10 };
     this.points = [];
     this.position ={ x: 1, y: 1, z: 0 };
@@ -54,7 +55,7 @@ export class GraphClass implements GraphInterface {
       yLabel: csvdata.getYHeader(), 
       xRange: [0, 0], 
       yRange: [0, 0]
-  };
+    };
   }
 
   /**
@@ -143,37 +144,38 @@ export class GraphClass implements GraphInterface {
    * @precondition The graph instance must have a valid points array.
    * @postcondition The 'points' property is returned as an array of PointClass instances.
    */
-  getPoints(): PointClass[] {
+  getPoints(): PointInterface[] {
     return this.points;
   }
   
   /**
    * Set the points array of the graph.
-   * @param {PointClass[]} points the points array - An array of PointClass instances.
+   * @param {PointInterface[]} points the points array - An array of PointClass instances.
    * 
    * @precondition The 'points' parameter must be an array of PointClass instances.
    * @postcondition The 'points' property is set to the provided array. If the 'points' parameter is not an array of PointClass instances, an error is thrown.
    */
-  setPoints(points: PointClass[]): void {
+  setPoints(points: PointInterface[]): void {
     if (!Array.isArray(points)) {
       throw new Error("Invalid points: must be an array of PointClass instances");
     }
     for (const point of points) {
-      if (!(point instanceof PointClass)) {
+      if (!(point instanceof PointObject)) {
         throw new Error("Invalid point: each element must be an instance of PointClass");
       }
     }
+    
     this.points = points;
   }
 
   /**
    * Remove a point from the graph.
-   * @param {PointClass[]} points the point to remove - A PointClass instance.
+   * @param {PointInterface[]} points the point to remove - A PointClass instance.
    * 
    * @precondition the 'point' parameter must be a valid PointClass instance.
    * @postcondition the 'point' is removed from the 'points' array. If the point does not exist in the array, an error is thrown.
    */
-  removePoint(point: PointClass): void {
+  removePoint(point: PointInterface): void {
     const index = this.points.indexOf(point);
     if (index !== -1) {
       throw new Error("The specified point does not exist in the points array");

@@ -1,4 +1,4 @@
-import { PointClass } from "../components/Graph_Components/PointClass";
+import { PointObject } from "../components/Graph_Components/PointObject";
 import { GraphInterface } from "./GraphInterface";
 
 /**
@@ -9,7 +9,7 @@ export interface TimeSeriesGraphInterface extends GraphInterface {
     /**
      * Adds a new point to the graph
      * pre-condition: none
-     * post-condition: a new PointClass instance is added to the graph
+     * post-condition: a new PointObject instance is added to the graph
      */
     addPoint(): void;
 
@@ -19,9 +19,9 @@ export interface TimeSeriesGraphInterface extends GraphInterface {
      * post-condition: returns the matching point or undefined if not found
      * @param {string} xData - The x-coordinate (string representation)
      * @param {number} yData - The y-coordinate (numeric value)
-     * @returns {PointClass | undefined} The found point or undefined
+     * @returns {PointObject | undefined} The found point or undefined
      */
-    findPoint(xData: string, yData: number): PointClass | undefined;
+    findPoint(xData: string, yData: number): PointObject | undefined;
 
     /**
      * Updates all points' selection status
@@ -42,15 +42,15 @@ export interface TimeSeriesGraphInterface extends GraphInterface {
      * Gets all points in the graph
      * pre-condition: none
      * post-condition: returns array of current points, unchanged
-     * @returns {PointClass[]} Array of points in the graph
+     * @returns {PointObject[]} Array of points in the graph
      */
-    getPoints(): PointClass[];
+    getPoints(): PointObject[];
 
     /**
      * Sets the graph's points
-     * pre-condition: points must be an array of valid PointClass instances
+     * pre-condition: points must be an array of valid PointObject instances
      * post-condition: graph's points are replaced with the new array
-     * @param {PointClass[]} points - Array of new points
+     * @param {PointObject[]} points - Array of new points
      */
-    setPoints(points: PointClass[]): void;
+    setPoints(points: PointObject[]): void;
 }

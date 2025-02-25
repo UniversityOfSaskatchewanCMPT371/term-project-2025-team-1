@@ -5,7 +5,7 @@ import MainScene from './MainScene';
 * Not really needed anymore since we are using modules that deals with initialization
 * However, could be useful for future testing when working with different scenes
 */
-export default function InitScene(){
+export default function InitScene(): React.JSX.Element{
     
     return (
         <>

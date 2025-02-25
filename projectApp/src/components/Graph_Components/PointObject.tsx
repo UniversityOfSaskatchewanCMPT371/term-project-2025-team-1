@@ -1,6 +1,6 @@
-import { PointRef } from "../../types/PointInterface";
+import { PointInterface } from "../../types/PointInterface";
 
-export class PointClass implements PointRef{
+export class PointObject implements PointInterface{
     position: [number,number,number];
     selected: boolean;
     xData: string;
@@ -15,46 +15,46 @@ export class PointClass implements PointRef{
 
     //The setters and getters for the Point Class
     //Getters
-    getPosition() {
+    getPosition(): [number,number,number] {
         return this.position;
     }
-    getSelected(){
+    getSelected(): boolean{
         return this.selected;
     }
-    getXData(){
+    getXData(): string{
         return this.xData;
     }
-    getYData(){
+    getYData(): number{
         return this.yData;
     }
-    getXPosition(){
+    getXPosition(): number{
         return this.getPosition()[0];
     }
-    getYPosition(){
+    getYPosition(): number{
         return this.getPosition()[1];
-    }
-    setXPosition(x: number){
-        this.position[0] = x;
-    }
-    setYPosition(y: number){
-        this.position[1] = y;
     }
     //End of Getters
     
     //Setters
-    setPosition([ x, y, z ]: number[]){
-        this.position = [x,y,z];
+    setPosition(position: [number,number,number]): void{
+        this.position = position;
     }
-    setSelected(select: boolean){
+    setSelected(select: boolean): void{
         this.selected = select;
     }
-    setXData(x: string){
+    setXData(x: string): void{
         this.xData = x;
         //Error no Time Header
     }
 
-    setYData(y: number){
+    setYData(y: number): void{
         this.yData = y;
+    }
+    setXPosition(x: number): void{
+        this.position[0] = x;
+    }
+    setYPosition(y: number): void{
+        this.position[1] = y;
     }
     //End of Setters
 }

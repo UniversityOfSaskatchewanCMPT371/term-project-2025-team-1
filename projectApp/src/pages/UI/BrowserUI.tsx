@@ -12,7 +12,7 @@ export function BrowserUI(){
     const [ controlKey, setControlKey] = useState(0);
     
     //The botton component that opens file explorer and loads a local file
-    function LoadComponent(){
+    function LoadComponent(): React.JSX.Element{
       useControls({
         'Load Local CSV' : button(() => {
           const loadFile = () => {
@@ -34,7 +34,14 @@ export function BrowserUI(){
               //console.log(file.name.toString());
 
               //If the file is valid, read the csv file
-              await mainController.getCSVController().getModel().readLocalFile(file);
+              try{
+                await mainController.getCSVController().loadLocalFile(file);
+                alert(`Successfully Loaded: ${file.name}`);
+              }
+              catch(error: unknown){
+                alert(`${error} Failed Loading: ${file.name}`)
+              }
+
               setControlKey(controlKey + 1);
               //Same test as csvModeTest
               // let headers = test.getCSVFiles()[0].data[0];
@@ -51,7 +58,7 @@ export function BrowserUI(){
     }
   
     //This one is for loading the csvfile through a url link
-  function URLComponent(){
+  function URLComponent(): React.JSX.Element{
     const { csv } = useControls(
       {csv: { label: "CSV by URL", value: "Enter URL"},
     "Enter URL": button(() => {
@@ -68,8 +75,13 @@ export function BrowserUI(){
       ref={urlInputRef}
       style={{display: 'none'}}
       onClick={( async (): Promise<void> => {
-        alert(csv)
-        await mainController.getCSVController().getModel().readURLFile(csv);
+        try{
+          await mainController.getCSVController().loadURLFile(csv);
+          alert(`Successfully Loaded: ${csv}`);
+        }
+        catch(error: unknown){
+          alert(`${error} Failed Loading: ${csv}`);
+        }
         setControlKey(controlKey + 1);
       })}></input>
     </>
@@ -77,8 +89,8 @@ export function BrowserUI(){
   }
   
   //Component that displays the loaded csv files on the browser UI
-  function UnmountedComponents(){
-    const names:[string, boolean][] = mainController.getCSVController().getModel().loadedCsvBrowser();
+  function UnmountedComponents(): null{
+    const names:[string, boolean][] = mainController.getCSVController().browserCSVFiles();
     
     //setControlKey(controlKey + 1)
     //Setting the objects to be displayed
@@ -100,9 +112,11 @@ export function BrowserUI(){
     return null;
   }
 
-    return <>
-              <URLComponent/>
-              <LoadComponent/>
-              <UnmountedComponents/>
-            </>
+    return (
+      <>
+        <URLComponent/>
+        <LoadComponent/>
+        <UnmountedComponents/>
+      </>
+    )
   }

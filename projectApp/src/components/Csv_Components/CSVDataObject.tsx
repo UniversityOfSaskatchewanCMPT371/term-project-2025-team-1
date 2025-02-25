@@ -1,8 +1,7 @@
-import { LocalCSVReader, LocalCsvReader } from "../components/CSV_Readers/LocalCSVReader";
-import { CSVData } from "../types/CSVInterfaces";
-import { UrlCSVReader } from "../components/CSV_Readers/UrlCSVReader";
+import { CSVDataInterface } from "../../types/CSVInterfaces";
+import { LocalCSVReader, LocalCsvReader, UrlCSVReader } from "./CSVReaders";
 
-export class CSVDataObject implements CSVData{
+export class CSVDataObject implements CSVDataInterface{
     name: string;
     csvHeaders: string[];
     data: { key: Record<string,string | number> }[];
@@ -15,13 +14,10 @@ export class CSVDataObject implements CSVData{
         this.name = "";
         this.csvHeaders = [];
         this.data = [];
-        this.yHeader = ""; // Will attempt for the second header [1]
+        this.yHeader = "";
         this.browserSelected = false;
         this.displayBoard = 0;
         this.vrSelected = false;
-    }
-    setData(data: { key: Record<string,string | number> }[]){
-        this.data = data;
     }
     
     /**
@@ -33,9 +29,8 @@ export class CSVDataObject implements CSVData{
      * 
      * @returns {Promise<void>} A promise that resolves once the data is loaded.
      */
-    async loadCSVData(index: number, file: (File | string), isUrl: boolean){
+    async loadCSVData(index: number, file: (File | string), isUrl: boolean): Promise<void>{
         try {
-            
             const data = isUrl ? await UrlCSVReader(file as string) : await LocalCsvReader(file as File)
             this.setData(data);
             this.setName("Graph" + index.toString());
@@ -46,30 +41,40 @@ export class CSVDataObject implements CSVData{
                 this.setYHeader("X");
             }
         }
-        catch {
-            return;
+        catch(error: unknown) {
+            //Log the error
+            throw error;
         }
     }
-    
-    // Loads a CSV file from a local file input and sets the graph data.
-    async loadLocalCSVFile(index: number,file: File){
-        await this.loadCSVData(index, file, false);
-    }
-    
-    // Loads a CSV file from a URL and sets the graph data.
-    async loadUrlCSVFile(index: number,file: string){
-        await this.loadCSVData(index, file, true);
-    }
 
-    // Loads a CSV file from a local file path (for testing purposes)
-    async loadLocalByPath(index: number,file: string){
+    //Keeping for now in testing
+    async loadLocalByPath(index: number,file: string): Promise<void>{
         try {
             const data = await LocalCSVReader(file);
             this.setData(data);
             this.name = ("Graph" + index.toString());
         }
-        catch {
-            return;
+        catch(error: unknown) {
+            //Log the error
+            throw error;
+        }
+    }
+
+    //For now only one display board
+    incrementDisplayBoard(): void{
+        if(this.displayBoard == 0){
+            this.displayBoard++;
+        }
+        else{
+            this.displayBoard = 0;
+        }
+    }
+    decrementDisplayBoard(): void{
+        if(this.displayBoard == 0){
+            this.displayBoard = 1;
+        }
+        else{
+            this.displayBoard--;
         }
     }
 
@@ -116,30 +121,28 @@ export class CSVDataObject implements CSVData{
         }
         return result;
     }
-
-    // Getter methods
-    getData(){
+    getData(): {key: Record<string, string | number>}[]{
         return this.data;
     };
-    getName(){
+    getName(): string{
         return this.name;
     }
-    getCSVHeaders(){
+    getCSVHeaders(): string[]{
         return this.csvHeaders;
     }
-    getYHeader(){
+    getYHeader(): string{
         return this.yHeader;
     }
-    getBrowserSelected(){
+    getBrowserSelected(): boolean{
         return this.browserSelected;
     }
-    getVRSelected(){
+    getVRSelected(): boolean{
         return this.vrSelected;
     };
-    getDisplayBoard(){
+    getDisplayBoard(): number{
         return this.displayBoard;
     }
-    getTimeHeader():string{
+    getTimeHeader(): string{
         for(const head of this.getCSVHeaders()){
             if(head == "Time" || head =="time"){
                 return head;
@@ -149,6 +152,9 @@ export class CSVDataObject implements CSVData{
         throw new Error("No allowed time header in csv file");
     }
 
+    setData(data: { key: Record<string,string | number> }[]): void{
+        this.data = data;
+    }
     // Setter getters
     // Post-condition: The `name` property is updated to the provided name.
     setName(name: string){
@@ -169,25 +175,6 @@ export class CSVDataObject implements CSVData{
                 this.yHeader = header;
                 break;
             }
-        }
-    }
-    // End of setters
-
-    //For now only one display board
-    incrementDisplayBoard(){
-        if(this.displayBoard == 0){
-            this.displayBoard++;
-        }
-        else{
-            this.displayBoard = 0;
-        }
-    }
-    decrementDisplayBoard(){
-        if(this.displayBoard == 0){
-            this.displayBoard = 1;
-        }
-        else{
-            this.displayBoard--;
         }
     }
 }

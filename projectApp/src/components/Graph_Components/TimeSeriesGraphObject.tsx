@@ -1,27 +1,23 @@
-import { CSVDataObject } from "../../models/CSVDataObject";
 import { TimeSeriesGraphInterface } from "../../types/TimeSeriesGraphInterface";
-import { GraphClass } from "./GraphClass";
-import { PointClass } from "./PointClass";
+import { CSVDataObject } from "../Csv_Components/CSVDataObject";
+import { GraphObject } from "./GraphObject";
+import { PointObject } from "./PointObject";
 
-// GraphClass2 is a class that represents a collection of multiple points
-export class TimeSeriesGraphClass extends GraphClass implements TimeSeriesGraphInterface{
-    csvData: CSVDataObject;  //Probably wont need this
-    
+// TimeSeriesGraphObject is a class that represents a collection of multiple points
+export class TimeSeriesGraphObject extends GraphObject implements TimeSeriesGraphInterface{
     constructor(csv: CSVDataObject) {
         super(csv);
-        // Initialize an empty array to store PointClass instances
-        this.csvData = csv;
+        // Initialize an empty array to store PointInterface instances
     }   
 
     /**
      * Adds a new point to the graph.
-     * pre-codition: pointRef is a valid PointRef object
-     * post-condition: a new PointClass instance is added to the graph
-     * @param {PointRef} pointRef - Reference to the point data.
+     * pre-codition: valid points in GraphObject
+     * post-condition: a new PointInterface instance is added to the graph
      */
-    addPoint() {
+    addPoint(): void{
         this.csvData.getData().forEach((data) => {
-            const newPoint = new PointClass();
+            const newPoint = new PointObject();
             newPoint.setPosition([0,0,0.01])
             
             newPoint.setXData(data[this.axes.xLabel as keyof typeof data] as unknown as string);
@@ -35,12 +31,12 @@ export class TimeSeriesGraphClass extends GraphClass implements TimeSeriesGraphI
     /**
      * Finds a point based on given x and y data.
      * pre-codition: xData is a string, yData is a number
-     * post-condition: returns the corresponding PointClass instance if found, otherwise undefined
+     * post-condition: returns the corresponding Points instance if found, otherwise undefined
      * @param {string} xData - The x-coordinate (string representation).
      * @param {number} yData - The y-coordinate (numeric value).
-     * @returns {PointClass | undefined} The corresponding PointClass instance if found, otherwise undefined.
+     * @returns {PointInterface | undefined} The corresponding Points instance if found, otherwise undefined.
      */
-    findPoint(xData: string, yData: number): PointClass | undefined {
+    findPoint(xData: string, yData: number): PointObject | undefined {
         return this.points.find(point => point.getXData() === xData && point.getYData() === yData);
     }
 
@@ -50,47 +46,14 @@ export class TimeSeriesGraphClass extends GraphClass implements TimeSeriesGraphI
      * pre-codition: none
      * post-condition: all points' selection status is updated
      */
-    updatePoints() {
+    updatePoints(): void{
         this.points.forEach(point => {
             point.setSelected(false); // Update selection status
             // TODO: Add color update logic if necessary
         });
     }
 
-    /**
-     * Retrieves all points in the graph.
-     * pre-codition: none
-     * post-condition: returns an array of PointClass instances
-     * @returns {PointClass[]} Array of PointClass instances.
-     */
-    getPoints(): PointClass[] {
-        return this.points;
-    }
-
-    /**
-     * Updates point positions based on a zooming factor.
-     * pre-codition: zoomFactor is a number
-     * post-condition: all points' positions are scaled based on the zoom factor
-     * @param {number} zoomFactor - The zoom level to scale points' positions.
-     */
-    //We are not zooming for 2D
-    // updateOnZoom(zoomFactor: number) {
-    //     this.points.forEach(point => {
-    //         const {x, y, z] = point.getPosition(); // Retrieve current position
-    //         point.setPosition([x * zoomFactor, y * zoomFactor, z * zoomFactor]); // Adjust based on zoom factor
-    //     });
-    // }
-
-    getXHeader(){
-        return this.axes.xLabel;
-    }
-    getYHeader(){
-        return this.axes.yLabel;
-    }
-    getYRange(){
-        return this.axes.yRange[1];
-    }
-    setRange(){
+    setRange(): void{
         // this.yRange = this.csvData.getData().length;
         let max = 0;
         this.csvData.getData().forEach((data) => {
@@ -109,7 +72,8 @@ export class TimeSeriesGraphClass extends GraphClass implements TimeSeriesGraphI
     timeSeriesYRange():number[]{
         const range:number[] = [];
         let cur = 0;
-
+        
+        //For larger data sets, it would be possible to create a case statement
         while(cur < this.axes.yRange[1]){
             cur = cur + 5;
             range.push(cur);
@@ -122,7 +86,6 @@ export class TimeSeriesGraphClass extends GraphClass implements TimeSeriesGraphI
         const range: string[] = [];
 
         this.csvData.getData().forEach((data) => {
-            
             const temp = data[this.axes.xLabel as keyof typeof data] as unknown as string;
             range.push(temp);
             
@@ -131,7 +94,7 @@ export class TimeSeriesGraphClass extends GraphClass implements TimeSeriesGraphI
         return range;
     }
 
-    incrementYHeader(){
+    incrementYHeader(): void{
         if(this.csvData.getCSVHeaders().length < 3){
             return;
         }
@@ -159,12 +122,12 @@ export class TimeSeriesGraphClass extends GraphClass implements TimeSeriesGraphI
         for(start; start < this.csvData.getCSVHeaders().length; start++){
             if(this.csvData.getCSVHeaders()[start] != this.getYHeader() && this.csvData.getCSVHeaders()[start] != this.getXHeader()){
                 this.axes.yLabel = this.csvData.getCSVHeaders()[start];
-                break;
+                return;
             }
         }
 
     }
-    decrementYHeader(){
+    decrementYHeader(): void{
         if(this.csvData.getCSVHeaders().length < 3){
             return;
         }
@@ -192,12 +155,12 @@ export class TimeSeriesGraphClass extends GraphClass implements TimeSeriesGraphI
         for(start; start > 0; start--){
             if(this.csvData.getCSVHeaders()[start] != this.getYHeader() && this.csvData.getCSVHeaders()[start] != this.getXHeader()){
                 this.axes.yLabel= this.csvData.getCSVHeaders()[start];
-                break;
+                return;
             }
         }
     }
 
-    updatePointPosition(){
+    updatePointPosition(): void{
         const totalSpace = 5;
         const divider = (totalSpace/this.timeSeriesYRange().length);
         let current = (-1.8) + (divider/2);
@@ -213,5 +176,29 @@ export class TimeSeriesGraphClass extends GraphClass implements TimeSeriesGraphI
 
             current += divider;
         })
+    }
+
+    /**
+     * Retrieves all points in the graph.
+     * pre-codition: none
+     * post-condition: returns an array of PointInterface instances
+     * @returns {PointInterface[]} Array of PointInterface instances.
+     */
+    getPoints(): PointObject[] {
+        return this.points;
+    }
+
+    getNumPoints():number{
+        return this.points.length;
+    }
+
+    getXHeader(): string{
+        return this.axes.xLabel;
+    }
+    getYHeader(): string{
+        return this.axes.yLabel;
+    }
+    getYRange(): number{
+        return this.axes.yRange[1];
     }
 }

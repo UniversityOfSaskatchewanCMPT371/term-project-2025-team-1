@@ -3,21 +3,21 @@ import DropdownUI from "../UI/DropdownUI"
 import { CreateTimeSeries } from '../../components/Graph_Components/CreateTimeSeries';
 import mainController from '../../controller/MainController';
 import { useEffect, useRef, useState } from 'react';
-import { TimeSeriesGraphClass } from '../../components/Graph_Components/TimeSeriesGraphClass';
+import { TimeSeriesGraphObject } from '../../components/Graph_Components/TimeSeriesGraphObject';
 
 /*
 * The main scene being used in the current program
 * For now contains shapes the could help with testing looking around in a VR Space
 */
-export default function MainScene() {
+export default function MainScene(): React.JSX.Element{
     //TODO
     //Add a UI to the MainScene
     //Then make it possible for the ui to  stay in view of the camera (maybe top left)
     const [updateGraph, setUpdateGraph] = useState(false);
-    const [graph, setGraph] = useState<(TimeSeriesGraphClass)>();
+    const [graph, setGraph] = useState<(TimeSeriesGraphObject)>();
     
     //Only runs on the begining, might keep graph on and update file on graph instead
-    function updateScene(){
+    function updateScene(): void{
         setUpdateGraph(true);
     }
     const sceneRef = useRef({updateScene});
@@ -27,7 +27,7 @@ export default function MainScene() {
     useEffect(() => {
         if(updateGraph) {
             const vrSelected = mainController.getCSVController().getVRSelected();
-            if(mainController.getGraphController().getModel().getData().length > 0){
+            if(mainController.getGraphController().getDataLength() > 0){
                 const newGraph = mainController.getGraphController().generateTimeSeriesGraph(vrSelected);
                 setGraph(newGraph);
             }

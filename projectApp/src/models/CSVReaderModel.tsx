@@ -1,12 +1,10 @@
-import { CSVData, CSVModelInterface } from "../types/CSVInterfaces";
-import { CSVDataObject } from "./CSVDataObject";
+import { CSVDataObject } from "../components/Csv_Components/CSVDataObject";
+import { CSVDataInterface, CSVModelInterface } from "../types/CSVInterfaces";
 
 export class CSVReaderModel implements CSVModelInterface{
-    num : number;
     data: CSVDataObject[];
 
     constructor(){
-        this.num = 0;
         this.data = [];
     }
 
@@ -15,7 +13,7 @@ export class CSVReaderModel implements CSVModelInterface{
     * @param name - The name of the CSV file.
     * @returns The CSVData object if found, otherwise null.
     */
-    getCSVFileByName(name:string): CSVData | null{
+    getCSVFileByName(name:string): CSVDataInterface | null{
         for(const data of this.data) {
             if(data.name == name){
                 return data;
@@ -31,14 +29,13 @@ export class CSVReaderModel implements CSVModelInterface{
     async readLocalFile(file: File): Promise<void>{
          const data:CSVDataObject = new CSVDataObject;
          try{
-            await data.loadLocalCSVFile(this.num, file);
+            await data.loadCSVData(this.data.length, file, false);
          }
-         catch{
-            // If there is a failure in reading local to get CSV file
-            return;
+         catch(error: unknown){
+            // Log the Error
+            throw error;
         }
         this.data.push(data);
-        this.num++;
      }
 
     /**
@@ -48,39 +45,33 @@ export class CSVReaderModel implements CSVModelInterface{
     async readURLFile(file: string) : Promise<void>{
         const data:CSVDataObject = new CSVDataObject;
         try{
-            await data.loadUrlCSVFile(this.num, file);
+            await data.loadCSVData(this.data.length, file, true);
         }
-        catch{
-            // If there is a failure in reading local to get CSV file
-            return;
+        catch(error: unknown){
+            //  Log the error
+            throw error;
         }
         this.data.push(data);
-        this.num++;
      }
 
-     /**
-    * Reads a local CSV file by its path and adds it to the data array.
-    * @param file - The file path of the local CSV file.
-    */
-     async readLocalByPath(file:string){
+     async readLocalByPath(file:string): Promise<void>{
         const data:CSVDataObject = new CSVDataObject;
          try{
-             await data.loadLocalByPath(this.num, file);
+             await data.loadLocalByPath(this.data.length, file);
          }
-         catch{
-            // If there is a failure in reading local to get CSV file
+         catch(error: unknown){
+            // Log the error
+            throw error;
         }
 
          this.data.push(data);
-         this.num++;
      }
      
-
     /**
     * Deletes a CSV file, if it has the name 'name', from the data array
     * @param name - The name of the CSV file to delete.
     */
-    deleteFile(name:string){
+    deleteFile(name:string): void{
        for(let i = 0; i < this.data.length; i++){
         if(this.data[i].name == name){
             this.data.splice(i, 1);
@@ -94,22 +85,16 @@ export class CSVReaderModel implements CSVModelInterface{
      */
     loadedCsvBrowser():[string, boolean][]{
         const csvBrowser:[string,boolean][] = []
-        if(!(this.getData().length > 0)){
-            return csvBrowser;
-        }
 
-        this.getData().forEach((file) => {
-            const arrVal = file.getName();
-            csvBrowser.push([arrVal,file.getBrowserSelected()])
-        })
+        if(this.getData().length > 0){
+            this.getData().forEach((file) => {
+                const arrVal = file.getName();
+                csvBrowser.push([arrVal,file.getBrowserSelected()])
+            })
+        }
         return csvBrowser;
     }
-    // Getter Methods
-    getNum(){
-        return this.num;
-    }
-
-    getData() {
+    getData(): CSVDataObject[]{
         return this.data;
     };
     // End of Getters

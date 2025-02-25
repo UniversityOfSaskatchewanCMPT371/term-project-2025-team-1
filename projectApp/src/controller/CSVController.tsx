@@ -1,7 +1,8 @@
-import { TimeSeriesGraphClass } from "../components/Graph_Components/TimeSeriesGraphClass";
-import { CSVDataObject } from "../models/CSVDataObject";
+import { CSVDataObject } from "../components/Csv_Components/CSVDataObject";
+import { TimeSeriesGraphObject } from "../components/Graph_Components/TimeSeriesGraphObject";
 import { CSVReaderModel } from "../models/CSVReaderModel";
 import { ControllerInterface } from "../types/BaseInterfaces";
+import { CSVDataInterface } from "../types/CSVInterfaces";
 import mainController from "./MainController";
 /*
 * The controller for CSV related actions
@@ -12,11 +13,6 @@ export class CSVController implements ControllerInterface{
     constructor(){
         this.model = new CSVReaderModel();
     }
-
-    //This method returns the Model, and allows the controller to use its methods
-    getModel(){
-        return this.model;
-    }
     
     /** Generates graph and adds points from model
     * Pre-Conditions: The model, mainController, and graphController must be initialized
@@ -25,17 +21,50 @@ export class CSVController implements ControllerInterface{
     *    The generated graphs are added to the graph controller's model.
     *    The `VRSelected` property of relevant CSV data objects is set to `true`.
     */
-    generate(){
+    generate(): void{
         for(const csv of this.model.getData()){
             if(csv.getDisplayBoard() == 1){
                 csv.setVRSelected(true);
-                const graph = new TimeSeriesGraphClass(csv);
+                const graph = new TimeSeriesGraphObject(csv);
                 graph.setName(csv.getName());
                 graph.addPoint();
-                mainController.getGraphController().getModel().getData().push(graph)
+                mainController.getGraphController().pushDataToModel(graph)
                 console.log("Success on generate?")
             }
         }
+    }
+
+    async loadLocalFile(file: File): Promise<void>{
+        try {
+            await this.getModel().readLocalFile(file);
+        }
+        catch(error: unknown){
+            //Log the error
+            throw error;
+        }
+    }
+
+    async loadURLFile(csv: string): Promise<void>{
+        try{
+            await this.getModel().readURLFile(csv);
+        }
+        catch(error: unknown){
+            //Log the error
+            throw error;
+        }
+    }
+
+    browserCSVFiles():[string, boolean][]{
+        return this.getModel().loadedCsvBrowser();
+    }
+
+    //This method returns the Model, and allows the controller to use its methods
+    getModel(): CSVReaderModel{
+        return this.model;
+    }
+
+    getModelData(): CSVDataObject[]{
+        return this.model.getData();
     }
     
     /**
@@ -53,5 +82,11 @@ export class CSVController implements ControllerInterface{
             }
         }
         return file;
-    } 
+    }
+
+    getDataByName(name:string): CSVDataInterface | null{
+        return this.model.getCSVFileByName(name);
+    }
+    
 }
+

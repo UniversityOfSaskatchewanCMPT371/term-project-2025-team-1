@@ -1,16 +1,18 @@
 import { describe, expect, test } from "vitest";
-import { sendError, sendLog } from "../src/logger-frontend";
+//import { sendLog } from "../src/logger-frontend";
 import * as fs from 'fs';
 
 import { fileContainsText } from "./fileParser";
 
 
 describe('emulating csvLoader.feature', () => {
-    const path = __dirname + '/../logsCsv.txt';
+    const path = './logsCsv.txt';
     test('log file exists', () => {
-        const path = './logs.txt';
-        sendLog("info",`path to log file is ${path}`);
+        //const testInfo = `path to log file is ${path}`;
+        //sendLog("info",testInfo);
         expect(fs.existsSync(path)).toBe(true);
+        //expect(fileContinsText(path,testInfo));
+        //re-add these when actual gherkin testing is done
     });
     test('emulating scenario: Confirming URL CSV entry', async () => {
         //UrlCsvReader
@@ -48,7 +50,7 @@ describe('emulating csvLoader.feature', () => {
         //CSVReaderModel
         const readURLFileError = "readURLFile error";
         //again, if the error was caught by readURLFile, it wouldnt be rethrown to BrowserUI
-        //aslo BrowserUI doesnt have a try/catch method, so there is no way to display the error message
+        //also BrowserUI doesnt have a try/catch method, so there is no way to display the error message
         //BrowserUI
         const URLComponentLog = "URLComponent read:";
 
@@ -91,7 +93,6 @@ describe('emulating csvLoader.feature', () => {
 
     test('emulating scenario: Confirming invalid Local CSV entry', async () => {
         //depends on what counts as invalid
-        //was it a non .csv file?
         //either it was not .csv, or fetch could not find url, or file was empty, or other error
         //LocalCsvReader
         const LocalReaderNotCSV = "is not .csv or .txt";
@@ -103,7 +104,7 @@ describe('emulating csvLoader.feature', () => {
         //CSVReaderModel
         const readLocalFileError = "readLocalFile error";
         //again, if the error was caught by readURLFile, it wouldnt be rethrown to BrowserUI
-        //aslo BrowserUI doesnt have a try/catch method, so there is no way to display the error message
+        //also BrowserUI doesnt have a try/catch method, so there is no way to display the error message
         //BrowserUI
         const LoadComponentLog = "LoadComponent read:";
 
@@ -121,8 +122,8 @@ describe('emulating csvLoader.feature', () => {
         //let me know if some other logs are left out
     });
 
-    test('emulating scenario: Deleting a loaded CSV file', async () => {
-        //nothing?
+    test('emulating scenario: Deleting a loaded CSV file', () => {
+        //nothing? for now, since button has yet to have delete code implemented
         expect("There is no delete button yet").toBe("There is no delete button yet");
     });
 

@@ -28,7 +28,12 @@ export async function LocalCSVHeaders(file:string): Promise<CSVHeaders> {
 
 /**
  * Get the headers of a file at a url
+ * 
  * @param url address of the file
+ * 
+ * @precondition url must be a valid url to a csv file
+ * @postcondition returns the headers of the file as a CSVHeaders
+ * 
  * @returns Headers of the file as a CSVHeaders
  */
 export async function UrlCSVHeaders(url:string): Promise<CSVHeaders> {
@@ -66,7 +71,6 @@ export async function LocalCSVReader(file:string): Promise<TimeSeriesData[]>{
             header: true,
             dynamicTyping: true,
             complete: function(parsed: Papa.ParseResult<TimeSeriesData>){
-                // Ensures casting works
                 timeSeries = parsed.data;
                 if(timeSeries.length === 0){
                     throw new Error("LocalCSVReader is empty");
@@ -133,7 +137,6 @@ export function LocalCsvReader(file: File): Promise<TimeSeriesData[]>{
             });
         };
 
-        // handles file reading errors
         reader.onerror = () => {
             const readerErr = new Error("reader error");
             sendError(readerErr,`LocalCsvReader(file) has errored for ${file.name}`);
@@ -146,7 +149,10 @@ export function LocalCsvReader(file: File): Promise<TimeSeriesData[]>{
 
 /**
  * Get the time series data from a file at a url
+ * 
  * @param url address of the file
+ * @precondition url must be a valid url to a csv file
+ * @postcondition returns the data of the file formatted as TimeSeriesData[]
  * @returns data of file formatted as TimeSeriesData[]
  */
 export async function UrlCSVReader(url:string): Promise<TimeSeriesData[]>{

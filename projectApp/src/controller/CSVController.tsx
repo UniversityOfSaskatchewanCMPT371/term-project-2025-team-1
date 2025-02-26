@@ -6,23 +6,33 @@ import { ControllerInterface } from "../types/BaseInterfaces";
 import { CSVDataInterface } from "../types/CSVInterfaces";
 import mainController from "./MainController";
 
-/*
-* The controller for CSV related actions
-*/
-export class CSVController implements ControllerInterface{
-    model: CSVReaderModel;  //The model used by this controller
+/**
+ * Controller class that manages CSV-related operations and interactions.
+ * Implements the ControllerInterface for standardized controller behavior.
+ * 
+ * @implements {ControllerInterface}
+ */
+export class CSVController implements ControllerInterface {
+    model: CSVReaderModel;
 
-    constructor(){
+    /**
+     * Initializes a new CSVController with a fresh CSVReaderModel
+     * 
+     * @postcondition A new CSVReaderModel is created and assigned to this.model
+     */
+    constructor() {
         this.model = new CSVReaderModel();
     }
-    
-    /** Generates graph and adds points from model
-    * Pre-Conditions: The model, mainController, and graphController must be initialized
-    * Post-Conditions:
-    *    Graphs are created for CSV data objects with `displayBoard` set to 1.
-    *    The generated graphs are added to the graph controller's model.
-    *    The `VRSelected` property of relevant CSV data objects is set to `true`.
-    */
+
+    /**
+     * Generates time series graphs for CSV data marked for VR display
+     * 
+     * @precondition this.model must be initialized with CSV data
+     * @postcondition For each CSV with displayBoard=1:
+     *   - VR selection is enabled
+     *   - A new TimeSeriesGraph is created and initialized
+     *   - The graph is added to the main controller's graph collection
+     */
     generate(): void{
         for(const csv of this.model.getData()){
             if(csv.getDisplayBoard() == 1){
@@ -63,7 +73,12 @@ export class CSVController implements ControllerInterface{
         return this.getModel().loadedCsvBrowser();
     }
 
-    //This method returns the Model, and allows the controller to use its methods
+    /**
+     * Retrieves the controller's associated model
+     * 
+     * @returns {CSVReaderModel} The CSV reader model instance
+     * @postcondition Returns the existing model without modification
+     */
     getModel(): CSVReaderModel{
         return this.model;
     }
@@ -73,15 +88,16 @@ export class CSVController implements ControllerInterface{
     }
     
     /**
-    * Pre-Conditions: The `model` property must be initialized
-    * Post-Conditions:
-    *    Returns the first CSVDataObject that has VR selected.
-    *    If no such object is found, returns a new empty CSVDataObject.
-    */
+     * Retrieves the first CSV data object that is selected for VR visualization
+     * 
+     * @precondition this.model must be initialized
+     * @postcondition Returns either an existing CSV object or a new empty one (if none found)
+     *  without modifying data
+     */
     getVRSelected(): CSVDataObject{
         let file:CSVDataObject = new CSVDataObject();
-        for(const csv of this.model.getData()){
-            if(csv.getVRSelected()){
+        for(const csv of this.model.getData()) {
+            if(csv.getVRSelected()) {
                 file = csv;
                 sendLog("info",`getVRSelected has returned ${csv.name}`);
                 return csv;
@@ -96,4 +112,3 @@ export class CSVController implements ControllerInterface{
     }
     
 }
-

@@ -131,8 +131,6 @@ export class CSVReaderModel implements CSVModelInterface{
             return;
         }
         sendLog("info",`deleteFile(), ${name} was not found in CSVReaderModel`);
-        //tester comment: what happends when a file does not exist?
-        //what does the user expect it to do when this happens?
         };
     }   
 

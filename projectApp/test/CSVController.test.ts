@@ -48,7 +48,7 @@ describe("CSVController Tests", () => {
 
         getByName?.setYHeader("X");
         expect(getByName?.getYHeader()).toBe("X");
-        expect(getByName?.getDataByTime("2025-01-19")).toBe(20);
+        expect(getByName?.getDataByTime("2025-01-19")).toBe(40);
 
         expect(getByName?.getBrowserSelected()).toBe(false);
         expect(getByName?.getVRSelected()).toBe(false);

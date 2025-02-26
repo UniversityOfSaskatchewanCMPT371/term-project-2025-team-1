@@ -1,199 +1,196 @@
-import * as THREE from 'three';
-import { Text } from "@react-three/drei";
-import { useState, useRef } from "react";
+import { Root, Container, Text } from '@react-three/uikit';
+import { useState } from 'react';
+import mainController from "../../controller/MainController.tsx";
+import { CSVDataInterface } from '../../types/CSVInterfaces.tsx';
+import { sendLog } from '../../logger-frontend.ts';
 
-//Interface which tracks the location of the Sample DropDown UI
-interface DropDownProps {
-    x: number;  //x position on plane
-    y: number;  //y position on plane
-    z: number;  //z position on plane
+//Props for drop down UI
+interface dropDownProps {
+    position : [number, number, number];    //x, y, z position of dropdown UI on VR scene
+    xSize: number;                          //Width of UI
+    ySize: number;                          //Height of UI
 }
 
-/*Interface for the Interactable Button
-* Will track position, and the text of the button
-*/
-interface DropDownButtonProps {
-    buttonPosition: [number, number, number];   //Location of the button (Using DropDown Location)
-    label: string                               //Text displayed on button
-    type: string                                //The button's type (Used for alert)
-}
+/**
+ * This function is for creating the Dropdown UI in the VR Scene
+ * This displays loaded csv files and allows the generation of a TimeSeriesGraph
+ * @preconditions props used for position in the VR scene
+ * @postconditions the specified drop down UI
+ */
+export default function DropdownUI(props: dropDownProps){
+    const [pressed, press] = useState(false);
+    const [ active, setActive ] = useState(false);
 
-//Interface for the Alert which allows the user to know that they interacted with the button
-interface AlertProps {
-    buttonPosition: [number, number, number];   //Location of the Alert in respect to the DropDown UI
-    type: string                                //Specify which type is displayed on the Alert box
-    
-}
-
-/*
-* This function is for the sample Drop Down UI
-* It will show a display for the Different CSV Reader types
-* As well as having an interable button in the program
-*/
-export default function DropDownUI({x, y, z}: DropDownProps){
-    const posX = x;
-    const posY = y;
-    const posZ = z;
-    const [ alertActive, alert ] = useState('');
-
-    //This function creates the interactable button, takes an interface of DropDownButtonProps
-    function DropDownButton({buttonPosition, label, type}: DropDownButtonProps){
-        const [ hovered, hover ] = useState(false);
-        const mesh = useRef<THREE.Mesh>(null);
-
-        return(
-            // Initializing the mesh of the button
-            <mesh 
-            // Assigning position, and usestates for the button
-                ref={mesh}
-                position = {buttonPosition}
-                onClick = {() => alert(type)}
-                onPointerOver = {() => hover(true)}
-                onPointerOut = {() => hover(false)}>
-
-                {/* The Button Object with the text */}
-                <planeGeometry 
-                    attach = "geometry" 
-                    args = {[0.4,0.1]}/>
-                <meshStandardMaterial 
-                    attach = "material" 
-                    color ={hovered ? "grey" : "white"}/>
-                <Text 
-                    position = {[0, 0, 0.01]}
-                    fontSize = {0.06}
-                    color = {"black"}>
-                    {label}
-                </Text>
-
-                {/* Assigning an alert type to the button */}
-                <SelectionAlert 
-                    buttonPosition = {buttonPosition}
-                    type = {type}/>
-            </mesh>
-        )
-    }
-
-    //This function is the Alert sent when a button is selected, takes an interface of AlertProps
-    function SelectionAlert({buttonPosition, type}: AlertProps){
-        
+    /**
+     * This is the function for creating a loaded csv object displayed in the DropDown UI
+     * @preconditions A csv data to be displayed
+     * @postcondition Display loaded csv file
+     */
+    function GenerateRowObject({data} : {data: CSVDataInterface}): React.JSX.Element{
+        //The list of objects/loaded csv files row by row
         return(
             <>
-            {/* The alert object */}
-            <mesh 
-                position = {[posX -buttonPosition[0] + 2, posY - buttonPosition[1], 0.01]}
-                visible = {type == alertActive}>
-
-                <planeGeometry 
-                    args = {[0.8,0.5]}/>
-                <meshStandardMaterial 
-                    attach = "material" 
-                    color = {"burlywood"}/>
-                <Text 
-                    position = {[0, 0, 0.01]}
-                    fontSize = {0.06}
-                    color = {"black"}>
-                        {type} Reader Clicked !
-                </Text>
-            </mesh>
-
-            {/* This is so that the back of the alert isn't transparent */}
-            <mesh 
-                position = {[posX -  buttonPosition[0] + 2, posY - buttonPosition[1], 0.01]}
-                rotation = {[0, 3.14,0]}
-                visible = {type == alertActive}>
-
-                <planeGeometry 
-                    args={[0.8,0.5]}/>
-                <meshStandardMaterial 
-                    attach="material" 
-                    color ={"burlywood"}/>
-            </mesh>
+                <Container flexDirection={"row"} alignItems={"flex-start"} justifyContent={"flex-start"} 
+                width={"100%"} height={"10%"}>
+                    <Container width={"50%"} height={"100%"}>
+                        <Text fontWeight={"bold"} positionLeft={20} >{data.getName()}</Text>
+                    </Container>
+                    <Container width={"50%"} height={"100%"}
+                    alignItems={"center"} justifyContent={"center"}>
+                        <RowObjectButtons data={data}/>
+                    </Container>
+                </Container>
             </>
         )
     }
 
-    return(
+    /**
+     * Buttons used for changing the display board
+     * @precondition A csv data linked to these button updates
+     * @postconditions Two buttons for incrementing and decrementing, the current display board number
+     */
+    function RowObjectButtons({data}:{data: CSVDataInterface}): React.JSX.Element{
+        return (
+            <>
+            <Container>
+                {/* Displaying the < button */}
+                <Container 
+                    backgroundColor={"gray"} width={"25%"} 
+                    alignItems={"center"} justifyContent={"center"} positionRight={2}
+                    backgroundOpacity={0.5}
+                    hover={{backgroundOpacity: 0.75}} onClick={() => {
+                        data.decrementDisplayBoard();
+                        sendLog("info","RowObjectButtons [<] pressed");
+                    }}>
+                        <Text fontWeight={"bold"}>&lt;</Text>
+                </Container>
+
+                {/* Displaying the board number */}
+                <Container width={"30%"} alignItems={"center"} justifyContent={"center"}>
+                    <Text fontWeight={"bold"}>{data.getDisplayBoard().toString()}</Text>
+                </Container>
+
+                {/* Displaying the > button */}
+                <Container 
+                    backgroundColor={"gray"} width={"25%"} 
+                    alignItems={"center"} justifyContent={"center"} positionLeft={2}
+                    backgroundOpacity={0.5}
+                    hover={{backgroundOpacity: 0.75}} onClick={() => {
+                        data.incrementDisplayBoard();
+                        sendLog("info","RowObjectButtons []>] pressed");
+                    }}>
+                        <Text fontWeight={"bold"}>&gt;</Text>
+                </Container>
+            </Container>
+            </>
+        )
+    }
+
+    /*
+    * Generates the graph, and then updates main scene
+    */
+    function update(): void{
+        mainController.getCSVController().generate();
+        mainController.updateMainScene();
+    }
+
+    /**
+     * Generates the list of loaded csv files and assigned RowObjectButtons
+     * Also in charge of generating a new Time Series Graph
+     * @precondition none
+     * @postcondition Lists all loaded csv files and assigned components
+     */
+    function GenerateList(): React.JSX.Element{
+        return (
+            <>
+                <Container flexDirection={"column"} flexGrow={props.xSize}>
+                    <Container height={"90%"} width={"100%"} flexDirection={"column"} 
+                        alignItems={"flex-start"} justifyContent={"flex-start"}>
+
+                        {/* Reading through Model csv data files */}
+                        {mainController.getCSVController().getModelData().map((graph) => (
+                            <GenerateRowObject data={graph} key={graph.getName()}></GenerateRowObject>
+                        ))}
+                    </Container>
+
+                    <Container flexDirection={"row"} alignItems={"flex-end"} justifyContent={"flex-end"} 
+                        height={"8%"} width={"95%"}> 
+
+                        <Container width={"30%"} height={"100%"} backgroundColor={"gray"} backgroundOpacity={0.5}
+                            hover={{backgroundOpacity: 0.75}} onClick={() => {
+                                update();
+                                sendLog("info","GenerateList [BUTTON]? pressed");
+                        }}>
+                            <Text fontWeight={"bold"} positionLeft={"20%"} positionBottom={"5%"}>Generate</Text>
+                        </Container>
+            
+                    </Container>
+                </Container>
+            </>
+        )
+    }
+    
+    /**
+     * The main display of the DropDownUI, along with the button that displays it
+     * @preconditions none
+     * @postconditions The activation button and the drop down UI
+     */
+    function DropDownBody(): React.JSX.Element{
+        return (
+            <>
+            {/* Use the component <Fullscreen> of uikit 
+                For Now its okay to keep it static*/}
+                <mesh position={props.position}>
+                
+                    <mesh position={[(-0.5) - (props.xSize/2), 0, 0]}>
+                        <Root  sizeX={0.5} sizeY={0.5}>
+                            <Container
+                                flexGrow={1}
+                                onClick={() => {
+                                    setActive(!active);
+                                    sendLog("info","DropDownBody [active] button pressed");
+                                }}
+                                backgroundColor={"black"}
+                                backgroundOpacity={0.7}
+                                hover={{backgroundOpacity: 1}}>
+                            </Container>
+                        </Root>
+                    </mesh>
+                    <mesh position={[0,0,0]} visible={active}>
+                        <Root backgroundColor="grey" sizeX={props.xSize} sizeY={props.ySize} flexDirection={"column"}>   
+                            <Container height={"10%"} width={"99%"} margin={1} backgroundColor={"lightgray"}>
+                                <Text fontWeight={"bold"} positionLeft={20}>
+                                    Loaded Graphs</Text>
+                            </Container>
+
+                            <Container
+                                height={"88%"}
+                                width={"99%"}
+                                margin={1}
+                                onClick={() => {
+                                    press(!pressed);
+                                    sendLog("info","DropDownBody [create] button pressed");
+                                }}
+                                backgroundColor={"lightgray"}
+                                backgroundOpacity={0.8}>
+
+                            {/* Create objects representing loaded graphs in model 
+                                Each will have a button that sets a use state for selected
+                                Then a button for loading selected graph, activate use state
+                                Then on a useState, update*/}
+                                    <GenerateList/>
+
+                            </Container>
+                        </Root>
+                    </mesh>
+                </mesh>
+            </>
+        )
+    }
+
+    return (
         <>
-        {/* The First Mesh will handle the rotation, positioning and visibility 
-        These values could later on be implemented as an interface
-        P.S: Found possible libraries that can be used as a GUI Instead of Geometries*/}
-        <mesh 
-            rotation = {[0, 1.57, 0]}
-            position = {[posX - 1, posY - 1, posZ - 2]}
-            visible = {true}>
-
-            {/* The plane of the Sample Drop Down UI and its back */}
-            <mesh 
-                position = {[posX, posY, posZ]}>
-                <planeGeometry 
-                    attach = "geometry" 
-                    args = {[2.5,1.4]}/>
-                <meshStandardMaterial 
-                    attach = "material" 
-                    color = "burlywood"/>
-            </mesh>
-            <mesh 
-                rotation = {[0, 3.14,0]} 
-                position = {[posX, posY, posZ]}>
-                <planeGeometry 
-                    attach = "geometry" 
-                    args = {[2.5,1.4]}/>
-                <meshStandardMaterial 
-                    attach ="material" 
-                    color = "burlywood"/>
-            </mesh>
-
-            {/* Title of the DropDownUI */}
-            <mesh 
-                rotation = {[0,0,0]} 
-                position = {[posX,posY + 0.5, posZ + 0.01]}>
-                <Text 
-                    fontSize = {0.2}
-                    color = {"black"}>
-                    Add a CSV File
-                </Text>
-            </mesh>
-
-            {/* These next blocks are for Entering File By URL */}
-            <mesh 
-                rotation = {[0,0,0]} 
-                position = {[posX - 0.8 ,posY + 0.1,posZ + 0.01]}>
-                <Text 
-                    fontSize = {0.1}
-                    color = {"black"}>
-                    Enter By URL:
-                </Text>
-            </mesh>
-            <mesh 
-                rotation = {[0,0,0]} 
-                position = {[posX + 0.1,posY + 0.1,posZ + 0.01]}>
-                <planeGeometry 
-                    attach="geometry" 
-                    args={[1,0.1]}/>
-                <meshStandardMaterial 
-                    attach="material" 
-                    color = "white"/>
-            </mesh>
-            <DropDownButton
-                buttonPosition = {[posX + 0.9, posY + 0.1, posZ + 0.01]}
-                label = {"Enter"}
-                type = {"URL"}/>
-
-            {/* These next blocks are for Loading Local File */}
-            <mesh 
-                rotation = {[0,0,0]} 
-                position = {[posX- 0.9,posY - 0.35,posZ + 0.01]}>
-                <Text 
-                    fontSize = {0.1}
-                    color = {"black"}>
-                    Load Local File: 
-                </Text>
-            </mesh>
-            <DropDownButton 
-                buttonPosition = {[posX - 0.25,posY - 0.35,posZ + 0.01]}
-                label = {'Load File'}
-                type = {"Local"}/>
-        </mesh>
+        <DropDownBody/>
         </>
     )
-};
+}

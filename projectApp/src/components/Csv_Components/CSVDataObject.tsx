@@ -1,14 +1,12 @@
-import { LocalCSVReader, LocalCsvReader } from "../components/CSV_Readers/LocalCSVReader";
-import { CSVData } from "../types/CSVInterfaces";
-// import logger from "../logging/logs";
-import { UrlCSVReader } from "../components/CSV_Readers/UrlCSVReader";
-import { sendError, sendLog } from "../logger-frontend";
+import { CSVDataInterface } from "../../types/CSVInterfaces";
+import { LocalCSVReader, LocalCsvReader, UrlCSVReader } from "./CSVReaders";
+import { sendError, sendLog } from "../../logger-frontend";
 
 /**
  * Class representing a CSV data structure that implements the CSVData interface.
  * Handles loading, storing, and managing CSV data for VR visualization.
  */
-export class CSVDataObject implements CSVData{
+export class CSVDataObject implements CSVDataInterface{
     name: string;
     csvHeaders: string[];
     data: { key: Record<string,string | number> }[];
@@ -24,20 +22,12 @@ export class CSVDataObject implements CSVData{
         this.name = "";
         this.csvHeaders = [];
         this.data = [];
-        this.yHeader = ""; //Will attempt for the second header [1]
+        this.yHeader = "";
         this.browserSelected = false;
         this.displayBoard = 0;
         this.vrSelected = false;
     }
-    /**
-     * Sets the data array for the CSV object
-     * @param data Array of key-value pair records
-     * @precondition data must be a non-null array
-     * @postcondition this.data will contain the provided data array
-     */
-    setData(data: { key: Record<string,string | number> }[]){
-        this.data = data;
-    }
+
     /**
      * Loads CSV data from either a file or URL
      * @param index Index number used to generate the graph name
@@ -48,7 +38,7 @@ export class CSVDataObject implements CSVData{
      * @postcondition On success: data, csvHeaders, and name will be populated, On failure: error will be logged and method returns
      * May throw errors during file reading or parsing
      */
-    async loadCSVData(index: number, file: (File | string), isUrl: boolean){
+    async loadCSVData(index: number, file: (File | string), isUrl: boolean): Promise<void>{
         try {
             //tester comment: I think it would be better to just use instanceof operator
             //instead of adding a boolean for isUrl     --Steven
@@ -65,25 +55,10 @@ export class CSVDataObject implements CSVData{
             sendLog("info",`loadCSVData has loaded csv data\n${JSON.stringify(this.data)}`);
         }
         catch(error: unknown) {
+            //Log the error
             sendError(error, "loadCSVData error");
-            return;
+            throw error;
         }
-    }
-    /**
-     * Loads CSV data from a local file
-     * @param index Index number used to generate the graph name
-     * @param file Local File object containing CSV data
-     */
-    async loadLocalCSVFile(index: number,file: File){
-        await this.loadCSVData(index, file, false);
-    }
-    /**
-     * Loads CSV data from a URL
-     * @param index Index number used to generate the graph name
-     * @param file URL string pointing to CSV data
-     */
-    async loadUrlCSVFile(index: number,file: string){
-        await this.loadCSVData(index, file, true);
     }
 
     /**
@@ -91,7 +66,7 @@ export class CSVDataObject implements CSVData{
      * @param index Index number used to generate the graph name
      * @param file File path string
      */
-    async loadLocalByPath(index: number,file: string){
+    async loadLocalByPath(index: number,file: string): Promise<void>{
         try {
             const data = await LocalCSVReader(file);
             this.setData(data);
@@ -99,11 +74,39 @@ export class CSVDataObject implements CSVData{
             sendLog("info",`loadLocalByPath has loaded csv data\n${JSON.stringify(this.data)}}`);
         }
         catch(error: unknown) {
+            //Log the error
             sendError(error, "loadLocalByPath error");
-            return;
+            throw error;
         }
     }
+
     /**
+     * Toggles display board index between 0 and 1
+     * @precondition displayBoard must be 0 or 1
+     * @postcondition displayBoard value will be toggled between 0 and 1
+     */
+    incrementDisplayBoard(): void{
+        if(this.displayBoard == 0){
+            this.displayBoard++;
+        }
+        else{
+            this.displayBoard = 0;
+        }
+    }
+
+    /**
+     * @postcondition Toggles display board index between 0 and 1
+     */
+    decrementDisplayBoard(): void{
+        if(this.displayBoard == 0){
+            this.displayBoard = 1;
+        }
+        else{
+            this.displayBoard--;
+        }
+    }
+
+     /**
      * Retrieves data by a specific key
      * @param key Key to search for in the data
      * @precondition key must be a non-empty string, this.data must be initialized
@@ -138,11 +141,9 @@ export class CSVDataObject implements CSVData{
     getDataByTime(time:string): Record<string, string | number> | null{
         let result: Record<string, string | number> | null = null;
         for(const value of this.data){
-            //console.log(val);
             const val = value;
             for(const header of Object.keys(val)){
                 if(val[header as keyof typeof val] as unknown as string == time){
-                    //console.log(val[header as keyof typeof val], "  ", val[this.yHeader as keyof typeof val]);
                     result = val[this.yHeader as keyof typeof val];
                     sendLog("info","getDataByKey has found data");
                     return result;
@@ -158,49 +159,49 @@ export class CSVDataObject implements CSVData{
      * @precondition none
      * @returns The complete data array
      */
-    getData(){
+    getData():{key: Record<string, string | number>}[]{
         return this.data;
     };
     /**
      * @precondition none
      * @returns The name of the CSV data object
      */
-    getName(){
+    getName(): string{
         return this.name;
     }
     /**
      * @precondition none
      * @returns Array of CSV column headers
      */
-    getCSVHeaders(){
+    getCSVHeaders(): string[]{
         return this.csvHeaders;
     }
     /**
      * @precondition none
      * @returns Currently selected Y-axis header
      */
-    getYHeader(){
+    getYHeader(): string{
         return this.yHeader;
     }
     /**
      * @precondition none
      * @returns Boolean indicating if browser visualization is selected
      */
-    getBrowserSelected(){
+    getBrowserSelected(): boolean{
         return this.browserSelected;
     }
     /**
      * @precondition none
      * @returns Boolean indicating if VR visualization is selected
      */
-    getVRSelected(){
+    getVRSelected(): boolean{
         return this.vrSelected;
     };
     /**
      * @precondition none
      * @returns Current display board index
      */
-    getDisplayBoard(){
+    getDisplayBoard(): number{
         return this.displayBoard;
     }
     /**
@@ -220,15 +221,21 @@ export class CSVDataObject implements CSVData{
     }
 
     /**
-     * Sets the name of the CSV data object
-     * @param name New name to set
-     * @precondition name must be a string
-     * @postcondition Class name attribute is set to name
+     * Sets the data array for the CSV object
+     * @param data Array of key-value pair records
+     * @precondition data must be a non-null array
+     * @postcondition this.data will contain the provided data array
      */
+    setData(data: { key: Record<string,string | number> }[]): void{
+        this.data = data;
+    }
+    // Setter getters
+    // Post-condition: The `name` property is updated to the provided name.
     setName(name: string){
         sendLog("info",`setName, ${this.name} will now be called ${name}`);
         this.name = name;
     }
+
     /**
      * Sets the browser visualization selection state
      * @param bool Boolean value to set
@@ -250,6 +257,7 @@ export class CSVDataObject implements CSVData{
         sendLog("info",`setVRSelected, ${this.name} vr is set to ${bool.toString()}`);
         this.vrSelected = bool;
     }
+
     /**
      * Sets the Y-axis header if it exists in CSV headers
      * @param header Header string to set as Y-axis
@@ -267,30 +275,4 @@ export class CSVDataObject implements CSVData{
         }
     }
 
-    /**
-     * Toggles display board index between 0 and 1
-     * @precondition displayBoard must be 0 or 1
-     * @postcondition displayBoard value will be toggled between 0 and 1
-     */
-    incrementDisplayBoard(){
-        sendLog("info",`incrementDisplayBoard, ${this.name} increase displays by 1`);
-        if(this.displayBoard == 0){
-            this.displayBoard++;
-        }
-        else{
-            this.displayBoard = 0;
-        }
-    }
-    /**
-     * @postcondition Toggles display board index between 0 and 1
-     */
-    decrementDisplayBoard(){
-        sendLog("info",`decrementDisplayBoard, ${this.name} decrease displays by 1`);
-        if(this.displayBoard == 0){
-            this.displayBoard = 1;
-        }
-        else{
-            this.displayBoard--;
-        }
-    }
 }

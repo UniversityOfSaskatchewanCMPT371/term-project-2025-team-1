@@ -26,8 +26,8 @@ export class MainController {
      * Retrieves the CSV controller instance
      * @precondition none
      * @postcondition Returns existing CSV controller without modification
-     */
-    getCSVController() {
+     */ 
+    getCSVController(): CSVController{
         return this.csvController;
     }
 
@@ -36,7 +36,7 @@ export class MainController {
      * 
      * @postcondition Returns existing Graph controller without modification
      */
-    getGraphController() {
+    getGraphController(): GraphController{
         return this.graphController;
     }
 
@@ -47,7 +47,7 @@ export class MainController {
      * @precondition ref must have a 'current' property
      * @postcondition updateScene is set to the provided reference's current value
      */
-    setSceneRef(ref: any) {
+    setSceneRef(ref: any): void{
         this.updateScene = ref.current;
     }
 
@@ -57,8 +57,8 @@ export class MainController {
      * @precondition updateScene must be set and have an updateScene method
      * @postcondition Scene update is triggered if preconditions are met
      */
-    updateMainScene() {
-        if(this.updateScene?.updateScene) {
+    updateMainScene(): void{
+        if(this.updateScene?.updateScene){
             this.updateScene.updateScene();
         }
     }

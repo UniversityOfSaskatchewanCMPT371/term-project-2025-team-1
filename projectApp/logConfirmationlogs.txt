@@ -1,248 +1,541 @@
-{"level":30,"time":1740544094275,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"URLCSVReader has successfully parsed\n[{\"Time\":\"2025-01-18\",\"X\":10,\"Y\":15},{\"Time\":\"2025-01-19\",\"X\":40,\"Y\":25},{\"Time\":\"2025-01-20\",\"X\":30,\"Y\":35},{\"Time\":\"2025-01-21\",\"X\":20,\"Y\":45}]"}
-{"level":30,"time":1740544094280,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"setName,  will now be called Graph0"}
-{"level":30,"time":1740544094281,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"setYHeader, Graph0 yHeader is set to X"}
-{"level":30,"time":1740544094283,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"loadCSVData has loaded csv data\n[{\"Time\":\"2025-01-18\",\"X\":10,\"Y\":15},{\"Time\":\"2025-01-19\",\"X\":40,\"Y\":25},{\"Time\":\"2025-01-20\",\"X\":30,\"Y\":35},{\"Time\":\"2025-01-21\",\"X\":20,\"Y\":45}]"}
-{"level":30,"time":1740544094283,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"readURLFile read a file\n[{\"Time\":\"2025-01-18\",\"X\":10,\"Y\":15},{\"Time\":\"2025-01-19\",\"X\":40,\"Y\":25},{\"Time\":\"2025-01-20\",\"X\":30,\"Y\":35},{\"Time\":\"2025-01-21\",\"X\":20,\"Y\":45}]"}
-{"level":30,"time":1740544096729,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"URLComponent read: https://raw.githubusercontent.com/UniversityOfSaskatchewanCMPT371/term-project-2025-team-1/refs/heads/ID2Dev/csvTestFiles/test.csv"}
-{"level":30,"time":1740544096730,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"loadedCsvBrowser() returns list\n[[\"Graph0\",false]]"}
-{"level":30,"time":1740544096732,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"UnmountedComponents unmount: 1"}
-{"level":30,"time":1740544096734,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"loadedCsvBrowser() returns list\n[[\"Graph0\",false]]"}
-{"level":30,"time":1740544096735,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"UnmountedComponents unmount: 1"}
-{"level":50,"time":1740544102658,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","name":"TypeError","errmessage":"Failed to fetch","stack":"TypeError: Failed to fetch\n    at UrlCSVReader (https://localhost:5173/src/components/Csv_Components/CSVReaders.tsx:121:12)\n    at CSVDataObject.loadCSVData (https://localhost:5173/src/components/Csv_Components/CSVDataObject.tsx:35:34)\n    at CSVReaderModel.readURLFile (https://localhost:5173/src/models/CSVReaderModel.tsx:61:18)\n    at CSVController.loadURLFile (https://localhost:5173/src/controller/CSVController.tsx:48:29)\n    at onClick (https://localhost:5173/src/pages/UI/BrowserUI.tsx:50:53)\n    at HTMLUnknownElement.callCallback2 (https://localhost:5173/node_modules/.vite/deps/chunk-SRNDHWC2.js?v=bc892c0e:3680:22)\n    at Object.invokeGuardedCallbackDev (https://localhost:5173/node_modules/.vite/deps/chunk-SRNDHWC2.js?v=bc892c0e:3705:24)\n    at invokeGuardedCallback (https://localhost:5173/node_modules/.vite/deps/chunk-SRNDHWC2.js?v=bc892c0e:3739:39)\n    at invokeGuardedCallbackAndCatchFirstError (https://localhost:5173/node_modules/.vite/deps/chunk-SRNDHWC2.js?v=bc892c0e:3742:33)\n    at executeDispatch (https://localhost:5173/node_modules/.vite/deps/chunk-SRNDHWC2.js?v=bc892c0e:7046:11)","msg":"loadCSVData error"}
-{"level":50,"time":1740544102660,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","name":"TypeError","errmessage":"Failed to fetch","stack":"TypeError: Failed to fetch\n    at UrlCSVReader (https://localhost:5173/src/components/Csv_Components/CSVReaders.tsx:121:12)\n    at CSVDataObject.loadCSVData (https://localhost:5173/src/components/Csv_Components/CSVDataObject.tsx:35:34)\n    at CSVReaderModel.readURLFile (https://localhost:5173/src/models/CSVReaderModel.tsx:61:18)\n    at CSVController.loadURLFile (https://localhost:5173/src/controller/CSVController.tsx:48:29)\n    at onClick (https://localhost:5173/src/pages/UI/BrowserUI.tsx:50:53)\n    at HTMLUnknownElement.callCallback2 (https://localhost:5173/node_modules/.vite/deps/chunk-SRNDHWC2.js?v=bc892c0e:3680:22)\n    at Object.invokeGuardedCallbackDev (https://localhost:5173/node_modules/.vite/deps/chunk-SRNDHWC2.js?v=bc892c0e:3705:24)\n    at invokeGuardedCallback (https://localhost:5173/node_modules/.vite/deps/chunk-SRNDHWC2.js?v=bc892c0e:3739:39)\n    at invokeGuardedCallbackAndCatchFirstError (https://localhost:5173/node_modules/.vite/deps/chunk-SRNDHWC2.js?v=bc892c0e:3742:33)\n    at executeDispatch (https://localhost:5173/node_modules/.vite/deps/chunk-SRNDHWC2.js?v=bc892c0e:7046:11)","msg":"readURLFile error"}
-{"level":50,"time":1740544102661,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","name":"TypeError","errmessage":"Failed to fetch","stack":"TypeError: Failed to fetch\n    at UrlCSVReader (https://localhost:5173/src/components/Csv_Components/CSVReaders.tsx:121:12)\n    at CSVDataObject.loadCSVData (https://localhost:5173/src/components/Csv_Components/CSVDataObject.tsx:35:34)\n    at CSVReaderModel.readURLFile (https://localhost:5173/src/models/CSVReaderModel.tsx:61:18)\n    at CSVController.loadURLFile (https://localhost:5173/src/controller/CSVController.tsx:48:29)\n    at onClick (https://localhost:5173/src/pages/UI/BrowserUI.tsx:50:53)\n    at HTMLUnknownElement.callCallback2 (https://localhost:5173/node_modules/.vite/deps/chunk-SRNDHWC2.js?v=bc892c0e:3680:22)\n    at Object.invokeGuardedCallbackDev (https://localhost:5173/node_modules/.vite/deps/chunk-SRNDHWC2.js?v=bc892c0e:3705:24)\n    at invokeGuardedCallback (https://localhost:5173/node_modules/.vite/deps/chunk-SRNDHWC2.js?v=bc892c0e:3739:39)\n    at invokeGuardedCallbackAndCatchFirstError (https://localhost:5173/node_modules/.vite/deps/chunk-SRNDHWC2.js?v=bc892c0e:3742:33)\n    at executeDispatch (https://localhost:5173/node_modules/.vite/deps/chunk-SRNDHWC2.js?v=bc892c0e:7046:11)","msg":"URLCSVReader error"}
-{"level":50,"time":1740544102662,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","name":"TypeError","errmessage":"Failed to fetch","stack":"TypeError: Failed to fetch\n    at UrlCSVReader (https://localhost:5173/src/components/Csv_Components/CSVReaders.tsx:121:12)\n    at CSVDataObject.loadCSVData (https://localhost:5173/src/components/Csv_Components/CSVDataObject.tsx:35:34)\n    at CSVReaderModel.readURLFile (https://localhost:5173/src/models/CSVReaderModel.tsx:61:18)\n    at CSVController.loadURLFile (https://localhost:5173/src/controller/CSVController.tsx:48:29)\n    at onClick (https://localhost:5173/src/pages/UI/BrowserUI.tsx:50:53)\n    at HTMLUnknownElement.callCallback2 (https://localhost:5173/node_modules/.vite/deps/chunk-SRNDHWC2.js?v=bc892c0e:3680:22)\n    at Object.invokeGuardedCallbackDev (https://localhost:5173/node_modules/.vite/deps/chunk-SRNDHWC2.js?v=bc892c0e:3705:24)\n    at invokeGuardedCallback (https://localhost:5173/node_modules/.vite/deps/chunk-SRNDHWC2.js?v=bc892c0e:3739:39)\n    at invokeGuardedCallbackAndCatchFirstError (https://localhost:5173/node_modules/.vite/deps/chunk-SRNDHWC2.js?v=bc892c0e:3742:33)\n    at executeDispatch (https://localhost:5173/node_modules/.vite/deps/chunk-SRNDHWC2.js?v=bc892c0e:7046:11)","msg":"loadURLFile Error"}
-{"level":30,"time":1740544103750,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"URLComponent read: https://raw..com/UniversityOfSaskatchewanCMPT371/term-project-2025-team-1/refs/heads/ID2Dev/csvTestFiles/test.csv"}
-{"level":30,"time":1740544103751,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"UnmountedComponents unmount: 2"}
-{"level":30,"time":1740544103752,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"loadedCsvBrowser() returns list\n[[\"Graph0\",false]]"}
-{"level":30,"time":1740544103754,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"loadedCsvBrowser() returns list\n[[\"Graph0\",false]]"}
-{"level":30,"time":1740544103754,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"UnmountedComponents unmount: 2"}
-{"level":30,"time":1740544115149,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"LocalCsvReader(file) has read data\n[{\"Time\":\"2025-01-18\",\"X\":10,\"Y\":15},{\"Time\":\"2025-01-19\",\"X\":40,\"Y\":25},{\"Time\":\"2025-01-20\",\"X\":30,\"Y\":35},{\"Time\":\"2025-01-21\",\"X\":20,\"Y\":45}]"}
-{"level":30,"time":1740544115151,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"setName,  will now be called Graph1"}
-{"level":30,"time":1740544115151,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"setYHeader, Graph1 yHeader is set to X"}
-{"level":30,"time":1740544115152,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"loadCSVData has loaded csv data\n[{\"Time\":\"2025-01-18\",\"X\":10,\"Y\":15},{\"Time\":\"2025-01-19\",\"X\":40,\"Y\":25},{\"Time\":\"2025-01-20\",\"X\":30,\"Y\":35},{\"Time\":\"2025-01-21\",\"X\":20,\"Y\":45}]"}
-{"level":30,"time":1740544115152,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"readLocalFile read a file\n[{\"Time\":\"2025-01-18\",\"X\":10,\"Y\":15},{\"Time\":\"2025-01-19\",\"X\":40,\"Y\":25},{\"Time\":\"2025-01-20\",\"X\":30,\"Y\":35},{\"Time\":\"2025-01-21\",\"X\":20,\"Y\":45}]"}
-{"level":30,"time":1740544116243,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"LoadComponent read: test.csv"}
-{"level":30,"time":1740544116253,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"loadedCsvBrowser() returns list\n[[\"Graph0\",false],[\"Graph1\",false]]"}
-{"level":30,"time":1740544116254,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"UnmountedComponents unmount: 3"}
-{"level":30,"time":1740544116254,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"UnmountedComponents unmount: 3"}
-{"level":30,"time":1740544116255,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"loadedCsvBrowser() returns list\n[[\"Graph0\",false],[\"Graph1\",false]]"}
-{"level":30,"time":1740544116256,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"UnmountedComponents unmount: 3"}
-{"level":30,"time":1740544116258,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"UnmountedComponents unmount: 3"}
-{"level":50,"time":1740544120526,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","name":"Error","errmessage":"file must be csv or txt","stack":"Error: file must be csv or txt\n    at https://localhost:5173/src/components/Csv_Components/CSVReaders.tsx:77:25\n    at new Promise (<anonymous>)\n    at LocalCsvReader (https://localhost:5173/src/components/Csv_Components/CSVReaders.tsx:75:10)\n    at CSVDataObject.loadCSVData (https://localhost:5173/src/components/Csv_Components/CSVDataObject.tsx:35:61)\n    at CSVReaderModel.readLocalFile (https://localhost:5173/src/models/CSVReaderModel.tsx:40:18)\n    at CSVController.loadLocalFile (https://localhost:5173/src/controller/CSVController.tsx:40:29)\n    at onChange (https://localhost:5173/src/pages/UI/BrowserUI.tsx:98:55)\n    at HTMLUnknownElement.callCallback2 (https://localhost:5173/node_modules/.vite/deps/chunk-SRNDHWC2.js?v=bc892c0e:3680:22)\n    at Object.invokeGuardedCallbackDev (https://localhost:5173/node_modules/.vite/deps/chunk-SRNDHWC2.js?v=bc892c0e:3705:24)\n    at invokeGuardedCallback (https://localhost:5173/node_modules/.vite/deps/chunk-SRNDHWC2.js?v=bc892c0e:3739:39)","msg":"LocalCsvReader(file) readme.md is not .csv or .txt"}
-{"level":50,"time":1740544120527,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","name":"Error","errmessage":"file must be csv or txt","stack":"Error: file must be csv or txt\n    at https://localhost:5173/src/components/Csv_Components/CSVReaders.tsx:77:25\n    at new Promise (<anonymous>)\n    at LocalCsvReader (https://localhost:5173/src/components/Csv_Components/CSVReaders.tsx:75:10)\n    at CSVDataObject.loadCSVData (https://localhost:5173/src/components/Csv_Components/CSVDataObject.tsx:35:61)\n    at CSVReaderModel.readLocalFile (https://localhost:5173/src/models/CSVReaderModel.tsx:40:18)\n    at CSVController.loadLocalFile (https://localhost:5173/src/controller/CSVController.tsx:40:29)\n    at onChange (https://localhost:5173/src/pages/UI/BrowserUI.tsx:98:55)\n    at HTMLUnknownElement.callCallback2 (https://localhost:5173/node_modules/.vite/deps/chunk-SRNDHWC2.js?v=bc892c0e:3680:22)\n    at Object.invokeGuardedCallbackDev (https://localhost:5173/node_modules/.vite/deps/chunk-SRNDHWC2.js?v=bc892c0e:3705:24)\n    at invokeGuardedCallback (https://localhost:5173/node_modules/.vite/deps/chunk-SRNDHWC2.js?v=bc892c0e:3739:39)","msg":"loadCSVData error"}
-{"level":50,"time":1740544120528,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","name":"Error","errmessage":"file must be csv or txt","stack":"Error: file must be csv or txt\n    at https://localhost:5173/src/components/Csv_Components/CSVReaders.tsx:77:25\n    at new Promise (<anonymous>)\n    at LocalCsvReader (https://localhost:5173/src/components/Csv_Components/CSVReaders.tsx:75:10)\n    at CSVDataObject.loadCSVData (https://localhost:5173/src/components/Csv_Components/CSVDataObject.tsx:35:61)\n    at CSVReaderModel.readLocalFile (https://localhost:5173/src/models/CSVReaderModel.tsx:40:18)\n    at CSVController.loadLocalFile (https://localhost:5173/src/controller/CSVController.tsx:40:29)\n    at onChange (https://localhost:5173/src/pages/UI/BrowserUI.tsx:98:55)\n    at HTMLUnknownElement.callCallback2 (https://localhost:5173/node_modules/.vite/deps/chunk-SRNDHWC2.js?v=bc892c0e:3680:22)\n    at Object.invokeGuardedCallbackDev (https://localhost:5173/node_modules/.vite/deps/chunk-SRNDHWC2.js?v=bc892c0e:3705:24)\n    at invokeGuardedCallback (https://localhost:5173/node_modules/.vite/deps/chunk-SRNDHWC2.js?v=bc892c0e:3739:39)","msg":"readLocalFile error"}
-{"level":50,"time":1740544120528,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","name":"Error","errmessage":"file must be csv or txt","stack":"Error: file must be csv or txt\n    at https://localhost:5173/src/components/Csv_Components/CSVReaders.tsx:77:25\n    at new Promise (<anonymous>)\n    at LocalCsvReader (https://localhost:5173/src/components/Csv_Components/CSVReaders.tsx:75:10)\n    at CSVDataObject.loadCSVData (https://localhost:5173/src/components/Csv_Components/CSVDataObject.tsx:35:61)\n    at CSVReaderModel.readLocalFile (https://localhost:5173/src/models/CSVReaderModel.tsx:40:18)\n    at CSVController.loadLocalFile (https://localhost:5173/src/controller/CSVController.tsx:40:29)\n    at onChange (https://localhost:5173/src/pages/UI/BrowserUI.tsx:98:55)\n    at HTMLUnknownElement.callCallback2 (https://localhost:5173/node_modules/.vite/deps/chunk-SRNDHWC2.js?v=bc892c0e:3680:22)\n    at Object.invokeGuardedCallbackDev (https://localhost:5173/node_modules/.vite/deps/chunk-SRNDHWC2.js?v=bc892c0e:3705:24)\n    at invokeGuardedCallback (https://localhost:5173/node_modules/.vite/deps/chunk-SRNDHWC2.js?v=bc892c0e:3739:39)","msg":"loadLocalFile Error"}
-{"level":50,"time":1740544121679,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","name":"Error","errmessage":"Invalid File","stack":"Error: Invalid File\n    at onChange (https://localhost:5173/src/pages/UI/BrowserUI.tsx:103:25)","msg":"LoadComponent Return Error"}
-{"level":30,"time":1740544121684,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"loadedCsvBrowser() returns list\n[[\"Graph0\",false],[\"Graph1\",false]]"}
-{"level":30,"time":1740544121685,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"UnmountedComponents unmount: 4"}
-{"level":30,"time":1740544121685,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"UnmountedComponents unmount: 4"}
-{"level":30,"time":1740544121686,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"loadedCsvBrowser() returns list\n[[\"Graph0\",false],[\"Graph1\",false]]"}
-{"level":30,"time":1740544121686,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"UnmountedComponents unmount: 4"}
-{"level":30,"time":1740544121688,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"UnmountedComponents unmount: 4"}
-{"level":30,"time":1740544130427,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"DropDownBody [create] button pressed"}
-{"level":30,"time":1740544131157,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"DropDownBody [active] button pressed"}
-{"level":30,"time":1740544134374,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"DropDownBody [create] button pressed"}
-{"level":30,"time":1740544134774,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"RowObjectButtons []>] pressed"}
-{"level":30,"time":1740544134776,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"DropDownBody [create] button pressed"}
-{"level":30,"time":1740544136619,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"addPoint() has added new points to the graph (TimeSeriesGraphClass.tsx)"}
-{"level":30,"time":1740544136620,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"setVRSelected, Graph0 vr is set to true"}
-{"level":30,"time":1740544136621,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"generate has pushed a new graph"}
-{"level":30,"time":1740544136622,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"GenerateList [BUTTON]? pressed"}
-{"level":30,"time":1740544136623,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"DropDownBody [create] button pressed"}
-{"level":30,"time":1740544136624,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"getVRSelected has returned Graph0"}
-{"level":30,"time":1740544136625,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"setRange() was called; yRange was set to 40 (TimeSeriesGraphClass.tsx)"}
-{"level":30,"time":1740544136638,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"a TimeSeriesGraph has been created (CreateTimeSeries.tsx)"}
-{"level":30,"time":1740544136638,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"timeSeriesYRange() returned 5,10,15,20,25,30,35,40 (TimeSeriesGraphClass.tsx)"}
-{"level":30,"time":1740544136640,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"a TimeSeriesGraph object sidebar was created (TimeSeriesGraph.tsx)"}
-{"level":30,"time":1740544136641,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"a TimeSeriesGraph object header was selected and visually updated to reflect selection (TimeSeriesGraph.tsx)"}
-{"level":30,"time":1740544136643,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"a TimeSeriesGraph object sidebar was created (TimeSeriesGraph.tsx)"}
-{"level":30,"time":1740544136643,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"a TimeSeriesGraph object header was selected and visually updated to reflect selection (TimeSeriesGraph.tsx)"}
-{"level":30,"time":1740544136644,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"a TimeSeriesGraph visualization is being created (TimeSeriesGraph.tsx)"}
-{"level":30,"time":1740544136645,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"timeSeriesXRange() was called and returned 2025-01-18,2025-01-19,2025-01-20,2025-01-21 (TimeSeriesGraphClass.tsx)"}
-{"level":30,"time":1740544136645,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"timeSeriesYRange() returned 5,10,15,20,25,30,35,40 (TimeSeriesGraphClass.tsx)"}
-{"level":30,"time":1740544136646,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"a TimeSeriesGraph visualization is being created (TimeSeriesGraph.tsx)"}
-{"level":30,"time":1740544136646,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"timeSeriesYRange() returned 5,10,15,20,25,30,35,40 (TimeSeriesGraphClass.tsx)"}
-{"level":30,"time":1740544136646,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of points was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
-{"level":30,"time":1740544136647,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"the lines on a TimeSeriesGraph object were created (TimeSeriesGraph.tsx)"}
-{"level":30,"time":1740544136647,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"timeSeriesYRange() returned 5,10,15,20,25,30,35,40 (TimeSeriesGraphClass.tsx)"}
-{"level":30,"time":1740544136648,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"timeSeriesYRange() returned 5,10,15,20,25,30,35,40 (TimeSeriesGraphClass.tsx)"}
-{"level":30,"time":1740544136648,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"timeSeriesXRange() was called and returned 2025-01-18,2025-01-19,2025-01-20,2025-01-21 (TimeSeriesGraphClass.tsx)"}
-{"level":30,"time":1740544136648,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"the lines on a TimeSeriesGraph object were created (TimeSeriesGraph.tsx)"}
-{"level":30,"time":1740544136649,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"timeSeriesYRange() returned 5,10,15,20,25,30,35,40 (TimeSeriesGraphClass.tsx)"}
-{"level":30,"time":1740544136649,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of points was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
-{"level":30,"time":1740544136650,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"the lines on a TimeSeriesGraph object were created (TimeSeriesGraph.tsx)"}
-{"level":30,"time":1740544136650,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of points was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
-{"level":30,"time":1740544136651,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of points was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
-{"level":30,"time":1740544136651,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"the lines on a TimeSeriesGraph object were created (TimeSeriesGraph.tsx)"}
-{"level":30,"time":1740544136651,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"timeSeriesYRange() returned 5,10,15,20,25,30,35,40 (TimeSeriesGraphClass.tsx)"}
-{"level":30,"time":1740544136656,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"timeSeriesYRange() returned 5,10,15,20,25,30,35,40 (TimeSeriesGraphClass.tsx)"}
-{"level":30,"time":1740544136657,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"a TimeSeriesGraph object sidebar was created (TimeSeriesGraph.tsx)"}
-{"level":30,"time":1740544136657,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"a TimeSeriesGraph object header was selected and visually updated to reflect selection (TimeSeriesGraph.tsx)"}
-{"level":30,"time":1740544136658,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"a TimeSeriesGraph visualization is being created (TimeSeriesGraph.tsx)"}
-{"level":30,"time":1740544136658,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"timeSeriesYRange() returned 5,10,15,20,25,30,35,40 (TimeSeriesGraphClass.tsx)"}
-{"level":30,"time":1740544136659,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"timeSeriesXRange() was called and returned 2025-01-18,2025-01-19,2025-01-20,2025-01-21 (TimeSeriesGraphClass.tsx)"}
-{"level":30,"time":1740544136659,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"timeSeriesYRange() returned 5,10,15,20,25,30,35,40 (TimeSeriesGraphClass.tsx)"}
-{"level":30,"time":1740544136660,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of points was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
-{"level":30,"time":1740544136660,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"the lines on a TimeSeriesGraph object were created (TimeSeriesGraph.tsx)"}
-{"level":30,"time":1740544136660,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"timeSeriesYRange() returned 5,10,15,20,25,30,35,40 (TimeSeriesGraphClass.tsx)"}
-{"level":30,"time":1740544136660,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of points was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
-{"level":30,"time":1740544136660,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"the lines on a TimeSeriesGraph object were created (TimeSeriesGraph.tsx)"}
-{"level":30,"time":1740544136661,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"the lines on a TimeSeriesGraph object were created (TimeSeriesGraph.tsx)"}
-{"level":30,"time":1740544136661,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"timeSeriesYRange() returned 5,10,15,20,25,30,35,40 (TimeSeriesGraphClass.tsx)"}
-{"level":30,"time":1740544136661,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of points was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
-{"level":30,"time":1740544136661,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"timeSeriesYRange() returned 5,10,15,20,25,30,35,40 (TimeSeriesGraphClass.tsx)"}
-{"level":30,"time":1740544136662,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of points was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
-{"level":30,"time":1740544136662,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"the lines on a TimeSeriesGraph object were created (TimeSeriesGraph.tsx)"}
-{"level":30,"time":1740544136679,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"timeSeriesYRange() returned 5,10,15,20,25,30,35,40 (TimeSeriesGraphClass.tsx)"}
-{"level":30,"time":1740544139416,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"timeSeriesYRange() returned 5,10,15,20,25,30,35,40 (TimeSeriesGraphClass.tsx)"}
-{"level":30,"time":1740544139417,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"addPoint() has added new points to the graph (TimeSeriesGraphClass.tsx)"}
-{"level":30,"time":1740544139418,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"all points have been unselected (TimeSeriesGraphClass.tsx)"}
-{"level":30,"time":1740544139418,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"timeSeriesYRange() returned 5,10,15,20,25,30,35,40 (TimeSeriesGraphClass.tsx)"}
-{"level":30,"time":1740544139418,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"timeSeriesYRange() returned 5,10,15,20,25,30,35,40 (TimeSeriesGraphClass.tsx)"}
-{"level":30,"time":1740544139419,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"timeSeriesYRange() returned 5,10,15,20,25,30,35,40 (TimeSeriesGraphClass.tsx)"}
-{"level":30,"time":1740544139419,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"updatePointPosition() has been called to update the graph (TimeSeriesGraphClass.tsx)"}
-{"level":30,"time":1740544139420,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"a TimeSeriesGraph object was updated (TimeSeriesGraph.tsx)"}
-{"level":30,"time":1740544139420,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"a TimeSeriesGraph has been created (CreateTimeSeries.tsx)"}
-{"level":30,"time":1740544139421,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"timeSeriesYRange() returned 5,10,15,20,25,30,35,40 (TimeSeriesGraphClass.tsx)"}
-{"level":30,"time":1740544139421,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"timeSeriesYRange() returned 5,10,15,20,25,30,35,40 (TimeSeriesGraphClass.tsx)"}
-{"level":30,"time":1740544139422,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"a TimeSeriesGraph object sidebar was created (TimeSeriesGraph.tsx)"}
-{"level":30,"time":1740544139422,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"a TimeSeriesGraph object header was selected and visually updated to reflect selection (TimeSeriesGraph.tsx)"}
-{"level":30,"time":1740544139423,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"a TimeSeriesGraph visualization is being created (TimeSeriesGraph.tsx)"}
-{"level":30,"time":1740544139424,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"timeSeriesYRange() returned 5,10,15,20,25,30,35,40 (TimeSeriesGraphClass.tsx)"}
-{"level":30,"time":1740544139424,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"timeSeriesXRange() was called and returned 2025-01-18,2025-01-19,2025-01-20,2025-01-21 (TimeSeriesGraphClass.tsx)"}
-{"level":30,"time":1740544139425,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of points was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
-{"level":30,"time":1740544139426,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"timeSeriesYRange() returned 5,10,15,20,25,30,35,40 (TimeSeriesGraphClass.tsx)"}
-{"level":30,"time":1740544139427,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"timeSeriesYRange() returned 5,10,15,20,25,30,35,40 (TimeSeriesGraphClass.tsx)"}
-{"level":30,"time":1740544139427,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"the lines on a TimeSeriesGraph object were created (TimeSeriesGraph.tsx)"}
-{"level":30,"time":1740544139428,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of points was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
-{"level":30,"time":1740544139429,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"timeSeriesYRange() returned 5,10,15,20,25,30,35,40 (TimeSeriesGraphClass.tsx)"}
-{"level":30,"time":1740544139429,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of points was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
-{"level":30,"time":1740544139431,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"the lines on a TimeSeriesGraph object were created (TimeSeriesGraph.tsx)"}
-{"level":30,"time":1740544139432,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"timeSeriesYRange() returned 5,10,15,20,25,30,35,40 (TimeSeriesGraphClass.tsx)"}
-{"level":30,"time":1740544139433,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of points was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
-{"level":30,"time":1740544139433,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"the lines on a TimeSeriesGraph object were created (TimeSeriesGraph.tsx)"}
-{"level":30,"time":1740544139434,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"the lines on a TimeSeriesGraph object were created (TimeSeriesGraph.tsx)"}
-{"level":30,"time":1740544139436,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"getVRSelected has returned Graph0"}
-{"level":30,"time":1740544139437,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"setRange() was called; yRange was set to 45 (TimeSeriesGraphClass.tsx)"}
-{"level":30,"time":1740544139438,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"a TimeSeriesGraph has been created (CreateTimeSeries.tsx)"}
-{"level":30,"time":1740544139438,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"timeSeriesYRange() returned 5,10,15,20,25,30,35,40,45 (TimeSeriesGraphClass.tsx)"}
-{"level":30,"time":1740544139440,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"a TimeSeriesGraph object sidebar was created (TimeSeriesGraph.tsx)"}
-{"level":30,"time":1740544139441,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"a TimeSeriesGraph object header was selected and visually updated to reflect selection (TimeSeriesGraph.tsx)"}
-{"level":30,"time":1740544139442,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"a TimeSeriesGraph visualization is being created (TimeSeriesGraph.tsx)"}
-{"level":30,"time":1740544139443,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"timeSeriesYRange() returned 5,10,15,20,25,30,35,40,45 (TimeSeriesGraphClass.tsx)"}
-{"level":30,"time":1740544139444,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"timeSeriesXRange() was called and returned 2025-01-18,2025-01-19,2025-01-20,2025-01-21 (TimeSeriesGraphClass.tsx)"}
-{"level":30,"time":1740544139444,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"the lines on a TimeSeriesGraph object were created (TimeSeriesGraph.tsx)"}
-{"level":30,"time":1740544139444,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"timeSeriesYRange() returned 5,10,15,20,25,30,35,40,45 (TimeSeriesGraphClass.tsx)"}
-{"level":30,"time":1740544139445,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of points was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
-{"level":30,"time":1740544139445,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"timeSeriesYRange() returned 5,10,15,20,25,30,35,40,45 (TimeSeriesGraphClass.tsx)"}
-{"level":30,"time":1740544139445,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of points was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
-{"level":30,"time":1740544139446,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"timeSeriesYRange() returned 5,10,15,20,25,30,35,40,45 (TimeSeriesGraphClass.tsx)"}
-{"level":30,"time":1740544139446,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of points was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
-{"level":30,"time":1740544139446,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"the lines on a TimeSeriesGraph object were created (TimeSeriesGraph.tsx)"}
-{"level":30,"time":1740544139447,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"timeSeriesYRange() returned 5,10,15,20,25,30,35,40,45 (TimeSeriesGraphClass.tsx)"}
-{"level":30,"time":1740544139447,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"the lines on a TimeSeriesGraph object were created (TimeSeriesGraph.tsx)"}
-{"level":30,"time":1740544139447,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"the lines on a TimeSeriesGraph object were created (TimeSeriesGraph.tsx)"}
-{"level":30,"time":1740544139447,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of points was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
-{"level":30,"time":1740544139454,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"timeSeriesYRange() returned 5,10,15,20,25,30,35,40,45 (TimeSeriesGraphClass.tsx)"}
-{"level":30,"time":1740544141440,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"DropDownBody [create] button pressed"}
-{"level":30,"time":1740544142075,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"RowObjectButtons []>] pressed"}
-{"level":30,"time":1740544142076,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"DropDownBody [create] button pressed"}
-{"level":30,"time":1740544143624,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"RowObjectButtons [<] pressed"}
-{"level":30,"time":1740544143627,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"DropDownBody [create] button pressed"}
-{"level":30,"time":1740544146083,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"setVRSelected, Graph1 vr is set to true"}
-{"level":30,"time":1740544146084,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"addPoint() has added new points to the graph (TimeSeriesGraphClass.tsx)"}
-{"level":30,"time":1740544146085,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"generate has pushed a new graph"}
-{"level":30,"time":1740544146087,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"a TimeSeriesGraph has been created (CreateTimeSeries.tsx)"}
-{"level":30,"time":1740544146087,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"timeSeriesYRange() returned 5,10,15,20,25,30,35,40,45 (TimeSeriesGraphClass.tsx)"}
-{"level":30,"time":1740544146089,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"GenerateList [BUTTON]? pressed"}
-{"level":30,"time":1740544146090,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"a TimeSeriesGraph visualization is being created (TimeSeriesGraph.tsx)"}
-{"level":30,"time":1740544146090,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"timeSeriesYRange() returned 5,10,15,20,25,30,35,40,45 (TimeSeriesGraphClass.tsx)"}
-{"level":30,"time":1740544146092,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"a TimeSeriesGraph object sidebar was created (TimeSeriesGraph.tsx)"}
-{"level":30,"time":1740544146095,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"DropDownBody [create] button pressed"}
-{"level":30,"time":1740544146098,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"timeSeriesYRange() returned 5,10,15,20,25,30,35,40,45 (TimeSeriesGraphClass.tsx)"}
-{"level":30,"time":1740544146100,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of points was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
-{"level":30,"time":1740544146101,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"the lines on a TimeSeriesGraph object were created (TimeSeriesGraph.tsx)"}
-{"level":30,"time":1740544146102,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"timeSeriesXRange() was called and returned 2025-01-18,2025-01-19,2025-01-20,2025-01-21 (TimeSeriesGraphClass.tsx)"}
-{"level":30,"time":1740544146102,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"a TimeSeriesGraph object header was selected and visually updated to reflect selection (TimeSeriesGraph.tsx)"}
-{"level":30,"time":1740544146103,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of points was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
-{"level":30,"time":1740544146103,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"the lines on a TimeSeriesGraph object were created (TimeSeriesGraph.tsx)"}
-{"level":30,"time":1740544146104,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"timeSeriesYRange() returned 5,10,15,20,25,30,35,40,45 (TimeSeriesGraphClass.tsx)"}
-{"level":30,"time":1740544146104,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of points was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
-{"level":30,"time":1740544146105,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"timeSeriesYRange() returned 5,10,15,20,25,30,35,40,45 (TimeSeriesGraphClass.tsx)"}
-{"level":30,"time":1740544146106,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"timeSeriesYRange() returned 5,10,15,20,25,30,35,40,45 (TimeSeriesGraphClass.tsx)"}
-{"level":30,"time":1740544146107,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of points was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
-{"level":30,"time":1740544146107,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"the lines on a TimeSeriesGraph object were created (TimeSeriesGraph.tsx)"}
-{"level":30,"time":1740544146107,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"getVRSelected has returned Graph0"}
-{"level":30,"time":1740544146108,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"the lines on a TimeSeriesGraph object were created (TimeSeriesGraph.tsx)"}
-{"level":30,"time":1740544146108,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"setRange() was called; yRange was set to 45 (TimeSeriesGraphClass.tsx)"}
-{"level":30,"time":1740544146109,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"a TimeSeriesGraph has been created (CreateTimeSeries.tsx)"}
-{"level":30,"time":1740544146110,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"timeSeriesYRange() returned 5,10,15,20,25,30,35,40,45 (TimeSeriesGraphClass.tsx)"}
-{"level":30,"time":1740544146112,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"a TimeSeriesGraph object sidebar was created (TimeSeriesGraph.tsx)"}
-{"level":30,"time":1740544146112,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"a TimeSeriesGraph object header was selected and visually updated to reflect selection (TimeSeriesGraph.tsx)"}
-{"level":30,"time":1740544146113,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"a TimeSeriesGraph visualization is being created (TimeSeriesGraph.tsx)"}
-{"level":30,"time":1740544146113,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"timeSeriesYRange() returned 5,10,15,20,25,30,35,40,45 (TimeSeriesGraphClass.tsx)"}
-{"level":30,"time":1740544146114,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"timeSeriesXRange() was called and returned 2025-01-18,2025-01-19,2025-01-20,2025-01-21 (TimeSeriesGraphClass.tsx)"}
-{"level":30,"time":1740544146115,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"timeSeriesYRange() returned 5,10,15,20,25,30,35,40,45 (TimeSeriesGraphClass.tsx)"}
-{"level":30,"time":1740544146115,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of points was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
-{"level":30,"time":1740544146115,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"the lines on a TimeSeriesGraph object were created (TimeSeriesGraph.tsx)"}
-{"level":30,"time":1740544146116,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"timeSeriesYRange() returned 5,10,15,20,25,30,35,40,45 (TimeSeriesGraphClass.tsx)"}
-{"level":30,"time":1740544146116,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of points was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
-{"level":30,"time":1740544146116,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"the lines on a TimeSeriesGraph object were created (TimeSeriesGraph.tsx)"}
-{"level":30,"time":1740544146116,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"timeSeriesYRange() returned 5,10,15,20,25,30,35,40,45 (TimeSeriesGraphClass.tsx)"}
-{"level":30,"time":1740544146117,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of points was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
-{"level":30,"time":1740544146117,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"the lines on a TimeSeriesGraph object were created (TimeSeriesGraph.tsx)"}
-{"level":30,"time":1740544146117,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"timeSeriesYRange() returned 5,10,15,20,25,30,35,40,45 (TimeSeriesGraphClass.tsx)"}
-{"level":30,"time":1740544146117,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of points was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
-{"level":30,"time":1740544146117,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"the lines on a TimeSeriesGraph object were created (TimeSeriesGraph.tsx)"}
-{"level":30,"time":1740544148788,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"incrementYHeader() was called and successfully incremented (TimeSeriesGraphClass.tsx)"}
-{"level":30,"time":1740544148788,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"timeSeriesYRange() returned 5,10,15,20,25,30,35,40,45 (TimeSeriesGraphClass.tsx)"}
-{"level":30,"time":1740544148789,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"a TimeSeriesGraph has been created (CreateTimeSeries.tsx)"}
-{"level":30,"time":1740544148789,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"timeSeriesYRange() returned 5,10,15,20,25,30,35,40,45 (TimeSeriesGraphClass.tsx)"}
-{"level":30,"time":1740544148789,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"addPoint() has added new points to the graph (TimeSeriesGraphClass.tsx)"}
-{"level":30,"time":1740544148790,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"all points have been unselected (TimeSeriesGraphClass.tsx)"}
-{"level":30,"time":1740544148790,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"timeSeriesYRange() returned 5,10,15,20,25,30,35,40,45 (TimeSeriesGraphClass.tsx)"}
-{"level":30,"time":1740544148790,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"timeSeriesYRange() returned 5,10,15,20,25,30,35,40,45 (TimeSeriesGraphClass.tsx)"}
-{"level":30,"time":1740544148791,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"timeSeriesYRange() returned 5,10,15,20,25,30,35,40,45 (TimeSeriesGraphClass.tsx)"}
-{"level":30,"time":1740544148791,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"updatePointPosition() has been called to update the graph (TimeSeriesGraphClass.tsx)"}
-{"level":30,"time":1740544148792,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"timeSeriesYRange() returned 5,10,15,20,25,30,35,40,45 (TimeSeriesGraphClass.tsx)"}
-{"level":30,"time":1740544148792,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"a TimeSeriesGraph object sidebar was created (TimeSeriesGraph.tsx)"}
-{"level":30,"time":1740544148793,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"a TimeSeriesGraph object header was selected and visually updated to reflect selection (TimeSeriesGraph.tsx)"}
-{"level":30,"time":1740544148793,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"a TimeSeriesGraph visualization is being created (TimeSeriesGraph.tsx)"}
-{"level":30,"time":1740544148794,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"timeSeriesYRange() returned 5,10,15,20,25,30,35,40,45 (TimeSeriesGraphClass.tsx)"}
-{"level":30,"time":1740544148794,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"a TimeSeriesGraph object was updated (TimeSeriesGraph.tsx)"}
-{"level":30,"time":1740544148795,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"timeSeriesYRange() returned 5,10,15,20,25,30,35,40,45 (TimeSeriesGraphClass.tsx)"}
-{"level":30,"time":1740544148795,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of points was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
-{"level":30,"time":1740544148795,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"the lines on a TimeSeriesGraph object were created (TimeSeriesGraph.tsx)"}
-{"level":30,"time":1740544148796,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"timeSeriesYRange() returned 5,10,15,20,25,30,35,40,45 (TimeSeriesGraphClass.tsx)"}
-{"level":30,"time":1740544148796,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"timeSeriesXRange() was called and returned 2025-01-18,2025-01-19,2025-01-20,2025-01-21 (TimeSeriesGraphClass.tsx)"}
-{"level":30,"time":1740544148796,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"the lines on a TimeSeriesGraph object were created (TimeSeriesGraph.tsx)"}
-{"level":30,"time":1740544148797,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"timeSeriesYRange() returned 5,10,15,20,25,30,35,40,45 (TimeSeriesGraphClass.tsx)"}
-{"level":30,"time":1740544148797,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of points was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
-{"level":30,"time":1740544148797,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"the lines on a TimeSeriesGraph object were created (TimeSeriesGraph.tsx)"}
-{"level":30,"time":1740544148797,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of points was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
-{"level":30,"time":1740544148798,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of points was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
-{"level":30,"time":1740544148798,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"the lines on a TimeSeriesGraph object were created (TimeSeriesGraph.tsx)"}
-{"level":30,"time":1740544148798,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"timeSeriesYRange() returned 5,10,15,20,25,30,35,40,45 (TimeSeriesGraphClass.tsx)"}
-{"level":30,"time":1740544148816,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"getVRSelected has returned Graph0"}
-{"level":30,"time":1740544148817,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"setRange() was called; yRange was set to 40 (TimeSeriesGraphClass.tsx)"}
-{"level":30,"time":1740544148817,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"a TimeSeriesGraph has been created (CreateTimeSeries.tsx)"}
-{"level":30,"time":1740544148818,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"timeSeriesYRange() returned 5,10,15,20,25,30,35,40 (TimeSeriesGraphClass.tsx)"}
-{"level":30,"time":1740544148818,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"a TimeSeriesGraph object sidebar was created (TimeSeriesGraph.tsx)"}
-{"level":30,"time":1740544148818,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"a TimeSeriesGraph object header was selected and visually updated to reflect selection (TimeSeriesGraph.tsx)"}
-{"level":30,"time":1740544148818,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"timeSeriesYRange() returned 5,10,15,20,25,30,35,40 (TimeSeriesGraphClass.tsx)"}
-{"level":30,"time":1740544148819,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"timeSeriesXRange() was called and returned 2025-01-18,2025-01-19,2025-01-20,2025-01-21 (TimeSeriesGraphClass.tsx)"}
-{"level":30,"time":1740544148819,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"timeSeriesYRange() returned 5,10,15,20,25,30,35,40 (TimeSeriesGraphClass.tsx)"}
-{"level":30,"time":1740544148819,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of points was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
-{"level":30,"time":1740544148819,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"a TimeSeriesGraph visualization is being created (TimeSeriesGraph.tsx)"}
-{"level":30,"time":1740544148821,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"timeSeriesYRange() returned 5,10,15,20,25,30,35,40 (TimeSeriesGraphClass.tsx)"}
-{"level":30,"time":1740544148821,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of points was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
-{"level":30,"time":1740544148821,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"the lines on a TimeSeriesGraph object were created (TimeSeriesGraph.tsx)"}
-{"level":30,"time":1740544148821,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"timeSeriesYRange() returned 5,10,15,20,25,30,35,40 (TimeSeriesGraphClass.tsx)"}
-{"level":30,"time":1740544148822,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"the lines on a TimeSeriesGraph object were created (TimeSeriesGraph.tsx)"}
-{"level":30,"time":1740544148823,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"the lines on a TimeSeriesGraph object were created (TimeSeriesGraph.tsx)"}
-{"level":30,"time":1740544148824,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"timeSeriesYRange() returned 5,10,15,20,25,30,35,40 (TimeSeriesGraphClass.tsx)"}
-{"level":30,"time":1740544148825,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of points was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
-{"level":30,"time":1740544148825,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"the lines on a TimeSeriesGraph object were created (TimeSeriesGraph.tsx)"}
-{"level":30,"time":1740544148826,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of points was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
-{"level":30,"time":1740544148827,"pid":11821,"hostname":"Madisons-MacBook-Pro.local","msg":"timeSeriesYRange() returned 5,10,15,20,25,30,35,40 (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740546695603,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"URLCSVReader has successfully parsed\n[{\"Time\":\"2025-01-18\",\"X\":10,\"Y\":15},{\"Time\":\"2025-01-19\",\"X\":40,\"Y\":25},{\"Time\":\"2025-01-20\",\"X\":30,\"Y\":35},{\"Time\":\"2025-01-21\",\"X\":20,\"Y\":45}]"}
+{"level":30,"time":1740546695607,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"setYHeader, Graph0 yHeader is set to X"}
+{"level":30,"time":1740546695608,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"loadCSVData has loaded csv data\n[{\"Time\":\"2025-01-18\",\"X\":10,\"Y\":15},{\"Time\":\"2025-01-19\",\"X\":40,\"Y\":25},{\"Time\":\"2025-01-20\",\"X\":30,\"Y\":35},{\"Time\":\"2025-01-21\",\"X\":20,\"Y\":45}]"}
+{"level":30,"time":1740546695609,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"setName,  will now be called Graph0"}
+{"level":30,"time":1740546695610,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"readURLFile read a file\n[{\"Time\":\"2025-01-18\",\"X\":10,\"Y\":15},{\"Time\":\"2025-01-19\",\"X\":40,\"Y\":25},{\"Time\":\"2025-01-20\",\"X\":30,\"Y\":35},{\"Time\":\"2025-01-21\",\"X\":20,\"Y\":45}]"}
+{"level":30,"time":1740546696896,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"URLComponent read: https://raw.githubusercontent.com/UniversityOfSaskatchewanCMPT371/term-project-2025-team-1/refs/heads/ID2Dev/csvTestFiles/test.csv"}
+{"level":30,"time":1740546696903,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"loadedCsvBrowser() returns list\n[[\"Graph0\",false]]"}
+{"level":30,"time":1740546696905,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"UnmountedComponents unmount: 1"}
+{"level":30,"time":1740546696906,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"loadedCsvBrowser() returns list\n[[\"Graph0\",false]]"}
+{"level":30,"time":1740546696907,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"UnmountedComponents unmount: 1"}
+{"level":50,"time":1740546699781,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","name":"TypeError","errmessage":"Failed to fetch","stack":"TypeError: Failed to fetch\n    at UrlCSVReader (https://localhost:5173/src/components/Csv_Components/CSVReaders.tsx:121:12)\n    at CSVDataObject.loadCSVData (https://localhost:5173/src/components/Csv_Components/CSVDataObject.tsx:35:34)\n    at CSVReaderModel.readURLFile (https://localhost:5173/src/models/CSVReaderModel.tsx:61:18)\n    at CSVController.loadURLFile (https://localhost:5173/src/controller/CSVController.tsx:48:29)\n    at onClick (https://localhost:5173/src/pages/UI/BrowserUI.tsx:50:53)\n    at HTMLUnknownElement.callCallback2 (https://localhost:5173/node_modules/.vite/deps/chunk-SRNDHWC2.js?v=bc892c0e:3680:22)\n    at Object.invokeGuardedCallbackDev (https://localhost:5173/node_modules/.vite/deps/chunk-SRNDHWC2.js?v=bc892c0e:3705:24)\n    at invokeGuardedCallback (https://localhost:5173/node_modules/.vite/deps/chunk-SRNDHWC2.js?v=bc892c0e:3739:39)\n    at invokeGuardedCallbackAndCatchFirstError (https://localhost:5173/node_modules/.vite/deps/chunk-SRNDHWC2.js?v=bc892c0e:3742:33)\n    at executeDispatch (https://localhost:5173/node_modules/.vite/deps/chunk-SRNDHWC2.js?v=bc892c0e:7046:11)","msg":"loadCSVData error"}
+{"level":50,"time":1740546699782,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","name":"TypeError","errmessage":"Failed to fetch","stack":"TypeError: Failed to fetch\n    at UrlCSVReader (https://localhost:5173/src/components/Csv_Components/CSVReaders.tsx:121:12)\n    at CSVDataObject.loadCSVData (https://localhost:5173/src/components/Csv_Components/CSVDataObject.tsx:35:34)\n    at CSVReaderModel.readURLFile (https://localhost:5173/src/models/CSVReaderModel.tsx:61:18)\n    at CSVController.loadURLFile (https://localhost:5173/src/controller/CSVController.tsx:48:29)\n    at onClick (https://localhost:5173/src/pages/UI/BrowserUI.tsx:50:53)\n    at HTMLUnknownElement.callCallback2 (https://localhost:5173/node_modules/.vite/deps/chunk-SRNDHWC2.js?v=bc892c0e:3680:22)\n    at Object.invokeGuardedCallbackDev (https://localhost:5173/node_modules/.vite/deps/chunk-SRNDHWC2.js?v=bc892c0e:3705:24)\n    at invokeGuardedCallback (https://localhost:5173/node_modules/.vite/deps/chunk-SRNDHWC2.js?v=bc892c0e:3739:39)\n    at invokeGuardedCallbackAndCatchFirstError (https://localhost:5173/node_modules/.vite/deps/chunk-SRNDHWC2.js?v=bc892c0e:3742:33)\n    at executeDispatch (https://localhost:5173/node_modules/.vite/deps/chunk-SRNDHWC2.js?v=bc892c0e:7046:11)","msg":"readURLFile error"}
+{"level":50,"time":1740546699784,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","name":"TypeError","errmessage":"Failed to fetch","stack":"TypeError: Failed to fetch\n    at UrlCSVReader (https://localhost:5173/src/components/Csv_Components/CSVReaders.tsx:121:12)\n    at CSVDataObject.loadCSVData (https://localhost:5173/src/components/Csv_Components/CSVDataObject.tsx:35:34)\n    at CSVReaderModel.readURLFile (https://localhost:5173/src/models/CSVReaderModel.tsx:61:18)\n    at CSVController.loadURLFile (https://localhost:5173/src/controller/CSVController.tsx:48:29)\n    at onClick (https://localhost:5173/src/pages/UI/BrowserUI.tsx:50:53)\n    at HTMLUnknownElement.callCallback2 (https://localhost:5173/node_modules/.vite/deps/chunk-SRNDHWC2.js?v=bc892c0e:3680:22)\n    at Object.invokeGuardedCallbackDev (https://localhost:5173/node_modules/.vite/deps/chunk-SRNDHWC2.js?v=bc892c0e:3705:24)\n    at invokeGuardedCallback (https://localhost:5173/node_modules/.vite/deps/chunk-SRNDHWC2.js?v=bc892c0e:3739:39)\n    at invokeGuardedCallbackAndCatchFirstError (https://localhost:5173/node_modules/.vite/deps/chunk-SRNDHWC2.js?v=bc892c0e:3742:33)\n    at executeDispatch (https://localhost:5173/node_modules/.vite/deps/chunk-SRNDHWC2.js?v=bc892c0e:7046:11)","msg":"URLCSVReader error"}
+{"level":50,"time":1740546699785,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","name":"TypeError","errmessage":"Failed to fetch","stack":"TypeError: Failed to fetch\n    at UrlCSVReader (https://localhost:5173/src/components/Csv_Components/CSVReaders.tsx:121:12)\n    at CSVDataObject.loadCSVData (https://localhost:5173/src/components/Csv_Components/CSVDataObject.tsx:35:34)\n    at CSVReaderModel.readURLFile (https://localhost:5173/src/models/CSVReaderModel.tsx:61:18)\n    at CSVController.loadURLFile (https://localhost:5173/src/controller/CSVController.tsx:48:29)\n    at onClick (https://localhost:5173/src/pages/UI/BrowserUI.tsx:50:53)\n    at HTMLUnknownElement.callCallback2 (https://localhost:5173/node_modules/.vite/deps/chunk-SRNDHWC2.js?v=bc892c0e:3680:22)\n    at Object.invokeGuardedCallbackDev (https://localhost:5173/node_modules/.vite/deps/chunk-SRNDHWC2.js?v=bc892c0e:3705:24)\n    at invokeGuardedCallback (https://localhost:5173/node_modules/.vite/deps/chunk-SRNDHWC2.js?v=bc892c0e:3739:39)\n    at invokeGuardedCallbackAndCatchFirstError (https://localhost:5173/node_modules/.vite/deps/chunk-SRNDHWC2.js?v=bc892c0e:3742:33)\n    at executeDispatch (https://localhost:5173/node_modules/.vite/deps/chunk-SRNDHWC2.js?v=bc892c0e:7046:11)","msg":"loadURLFile Error"}
+{"level":30,"time":1740546700796,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"URLComponent read: https://raw..com/UniversityOfSaskatchewanCMPT371/term-project-2025-team-1/refs/heads/ID2Dev/csvTestFiles/test.csv"}
+{"level":30,"time":1740546700798,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"loadedCsvBrowser() returns list\n[[\"Graph0\",false]]"}
+{"level":30,"time":1740546700799,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"UnmountedComponents unmount: 2"}
+{"level":30,"time":1740546700799,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"loadedCsvBrowser() returns list\n[[\"Graph0\",false]]"}
+{"level":30,"time":1740546700800,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"UnmountedComponents unmount: 2"}
+{"level":30,"time":1740546704205,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"LocalCsvReader(file) has read data\n[{\"Time\":\"2025-01-18\",\"X\":10,\"Y\":15},{\"Time\":\"2025-01-19\",\"X\":40,\"Y\":25},{\"Time\":\"2025-01-20\",\"X\":30,\"Y\":35},{\"Time\":\"2025-01-21\",\"X\":20,\"Y\":45}]"}
+{"level":30,"time":1740546704206,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"setName,  will now be called Graph1"}
+{"level":30,"time":1740546704207,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"setYHeader, Graph1 yHeader is set to X"}
+{"level":30,"time":1740546704208,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"loadCSVData has loaded csv data\n[{\"Time\":\"2025-01-18\",\"X\":10,\"Y\":15},{\"Time\":\"2025-01-19\",\"X\":40,\"Y\":25},{\"Time\":\"2025-01-20\",\"X\":30,\"Y\":35},{\"Time\":\"2025-01-21\",\"X\":20,\"Y\":45}]"}
+{"level":30,"time":1740546704209,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"readLocalFile read a file\n[{\"Time\":\"2025-01-18\",\"X\":10,\"Y\":15},{\"Time\":\"2025-01-19\",\"X\":40,\"Y\":25},{\"Time\":\"2025-01-20\",\"X\":30,\"Y\":35},{\"Time\":\"2025-01-21\",\"X\":20,\"Y\":45}]"}
+{"level":30,"time":1740546705122,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"LoadComponent read: test.csv"}
+{"level":30,"time":1740546705126,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"loadedCsvBrowser() returns list\n[[\"Graph0\",false],[\"Graph1\",false]]"}
+{"level":30,"time":1740546705127,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"UnmountedComponents unmount: 3"}
+{"level":30,"time":1740546705127,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"UnmountedComponents unmount: 3"}
+{"level":30,"time":1740546705128,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"loadedCsvBrowser() returns list\n[[\"Graph0\",false],[\"Graph1\",false]]"}
+{"level":30,"time":1740546705129,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"UnmountedComponents unmount: 3"}
+{"level":30,"time":1740546705133,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"UnmountedComponents unmount: 3"}
+{"level":50,"time":1740546707557,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","name":"Error","errmessage":"file must be csv or txt","stack":"Error: file must be csv or txt\n    at https://localhost:5173/src/components/Csv_Components/CSVReaders.tsx:77:25\n    at new Promise (<anonymous>)\n    at LocalCsvReader (https://localhost:5173/src/components/Csv_Components/CSVReaders.tsx:75:10)\n    at CSVDataObject.loadCSVData (https://localhost:5173/src/components/Csv_Components/CSVDataObject.tsx:35:61)\n    at CSVReaderModel.readLocalFile (https://localhost:5173/src/models/CSVReaderModel.tsx:40:18)\n    at CSVController.loadLocalFile (https://localhost:5173/src/controller/CSVController.tsx:40:29)\n    at onChange (https://localhost:5173/src/pages/UI/BrowserUI.tsx:98:55)\n    at HTMLUnknownElement.callCallback2 (https://localhost:5173/node_modules/.vite/deps/chunk-SRNDHWC2.js?v=bc892c0e:3680:22)\n    at Object.invokeGuardedCallbackDev (https://localhost:5173/node_modules/.vite/deps/chunk-SRNDHWC2.js?v=bc892c0e:3705:24)\n    at invokeGuardedCallback (https://localhost:5173/node_modules/.vite/deps/chunk-SRNDHWC2.js?v=bc892c0e:3739:39)","msg":"loadCSVData error"}
+{"level":50,"time":1740546707558,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","name":"Error","errmessage":"file must be csv or txt","stack":"Error: file must be csv or txt\n    at https://localhost:5173/src/components/Csv_Components/CSVReaders.tsx:77:25\n    at new Promise (<anonymous>)\n    at LocalCsvReader (https://localhost:5173/src/components/Csv_Components/CSVReaders.tsx:75:10)\n    at CSVDataObject.loadCSVData (https://localhost:5173/src/components/Csv_Components/CSVDataObject.tsx:35:61)\n    at CSVReaderModel.readLocalFile (https://localhost:5173/src/models/CSVReaderModel.tsx:40:18)\n    at CSVController.loadLocalFile (https://localhost:5173/src/controller/CSVController.tsx:40:29)\n    at onChange (https://localhost:5173/src/pages/UI/BrowserUI.tsx:98:55)\n    at HTMLUnknownElement.callCallback2 (https://localhost:5173/node_modules/.vite/deps/chunk-SRNDHWC2.js?v=bc892c0e:3680:22)\n    at Object.invokeGuardedCallbackDev (https://localhost:5173/node_modules/.vite/deps/chunk-SRNDHWC2.js?v=bc892c0e:3705:24)\n    at invokeGuardedCallback (https://localhost:5173/node_modules/.vite/deps/chunk-SRNDHWC2.js?v=bc892c0e:3739:39)","msg":"LocalCsvReader(file) readme.md is not .csv or .txt"}
+{"level":50,"time":1740546707558,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","name":"Error","errmessage":"file must be csv or txt","stack":"Error: file must be csv or txt\n    at https://localhost:5173/src/components/Csv_Components/CSVReaders.tsx:77:25\n    at new Promise (<anonymous>)\n    at LocalCsvReader (https://localhost:5173/src/components/Csv_Components/CSVReaders.tsx:75:10)\n    at CSVDataObject.loadCSVData (https://localhost:5173/src/components/Csv_Components/CSVDataObject.tsx:35:61)\n    at CSVReaderModel.readLocalFile (https://localhost:5173/src/models/CSVReaderModel.tsx:40:18)\n    at CSVController.loadLocalFile (https://localhost:5173/src/controller/CSVController.tsx:40:29)\n    at onChange (https://localhost:5173/src/pages/UI/BrowserUI.tsx:98:55)\n    at HTMLUnknownElement.callCallback2 (https://localhost:5173/node_modules/.vite/deps/chunk-SRNDHWC2.js?v=bc892c0e:3680:22)\n    at Object.invokeGuardedCallbackDev (https://localhost:5173/node_modules/.vite/deps/chunk-SRNDHWC2.js?v=bc892c0e:3705:24)\n    at invokeGuardedCallback (https://localhost:5173/node_modules/.vite/deps/chunk-SRNDHWC2.js?v=bc892c0e:3739:39)","msg":"readLocalFile error"}
+{"level":50,"time":1740546707559,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","name":"Error","errmessage":"file must be csv or txt","stack":"Error: file must be csv or txt\n    at https://localhost:5173/src/components/Csv_Components/CSVReaders.tsx:77:25\n    at new Promise (<anonymous>)\n    at LocalCsvReader (https://localhost:5173/src/components/Csv_Components/CSVReaders.tsx:75:10)\n    at CSVDataObject.loadCSVData (https://localhost:5173/src/components/Csv_Components/CSVDataObject.tsx:35:61)\n    at CSVReaderModel.readLocalFile (https://localhost:5173/src/models/CSVReaderModel.tsx:40:18)\n    at CSVController.loadLocalFile (https://localhost:5173/src/controller/CSVController.tsx:40:29)\n    at onChange (https://localhost:5173/src/pages/UI/BrowserUI.tsx:98:55)\n    at HTMLUnknownElement.callCallback2 (https://localhost:5173/node_modules/.vite/deps/chunk-SRNDHWC2.js?v=bc892c0e:3680:22)\n    at Object.invokeGuardedCallbackDev (https://localhost:5173/node_modules/.vite/deps/chunk-SRNDHWC2.js?v=bc892c0e:3705:24)\n    at invokeGuardedCallback (https://localhost:5173/node_modules/.vite/deps/chunk-SRNDHWC2.js?v=bc892c0e:3739:39)","msg":"loadLocalFile Error"}
+{"level":50,"time":1740546708642,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","name":"Error","errmessage":"Invalid File","stack":"Error: Invalid File\n    at onChange (https://localhost:5173/src/pages/UI/BrowserUI.tsx:103:25)","msg":"LoadComponent Return Error"}
+{"level":30,"time":1740546708646,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"UnmountedComponents unmount: 4"}
+{"level":30,"time":1740546708647,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"loadedCsvBrowser() returns list\n[[\"Graph0\",false],[\"Graph1\",false]]"}
+{"level":30,"time":1740546708648,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"UnmountedComponents unmount: 4"}
+{"level":30,"time":1740546708648,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"loadedCsvBrowser() returns list\n[[\"Graph0\",false],[\"Graph1\",false]]"}
+{"level":30,"time":1740546708649,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"UnmountedComponents unmount: 4"}
+{"level":30,"time":1740546708649,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"UnmountedComponents unmount: 4"}
+{"level":30,"time":1740546712588,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"DropDownBody [active] button pressed"}
+{"level":30,"time":1740546714119,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"RowObjectButtons []>] pressed"}
+{"level":30,"time":1740546714120,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"DropDownBody [create] button pressed"}
+{"level":30,"time":1740546716086,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"setVRSelected, Graph0 vr is set to true"}
+{"level":30,"time":1740546716087,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"addPoint() has added new points to the graph (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740546716089,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"generate has pushed a new graph"}
+{"level":30,"time":1740546716090,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"GenerateList [BUTTON]? pressed"}
+{"level":30,"time":1740546716091,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"DropDownBody [create] button pressed"}
+{"level":30,"time":1740546716097,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"getVRSelected has returned Graph0"}
+{"level":30,"time":1740546716098,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"setRange() was called; yRange was set to 40 (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740546716099,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"a TimeSeriesGraph has been created (CreateTimeSeries.tsx)"}
+{"level":30,"time":1740546716099,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"timeSeriesYRange() returned 5,10,15,20,25,30,35,40 (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740546716103,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"a TimeSeriesGraph object sidebar was created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546716103,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"getYHeader returned X (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740546716103,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"getYHeader returned X (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740546716104,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"a TimeSeriesGraph object header was selected and visually updated to reflect selection (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546716107,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"a TimeSeriesGraph object sidebar was created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546716107,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"a TimeSeriesGraph object header was selected and visually updated to reflect selection (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546716108,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"a TimeSeriesGraph visualization is being created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546716109,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"timeSeriesYRange() returned 5,10,15,20,25,30,35,40 (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740546716109,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"a TimeSeriesGraph visualization is being created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546716110,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"timeSeriesYRange() returned 5,10,15,20,25,30,35,40 (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740546716110,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"timeSeriesXRange() was called and returned 2025-01-18,2025-01-19,2025-01-20,2025-01-21 (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740546716110,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of the Y range was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546716111,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of the Y range was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546716111,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of the Y range was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546716112,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of the Y range was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546716112,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of the Y range was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546716112,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of the Y range was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546716113,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of the Y range was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546716113,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of the Y range was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546716114,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"timeSeriesXRange() was called and returned 2025-01-18,2025-01-19,2025-01-20,2025-01-21 (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740546716114,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"timeSeriesYRange() returned 5,10,15,20,25,30,35,40 (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740546716115,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of points was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546716115,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"the lines on a TimeSeriesGraph object were created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546716115,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"getYRange returned 40 (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740546716116,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"getYRange returned 40 (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740546716116,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of points was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546716116,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"the lines on a TimeSeriesGraph object were created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546716117,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"getYRange returned 40 (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740546716117,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"timeSeriesYRange() returned 5,10,15,20,25,30,35,40 (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740546716118,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"timeSeriesYRange() returned 5,10,15,20,25,30,35,40 (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740546716119,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"the lines on a TimeSeriesGraph object were created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546716119,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"getYRange returned 40 (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740546716120,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"timeSeriesYRange() returned 5,10,15,20,25,30,35,40 (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740546716120,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of points was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546716121,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of points was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546716121,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"the lines on a TimeSeriesGraph object were created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546716128,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"timeSeriesYRange() returned 5,10,15,20,25,30,35,40 (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740546716129,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"a TimeSeriesGraph object sidebar was created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546716129,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"getYHeader returned X (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740546716130,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"a TimeSeriesGraph object header was selected and visually updated to reflect selection (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546716130,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"a TimeSeriesGraph visualization is being created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546716131,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"timeSeriesYRange() returned 5,10,15,20,25,30,35,40 (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740546716131,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"timeSeriesXRange() was called and returned 2025-01-18,2025-01-19,2025-01-20,2025-01-21 (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740546716131,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of the Y range was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546716132,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of the Y range was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546716132,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of the Y range was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546716132,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of the Y range was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546716133,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of the Y range was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546716133,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of the Y range was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546716133,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of the Y range was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546716134,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"getYRange returned 40 (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740546716134,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of the Y range was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546716135,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"getYRange returned 40 (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740546716135,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"timeSeriesYRange() returned 5,10,15,20,25,30,35,40 (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740546716135,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"timeSeriesYRange() returned 5,10,15,20,25,30,35,40 (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740546716135,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of points was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546716135,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"the lines on a TimeSeriesGraph object were created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546716136,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"the lines on a TimeSeriesGraph object were created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546716136,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"getYRange returned 40 (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740546716136,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"timeSeriesYRange() returned 5,10,15,20,25,30,35,40 (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740546716136,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of points was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546716137,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of points was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546716137,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"getYRange returned 40 (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740546716137,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"timeSeriesYRange() returned 5,10,15,20,25,30,35,40 (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740546716137,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of points was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546716138,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"the lines on a TimeSeriesGraph object were created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546716138,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"the lines on a TimeSeriesGraph object were created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546716139,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"timeSeriesYRange() returned 5,10,15,20,25,30,35,40 (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740546717855,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"getYHeader returned X (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740546717857,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"getXHeader returned Time (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740546717858,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"getYHeader returned X (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740546717859,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"getYHeader returned X (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740546717859,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"getXHeader returned Time (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740546717860,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"timeSeriesYRange() returned 5,10,15,20,25,30,35,40 (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740546717862,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"all points have been unselected (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740546717863,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"getYRange returned 40 (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740546717864,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"timeSeriesYRange() returned 5,10,15,20,25,30,35,40 (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740546717864,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"getYRange returned 40 (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740546717865,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"addPoint() has added new points to the graph (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740546717865,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"getYRange returned 40 (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740546717866,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"timeSeriesYRange() returned 5,10,15,20,25,30,35,40 (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740546717867,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"getYRange returned 40 (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740546717867,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"timeSeriesYRange() returned 5,10,15,20,25,30,35,40 (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740546717867,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"timeSeriesYRange() returned 5,10,15,20,25,30,35,40 (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740546717868,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"getYHeader returned Y (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740546717868,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"a TimeSeriesGraph object was updated (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546717868,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"a TimeSeriesGraph has been created (CreateTimeSeries.tsx)"}
+{"level":30,"time":1740546717869,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"updatePointPosition() has been called to update the graph (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740546717869,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"getYHeader returned Y (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740546717870,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"timeSeriesYRange() returned 5,10,15,20,25,30,35,40 (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740546717871,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"a TimeSeriesGraph object sidebar was created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546717872,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"timeSeriesXRange() was called and returned 2025-01-18,2025-01-19,2025-01-20,2025-01-21 (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740546717873,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of the Y range was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546717873,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"a TimeSeriesGraph object header was selected and visually updated to reflect selection (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546717874,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"a TimeSeriesGraph visualization is being created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546717874,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"timeSeriesYRange() returned 5,10,15,20,25,30,35,40 (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740546717875,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of the Y range was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546717875,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of the Y range was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546717875,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of the Y range was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546717876,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of the Y range was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546717876,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of the Y range was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546717877,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of the Y range was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546717877,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"getYRange returned 40 (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740546717877,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"timeSeriesYRange() returned 5,10,15,20,25,30,35,40 (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740546717878,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of points was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546717878,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of the Y range was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546717878,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"getYRange returned 40 (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740546717879,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"timeSeriesYRange() returned 5,10,15,20,25,30,35,40 (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740546717880,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of points was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546717880,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"the lines on a TimeSeriesGraph object were created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546717881,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"the lines on a TimeSeriesGraph object were created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546717882,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"timeSeriesYRange() returned 5,10,15,20,25,30,35,40 (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740546717882,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of points was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546717883,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"the lines on a TimeSeriesGraph object were created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546717883,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"getYRange returned 40 (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740546717884,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"getYRange returned 40 (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740546717884,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of points was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546717884,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"the lines on a TimeSeriesGraph object were created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546717885,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"getVRSelected has returned Graph0"}
+{"level":30,"time":1740546717885,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"setRange() was called; yRange was set to 45 (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740546717885,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"timeSeriesYRange() returned 5,10,15,20,25,30,35,40 (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740546717886,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"timeSeriesYRange() returned 5,10,15,20,25,30,35,40,45 (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740546717886,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"a TimeSeriesGraph has been created (CreateTimeSeries.tsx)"}
+{"level":30,"time":1740546717886,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"a TimeSeriesGraph object sidebar was created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546717887,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"getYHeader returned Y (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740546717888,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"a TimeSeriesGraph object header was selected and visually updated to reflect selection (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546717889,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of the Y range was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546717889,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"a TimeSeriesGraph visualization is being created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546717890,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"timeSeriesYRange() returned 5,10,15,20,25,30,35,40,45 (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740546717891,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"timeSeriesXRange() was called and returned 2025-01-18,2025-01-19,2025-01-20,2025-01-21 (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740546717892,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of the Y range was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546717892,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of the Y range was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546717893,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of the Y range was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546717893,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of the Y range was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546717894,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of the Y range was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546717894,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of the Y range was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546717894,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of the Y range was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546717895,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of the Y range was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546717895,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"getYRange returned 45 (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740546717895,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"timeSeriesYRange() returned 5,10,15,20,25,30,35,40,45 (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740546717896,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of points was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546717896,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"the lines on a TimeSeriesGraph object were created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546717897,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"timeSeriesYRange() returned 5,10,15,20,25,30,35,40,45 (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740546717897,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of points was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546717897,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"the lines on a TimeSeriesGraph object were created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546717898,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"getYRange returned 45 (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740546717898,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"getYRange returned 45 (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740546717898,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of points was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546717899,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"the lines on a TimeSeriesGraph object were created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546717899,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"getYRange returned 45 (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740546717900,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"timeSeriesYRange() returned 5,10,15,20,25,30,35,40,45 (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740546717900,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"timeSeriesYRange() returned 5,10,15,20,25,30,35,40,45 (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740546717900,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"the lines on a TimeSeriesGraph object were created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546717901,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of points was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546717912,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"timeSeriesYRange() returned 5,10,15,20,25,30,35,40,45 (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740546718282,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"getYHeader returned Y (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740546718283,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"getXHeader returned Time (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740546718284,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"incrementYHeader() was called and successfully incremented (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740546718284,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"timeSeriesYRange() returned 5,10,15,20,25,30,35,40,45 (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740546718285,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"addPoint() has added new points to the graph (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740546718285,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"all points have been unselected (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740546718285,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"timeSeriesYRange() returned 5,10,15,20,25,30,35,40,45 (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740546718286,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"getYRange returned 45 (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740546718286,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"timeSeriesYRange() returned 5,10,15,20,25,30,35,40,45 (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740546718286,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"getYRange returned 45 (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740546718287,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"getYRange returned 45 (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740546718287,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"timeSeriesYRange() returned 5,10,15,20,25,30,35,40,45 (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740546718287,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"getYRange returned 45 (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740546718288,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"timeSeriesYRange() returned 5,10,15,20,25,30,35,40,45 (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740546718289,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"a TimeSeriesGraph object was updated (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546718290,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"a TimeSeriesGraph has been created (CreateTimeSeries.tsx)"}
+{"level":30,"time":1740546718290,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"timeSeriesYRange() returned 5,10,15,20,25,30,35,40,45 (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740546718291,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"updatePointPosition() has been called to update the graph (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740546718291,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"getYHeader returned X (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740546718292,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"getYHeader returned X (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740546718292,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"a TimeSeriesGraph object header was selected and visually updated to reflect selection (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546718292,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"a TimeSeriesGraph object sidebar was created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546718293,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"a TimeSeriesGraph visualization is being created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546718294,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"timeSeriesYRange() returned 5,10,15,20,25,30,35,40,45 (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740546718294,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"timeSeriesXRange() was called and returned 2025-01-18,2025-01-19,2025-01-20,2025-01-21 (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740546718294,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of the Y range was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546718295,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of the Y range was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546718295,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of the Y range was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546718295,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of the Y range was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546718296,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of the Y range was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546718296,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of the Y range was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546718296,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of the Y range was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546718297,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"timeSeriesYRange() returned 5,10,15,20,25,30,35,40,45 (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740546718297,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of points was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546718297,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of the Y range was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546718298,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of the Y range was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546718298,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"getYRange returned 45 (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740546718299,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"getYRange returned 45 (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740546718300,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"timeSeriesYRange() returned 5,10,15,20,25,30,35,40,45 (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740546718300,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of points was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546718301,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"the lines on a TimeSeriesGraph object were created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546718301,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"the lines on a TimeSeriesGraph object were created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546718302,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"timeSeriesYRange() returned 5,10,15,20,25,30,35,40,45 (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740546718302,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of points was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546718302,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"the lines on a TimeSeriesGraph object were created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546718303,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"getYRange returned 45 (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740546718303,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"getYRange returned 45 (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740546718303,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of points was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546718304,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"the lines on a TimeSeriesGraph object were created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546718304,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"timeSeriesYRange() returned 5,10,15,20,25,30,35,40,45 (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740546718305,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"getVRSelected has returned Graph0"}
+{"level":30,"time":1740546718305,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"setRange() was called; yRange was set to 40 (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740546718308,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"a TimeSeriesGraph has been created (CreateTimeSeries.tsx)"}
+{"level":30,"time":1740546718308,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"timeSeriesYRange() returned 5,10,15,20,25,30,35,40 (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740546718310,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"a TimeSeriesGraph object sidebar was created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546718310,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"getYHeader returned X (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740546718311,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"a TimeSeriesGraph object header was selected and visually updated to reflect selection (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546718312,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"a TimeSeriesGraph visualization is being created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546718312,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"timeSeriesYRange() returned 5,10,15,20,25,30,35,40 (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740546718313,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"timeSeriesXRange() was called and returned 2025-01-18,2025-01-19,2025-01-20,2025-01-21 (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740546718314,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of the Y range was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546718314,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of the Y range was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546718314,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of the Y range was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546718315,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of the Y range was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546718315,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of the Y range was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546718315,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of the Y range was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546718315,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of the Y range was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546718316,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"getYRange returned 40 (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740546718316,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"timeSeriesYRange() returned 5,10,15,20,25,30,35,40 (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740546718316,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of the Y range was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546718317,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"the lines on a TimeSeriesGraph object were created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546718317,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"getYRange returned 40 (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740546718317,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"timeSeriesYRange() returned 5,10,15,20,25,30,35,40 (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740546718317,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of points was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546718318,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of points was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546718318,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"getYRange returned 40 (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740546718318,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"timeSeriesYRange() returned 5,10,15,20,25,30,35,40 (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740546718318,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of points was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546718318,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"the lines on a TimeSeriesGraph object were created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546718319,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"the lines on a TimeSeriesGraph object were created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546718319,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"timeSeriesYRange() returned 5,10,15,20,25,30,35,40 (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740546718319,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of points was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546718319,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"the lines on a TimeSeriesGraph object were created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546718320,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"getYRange returned 40 (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740546718331,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"timeSeriesYRange() returned 5,10,15,20,25,30,35,40 (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740546720384,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"RowObjectButtons [<] pressed"}
+{"level":30,"time":1740546720385,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"DropDownBody [create] button pressed"}
+{"level":30,"time":1740546721211,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"RowObjectButtons []>] pressed"}
+{"level":30,"time":1740546721213,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"DropDownBody [create] button pressed"}
+{"level":30,"time":1740546723612,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"setVRSelected, Graph1 vr is set to true"}
+{"level":30,"time":1740546723613,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"addPoint() has added new points to the graph (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740546723614,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"generate has pushed a new graph"}
+{"level":30,"time":1740546723614,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"GenerateList [BUTTON]? pressed"}
+{"level":30,"time":1740546723615,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"DropDownBody [create] button pressed"}
+{"level":30,"time":1740546723616,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"a TimeSeriesGraph has been created (CreateTimeSeries.tsx)"}
+{"level":30,"time":1740546723616,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"timeSeriesYRange() returned 5,10,15,20,25,30,35,40 (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740546723620,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"a TimeSeriesGraph object sidebar was created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546723620,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"getYHeader returned X (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740546723621,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"a TimeSeriesGraph object header was selected and visually updated to reflect selection (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546723622,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"a TimeSeriesGraph visualization is being created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546723622,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"timeSeriesYRange() returned 5,10,15,20,25,30,35,40 (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740546723622,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"timeSeriesXRange() was called and returned 2025-01-18,2025-01-19,2025-01-20,2025-01-21 (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740546723623,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of the Y range was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546723624,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of the Y range was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546723624,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of the Y range was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546723625,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of the Y range was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546723626,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of the Y range was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546723626,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of the Y range was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546723627,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"getYRange returned 40 (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740546723627,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of the Y range was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546723628,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of the Y range was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546723628,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of points was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546723629,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"the lines on a TimeSeriesGraph object were created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546723630,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"getYRange returned 40 (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740546723630,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"timeSeriesYRange() returned 5,10,15,20,25,30,35,40 (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740546723631,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"timeSeriesYRange() returned 5,10,15,20,25,30,35,40 (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740546723631,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"the lines on a TimeSeriesGraph object were created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546723631,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"getYRange returned 40 (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740546723632,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"timeSeriesYRange() returned 5,10,15,20,25,30,35,40 (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740546723632,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of points was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546723632,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of points was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546723633,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"getYRange returned 40 (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740546723633,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"timeSeriesYRange() returned 5,10,15,20,25,30,35,40 (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740546723633,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of points was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546723634,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"the lines on a TimeSeriesGraph object were created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546723634,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"the lines on a TimeSeriesGraph object were created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546723638,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"getVRSelected has returned Graph0"}
+{"level":30,"time":1740546723639,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"setRange() was called; yRange was set to 40 (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740546723641,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"a TimeSeriesGraph has been created (CreateTimeSeries.tsx)"}
+{"level":30,"time":1740546723642,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"timeSeriesYRange() returned 5,10,15,20,25,30,35,40 (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740546723643,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"a TimeSeriesGraph object sidebar was created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546723643,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"getYHeader returned X (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740546723644,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"a TimeSeriesGraph object header was selected and visually updated to reflect selection (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546723644,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"a TimeSeriesGraph visualization is being created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546723645,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"timeSeriesYRange() returned 5,10,15,20,25,30,35,40 (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740546723645,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"timeSeriesXRange() was called and returned 2025-01-18,2025-01-19,2025-01-20,2025-01-21 (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740546723646,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of the Y range was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546723646,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of the Y range was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546723646,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of the Y range was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546723647,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of the Y range was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546723647,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of the Y range was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546723647,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of the Y range was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546723648,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of the Y range was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546723648,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"getYRange returned 40 (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740546723648,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"timeSeriesYRange() returned 5,10,15,20,25,30,35,40 (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740546723649,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of points was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546723649,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of the Y range was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546723649,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"getYRange returned 40 (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740546723650,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"timeSeriesYRange() returned 5,10,15,20,25,30,35,40 (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740546723650,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of points was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546723650,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"the lines on a TimeSeriesGraph object were created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546723651,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"the lines on a TimeSeriesGraph object were created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546723651,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"timeSeriesYRange() returned 5,10,15,20,25,30,35,40 (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740546723651,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of points was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546723652,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"the lines on a TimeSeriesGraph object were created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546723652,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"getYRange returned 40 (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740546723652,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"getYRange returned 40 (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740546723652,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of points was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546723653,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"the lines on a TimeSeriesGraph object were created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546723653,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"timeSeriesYRange() returned 5,10,15,20,25,30,35,40 (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740546725380,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"getYHeader returned X (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740546725381,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"getXHeader returned Time (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740546725382,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"getYHeader returned X (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740546725383,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"getYHeader returned X (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740546725383,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"getXHeader returned Time (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740546725383,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"timeSeriesYRange() returned 5,10,15,20,25,30,35,40 (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740546725384,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"getYRange returned 40 (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740546725384,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"timeSeriesYRange() returned 5,10,15,20,25,30,35,40 (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740546725384,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"addPoint() has added new points to the graph (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740546725385,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"all points have been unselected (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740546725385,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"getYRange returned 40 (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740546725386,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"getYRange returned 40 (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740546725386,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"timeSeriesYRange() returned 5,10,15,20,25,30,35,40 (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740546725386,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"updatePointPosition() has been called to update the graph (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740546725387,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"getYHeader returned Y (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740546725387,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"timeSeriesYRange() returned 5,10,15,20,25,30,35,40 (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740546725388,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"getYRange returned 40 (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740546725388,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"timeSeriesYRange() returned 5,10,15,20,25,30,35,40 (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740546725389,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"a TimeSeriesGraph object was updated (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546725391,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"a TimeSeriesGraph has been created (CreateTimeSeries.tsx)"}
+{"level":30,"time":1740546725392,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"a TimeSeriesGraph visualization is being created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546725392,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"timeSeriesXRange() was called and returned 2025-01-18,2025-01-19,2025-01-20,2025-01-21 (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740546725392,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"timeSeriesYRange() returned 5,10,15,20,25,30,35,40 (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740546725393,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"timeSeriesYRange() returned 5,10,15,20,25,30,35,40 (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740546725393,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of the Y range was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546725393,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of the Y range was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546725393,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of the Y range was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546725394,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of the Y range was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546725394,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of the Y range was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546725395,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of the Y range was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546725395,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of the Y range was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546725395,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of the Y range was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546725395,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"a TimeSeriesGraph object sidebar was created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546725396,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"getYHeader returned Y (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740546725396,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"a TimeSeriesGraph object header was selected and visually updated to reflect selection (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546725396,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"getYRange returned 40 (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740546725397,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"timeSeriesYRange() returned 5,10,15,20,25,30,35,40 (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740546725397,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of points was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546725397,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"the lines on a TimeSeriesGraph object were created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546725397,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"the lines on a TimeSeriesGraph object were created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546725398,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"getYRange returned 40 (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740546725399,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"getYRange returned 40 (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740546725400,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"timeSeriesYRange() returned 5,10,15,20,25,30,35,40 (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740546725400,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of points was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546725401,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of points was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546725402,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"the lines on a TimeSeriesGraph object were created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546725402,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"getYRange returned 40 (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740546725402,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"timeSeriesYRange() returned 5,10,15,20,25,30,35,40 (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740546725402,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"timeSeriesYRange() returned 5,10,15,20,25,30,35,40 (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740546725403,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"the lines on a TimeSeriesGraph object were created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546725403,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"getVRSelected has returned Graph0"}
+{"level":30,"time":1740546725403,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"setRange() was called; yRange was set to 45 (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740546725404,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of points was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546725404,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"a TimeSeriesGraph has been created (CreateTimeSeries.tsx)"}
+{"level":30,"time":1740546725405,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"timeSeriesYRange() returned 5,10,15,20,25,30,35,40,45 (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740546725407,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"a TimeSeriesGraph object sidebar was created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546725408,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"getYHeader returned Y (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740546725408,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"a TimeSeriesGraph object header was selected and visually updated to reflect selection (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546725409,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"a TimeSeriesGraph visualization is being created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546725410,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"timeSeriesYRange() returned 5,10,15,20,25,30,35,40,45 (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740546725410,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"timeSeriesXRange() was called and returned 2025-01-18,2025-01-19,2025-01-20,2025-01-21 (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740546725411,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of the Y range was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546725411,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of the Y range was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546725411,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of the Y range was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546725411,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of the Y range was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546725412,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of the Y range was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546725412,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of the Y range was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546725413,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of the Y range was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546725413,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"getYRange returned 45 (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740546725413,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of the Y range was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546725413,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of the Y range was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546725414,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"timeSeriesYRange() returned 5,10,15,20,25,30,35,40,45 (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740546725414,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of points was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546725414,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"the lines on a TimeSeriesGraph object were created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546725414,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"getYRange returned 45 (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740546725415,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"timeSeriesYRange() returned 5,10,15,20,25,30,35,40,45 (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740546725415,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"the lines on a TimeSeriesGraph object were created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546725415,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"getYRange returned 45 (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740546725415,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"timeSeriesYRange() returned 5,10,15,20,25,30,35,40,45 (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740546725416,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of points was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546725416,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of points was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546725416,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"getYRange returned 45 (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740546725417,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"timeSeriesYRange() returned 5,10,15,20,25,30,35,40,45 (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740546725417,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of points was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546725417,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"the lines on a TimeSeriesGraph object were created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546725417,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"the lines on a TimeSeriesGraph object were created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546725430,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"timeSeriesYRange() returned 5,10,15,20,25,30,35,40,45 (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740546725774,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"getYHeader returned Y (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740546725775,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"getXHeader returned Time (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740546725775,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"incrementYHeader() was called and successfully incremented (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740546725775,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"timeSeriesYRange() returned 5,10,15,20,25,30,35,40,45 (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740546725776,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"addPoint() has added new points to the graph (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740546725776,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"all points have been unselected (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740546725776,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"timeSeriesYRange() returned 5,10,15,20,25,30,35,40,45 (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740546725777,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"getYRange returned 45 (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740546725777,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"timeSeriesYRange() returned 5,10,15,20,25,30,35,40,45 (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740546725777,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"getYRange returned 45 (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740546725778,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"getYRange returned 45 (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740546725778,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"getYRange returned 45 (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740546725778,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"timeSeriesYRange() returned 5,10,15,20,25,30,35,40,45 (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740546725779,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"a TimeSeriesGraph has been created (CreateTimeSeries.tsx)"}
+{"level":30,"time":1740546725779,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"timeSeriesYRange() returned 5,10,15,20,25,30,35,40,45 (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740546725779,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"updatePointPosition() has been called to update the graph (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740546725779,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"getYHeader returned X (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740546725780,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"a TimeSeriesGraph object was updated (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546725780,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"timeSeriesYRange() returned 5,10,15,20,25,30,35,40,45 (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740546725781,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"a TimeSeriesGraph object sidebar was created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546725782,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"getYHeader returned X (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740546725782,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"a TimeSeriesGraph object header was selected and visually updated to reflect selection (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546725783,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of the Y range was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546725784,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"a TimeSeriesGraph visualization is being created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546725784,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"timeSeriesYRange() returned 5,10,15,20,25,30,35,40,45 (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740546725785,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"timeSeriesXRange() was called and returned 2025-01-18,2025-01-19,2025-01-20,2025-01-21 (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740546725785,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of the Y range was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546725786,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of the Y range was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546725786,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of the Y range was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546725787,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of the Y range was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546725787,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of the Y range was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546725788,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of the Y range was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546725789,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"getYRange returned 45 (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740546725790,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"timeSeriesYRange() returned 5,10,15,20,25,30,35,40,45 (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740546725790,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of the Y range was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546725791,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of the Y range was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546725792,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"the lines on a TimeSeriesGraph object were created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546725792,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"getYRange returned 45 (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740546725793,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"timeSeriesYRange() returned 5,10,15,20,25,30,35,40,45 (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740546725793,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of points was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546725794,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of points was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546725794,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"getYRange returned 45 (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740546725795,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"timeSeriesYRange() returned 5,10,15,20,25,30,35,40,45 (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740546725795,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of points was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546725795,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"the lines on a TimeSeriesGraph object were created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546725796,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"timeSeriesYRange() returned 5,10,15,20,25,30,35,40,45 (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740546725797,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of points was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546725798,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"the lines on a TimeSeriesGraph object were created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546725798,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"the lines on a TimeSeriesGraph object were created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546725799,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"getYRange returned 45 (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740546725799,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"setRange() was called; yRange was set to 40 (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740546725799,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"a TimeSeriesGraph has been created (CreateTimeSeries.tsx)"}
+{"level":30,"time":1740546725800,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"timeSeriesYRange() returned 5,10,15,20,25,30,35,40 (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740546725800,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"getVRSelected has returned Graph0"}
+{"level":30,"time":1740546725800,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"a TimeSeriesGraph object header was selected and visually updated to reflect selection (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546725800,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"a TimeSeriesGraph object sidebar was created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546725801,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"getYHeader returned X (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740546725801,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"a TimeSeriesGraph visualization is being created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546725802,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"timeSeriesYRange() returned 5,10,15,20,25,30,35,40 (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740546725802,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of the Y range was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546725803,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"timeSeriesXRange() was called and returned 2025-01-18,2025-01-19,2025-01-20,2025-01-21 (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740546725803,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of the Y range was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546725804,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of the Y range was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546725804,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of the Y range was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546725804,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of the Y range was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546725805,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of the Y range was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546725805,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of the Y range was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546725806,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"getYRange returned 40 (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740546725806,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of the Y range was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546725807,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of points was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546725807,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"the lines on a TimeSeriesGraph object were created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546725807,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"getYRange returned 40 (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740546725808,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"timeSeriesYRange() returned 5,10,15,20,25,30,35,40 (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740546725808,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"timeSeriesYRange() returned 5,10,15,20,25,30,35,40 (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740546725808,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"the lines on a TimeSeriesGraph object were created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546725809,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"getYRange returned 40 (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740546725809,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"timeSeriesYRange() returned 5,10,15,20,25,30,35,40 (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740546725810,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of points was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546725810,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of points was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546725811,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"getYRange returned 40 (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740546725811,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"timeSeriesYRange() returned 5,10,15,20,25,30,35,40 (TimeSeriesGraphClass.tsx)"}
+{"level":30,"time":1740546725812,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of points was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546725812,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"the lines on a TimeSeriesGraph object were created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546725812,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"the lines on a TimeSeriesGraph object were created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1740546725812,"pid":12991,"hostname":"Madisons-MacBook-Pro.local","msg":"timeSeriesYRange() returned 5,10,15,20,25,30,35,40 (TimeSeriesGraphClass.tsx)"}

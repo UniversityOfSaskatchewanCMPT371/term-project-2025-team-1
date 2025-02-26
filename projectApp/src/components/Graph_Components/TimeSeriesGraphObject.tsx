@@ -4,11 +4,15 @@ import { GraphObject } from "./GraphObject";
 import { PointObject } from "./PointObject";
 import { sendLog } from "../../logger-frontend";
 
-// TimeSeriesGraphObject is a class that represents a collection of multiple points
+/** 
+ * TimeSeriesGraphObject is a class that extends GraphObject
+ * Holds attributes and methods required of a TimeSeriesGraph
+ * @precondition A valid CSVDataObject
+ * @postcondition Creates a Time Series Data Object
+ */
 export class TimeSeriesGraphObject extends GraphObject implements TimeSeriesGraphInterface{
     constructor(csv: CSVDataObject) {
         super(csv);
-        // Initialize an empty array to store PointInterface instances
     }   
 
     /**
@@ -57,8 +61,13 @@ export class TimeSeriesGraphObject extends GraphObject implements TimeSeriesGrap
         sendLog("info","all points have been unselected (TimeSeriesGraphClass.tsx)");
     }
 
+    /**
+     * Sets the Y range of a time series graph
+     * Increases each tick by 5, for larger data sets this could be tuned
+     * @precondition valid CSV data object
+     * @postcondition sets the max Y range of graph to the largest value of the csv data
+     */
     setRange(): void{
-        // this.yRange = this.csvData.getData().length;
         let max = 0;
         this.csvData.getData().forEach((data) => {
             if(data[this.axes.yLabel as keyof typeof data] as unknown as number >= max){
@@ -74,6 +83,11 @@ export class TimeSeriesGraphObject extends GraphObject implements TimeSeriesGrap
         sendLog("info", `setRange() was called; yRange was set to ${this.axes.yRange[1]} (TimeSeriesGraphClass.tsx)`);
     }
     
+    /**
+     * The Y values that will be displayed on ticks of the Y axis
+     * @precondition a set y axis range
+     * @postconditions returns a number[] that is the values graph ticks
+     */
     timeSeriesYRange():number[]{
         const range:number[] = [];
         let cur = 0;
@@ -87,6 +101,11 @@ export class TimeSeriesGraphObject extends GraphObject implements TimeSeriesGrap
         return range;
     }
 
+    /**
+     * The number of X values that will be displayed on ticks of the X axis
+     * @precondition requires x data of csv data
+     * @postconditions returns a string[] that is displayed on x axis
+     */
     timeSeriesXRange(): string[]{
         const range: string[] = [];
 
@@ -99,7 +118,13 @@ export class TimeSeriesGraphObject extends GraphObject implements TimeSeriesGrap
         return range;
     }
 
+    /**
+     * Increment Y header
+     * @precondition nonde
+     * @postcondition Y header increments/changes properly
+     */
     incrementYHeader(): void{
+        //If theres only two Y headers, increment to new column not possible
         if(this.csvData.getCSVHeaders().length < 3){
             sendLog("info", "incrementYHeader() was called but no changes were made (length < 3) (TimeSeriesGraphClass.tsx)");
             return;
@@ -120,6 +145,7 @@ export class TimeSeriesGraphObject extends GraphObject implements TimeSeriesGrap
             return;
         }
 
+        //If second to the last but last is the Time header, go to the start
         if(start == this.csvData.getCSVHeaders().length - 2 && this.csvData.getCSVHeaders()[this.csvData.getCSVHeaders().length - 1] == this.getXHeader()){
             this.axes.yLabel =  this.csvData.getCSVHeaders()[0];
             sendLog("info", "incrementYHeader() was called and successfully incremented (TimeSeriesGraphClass.tsx)");
@@ -135,7 +161,14 @@ export class TimeSeriesGraphObject extends GraphObject implements TimeSeriesGrap
         }
 
     }
+
+    /**
+     * Decrement Y header
+     * @precondition nonde
+     * @postcondition Y header decrements/changes properly
+     */
     decrementYHeader(): void{
+        //If theres only two Y headers, increment to new column not possible
         if(this.csvData.getCSVHeaders().length < 3){
             sendLog("info", "decrementYHeader() was called but no changes were made (length < 3) (TimeSeriesGraphClass.tsx)");
             return;
@@ -143,7 +176,7 @@ export class TimeSeriesGraphObject extends GraphObject implements TimeSeriesGrap
 
         let start = this.csvData.getCSVHeaders().indexOf(this.getYHeader());
 
-        //Cycle to the beginning
+        //Cycle to the end
         if(start == 0){
             if(this.csvData.getCSVHeaders()[this.csvData.getCSVHeaders().length - 1] != this.getXHeader()){
                 this.axes.yLabel = this.csvData.getCSVHeaders()[this.csvData.getCSVHeaders().length - 1];
@@ -156,6 +189,7 @@ export class TimeSeriesGraphObject extends GraphObject implements TimeSeriesGrap
             return;
         }
 
+        //If second to the first but first is the Time header, go to the end
         if(start == 1 && this.csvData.getCSVHeaders()[0] == this.getXHeader()){
             this.axes.yLabel = this.csvData.getCSVHeaders()[this.csvData.getCSVHeaders().length - 1];
             sendLog("info", "decrementYHeader() was called and successfully deccremented (TimeSeriesGraphClass.tsx)");
@@ -171,16 +205,20 @@ export class TimeSeriesGraphObject extends GraphObject implements TimeSeriesGrap
         }
     }
 
+    /**
+     * This is used to update the graph when the model changes
+     */
     updatePointPosition(): void{
         const totalSpace = 5;
         const divider = (totalSpace/this.timeSeriesYRange().length);
         let current = (-1.8) + (divider/2);
 
+        //Resetting points
         this.clearPoints();
         this.addPoint();
         this.updatePoints();
-        
 
+        //Assigning new position values to the points
         this.getPoints().forEach((point) => {
             point.setXPosition(current);
             point.setYPosition(((point.getYData()/100) * (this.getYRange()/(this.timeSeriesYRange().length))) - (1));
@@ -200,16 +238,38 @@ export class TimeSeriesGraphObject extends GraphObject implements TimeSeriesGrap
         return this.points;
     }
 
-    getNumPoints():number{
+    /**
+     * Get number of points on the Graph 
+     * @precondition none
+     * @postcondition return number of points
+     */
+    getNumPoints(): number{
         return this.points.length;
     }
 
+    /**
+     * Get the current X header of the Graph 
+     * @precondition none
+     * @postcondition the graph's X header
+     */
     getXHeader(): string{
         return this.axes.xLabel;
     }
+
+    /**
+     * Get the current Y header of the graph
+     * @precondition none
+     * @postcondition the graph's Y header
+     */
     getYHeader(): string{
         return this.axes.yLabel;
     }
+
+    /**
+     * Get max range of the Y axis 
+     * @precondition none
+     * @postcondition range of the Y axis
+     */
     getYRange(): number{
         return this.axes.yRange[1];
     }

@@ -1,10 +1,8 @@
-import { LocalCSVReader, LocalCsvReader } from "../components/CSV_Readers/LocalCSVReader";
-import { CSVData } from "../types/CSVInterfaces";
-// import logger from "../logging/logs";
-import { UrlCSVReader } from "../components/CSV_Readers/UrlCSVReader";
-import { sendError, sendLog } from "../logger-frontend";
+import { CSVDataInterface } from "../../types/CSVInterfaces";
+import { LocalCSVReader, LocalCsvReader, UrlCSVReader } from "./CSVReaders";
+import { sendError, sendLog } from "../../logger-frontend";
 
-export class CSVDataObject implements CSVData{
+export class CSVDataObject implements CSVDataInterface{
     name: string;
     csvHeaders: string[];
     data: { key: Record<string,string | number> }[];
@@ -17,16 +15,22 @@ export class CSVDataObject implements CSVData{
         this.name = "";
         this.csvHeaders = [];
         this.data = [];
-        this.yHeader = ""; //Will attempt for the second header [1]
+        this.yHeader = "";
         this.browserSelected = false;
         this.displayBoard = 0;
         this.vrSelected = false;
     }
-    setData(data: { key: Record<string,string | number> }[]){
-        this.data = data;
-    }
-    //Initial creation, for loading a graph in the scene, set the yHeader
-    async loadCSVData(index: number, file: (File | string), isUrl: boolean){
+    
+    /**
+     * Loads CSV data from either a local file or a URL.
+     * 
+     * @param {number} index - The index used to generate a name for the dataset.
+     * @param {File | string} file - The CSV file (local file or URL as a string).
+     * @param {boolean} isUrl - Whether the provided file is a URL (true) or a local file (false).
+     * 
+     * @returns {Promise<void>} A promise that resolves once the data is loaded.
+     */
+    async loadCSVData(index: number, file: (File | string), isUrl: boolean): Promise<void>{
         try {
             
             const data = isUrl ? await UrlCSVReader(file as string) : await LocalCsvReader(file as File)
@@ -41,19 +45,14 @@ export class CSVDataObject implements CSVData{
             sendLog("info",`loadCSVData has loaded csv data\n${JSON.stringify(this.data)}`);
         }
         catch(error: unknown) {
+            //Log the error
             sendError(error, "loadCSVData error");
-            return;
+            throw error;
         }
-    }
-    async loadLocalCSVFile(index: number,file: File){
-        await this.loadCSVData(index, file, false);
-    }
-    async loadUrlCSVFile(index: number,file: string){
-        await this.loadCSVData(index, file, true);
     }
 
     //Keeping for now in testing
-    async loadLocalByPath(index: number,file: string){
+    async loadLocalByPath(index: number,file: string): Promise<void>{
         try {
             const data = await LocalCSVReader(file);
             this.setData(data);
@@ -61,10 +60,37 @@ export class CSVDataObject implements CSVData{
             sendLog("info",`loadLocalByPath has loaded csv data\n${JSON.stringify(this.data)}}`);
         }
         catch(error: unknown) {
+            //Log the error
             sendError(error, "loadLocalByPath error");
-            return;
+            throw error;
         }
     }
+
+    //For now only one display board
+    incrementDisplayBoard(): void{
+        if(this.displayBoard == 0){
+            this.displayBoard++;
+        }
+        else{
+            this.displayBoard = 0;
+        }
+    }
+    decrementDisplayBoard(): void{
+        if(this.displayBoard == 0){
+            this.displayBoard = 1;
+        }
+        else{
+            this.displayBoard--;
+        }
+    }
+
+    /**
+     * Searches through each record and checks for the specified key in the headers.
+     * If a matching key is found, it returns the associated value from that record.
+     * 
+     * @param key - The key to search for in the dataset.
+     * @returns The corresponding value as a key-value pair (Record) from the dataset, or `null` if no match is found.
+     */
     getDataByKey(key: string): Record<string, string | number> | null{
         let result: Record<string, string | number> | null = null;
         for(const value of this.data){
@@ -84,14 +110,17 @@ export class CSVDataObject implements CSVData{
         return result;
     }
 
+    /**
+    * Retrieves data corresponding to a specific time value.
+    * @param time - The time value to search for in the dataset.
+    * @returns The corresponding record as a key-value pair, or `null` if no match is found.
+    */
     getDataByTime(time:string): Record<string, string | number> | null{
         let result: Record<string, string | number> | null = null;
         for(const value of this.data){
-            //console.log(val);
             const val = value;
             for(const header of Object.keys(val)){
                 if(val[header as keyof typeof val] as unknown as string == time){
-                    //console.log(val[header as keyof typeof val], "  ", val[this.yHeader as keyof typeof val]);
                     result = val[this.yHeader as keyof typeof val];
                     sendLog("info","getDataByKey has found data");
                     return result;
@@ -102,28 +131,33 @@ export class CSVDataObject implements CSVData{
         sendLog("info","CSVDataObject.getDataByTime() has returned null, is this expected?");
         return result;
     }
+<<<<<<< HEAD:projectApp/src/models/CSVDataObject.tsx
     getData(){
+=======
+
+    getData(): {key: Record<string, string | number>}[]{
+>>>>>>> ID2-Testing:projectApp/src/components/Csv_Components/CSVDataObject.tsx
         return this.data;
     };
-    getName(){
+    getName(): string{
         return this.name;
     }
-    getCSVHeaders(){
+    getCSVHeaders(): string[]{
         return this.csvHeaders;
     }
-    getYHeader(){
+    getYHeader(): string{
         return this.yHeader;
     }
-    getBrowserSelected(){
+    getBrowserSelected(): boolean{
         return this.browserSelected;
     }
-    getVRSelected(){
+    getVRSelected(): boolean{
         return this.vrSelected;
     };
-    getDisplayBoard(){
+    getDisplayBoard(): number{
         return this.displayBoard;
     }
-    getTimeHeader():string{
+    getTimeHeader(): string{
         for(const head of this.getCSVHeaders()){
             if(head == "Time" || head =="time"){
                 return head;
@@ -134,18 +168,33 @@ export class CSVDataObject implements CSVData{
         //this should be caught by the function that uses getTimeHeader with sendError
     }
 
+    setData(data: { key: Record<string,string | number> }[]): void{
+        this.data = data;
+    }
+    // Setter getters
+    // Post-condition: The `name` property is updated to the provided name.
     setName(name: string){
         sendLog("info",`setName, ${this.name} will now be called ${name}`);
         this.name = name;
     }
+    // Post-condition: The `browserSelected` property is updated to the provided boolean value.
     setBrowserSelected(bool: boolean){
         sendLog("info",`setBrowserSelected, ${this.name} browser is set to ${bool.toString()}`);
         this.browserSelected = bool;
     }
+<<<<<<< HEAD:projectApp/src/models/CSVDataObject.tsx
+=======
+
+    // Post-condition: The `vrSelected` property is updated to the provided boolean value.
+    //side note: why are both booleans?
+    //is it possible for both browser and vr to be selected?
+    //is it possible for neither to be selected? 
+>>>>>>> ID2-Testing:projectApp/src/components/Csv_Components/CSVDataObject.tsx
     setVRSelected(bool:boolean){
         sendLog("info",`setVRSelected, ${this.name} vr is set to ${bool.toString()}`);
         this.vrSelected = bool;
     }
+    // Post-condition: The `yHeader` property is updated to the provided value if it exists in the CSV headers.
     setYHeader(header:string){
         sendLog("info",`setYHeader, ${this.name} yHeader is set to ${header}`);
         for(const head of this.getCSVHeaders()){
@@ -153,26 +202,6 @@ export class CSVDataObject implements CSVData{
                 this.yHeader = header;
                 break;
             }
-        }
-    }
-
-    //For now only one display board
-    incrementDisplayBoard(){
-        sendLog("info",`incrementDisplayBoard, ${this.name} increase displays by 1`);
-        if(this.displayBoard == 0){
-            this.displayBoard++;
-        }
-        else{
-            this.displayBoard = 0;
-        }
-    }
-    decrementDisplayBoard(){
-        sendLog("info",`decrementDisplayBoard, ${this.name} decrease displays by 1`);
-        if(this.displayBoard == 0){
-            this.displayBoard = 1;
-        }
-        else{
-            this.displayBoard--;
         }
     }
 }

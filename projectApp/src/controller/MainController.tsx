@@ -13,16 +13,16 @@ export class MainController {
         this.updateScene = null;
     }
 
-    getCSVController(){
+    getCSVController(): CSVController{
         return this.csvController;
     }
-    getGraphController(){
+    getGraphController(): GraphController{
         return this.graphController;
     }
-    setSceneRef(ref: any){
+    setSceneRef(ref: any): void{
         this.updateScene = ref.current;
     }
-    updateMainScene(){
+    updateMainScene(): void{
         if(this.updateScene?.updateScene){
             this.updateScene.updateScene();
         }

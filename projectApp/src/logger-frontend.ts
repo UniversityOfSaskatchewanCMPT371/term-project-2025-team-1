@@ -9,7 +9,6 @@
         A log will be written to the log server with the set level and message, along with timestamp etc.
 */
 export function sendLog(level: string, message: string) {
-    console.log(message);
     // Send the log to the log server
     fetch('http://localhost:3030/log', {
         method: 'POST', 

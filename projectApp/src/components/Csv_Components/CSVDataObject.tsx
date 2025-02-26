@@ -32,8 +32,6 @@ export class CSVDataObject implements CSVDataInterface{
      */
     async loadCSVData(index: number, file: (File | string), isUrl: boolean): Promise<void>{
         try {
-            //tester comment: I think it would be better to just use instanceof operator
-            //instead of adding a boolean for isUrl     --Steven
             
             const data = isUrl ? await UrlCSVReader(file as string) : await LocalCsvReader(file as File)
             this.setData(data);
@@ -96,11 +94,9 @@ export class CSVDataObject implements CSVDataInterface{
     getDataByKey(key: string): Record<string, string | number> | null{
         let result: Record<string, string | number> | null = null;
         for(const value of this.data){
-            //console.log(val);
             const val = value;
             for(const header of Object.keys(val)){
                 if([header as keyof typeof val].toString() == key){
-                    //console.log(val[header as keyof typeof val], "  ", val[this.yHeader as keyof typeof val]);
                     result = val[header as keyof typeof val];
                     sendLog("info","getDataByKey has found data");
                     return result;
@@ -180,11 +176,6 @@ export class CSVDataObject implements CSVDataInterface{
         sendLog("info",`setBrowserSelected, ${this.name} browser is set to ${bool.toString()}`);
         this.browserSelected = bool;
     }
-
-    // Post-condition: The `vrSelected` property is updated to the provided boolean value.
-    //side note: why are both booleans?
-    //is it possible for both browser and vr to be selected?
-    //is it possible for neither to be selected? 
     setVRSelected(bool:boolean){
         sendLog("info",`setVRSelected, ${this.name} vr is set to ${bool.toString()}`);
         this.vrSelected = bool;

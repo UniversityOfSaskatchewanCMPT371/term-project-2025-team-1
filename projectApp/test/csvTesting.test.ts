@@ -28,14 +28,14 @@ describe("Testing the localCSVReader function", () => {
     //NOTE: these tests are for testing if it can read and recognize csv files, not for if the csv is formatted correctly
 
     //filepaths for tests:
-    const localRegularFile    = `../csvTestFiles/test.csv`;
-    const localFakeFile       = `../csvTestFiles/fakeFile.csv`;
-    const localOneLessHeader  = `../csvTestFiles/oneLessHeader.csv`;
-    const localOneMoreHeader  = `../csvTestFiles/oneMoreHeader.csv`;
-    const localUnevenData     = `../csvTestFiles/unevenData.csv`;
-    const localDifferentTypes = `../csvTestFiles/differentTypes.csv`;
-    const localNotCSV         = `../csvTestFiles/notCsv.html`;
-    const localEmptyFile      = `../csvTestFiles/empty.csv`;
+    const localRegularFile      = "../csvTestFiles/test.csv";
+    const localFakeFile         = "../csvTestFiles/fakeFile.csv";
+    const localOneLessHeader    = "../csvTestFiles/oneLessHeader.csv";
+    const localOneMoreHeader    = "../csvTestFiles/oneMoreHeader.csv";
+    const localUnevenData       = "../csvTestFiles/unevenData.csv";
+    const localDifferentTypes   = "../csvTestFiles/differentTypes.csv";
+    const localNotCSV           = "../csvTestFiles/notCsv.html";
+    const localEmptyFile        = "../csvTestFiles/empty.csv";
 
     const regularFileReader: ReaderTest<TimeSeriesData[]> = {
         description: "local reader:\tdata should be read from existing file",
@@ -174,7 +174,7 @@ describe("Testing the urlCSVReader function", () => {
     //NOTE: these tests are for testing if it can read the file, not for if the csv is formatted correctly
 
     //urls used in tests
-    const githubID2Dev = "https://raw.githubusercontent.com/UniversityOfSaskatchewanCMPT371/term-project-2025-team-1/refs/heads/ID2Dev/csvTestFiles";
+    const githubID2Dev      = "https://raw.githubusercontent.com/UniversityOfSaskatchewanCMPT371/term-project-2025-team-1/refs/heads/ID2Dev/csvTestFiles";
     const urlRegularFile    = `${githubID2Dev}/test.csv`;
     const urlFakeFile       = `${githubID2Dev}/fakeFile.csv`;
     const urlOneLessHeader  = `${githubID2Dev}/oneLessHeader.csv`;

@@ -1,6 +1,6 @@
 import { CSVDataObject } from "../components/Csv_Components/CSVDataObject";
 import { TimeSeriesGraphObject } from "../components/Graph_Components/TimeSeriesGraphObject";
-import { sendLog } from "../logger-frontend";
+import { sendError, sendLog } from "../logger-frontend";
 import { CSVReaderModel } from "../models/CSVReaderModel";
 import { ControllerInterface } from "../types/BaseInterfaces";
 import { CSVDataInterface } from "../types/CSVInterfaces";
@@ -26,15 +26,10 @@ export class CSVController implements ControllerInterface{
     generate(): void{
         for(const csv of this.model.getData()){
             if(csv.getDisplayBoard() == 1){
-                //any plans to increase number of displays
                 csv.setVRSelected(true);
                 const graph = new TimeSeriesGraphObject(csv);
                 graph.setName(csv.getName());
                 graph.addPoint();
-                //tester comment: dont be afraid to use some constant variables
-                //obj1.getObj2().getObj3().getObj4(),   vs
-                //obj2: class2 = obj1.getObj2, obj3: class3 = obj2.getObj3()...
-                //these constants will only exist in this if statement
                 mainController.getGraphController().pushDataToModel(graph)
                 console.log("Success on generate?")
                 sendLog("info","generate has pushed a new graph");
@@ -48,6 +43,7 @@ export class CSVController implements ControllerInterface{
         }
         catch(error: unknown){
             //Log the error
+            sendError(error,"loadLocalFile Error");
             throw error;
         }
     }
@@ -58,6 +54,7 @@ export class CSVController implements ControllerInterface{
         }
         catch(error: unknown){
             //Log the error
+            sendError(error,"loadURLFile Error");
             throw error;
         }
     }
@@ -85,15 +82,11 @@ export class CSVController implements ControllerInterface{
         let file:CSVDataObject = new CSVDataObject();
         for(const csv of this.model.getData()){
             if(csv.getVRSelected()){
-                //returns the first VRSelected?
                 file = csv;
-                //file is not returned, csv is
-                //what is the point of this file variable?
                 sendLog("info",`getVRSelected has returned ${csv.name}`);
                 return csv;
             }
         }
-        //is this not an error? is it supposed to return an empty object? is this intentional?
         sendLog("info","getVRSelected has returned an empty CSVDataObject");
         return file;
     }

@@ -3,11 +3,6 @@ import { sendError, sendLog } from "../logger-frontend";
 import { CSVDataInterface, CSVModelInterface } from "../types/CSVInterfaces";
 
 export class CSVReaderModel implements CSVModelInterface{
-    //tester comment: num is very undescriptive, what does it do?
-    //it LOOKS like num counts the number of data objects, so why not this.data.length
-    //from looking at data.loadCsvFile(), i see that it is supposed to be used for indexing
-    //but it is only used in name?
-    //why does this model need to know the index?
     data: CSVDataObject[];
 
     constructor(){
@@ -34,18 +29,18 @@ export class CSVReaderModel implements CSVModelInterface{
     * @param file - The File object representing the local CSV file.
     */
     async readLocalFile(file: File): Promise<void>{
-         const data:CSVDataObject = new CSVDataObject;
-         try{
+        const data:CSVDataObject = new CSVDataObject;
+        try{
             await data.loadCSVData(this.data.length, file, false);
             sendLog("info",`readLocalFile read a file\n${JSON.stringify(data.getData())}`);
-         }
-         catch(error: unknown){
+        }
+        catch(error: unknown){
             // Log the Error
             sendError(error,"readLocalFile error");
             throw error;
         }
         this.data.push(data);
-     }
+    }
 
     /**
     * Reads a CSV file from a URL and adds it to the data array.
@@ -58,27 +53,27 @@ export class CSVReaderModel implements CSVModelInterface{
             sendLog("info",`readURLFile read a file\n${JSON.stringify(data.getData())}`);
         }
         catch(error: unknown){
-            //  Log the error
+            // Log the error
             sendError(error,"readURLFile error");
             throw error;
         }
         this.data.push(data);
-     }
+    }
 
-     async readLocalByPath(file:string): Promise<void>{
+    async readLocalByPath(file:string): Promise<void>{
         const data:CSVDataObject = new CSVDataObject;
-         try{
-             await data.loadLocalByPath(this.data.length, file);
-             sendLog("info",`readLocalByPath read a file\n${JSON.stringify(data.getData())}`);
-         }
-         catch(error: unknown){
+        try{
+            await data.loadLocalByPath(this.data.length, file);
+            sendLog("info",`readLocalByPath read a file\n${JSON.stringify(data.getData())}`);
+        }
+        catch(error: unknown){
             // Log the error
             sendError(error,"readLocalByPath error");
             throw error;
         }
 
-         this.data.push(data);
-     }
+        this.data.push(data);
+    }
      
     /**
     * Deletes a CSV file, if it has the name 'name', from the data array

@@ -143,6 +143,7 @@ export function TimeSeriesGraph({graph}:{graph: TimeSeriesGraphObject}): React.J
    * @postconditions The num value with a tick mark displayed on graph
    */
   function GenerateYRange({num} : {num:number}): React.JSX.Element{
+    sendLog("info", "a visual representation of the Y range was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)");
     return(
       <>
       <Text positionTop={10}>{num.toString()} -</Text>

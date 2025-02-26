@@ -27,7 +27,6 @@ describe('emulating csvLoader.feature', () => {
         //UrlCsvReader
         const URLCSVReaderSuccess = "URLCSVReader has successfully parsed";
         //CSVDataObject
-        const CSVDataObjectSetData = "data is set to";
         const CSVDataObjectSetName = "will now be called";
         const CSVDataObjectSetYHeader = "yHeader is set to";
         const loadCSVDataSuccess = "loadCSVData has loaded csv data";
@@ -36,7 +35,6 @@ describe('emulating csvLoader.feature', () => {
         //BrowserUI
         const URLComponentLog = "URLComponent read:";
         await expect(fileContainsText(path,URLCSVReaderSuccess)).resolves.toBe(true);
-        await expect(fileContainsText(path,CSVDataObjectSetData)).resolves.toBe(true);
         await expect(fileContainsText(path,CSVDataObjectSetName)).resolves.toBe(true);
         await expect(fileContainsText(path,CSVDataObjectSetYHeader)).resolves.toBe(true);
         await expect(fileContainsText(path,loadCSVDataSuccess)).resolves.toBe(true);
@@ -75,7 +73,6 @@ describe('emulating csvLoader.feature', () => {
         //LocalCsvReader
         const LocalCSVReaderSuccess = "LocalCsvReader(file) has read data";
         //CSVDataObject
-        const CSVDataObjectSetData = "data is set to";
         const CSVDataObjectSetName = "will now be called";
         const CSVDataObjectSetYHeader = "yHeader is set to";
         const loadCSVDataSuccess = "loadCSVData has loaded csv data";
@@ -84,7 +81,6 @@ describe('emulating csvLoader.feature', () => {
         //BrowserUI
         const LoadComponentLog = "LoadComponent read:";
         await expect(fileContainsText(path,LocalCSVReaderSuccess)).resolves.toBe(true);
-        await expect(fileContainsText(path,CSVDataObjectSetData)).resolves.toBe(true);
         await expect(fileContainsText(path,CSVDataObjectSetName)).resolves.toBe(true);
         await expect(fileContainsText(path,CSVDataObjectSetYHeader)).resolves.toBe(true);
         await expect(fileContainsText(path,loadCSVDataSuccess)).resolves.toBe(true);

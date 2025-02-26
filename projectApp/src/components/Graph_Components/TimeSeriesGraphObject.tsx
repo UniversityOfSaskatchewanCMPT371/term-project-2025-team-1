@@ -253,6 +253,7 @@ export class TimeSeriesGraphObject extends GraphObject implements TimeSeriesGrap
      * @postcondition the graph's X header
      */
     getXHeader(): string{
+        sendLog("info", `getXHeader returned ${this.axes.xLabel} (TimeSeriesGraphClass.tsx)`);
         return this.axes.xLabel;
     }
 
@@ -262,6 +263,7 @@ export class TimeSeriesGraphObject extends GraphObject implements TimeSeriesGrap
      * @postcondition the graph's Y header
      */
     getYHeader(): string{
+        sendLog("info", `getYHeader returned ${this.axes.yLabel} (TimeSeriesGraphClass.tsx)`);
         return this.axes.yLabel;
     }
 
@@ -271,6 +273,7 @@ export class TimeSeriesGraphObject extends GraphObject implements TimeSeriesGrap
      * @postcondition range of the Y axis
      */
     getYRange(): number{
+        sendLog("info", `getYRange returned ${this.axes.yRange[1]} (TimeSeriesGraphClass.tsx)`);
         return this.axes.yRange[1];
     }
 }

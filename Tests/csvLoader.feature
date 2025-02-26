@@ -43,11 +43,4 @@ Feature: csvLoader
     When the user clicks on an invalid CSV file
     Then an error dialog box should appear 
 
-  # In the case I want to delete a manually loaded CSV file
-  Scenario: Deleting a loaded CSV file
-    Given the user has loaded a CSV file
-    When the user clicks the "Loaded Graphs" menu
-    And clicks the selection box
-    And clicks delete
-    Then the CSV should be deleted from the current loaded list
 

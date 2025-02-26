@@ -1,6 +1,10 @@
-//TODO
-//Will track the data of the 2D Point and create the 2D Point
-//Takes Point2DInterface as parameter 
+/**
+ * Creates and renders a 2D point visualization based on provided point data.
+ * 
+ * @param {PointRef} pointRef - Reference object containing point data and state
+ * @precondition pointRef must be a valid PointRef object with defined position, selected state, and x/y data
+ * @postcondition Returns a Point2D component with initialized PointClass data
+ */
 
 import { Point2D } from "../../pages/Graph_Objects/Point2D";
 import { PointRef } from "../../types/PointInterface";
@@ -12,10 +16,6 @@ export function Create2DPoint(pointRef: PointRef){
     point.setSelected(pointRef.selected);
     point.setXData(pointRef.xData);
     point.setYData(pointRef.yData);
-
-    //TODO
-    //Track point class, maybe only generate the points on graph once
-    //All Point class objects are made?
     return (
         <Point2D pointRef = {point}></Point2D>
     )

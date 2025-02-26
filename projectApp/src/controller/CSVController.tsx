@@ -4,53 +4,75 @@ import { CSVDataObject } from "../models/CSVDataObject";
 import { CSVReaderModel } from "../models/CSVReaderModel";
 import { ControllerInterface } from "../types/BaseInterfaces";
 import mainController from "./MainController";
-/*
-* The controller for CSV related actions
-*/
-export class CSVController implements ControllerInterface{
-    model: CSVReaderModel;  //The model used by this controller
 
-    constructor(){
+/**
+ * Controller class that manages CSV-related operations and interactions.
+ * Implements the ControllerInterface for standardized controller behavior.
+ * 
+ * @implements {ControllerInterface}
+ */
+export class CSVController implements ControllerInterface {
+    model: CSVReaderModel;
+
+    /**
+     * Initializes a new CSVController with a fresh CSVReaderModel
+     * 
+     * @postcondition A new CSVReaderModel is created and assigned to this.model
+     */
+    constructor() {
         this.model = new CSVReaderModel();
     }
 
-    //This method returns the Model, and allows the controller to use its methods
-    getModel(){
+    /**
+     * Retrieves the controller's associated model
+     * 
+     * @returns {CSVReaderModel} The CSV reader model instance
+     * @postcondition Returns the existing model without modification
+     */
+    getModel() {
         return this.model;
     }
-    generate(){
-        for(const csv of this.model.getData()){
-            if(csv.getDisplayBoard() == 1){
-                //any plans to increase number of displays
+
+    /**
+     * Generates time series graphs for CSV data marked for VR display
+     * 
+     * @precondition this.model must be initialized with CSV data
+     * @postcondition For each CSV with displayBoard=1:
+     *   - VR selection is enabled
+     *   - A new TimeSeriesGraph is created and initialized
+     *   - The graph is added to the main controller's graph collection
+     */
+    generate() {
+        for(const csv of this.model.getData()) {
+            if(csv.getDisplayBoard() == 1) {
                 csv.setVRSelected(true);
                 const graph = new TimeSeriesGraphClass(csv);
                 graph.setName(csv.getName());
                 graph.addPoint();
-                //tester comment: dont be afraid to use some constant variables
-                //obj1.getObj2().getObj3().getObj4(),   vs
-                //obj2: class2 = obj1.getObj2, obj3: class3 = obj2.getObj3()...
-                //these constants will only exist in this if statement
                 mainController.getGraphController().getModel().getData().push(graph)
                 console.log("Success on generate?")
                 sendLog("info","generate has pushed a new graph");
             }
         }   
     }
-    getVRSelected(): CSVDataObject{
+
+    /**
+     * Retrieves the first CSV data object that is selected for VR visualization
+     * 
+     * @precondition this.model must be initialized
+     * @postcondition Returns either an existing CSV object or a new empty one (if none found)
+     *  without modifying data
+     */
+    getVRSelected(): CSVDataObject {
         let file:CSVDataObject = new CSVDataObject();
-        for(const csv of this.model.getData()){
-            if(csv.getVRSelected()){
-                //returns the first VRSelected?
+        for(const csv of this.model.getData()) {
+            if(csv.getVRSelected()) {
                 file = csv;
-                //file is not returned, csv is
-                //what is the point of this file variable?
                 sendLog("info",`getVRSelected has returned ${csv.name}`);
                 return csv;
             }
         }
-        //is this not an error? is it supposed to return an empty object? is this intentional?
         sendLog("info","getVRSelected has returned an empty CSVDataObject");
         return file;
     }
-    
 }

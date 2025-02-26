@@ -1,14 +1,23 @@
-//TODO
-//The 2D Point that will be displayed on the Time Series Graph
-//Will require x, y positions and possibly size (depends on total number of Time values)
-
 import { useState } from "react";
 import { PointClass } from "../../components/Graph_Components/PointClass";
 
+/**
+ * Renders a 2D point on a Time Series Graph.
+ * The point can be interacted with through hover and click events.
+ * @param props - Component props
+ * @param {PointClass} props.pointRef - Reference to the point data and state
+ * @precondition pointRef must be a valid PointClass instance with position and selected state
+ * @postcondition Renders an interactive 2D point with hover and click functionality
+ */
 export function Point2D({pointRef} : {pointRef: PointClass}){
     const [ hovered, hover ] = useState(false);
     const [ clicked, click ] = useState(false);
 
+    /**
+     * Toggles the point's selected state and updates local click state
+     * @precondition None
+     * @postcondition Updates both local clicked state and pointRef's selected state
+     */
     function setOnClick(){
         click(!(clicked));
         pointRef.setSelected(!(pointRef.getSelected()))

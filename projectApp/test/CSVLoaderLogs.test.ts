@@ -6,7 +6,7 @@ import { fileContainsText } from "./fileParser";
 
 
 describe('emulating csvLoader.feature', () => {
-    const path = './logsCsv.txt';
+    const path = "./logConfirmationlogs.txt";
     test('log file exists', () => {
         /*
         const testInfo = `test for log at path ${path}`;

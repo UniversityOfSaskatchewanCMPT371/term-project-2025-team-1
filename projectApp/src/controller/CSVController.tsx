@@ -1,6 +1,6 @@
 import { CSVDataObject } from "../components/Csv_Components/CSVDataObject";
 import { TimeSeriesGraphObject } from "../components/Graph_Components/TimeSeriesGraphObject";
-import { sendLog } from "../logger-frontend";
+import { sendError, sendLog } from "../logger-frontend";
 import { CSVReaderModel } from "../models/CSVReaderModel";
 import { ControllerInterface } from "../types/BaseInterfaces";
 import { CSVDataInterface } from "../types/CSVInterfaces";
@@ -53,6 +53,7 @@ export class CSVController implements ControllerInterface {
         }
         catch(error: unknown){
             //Log the error
+            sendError(error,"loadLocalFile Error");
             throw error;
         }
     }
@@ -63,6 +64,7 @@ export class CSVController implements ControllerInterface {
         }
         catch(error: unknown){
             //Log the error
+            sendError(error,"loadURLFile Error");
             throw error;
         }
     }

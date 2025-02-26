@@ -19,7 +19,6 @@ import { CSVDataInterface, CSVModelInterface } from "../types/CSVInterfaces";
  * 
  */
 export class CSVReaderModel implements CSVModelInterface{
-    
     data: CSVDataObject[];
 
     constructor(){
@@ -56,17 +55,18 @@ export class CSVReaderModel implements CSVModelInterface{
     * @param {File} file - The File object representing the local CSV file.
     */
     async readLocalFile(file: File): Promise<void>{
-         const data:CSVDataObject = new CSVDataObject;
-         try{
+        const data:CSVDataObject = new CSVDataObject;
+        try{
             await data.loadCSVData(this.data.length, file, false);
             sendLog("info",`readLocalFile read a file\n${JSON.stringify(data.getData())}`);
-         }
-         catch(error: unknown){
+        }
+        catch(error: unknown){
+            // Log the Error
             sendError(error,"readLocalFile error");
             throw error;
         }
         this.data.push(data);
-     }
+    }
 
     /**
     * Reads a CSV file from a URL and adds it to the data array.
@@ -84,11 +84,12 @@ export class CSVReaderModel implements CSVModelInterface{
             sendLog("info",`readURLFile read a file\n${JSON.stringify(data.getData())}`);
         }
         catch(error: unknown){
+            // Log the error
             sendError(error,"readURLFile error");
             throw error;
         }
         this.data.push(data);
-     }
+    }
 
      /**
      * Reads a CSV file from a URL and adds it to the data array.
@@ -107,12 +108,13 @@ export class CSVReaderModel implements CSVModelInterface{
              sendLog("info",`readLocalByPath read a file\n${JSON.stringify(data.getData())}`);
          }
          catch(error: unknown){
+            // Log the error
             sendError(error,"readLocalByPath error");
             throw error;
         }
 
-         this.data.push(data);
-     }
+        this.data.push(data);
+    }
      
     /**
     * Deletes a CSV file, if it has the name 'name', from the data array

@@ -1,11 +1,15 @@
+// Note: trace and debug levels also exist but they don't log to the locations chosen currently 
 
-// level should be one of the following: "info", "warn", "error", "fatal", or "test"
-// but error should use the sendError function below instead
-// i will add a check for a acceptable level, i just want to get this out so people can start using it - Madison
-// levels trace and debug also exist but they don't log to the locations chosen properly currently 
-// (i will fix this just wanted to get people using this asap)
+
+/* sendLog: Creates and sends a log to the log server
+    @precondition: 
+        Level should be one of the following: "info", "warn", "error", "fatal", or "test", which determines severity of log message
+        message != null
+    @postcondition:
+        A log will be written to the log server with the set level and message, along with timestamp etc.
+*/
 export function sendLog(level: string, message: string) {
-    console.log(message);
+    // Send the log to the log server
     fetch('http://localhost:3030/log', {
         method: 'POST', 
         body: JSON.stringify({ 
@@ -17,9 +21,16 @@ export function sendLog(level: string, message: string) {
     // .then(() => {alert("log sent")});
 }
 
-// use for logging errors because we can see more information about the error this way
-// error - the error object that is thrown
+
+/* sendError: Creates and sends an *error* log to the log server (used specifically in error cases to provide more info)
+    @precondition:
+        "error" must represent the error object that is thrown 
+        message != null
+    @postcondition:
+        An error log will be written to the log server with additional messaging to provide context regarding the error
+*/
 export function sendError(error: any, message: string) {
+    // Send an error-specific log to the log server
     fetch('http://localhost:3030/error', {
         method: 'POST',
         body: JSON.stringify({

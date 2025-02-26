@@ -40,8 +40,6 @@ export class CSVDataObject implements CSVDataInterface{
      */
     async loadCSVData(index: number, file: (File | string), isUrl: boolean): Promise<void>{
         try {
-            //tester comment: I think it would be better to just use instanceof operator
-            //instead of adding a boolean for isUrl     --Steven
             
             const data = isUrl ? await UrlCSVReader(file as string) : await LocalCsvReader(file as File)
             this.setData(data);
@@ -115,7 +113,6 @@ export class CSVDataObject implements CSVDataInterface{
     getDataByKey(key: string): Record<string, string | number> | null{
         let result: Record<string, string | number> | null = null;
         for(const value of this.data){
-            //console.log(val);
             const val = value;
             for(const header of Object.keys(val)){
                 if([header as keyof typeof val].toString() == key){

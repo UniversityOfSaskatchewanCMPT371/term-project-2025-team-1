@@ -57,7 +57,6 @@ export function TimeSeriesGraph({graph}:{graph: TimeSeriesGraphObject}){
     )
 
   }
-  // console.log("Divider ", divider, " current :", current, " Cur + Div:", (current + (divider/2)))
   function GenerateSideBar(): React.JSX.Element{
     sendLog("info", "a TimeSeriesGraph object sidebar was created (TimeSeriesGraph.tsx)");
     return(

@@ -1,6 +1,6 @@
 import { CSVDataObject } from "../components/Csv_Components/CSVDataObject";
 import { TimeSeriesGraphObject } from "../components/Graph_Components/TimeSeriesGraphObject";
-import { sendLog } from "../logger-frontend";
+import { sendError, sendLog } from "../logger-frontend";
 import { CSVReaderModel } from "../models/CSVReaderModel";
 import { ControllerInterface } from "../types/BaseInterfaces";
 import { CSVDataInterface } from "../types/CSVInterfaces";
@@ -30,15 +30,7 @@ export class CSVController implements ControllerInterface{
                 const graph = new TimeSeriesGraphObject(csv);
                 graph.setName(csv.getName());
                 graph.addPoint();
-<<<<<<< HEAD
-                mainController.getGraphController().getModel().getData().push(graph)
-=======
-                //tester comment: dont be afraid to use some constant variables
-                //obj1.getObj2().getObj3().getObj4(),   vs
-                //obj2: class2 = obj1.getObj2, obj3: class3 = obj2.getObj3()...
-                //these constants will only exist in this if statement
                 mainController.getGraphController().pushDataToModel(graph)
->>>>>>> ID2-Testing
                 console.log("Success on generate?")
                 sendLog("info","generate has pushed a new graph");
             }
@@ -51,6 +43,7 @@ export class CSVController implements ControllerInterface{
         }
         catch(error: unknown){
             //Log the error
+            sendError(error,"loadLocalFile Error");
             throw error;
         }
     }
@@ -61,6 +54,7 @@ export class CSVController implements ControllerInterface{
         }
         catch(error: unknown){
             //Log the error
+            sendError(error,"loadURLFile Error");
             throw error;
         }
     }

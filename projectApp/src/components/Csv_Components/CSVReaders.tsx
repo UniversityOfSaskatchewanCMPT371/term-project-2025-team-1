@@ -1,6 +1,7 @@
 import Papa from "papaparse";
 import * as fsPromise from 'fs/promises';
 import { CSVHeaders, TimeSeriesData } from "../../types/CSVInterfaces";
+import { sendError, sendLog } from "../../logger-frontend";
 
 /**  
 * This function reads the headers of a csv file and stores it
@@ -15,9 +16,12 @@ import { CSVHeaders, TimeSeriesData } from "../../types/CSVInterfaces";
 **/    
 export async function LocalCSVHeaders(file:string): Promise<CSVHeaders> {
     return LocalCSVReader(file).then((timeSeries) => {
-        return ({ headers: Object.keys(timeSeries[0]) } as CSVHeaders);
+        const headers: CSVHeaders = { headers: Object.keys(timeSeries[0]) };
+        sendLog("info",`LocalCSVHeaders returns\n${headers}`);
+        return (headers);
     // Rethrowing errors
     }).catch((err:unknown) => {
+        sendError(err,`LocalCSVHeaders error`);
         throw (err as Error);
     });
 }
@@ -28,15 +32,15 @@ export async function LocalCSVHeaders(file:string): Promise<CSVHeaders> {
  * @returns Headers of the file as a CSVHeaders
  */
 export async function UrlCSVHeaders(url:string): Promise<CSVHeaders> {
-    // logger.info("Calling URLCSVHeader ", url);
-     return UrlCSVReader(url).then((timeSeries) => {
-         //logger.info("Successful URLCSVHeader", Object.keys(timeSeries[0]))
-         return ({ headers: Object.keys(timeSeries[0]) } as CSVHeaders);
-     //Rethrowing errors
-     }).catch((err: unknown) => {
-         //logger.error("UrlCSVHeaders Error");
-         throw (err as Error);
-     });
+    return UrlCSVReader(url).then((timeSeries) => {
+        const headers: CSVHeaders = { headers: Object.keys(timeSeries[0]) };
+        sendLog("info",`UrlCSVHeaders returns\n${headers}`);
+        return (headers);
+    // Rethrowing errors
+    }).catch((err: unknown) => {
+        sendError(err,`LocalCSVHeaders error`);
+        throw (err as Error);
+    });
  }
 
 /**  
@@ -52,8 +56,9 @@ export async function UrlCSVHeaders(url:string): Promise<CSVHeaders> {
 **/
 export async function LocalCSVReader(file:string): Promise<TimeSeriesData[]>{
     if(!file.endsWith('.csv') && !file.endsWith('.txt')){
-        // Ensures input file is a csv
-        throw new Error('File must be .csv or .txt');
+        const nonCSVErr = new Error('File must be .csv or .txt');
+        sendError(nonCSVErr,`LocalCSVReader ${file} is not .csv or .txt`);
+        throw nonCSVErr;
     }
     return fsPromise.readFile(file, 'utf8').then((data: string) => {
         let timeSeries: TimeSeriesData[] = []
@@ -66,14 +71,16 @@ export async function LocalCSVReader(file:string): Promise<TimeSeriesData[]>{
                 if(timeSeries.length === 0){
                     throw new Error("LocalCSVReader is empty");
                 }
+                sendLog("info",`LocalCSVReader has successfully parsed\n${JSON.stringify(timeSeries)}`);
             },
             error: function(parseError: Error) {
+                // this will be caught by promise.catch
                 throw parseError;
             }
         });
         return timeSeries;
     }).catch((err: unknown) => {
-        //test for possible error catching
+        sendError(err,"LocalCSVReader error");
         throw (err as Error);
     });
 };
@@ -93,7 +100,9 @@ export async function LocalCSVReader(file:string): Promise<TimeSeriesData[]>{
 export function LocalCsvReader(file: File): Promise<TimeSeriesData[]>{
     return new Promise<TimeSeriesData[]>((resolve, reject) => {
         if(!file.name.endsWith('.csv') && !file.name.endsWith('.txt')){
-            reject(new Error("file must be csv or txt"));
+            const nonCSVErr = new Error("file must be csv or txt");
+            sendError(nonCSVErr,`LocalCsvReader(file) ${file.name} is not .csv or .txt`);
+            reject(nonCSVErr);
             return;
         }
 
@@ -103,7 +112,9 @@ export function LocalCsvReader(file: File): Promise<TimeSeriesData[]>{
             const fileContent = e.target?.result as string;
 
             if(!fileContent.trim()){
-                reject(new Error("Empty file set"));
+                const emptyFileErr = new Error("Empty file set");
+                sendError(emptyFileErr,`LocalCsvReader(file) ${file.name} is empty`);
+                reject(emptyFileErr);
                 return;
             }
 
@@ -111,12 +122,12 @@ export function LocalCsvReader(file: File): Promise<TimeSeriesData[]>{
                 header: true,
                 dynamicTyping: true,
                 complete: function (parsed: {data: TimeSeriesData[]}){
-                    console.log("Successfully parsed CSV data", parsed.data);
+                    sendLog("info",`LocalCsvReader(file) has read data\n${JSON.stringify(parsed.data)}`);
                     const typedData: TimeSeriesData[] = parsed.data;
                     resolve(typedData); // Resolve the promise with parsed data
                 },
                 error: function (parseError: Error) {
-                    console.error("Failed to parse CSV", file.name);
+                    sendError(parseError,`LocalCsvReader(file) has errored for ${file.name}`);
                     reject(parseError); // Reject the promise on parsing error
                 }
             });
@@ -124,7 +135,9 @@ export function LocalCsvReader(file: File): Promise<TimeSeriesData[]>{
 
         // handles file reading errors
         reader.onerror = () => {
-            reject(new Error("Error"))
+            const readerErr = new Error("reader error");
+            sendError(readerErr,`LocalCsvReader(file) has errored for ${file.name}`);
+            reject(readerErr);
         }
         reader.readAsText(file);
         
@@ -137,21 +150,18 @@ export function LocalCsvReader(file: File): Promise<TimeSeriesData[]>{
  * @returns data of file formatted as TimeSeriesData[]
  */
 export async function UrlCSVReader(url:string): Promise<TimeSeriesData[]>{
-    //logger.info("Calling URLCSVReader ", url);
     if(!url.endsWith('.csv') && !url.endsWith('.txt')){
-        //logger.error("URLCSVReader File isn't .csv or .txt file", url);
-        throw new Error('url must be .csv or .txt');
+        const nonCSVErr = new Error('url must be .csv or .txt');
+        sendError(nonCSVErr,`UrlCSVReader ${url} is not .csv or .txt`);
+        throw nonCSVErr;
     }
     else{
-        //will only work if url gives permissions
-        //test with other urls?
-        //logger.info("URLCSVReader Reading file", url);
         return fetch(url).then((response: Response) =>{
             if (!response.ok) {
-                //logger.error("URLCSVReader Failed Parse", url);
-                throw new Error(`Failed to fetch the file. Status: ${response.status.toString()}`);
+                const badResponseErr = Error(`Failed to fetch the file. Status: ${response.status.toString()}`);
+                sendError(badResponseErr,"UrlCSVReader response is not ok");
+                throw badResponseErr;
             }
-            //test for responses that are not ok?
             return response.text();
         }).then((csvData: string) => {
             let timeSeries: TimeSeriesData[] = [];
@@ -159,24 +169,21 @@ export async function UrlCSVReader(url:string): Promise<TimeSeriesData[]>{
                 header: true,
                 dynamicTyping: true,
                 complete: function(parsed: Papa.ParseResult<TimeSeriesData>) {
-                    //logger.info("URLCSVReader Successfully parsed", url);
-                    //test if casting works
                     timeSeries = parsed.data;
                     if(timeSeries.length === 0){
                         throw new Error("URLCSVReader is empty");
                     }
-                    //logger.info("URLCSVReader Parsed value", parsed);
+                    sendLog("info",`URLCSVReader has successfully parsed\n${JSON.stringify(timeSeries)}`);
                 },
                 error: function(parseError: Error){
-                    //logger.error("URLCSVReader Failed Parse", url);
+                    //this will be caught by promise.catch
                     throw parseError;
                 }
             });
             return timeSeries;
         }).catch((err: unknown) => {
-            //test for possible error catching
-            //logger.error("UrlCSVReader Error", err);
-            throw ((err as Error));
+            sendError(err,"URLCSVReader error");
+            throw (err as Error);
         });
     };
     

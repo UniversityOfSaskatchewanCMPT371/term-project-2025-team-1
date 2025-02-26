@@ -77,11 +77,6 @@ export function BrowserUI(){
       ref={urlInputRef}
       style={{display: 'none'}}
       onClick={( async (): Promise<void> => {
-<<<<<<< HEAD
-        alert(csv)
-        await mainController.getCSVController().getModel().readURLFile(csv);
-        sendLog("info",`URLComponent read: ${csv}`);
-=======
         try{
           await mainController.getCSVController().loadURLFile(csv);
           alert(`Successfully Loaded: ${csv}`);
@@ -89,9 +84,8 @@ export function BrowserUI(){
         }
         catch(error: unknown){
           alert(`${error} Failed Loading: ${csv}`);
-          sendLog("info",`URLComponent read: ${csv}`);
+          sendError(error,`URLComponent error loading: ${csv}`);
         }
->>>>>>> ID2-Testing
         setControlKey(controlKey + 1);
       })}></input>
     </>

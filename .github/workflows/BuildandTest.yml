@@ -1,5 +1,5 @@
 #  Continuous Integration (CI) workflow to build and test our project
-name: BuildandTest
+name: Build and Test
 
 # Controls when the workflow will run
 on:

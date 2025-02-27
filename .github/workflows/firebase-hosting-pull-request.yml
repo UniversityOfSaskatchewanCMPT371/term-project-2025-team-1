@@ -18,7 +18,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - run: |
+      - name: Run the build, lint, test flow
+        run: |
           npm ci
           npm run lint
           npm run build

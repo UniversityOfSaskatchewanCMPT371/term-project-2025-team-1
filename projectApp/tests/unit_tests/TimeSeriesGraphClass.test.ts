@@ -1,7 +1,7 @@
 import { describe, test, expect, beforeEach } from 'vitest';
 
-import mainController from '../src/controller/MainController';
-import { TimeSeriesGraphObject } from '../src/components/Graph_Components/TimeSeriesGraphObject';
+import mainController from '../../src/controller/MainController';
+import { TimeSeriesGraphObject } from '../../src/components/Graph_Components/TimeSeriesGraphObject';
 
 describe( 'Time Series Graph Class', async () => {
     let graph: TimeSeriesGraphObject;

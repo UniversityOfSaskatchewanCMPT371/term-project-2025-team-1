@@ -1,8 +1,8 @@
 import { describe, test, expect, beforeEach } from "vitest";
-import {MainController} from '../src/controller/MainController';
-import { CSVController } from "../src/controller/CSVController";
-import { ControllerInterface } from "../src/types/BaseInterfaces";
-import { GraphController } from "../src/controller/GraphController";
+import {MainController} from '../../src/controller/MainController';
+import { CSVController } from "../../src/controller/CSVController";
+import { ControllerInterface } from "../../src/types/BaseInterfaces";
+import { GraphController } from "../../src/controller/GraphController";
 
 /* 
 * Main Controller test, this test will only check if the Main Controller

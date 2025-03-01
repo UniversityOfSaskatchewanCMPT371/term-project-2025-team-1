@@ -20,7 +20,7 @@ function App() {
       <button onClick={() => {void (async () => store.enterAR())}}>Enter AR</button>
       <div className="canvas-container">
       <div>
-        <BrowserUI></BrowserUI>
+        <BrowserUI/>
       </div>
         {/* Everything encapsulated by Canvas and XR will contain the Scene to be displayed in VR */}
         <Canvas>

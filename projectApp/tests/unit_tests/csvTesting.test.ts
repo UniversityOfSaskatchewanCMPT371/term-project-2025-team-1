@@ -13,21 +13,11 @@ interface ReaderTest<T> {
 
 function runReaderTest(testObject: ReaderTest<any>): void {
     test(testObject.description, async () => {
-        try{
-            const result = await testObject.testFunction(testObject.filepath);
-            if(testObject.successful){
-                expect(result).toBeDefined();
-            } else {
-                // If a failure was expected but the function succeeded, throw an error.
-                throw new Error(`Expected failure but function succeeded with result: ${result}`);
-            }    
-        } catch (err) {
-            if (testObject.successful) {
-                // If success was expected but an error was thrown, include additional debugging info.
-                throw new Error(`Expected success but function threw an error: ${err}`);
-            } else {
-                expect(err).toBeDefined();
-            }
+        const toRun = () => testObject.testFunction(testObject.filepath);
+        if (testObject.successful) {
+            await expect(toRun()).resolves.toBeDefined();
+        } else {
+            await expect(toRun()).rejects.toBeDefined();
         }
     });
 }

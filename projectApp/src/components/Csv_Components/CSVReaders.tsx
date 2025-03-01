@@ -101,8 +101,10 @@ export async function LocalCSVReader(file:string): Promise<TimeSeriesData[]>{
 *    The returned promise resolves to an object containing the headers of the CSV file.
 *    If the file is empty or cannot be parsed, an error is thrown.
 **/
+// TODO - unit tests for this version of the local reader, it accepts a File instead of a string
 export function LocalCsvReader(file: File): Promise<TimeSeriesData[]>{
     return new Promise<TimeSeriesData[]>((resolve, reject) => {
+        // TODO - make only .csv files be valid files
         if(!file.name.endsWith('.csv') && !file.name.endsWith('.txt')){
             const nonCSVErr = new Error("file must be csv or txt");
             sendError(nonCSVErr,`LocalCsvReader(file) ${file.name} is not .csv or .txt`);
@@ -156,6 +158,7 @@ export function LocalCsvReader(file: File): Promise<TimeSeriesData[]>{
  * @returns data of file formatted as TimeSeriesData[]
  */
 export async function UrlCSVReader(url:string): Promise<TimeSeriesData[]>{
+    // TODO - change to accept any format of URL
     if(!url.endsWith('.csv') && !url.endsWith('.txt')){
         const nonCSVErr = new Error('url must be .csv or .txt');
         sendError(nonCSVErr,`UrlCSVReader ${url} is not .csv or .txt`);

@@ -20,7 +20,7 @@ export class TimeSeriesGraphObject extends GraphObject implements TimeSeriesGrap
      * pre-codition: valid points in GraphObject
      * post-condition: a new PointInterface instance is added to the graph
      */
-    addPoint(): void{
+    addPoints(): void{
         this.csvData.getData().forEach((data) => {
             const newPoint = new PointObject();
             newPoint.setPosition([0,0,0.01])
@@ -215,7 +215,7 @@ export class TimeSeriesGraphObject extends GraphObject implements TimeSeriesGrap
 
         //Resetting points
         this.clearPoints();
-        this.addPoint();
+        this.addPoints();
         this.updatePoints();
 
         //Assigning new position values to the points

@@ -33,13 +33,14 @@ export class CSVController implements ControllerInterface {
      *   - A new TimeSeriesGraph is created and initialized
      *   - The graph is added to the main controller's graph collection
      */
+    // TODO - add embedded graph generation into here
     generate(): void{
         for(const csv of this.model.getData()){
             if(csv.getDisplayBoard() == 1){
                 csv.setVRSelected(true);
                 const graph = new TimeSeriesGraphObject(csv);
                 graph.setName(csv.getName());
-                graph.addPoint();
+                graph.addPoints();
                 mainController.getGraphController().pushDataToModel(graph)
                 console.log("Success on generate?")
                 sendLog("info","generate has pushed a new graph");

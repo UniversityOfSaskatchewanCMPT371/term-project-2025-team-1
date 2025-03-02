@@ -11,7 +11,7 @@ export interface TimeSeriesGraphInterface extends GraphInterface {
      * pre-condition: none
      * post-condition: a new PointObject instance is added to the graph
      */
-    addPoint(): void;
+    addPoints(): void;
 
     /**
      * Finds a point based on given x and y data

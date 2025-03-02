@@ -4,20 +4,13 @@ import mainController from "../../controller/MainController.tsx";
 import { CSVDataInterface } from '../../types/CSVInterfaces.tsx';
 import { sendLog } from '../../logger-frontend.ts';
 
-//Props for drop down UI
-interface dropDownProps {
-    position : [number, number, number];    //x, y, z position of dropdown UI on VR scene
-    xSize: number;                          //Width of UI
-    ySize: number;                          //Height of UI
-}
-
 /**
  * This function is for creating the Dropdown UI in the VR Scene
  * This displays loaded csv files and allows the generation of a TimeSeriesGraph
  * @preconditions props used for position in the VR scene
  * @postconditions the specified drop down UI
  */
-export default function DropdownUI(props: dropDownProps){
+export default function DropdownUI(){
     const [pressed, press] = useState(false);
     const [ active, setActive ] = useState(false);
 
@@ -103,7 +96,7 @@ export default function DropdownUI(props: dropDownProps){
     function GenerateList(): React.JSX.Element{
         return (
             <>
-            <Container flexDirection={"column"} flexGrow={props.xSize}>
+            <Container flexDirection={"column"}>
                 <Container height={"90%"} width={"100%"} flexDirection={"column"} 
                     alignItems={"flex-start"} justifyContent={"flex-start"}>
 

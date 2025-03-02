@@ -113,12 +113,13 @@ export default function DropdownUI(props: dropDownProps){
                         ))}
                     </Container>
 
-                    <Container flexDirection={"row"} alignItems={"flex-end"} justifyContent={"flex-end"} 
-                        height={"8%"} width={"95%"}> 
+                    <Container flexDirection={"row"} alignItems={"center"} justifyContent={"flex-end"} 
+                        height={"10%"} width={"100%"} borderWidth={1} borderColor={"black"}> 
 
-                        <Container width={"30%"} height={"100%"} backgroundColor={"gray"} backgroundOpacity={0.5}
+                        <Container width={"30%"} height={"70%"} backgroundColor={"gray"} backgroundOpacity={0.5}
                             borderRadius={5}
                             justifyContent={"center"}
+                            positionRight={10}
                             hover={{backgroundOpacity: 0.75}} onClick={() => {
                                 update();
                                 sendLog("info","GenerateList [BUTTON]? pressed");
@@ -158,7 +159,11 @@ export default function DropdownUI(props: dropDownProps){
                                 }}
                                 backgroundColor={"black"}
                                 backgroundOpacity={0.7}
-                                hover={{backgroundOpacity: 1}}>
+                                hover={{backgroundOpacity: 1}}
+                                justifyContent={"center"}>
+                                    <Text color={"white"}>
+                                        Generate
+                                    </Text>
                             </Container>
                         {/* </Root> */}
                     {/* </mesh>
@@ -166,7 +171,7 @@ export default function DropdownUI(props: dropDownProps){
                         {/* <Root backgroundColor="grey" sizeX={props.xSize} sizeY={props.ySize} flexDirection={"column"}>    */}
 
                         <Container width={"90%"} display={active? "flex" : "none"}>
-                            <Container width={"80%"} height={"80%"} flexDirection={"column"} positionLeft={5}>
+                            <Container width={"70%"} height={"90%"} flexDirection={"column"} positionLeft={5}>
                             <Container height={"10%"} width={"100%"} margin={1} backgroundColor={"lightgray"}>
                                 <Text fontWeight={"bold"} positionLeft={20}>
                                     Loaded Graphs</Text>

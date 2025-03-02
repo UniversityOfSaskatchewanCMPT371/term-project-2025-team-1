@@ -4,10 +4,10 @@
 */
 
 export interface PointInterface {
-    position: [number, number, number];
+    position: [number, number, number]; // for embedded/3d graph
     selected: boolean;
-    xData: string;
-    yData: number;
+    xData: string;                      // time value for 2d graph and where needed for 3d stuff
+    yData: number;                      // y data for time series 2d graph
 
     getPosition(): [number, number, number];
     getXData(): string;

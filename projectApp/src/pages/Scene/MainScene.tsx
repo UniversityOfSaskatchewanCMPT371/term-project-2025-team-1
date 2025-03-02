@@ -24,6 +24,8 @@ export default function MainScene(): React.JSX.Element{
     useEffect(() => {
         mainController.setSceneRef(sceneRef);
     },);
+
+    // TODO - add in embedded graph to this useEffect
     useEffect(() => {
         if(updateGraph) {
             const vrSelected = mainController.getCSVController().getVRSelected();
@@ -65,6 +67,7 @@ export default function MainScene(): React.JSX.Element{
         {/* <CreateTimeSeries graphObject={graph}></CreateTimeSeries> */}
         <DropdownUI position={[-1.7, 1.5, -1]} xSize={4} ySize={3}></DropdownUI>
         {graph && <CreateTimeSeries graphObject={graph}></CreateTimeSeries>}
+        {/* TODO - embedded graph creation when the generate button is pressed */}
         </>
     );
 };

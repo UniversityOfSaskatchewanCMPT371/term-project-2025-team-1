@@ -4,9 +4,14 @@ import { GraphObject } from "./GraphObject";
 
 
 export class EmbeddedGraphObject extends GraphObject implements EmbeddedInterface {
+
+    // TODO - needs tao attribute
+
     constructor(csv: CSVDataObject) {
         super(csv);
     }
+
+    // TODO - calculation methods (where the vectors are calculated)
 
     getDimensions(): { width: number; height: number; depth?: number; } {
         throw new Error("Method not implemented.");

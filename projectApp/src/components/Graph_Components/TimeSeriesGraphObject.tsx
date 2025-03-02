@@ -15,6 +15,7 @@ export class TimeSeriesGraphObject extends GraphObject implements TimeSeriesGrap
         super(csv);
     }   
 
+    // TODO - refactor point methods to GraphObject as both TimeSeries and Embedded graphs will use same point objects
     /**
      * Adds a new point to the graph.
      * pre-codition: valid points in GraphObject

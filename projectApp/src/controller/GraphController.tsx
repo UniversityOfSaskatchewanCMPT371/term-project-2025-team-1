@@ -16,7 +16,7 @@ import mainController from "./MainController";
  *   - Graph objects are stored in the model's data array. Once a graph is added, it persists until it is removed.
  *  
  */
-
+// TODO - modify or add methods for embedded graph support
 export class GraphController implements ControllerInterface{
     model: GraphModel;
     constructor(){
@@ -51,6 +51,8 @@ export class GraphController implements ControllerInterface{
         return result;
     }
 
+    // TODO - generateEmbeddedGraph method
+
     /**
      * Pushes a TimeSeriesGraphObject into the model's data collection.
      *
@@ -60,6 +62,7 @@ export class GraphController implements ControllerInterface{
      *
      * @param graph The TimeSeriesGraphObject to add to the model.
      */
+    // TODO - change to take in borth time series and embedded; use setters to put into model
     pushDataToModel(graph: TimeSeriesGraphObject): void{
         this.getModel().getData().push(graph);
     }

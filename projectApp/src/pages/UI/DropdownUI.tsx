@@ -1,4 +1,4 @@
-import { Root, Container, Text, Fullscreen } from '@react-three/uikit';
+import { Container, Text, Fullscreen } from '@react-three/uikit';
 import { useState } from 'react';
 import mainController from "../../controller/MainController.tsx";
 import { CSVDataInterface } from '../../types/CSVInterfaces.tsx';
@@ -30,16 +30,16 @@ export default function DropdownUI(props: dropDownProps){
         //The list of objects/loaded csv files row by row
         return(
             <>
-                <Container flexDirection={"row"} alignItems={"flex-start"} justifyContent={"flex-start"} 
+            <Container flexDirection={"row"} alignItems={"flex-start"} justifyContent={"flex-start"} 
                 width={"100%"} height={"10%"}>
                     <Container width={"50%"} height={"100%"}>
                         <Text fontWeight={"bold"} positionLeft={20} >{data.getName()}</Text>
                     </Container>
                     <Container width={"50%"} height={"100%"}
-                    alignItems={"center"} justifyContent={"center"}>
-                        <RowObjectButtons data={data}/>
+                        alignItems={"center"} justifyContent={"center"}>
+                            <RowObjectButtons data={data}/>
                     </Container>
-                </Container>
+            </Container>
             </>
         )
     }
@@ -103,32 +103,31 @@ export default function DropdownUI(props: dropDownProps){
     function GenerateList(): React.JSX.Element{
         return (
             <>
-                <Container flexDirection={"column"} flexGrow={props.xSize}>
-                    <Container height={"90%"} width={"100%"} flexDirection={"column"} 
-                        alignItems={"flex-start"} justifyContent={"flex-start"}>
+            <Container flexDirection={"column"} flexGrow={props.xSize}>
+                <Container height={"90%"} width={"100%"} flexDirection={"column"} 
+                    alignItems={"flex-start"} justifyContent={"flex-start"}>
 
-                        {/* Reading through Model csv data files */}
-                        {mainController.getCSVController().getModelData().map((graph) => (
-                            <GenerateRowObject data={graph} key={graph.getName()}></GenerateRowObject>
-                        ))}
-                    </Container>
+                    {/* Reading through Model csv data files */}
+                    {mainController.getCSVController().getModelData().map((graph) => (
+                        <GenerateRowObject data={graph} key={graph.getName()}></GenerateRowObject>
+                    ))}
+                </Container>
 
-                    <Container flexDirection={"row"} alignItems={"center"} justifyContent={"flex-end"} 
-                        height={"10%"} width={"100%"} borderWidth={1} borderColor={"black"}> 
+                <Container flexDirection={"row"} alignItems={"center"} justifyContent={"flex-end"} 
+                    height={"10%"} width={"100%"} borderWidth={1} borderColor={"black"}> 
 
-                        <Container width={"30%"} height={"70%"} backgroundColor={"gray"} backgroundOpacity={0.5}
-                            borderRadius={5}
-                            justifyContent={"center"}
-                            positionRight={10}
-                            hover={{backgroundOpacity: 0.75}} onClick={() => {
-                                update();
-                                sendLog("info","GenerateList [BUTTON]? pressed");
-                        }}>
-                            <Text fontWeight={"bold"}>Generate</Text>
-                        </Container>
-            
+                    <Container width={"30%"} height={"70%"} backgroundColor={"gray"} backgroundOpacity={0.5}
+                        borderRadius={5}
+                        justifyContent={"center"}
+                        positionRight={10}
+                        hover={{backgroundOpacity: 0.75}} onClick={() => {
+                            update();
+                            sendLog("info","GenerateList [BUTTON]? pressed");
+                    }}>
+                        <Text fontWeight={"bold"}>Generate</Text>
                     </Container>
                 </Container>
+            </Container>
             </>
         )
     }
@@ -141,42 +140,35 @@ export default function DropdownUI(props: dropDownProps){
     function DropDownBody(): React.JSX.Element{
         return (
             <>
-            {/* Use the component <Fullscreen> of uikit 
-                For Now its okay to keep it static*/}
-                {/* <mesh position={props.position}>
-                
-                    <mesh position={[(-0.5) - (props.xSize/2), 0, 0]}> */}
-                        {/* <Root  sizeX={0.5} sizeY={0.5}> */}
-                    <Fullscreen flexDirection={"row"}>
-                        <Container width={"100%"}>
-                            <Container
-                                width={"10%"}
-                                height={"5%"}
-                                borderRadius={5}
-                                onClick={() => {
-                                    setActive(!active);
-                                    sendLog("info","DropDownBody [active] button pressed");
-                                }}
-                                backgroundColor={"black"}
-                                backgroundOpacity={0.7}
-                                hover={{backgroundOpacity: 1}}
-                                justifyContent={"center"}>
-                                    <Text color={"white"}>
-                                        Generate
-                                    </Text>
-                            </Container>
-                        {/* </Root> */}
-                    {/* </mesh>
-                    <mesh position={[0,0,0]} visible={active}> */}
-                        {/* <Root backgroundColor="grey" sizeX={props.xSize} sizeY={props.ySize} flexDirection={"column"}>    */}
+            <Fullscreen flexDirection={"row"}>
+                <Container width={"100%"}>
+                    <Container
+                        width={"10%"}
+                        height={"5%"}
+                        borderRadius={5}
+                        onClick={() => {
+                            setActive(!active);
+                            sendLog("info","DropDownBody [active] button pressed");
+                        }}
+                        backgroundColor={"black"}
+                        backgroundOpacity={0.7}
+                        hover={{backgroundOpacity: 1}}
+                        justifyContent={"center"}>
+                            <Text color={"white"}>
+                                Generate
+                            </Text>
+                    </Container>
 
-                        <Container width={"90%"} display={active? "flex" : "none"}>
-                            <Container width={"70%"} height={"90%"} flexDirection={"column"} positionLeft={5}>
+                    {/* Container displaying loaded CSV files */}
+                    <Container width={"90%"} display={active? "flex" : "none"}>
+                        <Container width={"70%"} height={"90%"} flexDirection={"column"} positionLeft={5}>
+                            {/* Title Container */}
                             <Container height={"10%"} width={"100%"} margin={1} backgroundColor={"lightgray"}>
                                 <Text fontWeight={"bold"} positionLeft={20}>
                                     Loaded Graphs</Text>
                             </Container>
 
+                            {/* Body container */}
                             <Container
                                 height={"100%"}
                                 width={"100%"}
@@ -188,22 +180,16 @@ export default function DropdownUI(props: dropDownProps){
                                 backgroundColor={"lightgray"}
                                 backgroundOpacity={0.8}>
 
-                            {/* Create objects representing loaded graphs in model 
-                                Each will have a button that sets a use state for selected
-                                Then a button for loading selected graph, activate use state
-                                Then on a useState, update*/}
+                        {/* Create objects representing loaded graphs in model 
+                            Each will have a button that sets a use state for selected
+                            Then a button for loading selected graph, activate use state
+                            Then on a useState, update*/}
                                     <GenerateList/>
-
                             </Container>
-                            </Container>
-
-                            </Container>
-
-                            </Container>
-                            </Fullscreen>
-                        {/* </Root> */}
-                    {/* </mesh>
-                </mesh> */}
+                        </Container>
+                    </Container>
+                </Container>
+            </Fullscreen>
             </>
         )
     }

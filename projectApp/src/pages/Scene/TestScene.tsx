@@ -1,8 +1,9 @@
-import { Container, Fullscreen } from "@react-three/uikit";
+import { Container, Fullscreen, Text } from "@react-three/uikit";
 import { useState } from "react";
 
 export default function TestScene(): React.JSX.Element{
     const [clicked, setClicked] = useState(false);
+    const [hovered, setHovered] = useState(false);
 
     return(
         <>
@@ -22,8 +23,19 @@ export default function TestScene(): React.JSX.Element{
                     </Container>
 
                     {/* Button to open Test Scene */}
-                    <Container width={"10%"} height={"10%"} backgroundOpacity={0.5} backgroundColor={"blue"} onClick={()=> setClicked(!clicked)}>
-
+                    <Container 
+                        width={"10%"} height={"5%"} 
+                        backgroundOpacity={hovered? 0.9:0.25} backgroundColor={"gray"} 
+                        borderColor={"darkgray"} borderWidth={0.5}
+                        onPointerEnter={()=>setHovered(true)}
+                        onPointerLeave={() => setHovered(false)}
+                        onClick={()=> setClicked(!clicked)}
+                        borderRadius={10} 
+                        alignContent={"center"} justifyContent={"center"} 
+                        positionTop={5} positionRight={5}>
+                            <Text fontSize={12} color={"white"}>
+                                Test Scene
+                            </Text>
                     </Container>
                 </Container>
             </Fullscreen>

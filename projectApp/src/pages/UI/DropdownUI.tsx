@@ -1,4 +1,4 @@
-import { Root, Container, Text } from '@react-three/uikit';
+import { Root, Container, Text, Fullscreen } from '@react-three/uikit';
 import { useState } from 'react';
 import mainController from "../../controller/MainController.tsx";
 import { CSVDataInterface } from '../../types/CSVInterfaces.tsx';
@@ -117,11 +117,13 @@ export default function DropdownUI(props: dropDownProps){
                         height={"8%"} width={"95%"}> 
 
                         <Container width={"30%"} height={"100%"} backgroundColor={"gray"} backgroundOpacity={0.5}
+                            borderRadius={5}
+                            justifyContent={"center"}
                             hover={{backgroundOpacity: 0.75}} onClick={() => {
                                 update();
                                 sendLog("info","GenerateList [BUTTON]? pressed");
                         }}>
-                            <Text fontWeight={"bold"} positionLeft={"20%"} positionBottom={"5%"}>Generate</Text>
+                            <Text fontWeight={"bold"}>Generate</Text>
                         </Container>
             
                     </Container>
@@ -140,12 +142,16 @@ export default function DropdownUI(props: dropDownProps){
             <>
             {/* Use the component <Fullscreen> of uikit 
                 For Now its okay to keep it static*/}
-                <mesh position={props.position}>
+                {/* <mesh position={props.position}>
                 
-                    <mesh position={[(-0.5) - (props.xSize/2), 0, 0]}>
-                        <Root  sizeX={0.5} sizeY={0.5}>
+                    <mesh position={[(-0.5) - (props.xSize/2), 0, 0]}> */}
+                        {/* <Root  sizeX={0.5} sizeY={0.5}> */}
+                    <Fullscreen flexDirection={"row"}>
+                        <Container width={"100%"}>
                             <Container
-                                flexGrow={1}
+                                width={"10%"}
+                                height={"5%"}
+                                borderRadius={5}
                                 onClick={() => {
                                     setActive(!active);
                                     sendLog("info","DropDownBody [active] button pressed");
@@ -154,18 +160,21 @@ export default function DropdownUI(props: dropDownProps){
                                 backgroundOpacity={0.7}
                                 hover={{backgroundOpacity: 1}}>
                             </Container>
-                        </Root>
-                    </mesh>
-                    <mesh position={[0,0,0]} visible={active}>
-                        <Root backgroundColor="grey" sizeX={props.xSize} sizeY={props.ySize} flexDirection={"column"}>   
-                            <Container height={"10%"} width={"99%"} margin={1} backgroundColor={"lightgray"}>
+                        {/* </Root> */}
+                    {/* </mesh>
+                    <mesh position={[0,0,0]} visible={active}> */}
+                        {/* <Root backgroundColor="grey" sizeX={props.xSize} sizeY={props.ySize} flexDirection={"column"}>    */}
+
+                        <Container width={"90%"} display={active? "flex" : "none"}>
+                            <Container width={"80%"} height={"80%"} flexDirection={"column"} positionLeft={5}>
+                            <Container height={"10%"} width={"100%"} margin={1} backgroundColor={"lightgray"}>
                                 <Text fontWeight={"bold"} positionLeft={20}>
                                     Loaded Graphs</Text>
                             </Container>
 
                             <Container
-                                height={"88%"}
-                                width={"99%"}
+                                height={"100%"}
+                                width={"100%"}
                                 margin={1}
                                 onClick={() => {
                                     press(!pressed);
@@ -181,9 +190,15 @@ export default function DropdownUI(props: dropDownProps){
                                     <GenerateList/>
 
                             </Container>
-                        </Root>
-                    </mesh>
-                </mesh>
+                            </Container>
+
+                            </Container>
+
+                            </Container>
+                            </Fullscreen>
+                        {/* </Root> */}
+                    {/* </mesh>
+                </mesh> */}
             </>
         )
     }

@@ -17,7 +17,7 @@ import { sendError, sendLog } from "../../logger-frontend";
 export async function LocalCSVHeaders(file:string): Promise<CSVHeaders> {
     return LocalCSVReader(file).then((timeSeries) => {
         const headers: CSVHeaders = { headers: Object.keys(timeSeries[0]) };
-        sendLog("info",`LocalCSVHeaders returns\n${headers}`);
+        sendLog("info",`LocalCSVHeaders returns\n${JSON.stringify(headers)}`);
         return (headers);
     // Rethrowing errors
     }).catch((err:unknown) => {
@@ -39,7 +39,7 @@ export async function LocalCSVHeaders(file:string): Promise<CSVHeaders> {
 export async function UrlCSVHeaders(url:string): Promise<CSVHeaders> {
     return UrlCSVReader(url).then((timeSeries) => {
         const headers: CSVHeaders = { headers: Object.keys(timeSeries[0]) };
-        sendLog("info",`UrlCSVHeaders returns\n${headers}`);
+        sendLog("info",`UrlCSVHeaders returns\n${JSON.stringify(headers)}`);
         return (headers);
     // Rethrowing errors
     }).catch((err: unknown) => {

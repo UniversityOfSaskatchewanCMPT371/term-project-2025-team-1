@@ -59,7 +59,7 @@ jobs:
       if: always()
       steps:
         - name: Upload GitHub Action workflows logs to elastic
-          uses: knutfr/github-actions-to-elk@v1.0.4
+          uses: KnutFr/github-actions-to-elk@v1.0.6
           with:
             githubToken: "${{ secrets.GITHUB }}"
             githubOrg: "UniversityOfSaskatchewanCMPT371"

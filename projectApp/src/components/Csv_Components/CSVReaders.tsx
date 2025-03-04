@@ -60,11 +60,7 @@ export async function UrlCSVHeaders(url:string): Promise<CSVHeaders> {
 *    If the file is empty or cannot be parsed, an error is thrown.
 **/
 export async function LocalCSVReader(file:string): Promise<TimeSeriesData[]>{
-    if(!file.endsWith('.csv') && !file.endsWith('.txt')){
-        const nonCSVErr = new Error('File must be .csv or .txt');
-        sendError(nonCSVErr,`LocalCSVReader ${file} is not .csv or .txt`);
-        throw nonCSVErr;
-    }
+    //Update: now any invalid file is thrown by fsPromise
     return fsPromise.readFile(file, 'utf8').then((data: string) => {
         let timeSeries: TimeSeriesData[] = []
         Papa.parse(data, {
@@ -104,12 +100,7 @@ export async function LocalCSVReader(file:string): Promise<TimeSeriesData[]>{
 // TODO - unit tests for this version of the local reader, it accepts a File instead of a string
 export function LocalCsvReader(file: File): Promise<TimeSeriesData[]>{
     return new Promise<TimeSeriesData[]>((resolve, reject) => {
-        if(!file.name.endsWith('.csv')){
-            const nonCSVErr = new Error("file must be csv or txt");
-            sendError(nonCSVErr,`LocalCsvReader(file) ${file.name} is not .csv or .txt`);
-            reject(nonCSVErr);
-            return;
-        }
+    //Update: now any invalid file is thrown by onerror
 
         const reader = new FileReader();
 
@@ -157,9 +148,9 @@ export function LocalCsvReader(file: File): Promise<TimeSeriesData[]>{
  * @returns data of file formatted as TimeSeriesData[]
  */
 export async function UrlCSVReader(url:string): Promise<TimeSeriesData[]>{
+            //Update: now any invalid url is by fetch bad response
     return fetch(url).then((response: Response) =>{
         if (!response.ok) {
-            //Update: now any invalid url is thrown here
             const badResponseErr = Error(`Failed to fetch the file. Status: ${response.status.toString()}`);
             sendError(badResponseErr,"UrlCSVReader response is not ok");
             throw badResponseErr;

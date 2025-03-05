@@ -54,7 +54,6 @@ jobs:
 
   send-logs-to-elastic:
       runs-on: ubuntu-latest
-      #needs: [job-linux, job-windows]
       needs: [job-linux]
       if: always()
       steps:

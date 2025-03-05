@@ -59,12 +59,13 @@ jobs:
       if: always()
       steps:
         - name: Upload GitHub Action workflows logs to elastic
-          uses: loop1dev/github-actions-to-elk@1.0.2
+          uses: loop1dev/github-actions-to-elk@1.0.3
           with:
             githubToken: "${{ secrets.GITHUB }}"
             githubOrg: "UniversityOfSaskatchewanCMPT371"
             githubRepository: "term-project-2025-team-1"
             githubRunId: "${{ github.run_id }}"
             elasticHost: "${{ secrets.ELASTIC_HOST }}"
-            elasticApiKey: "ApiKey ${{ secrets.ELASTIC_API_KEY }}"
+            elasticUser: "${{ secrets.ELASTIC_USER }}"
+            elasticPassword: "${{ secrets.ELASTIC_PASSWORD }}"
             elasticIndex: "ci-cd"

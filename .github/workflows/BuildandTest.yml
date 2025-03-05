@@ -59,13 +59,13 @@ jobs:
       if: always()
       steps:
         - name: Upload GitHub Action workflows logs to elastic
-          uses: KnutFr/github-actions-to-elk@v1.0.6
+          uses: shahargl/upload-github-workflow-logs-to-elastic@1.0.14
           with:
-            githubToken: "${{ secrets.GITHUB }}"
-            githubOrg: "UniversityOfSaskatchewanCMPT371"
-            githubRepository: "term-project-2025-team-1"
-            githubRunId: "${{ github.run_id }}"
-            elasticHost: "${{ secrets.ELASTIC_HOST }}"
-            elasticApiKeyId: "${{ secrets.ELASTIC_KEY_ID }}"
-            elasticApiKey: "${{ secrets.ELASTIC_API_KEY }}"
-            elasticIndex: "ci-cd"
+            github_token: "${{ secrets.GITHUB }}"
+            github_org: "UniversityOfSaskatchewanCMPT371"
+            github_repository: "term-project-2025-team-1"
+            github_run_id: "${{ github.run_id }}"
+            elastic_host: "${{ secrets.ELASTIC_HOST }}"
+            elastic_api_key_id: "${{ secrets.ELASTIC_KEY_ID }}"
+            elastic_api_key: "${{ secrets.ELASTIC_API_KEY }}"
+            elastic_index: "ci-cd"

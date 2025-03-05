@@ -66,5 +66,5 @@ jobs:
             githubRepository: "term-project-2025-team-1"
             githubRunId: "${{ github.run_id }}"
             elasticHost: "${{ secrets.ELASTIC_HOST }}"
-            elasticApiKey: "ApiKey ${{ secrets.ES_API_KEY }}"
+            elasticApiKey: "ApiKey ${{ secrets.ELASTIC_API_KEY }}"
             elasticIndex: "ci-cd"

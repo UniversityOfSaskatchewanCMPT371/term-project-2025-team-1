@@ -1,10 +1,10 @@
 // TODO - View aspect of embedded graph
 
-import { Root, Container, Text } from "@react-three/uikit";
-import { Line, Plane } from "@react-three/drei";
-import { PointObject } from "../../components/Graph_Components/PointObject";
+import { Container } from "@react-three/uikit";
+import { Plane } from "@react-three/drei";
+//import { PointObject } from "../../components/Graph_Components/PointObject";
 import React from "react";
-import { useState } from "react";
+//import { useState } from "react";
 import mainController from "../../controller/MainController";
 import { EmbeddedGraphObject } from "../../components/Graph_Components/EmbeddedGraphObject";
 import { sendLog } from "../../logger-frontend";
@@ -17,7 +17,7 @@ import { sendLog } from "../../logger-frontend";
  */
 
 export function EmbeddedGraph({graph}:{graph: EmbeddedGraphObject}): React.JSX.Element{
-    const [ header, setHeader ] = useState("");                   //useState for changes in the graph's Y header
+    //const [ header, setHeader ] = useState("");                   //useState for changes in the graph's Y header
     
     // Values used to space Points in the X axis
     //const totalSpace = 5;                                      
@@ -25,8 +25,8 @@ export function EmbeddedGraph({graph}:{graph: EmbeddedGraphObject}): React.JSX.E
     //let current = (-1.8) + (divider/2);
     
     // Values used to position lines, currently set to starting position
-    let currentLine:[number,number,number]= ([0,0,0.01]);
-    let lastLine:[number,number,number] = ([-1.8, -1, 0.01])
+    //let currentLine:[number,number,number]= ([0,0,0.01]);
+    //let lastLine:[number,number,number] = ([-1.8, -1, 0.01])
     
     // Spacing used by X and Y axis
     //const xSpacing = 100/graph.getNumPoints();

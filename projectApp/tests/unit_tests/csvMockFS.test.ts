@@ -5,10 +5,10 @@
 import { beforeEach, expect, test, vi } from 'vitest'
 import { describe } from 'node:test';
 import { vol as memVol } from 'memfs'
-import * as fs from '../test/__mocks__/fs';
-import * as fsPromise from '../test/__mocks__/fs/promises';
-import { LocalCSVReader as localReader, LocalCSVHeaders as localHeaders } from '../src/components/Csv_Components/CSVReaders'
-import { TimeSeriesData, CSVHeaders } from '../src/types/CSVInterfaces';
+import * as fs from './__mocks__/fs';
+import * as fsPromise from './__mocks__/fs/promises';
+import { LocalCSVReader as localReader, LocalCSVHeaders as localHeaders } from '../../src/components/Csv_Components/CSVReaders'
+import { TimeSeriesData, CSVHeaders } from '../../src/types/CSVInterfaces';
 
 // tell vitest to use fs mock from __mocks__ folder
 // this can be done in a setup file if fs should always be mocked

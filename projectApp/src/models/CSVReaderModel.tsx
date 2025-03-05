@@ -11,8 +11,7 @@ import { CSVDataInterface, CSVModelInterface } from "../types/CSVInterfaces";
  * 
  * @history
  * - The 'data' array is initialized as an empty array.
- *  - Once a CSV file is added to the 'data' array, it presists until it is deleted via the 'deleteFile' method.
- * 
+ *
  * Note on the Index Parameter:
  * - The current implementation uses this.data.length as the unique index when loading files.
  *   This assumes that the index uniquely identifies a file at load time.
@@ -40,7 +39,7 @@ export class CSVReaderModel implements CSVModelInterface{
             if(data.name == name){
                 return data;
             }
-        };
+        }
         sendLog("info",`getCSVRileByName could not find file ${name}, is this expected behavior?`);
         return null;
     }
@@ -90,51 +89,6 @@ export class CSVReaderModel implements CSVModelInterface{
         }
         this.data.push(data);
     }
-
-     /**
-     * Reads a CSV file from a URL and adds it to the data array.
-     *
-     * @precondition The 'file' parameter is a valid URL string representing a CSV file. The CSV file is successfully read.
-     *
-     * @postcondition If the file is successfully read, a new CSVDataObject is created and added to the 'data' array. Otherwise, an error is logged.
-     *
-     * @param {string} file - The URL string of the CSV file.
-     */
-
-     async readLocalByPath(file:string): Promise<void>{
-        const data:CSVDataObject = new CSVDataObject;
-         try{
-             await data.loadLocalByPath(this.data.length, file);
-             sendLog("info",`readLocalByPath read a file\n${JSON.stringify(data.getData())}`);
-         }
-         catch(error: unknown){
-            // Log the error
-            sendError(error,"readLocalByPath error");
-            throw error;
-        }
-
-        this.data.push(data);
-    }
-     
-    /**
-    * Deletes a CSV file, if it has the name 'name', from the data array
-    * 
-    * @precondition The 'data' array contains CSVDataObject instances with a valid 'name' property
-    * 
-    * @postcondition If a CSVDataObject with the specified name is found, it is removed from the 'data' array. Otherwise, an informational log is recorded.
-    * 
-    * @param {string} name - The name of the CSV file to delete.
-    */
-    deleteFile(name:string): void{
-       for(let i = 0; i < this.data.length; i++){
-        if(this.data[i].name == name){
-            this.data.splice(i, 1);
-            sendLog("info",`deleteFile() ${name} has been deleted from CSVReaderModel`);
-            return;
-        }
-        sendLog("info",`deleteFile(), ${name} was not found in CSVReaderModel`);
-        };
-    }   
 
     /**
      * Provides an array of tuples for the browser UI, where each tuple contains the CSV file's name

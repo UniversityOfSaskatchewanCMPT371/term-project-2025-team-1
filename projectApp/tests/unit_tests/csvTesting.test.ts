@@ -1,24 +1,22 @@
-import { describe } from 'node:test';
-import { expect, test } from 'vitest';
+import { describe, expect, test } from 'vitest';
 
-import { LocalCSVReader as localReader, LocalCSVHeaders as localHeaders, UrlCSVReader as urlReader, UrlCSVHeaders as urlHeaders } from "../src/components/Csv_Components/CSVReaders.tsx";
-import { CSVHeaders, TimeSeriesData } from '../src/types/CSVInterfaces.tsx';
+import { LocalCSVReader as localReader, LocalCSVHeaders as localHeaders, UrlCSVReader as urlReader, UrlCSVHeaders as urlHeaders } from "../../src/components/Csv_Components/CSVReaders.tsx";
+import { CSVHeaders, TimeSeriesData } from '../../src/types/CSVInterfaces.tsx';
 
 
 interface ReaderTest<T> {
-    description: string,
-    filepath: string,
-    successful: boolean,
-    testFunction(input: string): Promise<T>
+    description: string;
+    filepath: string;
+    successful: boolean;
+    testFunction(input: string): Promise<T>;
 }
 
 function runReaderTest(testObject: ReaderTest<any>): void {
     test(testObject.description, async () => {
-        const toRun = () => {return testObject.testFunction(testObject.filepath)};
-        if(testObject.successful){
+        const toRun = () => testObject.testFunction(testObject.filepath);
+        if (testObject.successful) {
             await expect(toRun()).resolves.toBeDefined();
-        }
-        else{
+        } else {
             await expect(toRun()).rejects.toBeDefined();
         }
     });
@@ -165,9 +163,6 @@ describe("Testing the localCSVReader function", () => {
     }
     runReaderTest(emptyFileHeaders);
 
-}).catch((err: unknown) => {
-    console.error((err as Error));
-    throw (err as Error);
 });
 
 describe("Testing the urlCSVReader function", () => {
@@ -328,8 +323,4 @@ describe("Testing the urlCSVReader function", () => {
         testFunction: urlHeaders
     }
     runReaderTest(w3schoolUrlHeaders);
-
-}).catch((err: unknown) => {
-    console.error((err as Error));
-    throw (err as Error);
 });

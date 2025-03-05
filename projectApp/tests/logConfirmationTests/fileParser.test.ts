@@ -3,7 +3,7 @@ import { fileContainsText } from "./fileParser";
 
 
 describe('log file parser tests', () => {
-    const filePath = "./test/testlogfile.txt"
+    const filePath = "./tests/logConfirmationTests/testlogfile.txt"
 
     test('file contains exact matching text', async() => {
         const response = await fileContainsText(filePath, "end of test file");

@@ -60,10 +60,11 @@ export async function UrlCSVHeaders(url:string): Promise<CSVHeaders> {
 *    If the file is empty or cannot be parsed, an error is thrown.
 **/
 export async function LocalCSVReader(file:string): Promise<TimeSeriesData[]>{
-    //Update: now any invalid file is thrown by fsPromise
+    //Update: now any noncsv file is caught here
+    //and invalid csv files are thrown by fsPromise
     if(!file.endsWith(".csv")){
         const notCsvErr = new Error("This file is not csv");
-        sendError(notCsvErr,"LocalCSVReader receives a non csv file");
+        sendError(notCsvErr,"LocalCSVReader(path) receives a non csv file");
         throw notCsvErr;
     }
     return fsPromise.readFile(file, 'utf8').then((data: string) => {
@@ -105,10 +106,19 @@ export async function LocalCSVReader(file:string): Promise<TimeSeriesData[]>{
 // TODO - unit tests for this version of the local reader, it accepts a File instead of a string
 export function LocalCsvReader(file: File): Promise<TimeSeriesData[]>{
     return new Promise<TimeSeriesData[]>((resolve, reject) => {
-        //assuming that all loaded file is csv, which may or may not be valid
+        if(!file.name.endsWith("csv")){
+            //This is relying on the fact that we name the file with extension
+            //BrowerUI LoadComponent e.target.file gives the file name and extension
+            //any testing MUST have files that end with .csv for success
+            const notCsvErr = new Error("This file is not csv");
+            sendError(notCsvErr,"LocalCsvReader(file) receives a non csv file");
+            throw notCsvErr;
+        }
+
         //invalid file is thrown by onerror
 
         const reader = new FileReader();
+        if(file.type)
 
         reader.onload = (e) => {
             const fileContent = e.target?.result as string;
@@ -164,7 +174,8 @@ export async function UrlCSVReader(url:string): Promise<TimeSeriesData[]>{
         //follow the url until it reaches result and get the content type
         const resultUrl = response.url;
         const contentType = response.headers.get("Content-Type");
-        //if either resultingURL is not csv or contentType is not text/csv
+        //assert that either resultingURL is csv or contentType is text/csv
+        //if both fail, throw error
         if (!(resultUrl.endsWith(".csv") || contentType?.includes("text/csv"))) {
             const badResultErr = Error(`Failed to fetch csv format. ${response.url}, ${JSON.stringify(response.headers)}`);
             sendError(badResultErr,"Final URL destination is not csv readable");

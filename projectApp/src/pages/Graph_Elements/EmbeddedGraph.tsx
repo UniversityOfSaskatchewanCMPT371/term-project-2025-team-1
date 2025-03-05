@@ -42,7 +42,7 @@ export function EmbeddedGraph({graph}:{graph: EmbeddedGraphObject}): React.JSX.E
     }
 
     return(
-        <mesh position={[4, 2, -3.5]}>
+        <mesh position={[7, 2, -3.5]}>
             <text>A 3D Graph will be here someday, but here's a plane in the meantime!</text>
             <GenerateGraph/>
         </mesh>

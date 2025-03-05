@@ -59,7 +59,7 @@ jobs:
       if: always()
       steps:
         - name: Upload GitHub Action workflows logs to elastic
-          uses: shahargl/upload-github-workflow-logs-to-elastic@1.0.14
+          uses: loop1dev/upload-github-workflow-logs-to-elastic@1.0.0
           with:
             github_token: "${{ secrets.GITHUB }}"
             github_org: "UniversityOfSaskatchewanCMPT371"

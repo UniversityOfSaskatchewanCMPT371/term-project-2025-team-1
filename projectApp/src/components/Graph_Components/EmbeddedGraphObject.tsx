@@ -18,10 +18,10 @@ export class EmbeddedGraphObject extends GraphObject implements EmbeddedInterfac
     addPoints(): void {
         const data = this.csvData.getData();
         data.forEach((line) => {
-            console.log(line)
+            // console.log(line)
             const newPoint = new PointObject();
 
-            const time = data[this.axes.xLabel as keyof typeof data] as unknown as number;
+            const time = line[this.axes.xLabel as keyof typeof line] as unknown as number;
             // const set = data[this.axes.yLabel as keyof typeof data] as unknown as number;
 
             const vectorPosition = this.calculateVectorPosition(time, data);
@@ -37,14 +37,15 @@ export class EmbeddedGraphObject extends GraphObject implements EmbeddedInterfac
         const xIndex = time;
         const yIndex = time - this.tao;
         const zIndex = time - 2*this.tao;
-        // get t
-        // use tao
-        // if calcualtiosn are less than 0 == 0
+
         if (xIndex < 0) {
             position[0] = 0
         } else {
-            const xLine = csvData[xIndex];
+            const xLine: {key: Record<string, string | number>} = csvData[xIndex];
+            console.log(xLine)
+            console.log(this.axes.yLabel)
             const xPosition = [this.axes.yLabel as keyof typeof xLine] as unknown as number;
+            console.log(xPosition);
             position[0] = xPosition;
         }
         
@@ -54,6 +55,7 @@ export class EmbeddedGraphObject extends GraphObject implements EmbeddedInterfac
         else {
             const yLine = csvData[yIndex];
             const yPosition = [this.axes.yLabel as keyof typeof yLine] as unknown as number;
+            console.log(yPosition);
             position[1] = yPosition;
         }
         
@@ -63,6 +65,7 @@ export class EmbeddedGraphObject extends GraphObject implements EmbeddedInterfac
         else {
             const zLine = csvData[zIndex];
             const zPosition = [this.axes.yLabel as keyof typeof zLine] as unknown as number;
+            console.log(zPosition);
             position[2] = zPosition;
         }
         

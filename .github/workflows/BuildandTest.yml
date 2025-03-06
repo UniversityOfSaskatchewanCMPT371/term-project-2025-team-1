@@ -26,6 +26,8 @@ jobs:
         run: npm run lint
       - name: Build
         run: npm run build
+      - name: Gherkin Lint
+        run: npx gherkin-lint ../Tests/*.feature
       - name: Test
         run: |
             npx pm2 start logger-server.js --name logger

@@ -37,5 +37,42 @@ describe('Embedded Graph test', () => {
         expect(points[9].getPosition()).toStrictEqual([10,9,8]);
     });
 
-    
+    test('vectors calculation for header row B', () => {
+        const axes = graph.getAxes();
+        const newAxes = {
+            xLabel: axes.xLabel,
+            yLabel: 'B',
+            xRange: axes.xRange,
+            yRange: axes.yRange
+        }
+        graph.setAxes(newAxes)
+        graph.addPoints();
+        const points = graph.getPoints();
+        expect(points[0].getPosition()).toStrictEqual([2,0,0]);
+        expect(points[1].getPosition()).toStrictEqual([4,2,0]);
+        expect(points[2].getPosition()).toStrictEqual([6,4,2]);
+        expect(points[3].getPosition()).toStrictEqual([8,6,4]);
+        expect(points[4].getPosition()).toStrictEqual([10,8,6]);
+        expect(points[5].getPosition()).toStrictEqual([12,10,8]);
+        expect(points[6].getPosition()).toStrictEqual([14,12,10]);
+        expect(points[7].getPosition()).toStrictEqual([16,14,12]);
+        expect(points[8].getPosition()).toStrictEqual([18,16,14]);
+        expect(points[9].getPosition()).toStrictEqual([20,18,16]);
+    });
+
+    test('vector calculation with tao=2', () => {
+        graph.setTao(2);
+        graph.addPoints();
+        const points = graph.getPoints();
+        expect(points[0].getPosition()).toStrictEqual([1,0,0]);
+        expect(points[1].getPosition()).toStrictEqual([2,0,0]);
+        expect(points[2].getPosition()).toStrictEqual([3,1,0]);
+        expect(points[3].getPosition()).toStrictEqual([4,2,0]);
+        expect(points[4].getPosition()).toStrictEqual([5,3,1]);
+        expect(points[5].getPosition()).toStrictEqual([6,4,2]);
+        expect(points[6].getPosition()).toStrictEqual([7,5,3]);
+        expect(points[7].getPosition()).toStrictEqual([8,6,4]);
+        expect(points[8].getPosition()).toStrictEqual([9,7,5]);
+        expect(points[9].getPosition()).toStrictEqual([10,8,6]);
+    })
 });

@@ -44,7 +44,7 @@ export class EmbeddedGraphObject extends GraphObject implements EmbeddedInterfac
             const xLine: {key: Record<string, string | number>} = csvData[xIndex];
             console.log(xLine)
             console.log(this.axes.yLabel)
-            const xPosition = [this.axes.yLabel as keyof typeof xLine] as unknown as number;
+            const xPosition = xLine[this.axes.yLabel as keyof typeof xLine] as unknown as number;
             console.log(xPosition);
             position[0] = xPosition;
         }
@@ -54,7 +54,7 @@ export class EmbeddedGraphObject extends GraphObject implements EmbeddedInterfac
         }
         else {
             const yLine = csvData[yIndex];
-            const yPosition = [this.axes.yLabel as keyof typeof yLine] as unknown as number;
+            const yPosition = yLine[this.axes.yLabel as keyof typeof yLine] as unknown as number;
             console.log(yPosition);
             position[1] = yPosition;
         }
@@ -64,7 +64,7 @@ export class EmbeddedGraphObject extends GraphObject implements EmbeddedInterfac
         }
         else {
             const zLine = csvData[zIndex];
-            const zPosition = [this.axes.yLabel as keyof typeof zLine] as unknown as number;
+            const zPosition = zLine[this.axes.yLabel as keyof typeof zLine] as unknown as number;
             console.log(zPosition);
             position[2] = zPosition;
         }
@@ -84,5 +84,7 @@ export class EmbeddedGraphObject extends GraphObject implements EmbeddedInterfac
         throw new Error("Method not implemented.");
     }
 
+
+    // TODO - getter and setter for tao
     
 }

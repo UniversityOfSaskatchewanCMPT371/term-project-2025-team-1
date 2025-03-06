@@ -1,3 +1,4 @@
+import { sendLog } from "../../logger-frontend";
 import { EmbeddedInterface } from "../../types/EmbeddedInterface";
 import { CSVDataObject } from "../Csv_Components/CSVDataObject";
 import { GraphObject } from "./GraphObject";
@@ -18,7 +19,6 @@ export class EmbeddedGraphObject extends GraphObject implements EmbeddedInterfac
     addPoints(): void {
         const data = this.csvData.getData();
         data.forEach((line) => {
-            // console.log(line)
             const newPoint = new PointObject();
 
             const time = line[this.axes.xLabel as keyof typeof line] as unknown as number;
@@ -28,7 +28,7 @@ export class EmbeddedGraphObject extends GraphObject implements EmbeddedInterfac
             newPoint.setPosition(vectorPosition);
             this.points.push(newPoint);
         });
-        console.log("point created");
+        sendLog("info", "Points added to EmbeddedGraphObject (EmbeddedGraphObject.addPoints())");
     }
 
     calculateVectorPosition(time: number, csvData: {key: Record<string, string | number>}[]): [number, number, number] {
@@ -64,7 +64,7 @@ export class EmbeddedGraphObject extends GraphObject implements EmbeddedInterfac
             position[2] = zPosition;
         }
         
-        console.log(position)
+        sendLog("info", "vector position calculated for data at index/time ????? (EmbeddedGraphObject.calculateVectorPosition())")
         return position;
     }
 
@@ -81,5 +81,10 @@ export class EmbeddedGraphObject extends GraphObject implements EmbeddedInterfac
 
 
     // TODO - getter and setter for tao
+
+
+    getCSVData(): CSVDataObject {
+        return this.csvData;
+    }
     
 }

@@ -54,12 +54,11 @@ jobs:
 
   send-logs-to-elastic:
       runs-on: ubuntu-latest
-      #needs: [job-linux, job-windows]
       needs: [job-linux]
       if: always()
       steps:
         - name: Upload GitHub Action workflows logs to elastic
-          uses: knutfr/github-actions-to-elk@v1.0.4
+          uses: loop1dev/github-actions-to-elk@1.0.0
           with:
             githubToken: "${{ secrets.GITHUB }}"
             githubOrg: "UniversityOfSaskatchewanCMPT371"

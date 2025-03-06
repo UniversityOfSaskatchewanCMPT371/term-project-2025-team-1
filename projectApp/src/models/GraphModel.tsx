@@ -1,3 +1,4 @@
+import { EmbeddedGraphObject } from "../components/Graph_Components/EmbeddedGraphObject";
 import { TimeSeriesGraphObject } from "../components/Graph_Components/TimeSeriesGraphObject";
 import { ModelInterface } from "../types/BaseInterfaces";
 import { CSVDataInterface } from "../types/CSVInterfaces";
@@ -18,8 +19,11 @@ export class GraphModel implements ModelInterface{
     // TODO - change name of data to be timeSeriesData and update getters and setters
 
     data: TimeSeriesGraphObject[];
+    embeddedGraphData: EmbeddedGraphObject[];
+
     constructor(){
         this.data = [];
+        this.embeddedGraphData = [];
     }
 
     /**
@@ -59,5 +63,31 @@ export class GraphModel implements ModelInterface{
      */
     getData(): TimeSeriesGraphObject[]{
         return this.data;
+    }
+
+    /**
+     * Adds a EmbeddedGraphObject to the model.
+     *
+     * @preconditions The 'graph' parameter must be a valid EmbeddedGraphObject instance.
+     *
+     * @postconditions The provided 'graph' is appended to the internal 'embeddedGraphData' array.
+     *
+     * @param {EmbeddedGraphObject} graph - The EmbeddedGraphObject to add to the model.
+     */
+    addEmbeddedGraph(graph: EmbeddedGraphObject): void{
+        this.embeddedGraphData.push(graph);
+    }
+
+    /**
+     * Returns the EmbeddedGraphObject instances in the model.
+     *
+     * @preconditions none.
+     * 
+     * @postconditions Returns the current state of the 'embeddedGraphData' array, which includes all added EmbeddedGraphObject instances.
+     * 
+     * @returns {EmbeddedGraphObject[]} An array of EmbeddedGraphObject instances.
+     */
+    getEmbeddedGraphData(): EmbeddedGraphObject[]{
+        return this.embeddedGraphData;
     }
 }

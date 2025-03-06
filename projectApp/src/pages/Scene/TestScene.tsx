@@ -10,19 +10,21 @@ export default function TestScene(): React.JSX.Element{
         {/* Maybe fullscreen component stay displaying, but the container can chang visibility, so theres always that fullscreen button top left */}
             <Fullscreen flexDirection={"row"}>
                 {/* Main Container that encapsulates Test Scene */}
-                <Container width={"100%"} height={"100%"} backgroundColor={"darkgray"} backgroundOpacity={clicked? 0.5:0.01}>
-                    <Container width={"10%"} backgroundOpacity={0.4}>
+                <Container width={"100%"} height={"100%"} backgroundColor={"darkgray"} backgroundOpacity={clicked? 0.5:0.01}
+                alignContent={"center"} justifyContent={"center"}>
+                    <Container width={"50%"} height={"50%"} alignContent={"center"} justifyContent={"center"}>
+                        <Container width={"10%"} backgroundOpacity={0.4}>
 
-                    </Container>
+                        </Container>
 
                     {/* Body */}
-                    <Container width={"80%"}>
-                        <Container width={"100%"} 
-                            borderWidth={2}
-                            borderColor={"black"}
-                            justifyContent={"center"}
-                            alignContent={"center"}
-                            display={clicked? "flex":"none"}>
+                        <Container width={"80%"} height={"100%"}>
+                            <Container width={"100%"} 
+                                borderWidth={2}
+                                borderColor={"black"}
+                                justifyContent={"center"}
+                                alignContent={"center"}
+                                display={clicked? "flex":"none"}>
                             <Text>
                                 TEST BODY
                             </Text>
@@ -43,6 +45,7 @@ export default function TestScene(): React.JSX.Element{
                             <Text fontSize={12} color={"white"}>
                                 Test Scene
                             </Text>
+                    </Container>
                     </Container>
                 </Container>
             </Fullscreen>

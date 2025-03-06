@@ -15,7 +15,7 @@ on:
 defaults:
   run:
     working-directory: ./projectApp
-#jobs:
+jobs:
 #  job-linux:
 #    runs-on: ubuntu-latest
 #    steps:
@@ -44,7 +44,7 @@ defaults:
         run: npm run build
       - name: Test
         run: |
-          npx pm2 start logger-server.js --name logger
+          npx pm2 start logger-server.js --name logg
           npx vitest --coverage
           # npm run test
           npx pm2 delete logger

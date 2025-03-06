@@ -79,14 +79,24 @@ export class EmbeddedGraphObject extends GraphObject implements EmbeddedInterfac
         throw new Error("Method not implemented.");
     }
 
-
-    // TODO - getter and setter for tao
+    /**
+     * Gets the value of tao
+     * pre-conditions: none
+     * post-conditions: returns the current value of tao
+     */
     getTao(): number {
         return this.tao;
     }
 
-    setTao(tao: number): void {
-        this.tao = tao;
+    /**
+     * Sets the value of tao
+     * @param newTao - a number greater than or eqaul to 1
+     * post-conditions: the value of tao is updated to newTao
+     */
+    setTao(newTao: number): void {
+        // TODO - add check for newTao here
+        this.tao = newTao;
+        sendLog("info", "value of tao in EmbeddedGraphObject updated to the value *****");
     }
 
     getCSVData(): CSVDataObject {

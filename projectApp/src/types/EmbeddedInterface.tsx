@@ -7,6 +7,11 @@ export interface EmbeddedInterface extends GraphInterface{
         height: number;
         depth?: number;                  //for 3D graphs? Yes for 3D Graph
     };
+    tao: number;
+
+    addPoints(): void;
+
+    calculateVectorPosition(time: number, csvData: {key: Record<string, string | number>}[]): [number, number, number];
 
     /**
      * Gets the graph's dimensions
@@ -21,4 +26,18 @@ export interface EmbeddedInterface extends GraphInterface{
      * post-condition: graph's dimensions are updated to the new values
      */
     setDimensions(width: number, height: number, depth?: number): void;
+
+    /**
+     * Gets the value of tao
+     * pre-conditions: none
+     * post-conditions: returns the current value of tao
+     */
+    getTao(): number;
+
+    /**
+     * Sets the value of tao
+     * @param newTao - a number greater than or eqaul to 1
+     * post-conditions: the value of tao is updated to newTao
+     */
+    setTao(newTao: number): void;
 }

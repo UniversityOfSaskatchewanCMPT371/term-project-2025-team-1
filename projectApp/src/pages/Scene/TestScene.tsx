@@ -10,16 +10,20 @@ export default function TestScene(): React.JSX.Element{
         {/* Maybe fullscreen component stay displaying, but the container can chang visibility, so theres always that fullscreen button top left */}
             <Fullscreen flexDirection={"row"}>
                 {/* Main Container that encapsulates Test Scene */}
+                {/* Possibly make some sizes dependent when inside or outside vr */}
                 <Container width={"100%"} height={"100%"} backgroundColor={"darkgray"} backgroundOpacity={clicked? 0.5:0.01}
-                alignContent={"center"} justifyContent={"center"}>
-                    <Container width={"50%"} height={"50%"} alignContent={"center"} justifyContent={"center"}>
-                        <Container width={"10%"} backgroundOpacity={0.4}>
+                alignContent={"center"} justifyContent={"center"} flexDirection={"column"}>
+                    <Container height={"20%"} width={"100%"}/>
+
+                    <Container width={"100%"} height={"80%"} alignContent={"center"} justifyContent={"center"}>
+                        <Container width={"10%"} height={"5%"} backgroundOpacity={0.4}>
 
                         </Container>
 
                     {/* Body */}
-                        <Container width={"80%"} height={"100%"}>
-                            <Container width={"100%"} 
+                        <Container width={"40%"} height={"60%"} flexDirection={"column"} alignContent={"center"} justifyContent={"center"}>
+                            <Container width={"100%"}
+                                height={"100%"} 
                                 borderWidth={2}
                                 borderColor={"black"}
                                 justifyContent={"center"}

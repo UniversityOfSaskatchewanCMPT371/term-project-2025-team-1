@@ -81,7 +81,13 @@ export class EmbeddedGraphObject extends GraphObject implements EmbeddedInterfac
 
 
     // TODO - getter and setter for tao
+    getTao(): number {
+        return this.tao;
+    }
 
+    setTao(tao: number): void {
+        this.tao = tao;
+    }
 
     getCSVData(): CSVDataObject {
         return this.csvData;

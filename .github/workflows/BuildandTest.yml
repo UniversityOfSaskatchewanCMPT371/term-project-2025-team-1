@@ -15,22 +15,22 @@ on:
 defaults:
   run:
     working-directory: ./projectApp
-jobs:
-  job-linux:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - name: Install dependencies
-        run: npm ci
-      - name: Run linter
-        run: npm run lint
-      - name: Build
-        run: npm run build
-      - name: Test
-        run: |
-            npx pm2 start logger-server.js --name logger
-            npm run test
-            npx pm2 delete logger
+#jobs:
+#  job-linux:
+#    runs-on: ubuntu-latest
+#    steps:
+#      - uses: actions/checkout@v4
+#      - name: Install dependencies
+#        run: npm ci
+#      - name: Run linter
+#        run: npm run lint
+#      - name: Build
+#        run: npm run build
+#      - name: Test
+#        run: |
+#            npx pm2 start logger-server.js --name logger
+#            npm run test
+#            npx pm2 delete logger
 
   job-windows:
     runs-on: windows-latest
@@ -45,25 +45,25 @@ jobs:
       - name: Test
         run: |
           npx pm2 start logger-server.js --name logger
-          npx vitest --watch
-          npm run test
+          npx vitest --coverage
+          # npm run test
           npx pm2 delete logger
         timeout-minutes: 3
 
-  send-logs-to-elastic:
-      runs-on: ubuntu-latest
-      #needs: [job-linux, job-windows]
-      needs: [job-linux]
-      if: always()
-      steps:
-        - name: Upload GitHub Action workflows logs to elastic
-          uses: loop1dev/github-actions-to-elk@1.0.0
-          with:
-            githubToken: "${{ secrets.GITHUB }}"
-            githubOrg: "UniversityOfSaskatchewanCMPT371"
-            githubRepository: "term-project-2025-team-1"
-            githubRunId: "${{ github.run_id }}"
-            elasticHost: "${{ secrets.ELASTIC_HOST }}"
-            elasticApiKeyId: "${{ secrets.ELASTIC_KEY_ID }}"
-            elasticApiKey: "${{ secrets.ELASTIC_API_KEY }}"
-            elasticIndex: "ci-cd"
+#  send-logs-to-elastic:
+#      runs-on: ubuntu-latest
+#      #needs: [job-linux, job-windows]
+#      needs: [job-linux]
+#      if: always()
+#      steps:
+#        - name: Upload GitHub Action workflows logs to elastic
+#          uses: loop1dev/github-actions-to-elk@1.0.0
+#          with:
+#            githubToken: "${{ secrets.GITHUB }}"
+#            githubOrg: "UniversityOfSaskatchewanCMPT371"
+#            githubRepository: "term-project-2025-team-1"
+#            githubRunId: "${{ github.run_id }}"
+#            elasticHost: "${{ secrets.ELASTIC_HOST }}"
+#            elasticApiKeyId: "${{ secrets.ELASTIC_KEY_ID }}"
+#            elasticApiKey: "${{ secrets.ELASTIC_API_KEY }}"
+#            elasticIndex: "ci-cd"

@@ -113,9 +113,5 @@ export class EmbeddedGraphObject extends GraphObject implements EmbeddedInterfac
         this.tao = newTao;
         sendLog("info", "value of tao in EmbeddedGraphObject updated to the value *****");
     }
-
-    getCSVData(): CSVDataObject {
-        return this.csvData;
-    }
     
 }

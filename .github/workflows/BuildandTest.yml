@@ -45,7 +45,7 @@ jobs:
       - name: Test
         run: |
           npx pm2 start logger-server.js --name logger
-          npx vitest --debug
+          npx vitest --watch
           npm run test
           npx pm2 delete logger
         timeout-minutes: 3

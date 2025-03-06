@@ -7,7 +7,6 @@ import { PointObject } from "./PointObject";
 
 export class EmbeddedGraphObject extends GraphObject implements EmbeddedInterface {
 
-    // TODO - needs tao attribute
     tao: number;
 
     constructor(csv: CSVDataObject) {
@@ -15,7 +14,6 @@ export class EmbeddedGraphObject extends GraphObject implements EmbeddedInterfac
         this.tao = 1;
     }
 
-    // TODO - calculation methods (where the vectors are calculated)
     /**
      * Adds embedded point vectors to the graph.
      * pre-conditions: valid points exist in the csvDataObject of the graph

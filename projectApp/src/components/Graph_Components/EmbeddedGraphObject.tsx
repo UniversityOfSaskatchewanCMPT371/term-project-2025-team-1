@@ -82,12 +82,13 @@ export class EmbeddedGraphObject extends GraphObject implements EmbeddedInterfac
     
 
     getDimensions(): { width: number; height: number; depth?: number; } {
-        throw new Error("Method not implemented.");
+        return this.dimensions;
     }
 
 
     setDimensions(width: number, height: number, depth?: number): void {
-        throw new Error("Method not implemented.");
+        const newDimensions = {width: width, height: height, depth: depth};
+        this.dimensions = newDimensions;
     }
 
     /**

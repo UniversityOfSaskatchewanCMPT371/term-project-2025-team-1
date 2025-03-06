@@ -16,6 +16,11 @@ export class EmbeddedGraphObject extends GraphObject implements EmbeddedInterfac
     }
 
     // TODO - calculation methods (where the vectors are calculated)
+    /**
+     * Adds embedded point vectors to the graph.
+     * pre-conditions: valid points exist in the csvDataObject of the graph
+     * post-conditions: PointObject's containing the vectors are stored in the points array attribute
+     */
     addPoints(): void {
         const data = this.csvData.getData();
         data.forEach((line) => {
@@ -24,14 +29,22 @@ export class EmbeddedGraphObject extends GraphObject implements EmbeddedInterfac
             const time = line[this.axes.xLabel as keyof typeof line] as unknown as number;
             // const set = data[this.axes.yLabel as keyof typeof data] as unknown as number;
 
-            const vectorPosition = this.calculateVectorPosition(time, data);
+            const vectorPosition = this.calculateVectorPosition(time);
             newPoint.setPosition(vectorPosition);
             this.points.push(newPoint);
         });
         sendLog("info", "Points added to EmbeddedGraphObject (EmbeddedGraphObject.addPoints())");
     }
 
-    calculateVectorPosition(time: number, csvData: {key: Record<string, string | number>}[]): [number, number, number] {
+    /**
+     * Calculated the embedded time vector dimensions for the given time
+     * pre-conditions: time >= 0
+     * post-conditions: none
+     * @param time - the index/time of the data set calculating the vector for
+     * @returns an array contaning the coordinates of the vector in the form [x, y, z]
+     */
+    calculateVectorPosition(time: number): [number, number, number] {
+        const csvData = this.csvData.getData();
         const position: [number, number, number] = [0,0,0];
         
         const xIndex = time;

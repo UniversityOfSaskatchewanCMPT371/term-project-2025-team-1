@@ -9,9 +9,21 @@ export interface EmbeddedInterface extends GraphInterface{
     };
     tao: number;
 
+    /**
+     * Adds embedded point vectors to the graph.
+     * pre-conditions: valid points exist in the csvDataObject of the graph
+     * post-conditions: PointObject's containing the vectors are stored in the points array attribute
+     */
     addPoints(): void;
 
-    calculateVectorPosition(time: number, csvData: {key: Record<string, string | number>}[]): [number, number, number];
+    /**
+     * Calculated the embedded time vector dimensions for the given time
+     * pre-conditions: time >= 0
+     * post-conditions: none
+     * @param time - the index/time of the data set calculating the vector for
+     * @returns an array contaning the coordinates of the vector in the form [x, y, z]
+     */
+    calculateVectorPosition(time: number): [number, number, number];
 
     /**
      * Gets the graph's dimensions

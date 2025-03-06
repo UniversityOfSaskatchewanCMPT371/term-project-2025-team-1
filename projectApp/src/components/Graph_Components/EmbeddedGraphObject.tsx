@@ -23,11 +23,11 @@ export class EmbeddedGraphObject extends GraphObject implements EmbeddedInterfac
         const data = this.csvData.getData();
         data.forEach((line) => {
             const newPoint = new PointObject();
-
+            // gets the time of the current line in the data set
             const time = line[this.axes.xLabel as keyof typeof line] as unknown as number;
-            // const set = data[this.axes.yLabel as keyof typeof data] as unknown as number;
 
-            const vectorPosition = this.calculateVectorPosition(time);
+            // calculates the vector and stores it in the position attribute of a new PointObject
+            const vectorPosition = this.calculateVectorPosition(time, data);
             newPoint.setPosition(vectorPosition);
             this.points.push(newPoint);
         });
@@ -35,48 +35,51 @@ export class EmbeddedGraphObject extends GraphObject implements EmbeddedInterfac
     }
 
     /**
-     * Calculated the embedded time vector dimensions for the given time
-     * pre-conditions: time >= 0
+     * Calculated the embedded time vector dimensions for the given time.
+     * Uses the data set selected in the csvDataObject of the graph
+     * Vector return is of the form [y[time], y[time - tao], y[time - 2*tao]] where y is the data set column selected
+     * pre-conditions: time >= 0, csvDataObject must contain valid data set and a valid data set much be selected
      * post-conditions: none
      * @param time - the index/time of the data set calculating the vector for
+     * @param csvData - the data contained in the csvDataObject of the graph
+     *                - this is passed in instead of calling the method to obtain it to avoid uneccessary calls to the methods for every point being calculated
      * @returns an array contaning the coordinates of the vector in the form [x, y, z]
      */
-    calculateVectorPosition(time: number): [number, number, number] {
-        const csvData = this.csvData.getData();
+    calculateVectorPosition(time: number, csvData: {key: Record<string, string | number>}[]): [number, number, number] {
         const position: [number, number, number] = [0,0,0];
         
+        // calculate the indexes for the 3 coordinates
         const xIndex = time;
         const yIndex = time - this.tao;
         const zIndex = time - 2*this.tao;
 
-        if (xIndex < 0) {
-            position[0] = 0
-        } else {
-            const xLine: {key: Record<string, string | number>} = csvData[xIndex];
-            const xPosition = xLine[this.axes.yLabel as keyof typeof xLine] as unknown as number;
-            position[0] = xPosition;
-        }
-        
-        if (yIndex < 0) {
-            position[1] = 0;
-        }
-        else {
-            const yLine = csvData[yIndex];
-            const yPosition = yLine[this.axes.yLabel as keyof typeof yLine] as unknown as number;
-            position[1] = yPosition;
-        }
-        
-        if (zIndex < 0) {
-            position[2] = 0;
-        }
-        else {
-            const zLine = csvData[zIndex];
-            const zPosition = zLine[this.axes.yLabel as keyof typeof zLine] as unknown as number;
-            position[2] = zPosition;
-        }
+        // gets the value of the specified indices from the csvData set
+        position[0] = this.retreiveCoordinateValue(xIndex, csvData);
+        position[1] = this.retreiveCoordinateValue(yIndex, csvData);
+        position[2] = this.retreiveCoordinateValue(zIndex, csvData);
         
         sendLog("info", "vector position calculated for data at index/time ????? (EmbeddedGraphObject.calculateVectorPosition())")
         return position;
+    }
+
+    /**
+     * gets the value of the currently seelcted column at the line specified in index
+     * pre-conditions: csvData contains valid data, and the graph has a column selected that exists in the csv file
+     * post-conditions: none
+     * @param index line in csv file that contains the coordniate value being retreived
+     * @param csvData - the data contained in the csvDataObject of the graph
+     *                - this is passed in instead of calling the method to obtain it to avoid uneccessary calls to the methods for every point being calculated
+     * @returns if index is >=0, the value at the index (line) of the csv in the column currently selected
+     *          otherwise, 0
+     */
+    retreiveCoordinateValue(index: number, csvData: {key: Record<string, string | number>}[]): number {
+        if (index < 0) {
+            return 0;
+        } else {
+            const line: {key: Record<string, string | number>} = csvData[index];
+            const position = line[this.axes.yLabel as keyof typeof line] as unknown as number;
+            return position;
+        }
     }
 
     

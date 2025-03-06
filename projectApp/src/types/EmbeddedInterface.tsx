@@ -17,13 +17,29 @@ export interface EmbeddedInterface extends GraphInterface{
     addPoints(): void;
 
     /**
-     * Calculated the embedded time vector dimensions for the given time
-     * pre-conditions: time >= 0
+     * Calculated the embedded time vector dimensions for the given time.
+     * Uses the data set selected in the csvDataObject of the graph
+     * Vector return is of the form [y[time], y[time - tao], y[time - 2*tao]] where y is the data set column selected
+     * pre-conditions: time >= 0, csvDataObject must contain valid data set and a valid data set much be selected
      * post-conditions: none
      * @param time - the index/time of the data set calculating the vector for
+     * @param csvData - the data contained in the csvDataObject of the graph
+     *                - this is passed in instead of calling the method to obtain it to avoid uneccessary calls to the methods for every point being calculated
      * @returns an array contaning the coordinates of the vector in the form [x, y, z]
      */
-    calculateVectorPosition(time: number): [number, number, number];
+    calculateVectorPosition(time: number, csvData: {key: Record<string, string | number>}[]): [number, number, number];
+
+    /**
+     * gets the value of the currently seelcted column at the line specified in index
+     * pre-conditions: csvData contains valid data, and the graph has a column selected that exists in the csv file
+     * post-conditions: none
+     * @param index line in csv file that contains the coordniate value being retreived
+     * @param csvData - the data contained in the csvDataObject of the graph
+     *                - this is passed in instead of calling the method to obtain it to avoid uneccessary calls to the methods for every point being calculated
+     * @returns if index is >=0, the value at the index (line) of the csv in the column currently selected
+     *          otherwise, 0
+     */
+    retreiveCoordinateValue(index: number, csvData: {key: Record<string, string | number>}[]): number;
 
     /**
      * Gets the graph's dimensions

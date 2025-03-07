@@ -3,7 +3,7 @@ import { Canvas } from '@react-three/fiber';
 import InitScene from './pages/Scene/InitScene';
 import { Sky } from '@react-three/drei';
 import { createXRStore, XR } from '@react-three/xr';
-import { BrowserUI } from './pages/UI/BrowserUI';
+import BrowserUI from './pages/UI/BrowserUI';
 
 //Initializes and configures various parts integral to a VR experienceq
 const store = createXRStore()

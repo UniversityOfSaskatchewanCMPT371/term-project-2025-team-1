@@ -1,6 +1,6 @@
 import { Root, Container, Text } from '@react-three/uikit';
 import { Line } from "@react-three/drei";
-import { Create2DPoint } from '../../components/Graph_Components/Create2DPoint';
+import Create2DPoint from '../../components/Graph_Components/Create2DPoint';
 import { TimeSeriesGraphObject } from '../../components/Graph_Components/TimeSeriesGraphObject';
 import { PointObject } from '../../components/Graph_Components/PointObject';
 import { useState } from 'react';
@@ -15,7 +15,7 @@ import { sendLog } from '../../logger-frontend';
  * @postconditions returns a React JSX Element that represents a 2D Time Series Graph
  */
 
-export function TimeSeriesGraph({graph}:{graph: TimeSeriesGraphObject}): React.JSX.Element{
+export default function TimeSeriesGraph({graph}:{graph: TimeSeriesGraphObject}): React.JSX.Element{
   const [ header, setHeader ] = useState("");                   //useState for changes in the graph's Y header
 
   // Values used to space Points in the X axis

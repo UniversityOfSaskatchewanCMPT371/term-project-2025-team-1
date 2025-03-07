@@ -1,6 +1,6 @@
 import { Text } from '@react-three/drei';
 import DropdownUI from "../UI/DropdownUI"
-import { CreateTimeSeries } from '../../components/Graph_Components/CreateTimeSeries';
+import CreateTimeSeries from '../../components/Graph_Components/CreateTimeSeries';
 import mainController from '../../controller/MainController';
 import { useEffect, useRef, useState } from 'react';
 import { TimeSeriesGraphObject } from '../../components/Graph_Components/TimeSeriesGraphObject';

@@ -90,8 +90,8 @@ export class GraphController implements ControllerInterface{
      * @param emGraph The EmbeddedGraphObject to add to the model.
      */
     pushDataToModel(graph: TimeSeriesGraphObject, emGraph: EmbeddedGraphObject): void{
-        this.getModel().getData().push(graph);
-        this.getModel().getEmbeddedGraphData().push(emGraph);
+        this.getModel().addTimeSeriesGraph(graph);
+        this.getModel().addEmbeddedGraph(emGraph);
     }
 
     /**

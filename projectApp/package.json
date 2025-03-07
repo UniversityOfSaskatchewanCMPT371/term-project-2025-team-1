@@ -16,7 +16,8 @@
     "dev": "concurrently --kill-others \"npm run server\" \"npm run client\"",
     "test": "vitest",
     "coverage": "vitest run --coverage",
-    "lint": "eslint"
+    "lint": "eslint",
+    "lint:gherkin": "npx gherkin-lint ../Tests/*.feature"
   },
   "dependencies": {
     "@react-three/drei": "^9.121.4",

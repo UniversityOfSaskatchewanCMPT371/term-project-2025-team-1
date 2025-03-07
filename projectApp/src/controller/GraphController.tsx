@@ -1,4 +1,5 @@
 import { CSVDataObject } from "../components/Csv_Components/CSVDataObject";
+import { EmbeddedGraphObject } from "../components/Graph_Components/EmbeddedGraphObject";
 import { TimeSeriesGraphObject } from "../components/Graph_Components/TimeSeriesGraphObject";
 import { GraphModel } from "../models/GraphModel";
 import { ControllerInterface } from "../types/BaseInterfaces";
@@ -29,12 +30,12 @@ export class GraphController implements ControllerInterface{
     * @param csv The CSV data object for which to generate or retrieve the graph.
     * @returns {TimeSeriesGraphClass} The generated or retrieved time series graph.
     * 
-    * Pre-Conditions:
+    * @preconditions:
     *    The `csv` parameter must be a valid `CSVDataObject`.
     *    The `model` property must be initialized and contain valid graph data.
     *    The `mainController` must be initialized and valid.
     * 
-    * Post-Conditions:
+    * @postconditions:
     *    If a graph with the same name as `csv` exists, its range is updated, a new graph is created and returned otherwise
     *    The mainController's main scene is updated.
     */
@@ -51,20 +52,46 @@ export class GraphController implements ControllerInterface{
         return result;
     }
 
-    // TODO - generateEmbeddedGraph method
+    /**
+     * Generates an embedded graph for the given CSV data object.
+     * 
+     * @param csv The CSV data object for which to generate or retrieve the graph. 
+     * @returns {EmbeddedGraphClass} The generated or retrieved time series graph.
+     * 
+     * @precondition:
+     *    The `csv` parameter must be a valid `CSVDataObject`.
+     *    The `model` property must be initialized and contain valid graph data.
+     *    The `mainController` must be initialized and valid.
+     * 
+     * @postconditions:
+     *    If a graph with the same name as `csv` exists, its range is updated, a new graph is created and returned otherwise
+     *    The mainController's main scene is updated.
+     */
+    generateEmbeddedGraph(csv: CSVDataObject): EmbeddedGraphObject{
+        const result:EmbeddedGraphObject = new EmbeddedGraphObject(csv);
+
+        for(const graph of this.getModel().getEmbeddedGraphData()){
+            if(graph.getName() == csv.getName()){
+                return graph;
+            }
+        }
+        mainController.updateMainScene();
+        return result;
+    }
 
     /**
-     * Pushes a TimeSeriesGraphObject into the model's data collection.
+     * Pushes a TimeSeriesGraphObject and EmbeddedGraphObject into the model's data collection.
      *
-     * @precondition The provided 'graph' is a valid TimeSeriesGraphObject.
+     * @precondition The provided 'graph' is a valid TimeSeriesGraphObject and 'emGraph' is a valid EmbeddedGraphObject.
      *
-     * @postcondition The 'graph' is added to the model's data collection.
+     * @postcondition The 'graph' and 'emGraph' graphs are added to the model's data collection.
      *
      * @param graph The TimeSeriesGraphObject to add to the model.
+     * @param emGraph The EmbeddedGraphObject to add to the model.
      */
-    // TODO - change to take in borth time series and embedded; use setters to put into model
-    pushDataToModel(graph: TimeSeriesGraphObject): void{
+    pushDataToModel(graph: TimeSeriesGraphObject, emGraph: EmbeddedGraphObject): void{
         this.getModel().getData().push(graph);
+        this.getModel().getEmbeddedGraphData().push(emGraph);
     }
 
     /**
@@ -104,6 +131,32 @@ export class GraphController implements ControllerInterface{
      */
     getDataLength(): number{
         return this.getModel().getData().length;
+    }
+
+    /**
+     * Retrieves the array of EmbeddedGraphObject instances stored in the model.
+     *
+     * @precondition none
+     *
+     * @postcondition The array of EmbeddedGraphObject instances is returned.
+     *
+     * @returns The array of EmbeddedGraphObject instances.
+     */
+    getModelEmData(): EmbeddedGraphObject[]{
+        return this.model.getEmbeddedGraphData();
+    };
+
+    /**
+     * Returns the number of EmbeddedGraphObject instances stored in the model.
+     *
+     * @precondition none
+     *
+     * @postcondition The number of EmbeddedGraphObject instances is returned.
+     *
+     * @returns The number of EmbeddedGraphObject instances in the model
+     */
+    getEmDataLength(): number{
+        return this.getModel().getEmbeddedGraphData().length;
     }
     
 }

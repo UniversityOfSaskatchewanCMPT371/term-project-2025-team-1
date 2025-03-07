@@ -2,7 +2,7 @@ import './styles/App.css'
 import { Canvas } from '@react-three/fiber';
 import InitScene from './pages/Scene/InitScene';
 import { Sky } from '@react-three/drei';
-import { createXRStore, useXR, XR } from '@react-three/xr';
+import { createXRStore, useXR, useXREvent, XR } from '@react-three/xr';
 import BrowserUI from './pages/UI/BrowserUI';
 import { useState } from 'react';
 
@@ -11,11 +11,17 @@ const store = createXRStore()
 
 //The main function for the program
 function App() {
- // const {session} = useXR();
   const [inVR, setInVR] = useState(false);
-  function handleOnClick(){
-    setInVR(!inVR);
-    store.enterAR();
+
+  function XRScene({setInVR}: {setInVR: (value:boolean) => void}){
+    const { session } = useXR();
+    if(session){
+      setInVR(true);
+    }
+    else{
+      setInVR(false);
+    }
+    return null;
   }
   return (
     <>
@@ -23,7 +29,7 @@ function App() {
         CMPT 371: Team #1
       </div>
       {/* This button will allow the user to enter the VR Space */}
-      <button onClick={() => handleOnClick()}>Enter AR</button>
+      <button onClick={() => store.enterAR()}>Enter AR</button>
       <div className="canvas-container">
       <div>
         <BrowserUI/>
@@ -32,6 +38,7 @@ function App() {
         <Canvas>
           <color attach="background" args={["black"]}></color>
           <XR store={store}>
+            <XRScene setInVR={setInVR}></XRScene>
           <Sky sunPosition={[0.5,0,0.5]}/>
             <ambientLight/>
             {/* InitScene starts up the scene displayed */}

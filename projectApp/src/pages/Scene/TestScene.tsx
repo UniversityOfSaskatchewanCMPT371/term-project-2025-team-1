@@ -15,11 +15,11 @@ export default function TestScene({inVR} : {inVR:boolean}): React.JSX.Element{
                 alignContent={"center"} justifyContent={"center"} flexDirection={"column"}>
 
                     {/* Top filler */}
-                    <Container width={"100%"} height={"30%"}/>
+                    <Container width={"100%"} height={inVR? "30%" : "0%"}/>
 
                     <Container width={"100%"} height={"7%"} flexDirection={"column"} alignContent={"center"} justifyContent={"center"}>
                         <Container width={"100%"} height={"100%"} flexDirection={"row"}>
-                            <Container width={"57%"} height={"5%"} backgroundOpacity={0.4}/>
+                            <Container width={inVR? "57%": "90%"} height={"5%"} backgroundOpacity={0.4}/>
                             
 
                     {/* Button to open Test Scene */}
@@ -41,7 +41,7 @@ export default function TestScene({inVR} : {inVR:boolean}): React.JSX.Element{
                     </Container>
 
                     {/* The Test Body Container */}
-                    <Container width={"100%"} height={"62%"} alignContent={"center"} justifyContent={"center"}>
+                    <Container width={"100%"} height={inVR? "62%": "90%"} alignContent={"center"} justifyContent={"center"}>
                         <Container width={"50%"}
                             height={"75%"} 
                             borderWidth={2}

@@ -1,7 +1,6 @@
 // TODO - View aspect of embedded graph
 
-import { Container } from "@react-three/uikit";
-import { Plane } from "@react-three/drei";
+import { Text } from "@react-three/drei";
 //import { PointObject } from "../../components/Graph_Components/PointObject";
 import React from "react";
 //import { useState } from "react";
@@ -33,18 +32,23 @@ export function EmbeddedGraph({graph}:{graph: EmbeddedGraphObject}): React.JSX.E
     function GenerateGraph(): React.JSX.Element{
         sendLog("info", "an EmbeddedGraph visualization is being created [not yet functioning] (EmbeddedGraph.tsx)");
         return (
-            <Container>
-                <Plane>
+            <>
+                <mesh position={[3, 1, 6]}>
+                    <boxGeometry args = {[6, 5.5, 2]}/>
+                    <meshBasicMaterial color="gray"/>
+                </mesh>
 
-                </Plane>
-            </Container>
+                <mesh rotation = {[0, 3.14, 0]} position = {[3,2,4.8]}>
+                    <Text fontSize={0.35}>A 3D Graph will exist someday soon</Text>
+                </mesh>
+                <mesh rotation = {[0, 3.14, 0]} position={[3,1,4.8]}>
+                    <Text fontSize={0.35}>but here's a box in the meantime!</Text>
+                </mesh>
+            </>
         )
     }
 
     return(
-        <mesh position={[7, 2, -3.5]}>
-            <text>A 3D Graph will be here someday, but here's a plane in the meantime!</text>
-            <GenerateGraph/>
-        </mesh>
+        <GenerateGraph/>
     )
 }

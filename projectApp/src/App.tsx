@@ -2,7 +2,7 @@ import './styles/App.css'
 import { Canvas } from '@react-three/fiber';
 import InitScene from './pages/Scene/InitScene';
 import { Sky } from '@react-three/drei';
-import { createXRStore, useXR, useXREvent, XR } from '@react-three/xr';
+import { createXRStore, useXR, XR } from '@react-three/xr';
 import BrowserUI from './pages/UI/BrowserUI';
 import { useState } from 'react';
 

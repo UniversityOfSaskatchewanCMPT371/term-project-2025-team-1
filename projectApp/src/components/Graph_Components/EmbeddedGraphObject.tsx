@@ -63,7 +63,7 @@ export class EmbeddedGraphObject extends GraphObject implements EmbeddedInterfac
         position[1] = this.retreiveCoordinateValue(yIndex, csvData);
         position[2] = this.retreiveCoordinateValue(zIndex, csvData);
         
-        sendLog("info", "vector position calculated for data at index/time ????? (EmbeddedGraphObject.calculateVectorPosition())")
+        sendLog("info", `vector position calculated for data at index/time ${time} (EmbeddedGraphObject.calculateVectorPosition())`)
         return position;
     }
 
@@ -127,7 +127,7 @@ export class EmbeddedGraphObject extends GraphObject implements EmbeddedInterfac
     setTao(newTao: number): void {
         // TODO - add check for newTao here
         this.tao = newTao;
-        sendLog("info", "value of tao in EmbeddedGraphObject updated to the value *****");
+        sendLog("info", `value of tao in EmbeddedGraphObject updated to the value ${newTao}`)
     }
     
 }

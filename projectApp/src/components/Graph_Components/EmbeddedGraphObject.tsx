@@ -4,7 +4,12 @@ import { CSVDataObject } from "../Csv_Components/CSVDataObject";
 import { GraphObject } from "./GraphObject";
 import { PointObject } from "./PointObject";
 
-
+/**
+ * EmbeddedGraphObject is a class that extends GraphObject and implements the EmbeddedInterface
+ * Holds attributes and methods required of a EmbeddedGraph
+ * @preconditions A valid CSVDataObject
+ * @postconditions Creates a new EmbeddedGraph Object
+ */
 export class EmbeddedGraphObject extends GraphObject implements EmbeddedInterface {
 
     tao: number;
@@ -83,12 +88,23 @@ export class EmbeddedGraphObject extends GraphObject implements EmbeddedInterfac
     }
 
     
-
+    /**
+     * gets the dimensions of the graph
+     * @preconditions none
+     * @returns the current dimensions of the graph
+     */
     getDimensions(): { width: number; height: number; depth?: number; } {
         return this.dimensions;
     }
 
-
+    /**
+     * Sets the dimenstion of the graph to the new values
+     * @preconditions all given dimenstions must be valid numbers for the dimensions of a graph
+     * @postconditions the dimension attribute of the graphis updated to contain the given values
+     * @param width the new width of the graph
+     * @param height the new height of the graph
+     * @param depth thew new depth of the graph
+     */
     setDimensions(width: number, height: number, depth?: number): void {
         const newDimensions = {width: width, height: height, depth: depth};
         this.dimensions = newDimensions;

@@ -34,7 +34,6 @@ export class CSVController implements ControllerInterface {
      *   - A new TimeSeriesGraph is created and initialized
      *   - The graph is added to the main controller's graph collection
      */
-    // TODO - add embedded graph generation into here
     generate(): void{
         for(const csv of this.model.getData()){
             if(csv.getDisplayBoard() == 1){

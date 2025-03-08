@@ -1,5 +1,3 @@
-// TODO - make a create function similar to CreateTimeSeries but for embedded graph
-
 import { EmbeddedGraph } from "../../pages/Graph_Elements/EmbeddedGraph";
 import { EmbeddedGraphObject } from "./EmbeddedGraphObject";
 import { sendLog } from "../../logger-frontend";

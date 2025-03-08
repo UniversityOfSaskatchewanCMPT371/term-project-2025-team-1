@@ -15,7 +15,6 @@ import { CSVDataInterface } from "../types/CSVInterfaces";
  *   
  */
 export class GraphModel implements ModelInterface{
-    // TODO - add attribute for embedded graph and add getters and setters for it
     // TODO - change name of data to be timeSeriesData and update getters and setters
 
     data: TimeSeriesGraphObject[];

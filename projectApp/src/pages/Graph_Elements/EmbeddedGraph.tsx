@@ -1,9 +1,5 @@
-// TODO - View aspect of embedded graph
-
 import { Text } from "@react-three/drei";
-//import { PointObject } from "../../components/Graph_Components/PointObject";
 import React from "react";
-//import { useState } from "react";
 import mainController from "../../controller/MainController";
 import { EmbeddedGraphObject } from "../../components/Graph_Components/EmbeddedGraphObject";
 import { sendLog } from "../../logger-frontend";
@@ -19,8 +15,6 @@ export function EmbeddedGraph({graph}:{graph: EmbeddedGraphObject}): React.JSX.E
 
     //Used to update the graph
     function UpdateGraph(): void{
-        //graph.updatePointPosition();
-        //setHeader(graph.getYHeader);
         mainController.updateMainScene();
         sendLog("info", "an EmbeddedGraph object was updated (EmbeddedGraph.tsx)");
     }

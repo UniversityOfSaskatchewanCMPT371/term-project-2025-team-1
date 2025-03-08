@@ -17,7 +17,6 @@ import mainController from "./MainController";
  *   - Graph objects are stored in the model's data array. Once a graph is added, it persists until it is removed.
  *  
  */
-// TODO - modify or add methods for embedded graph support
 export class GraphController implements ControllerInterface{
     model: GraphModel;
     constructor(){

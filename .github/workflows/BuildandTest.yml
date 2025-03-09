@@ -36,20 +36,17 @@ jobs:
 #    runs-on: windows-latest
 #    steps:
 #      - uses: actions/checkout@v4
-##      - name: Setup Node.js
-##        uses: actions/setup-node@v4
-##        with:
-##          node-version: '20'
 #      - name: Install dependencies
-#        run: npm ci --verbose # Added verbosity
+#        run: npm ci --verbose
 #      - name: Run linter
 #        run: npm run lint
 #      - name: Build
 #        run: npm run build
 #      - name: Test
-#        run: npm run test
-#        env:
-#          CI: true  # Keep this
+#        run: |
+#          npx pm2 start logger-server.js --name logger
+#          npm run test
+#          npx pm2 delete logger
 #        timeout-minutes: 3
 
   send-logs-to-elastic:
@@ -57,6 +54,14 @@ jobs:
       needs: [job-linux]
       if: always()
       steps:
+        - name: Checkout code
+          uses: actions/checkout@v2
+        - name: Set up Node.js
+          uses: actions/setup-node@v4
+          with:
+            node-version: '20'
+        - name: Install dependencies
+          run: npm install
         - name: Upload GitHub Action workflows logs to elastic
           uses: loop1dev/github-actions-to-elk@1.0.0
           with:

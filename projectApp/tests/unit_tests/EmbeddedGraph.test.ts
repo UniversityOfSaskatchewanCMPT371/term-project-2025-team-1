@@ -75,4 +75,8 @@ describe('Embedded Graph test', () => {
         expect(points[8].getPosition()).toStrictEqual([9,7,5]);
         expect(points[9].getPosition()).toStrictEqual([10,8,6]);
     })
+
+    test('setting tao to an invalid value', () => {
+        expect(graph.setTao(-1)).toThrowError;
+    })
 });

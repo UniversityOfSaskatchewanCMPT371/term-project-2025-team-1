@@ -1,4 +1,4 @@
-import { sendLog } from "../../logger-frontend";
+import { sendError, sendLog } from "../../logger-frontend";
 import { EmbeddedInterface } from "../../types/EmbeddedInterface";
 import { CSVDataObject } from "../Csv_Components/CSVDataObject";
 import { GraphObject } from "./GraphObject";
@@ -125,7 +125,11 @@ export class EmbeddedGraphObject extends GraphObject implements EmbeddedInterfac
      * post-conditions: the value of tao is updated to newTao
      */
     setTao(newTao: number): void {
-        // TODO - add check for newTao here
+        if (newTao < 1) {
+            const e = new TypeError('Tao must be greater than or equal to 1')
+            sendError(e, `Error in setTao, ${newTao} is not greater than or equal to 1`)
+        }
+
         this.tao = newTao;
         sendLog("info", `value of tao in EmbeddedGraphObject updated to the value ${newTao}`)
     }

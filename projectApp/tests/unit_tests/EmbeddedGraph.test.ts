@@ -77,6 +77,7 @@ describe('Embedded Graph test', () => {
     })
 
     test('setting tao to an invalid value', () => {
-        expect(graph.setTao(-1)).toThrowError;
+
+        expect(() => {graph.setTao(-1)}).toThrowError("Tao must be greater than or equal to 1");
     })
 });

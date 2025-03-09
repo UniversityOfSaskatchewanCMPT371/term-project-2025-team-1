@@ -128,6 +128,7 @@ export class EmbeddedGraphObject extends GraphObject implements EmbeddedInterfac
         if (newTao < 1) {
             const e = new TypeError('Tao must be greater than or equal to 1')
             sendError(e, `Error in setTao, ${newTao} is not greater than or equal to 1`)
+            throw e;
         }
 
         this.tao = newTao;

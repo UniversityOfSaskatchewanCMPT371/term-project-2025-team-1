@@ -23,7 +23,7 @@ Feature: Embedded Graph Creation
     When the user attempts to create an embedded graph
     Then a placeholder box or graph should appear on the screen behind the user
 
-  Scenario: Removing 3D graph from the VR environment
-    Given the user has generated a 3D graph
-    When the user clicks "delete" button next to the graph
-    Then the graph should be cleared from the VR environment
+  Scenario: Leaving the VR scene
+    Given play mode is on
+    When the user clicks "esc" button
+    Then the user will leave the VR scene

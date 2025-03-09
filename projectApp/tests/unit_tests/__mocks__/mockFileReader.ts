@@ -5,7 +5,7 @@ export class MockFileReader {
     onload: ((event: ProgressEvent<FileReader>) => void) | null = null;
     onerror: ((event: ProgressEvent<FileReader>) => void) | null = null;
   
-    async readAsText(file: File) {
+    readAsText(file: File) {
         try {
             const readerContent = (file as unknown as { fileBits: BlobPart[], name: string, options?: FilePropertyBag }).fileBits;
             this.result = readerContent[0] as string;

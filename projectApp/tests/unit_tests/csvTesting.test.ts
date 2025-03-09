@@ -209,16 +209,17 @@ async function pathStrToFile(filePath: string): Promise<File> {
     let data: string;
     try{
         data = await reader;
-    } catch(err){
+    } catch {
         data = ''
         //for some reason, if await reader throws the error, vitest still receives ENOENT error
+        //vitest cant handle errors outside of expect
         //so instead data will be returned as empty (aka couldnt read)
     }
     return new File([data],filePath,{ type: 'text/csv' });
 }
 
 // These tests should now work in non-browser API
-describe("Testing localCsvReader(file) function", async () => {
+describe("Testing localCsvReader(file) function", () => {
 
     const regularFileReader: TestFormat<File,Record<string,string | number>[]> = {
         description: "local file reader:\tdata should be read from existing file",

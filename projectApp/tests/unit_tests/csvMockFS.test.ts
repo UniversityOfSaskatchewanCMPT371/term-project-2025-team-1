@@ -61,9 +61,6 @@ describe("testing fs mocking", () => {
     const path = '/fromTSD.csv';
 
     const tsd: Record<string,string | number>[] = [];
-    //feels weird to have an object that only holds one data type
-    //Record<string,string | number> is {key:Record(key,val)}
-    //couldnt it be Record<string,string | number> extends Record, i think its ok to use extend as "renaming"
     const line1: Record<string,string | number> = {Time: '2025-01-01', X: 10, Y: 20};
     const line2: Record<string,string | number> = {Time: '2025-01-03', X: 12, Y: 25};
     const line3: Record<string,string | number> = {Time: '2025-01-05', X: 14, Y: 30};

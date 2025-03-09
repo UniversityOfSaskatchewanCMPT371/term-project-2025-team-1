@@ -15,5 +15,6 @@ Feature: Embedded Graph Creation
   Scenario: Displaying the embedded graph
     Given the user has opened the 3D graph menu
     And the local CSV file appears in the 3D graph menu
-    When the user clicks generate
+    When the user selects "1" using the right or left indicator
+    And the user clicks generate
     Then a placeholder box or graph should appear on the screen behind the user

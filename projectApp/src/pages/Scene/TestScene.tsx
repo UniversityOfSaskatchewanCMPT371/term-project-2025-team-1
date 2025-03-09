@@ -11,7 +11,7 @@ export default function TestScene({inVR} : {inVR:boolean}): React.JSX.Element{
             <Fullscreen flexDirection={"row"} distanceToCamera={0.8} pointerEvents={"none"}> 
                 {/* Main Container that encapsulates Test Scene */}
                 {/* Possibly make some sizes dependent when inside or outside vr */}
-                <Container width={"100%"} height={"100%"} backgroundColor={inVR? "darkgray":"red"} backgroundOpacity={clicked? 0.5:0.01}
+                <Container width={"100%"} height={"100%"} backgroundColor={"darkgray"} backgroundOpacity={clicked? 0.5:0.01}
                 alignContent={"center"} justifyContent={"center"} flexDirection={"column"}>
 
                     {/* Top filler */}

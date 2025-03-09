@@ -122,7 +122,6 @@ export function LocalCsvReader(file: File): Promise<Record<string,string | numbe
         //invalid file is thrown by onerror
 
         const reader = new FileReader();
-        if(file.type)
 
         reader.onload = (e) => {
             const fileContent = e.target?.result as string;

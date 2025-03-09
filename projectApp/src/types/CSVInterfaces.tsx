@@ -1,17 +1,5 @@
 import { DataInterface, ModelInterface } from "./BaseInterfaces";
 
-/*
-* Interfaces required for the CSV Readers
-*/
-export interface CSVHeaders {
-    headers: string[];
-}
-
-export interface TimeSeriesData {
-    key: Record<string,string | number>;
-}
-
-
 //Planned new interfaces for csv files
 //For now, specialized for 2D Time Series
 export interface CSVDataInterface extends DataInterface{                                

@@ -56,7 +56,7 @@ describe("testing fs mocking", () => {
     expect(localHeadersData).toEqual(['Time', 'X', 'Y']);
   })
 
-  test('translating timeSeriesData to and from', async () => {
+  test('translating Record<string,string | number>[] to and from', async () => {
     //defining original Record<string,string | number>[] first, to compare to the data received from localReader
     const path = '/fromTSD.csv';
 

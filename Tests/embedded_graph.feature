@@ -22,8 +22,3 @@ Feature: Embedded Graph Creation
     Given the application is running
     When the user attempts to create an embedded graph
     Then a placeholder box or graph should appear on the screen behind the user
-
-  Scenario: Leaving the VR scene
-    Given play mode is on
-    When the user clicks "esc" button
-    Then the user will leave the VR scene

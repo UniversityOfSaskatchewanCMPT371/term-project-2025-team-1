@@ -3,7 +3,7 @@ Feature: Embedded Graph Creation
 
   Background:
     Given the user is in the VR environment
-    And the user has uploaded the valid local CSV file "test.csv"
+    And the user has uploaded a valid local CSV file "indexedData.csv"
     And the user has uploaded a valid URL-based CSV file with address "https://raw.githubusercontent.com/UniversityOfSaskatchewanCMPT371/term-project-2025-team-1/refs/heads/ID3/csvTestFiles/indexedData.csv" 
     # data visualization isn't implemented yet
 

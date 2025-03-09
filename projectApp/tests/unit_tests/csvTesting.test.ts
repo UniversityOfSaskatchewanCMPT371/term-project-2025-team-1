@@ -1,326 +1,426 @@
 import { describe, expect, test } from 'vitest';
 
-import { LocalCSVReader as localReader, LocalCSVHeaders as localHeaders, UrlCSVReader as urlReader, UrlCSVHeaders as urlHeaders } from "../../src/components/Csv_Components/CSVReaders.tsx";
-import { CSVHeaders, TimeSeriesData } from '../../src/types/CSVInterfaces.tsx';
+import {
+    LocalCSVReader as localReader,
+    LocalCSVHeaders as localHeaders,
+    UrlCSVReader as urlReader,
+    UrlCSVHeaders as urlHeaders,
+    //LocalCsvReader as localFileReader
+} from "../../src/components/Csv_Components/CSVReaders.tsx";
+//import { readFileSync } from 'fs';
 
 
-interface ReaderTest<T> {
+interface TestFormat<Input,Output> {
     description: string;
-    filepath: string;
-    successful: boolean;
-    testFunction(input: string): Promise<T>;
+    inputVars: Input | Promise<Input>;
+    expectSuccess: boolean;
+    useFunction(input: Input): Promise<Output>;
 }
 
-function runReaderTest(testObject: ReaderTest<any>): void {
+function runReaderTest(testObject: TestFormat<string | File, Record<string,string | number>[] | string[]>): void {
     test(testObject.description, async () => {
-        const toRun = () => testObject.testFunction(testObject.filepath);
-        if (testObject.successful) {
+        if(testObject.expectSuccess){
+            if(testObject.inputVars instanceof Promise){
+                await expect(testObject.inputVars).resolves.toBeDefined()
+            }
+            const awaitPath = await testObject.inputVars;
+            const toRun = () => testObject.useFunction(awaitPath);
             await expect(toRun()).resolves.toBeDefined();
         } else {
-            await expect(toRun()).rejects.toBeDefined();
+            try{
+                //expect either filePath gives errors or toRun gives errors
+                const awaitPath = await testObject.inputVars;
+                const toRun = () => testObject.useFunction(awaitPath);
+                await expect(toRun()).rejects.toBeDefined();
+            } catch(err:unknown){
+                if(testObject.inputVars instanceof Promise){
+                    await expect(testObject.inputVars).rejects.toBeDefined();
+                }
+                else{
+                    console.log((err as Error).message);
+                }
+            }
         }
     });
 }
 
-describe("Testing the localCSVReader function", () => {
+//filepaths for localCSVReader(path) and Headers and localCsvReader(file):
+const relativePathToFiles   = "../csvTestFiles"
+const localRegularFile      = `${relativePathToFiles}/test.csv`;
+const localFakeFile         = `${relativePathToFiles}/fakeFile.csv`;
+const localOneLessHeader    = `${relativePathToFiles}/oneLessHeader.csv`;
+const localOneMoreHeader    = `${relativePathToFiles}/oneMoreHeader.csv`;
+const localUnevenData       = `${relativePathToFiles}/unevenData.csv`;
+const localDifferentTypes   = `${relativePathToFiles}/differentTypes.csv`;
+const localNotCSV           = `${relativePathToFiles}/notCsv.html`;
+const localEmptyFile        = `${relativePathToFiles}/empty.csv`;
+
+describe("Testing the localCSVReader(string) function", () => {
     //NOTE: these tests are for testing if it can read and recognize csv files, not for if the csv is formatted correctly
 
-    //filepaths for tests:
-    const localRegularFile      = "../csvTestFiles/test.csv";
-    const localFakeFile         = "../csvTestFiles/fakeFile.csv";
-    const localOneLessHeader    = "../csvTestFiles/oneLessHeader.csv";
-    const localOneMoreHeader    = "../csvTestFiles/oneMoreHeader.csv";
-    const localUnevenData       = "../csvTestFiles/unevenData.csv";
-    const localDifferentTypes   = "../csvTestFiles/differentTypes.csv";
-    const localNotCSV           = "../csvTestFiles/notCsv.html";
-    const localEmptyFile        = "../csvTestFiles/empty.csv";
-
-    const regularFileReader: ReaderTest<TimeSeriesData[]> = {
+    const regularFileReader: TestFormat<string,Record<string,string | number>[]> = {
         description: "local reader:\tdata should be read from existing file",
-        filepath: localRegularFile,
-        successful: true,
-        testFunction: localReader
+        inputVars: localRegularFile,
+        expectSuccess: true,
+        useFunction: localReader
     };
     runReaderTest(regularFileReader);
 
-    const regularFileHeaders: ReaderTest<CSVHeaders> = {
+    const regularFileHeaders: TestFormat<string,string[]> = {
         description: "local headers:\theaders should be read from existing file",
-        filepath: localRegularFile,
-        successful: true,
-        testFunction: localHeaders
+        inputVars: localRegularFile,
+        expectSuccess: true,
+        useFunction: localHeaders
     };
     runReaderTest(regularFileHeaders);
 
-    const fakeFileReader: ReaderTest<TimeSeriesData[]> = {
+    const fakeFileReader: TestFormat<string,Record<string,string | number>[]> = {
         description: "local reader:\tdata should not be read from nonexistant file",
-        filepath: localFakeFile,
-        successful: false,
-        testFunction: localReader
+        inputVars: localFakeFile,
+        expectSuccess: false,
+        useFunction: localReader
     };
     runReaderTest(fakeFileReader);
 
-    const fakeFileHeaders: ReaderTest<CSVHeaders> = {
+    const fakeFileHeaders: TestFormat<string,string[]> = {
         description: "local headers:\theaders should not be read from nonexistant file",
-        filepath: localFakeFile,
-        successful: false,
-        testFunction: localHeaders
+        inputVars: localFakeFile,
+        expectSuccess: false,
+        useFunction: localHeaders
     };
     runReaderTest(fakeFileHeaders);
 
-    const oneLessReader: ReaderTest<TimeSeriesData[]> = {
+    const oneLessReader: TestFormat<string,Record<string,string | number>[]> = {
         description: "local reader:\tdata should be read from file with one less header",
-        filepath: localOneLessHeader,
-        successful: true,
-        testFunction: localReader
+        inputVars: localOneLessHeader,
+        expectSuccess: true,
+        useFunction: localReader
     }
     runReaderTest(oneLessReader);
 
-    const oneLessHeader: ReaderTest<CSVHeaders> = {
+    const oneLessHeader: TestFormat<string,string[]> = {
         description: "local headers:\theaders should be read from file with one less header",
-        filepath: localOneLessHeader,
-        successful: true,
-        testFunction: localHeaders
+        inputVars: localOneLessHeader,
+        expectSuccess: true,
+        useFunction: localHeaders
     }
     runReaderTest(oneLessHeader);
 
-    const oneMoreReader: ReaderTest<TimeSeriesData[]> = {
+    const oneMoreReader: TestFormat<string,Record<string,string | number>[]> = {
         description: "local reader:\tdata should be read from file with one more header",
-        filepath: localOneMoreHeader,
-        successful: true,
-        testFunction: localReader
+        inputVars: localOneMoreHeader,
+        expectSuccess: true,
+        useFunction: localReader
     }
     runReaderTest(oneMoreReader);
 
-    const oneMoreHeaders: ReaderTest<CSVHeaders> = {
+    const oneMoreHeaders: TestFormat<string,string[]> = {
         description: "local headers:\theaders should be read from file with one more header",
-        filepath: localOneMoreHeader,
-        successful: true,
-        testFunction: localHeaders
+        inputVars: localOneMoreHeader,
+        expectSuccess: true,
+        useFunction: localHeaders
     }
     runReaderTest(oneMoreHeaders);
 
-    const unevenDataReader: ReaderTest<TimeSeriesData[]> = {
+    const unevenDataReader: TestFormat<string,Record<string,string | number>[]> = {
         description: "local reader:\tdata should be read from file with uneven data",
-        filepath: localUnevenData,
-        successful: true,
-        testFunction: localReader
+        inputVars: localUnevenData,
+        expectSuccess: true,
+        useFunction: localReader
     }
     runReaderTest(unevenDataReader);
 
-    const unevenDataHeaders: ReaderTest<CSVHeaders> = {
+    const unevenDataHeaders: TestFormat<string,string[]> = {
         description: "local headers:\theaders should be read from file with uneven data",
-        filepath: localUnevenData,
-        successful: true,
-        testFunction: localHeaders
+        inputVars: localUnevenData,
+        expectSuccess: true,
+        useFunction: localHeaders
     }
     runReaderTest(unevenDataHeaders);
 
-    const differentTypesReader: ReaderTest<TimeSeriesData[]> = {
+    const differentTypesReader: TestFormat<string,Record<string,string | number>[]> = {
         description: "local reader:\tdata should be read from file with different data types",
-        filepath: localDifferentTypes,
-        successful: true,
-        testFunction: localReader
+        inputVars: localDifferentTypes,
+        expectSuccess: true,
+        useFunction: localReader
     }
     runReaderTest(differentTypesReader);
 
-    const differentTypesHeaders: ReaderTest<CSVHeaders> = {
+    const differentTypesHeaders: TestFormat<string,string[]> = {
         description: "local headers:\theaders should be read from file with different data types",
-        filepath: localDifferentTypes,
-        successful: true,
-        testFunction: localHeaders
+        inputVars: localDifferentTypes,
+        expectSuccess: true,
+        useFunction: localHeaders
     }
     runReaderTest(differentTypesHeaders);
 
-    const inputHtmlReader: ReaderTest<TimeSeriesData[]> = {
+    const inputHtmlReader: TestFormat<string,Record<string,string | number>[]> = {
         description: "local reader:\tdata should not be read from non-csv file",
-        filepath: localNotCSV,
-        successful: false,
-        testFunction: localReader
+        inputVars: localNotCSV,
+        expectSuccess: false,
+        useFunction: localReader
     }
     runReaderTest(inputHtmlReader);
 
-    const inputHtmlHeaders: ReaderTest<CSVHeaders> = {
+    const inputHtmlHeaders: TestFormat<string,string[]> = {
         description: "local headers:\theaders should not be read from non-csv file",
-        filepath: localNotCSV,
-        successful: false,
-        testFunction: localHeaders
+        inputVars: localNotCSV,
+        expectSuccess: false,
+        useFunction: localHeaders
     }
     runReaderTest(inputHtmlHeaders);
 
-    const emptyFileReader: ReaderTest<TimeSeriesData[]> = {
+    const emptyFileReader: TestFormat<string,Record<string,string | number>[]> = {
         description: "local reader:\tdata should be not read from empty csv file",
-        filepath: localEmptyFile,
-        successful: false,
-        testFunction: localReader
+        inputVars: localEmptyFile,
+        expectSuccess: false,
+        useFunction: localReader
     }
     runReaderTest(emptyFileReader);
 
-    const emptyFileHeaders: ReaderTest<CSVHeaders> = {
+    const emptyFileHeaders: TestFormat<string,string[]> = {
         description: "local headers:\theaders should not be read from empty csv file",
-        filepath: localEmptyFile,
-        successful: false,
-        testFunction: localHeaders
+        inputVars: localEmptyFile,
+        expectSuccess: false,
+        useFunction: localHeaders
     }
     runReaderTest(emptyFileHeaders);
 
 });
 
+// apparently FileReader can only exist in the web app environment, it cant be tested in nodejs/vitest
+/*
+async function pathStrToFile(filePath: string): Promise<File> {
+    const reader = readFileSync(filePath, "utf-8");
+    return new File([reader],filePath);
+}
+
+describe("Testing localCsvReader(file) function", async () => {
+
+    const regularFileReader: TestFormat<File,Record<string,string | number>[]> = {
+        description: "local reader:\tdata should be read from existing file",
+        inputVars: pathStrToFile(localRegularFile),
+        expectSuccess: true,
+        useFunction: localFileReader
+    };
+    runReaderTest(regularFileReader);
+
+    const fakeFileReader: TestFormat<File,Record<string,string | number>[]> = {
+        description: "local reader:\tdata should not be read from nonexistant file",
+        inputVars: pathStrToFile(localFakeFile),
+        expectSuccess: false,
+        useFunction: localFileReader
+    };
+    runReaderTest(fakeFileReader);
+
+    const oneLessReader: TestFormat<File,Record<string,string | number>[]> = {
+        description: "local reader:\tdata should be read from file with one less header",
+        inputVars: pathStrToFile(localOneLessHeader),
+        expectSuccess: true,
+        useFunction: localFileReader
+    }
+    runReaderTest(oneLessReader);
+
+    const oneMoreReader: TestFormat<File,Record<string,string | number>[]> = {
+        description: "local reader:\tdata should be read from file with one more header",
+        inputVars: pathStrToFile(localOneMoreHeader),
+        expectSuccess: true,
+        useFunction: localFileReader
+    }
+    runReaderTest(oneMoreReader);
+
+    const unevenDataReader: TestFormat<File,Record<string,string | number>[]> = {
+        description: "local reader:\tdata should be read from file with uneven data",
+        inputVars: pathStrToFile(localUnevenData),
+        expectSuccess: true,
+        useFunction: localFileReader
+    }
+    runReaderTest(unevenDataReader);
+
+    const differentTypesReader: TestFormat<File,Record<string,string | number>[]> = {
+        description: "local reader:\tdata should be read from file with different data types",
+        inputVars: pathStrToFile(localDifferentTypes),
+        expectSuccess: true,
+        useFunction: localFileReader
+    }
+    runReaderTest(differentTypesReader);
+
+    const inputHtmlReader: TestFormat<File,Record<string,string | number>[]> = {
+        description: "local reader:\tdata should not be read from non-csv file",
+        inputVars: pathStrToFile(localNotCSV),
+        expectSuccess: false,
+        useFunction: localFileReader
+    }
+    runReaderTest(inputHtmlReader);
+
+    const emptyFileReader: TestFormat<File,Record<string,string | number>[]> = {
+        description: "local reader:\tdata should be not read from empty csv file",
+        inputVars: pathStrToFile(localEmptyFile),
+        expectSuccess: false,
+        useFunction: localFileReader
+    }
+    runReaderTest(emptyFileReader);
+})
+*/
+
+//urls used in urlCSVReader and Headers
+const githubID2Dev      = "https://raw.githubusercontent.com/UniversityOfSaskatchewanCMPT371/term-project-2025-team-1/refs/heads/ID2Dev/csvTestFiles";
+const urlRegularFile    = `${githubID2Dev}/test.csv`;
+const urlFakeFile       = `${githubID2Dev}/fakeFile.csv`;
+const urlOneLessHeader  = `${githubID2Dev}/oneLessHeader.csv`;
+const urlOneMoreHeader  = `${githubID2Dev}/oneMoreHeader.csv`;
+const urlUnevenData     = `${githubID2Dev}/unevenData.csv`;
+const urlDifferentTypes = `${githubID2Dev}/differentTypes.csv`;
+const urlNotCSV         = `${githubID2Dev}/notCsv.html`;
+const urlEmptyFile      = `${githubID2Dev}/empty.csv`;
+const urlW3Pandas       = "https://www.w3schools.com/python/pandas/data.csv";
+
 describe("Testing the urlCSVReader function", () => {
+
     //NOTE: these tests are for testing if it can read the file, not for if the csv is formatted correctly
 
-    //urls used in tests
-    const githubID2Dev      = "https://raw.githubusercontent.com/UniversityOfSaskatchewanCMPT371/term-project-2025-team-1/refs/heads/ID2Dev/csvTestFiles";
-    const urlRegularFile    = `${githubID2Dev}/test.csv`;
-    const urlFakeFile       = `${githubID2Dev}/fakeFile.csv`;
-    const urlOneLessHeader  = `${githubID2Dev}/oneLessHeader.csv`;
-    const urlOneMoreHeader  = `${githubID2Dev}/oneMoreHeader.csv`;
-    const urlUnevenData     = `${githubID2Dev}/unevenData.csv`;
-    const urlDifferentTypes = `${githubID2Dev}/differentTypes.csv`;
-    const urlNotCSV         = `${githubID2Dev}/notCsv.html`;
-    const urlEmptyFile      = `${githubID2Dev}/empty.csv`;
-    const urlW3Pandas       = "https://www.w3schools.com/python/pandas/data.csv";
 
-    const regularFileUrl: ReaderTest<TimeSeriesData[]> = {
+    const regularFileUrl: TestFormat<string,Record<string,string | number>[]> = {
         description: "url reader:\tdata should be read from existing file",
-        filepath: urlRegularFile,
-        successful: true,
-        testFunction: urlReader
+        inputVars: urlRegularFile,
+        expectSuccess: true,
+        useFunction: urlReader
     };
     runReaderTest(regularFileUrl);
 
-    const regularFileUrlHeaders: ReaderTest<CSVHeaders> = {
+    const regularFileUrlHeaders: TestFormat<string,string[]> = {
         description: "url headers:\theaders should be read from existing file",
-        filepath: urlRegularFile,
-        successful: true,
-        testFunction: urlHeaders
+        inputVars: urlRegularFile,
+        expectSuccess: true,
+        useFunction: urlHeaders
     };
     runReaderTest(regularFileUrlHeaders);
 
-    const fakeFileUrl: ReaderTest<TimeSeriesData[]> = {
+    const fakeFileUrl: TestFormat<string,Record<string,string | number>[]> = {
         description: "url reader:\tdata should not be read from nonexistant file",
-        filepath: urlFakeFile,
-        successful: false,
-        testFunction: urlReader
+        inputVars: urlFakeFile,
+        expectSuccess: false,
+        useFunction: urlReader
     };
     runReaderTest(fakeFileUrl);
 
-    const fakeFileUrlHeaders: ReaderTest<CSVHeaders> = {
+    const fakeFileUrlHeaders: TestFormat<string,string[]> = {
         description: "url headers:\theaders should not be read from nonexistant file",
-        filepath: urlFakeFile,
-        successful: false,
-        testFunction: urlHeaders
+        inputVars: urlFakeFile,
+        expectSuccess: false,
+        useFunction: urlHeaders
     };
     runReaderTest(fakeFileUrlHeaders);
 
-    const oneLessUrlReader: ReaderTest<TimeSeriesData[]> = {
+    const oneLessUrlReader: TestFormat<string,Record<string,string | number>[]> = {
         description: "url reader:\tdata should be read from file with one less header",
-        filepath: urlOneLessHeader,
-        successful: true,
-        testFunction: urlReader
+        inputVars: urlOneLessHeader,
+        expectSuccess: true,
+        useFunction: urlReader
     }
     runReaderTest(oneLessUrlReader);
 
-    const oneLessUrlHeader: ReaderTest<CSVHeaders> = {
+    const oneLessUrlHeader: TestFormat<string,string[]> = {
         description: "url headers:\theaders should be read from file with one less header",
-        filepath: urlOneLessHeader,
-        successful: true,
-        testFunction: urlHeaders
+        inputVars: urlOneLessHeader,
+        expectSuccess: true,
+        useFunction: urlHeaders
     }
     runReaderTest(oneLessUrlHeader);
 
-    const oneMoreUrlReader: ReaderTest<TimeSeriesData[]> = {
+    const oneMoreUrlReader: TestFormat<string,Record<string,string | number>[]> = {
         description: "url reader:\tdata should be read from file with one more header",
-        filepath: urlOneMoreHeader,
-        successful: true,
-        testFunction: urlReader
+        inputVars: urlOneMoreHeader,
+        expectSuccess: true,
+        useFunction: urlReader
     }
     runReaderTest(oneMoreUrlReader);
 
-    const oneMoreUrlHeaders: ReaderTest<CSVHeaders> = {
+    const oneMoreUrlHeaders: TestFormat<string,string[]> = {
         description: "url headers:\theaders should be read from file with one more header",
-        filepath: urlOneMoreHeader,
-        successful: true,
-        testFunction: urlHeaders
+        inputVars: urlOneMoreHeader,
+        expectSuccess: true,
+        useFunction: urlHeaders
     }
     runReaderTest(oneMoreUrlHeaders);
 
-    const unevenDataUrlReader: ReaderTest<TimeSeriesData[]> = {
+    const unevenDataUrlReader: TestFormat<string,Record<string,string | number>[]> = {
         description: "url reader:\tdata should be read from file with uneven data",
-        filepath: urlUnevenData,
-        successful: true,
-        testFunction: urlReader
+        inputVars: urlUnevenData,
+        expectSuccess: true,
+        useFunction: urlReader
     }
     runReaderTest(unevenDataUrlReader);
 
-    const unevenDataUrlHeaders: ReaderTest<CSVHeaders> = {
+    const unevenDataUrlHeaders: TestFormat<string,string[]> = {
         description: "url headers:\theaders should be read from file with uneven data",
-        filepath: urlUnevenData,
-        successful: true,
-        testFunction: urlHeaders
+        inputVars: urlUnevenData,
+        expectSuccess: true,
+        useFunction: urlHeaders
     }
     runReaderTest(unevenDataUrlHeaders);
 
-    const differentTypesUrlReader: ReaderTest<TimeSeriesData[]> = {
+    const differentTypesUrlReader: TestFormat<string,Record<string,string | number>[]> = {
         description: "url reader:\tdata should be read from file with different data types",
-        filepath: urlDifferentTypes,
-        successful: true,
-        testFunction: urlReader
+        inputVars: urlDifferentTypes,
+        expectSuccess: true,
+        useFunction: urlReader
     }
     runReaderTest(differentTypesUrlReader);
 
-    const differentTypesUrlHeaders: ReaderTest<CSVHeaders> = {
+    const differentTypesUrlHeaders: TestFormat<string,string[]> = {
         description: "url headers:\theaders should be read from file with different data types",
-        filepath: urlDifferentTypes,
-        successful: true,
-        testFunction: urlHeaders
+        inputVars: urlDifferentTypes,
+        expectSuccess: true,
+        useFunction: urlHeaders
     }
     runReaderTest(differentTypesUrlHeaders);
 
-    const inputHtmlUrlReader: ReaderTest<TimeSeriesData[]> = {
+    const inputHtmlUrlReader: TestFormat<string,Record<string,string | number>[]> = {
         description: "url reader:\tdata should not be read from non-csv file",
-        filepath: urlNotCSV,
-        successful: false,
-        testFunction: urlReader
+        inputVars: urlNotCSV,
+        expectSuccess: false,
+        useFunction: urlReader
     }
     runReaderTest(inputHtmlUrlReader);
 
-    const inputHtmlUrlHeaders: ReaderTest<CSVHeaders> = {
+    const inputHtmlUrlHeaders: TestFormat<string,string[]> = {
         description: "url headers:\theaders should not be read from non-csv file",
-        filepath: urlNotCSV,
-        successful: false,
-        testFunction: urlHeaders
+        inputVars: urlNotCSV,
+        expectSuccess: false,
+        useFunction: urlHeaders
     }
     runReaderTest(inputHtmlUrlHeaders);
 
-    const emptyFileUrlReader: ReaderTest<TimeSeriesData[]> = {
+    const emptyFileUrlReader: TestFormat<string,Record<string,string | number>[]> = {
         description: "url reader:\tdata should be not read from empty csv file",
-        filepath: urlEmptyFile,
-        successful: false,
-        testFunction: urlReader
+        inputVars: urlEmptyFile,
+        expectSuccess: false,
+        useFunction: urlReader
     }
     runReaderTest(emptyFileUrlReader);
 
-    const emptyFileUrlHeaders: ReaderTest<CSVHeaders> = {
+    const emptyFileUrlHeaders: TestFormat<string,string[]> = {
         description: "url headers:\theaders should not be read from empty csv file",
-        filepath: urlEmptyFile,
-        successful: false,
-        testFunction: urlHeaders
+        inputVars: urlEmptyFile,
+        expectSuccess: false,
+        useFunction: urlHeaders
     }
     runReaderTest(emptyFileUrlHeaders);
 
-    const w3schoolUrlReader: ReaderTest<TimeSeriesData[]> = {
+    const w3schoolUrlReader: TestFormat<string,Record<string,string | number>[]> = {
         description: "url reader:\tdata should be read from an online csv file from another website",
-        filepath: urlW3Pandas,
-        successful: true,
-        testFunction: urlReader
+        inputVars: urlW3Pandas,
+        expectSuccess: true,
+        useFunction: urlReader
     }
     runReaderTest(w3schoolUrlReader);
 
-    const w3schoolUrlHeaders: ReaderTest<CSVHeaders> = {
+    const w3schoolUrlHeaders: TestFormat<string,string[]> = {
         description: "url headers:\theaders should be read from an online csv file from another website",
-        filepath: urlW3Pandas,
-        successful: true,
-        testFunction: urlHeaders
+        inputVars: urlW3Pandas,
+        expectSuccess: true,
+        useFunction: urlHeaders
     }
     runReaderTest(w3schoolUrlHeaders);
 });

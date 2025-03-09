@@ -1,17 +1,5 @@
 import { DataInterface, ModelInterface } from "./BaseInterfaces";
 
-/*
-* Interfaces required for the CSV Readers
-*/
-export interface CSVHeaders {
-    headers: string[];
-}
-
-export interface TimeSeriesData {
-    key: Record<string,string | number>;
-}
-
-
 //Planned new interfaces for csv files
 //For now, specialized for 2D Time Series
 export interface CSVDataInterface extends DataInterface{                                
@@ -44,6 +32,5 @@ export interface CSVDataInterface extends DataInterface{
 export interface CSVModelInterface extends ModelInterface{
     readLocalFile(file:File): Promise<void>;                    //Will read the csv through local file and load it
     readURLFile(file: string): Promise<void>;                   //Will read the csv file through url link and load it
-    deleteFile(name:string): void;                              //Get the array and delete it
     getCSVFileByName(name: string): CSVDataInterface | null;    //Get specific csv data by Name value
 }

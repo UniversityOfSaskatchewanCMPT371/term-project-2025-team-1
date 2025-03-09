@@ -5,13 +5,6 @@ Feature: Embedded Graph Creation
     Given the user is in the VR environment
     # data visualization isn't implemented yet
 
-  # Background data (assumes that all provided CSV data is valid as per csvLoader.feature)
-  Scenario: Loading CSV file
-    Given play mode is off
-    When the user opens the 3D graph menu
-    And the user has uploaded the valid local CSV file "test.csv"
-    And the user has uploaded a valid URL-based CSV file with address "https://raw.githubusercontent.com/UniversityOfSaskatchewanCMPT371/term-project-2025-team-1/refs/heads/ID3/csvTestFiles/indexedData.csv" 
-
   # viualizing 3D graph
   Scenario: Finding a loaded local/URL graph in the 3D graph menu
     Given play mode is on
@@ -19,6 +12,7 @@ Feature: Embedded Graph Creation
     Then the 3D graph menu should show a list of available graphs to display
     
   Scenario: Displaying the embedded graph
-    Given the application is running
-    When the user attempts to create an embedded graph
+    Given the user has opened the 3D graph menu
+    And the local CSV file appears in the 2D graph menu
+    When the user clicks generate
     Then a placeholder box or graph should appear on the screen behind the user

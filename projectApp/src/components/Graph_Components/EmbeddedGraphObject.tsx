@@ -51,6 +51,12 @@ export class EmbeddedGraphObject extends GraphObject implements EmbeddedInterfac
      * @returns an array contaning the coordinates of the vector in the form [x, y, z]
      */
     calculateVectorPosition(time: number, csvData: {key: Record<string, string | number>}[]): [number, number, number] {
+        if (time < 0) {
+            const e = new Error("time must be >= 0");
+            sendError(e, `Error in calculateVectorPosition - got ${time}, expected: a number greater than or equal to 0`);
+            throw e;
+        }
+
         const position: [number, number, number] = [0,0,0];
         
         // calculate the indexes for the 3 coordinates

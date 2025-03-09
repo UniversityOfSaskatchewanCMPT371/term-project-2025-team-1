@@ -20,7 +20,7 @@ Feature: WebXR Vite Spike Manual Test Cases
     When I use my mouse and keyboard
     Then I should be able to navigate and interact with the environment
     And the controls should mimic the functionality of the Meta Quest controllers
-  
+
 
   Scenario: Running the Program on the Meta Quest
     Given I have started the program using "npm run dev"

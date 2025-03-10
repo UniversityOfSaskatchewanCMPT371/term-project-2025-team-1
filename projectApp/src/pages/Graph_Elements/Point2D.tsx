@@ -9,7 +9,7 @@ import { PointObject } from "../../components/Graph_Components/PointObject";
  * @precondition pointRef must be a valid PointClass instance with position and selected state
  * @postcondition Renders an interactive 2D point with hover and click functionality
  */
-export function Point2D({pointRef} : {pointRef: PointObject}){
+export default function Point2D({pointRef} : {pointRef: PointObject}){
     const [ hovered, hover ] = useState(false);
     const [ clicked, click ] = useState(false);
 

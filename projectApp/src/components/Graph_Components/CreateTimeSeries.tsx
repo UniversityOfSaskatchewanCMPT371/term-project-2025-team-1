@@ -1,4 +1,4 @@
-import { TimeSeriesGraph } from "../../pages/Graph_Elements/TimeSeriesGraph";
+import TimeSeriesGraph from "../../pages/Graph_Elements/TimeSeriesGraph";
 import { TimeSeriesGraphObject } from "./TimeSeriesGraphObject";
 import { sendLog } from "../../logger-frontend";
 
@@ -18,7 +18,7 @@ import { sendLog } from "../../logger-frontend";
  * - A valid React JSX element is returned that renders the TimeSeriesGraph component.
  *  
  */
-export function CreateTimeSeries({graphObject}:{graphObject: TimeSeriesGraphObject}): React.JSX.Element{
+export default function CreateTimeSeries({graphObject}:{graphObject: TimeSeriesGraphObject}): React.JSX.Element{
     sendLog("info", "a TimeSeriesGraph has been created (CreateTimeSeries.tsx)");
     return(
         <>

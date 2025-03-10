@@ -11,7 +11,7 @@ import { sendLog, sendError } from '../../logger-frontend.ts'
  * @preconditions None
  * @postconditions A browser UI that can is used on Start up or outside of VR environment
  */
-export function BrowserUI(){
+export default function BrowserUI(){
   // These are used for linking leva components
   const fileInputRef = React.useRef<HTMLInputElement>(null);
   const urlInputRef = React.useRef<HTMLInputElement>(null);

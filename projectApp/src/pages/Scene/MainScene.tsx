@@ -1,6 +1,6 @@
 import { Text } from '@react-three/drei';
 import DropdownUI from "../UI/DropdownUI"
-import { CreateTimeSeries } from '../../components/Graph_Components/CreateTimeSeries';
+import CreateTimeSeries from '../../components/Graph_Components/CreateTimeSeries';
 import mainController from '../../controller/MainController';
 import { useEffect, useRef, useState } from 'react';
 import { TimeSeriesGraphObject } from '../../components/Graph_Components/TimeSeriesGraphObject';
@@ -63,7 +63,7 @@ export default function MainScene(): React.JSX.Element{
 
         {/* Displays the Sample Drop Down UI */}
         {/* <CreateTimeSeries graphObject={graph}></CreateTimeSeries> */}
-        <DropdownUI position={[-1.7, 1.5, -1]} xSize={4} ySize={3}></DropdownUI>
+        <DropdownUI position={[0, 1.5, -1]} xSize={4} ySize={3}></DropdownUI>
         {graph && <CreateTimeSeries graphObject={graph}></CreateTimeSeries>}
         </>
     );

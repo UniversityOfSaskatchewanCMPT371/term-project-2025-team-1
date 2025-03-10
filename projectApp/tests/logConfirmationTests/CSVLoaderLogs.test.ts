@@ -46,7 +46,7 @@ describe('emulating csvLoader.feature', () => {
         //depends on what counts as invalid
         //it was not .csv, or fetch could not find url, or file was empty, or other error
         //UrlCsvReader
-        const UrlReaderNotCSV = "is not .csv or .txt";
+        const UrlReaderNotCSV = "is not .csv";
         const UrlReaderIsEmpty = "URLCSVReader is empty";
         const UrlCSVReaderError = "URLCSVReader error";
         //CSVDataObject
@@ -92,7 +92,7 @@ describe('emulating csvLoader.feature', () => {
         //depends on what counts as invalid
         //it was not .csv, or fetch could not find url, or file was empty, or other error
         //LocalCsvReader
-        const LocalReaderNotCSV = "is not .csv or .txt";
+        const LocalReaderNotCSV = "This file is not csv";
         //there is no method of checking if the file is empty with LocalCsvReader(file:File)
         const LocalCSVReaderError = "LocalCsvReader(file) has errored for";
         //CSVDataObject

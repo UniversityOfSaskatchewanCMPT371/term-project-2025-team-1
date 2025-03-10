@@ -11,26 +11,20 @@ describe('Embedded graph log tests', () => {
     // Check if the CreateEmbeddedGraph log calls are being reached
     test('file contains CreateEmbeddedGraph logging', async() => {
         const response = await fileContainsText(filePath, "an EmbeddedGraph has been created [not yet functional] (CreateEmbeddedGraph.tsx)");
-        expect(response).toBe(false);
+        expect(response).toBe(true);
     })
 
     // Check if the addPoints() log calls are being reached
     test('file contains addPoints() logging', async() => {
         const response = await fileContainsText(filePath, "Points added to EmbeddedGraphObject (EmbeddedGraphObject.addPoints())");
-        expect(response).toBe(false);
+        expect(response).toBe(true);
     })
 
-    // // Check if the calculateVectorPosition() log calls are being reached
-    // test('file contains calculateVectorPosition() logging', async() => {
-    //     const response = await fileContainsText(filePath, `vector position calculated for data at index/time ${time} (EmbeddedGraphObject.calculateVectorPosition())`)
-    //     expect(response).toBe(true);
-    // })
-
-    // // Check if the setTao() log calls are being reached
-    // test('file contains setTao() logging', async() => {
-    //     const response = await fileContainsText(filePath, `value of tao in EmbeddedGraphObject updated to the value ${newTao}`);
-    //     expect(response).toBe(true);
-    // })
+    // Check if the calculateVectorPosition() log calls are being reached
+    test('file contains calculateVectorPosition() logging', async() => {
+        const response = await fileContainsText(filePath, `vector position calculated for data at index/time 0 (EmbeddedGraphObject.calculateVectorPosition())`)
+        expect(response).toBe(true);
+    })
 
     // Check if the generate() log calls are being reached
     test('file contains generate() logging', async() => {
@@ -47,6 +41,6 @@ describe('Embedded graph log tests', () => {
     // Check if the GenerateGraph() log calls are being reached
     test('file contains GenerateGraph() logging', async() => {
         const response = await fileContainsText(filePath, "an EmbeddedGraph visualization is being created [not yet functioning] (EmbeddedGraph.tsx)");
-        expect(response).toBe(false);
+        expect(response).toBe(true);
     })
 })

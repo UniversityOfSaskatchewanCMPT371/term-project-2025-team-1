@@ -1,8 +1,6 @@
 import { describe, expect, test, vi } from 'vitest';
 
 import {
-    LocalCSVReader as localReader,
-    LocalCSVHeaders as localHeaders,
     UrlCSVReader as urlReader,
     UrlCSVHeaders as urlHeaders,
     LocalCsvReader as localFileReader
@@ -55,139 +53,6 @@ const localUnevenData       = `${relativePathToFiles}/unevenData.csv`;
 const localDifferentTypes   = `${relativePathToFiles}/differentTypes.csv`;
 const localNotCSV           = `${relativePathToFiles}/notCsv.html`;
 const localEmptyFile        = `${relativePathToFiles}/empty.csv`;
-
-describe("Testing the localCSVReader(string) function", () => {
-    //NOTE: these tests are for testing if it can read and recognize csv files, not for if the csv is formatted correctly
-
-    const regularFileReader: TestFormat<string,Record<string,string | number>[]> = {
-        description: "local path reader:\tdata should be read from existing file",
-        inputVars: localRegularFile,
-        expectSuccess: true,
-        useFunction: localReader
-    };
-    runReaderTest(regularFileReader);
-
-    const regularFileHeaders: TestFormat<string,string[]> = {
-        description: "local headers:\theaders should be read from existing file",
-        inputVars: localRegularFile,
-        expectSuccess: true,
-        useFunction: localHeaders
-    };
-    runReaderTest(regularFileHeaders);
-
-    const fakeFileReader: TestFormat<string,Record<string,string | number>[]> = {
-        description: "local path reader:\tdata should not be read from nonexistant file",
-        inputVars: localFakeFile,
-        expectSuccess: false,
-        useFunction: localReader
-    };
-    runReaderTest(fakeFileReader);
-
-    const fakeFileHeaders: TestFormat<string,string[]> = {
-        description: "local headers:\theaders should not be read from nonexistant file",
-        inputVars: localFakeFile,
-        expectSuccess: false,
-        useFunction: localHeaders
-    };
-    runReaderTest(fakeFileHeaders);
-
-    const oneLessReader: TestFormat<string,Record<string,string | number>[]> = {
-        description: "local path reader:\tdata should be read from file with one less header",
-        inputVars: localOneLessHeader,
-        expectSuccess: true,
-        useFunction: localReader
-    }
-    runReaderTest(oneLessReader);
-
-    const oneLessHeader: TestFormat<string,string[]> = {
-        description: "local headers:\theaders should be read from file with one less header",
-        inputVars: localOneLessHeader,
-        expectSuccess: true,
-        useFunction: localHeaders
-    }
-    runReaderTest(oneLessHeader);
-
-    const oneMoreReader: TestFormat<string,Record<string,string | number>[]> = {
-        description: "local path reader:\tdata should be read from file with one more header",
-        inputVars: localOneMoreHeader,
-        expectSuccess: true,
-        useFunction: localReader
-    }
-    runReaderTest(oneMoreReader);
-
-    const oneMoreHeaders: TestFormat<string,string[]> = {
-        description: "local headers:\theaders should be read from file with one more header",
-        inputVars: localOneMoreHeader,
-        expectSuccess: true,
-        useFunction: localHeaders
-    }
-    runReaderTest(oneMoreHeaders);
-
-    const unevenDataReader: TestFormat<string,Record<string,string | number>[]> = {
-        description: "local path reader:\tdata should be read from file with uneven data",
-        inputVars: localUnevenData,
-        expectSuccess: true,
-        useFunction: localReader
-    }
-    runReaderTest(unevenDataReader);
-
-    const unevenDataHeaders: TestFormat<string,string[]> = {
-        description: "local headers:\theaders should be read from file with uneven data",
-        inputVars: localUnevenData,
-        expectSuccess: true,
-        useFunction: localHeaders
-    }
-    runReaderTest(unevenDataHeaders);
-
-    const differentTypesReader: TestFormat<string,Record<string,string | number>[]> = {
-        description: "local path reader:\tdata should be read from file with different data types",
-        inputVars: localDifferentTypes,
-        expectSuccess: true,
-        useFunction: localReader
-    }
-    runReaderTest(differentTypesReader);
-
-    const differentTypesHeaders: TestFormat<string,string[]> = {
-        description: "local headers:\theaders should be read from file with different data types",
-        inputVars: localDifferentTypes,
-        expectSuccess: true,
-        useFunction: localHeaders
-    }
-    runReaderTest(differentTypesHeaders);
-
-    const inputHtmlReader: TestFormat<string,Record<string,string | number>[]> = {
-        description: "local path reader:\tdata should not be read from non-csv file",
-        inputVars: localNotCSV,
-        expectSuccess: false,
-        useFunction: localReader
-    }
-    runReaderTest(inputHtmlReader);
-
-    const inputHtmlHeaders: TestFormat<string,string[]> = {
-        description: "local headers:\theaders should not be read from non-csv file",
-        inputVars: localNotCSV,
-        expectSuccess: false,
-        useFunction: localHeaders
-    }
-    runReaderTest(inputHtmlHeaders);
-
-    const emptyFileReader: TestFormat<string,Record<string,string | number>[]> = {
-        description: "local path reader:\tdata should be not read from empty csv file",
-        inputVars: localEmptyFile,
-        expectSuccess: false,
-        useFunction: localReader
-    }
-    runReaderTest(emptyFileReader);
-
-    const emptyFileHeaders: TestFormat<string,string[]> = {
-        description: "local headers:\theaders should not be read from empty csv file",
-        inputVars: localEmptyFile,
-        expectSuccess: false,
-        useFunction: localHeaders
-    }
-    runReaderTest(emptyFileHeaders);
-
-});
 
 // apparently FileReader can only exist in the web app environment, it cant be tested in normally in nodejs/vitest
 // so these mocks will simulate FileReader and File
@@ -285,15 +150,6 @@ describe("Testing localCsvReader(file) function", () => {
     }
     runReaderTest(emptyFileReader);
 })
-
-describe("test that localReader(pathstring) and localReader(file) using pathStrToFile creates the same data", () => {
-    test("both should return the same data", async () => {
-      const mockFile = await pathStrToFile(localRegularFile);
-      const result = await localFileReader(mockFile);
-      const localFile = await localReader(localRegularFile);
-      expect(result).toEqual(localFile);
-    });
-  });
 
 //urls used in urlCSVReader and Headers
 const githubID2Dev      = "https://raw.githubusercontent.com/UniversityOfSaskatchewanCMPT371/term-project-2025-team-1/refs/heads/ID2Dev/csvTestFiles";

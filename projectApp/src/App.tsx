@@ -46,6 +46,11 @@ function App() {
           </XR>
         </Canvas>
       </div>
+      <div>
+        {/* This button will allow the user to enter the VR Space (possibly not needed commented out for now) */}
+        {/* <button onClick={() => {void (async () => store.enterAR())}}>Enter AR</button> */}
+        <BrowserUI/>
+      </div>
     </>
   )
 }

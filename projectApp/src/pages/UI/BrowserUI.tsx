@@ -123,14 +123,10 @@ export default function BrowserUI(){
     }, {} as Record<string, boolean | ButtonInput>
     );
 
-    //Button associated with the deleting files (Not Implemented Yet)
-    controlsObject.delete = button(() => {alert("delete")});
-
     useControls(
       `Loaded Graphs`, controlsObject, {collapsed: true}
     );
 
-    //Add the delete button useRef
     return null;
   }
 

@@ -35,7 +35,7 @@ describe('Embedded graph log tests', () => {
     // Check if the generate() log calls are being reached
     test('file contains generate() logging', async() => {
         const response = await fileContainsText(filePath, "generate has pushed a new graph");
-        expect(response).toBe(false);
+        expect(response).toBe(true);
     })
 
     // Check if the UpdateGraph() log calls are being reached

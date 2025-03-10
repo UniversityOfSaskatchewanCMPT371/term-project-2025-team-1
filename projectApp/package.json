@@ -15,6 +15,9 @@
     "client": "vite --host",
     "dev": "concurrently --kill-others \"npm run server\" \"npm run client\"",
     "test": "vitest",
+    "logtests": "vitest --exclude tests/unit_tests --exclude tests/smoke_tests",
+    "smoketests": "vitest --exclude tests/logConfirmationTests --exclude tests/unit_tests",
+    "unittests": "vitest -- exclude tests/logConfirmationTests --exclude tests/smoke_tests",
     "coverage": "vitest run --coverage",
     "lint": "eslint",
     "lint:gherkin": "npx gherkin-lint ../Tests/*.feature"

@@ -1,4 +1,4 @@
-import { Point2D } from "../../pages/Graph_Elements/Point2D";
+import Point2D from "../../pages/Graph_Elements/Point2D";
 import { PointInterface } from "../../types/PointInterface";
 import { PointObject } from "./PointObject";
 
@@ -9,7 +9,7 @@ import { PointObject } from "./PointObject";
  * @precondition pointRef must be a valid PointRef object with defined position, selected state, and x/y data
  * @postcondition Returns a Point2D component with initialized PointClass data
  */
-export function Create2DPoint({pointRef} : {pointRef: PointInterface}): React.JSX.Element{
+export default function Create2DPoint({pointRef} : {pointRef: PointInterface}): React.JSX.Element{
     const point = new PointObject();
     point.setPosition(pointRef.getPosition());
     point.setSelected(pointRef.getSelected());

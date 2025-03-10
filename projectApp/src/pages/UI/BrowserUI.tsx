@@ -11,7 +11,7 @@ import { sendLog, sendError } from '../../logger-frontend.ts'
  * @preconditions None
  * @postconditions A browser UI that can is used on Start up or outside of VR environment
  */
-export function BrowserUI(){
+export default function BrowserUI(){
   // These are used for linking leva components
   const fileInputRef = React.useRef<HTMLInputElement>(null);
   const urlInputRef = React.useRef<HTMLInputElement>(null);
@@ -123,14 +123,10 @@ export function BrowserUI(){
     }, {} as Record<string, boolean | ButtonInput>
     );
 
-    //Button associated with the deleting files (Not Implemented Yet)
-    controlsObject.delete = button(() => {alert("delete")});
-
     useControls(
       `Loaded Graphs`, controlsObject, {collapsed: true}
     );
 
-    //Add the delete button useRef
     return null;
   }
 

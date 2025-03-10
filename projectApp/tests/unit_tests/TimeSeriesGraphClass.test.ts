@@ -1,7 +1,7 @@
 import { describe, test, expect, beforeEach } from 'vitest';
 
-import mainController from '../src/controller/MainController';
-import { TimeSeriesGraphObject } from '../src/components/Graph_Components/TimeSeriesGraphObject';
+import mainController from '../../src/controller/MainController';
+import { TimeSeriesGraphObject } from '../../src/components/Graph_Components/TimeSeriesGraphObject';
 
 describe( 'Time Series Graph Class', async () => {
     let graph: TimeSeriesGraphObject;
@@ -23,7 +23,7 @@ describe( 'Time Series Graph Class', async () => {
      */
     test('Should Initialize Points to the number of data set loaded', () => {
         // graph.clearPoints();
-        graph.addPoint();
+        graph.addPoints();
         expect(graph.getPoints().length).toEqual(4);
 
         //Testing resetting points
@@ -31,7 +31,7 @@ describe( 'Time Series Graph Class', async () => {
         expect(graph.getPoints()).toEqual([]);
 
         //Repopulating the points
-        graph.addPoint();
+        graph.addPoints();
         expect(graph.getPoints().length).toEqual(4);
     });
 
@@ -68,7 +68,7 @@ describe( 'Time Series Graph Class', async () => {
 
         //Testing points now
         graph.clearPoints()
-        graph.addPoint();
+        graph.addPoints();
 
         //First point in the graph
         const point = graph.getPoints()[0];

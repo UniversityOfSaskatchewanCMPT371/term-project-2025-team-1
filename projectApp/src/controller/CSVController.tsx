@@ -1,4 +1,5 @@
 import { CSVDataObject } from "../components/Csv_Components/CSVDataObject";
+import { EmbeddedGraphObject } from "../components/Graph_Components/EmbeddedGraphObject";
 import { TimeSeriesGraphObject } from "../components/Graph_Components/TimeSeriesGraphObject";
 import { sendError, sendLog } from "../logger-frontend";
 import { CSVReaderModel } from "../models/CSVReaderModel";
@@ -37,10 +38,15 @@ export class CSVController implements ControllerInterface {
         for(const csv of this.model.getData()){
             if(csv.getDisplayBoard() == 1){
                 csv.setVRSelected(true);
-                const graph = new TimeSeriesGraphObject(csv);
-                graph.setName(csv.getName());
-                graph.addPoint();
-                mainController.getGraphController().pushDataToModel(graph)
+                const TSGraph = new TimeSeriesGraphObject(csv);
+                TSGraph.setName(csv.getName());
+                TSGraph.addPoints();
+
+                const emGraph = new EmbeddedGraphObject(csv);
+                emGraph.setName(csv.getName());
+                emGraph.addPoints();
+
+                mainController.getGraphController().pushDataToModel(TSGraph, emGraph)
                 console.log("Success on generate?")
                 sendLog("info","generate has pushed a new graph");
             }

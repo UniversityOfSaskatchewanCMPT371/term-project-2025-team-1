@@ -1,23 +1,23 @@
 import Papa from "papaparse";
 import * as fsPromise from 'fs/promises';
-import { CSVHeaders, TimeSeriesData } from "../../types/CSVInterfaces";
 import { sendError, sendLog } from "../../logger-frontend";
 
 /**  
 * This function reads the headers of a csv file and stores it
-* @param file File path for csv file 
-* @returns: {Promise<CSVHeaders>}
+* 
+* @param file File path for csv file
+* @returns List of header strings as Promise<string[]>
 *
-* Pre-conditions: file path must be a valid file path to a .csv or .txt file.
-* Post-conditions:
-*    None (the function does not modify any external state).
-*    The returned promise resolves to an object containing the headers of the CSV file.
-*    If the file is empty or cannot be parsed, an error is thrown.
+* @preconditions file path must be a valid file path to a .csv file
+* @postconditions
+*    - None (the function does not modify any external state)
+*    - The returned promise resolves to an object containing the headers of the CSV file
+*    - If the file is empty or cannot be parsed, an error is thrown
 **/    
-export async function LocalCSVHeaders(file:string): Promise<CSVHeaders> {
+export async function LocalCSVHeaders(file:string): Promise<string[]> {
     return LocalCSVReader(file).then((timeSeries) => {
-        const headers: CSVHeaders = { headers: Object.keys(timeSeries[0]) };
-        sendLog("info",`LocalCSVHeaders returns\n${headers}`);
+        const headers: string[] = Object.keys(timeSeries[0]);
+        sendLog("info",`LocalCSVHeaders returns\n${JSON.stringify(headers)}`);
         return (headers);
     // Rethrowing errors
     }).catch((err:unknown) => {
@@ -30,16 +30,18 @@ export async function LocalCSVHeaders(file:string): Promise<CSVHeaders> {
  * Get the headers of a file at a url
  * 
  * @param url address of the file
+ * @returns List of header strings as Promise<string[]>
  * 
- * @precondition url must be a valid url to a csv file
- * @postcondition returns the headers of the file as a CSVHeaders
- * 
- * @returns Headers of the file as a CSVHeaders
+ * @precondition url path must be a valid file path to a .csv file
+ * @postcondition
+ *    - None (the function does not modify any external state)
+ *    - The returned promise resolves to an object containing the headers of the CSV file
+ *    - If the file is empty or cannot be parsed, an error is thrown
  */
-export async function UrlCSVHeaders(url:string): Promise<CSVHeaders> {
+export async function UrlCSVHeaders(url:string): Promise<string[]> {
     return UrlCSVReader(url).then((timeSeries) => {
-        const headers: CSVHeaders = { headers: Object.keys(timeSeries[0]) };
-        sendLog("info",`UrlCSVHeaders returns\n${headers}`);
+        const headers: string[] = Object.keys(timeSeries[0]);
+        sendLog("info",`UrlCSVHeaders returns\n${JSON.stringify(headers)}`);
         return (headers);
     // Rethrowing errors
     }).catch((err: unknown) => {
@@ -50,27 +52,30 @@ export async function UrlCSVHeaders(url:string): Promise<CSVHeaders> {
 
 /**  
 * This function reads the headers of a csv file and stores it
+* 
 * @param file File path for csv file 
-* @returns: {Promise<CSVHeaders>}
+* @returns list of Record pairs of (attribute,value) as Promise<Record<string,string | number>[]>
 *
-* Pre-conditions: file path must be a valid file path to a .csv or .txt file.
-* Post-conditions:
-*    None (the function does not modify any external state).
-*    The returned promise resolves to an object containing the headers of the CSV file.
-*    If the file is empty or cannot be parsed, an error is thrown.
+* @preconditions file path must be a valid file path to a .csv file
+* @postconditions
+*    - None (the function does not modify any external state)
+*    - The returned promise resolves to an object containing a list of record of (attribute,value) pairs
+*    - If the file is empty or cannot be parsed, an error is thrown
 **/
-export async function LocalCSVReader(file:string): Promise<TimeSeriesData[]>{
-    if(!file.endsWith('.csv') && !file.endsWith('.txt')){
-        const nonCSVErr = new Error('File must be .csv or .txt');
-        sendError(nonCSVErr,`LocalCSVReader ${file} is not .csv or .txt`);
-        throw nonCSVErr;
+export async function LocalCSVReader(file:string): Promise<Record<string,string | number>[]>{
+    //Update: now any noncsv file is caught here
+    //and invalid csv files are thrown by fsPromise
+    if(!file.endsWith(".csv")){
+        const notCsvErr = new Error("This file is not csv");
+        sendError(notCsvErr,"LocalCSVReader(path) receives a non csv file");
+        throw notCsvErr;
     }
     return fsPromise.readFile(file, 'utf8').then((data: string) => {
-        let timeSeries: TimeSeriesData[] = []
+        let timeSeries: Record<string,string | number>[] = []
         Papa.parse(data, {
             header: true,
             dynamicTyping: true,
-            complete: function(parsed: Papa.ParseResult<TimeSeriesData>){
+            complete: function(parsed: Papa.ParseResult<Record<string,string | number>>){
                 timeSeries = parsed.data;
                 if(timeSeries.length === 0){
                     throw new Error("LocalCSVReader is empty");
@@ -92,23 +97,29 @@ export async function LocalCSVReader(file:string): Promise<TimeSeriesData[]>{
 
 /**  
 * Reads a CSV file from a File Object (local reader) and returns an array of time series data.
-* @param file File path for csv file 
-* @returns: {Promise<CSVHeaders>}
+* 
+* @param file File object that contains a csv file
+* @returns list of Record pairs of (attribute,value) as Promise<Record<string,string | number>[]>
 *
-* Pre-conditions: file path must be a valid file path to a .csv or .txt file.
-* Post-conditions:
-*    None (the function does not modify any external state).
-*    The returned promise resolves to an object containing the headers of the CSV file.
-*    If the file is empty or cannot be parsed, an error is thrown.
+* @preconditions File must have a name that ends with ".csv" extension
+* @postconditions
+*    - None (the function does not modify any external state)
+*    - The returned promise resolves to an object containing a list of record of (attribute,value) pairs
+*    - If the file is empty or cannot be parsed, an error is thrown
 **/
-export function LocalCsvReader(file: File): Promise<TimeSeriesData[]>{
-    return new Promise<TimeSeriesData[]>((resolve, reject) => {
-        if(!file.name.endsWith('.csv') && !file.name.endsWith('.txt')){
-            const nonCSVErr = new Error("file must be csv or txt");
-            sendError(nonCSVErr,`LocalCsvReader(file) ${file.name} is not .csv or .txt`);
-            reject(nonCSVErr);
-            return;
+// TODO - unit tests for this version of the local reader, it accepts a File instead of a string
+export function LocalCsvReader(file: File): Promise<Record<string,string | number>[]>{
+    return new Promise<Record<string,string | number>[]>((resolve, reject) => {
+        if(!file.name.endsWith("csv")){
+            //This is relying on the fact that we name the file with extension
+            //BrowserUI LoadComponent e.target.file gives the file name and extension
+            //any testing MUST have files that end with .csv for success
+            const notCsvErr = new Error("This file is not csv");
+            sendError(notCsvErr,"LocalCsvReader(file) receives a non csv file");
+            throw notCsvErr;
         }
+
+        //invalid file is thrown by onerror
 
         const reader = new FileReader();
 
@@ -125,9 +136,9 @@ export function LocalCsvReader(file: File): Promise<TimeSeriesData[]>{
             Papa.parse(fileContent, {
                 header: true,
                 dynamicTyping: true,
-                complete: function (parsed: {data: TimeSeriesData[]}){
+                complete: function (parsed: {data: Record<string,string | number>[]}){
                     sendLog("info",`LocalCsvReader(file) has read data\n${JSON.stringify(parsed.data)}`);
-                    const typedData: TimeSeriesData[] = parsed.data;
+                    const typedData: Record<string,string | number>[] = parsed.data;
                     resolve(typedData); // Resolve the promise with parsed data
                 },
                 error: function (parseError: Error) {
@@ -151,46 +162,54 @@ export function LocalCsvReader(file: File): Promise<TimeSeriesData[]>{
  * Get the time series data from a file at a url
  * 
  * @param url address of the file
- * @precondition url must be a valid url to a csv file
- * @postcondition returns the data of the file formatted as TimeSeriesData[]
- * @returns data of file formatted as TimeSeriesData[]
+ * @returns list of Record pairs of (attribute,value) as Promise<Record<string,string | number>[]>
+ * 
+ * @precondition url must be a valid url to a csv file, either ends with ".csv" or contains a csv file
+ * @postcondition
+*    - None (the function does not modify any external state)
+*    - The returned promise resolves to an object containing a list of record of (attribute,value) pairs
+*    - If the file is empty or cannot be parsed, an error is thrown
  */
-export async function UrlCSVReader(url:string): Promise<TimeSeriesData[]>{
-    if(!url.endsWith('.csv') && !url.endsWith('.txt')){
-        const nonCSVErr = new Error('url must be .csv or .txt');
-        sendError(nonCSVErr,`UrlCSVReader ${url} is not .csv or .txt`);
-        throw nonCSVErr;
-    }
-    else{
-        return fetch(url).then((response: Response) =>{
-            if (!response.ok) {
-                const badResponseErr = Error(`Failed to fetch the file. Status: ${response.status.toString()}`);
-                sendError(badResponseErr,"UrlCSVReader response is not ok");
-                throw badResponseErr;
-            }
-            return response.text();
-        }).then((csvData: string) => {
-            let timeSeries: TimeSeriesData[] = [];
-            Papa.parse(csvData, {
-                header: true,
-                dynamicTyping: true,
-                complete: function(parsed: Papa.ParseResult<TimeSeriesData>) {
-                    timeSeries = parsed.data;
-                    if(timeSeries.length === 0){
-                        throw new Error("URLCSVReader is empty");
-                    }
-                    sendLog("info",`URLCSVReader has successfully parsed\n${JSON.stringify(timeSeries)}`);
-                },
-                error: function(parseError: Error){
-                    //this will be caught by promise.catch
-                    throw parseError;
+export async function UrlCSVReader(url:string): Promise<Record<string,string | number>[]>{
+    //Update: now any invalid url is by fetch bad response
+    return fetch(url, { redirect: "follow" }).then((response: Response) =>{
+        if (!response.ok) {
+            const badResponseErr = Error(`Failed to fetch the file. Status: ${response.status.toString()}`);
+            sendError(badResponseErr,"UrlCSVReader response is not ok");
+            throw badResponseErr;
+        }
+        //follow the url until it reaches result and get the content type
+        const resultUrl = response.url;
+        const contentType = response.headers.get("Content-Type");
+        //assert that either resultingURL is csv or contentType is text/csv
+        //if both fail, throw error
+        if (!(resultUrl.endsWith(".csv") || contentType?.includes("text/csv"))) {
+            const badResultErr = Error(`Failed to fetch csv format. ${response.url}, ${JSON.stringify(response.headers)}`);
+            sendError(badResultErr,"Final URL destination is not csv readable");
+            throw badResultErr;
+        }
+        return response.text();
+    }).then((csvData: string) => {
+        let timeSeries: Record<string,string | number>[] = [];
+        Papa.parse(csvData, {
+            header: true,
+            dynamicTyping: true,
+            complete: function(parsed: Papa.ParseResult<Record<string,string | number>>) {
+                timeSeries = parsed.data;
+                if(timeSeries.length === 0){
+                    throw new Error("URLCSVReader is empty");
                 }
-            });
-            return timeSeries;
-        }).catch((err: unknown) => {
-            sendError(err,"URLCSVReader error");
-            throw (err as Error);
+                sendLog("info",`URLCSVReader has successfully parsed\n${JSON.stringify(timeSeries)}`);
+            },
+            error: function(parseError: Error){
+                //this will be caught by promise.catch
+                throw parseError;
+            }
         });
-    };
+        return timeSeries;
+    }).catch((err: unknown) => {
+        sendError(err,"URLCSVReader error");
+        throw (err as Error);
+    });
     
 }

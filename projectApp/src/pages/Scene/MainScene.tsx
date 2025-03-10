@@ -1,9 +1,10 @@
-import { Text } from '@react-three/drei';
 import DropdownUI from "../UI/DropdownUI"
-import { CreateTimeSeries } from '../../components/Graph_Components/CreateTimeSeries';
+import CreateTimeSeries from '../../components/Graph_Components/CreateTimeSeries';
 import mainController from '../../controller/MainController';
 import { useEffect, useRef, useState } from 'react';
 import { TimeSeriesGraphObject } from '../../components/Graph_Components/TimeSeriesGraphObject';
+import { EmbeddedGraphObject } from '../../components/Graph_Components/EmbeddedGraphObject';
+import { CreateEmbeddedGraph } from '../../components/Graph_Components/CreateEmbeddedGraph';
 
 /*
 * The main scene being used in the current program
@@ -15,6 +16,7 @@ export default function MainScene(): React.JSX.Element{
     //Then make it possible for the ui to  stay in view of the camera (maybe top left)
     const [updateGraph, setUpdateGraph] = useState(false);
     const [graph, setGraph] = useState<(TimeSeriesGraphObject)>();
+    const [emGraph, setEmGraph] = useState<(EmbeddedGraphObject)>();
     
     //Only runs on the begining, might keep graph on and update file on graph instead
     function updateScene(): void{
@@ -24,27 +26,25 @@ export default function MainScene(): React.JSX.Element{
     useEffect(() => {
         mainController.setSceneRef(sceneRef);
     },);
+
     useEffect(() => {
         if(updateGraph) {
             const vrSelected = mainController.getCSVController().getVRSelected();
             if(mainController.getGraphController().getDataLength() > 0){
                 const newGraph = mainController.getGraphController().generateTimeSeriesGraph(vrSelected);
                 setGraph(newGraph);
+                
+
+            }
+            if (mainController.getGraphController().getEmDataLength() > 0) {
+                const newEmGraph = mainController.getGraphController().generateEmbeddedGraph(vrSelected);
+                setEmGraph(newEmGraph);
             }
         }
         setUpdateGraph(false);
     });
     return (
         <>
-        {/* This block of code is the sign behind the user
-        A red box with the text Look Back */}
-        <mesh position = {[3,1,6]}>
-            <boxGeometry args = {[5, 2, 2]}/>
-            <meshBasicMaterial color = "red"/>
-        </mesh>
-        <mesh rotation = {[0, 3.14, 0]} position = {[3,1,4.8]}>
-            <Text>Look Back</Text>
-        </mesh>
 
         {/* This block of code is the sign in front of the user
         A red box with the text Front */}
@@ -63,8 +63,9 @@ export default function MainScene(): React.JSX.Element{
 
         {/* Displays the Sample Drop Down UI */}
         {/* <CreateTimeSeries graphObject={graph}></CreateTimeSeries> */}
-        <DropdownUI position={[-1.7, 1.5, -1]} xSize={4} ySize={3}></DropdownUI>
+        <DropdownUI position={[0, 1.5, -1]} xSize={4} ySize={3}></DropdownUI>
         {graph && <CreateTimeSeries graphObject={graph}></CreateTimeSeries>}
+        {emGraph && <CreateEmbeddedGraph graphObject={emGraph}/>}
         </>
     );
 };

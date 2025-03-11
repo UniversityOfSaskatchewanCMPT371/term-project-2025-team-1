@@ -199,7 +199,7 @@ export default function TimeSeriesGraph({graph}:{graph: TimeSeriesGraphObject}):
                 {graph.timeSeriesXRange().map((data) => {
                   return(
                     <Container height={"100%"} width={`${xSpacing}%`} justifyContent={"center"}>
-                      <Text>{data}</Text>
+                      <Text>{data.toString()}</Text>
 
                     </Container>
                   );

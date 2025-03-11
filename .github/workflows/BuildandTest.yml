@@ -31,9 +31,9 @@ jobs:
       - name: Run tests
         run: |
           npx pm2 start logger-server.js --name logger
-          npm run logtests
-          npm run smoketests
           npm run unittests 
+          npm run smoketests
+          npm run logtests
           npx pm2 delete logger
 
 #  job-windows:

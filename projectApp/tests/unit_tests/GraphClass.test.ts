@@ -153,12 +153,12 @@ describe("GraphObject", async () => {
    */
   it("throws error when setting invalid points array", () => {
     const graph = new GraphObject(csvDataMock);
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
     expect(() => {
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
       graph.setPoints(null as unknown as any[]);
     }).toThrowError("Invalid points: must be an array of PointClass instances");
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
     expect(() => {
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
       graph.setPoints([{}] as unknown as any[]);
     }).toThrowError(
       "Invalid point: each element must be an instance of PointClass",

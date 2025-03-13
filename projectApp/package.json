@@ -20,7 +20,9 @@
     "unittests": "vitest --exclude tests/logConfirmationTests --exclude tests/smoke_tests",
     "coverage": "vitest run --coverage",
     "lint": "eslint",
-    "lint:gherkin": "npx gherkin-lint ../Tests/*.feature"
+    "lint:gherkin": "npx gherkin-lint ../Tests/*.feature",
+    "prettier:check": "prettier . --check",
+    "prettier:fix": "prettier . --write"
   },
   "dependencies": {
     "@react-three/drei": "^9.121.4",

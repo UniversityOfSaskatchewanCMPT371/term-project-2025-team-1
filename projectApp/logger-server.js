@@ -17,10 +17,8 @@ const logger = pino({
     test: 35,
   },
 });
-
 // changes the level of log output that gets viewed
 logger.level = "trace";
-
 // server code
 const app = express();
 const PORT = 3030;

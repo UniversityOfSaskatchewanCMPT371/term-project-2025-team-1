@@ -1,15 +1,8 @@
-import { Root, Container, Text } from '@react-three/uikit';
+import { Container, Text, Fullscreen } from '@react-three/uikit';
 import { useState } from 'react';
 import mainController from "../../controller/MainController.tsx";
 import { CSVDataInterface } from '../../types/CSVInterfaces.tsx';
 import { sendLog } from '../../logger-frontend.ts';
-
-//Props for drop down UI
-interface dropDownProps {
-    position : [number, number, number];    //x, y, z position of dropdown UI on VR scene
-    xSize: number;                          //Width of UI
-    ySize: number;                          //Height of UI
-}
 
 /**
  * This function is for creating the Dropdown UI in the VR Scene
@@ -17,7 +10,7 @@ interface dropDownProps {
  * @preconditions props used for position in the VR scene
  * @postconditions the specified drop down UI
  */
-export default function DropdownUI(props: dropDownProps){
+export default function DropdownUI(){
     const [pressed, press] = useState(false);
     const [ active, setActive ] = useState(false);
 
@@ -103,25 +96,28 @@ export default function DropdownUI(props: dropDownProps){
     function GenerateList(): React.JSX.Element{
         return (
             <>
-                <Container flexDirection={"column"} flexGrow={props.xSize}>
+                <Container flexDirection={"column"} width={"100%"}>
                     <Container height={"90%"} width={"100%"} flexDirection={"column"} 
                         alignItems={"flex-start"} justifyContent={"flex-start"}>
 
                         {/* Reading through Model csv data files */}
                         {mainController.getCSVController().getModelData().map((graph) => (
-                            <GenerateRowObject data={graph} key={graph.getName()}></GenerateRowObject>
+                            <GenerateRowObject data={graph} key={graph.getName()}/>
                         ))}
                     </Container>
 
-                    <Container flexDirection={"row"} alignItems={"flex-end"} justifyContent={"flex-end"} 
-                        height={"8%"} width={"95%"}> 
+                    <Container flexDirection={"row"} alignItems={"center"} justifyContent={"flex-end"} 
+                        height={"10%"} width={"100%"} borderWidth={1} borderColor={"black"}> 
 
-                        <Container width={"30%"} height={"100%"} backgroundColor={"gray"} backgroundOpacity={0.5}
+                        <Container width={"30%"} height={"70%"} backgroundColor={"gray"} backgroundOpacity={0.5}
+                            borderRadius={5}
+                            justifyContent={"center"}
+                            positionRight={10}
                             hover={{backgroundOpacity: 0.75}} onClick={() => {
                                 update();
                                 sendLog("info","GenerateList [BUTTON]? pressed");
                         }}>
-                            <Text fontWeight={"bold"} positionLeft={"20%"} positionBottom={"5%"}>Generate</Text>
+                            <Text fontWeight={"bold"}>Generate</Text>
                         </Container>
             
                     </Container>
@@ -138,59 +134,65 @@ export default function DropdownUI(props: dropDownProps){
     function DropDownBody(): React.JSX.Element{
         return (
             <>
-            {/* Use the component <Fullscreen> of uikit 
-                For Now its okay to keep it static*/}
-                <mesh position={props.position}>
-                
-                    <mesh position={[(-0.5) - (props.xSize/2), 0, 0]}>
-                        <Root  sizeX={0.5} sizeY={0.5}>
-                            <Container
-                                flexGrow={1}
-                                onClick={() => {
-                                    setActive(!active);
-                                    sendLog("info","DropDownBody [active] button pressed");
-                                }}
-                                backgroundColor={"black"}
-                                backgroundOpacity={0.7}
-                                hover={{backgroundOpacity: 1}}>
-                            </Container>
-                        </Root>
-                    </mesh>
-                    <mesh position={[0,0,0]} visible={active}>
-                        <Root backgroundColor="grey" sizeX={props.xSize} sizeY={props.ySize} flexDirection={"column"}>   
-                            <Container height={"10%"} width={"99%"} margin={1} backgroundColor={"lightgray"}>
-                                <Text fontWeight={"bold"} positionLeft={20}>
-                                    Loaded Graphs</Text>
-                            </Container>
+                <Fullscreen flexDirection={"row"}>
+                    <Container width={"100%"}>
+                        <Container
+                            width={"10%"}
+                            height={"5%"}
+                            borderRadius={5}
+                            onClick={() => {
+                                setActive(!active);
+                                sendLog("info","DropDownBody [active] button pressed");
+                            }}
+                            backgroundColor={"black"}
+                            backgroundOpacity={0.7}
+                            hover={{backgroundOpacity: 1}}
+                            justifyContent={"center"}>
+                                <Text color={"white"}>
+                                    Generate
+                                </Text>
+                        </Container>
+                    
+                        {/* Container displaying loaded CSV files */}
+                        <Container width={"90%"} display={active? "flex" : "none"}>
+                            <Container width={"70%"} height={"90%"} flexDirection={"column"} positionLeft={5}>
+                                {/* Title Container */}
+                                <Container height={"10%"} width={"100%"} margin={1} backgroundColor={"lightgray"}>
+                                    <Text fontWeight={"bold"} positionLeft={20}>
+                                        Loaded Graphs
+                                    </Text>
+                                </Container>
 
-                            <Container
-                                height={"88%"}
-                                width={"99%"}
-                                margin={1}
-                                onClick={() => {
-                                    press(!pressed);
-                                    sendLog("info","DropDownBody [create] button pressed");
-                                }}
-                                backgroundColor={"lightgray"}
-                                backgroundOpacity={0.8}>
+                                {/* Body Container */}
+                                <Container
+                                    height={"100%"}
+                                    width={"100%"}
+                                    margin={1}
+                                    onClick={() => {
+                                        press(!pressed);
+                                        sendLog("info","DropDownBody [create] button pressed");
+                                    }}
+                                    backgroundColor={"lightgray"}
+                                    backgroundOpacity={0.8}>
 
-                            {/* Create objects representing loaded graphs in model 
-                                Each will have a button that sets a use state for selected
-                                Then a button for loading selected graph, activate use state
-                                Then on a useState, update*/}
-                                    <GenerateList/>
+                                {/* Create objects representing loaded graphs in model 
+                                    Each will have a button that sets a use state for selected
+                                    Then a button for loading selected graph, activate use state
+                                    Then on a useState, update*/}
+                                        <GenerateList/>
 
+                                </Container>
                             </Container>
-                        </Root>
-                    </mesh>
-                </mesh>
+                        </Container>
+                    </Container>
+                </Fullscreen>
             </>
         )
     }
 
     return (
         <>
-        <DropDownBody/>
+            <DropDownBody/>
         </>
     )
 }

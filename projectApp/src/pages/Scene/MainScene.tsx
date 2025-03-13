@@ -63,7 +63,7 @@ export default function MainScene(): React.JSX.Element{
 
         {/* Displays the Sample Drop Down UI */}
         {/* <CreateTimeSeries graphObject={graph}></CreateTimeSeries> */}
-        <DropdownUI position={[0, 1.5, -1]} xSize={4} ySize={3}></DropdownUI>
+        <DropdownUI/>
         {graph && <CreateTimeSeries graphObject={graph}></CreateTimeSeries>}
         {emGraph && <CreateEmbeddedGraph graphObject={emGraph}/>}
         </>

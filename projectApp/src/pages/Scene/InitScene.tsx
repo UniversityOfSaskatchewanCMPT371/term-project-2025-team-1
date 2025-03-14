@@ -14,7 +14,7 @@ export default function InitScene({inVR}:{inVR: boolean}): React.JSX.Element{
             {/* Over here we could specify the scene */}
             
             <TestScene inVR={inVR}/>
-            <MainScene/>
+            <MainScene inVR={inVR}/>
         </>
     )
     

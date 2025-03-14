@@ -39,7 +39,7 @@ function App() {
           <color attach="background" args={["black"]}></color>
           <XR store={store}>
             <XRScene setInVR={setInVR}></XRScene>
-          <Sky sunPosition={[0.5,0,0.5]}/>
+            <Sky sunPosition={[0.5,0,0.5]}/>
             <ambientLight/>
             {/* InitScene starts up the scene displayed */}
             <InitScene inVR={inVR}/> 

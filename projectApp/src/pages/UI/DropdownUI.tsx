@@ -10,7 +10,7 @@ import { sendLog } from '../../logger-frontend.ts';
  * @preconditions props used for position in the VR scene
  * @postconditions the specified drop down UI
  */
-export default function DropdownUI(){
+export default function DropdownUI({inVR}:{inVR:boolean}): React.JSX.Element{
     const [pressed, press] = useState(false);
     const [ active, setActive ] = useState(false);
 
@@ -134,7 +134,8 @@ export default function DropdownUI(){
     function DropDownBody(): React.JSX.Element{
         return (
             <>
-                <Fullscreen flexDirection={"row"}>
+                <Fullscreen flexDirection={"row"} distanceToCamera={0.8} pointerEvents={"none"}>
+
                     <Container width={"100%"}>
                         <Container
                             width={"10%"}
@@ -147,6 +148,7 @@ export default function DropdownUI(){
                             backgroundColor={"black"}
                             backgroundOpacity={0.7}
                             hover={{backgroundOpacity: 1}}
+                            pointerEvents={"auto"}
                             justifyContent={"center"}>
                                 <Text color={"white"}>
                                     Generate

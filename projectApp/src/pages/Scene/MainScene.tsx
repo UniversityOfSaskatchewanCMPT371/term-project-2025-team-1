@@ -10,7 +10,7 @@ import { CreateEmbeddedGraph } from '../../components/Graph_Components/CreateEmb
 * The main scene being used in the current program
 * For now contains shapes the could help with testing looking around in a VR Space
 */
-export default function MainScene(): React.JSX.Element{
+export default function MainScene({inVR}:{inVR:boolean}): React.JSX.Element{
     //TODO
     //Add a UI to the MainScene
     //Then make it possible for the ui to  stay in view of the camera (maybe top left)
@@ -63,7 +63,7 @@ export default function MainScene(): React.JSX.Element{
 
         {/* Displays the Sample Drop Down UI */}
         {/* <CreateTimeSeries graphObject={graph}></CreateTimeSeries> */}
-        <DropdownUI/>
+        <DropdownUI inVR={inVR}/>
         {graph && <CreateTimeSeries graphObject={graph}></CreateTimeSeries>}
         {emGraph && <CreateEmbeddedGraph graphObject={emGraph}/>}
         </>

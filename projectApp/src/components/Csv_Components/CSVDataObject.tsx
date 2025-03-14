@@ -87,14 +87,14 @@ export class CSVDataObject implements CSVDataInterface {
     }
   }
 
-  findFirstHeader():string{
-    if(this.csvHeaders.length <= 1){
-        throw new Error("Invalid csv file");
+  findFirstHeader(): string {
+    if (this.csvHeaders.length <= 1) {
+      throw new Error("Invalid csv file");
     }
-    for(const head of this.csvHeaders){
-        if(head != "Time"){
-            return head;
-        }
+    for (const head of this.csvHeaders) {
+      if (head != "Time") {
+        return head;
+      }
     }
 
     throw new Error("Unable to find valid header");

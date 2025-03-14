@@ -28,9 +28,6 @@ function App() {
       {/* This button will allow the user to enter the VR Space */}
       <button onClick={() => store.enterAR()}>Enter AR</button>
       <div className="canvas-container">
-        <div>
-          <BrowserUI />
-        </div>
         {/* Everything encapsulated by Canvas and XR will contain the Scene to be displayed in VR */}
         <Canvas>
           <color attach="background" args={["black"]}></color>

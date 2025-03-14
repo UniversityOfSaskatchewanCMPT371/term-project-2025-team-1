@@ -123,8 +123,8 @@ export async function LocalCSVReader(
 // TODO - unit tests for this version of the local reader, it accepts a File instead of a string
 export function LocalCsvReader(
   file: File,
-): Promise<Record<string, string | number>[]> {
-  return new Promise<Record<string, string | number>[]>((resolve, reject) => {
+): Promise<{key:Record<string, string | number>}[]> {
+  return new Promise<{key:Record<string, string | number>}[]>((resolve, reject) => {
     if (!file.name.endsWith("csv")) {
       //This is relying on the fact that we name the file with extension
       //BrowserUI LoadComponent e.target.file gives the file name and extension
@@ -152,13 +152,13 @@ export function LocalCsvReader(
         header: true,
         dynamicTyping: true,
         complete: function (parsed: {
-          data: Record<string, string | number>[];
+          data: {key:Record<string, string | number>}[];
         }) {
           sendLog(
             "info",
             `LocalCsvReader(file) has read data\n${JSON.stringify(parsed.data)}`,
           );
-          const typedData: Record<string, string | number>[] = parsed.data;
+          const typedData: {key:Record<string, string | number>}[] = parsed.data;
           resolve(typedData); // Resolve the promise with parsed data
         },
         error: function (parseError: Error) {
@@ -194,7 +194,7 @@ export function LocalCsvReader(
  */
 export async function UrlCSVReader(
   url: string,
-): Promise<Record<string, string | number>[]> {
+): Promise<{key:Record<string, string | number>}[]> {
   //Update: now any invalid url is by fetch bad response
   return fetch(url, { redirect: "follow" })
     .then((response: Response) => {
@@ -220,12 +220,12 @@ export async function UrlCSVReader(
       return response.text();
     })
     .then((csvData: string) => {
-      let timeSeries: Record<string, string | number>[] = [];
+      let timeSeries: {key: Record<string, string | number>}[] = [];
       Papa.parse(csvData, {
         header: true,
         dynamicTyping: true,
         complete: function (
-          parsed: Papa.ParseResult<Record<string, string | number>>,
+          parsed: Papa.ParseResult<{key:Record<string, string | number>}>,
         ) {
           timeSeries = parsed.data;
           if (timeSeries.length === 0) {

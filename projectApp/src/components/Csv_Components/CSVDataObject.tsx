@@ -74,7 +74,7 @@ export class CSVDataObject implements CSVDataInterface {
   async loadLocalByPath(index: number, file: string): Promise<void> {
     try {
       const data = await LocalCSVReader(file);
-      this.setData(data);
+      //this.setData(data);
       this.name = "Graph" + index.toString();
       sendLog(
         "info",

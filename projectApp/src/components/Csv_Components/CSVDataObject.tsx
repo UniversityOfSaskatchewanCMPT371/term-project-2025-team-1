@@ -53,7 +53,7 @@ export class CSVDataObject implements CSVDataInterface {
       if (data.length > 0) {
         const headers = Object.keys(data[0]);
         this.csvHeaders = headers;
-        this.setYHeader("X");
+        this.setYHeader(this.findFirstHeader());
       }
       sendLog(
         "info",
@@ -85,6 +85,19 @@ export class CSVDataObject implements CSVDataInterface {
       sendError(error, "loadLocalByPath error");
       throw error;
     }
+  }
+
+  findFirstHeader():string{
+    if(this.csvHeaders.length <= 1){
+        throw new Error("Invalid csv file");
+    }
+    for(const head of this.csvHeaders){
+        if(head != "Time"){
+            return head;
+        }
+    }
+
+    throw new Error("Unable to find valid header");
   }
 
   /**

@@ -132,7 +132,7 @@ export default function TimeSeriesGraph({
             flexDirection={"column"}
           >
             <Text>Y Header </Text>
-            <HeaderSelection></HeaderSelection>
+              <HeaderSelection/>
           </Container>
 
           {/* Section for showing point data sets */}

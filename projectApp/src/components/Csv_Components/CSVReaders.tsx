@@ -123,61 +123,67 @@ export async function LocalCSVReader(
 // TODO - unit tests for this version of the local reader, it accepts a File instead of a string
 export function LocalCsvReader(
   file: File,
-): Promise<{key:Record<string, string | number>}[]> {
-  return new Promise<{key:Record<string, string | number>}[]>((resolve, reject) => {
-    if (!file.name.endsWith("csv")) {
-      //This is relying on the fact that we name the file with extension
-      //BrowserUI LoadComponent e.target.file gives the file name and extension
-      //any testing MUST have files that end with .csv for success
-      const notCsvErr = new Error("This file is not csv");
-      sendError(notCsvErr, "LocalCsvReader(file) receives a non csv file");
-      throw notCsvErr;
-    }
-
-    //invalid file is thrown by onerror
-
-    const reader = new FileReader();
-
-    reader.onload = (e) => {
-      const fileContent = e.target?.result as string;
-
-      if (!fileContent.trim()) {
-        const emptyFileErr = new Error("Empty file set");
-        sendError(emptyFileErr, `LocalCsvReader(file) ${file.name} is empty`);
-        reject(emptyFileErr);
-        return;
+): Promise<{ key: Record<string, string | number> }[]> {
+  return new Promise<{ key: Record<string, string | number> }[]>(
+    (resolve, reject) => {
+      if (!file.name.endsWith("csv")) {
+        //This is relying on the fact that we name the file with extension
+        //BrowserUI LoadComponent e.target.file gives the file name and extension
+        //any testing MUST have files that end with .csv for success
+        const notCsvErr = new Error("This file is not csv");
+        sendError(notCsvErr, "LocalCsvReader(file) receives a non csv file");
+        throw notCsvErr;
       }
 
-      Papa.parse(fileContent, {
-        header: true,
-        dynamicTyping: true,
-        complete: function (parsed: {
-          data: {key:Record<string, string | number>}[];
-        }) {
-          sendLog(
-            "info",
-            `LocalCsvReader(file) has read data\n${JSON.stringify(parsed.data)}`,
-          );
-          const typedData: {key:Record<string, string | number>}[] = parsed.data;
-          resolve(typedData); // Resolve the promise with parsed data
-        },
-        error: function (parseError: Error) {
-          sendError(
-            parseError,
-            `LocalCsvReader(file) has errored for ${file.name}`,
-          );
-          reject(parseError); // Reject the promise on parsing error
-        },
-      });
-    };
+      //invalid file is thrown by onerror
 
-    reader.onerror = () => {
-      const readerErr = new Error("reader error");
-      sendError(readerErr, `LocalCsvReader(file) has errored for ${file.name}`);
-      reject(readerErr);
-    };
-    reader.readAsText(file);
-  });
+      const reader = new FileReader();
+
+      reader.onload = (e) => {
+        const fileContent = e.target?.result as string;
+
+        if (!fileContent.trim()) {
+          const emptyFileErr = new Error("Empty file set");
+          sendError(emptyFileErr, `LocalCsvReader(file) ${file.name} is empty`);
+          reject(emptyFileErr);
+          return;
+        }
+
+        Papa.parse(fileContent, {
+          header: true,
+          dynamicTyping: true,
+          complete: function (parsed: {
+            data: { key: Record<string, string | number> }[];
+          }) {
+            sendLog(
+              "info",
+              `LocalCsvReader(file) has read data\n${JSON.stringify(parsed.data)}`,
+            );
+            const typedData: { key: Record<string, string | number> }[] =
+              parsed.data;
+            resolve(typedData); // Resolve the promise with parsed data
+          },
+          error: function (parseError: Error) {
+            sendError(
+              parseError,
+              `LocalCsvReader(file) has errored for ${file.name}`,
+            );
+            reject(parseError); // Reject the promise on parsing error
+          },
+        });
+      };
+
+      reader.onerror = () => {
+        const readerErr = new Error("reader error");
+        sendError(
+          readerErr,
+          `LocalCsvReader(file) has errored for ${file.name}`,
+        );
+        reject(readerErr);
+      };
+      reader.readAsText(file);
+    },
+  );
 }
 
 /**
@@ -194,7 +200,7 @@ export function LocalCsvReader(
  */
 export async function UrlCSVReader(
   url: string,
-): Promise<{key:Record<string, string | number>}[]> {
+): Promise<{ key: Record<string, string | number> }[]> {
   //Update: now any invalid url is by fetch bad response
   return fetch(url, { redirect: "follow" })
     .then((response: Response) => {
@@ -220,12 +226,12 @@ export async function UrlCSVReader(
       return response.text();
     })
     .then((csvData: string) => {
-      let timeSeries: {key: Record<string, string | number>}[] = [];
+      let timeSeries: { key: Record<string, string | number> }[] = [];
       Papa.parse(csvData, {
         header: true,
         dynamicTyping: true,
         complete: function (
-          parsed: Papa.ParseResult<{key:Record<string, string | number>}>,
+          parsed: Papa.ParseResult<{ key: Record<string, string | number> }>,
         ) {
           timeSeries = parsed.data;
           if (timeSeries.length === 0) {

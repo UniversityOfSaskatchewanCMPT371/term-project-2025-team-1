@@ -247,10 +247,13 @@ export default function TimeSeriesGraph({
             >
               <Container
                 height={`${ySpacing}%`}
-                alignContent={"baseline"}
-                flexDirection={"row-reverse"}
+                alignContent={"flex-end"}
+                justifyContent={"flex-start"}
+                flexDirection={"column-reverse"}
               >
-                <Text positionTop={10}>0 -</Text>
+                <Container width={"100%"} flexDirection={"row-reverse"}>
+                  <Text positionTop={5}>0 -</Text>
+                </Container>
               </Container>
               {graph.timeSeriesYRange().map((range) => {
                 return (
@@ -258,10 +261,13 @@ export default function TimeSeriesGraph({
                     <Container
                       width={"100%"}
                       height={`${ySpacing}%`}
-                      alignContent={"baseline"}
-                      flexDirection={"row-reverse"}
+                      alignContent={"flex-end"}
+                      justifyContent={"flex-start"}
+                      flexDirection={"column-reverse"}
                     >
-                      <GenerateYRange num={range}></GenerateYRange>
+                      <Container width={"100%"} flexDirection={"row-reverse"}>
+                        <GenerateYRange num={range}></GenerateYRange>
+                      </Container>
                     </Container>
                   </>
                 );

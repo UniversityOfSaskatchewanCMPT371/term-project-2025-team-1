@@ -138,7 +138,7 @@ export default function DropdownUI({inVR}:{inVR:boolean}): React.JSX.Element{
                     <Container width={"100%"} height={"100%"}
                 alignContent={"center"} justifyContent={"center"} flexDirection={"column"}>
 
-                    <Container width={"100%"} height={inVR? "63%" : "0%"}/>
+                    <Container width={"100%"} height={inVR? "24%" : "0%"}/>
                     
                     <Container width={"100%"} height={"7%"} flexDirection={"column"} alignContent={"center"} justifyContent={"center"}>
                         <Container width={"100%"} height={"100%"} flexDirection={"row-reverse"} alignContent={"center"}>
@@ -165,8 +165,8 @@ export default function DropdownUI({inVR}:{inVR:boolean}): React.JSX.Element{
                     </Container>
                     
                         {/* Container displaying loaded CSV files */}
-                        <Container width={"100%"} height={"93%"}>
-                        <Container width={"100%"} height={"100%"} flexDirection={"column"} display={active? "flex" : "none"}>
+                        <Container width={inVR? "90%": "100%"} height={inVR? "54%":"93%"} flexDirection={"row-reverse"} alignContent={"flex-start"} justifyContent={"flex-start"}>
+                        <Container width={inVR? "70%":"90%"} height={"100%"} flexDirection={"column"} display={active? "flex" : "none"}>
                             <Container width={"100%"} height={"90%"} positionLeft={5} flexDirection={"column"} alignContent={"center"} justifyContent={"center"}>
                                 {/* Title Container */}
                                 <Container height={"10%"} width={"70%"} margin={1} backgroundColor={"lightgray"}>

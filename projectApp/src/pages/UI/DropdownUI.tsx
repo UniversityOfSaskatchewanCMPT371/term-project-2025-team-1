@@ -134,32 +134,42 @@ export default function DropdownUI({inVR}:{inVR:boolean}): React.JSX.Element{
     function DropDownBody(): React.JSX.Element{
         return (
             <>
-                <Fullscreen flexDirection={"row"} distanceToCamera={0.8} pointerEvents={"none"}>
+                <Fullscreen flexDirection={"row"} pointerEvents={"none"}>
+                    <Container width={"100%"} height={"100%"}
+                alignContent={"center"} justifyContent={"center"} flexDirection={"column"}>
 
-                    <Container width={"100%"}>
-                        <Container
-                            width={"10%"}
-                            height={"5%"}
-                            borderRadius={5}
-                            onClick={() => {
-                                setActive(!active);
-                                sendLog("info","DropDownBody [active] button pressed");
-                            }}
-                            backgroundColor={"black"}
-                            backgroundOpacity={0.7}
-                            hover={{backgroundOpacity: 1}}
-                            pointerEvents={"auto"}
-                            justifyContent={"center"}>
-                                <Text color={"white"}>
-                                    Generate
-                                </Text>
+                    <Container width={"100%"} height={inVR? "63%" : "0%"}/>
+                    
+                    <Container width={"100%"} height={"7%"} flexDirection={"column"} alignContent={"center"} justifyContent={"center"}>
+                        <Container width={"100%"} height={"100%"} flexDirection={"row-reverse"} alignContent={"center"}>
+                            <Container width={inVR? "57%": "90%"} height={"5%"} backgroundOpacity={0.4}/>
+                                                
+                            <Container
+                                width={"15%"}
+                                height={"70%"}
+                                borderRadius={5}
+                                onClick={() => {
+                                    setActive(!active);
+                                    sendLog("info","DropDownBody [active] button pressed");
+                                }}
+                                backgroundColor={"black"}
+                                backgroundOpacity={0.7}
+                                hover={{backgroundOpacity: 1}}
+                                pointerEvents={"auto"}
+                                justifyContent={"center"}>
+                                    <Text color={"white"}>
+                                        Generate
+                                    </Text>
+                            </Container>
                         </Container>
+                    </Container>
                     
                         {/* Container displaying loaded CSV files */}
-                        <Container width={"90%"} display={active? "flex" : "none"}>
-                            <Container width={"70%"} height={"90%"} flexDirection={"column"} positionLeft={5}>
+                        <Container width={"100%"} height={"93%"}>
+                        <Container width={"100%"} height={"100%"} flexDirection={"column"} display={active? "flex" : "none"}>
+                            <Container width={"100%"} height={"90%"} positionLeft={5} flexDirection={"column"} alignContent={"center"} justifyContent={"center"}>
                                 {/* Title Container */}
-                                <Container height={"10%"} width={"100%"} margin={1} backgroundColor={"lightgray"}>
+                                <Container height={"10%"} width={"70%"} margin={1} backgroundColor={"lightgray"}>
                                     <Text fontWeight={"bold"} positionLeft={20}>
                                         Loaded Graphs
                                     </Text>
@@ -167,8 +177,8 @@ export default function DropdownUI({inVR}:{inVR:boolean}): React.JSX.Element{
 
                                 {/* Body Container */}
                                 <Container
-                                    height={"100%"}
-                                    width={"100%"}
+                                    height={"90%"}
+                                    width={"70%"}
                                     margin={1}
                                     onClick={() => {
                                         press(!pressed);
@@ -185,6 +195,7 @@ export default function DropdownUI({inVR}:{inVR:boolean}): React.JSX.Element{
 
                                 </Container>
                             </Container>
+                        </Container>
                         </Container>
                     </Container>
                 </Fullscreen>

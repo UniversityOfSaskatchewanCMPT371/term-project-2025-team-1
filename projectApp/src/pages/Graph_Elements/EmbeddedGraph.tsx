@@ -1,4 +1,4 @@
-import { Text } from "@react-three/drei";
+import { Line, Text } from "@react-three/drei";
 import React from "react";
 import mainController from "../../controller/MainController";
 import { EmbeddedGraphObject } from "../../components/Graph_Components/EmbeddedGraphObject";
@@ -22,6 +22,39 @@ export function EmbeddedGraph({
     sendLog("info", "an EmbeddedGraph object was updated (EmbeddedGraph.tsx)");
   }
 
+  function GenerateAxis() {
+    return (
+      <>
+        {/* X-axis */}
+        <Line
+          color={"black"}
+          points={[
+            [-1, 0, 0],
+            [1, 0, 0],
+          ]}
+        ></Line>
+
+        {/* Y-axis */}
+        <Line
+          color={"black"}
+          points={[
+            [0, -1, 0],
+            [0, 1, 0],
+          ]}
+        ></Line>
+
+        {/* Z-axis */}
+        <Line
+          color={"black"}
+          points={[
+            [0, 0, -1],
+            [0, 0, 1],
+          ]}
+        ></Line>
+      </>
+    );
+  }
+
   /**
    * This Function creates the main graph of the Embedded Graph
    * @postcondition Body of the graph
@@ -33,9 +66,10 @@ export function EmbeddedGraph({
     );
     return (
       <>
-        <mesh position={[3, 1, 6]}>
-          <boxGeometry args={[6, 5.5, 2]} />
-          <meshBasicMaterial color="gray" />
+        <mesh position={[2, 1, 0]}>
+          <boxGeometry args={[2, 2, 2]} />
+          <meshBasicMaterial visible={false} />
+          <GenerateAxis />
         </mesh>
 
         <mesh rotation={[0, 3.14, 0]} position={[3, 2, 4.8]}>

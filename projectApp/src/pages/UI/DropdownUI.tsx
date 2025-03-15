@@ -68,6 +68,7 @@ export default function DropdownUI({inVR}:{inVR:boolean}): React.JSX.Element{
                     backgroundColor={"gray"} width={"25%"} 
                     alignItems={"center"} justifyContent={"center"} positionLeft={2}
                     backgroundOpacity={0.5}
+                    pointerEvents={"auto"}
                     hover={{backgroundOpacity: 0.75}} onClick={() => {
                         data.incrementDisplayBoard();
                         sendLog("info","RowObjectButtons []>] pressed");
@@ -113,6 +114,7 @@ export default function DropdownUI({inVR}:{inVR:boolean}): React.JSX.Element{
                             borderRadius={5}
                             justifyContent={"center"}
                             positionRight={10}
+                            pointerEvents={"auto"}
                             hover={{backgroundOpacity: 0.75}} onClick={() => {
                                 update();
                                 sendLog("info","GenerateList [BUTTON]? pressed");
@@ -134,8 +136,8 @@ export default function DropdownUI({inVR}:{inVR:boolean}): React.JSX.Element{
     function DropDownBody(): React.JSX.Element{
         return (
             <>
-                <Fullscreen flexDirection={"row"} pointerEvents={"none"}>
-                    <Container width={"100%"} height={"100%"}
+            <Fullscreen flexDirection={"row"} distanceToCamera={1} pointerEvents={"none"}>
+                <Container width={"100%"} height={"100%"}
                 alignContent={"center"} justifyContent={"center"} flexDirection={"column"}>
 
                     <Container width={"100%"} height={inVR? "24%" : "0%"}/>
@@ -153,7 +155,7 @@ export default function DropdownUI({inVR}:{inVR:boolean}): React.JSX.Element{
                                     sendLog("info","DropDownBody [active] button pressed");
                                 }}
                                 backgroundColor={"black"}
-                                backgroundOpacity={0.7}
+                                backgroundOpacity={0.5}
                                 hover={{backgroundOpacity: 1}}
                                 pointerEvents={"auto"}
                                 justifyContent={"center"}>
@@ -165,8 +167,8 @@ export default function DropdownUI({inVR}:{inVR:boolean}): React.JSX.Element{
                     </Container>
                     
                         {/* Container displaying loaded CSV files */}
-                        <Container width={inVR? "90%": "100%"} height={inVR? "54%":"93%"} flexDirection={"row-reverse"} alignContent={"flex-start"} justifyContent={"flex-start"}>
-                        <Container width={inVR? "70%":"90%"} height={"100%"} flexDirection={"column"} display={active? "flex" : "none"}>
+                    <Container width={"100%"} height={inVR? "54%":"93%"} flexDirection={"row-reverse"} alignContent={"flex-start"} justifyContent={"flex-start"}>
+                        <Container width={inVR? "80%":"90%"} height={"80%"} flexDirection={"column"} display={active? "flex" : "none"}>
                             <Container width={"100%"} height={"90%"} positionLeft={5} flexDirection={"column"} alignContent={"center"} justifyContent={"center"}>
                                 {/* Title Container */}
                                 <Container height={"10%"} width={"70%"} margin={1} backgroundColor={"lightgray"}>
@@ -196,9 +198,9 @@ export default function DropdownUI({inVR}:{inVR:boolean}): React.JSX.Element{
                                 </Container>
                             </Container>
                         </Container>
-                        </Container>
                     </Container>
-                </Fullscreen>
+                </Container>
+            </Fullscreen>
             </>
         )
     }

@@ -8,7 +8,7 @@ export default function TestScene({inVR} : {inVR:boolean}): React.JSX.Element{
     return(
         <>
         {/* Maybe fullscreen component stay displaying, but the container can chang visibility, so theres always that fullscreen button top left */}
-            <Fullscreen flexDirection={"row"} distanceToCamera={0.8} pointerEvents={"none"}> 
+            <Fullscreen flexDirection={"row"} distanceToCamera={1} pointerEvents={"none"}> 
                 {/* Main Container that encapsulates Test Scene */}
                 {/* Possibly make some sizes dependent when inside or outside vr */}
                 <Container width={"100%"} height={"100%"} backgroundColor={"darkgray"} backgroundOpacity={clicked? 0.5:0.01}

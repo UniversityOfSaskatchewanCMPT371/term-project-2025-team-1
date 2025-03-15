@@ -26,7 +26,7 @@ function App() {
     <>
       <div>CMPT 371: Team #1</div>
       {/* This button will allow the user to enter the VR Space */}
-      <button onClick={() => store.enterAR()}>Enter AR</button>
+      <button onClick={() => store.enterVR()}>Enter VR</button>
       <div className="canvas-container">
         {/* Everything encapsulated by Canvas and XR will contain the Scene to be displayed in VR */}
         <Canvas>

@@ -17,7 +17,7 @@ export default function InitScene({
       {/* Over here we could specify the scene */}
 
       <TestScene inVR={inVR} />
-      <MainScene />
+      <MainScene inVR={inVR} />
     </>
   );
 }

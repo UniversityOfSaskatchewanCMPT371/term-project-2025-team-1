@@ -37,8 +37,8 @@ export class EmbeddedGraphObject
 
       // calculates the vector and stores it in the position attribute of a new PointObject
       const vectorPosition = this.calculateVectorPosition(time, data);
-      newPoint.setPosition(vectorPosition);
-      this.points.push(newPoint);
+      //newPoint.setPosition(vectorPosition);
+      //this.points.push(newPoint);
     });
     sendLog(
       "info",
@@ -106,11 +106,11 @@ export class EmbeddedGraphObject
     if (index < 0) {
       return 0;
     } else {
-      const line: { key: Record<string, string | number> } = csvData[index];
-      const position = line[
-        this.axes.yLabel as keyof typeof line
-      ] as unknown as number;
-      return position;
+      //const line: { key: Record<string, string | number> } = csvData[index];
+      // const position = line[
+      //   this.axes.yLabel as keyof typeof line
+      // ] as unknown as number;
+      return 0;
     }
   }
 

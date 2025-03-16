@@ -1,6 +1,8 @@
 import { CSVDataInterface } from "../../types/CSVInterfaces";
 import { LocalCSVReader, LocalCsvReader, UrlCSVReader } from "./CSVReaders";
 import { sendError, sendLog } from "../../logger-frontend";
+import { PointInterface } from "../../types/PointInterface";
+import { PointObject } from "../Graph_Components/PointObject";
 
 /**
  * Class representing a CSV data structure that implements the CSVData interface.
@@ -11,9 +13,11 @@ export class CSVDataObject implements CSVDataInterface {
   csvHeaders: string[];
   data: { key: Record<string, string | number> }[];
   yHeader: string;
+  timeHeader: string;
   browserSelected: boolean;
   vrSelected: boolean;
   displayBoard: number;
+  points: PointInterface[];
 
   /**
    * Initializes a new CSVDataObject with default values
@@ -23,9 +27,53 @@ export class CSVDataObject implements CSVDataInterface {
     this.csvHeaders = [];
     this.data = [];
     this.yHeader = "";
+    this.timeHeader = "";
     this.browserSelected = false;
     this.displayBoard = 0;
     this.vrSelected = false;
+    this.points = [];
+  }
+
+  getTimeHeader(): string{
+    return this.timeHeader;
+  }
+  setTimeHeader(){
+    this.timeHeader = this.findTimeHeader();
+  }
+  populatePoints(){
+    this.points = [];
+    this.getData().forEach((data) => {
+          const newPoint = new PointObject();
+    
+          newPoint.setXData(
+            data[this.getTimeHeader() as keyof typeof data] as unknown as string,
+          );
+          newPoint.setYData(
+            data[this.getYHeader() as keyof typeof data] as unknown as number,
+          );
+          this.points.push(newPoint);
+        });
+  }
+
+  getPoints(){
+    return this.points;
+    
+  }
+  setPoints(points: PointInterface[]): void {
+    if (!Array.isArray(points)) {
+      throw new Error(
+        "Invalid points: must be an array of PointClass instances",
+      );
+    }
+    for (const point of points) {
+      if (!(point instanceof PointObject)) {
+        throw new Error(
+          "Invalid point: each element must be an instance of PointClass",
+        );
+      }
+    }
+
+    this.points = points;
   }
 
   /**
@@ -54,6 +102,8 @@ export class CSVDataObject implements CSVDataInterface {
         const headers = Object.keys(data[0]);
         this.csvHeaders = headers;
         this.setYHeader(this.findFirstHeader());
+        this.setTimeHeader();
+
       }
       sendLog(
         "info",
@@ -229,7 +279,7 @@ export class CSVDataObject implements CSVDataInterface {
    * @postcondition Returns a valid time header,
    * i.e The header string containing "Time" or "time" without modifying data
    */
-  getTimeHeader(): string {
+  findTimeHeader(): string {
     for (const head of this.getCSVHeaders()) {
       if (head == "Time" || head == "time") {
         return head;

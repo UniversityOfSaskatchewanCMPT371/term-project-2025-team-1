@@ -1,6 +1,7 @@
 import Point2D from "../../pages/Graph_Elements/Point2D";
-import { PointInterface } from "../../types/PointInterface";
+import { Point2DInterface, PointInterface } from "../../types/PointInterface";
 import { PointObject } from "./PointObject";
+import { Point2DObject } from "./Points/Point2DObject";
 
 /**
  * Creates and renders a 2D point visualization based on provided point data.
@@ -12,12 +13,16 @@ import { PointObject } from "./PointObject";
 export default function Create2DPoint({
   pointRef,
 }: {
-  pointRef: PointInterface;
+  pointRef: Point2DInterface;
 }): React.JSX.Element {
-  const point = new PointObject();
-  point.setPosition(pointRef.getPosition());
-  point.setSelected(pointRef.getSelected());
-  point.setXData(pointRef.getXData());
-  point.setYData(pointRef.getYData());
+  const point = new Point2DObject(pointRef.getObject())
+  point.setXAxisPos(pointRef.getXPosition());
+  point.setYAxisPos(pointRef.getYPosition())
+  point.getObject().setXData(pointRef.getObject().getXData());
+  point.getObject().setYData(pointRef.getObject().getYData())
+  // point.setPosition(pointRef.getPosition());
+  // point.setSelected(pointRef.getSelected());
+  // point.setXData(pointRef.getXData());
+  // point.setYData(pointRef.getYData());
   return <Point2D pointRef={point}></Point2D>;
 }

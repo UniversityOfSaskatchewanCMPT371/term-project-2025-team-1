@@ -38,6 +38,8 @@ export class CSVController implements ControllerInterface {
     for (const csv of this.model.getData()) {
       if (csv.getDisplayBoard() == 1) {
         csv.setVRSelected(true);
+        csv.populatePoints();
+
         const TSGraph = new TimeSeriesGraphObject(csv);
         TSGraph.setName(csv.getName());
         TSGraph.addPoints();

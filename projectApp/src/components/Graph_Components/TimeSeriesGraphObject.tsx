@@ -3,6 +3,7 @@ import { CSVDataObject } from "../Csv_Components/CSVDataObject";
 import { GraphObject } from "./GraphObject";
 import { PointObject } from "./PointObject";
 import { sendLog } from "../../logger-frontend";
+import { Point2DObject } from "./Points/Point2DObject";
 
 /**
  * TimeSeriesGraphObject is a class that extends GraphObject
@@ -14,8 +15,14 @@ export class TimeSeriesGraphObject
   extends GraphObject
   implements TimeSeriesGraphInterface
 {
+  points2D: Point2DObject[];
   constructor(csv: CSVDataObject) {
     super(csv);
+    this.points2D = [];
+  }
+
+  getPoints2D(): Point2DObject[]{
+    return this.points2D;
   }
 
   // TODO - refactor point methods to GraphObject as both TimeSeries and Embedded graphs will use same point objects
@@ -25,19 +32,12 @@ export class TimeSeriesGraphObject
    * post-condition: a new PointInterface instance is added to the graph
    */
   addPoints(): void {
-    this.csvData.getData().forEach((data) => {
-      const newPoint = new PointObject();
-      newPoint.setPosition([0, 0, 0.01]);
-
-      newPoint.setXData(
-        data[this.axes.xLabel as keyof typeof data] as unknown as string,
-      );
-      newPoint.setYData(
-        data[this.axes.yLabel as keyof typeof data] as unknown as number,
-      );
+    this.points2D = [];
+    this.csvData.getPoints().forEach((point) => {
+      const newPoint = new Point2DObject(point);
 
       //Get Header by key then assign
-      this.points.push(newPoint);
+      this.points2D.push(newPoint);
     });
     sendLog(
       "info",
@@ -53,13 +53,13 @@ export class TimeSeriesGraphObject
    * @param {number} yData - The y-coordinate (numeric value).
    * @returns {PointInterface | undefined} The corresponding Points instance if found, otherwise undefined.
    */
-  findPoint(xData: string, yData: number): PointObject | undefined {
+  findPoint(xData: string, yData: number): Point2DObject | undefined {
     sendLog(
       "info",
       `findPoint() is searching for a point at ${xData}, ${yData} (TimeSeriesGraphClass.tsx)`,
     );
-    return this.points.find(
-      (point) => point.getXData() === xData && point.getYData() === yData,
+    return this.points2D.find(
+      (point) => point.getObject().getXData() === xData && point.getObject().getYData() === yData,
     );
   }
 
@@ -70,8 +70,8 @@ export class TimeSeriesGraphObject
    * post-condition: all points' selection status is updated
    */
   updatePoints(): void {
-    this.points.forEach((point) => {
-      point.setSelected(false); // Update selection status
+    this.points2D.forEach((point) => {
+      point.getObject().setSelected(false); // Update selection status
       // TODO: Add color update logic if necessary
     });
     sendLog(
@@ -90,10 +90,10 @@ export class TimeSeriesGraphObject
     let max = 0;
     this.csvData.getData().forEach((data) => {
       if (
-        (data[this.axes.yLabel as keyof typeof data] as unknown as number) >=
+        (data[this.csvData.getTimeHeader() as keyof typeof data] as unknown as number) >=
         max
       ) {
-        max = data[this.axes.yLabel as keyof typeof data] as unknown as number;
+        max = data[this.csvData.getYHeader() as keyof typeof data] as unknown as number;
       }
     });
 
@@ -171,10 +171,13 @@ export class TimeSeriesGraphObject
     if (start == this.csvData.getCSVHeaders().length - 1) {
       if (this.csvData.getCSVHeaders()[0] != this.getXHeader()) {
         this.axes.yLabel = this.csvData.getCSVHeaders()[0];
+        this.csvData.yHeader = this.axes.yLabel;
       } else {
         //Go to the next available header
         this.axes.yLabel = this.csvData.getCSVHeaders()[1];
+        this.csvData.yHeader = this.axes.yLabel;
       }
+      // this.csvData.setYHeader(this.axes.yLabel);
       sendLog(
         "info",
         "incrementYHeader() was called and successfully incremented (TimeSeriesGraphClass.tsx)",
@@ -186,9 +189,10 @@ export class TimeSeriesGraphObject
     if (
       start == this.csvData.getCSVHeaders().length - 2 &&
       this.csvData.getCSVHeaders()[this.csvData.getCSVHeaders().length - 1] ==
-        this.getXHeader()
+        this.csvData.getTimeHeader()
     ) {
       this.axes.yLabel = this.csvData.getCSVHeaders()[0];
+      this.csvData.yHeader = this.axes.yLabel;
       sendLog(
         "info",
         "incrementYHeader() was called and successfully incremented (TimeSeriesGraphClass.tsx)",
@@ -202,6 +206,7 @@ export class TimeSeriesGraphObject
         this.csvData.getCSVHeaders()[start] != this.getXHeader()
       ) {
         this.axes.yLabel = this.csvData.getCSVHeaders()[start];
+        this.csvData.yHeader = this.axes.yLabel;
         return;
       }
     }
@@ -275,18 +280,22 @@ export class TimeSeriesGraphObject
     let current = -1.8 + divider / 2;
 
     //Resetting points
-    this.clearPoints();
+    this.points2D = [];
+    //this.csvData.points = [];
+    this.csvData.populatePoints();
     this.addPoints();
     this.updatePoints();
-
+    console.log("-------UPDATE POINTS--------");
     //Assigning new position values to the points
-    this.getPoints().forEach((point) => {
-      point.setXPosition(current);
-      point.setYPosition(
-        (point.getYData() / 100) *
+    this.getPoints2D().forEach((point) => {
+      point.setXAxisPos(current);
+      point.setYAxisPos(
+        (point.getObject().getYData() / 100) *
           (this.getYRange() / this.timeSeriesYRange().length) -
           1,
       );
+      console.log(point.getXPosition(), " y:", point.getYPosition(), " HEADERS: ", this.csvData.getTimeHeader(), " ", this.csvData.getYHeader())
+      console.log("DATA: ", point.getObject().getXData(), " Y:", point.getObject().getYData())
 
       current += divider;
     });
@@ -302,8 +311,8 @@ export class TimeSeriesGraphObject
    * post-condition: returns an array of PointInterface instances
    * @returns {PointInterface[]} Array of PointInterface instances.
    */
-  getPoints(): PointObject[] {
-    return this.points;
+  get2DPoints(): Point2DObject[] {
+    return this.points2D;
   }
 
   /**
@@ -312,7 +321,7 @@ export class TimeSeriesGraphObject
    * @postcondition return number of points
    */
   getNumPoints(): number {
-    return this.points.length;
+    return this.points2D.length;
   }
 
   /**

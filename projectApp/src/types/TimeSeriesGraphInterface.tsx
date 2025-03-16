@@ -1,4 +1,5 @@
 import { PointObject } from "../components/Graph_Components/PointObject";
+import { Point2DObject } from "../components/Graph_Components/Points/Point2DObject";
 import { GraphInterface } from "./GraphInterface";
 
 /**
@@ -21,7 +22,7 @@ export interface TimeSeriesGraphInterface extends GraphInterface {
    * @param {number} yData - The y-coordinate (numeric value)
    * @returns {PointObject | undefined} The found point or undefined
    */
-  findPoint(xData: string, yData: number): PointObject | undefined;
+  findPoint(xData: string, yData: number): Point2DObject | undefined;
 
   /**
    * Updates all points' selection status
@@ -44,7 +45,7 @@ export interface TimeSeriesGraphInterface extends GraphInterface {
    * post-condition: returns array of current points, unchanged
    * @returns {PointObject[]} Array of points in the graph
    */
-  getPoints(): PointObject[];
+  get2DPoints(): Point2DObject[];
 
   /**
    * Sets the graph's points
@@ -52,5 +53,5 @@ export interface TimeSeriesGraphInterface extends GraphInterface {
    * post-condition: graph's points are replaced with the new array
    * @param {PointObject[]} points - Array of new points
    */
-  setPoints(points: PointObject[]): void;
+  // setPoints(points: PointObject[]): void;
 }

@@ -16,13 +16,13 @@ import { PointInterface } from "../../types/PointInterface";
  * - The 'yData' property is initialized as 0.
  */
 export class PointObject implements PointInterface {
-  position: [number, number, number];
+  // position: [number, number, number];
   selected: boolean;
   xData: string;
   yData: number;
 
   constructor() {
-    this.position = [0, 0, 0];
+    // this.position = [0, 0, 0];
     this.selected = false;
     this.xData = "";
     this.yData = 0;
@@ -36,9 +36,9 @@ export class PointObject implements PointInterface {
    * @postcondition Returns the current 'position' value
    * @returns The position of the point as an array of three numbers representing the x, y, and z coordinates.
    */
-  getPosition(): [number, number, number] {
-    return this.position;
-  }
+  // getPosition(): [number, number, number] {
+  //   return this.position;
+  // }
 
   /**
    * Gets the selected status of the point.
@@ -76,9 +76,9 @@ export class PointObject implements PointInterface {
    * @postcondition Returns the x position of the point
    * @returns The x position of the point
    */
-  getXPosition(): number {
-    return this.getPosition()[0];
-  }
+  // getXPosition(): number {
+  //   return this.getPosition()[0];
+  // }
 
   /**
    * Gets the y position of the point.
@@ -86,9 +86,9 @@ export class PointObject implements PointInterface {
    * @postcondition Returns the y position of the point
    * @returns The y position of the point
    */
-  getYPosition(): number {
-    return this.getPosition()[1];
-  }
+  // getYPosition(): number {
+  //   return this.getPosition()[1];
+  // }
   //End of Getters
 
   //Setters
@@ -98,9 +98,9 @@ export class PointObject implements PointInterface {
    * @postcondition The 'position' property is updated to the provided value.
    * @param {[number,number,number]} position - A tuple [number, number, number] representing the new position.
    */
-  setPosition(position: [number, number, number]): void {
-    this.position = position;
-  }
+  // setPosition(position: [number, number, number]): void {
+  //   this.position = position;
+  // }
 
   /**
    * Sets the selected status of the point.
@@ -138,9 +138,9 @@ export class PointObject implements PointInterface {
    * @postcondition The x position of the point is updated to the provided value.
    * @param {number} x - The x position of the point.
    */
-  setXPosition(x: number): void {
-    this.position[0] = x;
-  }
+  // setXPosition(x: number): void {
+  //   this.position[0] = x;
+  // }
 
   /**
    * Sets the y position of the point.
@@ -148,8 +148,8 @@ export class PointObject implements PointInterface {
    * @postcondition The y position of the point is updated to the provided value.
    * @param {number} y - The y position of the point.
    */
-  setYPosition(y: number): void {
-    this.position[1] = y;
-  }
+  // setYPosition(y: number): void {
+  //   this.position[1] = y;
+  // }
   //End of Setters
 }

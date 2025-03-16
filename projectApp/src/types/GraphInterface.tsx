@@ -11,7 +11,7 @@ export interface GraphInterface extends DataInterface {
   id: string; // identifier for the graph
 
   // Data points and configuration
-  points: PointInterface[]; // Array of points using Point interface
+  // points: PointInterface[]; // Array of points using Point interface
 
   //The csv data used by the graph
   csvData: CSVDataInterface;
@@ -78,21 +78,21 @@ export interface GraphInterface extends DataInterface {
    * pre-condition: none
    * post-condition: returns array of current points, unchanged
    */
-  getPoints(): PointInterface[];
+  // getPoints(): PointInterface[];
 
   /**
    * Sets the graph's points
    * pre-condition: points must be an array of valid PointInterface instances
    * post-condition: graph's points are replaced with the new array
    */
-  setPoints(points: PointInterface[]): void;
+  // setPoints(points: PointInterface[]): void;
 
   /**
    * Removes all points from the graph
    * pre-condition: none
    * post-condition: graph's points array is empty
    */
-  clearPoints(): void;
+  // clearPoints(): void;
 
   /**
    * Gets the axes configuration

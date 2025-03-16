@@ -8,8 +8,7 @@ import { vol as memVol } from "memfs";
 import * as fs from "./__mocks__/fs";
 import * as fsPromise from "./__mocks__/fs/promises";
 import {
-  LocalCSVReader as localReader,
-  LocalCSVHeaders as localHeaders,
+  LocalCSVReader as localReader
 } from "../../src/components/Csv_Components/CSVReaders";
 
 // tell vitest to use fs mock from __mocks__ folder
@@ -50,12 +49,12 @@ describe("testing fs mocking", () => {
       expect(Object.keys(line)).toEqual(["Time", "X", "Y"]);
     });
 
-    const localHeadersPromise: Promise<string[]> = localHeaders(path);
-    //assert that mock promise.readFile was called a second time
-    expect(fsPromise.readFile).toBeCalledTimes(2);
-    //assert that promise is defined
-    await expect(localHeadersPromise).resolves.toBeDefined();
-    const localHeadersData: string[] = await localHeadersPromise;
+    // const localHeadersPromise: string[] = Object.keys(localReaderData[0]);
+    // //assert that mock promise.readFile was called a second time
+    // expect(fsPromise.readFile).toBeCalledTimes(2);
+    // //assert that promise is defined
+    // await expect(localHeadersPromise).resolves.toBeDefined();
+    const localHeadersData: string[] = Object.keys(localReaderData[0]);
     //assert that headers have Time,X,Y in order
     expect(localHeadersData).toEqual(["Time", "X", "Y"]);
   });
@@ -130,12 +129,12 @@ describe("testing fs mocking", () => {
     //assert that each line.key equals localReaderData
     expect(records).toEqual(localReaderData);
 
-    const localHeadersPromise: Promise<string[]> = localHeaders(path);
-    //assert that mock promise.readFile was called a second time
-    expect(fsPromise.readFile).toBeCalledTimes(2);
+    // const localHeadersPromise: Promise<string[]> = localHeaders(path);
+    // //assert that mock promise.readFile was called a second time
+    // expect(fsPromise.readFile).toBeCalledTimes(2);
     //assert that promise is defined
-    await expect(localHeadersPromise).resolves.toBeDefined();
-    const localHeadersData: string[] = await localHeadersPromise;
+    // await expect(localHeadersPromise).resolves.toBeDefined();
+    const localHeadersData: string[] = Object.keys(localReaderData[0]);
     //assert that returned headers are the same as original
     expect(localHeadersData).toEqual(csvheaders);
   });

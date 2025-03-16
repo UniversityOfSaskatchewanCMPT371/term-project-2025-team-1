@@ -32,7 +32,7 @@ export class EmbeddedGraphObject
       const newPoint = new PointObject();
       // gets the time of the current line in the data set
       const time = line[
-        this.axes.xLabel as keyof typeof line
+        this.csvData.getTimeHeader() as keyof typeof line
       ] as unknown as number;
 
       // calculates the vector and stores it in the position attribute of a new PointObject

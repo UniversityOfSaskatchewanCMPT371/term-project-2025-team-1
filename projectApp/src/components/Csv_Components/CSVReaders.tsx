@@ -14,19 +14,19 @@ import { sendError, sendLog } from "../../logger-frontend";
  *    - The returned promise resolves to an object containing the headers of the CSV file
  *    - If the file is empty or cannot be parsed, an error is thrown
  **/
-export async function LocalCSVHeaders(file: string): Promise<string[]> {
-  return LocalCSVReader(file)
-    .then((timeSeries) => {
-      const headers: string[] = Object.keys(timeSeries[0]);
-      sendLog("info", `LocalCSVHeaders returns\n${JSON.stringify(headers)}`);
-      return headers;
-      // Rethrowing errors
-    })
-    .catch((err: unknown) => {
-      sendError(err, `LocalCSVHeaders error`);
-      throw err as Error;
-    });
-}
+// export async function LocalCSVHeaders(file: string): Promise<string[]> {
+//   return LocalCSVReader(file)
+//     .then((timeSeries) => {
+//       const headers: string[] = Object.keys(timeSeries[0]);
+//       sendLog("info", `LocalCSVHeaders returns\n${JSON.stringify(headers)}`);
+//       return headers;
+//       // Rethrowing errors
+//     })
+//     .catch((err: unknown) => {
+//       sendError(err, `LocalCSVHeaders error`);
+//       throw err as Error;
+//     });
+// }
 
 /**
  * Get the headers of a file at a url
@@ -40,19 +40,19 @@ export async function LocalCSVHeaders(file: string): Promise<string[]> {
  *    - The returned promise resolves to an object containing the headers of the CSV file
  *    - If the file is empty or cannot be parsed, an error is thrown
  */
-export async function UrlCSVHeaders(url: string): Promise<string[]> {
-  return UrlCSVReader(url)
-    .then((timeSeries) => {
-      const headers: string[] = Object.keys(timeSeries[0]);
-      sendLog("info", `UrlCSVHeaders returns\n${JSON.stringify(headers)}`);
-      return headers;
-      // Rethrowing errors
-    })
-    .catch((err: unknown) => {
-      sendError(err, `LocalCSVHeaders error`);
-      throw err as Error;
-    });
-}
+// export async function UrlCSVHeaders(url: string): Promise<string[]> {
+//   return UrlCSVReader(url)
+//     .then((timeSeries) => {
+//       const headers: string[] = Object.keys(timeSeries[0]);
+//       sendLog("info", `UrlCSVHeaders returns\n${JSON.stringify(headers)}`);
+//       return headers;
+//       // Rethrowing errors
+//     })
+//     .catch((err: unknown) => {
+//       sendError(err, `LocalCSVHeaders error`);
+//       throw err as Error;
+//     });
+// }
 
 /**
  * This function reads the headers of a csv file and stores it

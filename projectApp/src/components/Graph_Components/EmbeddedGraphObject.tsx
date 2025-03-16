@@ -1,8 +1,9 @@
 import { sendError, sendLog } from "../../logger-frontend";
 import { EmbeddedInterface } from "../../types/EmbeddedInterface";
+import { Point3DInterface } from "../../types/PointInterface";
 import { CSVDataObject } from "../Csv_Components/CSVDataObject";
 import { GraphObject } from "./GraphObject";
-import { PointObject } from "./PointObject";
+import { PointObject } from "./Points/PointObject";
 
 /**
  * EmbeddedGraphObject is a class that extends GraphObject and implements the EmbeddedInterface
@@ -15,10 +16,12 @@ export class EmbeddedGraphObject
   implements EmbeddedInterface
 {
   tao: number;
+  points3D: Point3DInterface[];
 
   constructor(csv: CSVDataObject) {
     super(csv);
     this.tao = 1;
+    this.points3D = [];
   }
 
   /**

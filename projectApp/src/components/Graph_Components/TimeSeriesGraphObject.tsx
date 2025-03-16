@@ -58,7 +58,7 @@ export class TimeSeriesGraphObject
       `findPoint() is searching for a point at ${xData}, ${yData} (TimeSeriesGraphClass.tsx)`,
     );
     return this.points2D.find(
-      (point) => point.getObject().getXData() === xData && point.getObject().getYData() === yData,
+      (point) => point.getObject().getTimeData() === xData && point.getObject().getYData() === yData,
     );
   }
 
@@ -290,7 +290,7 @@ export class TimeSeriesGraphObject
           1,
       );
       console.log(point.getXPosition(), " y:", point.getYPosition(), " HEADERS: ", this.csvData.getTimeHeader(), " ", this.csvData.getYHeader())
-      console.log("DATA: ", point.getObject().getXData(), " Y:", point.getObject().getYData())
+      console.log("DATA: ", point.getObject().getTimeData(), " Y:", point.getObject().getYData())
 
       current += divider;
     });

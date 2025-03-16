@@ -19,8 +19,8 @@ export default function Point2D({ pointRef }: { pointRef: Point2DObject }) {
    * @postcondition Updates both local clicked state and pointRef's selected state
    */
   function setOnClick(): void {
-    click(!clicked);
     pointRef.getObject().setSelected(!pointRef.getObject().getSelected());
+    click(pointRef.getObject().getSelected());
   }
 
   return (
@@ -40,7 +40,7 @@ export default function Point2D({ pointRef }: { pointRef: Point2DObject }) {
 
       <meshStandardMaterial
         color={clicked ? "blue" : "skyblue"}
-        opacity={hovered ? 1.0 : 0.5}
+        opacity={hovered ? 1.0 : 0.4}
       />
     </mesh>
   );

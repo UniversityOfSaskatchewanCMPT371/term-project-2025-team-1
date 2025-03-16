@@ -1,4 +1,5 @@
-import { PointInterface } from "../../types/PointInterface";
+import { PointObjectInterface } from "../../../types/PointInterface";
+
 
 /**
  * The PointObject class is responsible for managing the data of a single point in a graph.
@@ -15,16 +16,16 @@ import { PointInterface } from "../../types/PointInterface";
  * - The 'xData' property is initialized as an empty string.
  * - The 'yData' property is initialized as 0.
  */
-export class PointObject implements PointInterface {
+export class PointObject implements PointObjectInterface {
   // position: [number, number, number];
   selected: boolean;
-  xData: string;
+  timeData: string;
   yData: number;
 
   constructor() {
     // this.position = [0, 0, 0];
     this.selected = false;
-    this.xData = "";
+    this.timeData = "";
     this.yData = 0;
   }
 
@@ -56,8 +57,8 @@ export class PointObject implements PointInterface {
    * @postcondition Returns the current 'xData' value
    * @returns The x-axis data of the point as a string.
    */
-  getXData(): string {
-    return this.xData;
+  getTimeData(): string {
+    return this.timeData;
   }
 
   /**
@@ -118,8 +119,8 @@ export class PointObject implements PointInterface {
    * @postcondition The 'xData' property is updated to the provided value.
    * @param {string} x - A string representing the new x-axis data.
    */
-  setXData(x: string): void {
-    this.xData = x;
+  setTimeData(x: string): void {
+    this.timeData = x;
     //Error no Time Header
   }
   /**

@@ -1,6 +1,6 @@
-import Point2D from "../../pages/Graph_Elements/Point2D";
-import { Point2DInterface} from "../../types/PointInterface";
-import { Point2DObject } from "./Points/Point2DObject";
+import Point2D from "../../../pages/Graph_Elements/Point2D";
+import { Point2DInterface } from "../../../types/PointInterface";
+import { Point2DObject } from "./Point2DObject";
 
 /**
  * Creates and renders a 2D point visualization based on provided point data.
@@ -17,7 +17,7 @@ export default function Create2DPoint({
   const point = new Point2DObject(pointRef.getObject())
   point.setXAxisPos(pointRef.getXPosition());
   point.setYAxisPos(pointRef.getYPosition())
-  point.getObject().setXData(pointRef.getObject().getXData());
+  point.getObject().setTimeData(pointRef.getObject().getTimeData());
   point.getObject().setYData(pointRef.getObject().getYData())
   return <Point2D pointRef={point}></Point2D>;
 }

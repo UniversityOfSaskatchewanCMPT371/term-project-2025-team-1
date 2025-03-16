@@ -1,4 +1,5 @@
 import { GraphInterface } from "./GraphInterface";
+import { Point3DInterface } from "./PointInterface";
 
 export interface EmbeddedInterface extends GraphInterface {
   // Dimension properties
@@ -8,6 +9,7 @@ export interface EmbeddedInterface extends GraphInterface {
     depth?: number; //for 3D graphs? Yes for 3D Graph
   };
   tao: number;
+  points3D: Point3DInterface[];
 
   /**
    * Adds embedded point vectors to the graph.

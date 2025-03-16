@@ -1,8 +1,8 @@
-import { Point2DInterface, PointInterface } from "../../../types/PointInterface";
-import { PointObject } from "../PointObject";
+import { Point2DInterface, PointInterface, PointObjectInterface } from "../../../types/PointInterface";
+import { PointObject } from "./PointObject";
 
 export class Point2DObject implements Point2DInterface{
-    object: PointInterface;
+    object: PointObjectInterface;
     point2Dposition: [number, number];
 
     constructor(object: PointObject){
@@ -10,7 +10,7 @@ export class Point2DObject implements Point2DInterface{
         this.point2Dposition = [0,0];
     }
 
-    getObject(): PointInterface {
+    getObject(): PointObjectInterface {
         return this.object;
     }
     getXPosition(): number {
@@ -20,7 +20,7 @@ export class Point2DObject implements Point2DInterface{
         return this.point2Dposition[1];
     }
 
-    setObject(obj: PointInterface): void {
+    setObject(obj: PointObjectInterface): void {
         this.object = obj;
     }
     setXAxisPos(x: number): void {

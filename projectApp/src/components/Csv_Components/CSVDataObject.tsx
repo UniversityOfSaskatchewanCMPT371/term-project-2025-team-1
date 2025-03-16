@@ -1,8 +1,8 @@
 import { CSVDataInterface } from "../../types/CSVInterfaces";
 import { LocalCSVReader, LocalCsvReader, UrlCSVReader } from "./CSVReaders";
 import { sendError, sendLog } from "../../logger-frontend";
-import { PointInterface } from "../../types/PointInterface";
-import { PointObject } from "../Graph_Components/PointObject";
+import { PointInterface, PointObjectInterface } from "../../types/PointInterface";
+import { PointObject } from "../Graph_Components/Points/PointObject";
 
 /**
  * Class representing a CSV data structure that implements the CSVData interface.
@@ -17,7 +17,7 @@ export class CSVDataObject implements CSVDataInterface {
   browserSelected: boolean;
   vrSelected: boolean;
   displayBoard: number;
-  points: PointInterface[];
+  points: PointObjectInterface[];
 
   /**
    * Initializes a new CSVDataObject with default values
@@ -45,7 +45,7 @@ export class CSVDataObject implements CSVDataInterface {
     this.getData().forEach((data) => {
           const newPoint = new PointObject();
     
-          newPoint.setXData(
+          newPoint.setTimeData(
             data[this.getTimeHeader() as keyof typeof data] as unknown as string,
           );
           newPoint.setYData(
@@ -59,7 +59,7 @@ export class CSVDataObject implements CSVDataInterface {
     return this.points;
     
   }
-  setPoints(points: PointInterface[]): void {
+  setPoints(points: PointObjectInterface[]): void {
     if (!Array.isArray(points)) {
       throw new Error(
         "Invalid points: must be an array of PointClass instances",

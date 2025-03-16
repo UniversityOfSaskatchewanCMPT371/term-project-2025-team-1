@@ -76,7 +76,7 @@ describe("Time Series Graph Class", async () => {
 
     //The expected values of the first point in the graph
     expect(point.getYData()).toBe(10);
-    expect(point.getXData()).toBe("2025-01-18");
+    expect(point.getTimeData()).toBe("2025-01-18");
 
     //Testing to see if a Point's position is modifiable
     // point.setPosition([-1.8, 1, 0.01]);

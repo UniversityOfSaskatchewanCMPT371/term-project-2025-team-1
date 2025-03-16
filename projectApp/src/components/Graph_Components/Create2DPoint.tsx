@@ -1,6 +1,5 @@
 import Point2D from "../../pages/Graph_Elements/Point2D";
-import { Point2DInterface, PointInterface } from "../../types/PointInterface";
-import { PointObject } from "./PointObject";
+import { Point2DInterface} from "../../types/PointInterface";
 import { Point2DObject } from "./Points/Point2DObject";
 
 /**
@@ -20,9 +19,5 @@ export default function Create2DPoint({
   point.setYAxisPos(pointRef.getYPosition())
   point.getObject().setXData(pointRef.getObject().getXData());
   point.getObject().setYData(pointRef.getObject().getYData())
-  // point.setPosition(pointRef.getPosition());
-  // point.setSelected(pointRef.getSelected());
-  // point.setXData(pointRef.getXData());
-  // point.setYData(pointRef.getYData());
   return <Point2D pointRef={point}></Point2D>;
 }

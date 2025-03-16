@@ -4,7 +4,6 @@
  */
 import { DataInterface } from "./BaseInterfaces";
 import { CSVDataInterface } from "./CSVInterfaces";
-import { PointInterface } from "./PointInterface";
 
 export interface GraphInterface extends DataInterface {
   // Basic graph properties
@@ -24,8 +23,6 @@ export interface GraphInterface extends DataInterface {
 
   // Axes configuration
   axes: {
-    xLabel: string;
-    yLabel: string;
     xRange: [number, number]; // Min and max values for x-axis
     yRange: [number, number]; // Min and max values for y-axis
   };
@@ -100,8 +97,6 @@ export interface GraphInterface extends DataInterface {
    * post-condition: returns the current axes configuration object
    */
   getAxes(): {
-    xLabel: string;
-    yLabel: string;
     xRange: [number, number];
     yRange: [number, number];
   };
@@ -112,8 +107,6 @@ export interface GraphInterface extends DataInterface {
    * post-condition: graph's axes configuration is updated to the new values
    */
   setAxes(axes: {
-    xLabel: string;
-    yLabel: string;
     xRange: [number, number];
     yRange: [number, number];
   }): void;

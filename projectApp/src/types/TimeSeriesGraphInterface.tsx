@@ -1,4 +1,3 @@
-import { PointObject } from "../components/Graph_Components/PointObject";
 import { Point2DObject } from "../components/Graph_Components/Points/Point2DObject";
 import { GraphInterface } from "./GraphInterface";
 

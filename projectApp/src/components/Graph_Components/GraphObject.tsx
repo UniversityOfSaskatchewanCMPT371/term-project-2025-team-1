@@ -1,7 +1,5 @@
 import { GraphInterface } from "../../types/GraphInterface";
-import { PointInterface } from "../../types/PointInterface";
 import { CSVDataObject } from "../Csv_Components/CSVDataObject";
-import { PointObject } from "./PointObject";
 
 /**
  * The GraphClass represents a graph structure that manages points, dimensions, styling, and interactivity.
@@ -24,8 +22,6 @@ export class GraphObject implements GraphInterface {
   // points: PointInterface[];
   position: { x: number; y: number; z: number };
   axes: {
-    xLabel: string;
-    yLabel: string;
     xRange: [number, number];
     yRange: [number, number];
   };
@@ -49,8 +45,6 @@ export class GraphObject implements GraphInterface {
     this.dimensions = { width: 10, height: 10, depth: 10 };
     this.position = { x: 1, y: 1, z: 0 };
     this.axes = {
-      xLabel: csvdata.getTimeHeader(),
-      yLabel: csvdata.getYHeader(),
       xRange: [0, 0],
       yRange: [0, 0],
     };
@@ -209,8 +203,6 @@ export class GraphObject implements GraphInterface {
    * @postcondition the 'axes' property is returned as an object with 'xLabel', 'yLabel', 'xRange', and 'yRange' properties.
    */
   getAxes(): {
-    xLabel: string;
-    yLabel: string;
     xRange: [number, number];
     yRange: [number, number];
   } {
@@ -224,17 +216,15 @@ export class GraphObject implements GraphInterface {
    * @postcondition the 'axes' property is set to the provided object. If the 'axes' parameter is invalid, an error is thrown.
    */
   setAxes(axes: {
-    xLabel: string;
-    yLabel: string;
     xRange: [number, number];
     yRange: [number, number];
   }): void {
-    if (typeof axes.xLabel !== "string" || axes.xLabel.trim() === "") {
-      throw new Error("Invalid xLabel: must be a non-empty string");
-    }
-    if (typeof axes.yLabel !== "string" || axes.yLabel.trim() === "") {
-      throw new Error("Invalid yLabel: must be a non-empty string");
-    }
+    // if (typeof axes.xLabel !== "string" || axes.xLabel.trim() === "") {
+    //   throw new Error("Invalid xLabel: must be a non-empty string");
+    // }
+    // if (typeof axes.yLabel !== "string" || axes.yLabel.trim() === "") {
+    //   throw new Error("Invalid yLabel: must be a non-empty string");
+    // }
     this.axes = axes;
   }
 }

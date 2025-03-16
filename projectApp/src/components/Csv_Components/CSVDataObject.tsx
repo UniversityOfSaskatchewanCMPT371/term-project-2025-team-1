@@ -101,8 +101,8 @@ export class CSVDataObject implements CSVDataInterface {
       if (data.length > 0) {
         const headers = Object.keys(data[0]);
         this.csvHeaders = headers;
-        this.setYHeader(this.findFirstHeader());
         this.setTimeHeader();
+        this.setYHeader(this.findFirstHeader());
 
       }
       sendLog(
@@ -172,6 +172,10 @@ export class CSVDataObject implements CSVDataInterface {
     } else {
       this.displayBoard--;
     }
+  }
+
+  clearPoints(){
+    this.points = [];
   }
 
   /**

@@ -2,12 +2,10 @@ import { Root, Container, Text } from "@react-three/uikit";
 import { Line } from "@react-three/drei";
 import Create2DPoint from "../../components/Graph_Components/Create2DPoint";
 import { TimeSeriesGraphObject } from "../../components/Graph_Components/TimeSeriesGraphObject";
-import { PointObject } from "../../components/Graph_Components/PointObject";
 import { useState } from "react";
 import mainController from "../../controller/MainController";
 import { sendLog } from "../../logger-frontend";
 import { Point2DObject } from "../../components/Graph_Components/Points/Point2DObject";
-import { PointInterface } from "../../types/PointInterface";
 
 /**
  * This function will create a Time Series Graph on the VR scene using a TimeSeriesGraphObject.
@@ -23,7 +21,6 @@ export default function TimeSeriesGraph({
   graph: TimeSeriesGraphObject;
 }): React.JSX.Element {
   const [header, setHeader] = useState(""); //useState for changes in the graph's Y header
-  const [ newPoints, setNewPoints ] = useState(true);
 
   // Values used to space Points in the X axis
   const totalSpace = 5;
@@ -41,8 +38,7 @@ export default function TimeSeriesGraph({
   //Used to update the graph, currently updates on Y header change
   function UpdateGraph(): void {
     graph.updatePointPosition();
-    setNewPoints(true);
-    setHeader(graph.getYHeader());
+    setHeader(graph.getCSVData().getYHeader());
     mainController.updateMainScene();
     sendLog(
       "info",
@@ -56,7 +52,7 @@ export default function TimeSeriesGraph({
    * @postconditions The container that shows the current Y header and allows the cycle of the Graph's Y Header
    */
   function HeaderSelection(): React.JSX.Element {
-    setHeader(graph.getYHeader());
+    setHeader(graph.getCSVData().getYHeader());
     sendLog(
       "info",
       "a TimeSeriesGraph object header was selected and visually updated to reflect selection (TimeSeriesGraph.tsx)",
@@ -83,7 +79,6 @@ export default function TimeSeriesGraph({
             justifyContent={"center"}
             hover={{ backgroundOpacity: 0.95 }}
             onClick={() => {
-              setNewPoints(false);
               graph.decrementYHeader();
               UpdateGraph();
             }}
@@ -99,7 +94,6 @@ export default function TimeSeriesGraph({
             justifyContent={"center"}
             hover={{ backgroundOpacity: 0.95 }}
             onClick={() => {
-              setNewPoints(false);
               graph.incrementYHeader();
               UpdateGraph();
             }}
@@ -165,7 +159,7 @@ export default function TimeSeriesGraph({
     point: Point2DObject;
   }): React.JSX.Element {
     //Updating the position of the point
-    if(newPoints){
+
     point.setXAxisPos(current);
     point.setYAxisPos(
       (point.getObject().getYData() / 100) *
@@ -180,7 +174,7 @@ export default function TimeSeriesGraph({
       "info",
       "a visual representation of points was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)",
     );
-  }
+  
 
     return (
       <>

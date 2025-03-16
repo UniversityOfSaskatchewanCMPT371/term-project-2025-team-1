@@ -5,7 +5,8 @@ import {
   UrlCSVHeaders as urlHeaders,
   LocalCsvReader as localFileReader,
 } from "../../src/components/Csv_Components/CSVReaders.tsx";
-import { readFile } from "fs/promises";
+import MockFile from "./__mocks__/MockFile.ts";
+import MockFileReader, { pathStrToFile } from "./__mocks__/mockFileReader";
 
 interface TestFormat<Input, Output> {
   description: string;
@@ -59,38 +60,12 @@ const localEmptyFile = `${relativePathToFiles}/empty.csv`;
 // apparently FileReader can only exist in the web app environment, it cant be tested in normally in nodejs/vitest
 // so these mocks will simulate FileReader and File
 // Mock FileReader globally
-vi.stubGlobal(
-  "FileReader",
-  (await import("./__mocks__/mockFileReader")).MockFileReader,
-);
+vi.stubGlobal("FileReader", MockFileReader);
 
 // Mock File class
-global.File = class {
-  constructor(
-    public fileBits: BlobPart[],
-    public name: string,
-    public options?: FilePropertyBag,
-  ) {}
-} as unknown as typeof File;
+vi.stubGlobal("File", MockFile);
 
-/**
- * Returns a file that has the contents of the file at the filePath
- * @param filePath path string to the file
- * @returns `File` {fileBits: contents at filePath, name: filePath, options: in text/csv}
- */
-async function pathStrToFile(filePath: string): Promise<File> {
-  const reader = readFile(filePath, "utf-8");
-  let data: string;
-  try {
-    data = await reader;
-  } catch {
-    data = "";
-    //for some reason, if await reader throws the error, vitest still receives ENOENT error
-    //vitest cant handle errors outside of expect
-    //so instead data will be returned as empty (aka couldnt read)
-  }
-  return new File([data], filePath, { type: "text/csv" });
-}
+
 
 // These tests should now work in non-browser API
 describe("Testing localCsvReader(file) function", () => {

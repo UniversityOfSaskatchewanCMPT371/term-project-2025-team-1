@@ -25,21 +25,21 @@ export default class MockFileReader {
     }
   }
 }
- /**
-* Returns a file that has the contents of the file at the filePath
-* @param filePath path string to the file
-* @returns `File` {fileBits: contents at filePath, name: filePath, options: in text/csv}
-*/
+/**
+ * Returns a file that has the contents of the file at the filePath
+ * @param filePath path string to the file
+ * @returns `File` {fileBits: contents at filePath, name: filePath, options: in text/csv}
+ */
 export async function pathStrToFile(filePath: string): Promise<File> {
- const reader = readFile(filePath, "utf-8");
- let data: string;
- try {
-   data = await reader;
- } catch {
-   data = "";
-   //for some reason, if await reader throws the error, vitest still receives ENOENT error
-   //vitest cant handle errors outside of expect
-   //so instead data will be returned as empty (aka couldnt read)
- }
- return new File([data], filePath, { type: "text/csv" });
+  const reader = readFile(filePath, "utf-8");
+  let data: string;
+  try {
+    data = await reader;
+  } catch {
+    data = "";
+    //for some reason, if await reader throws the error, vitest still receives ENOENT error
+    //vitest cant handle errors outside of expect
+    //so instead data will be returned as empty (aka couldnt read)
+  }
+  return new File([data], filePath, { type: "text/csv" });
 }

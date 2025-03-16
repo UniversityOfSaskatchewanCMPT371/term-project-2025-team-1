@@ -65,8 +65,6 @@ vi.stubGlobal("FileReader", MockFileReader);
 // Mock File class
 vi.stubGlobal("File", MockFile);
 
-
-
 // These tests should now work in non-browser API
 describe("Testing localCsvReader(file) function", () => {
   const regularFileReader: TestFormat<File, Record<string, string | number>[]> =

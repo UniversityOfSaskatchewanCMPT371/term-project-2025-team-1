@@ -21,7 +21,7 @@ Feature: Smoke Tests
     When the user clicks the "Enter URL" text box
     And the user enters a valid URL into the text entry box
     And the user clicks the "Enter URL" button
-    Then a CSV should be added to the "Loaded Graphs" menu 
+    Then a CSV should be added to the "Loaded Graphs" menu
 
   # Displaying the Time Series Graph
   Scenario: Testing the Time Series Graph functionality

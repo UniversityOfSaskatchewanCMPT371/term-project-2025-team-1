@@ -35,5 +35,6 @@ describe("Test that mainController a file", () => {
       .getCSVController()
       .getDataByName("Graph1");
     expect(fileGraph).not.toBeNull();
+    expect(fileGraph).toBeInstanceOf(CSVDataObject);
   });
 });

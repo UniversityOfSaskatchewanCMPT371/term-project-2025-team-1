@@ -1,11 +1,11 @@
 import { Root, Container, Text } from "@react-three/uikit";
 import { Line } from "@react-three/drei";
-import Create2DPoint from "../../components/Graph_Components/Create2DPoint";
 import { TimeSeriesGraphObject } from "../../components/Graph_Components/TimeSeriesGraphObject";
 import { useState } from "react";
 import mainController from "../../controller/MainController";
 import { sendLog } from "../../logger-frontend";
 import { Point2DObject } from "../../components/Graph_Components/Points/Point2DObject";
+import Create2DPoint from "../../components/Graph_Components/Points/Create2DPoint";
 
 /**
  * This function will create a Time Series Graph on the VR scene using a TimeSeriesGraphObject.

@@ -3,6 +3,7 @@ import { EmbeddedInterface } from "../../types/EmbeddedInterface";
 import { Point3DInterface } from "../../types/PointInterface";
 import { CSVDataObject } from "../Csv_Components/CSVDataObject";
 import { GraphObject } from "./GraphObject";
+import { Point3DObject } from "./Points/Point3DObject";
 import { PointObject } from "./Points/PointObject";
 
 /**
@@ -24,6 +25,13 @@ export class EmbeddedGraphObject
     this.points3D = [];
   }
 
+  getCSVData(): CSVDataObject{
+    return this.csvData;
+  }
+
+  getPoints3D(): Point3DInterface[]{
+    return this.points3D;
+  }
   /**
    * Adds embedded point vectors to the graph.
    * pre-conditions: valid points exist in the csvDataObject of the graph
@@ -31,21 +39,36 @@ export class EmbeddedGraphObject
    */
   addPoints(): void {
     const data = this.csvData.getData();
-    data.forEach((line) => {
-      const newPoint = new PointObject();
+    var time = 0;
+
+    this.getCSVData().getPoints().forEach((point) => {
+      const newPoint = new Point3DObject(point);
       // gets the time of the current line in the data set
-      const time = line[
-        this.csvData.getTimeHeader() as keyof typeof line
-      ] as unknown as number;
+      // const time = point[
+      //   this.csvData.getTimeHeader() as keyof typeof point
+      // ] as unknown as number;
 
       // calculates the vector and stores it in the position attribute of a new PointObject
       const vectorPosition = this.calculateVectorPosition(time, data);
-      //newPoint.setPosition(vectorPosition);
-      //this.points.push(newPoint);
+      newPoint.setPoint3DPosition(vectorPosition);
+
+      time++;
+      this.points3D.push(newPoint);
     });
     sendLog(
       "info",
       "Points added to EmbeddedGraphObject (EmbeddedGraphObject.addPoints())",
+    );
+  }
+
+  updatePoints(): void {
+    this.points3D.forEach((point) => {
+      point.getObject().setSelected(false); // Update selection status
+      // TODO: Add color update logic if necessary
+    });
+    sendLog(
+      "info",
+      "all points have been unselected (EmbeddedGraphObject.tsx)",
     );
   }
 
@@ -78,7 +101,7 @@ export class EmbeddedGraphObject
     // calculate the indexes for the 3 coordinates
     const xIndex = time;
     const yIndex = time - this.tao;
-    const zIndex = time - 2 * this.tao;
+    const zIndex = time - (2 * this.tao);
 
     // gets the value of the specified indices from the csvData set
     position[0] = this.retreiveCoordinateValue(xIndex, csvData);
@@ -108,12 +131,22 @@ export class EmbeddedGraphObject
   ): number {
     if (index < 0) {
       return 0;
-    } else {
-      //const line: { key: Record<string, string | number> } = csvData[index];
-      // const position = line[
-      //   this.axes.yLabel as keyof typeof line
-      // ] as unknown as number;
-      return 0;
+    }
+    else if(index == 0){
+      const line: { key: Record<string, string | number> } = csvData[0];
+      const position = line[
+        this.getCSVData().getYHeader() as keyof typeof line
+      ] as unknown as number;
+      console.log("index == 0, ", position);
+      return position;
+    } 
+    else {
+      const line: { key: Record<string, string | number> } = csvData[index];
+      const position = line[
+        this.getCSVData().getYHeader() as keyof typeof line
+      ] as unknown as number;
+      console.log("else, ", position);
+      return position;
     }
   }
 

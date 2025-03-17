@@ -1,4 +1,4 @@
-import { Point2DInterface, PointInterface, PointObjectInterface } from "../../../types/PointInterface";
+import { Point2DInterface, PointObjectInterface } from "../../../types/PointInterface";
 import { PointObject } from "./PointObject";
 
 export class Point2DObject implements Point2DInterface{

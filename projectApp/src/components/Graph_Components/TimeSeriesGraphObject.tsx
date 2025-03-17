@@ -3,6 +3,7 @@ import { CSVDataObject } from "../Csv_Components/CSVDataObject";
 import { GraphObject } from "./GraphObject";
 import { sendLog } from "../../logger-frontend";
 import { Point2DObject } from "./Points/Point2DObject";
+import { Point2DInterface } from "../../types/PointInterface";
 
 /**
  * TimeSeriesGraphObject is a class that extends GraphObject
@@ -20,7 +21,7 @@ export class TimeSeriesGraphObject
     this.points2D = [];
   }
 
-  getPoints2D(): Point2DObject[]{
+  getPoints2D(): Point2DInterface[]{
     return this.points2D;
   }
 

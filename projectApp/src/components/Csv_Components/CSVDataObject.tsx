@@ -1,7 +1,7 @@
 import { CSVDataInterface } from "../../types/CSVInterfaces";
 import { LocalCSVReader, LocalCsvReader, UrlCSVReader } from "./CSVReaders";
 import { sendError, sendLog } from "../../logger-frontend";
-import { PointInterface, PointObjectInterface } from "../../types/PointInterface";
+import { PointObjectInterface } from "../../types/PointInterface";
 import { PointObject } from "../Graph_Components/Points/PointObject";
 
 /**

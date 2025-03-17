@@ -3,6 +3,8 @@ import React from "react";
 import mainController from "../../controller/MainController";
 import { EmbeddedGraphObject } from "../../components/Graph_Components/EmbeddedGraphObject";
 import { sendLog } from "../../logger-frontend";
+import { Point3DInterface } from "../../types/PointInterface";
+import Create3DPoint from "../../components/Graph_Components/Points/Create3DPoint";
 
 /**
  * This function will create an Embedded Graph in the VR environment using a EmbeddedGraphObject.
@@ -20,6 +22,14 @@ export function EmbeddedGraph({
   function UpdateGraph(): void {
     mainController.updateMainScene();
     sendLog("info", "an EmbeddedGraph object was updated (EmbeddedGraph.tsx)");
+  }
+
+  function GeneratePoints({point}:{point:Point3DInterface}): React.JSX.Element{
+    return(
+      <>
+        <Create3DPoint pointRef={point}></Create3DPoint>
+      </>
+    )
   }
 
   function GenerateAxis() {
@@ -69,7 +79,16 @@ export function EmbeddedGraph({
         <mesh position={[2, 1, 0]}>
           <boxGeometry args={[2, 2, 2]} />
           <meshBasicMaterial visible={false} />
-          <GenerateAxis />
+          <GenerateAxis /> 
+
+          <GeneratePoints point={graph.getPoints3D()[1]}></GeneratePoints>
+          {/* {graph.getPoints3D().map((points) => {
+            return(
+              <>
+                <GeneratePoints point={points}></GeneratePoints>
+              </>
+            )
+          })} */}
         </mesh>
 
         <mesh rotation={[0, 3.14, 0]} position={[3, 2, 4.8]}>

@@ -1,3 +1,4 @@
+import Point3D from "../../../pages/Graph_Elements/Point3D";
 import { Point3DInterface } from "../../../types/PointInterface";
 import { Point3DObject } from "./Point3DObject";
 
@@ -11,6 +12,7 @@ export default function Create3DPoint({pointRef}:{pointRef: Point3DInterface}): 
     point.setZAxisPos(pointRef.getZPosition());
     return(
         <>
+        <Point3D pointRef={point}></Point3D>
         </>
     )
 }

@@ -137,7 +137,6 @@ export class EmbeddedGraphObject
       const position = line[
         this.getCSVData().getYHeader() as keyof typeof line
       ] as unknown as number;
-      console.log("index == 0, ", position);
       return position;
     } 
     else {
@@ -145,7 +144,6 @@ export class EmbeddedGraphObject
       const position = line[
         this.getCSVData().getYHeader() as keyof typeof line
       ] as unknown as number;
-      console.log("else, ", position);
       return position;
     }
   }

@@ -16,13 +16,22 @@ export class TimeSeriesGraphObject
   implements TimeSeriesGraphInterface
 {
   points2D: Point2DObject[];
+  yRangeLength: number;
   constructor(csv: CSVDataObject) {
     super(csv);
     this.points2D = [];
+    this.yRangeLength = 0;
   }
 
   getPoints2D(): Point2DInterface[]{
     return this.points2D;
+  }
+
+  getYRangeLength(): number{
+    return this.yRangeLength;
+  }
+  setYRangeLength(num: number): void{
+    this.yRangeLength = num;
   }
 
   // TODO - refactor point methods to GraphObject as both TimeSeries and Embedded graphs will use same point objects
@@ -127,6 +136,8 @@ export class TimeSeriesGraphObject
       "info",
       `timeSeriesYRange() returned ${range} (TimeSeriesGraphClass.tsx)`,
     );
+
+    this.setYRangeLength(range.length + 1);
     return range;
   }
 

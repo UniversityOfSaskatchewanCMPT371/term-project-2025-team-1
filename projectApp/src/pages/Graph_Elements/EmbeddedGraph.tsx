@@ -81,14 +81,13 @@ export function EmbeddedGraph({
           <meshBasicMaterial visible={false} />
           <GenerateAxis /> 
 
-          <GeneratePoints point={graph.getPoints3D()[1]}></GeneratePoints>
-          {/* {graph.getPoints3D().map((points) => {
+          {graph.getPoints3D().map((points) => {
             return(
               <>
                 <GeneratePoints point={points}></GeneratePoints>
               </>
             )
-          })} */}
+          })}
         </mesh>
 
         <mesh rotation={[0, 3.14, 0]} position={[3, 2, 4.8]}>

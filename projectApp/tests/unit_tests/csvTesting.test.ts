@@ -5,7 +5,8 @@ import {
   UrlCSVHeaders as urlHeaders,
   LocalCsvReader as localFileReader,
 } from "../../src/components/Csv_Components/CSVReaders.tsx";
-import { readFile } from "fs/promises";
+import MockFile from "./__mocks__/MockFile.ts";
+import MockFileReader, { pathStrToFile } from "./__mocks__/mockFileReader";
 
 interface TestFormat<Input, Output> {
   description: string;
@@ -17,7 +18,7 @@ interface TestFormat<Input, Output> {
 function runReaderTest(
   testObject: TestFormat<
     string | File,
-    Record<string, string | number>[] | string[]
+    { key: Record<string, string | number> }[] | string[]
   >,
 ): void {
   test(testObject.description, async () => {
@@ -59,51 +60,28 @@ const localEmptyFile = `${relativePathToFiles}/empty.csv`;
 // apparently FileReader can only exist in the web app environment, it cant be tested in normally in nodejs/vitest
 // so these mocks will simulate FileReader and File
 // Mock FileReader globally
-vi.stubGlobal(
-  "FileReader",
-  (await import("./__mocks__/mockFileReader")).MockFileReader,
-);
+vi.stubGlobal("FileReader", MockFileReader);
 
 // Mock File class
-global.File = class {
-  constructor(
-    public fileBits: BlobPart[],
-    public name: string,
-    public options?: FilePropertyBag,
-  ) {}
-} as unknown as typeof File;
-
-/**
- * Returns a file that has the contents of the file at the filePath
- * @param filePath path string to the file
- * @returns `File` {fileBits: contents at filePath, name: filePath, options: in text/csv}
- */
-async function pathStrToFile(filePath: string): Promise<File> {
-  const reader = readFile(filePath, "utf-8");
-  let data: string;
-  try {
-    data = await reader;
-  } catch {
-    data = "";
-    //for some reason, if await reader throws the error, vitest still receives ENOENT error
-    //vitest cant handle errors outside of expect
-    //so instead data will be returned as empty (aka couldnt read)
-  }
-  return new File([data], filePath, { type: "text/csv" });
-}
+vi.stubGlobal("File", MockFile);
 
 // These tests should now work in non-browser API
 describe("Testing localCsvReader(file) function", () => {
-  const regularFileReader: TestFormat<File, Record<string, string | number>[]> =
-    {
-      description: "local file reader:\tdata should be read from existing file",
-      inputVars: pathStrToFile(localRegularFile),
-      expectSuccess: true,
-      useFunction: localFileReader,
-    };
+  const regularFileReader: TestFormat<
+    File,
+    { key: Record<string, string | number> }[]
+  > = {
+    description: "local file reader:\tdata should be read from existing file",
+    inputVars: pathStrToFile(localRegularFile),
+    expectSuccess: true,
+    useFunction: localFileReader,
+  };
   runReaderTest(regularFileReader);
 
-  const fakeFileReader: TestFormat<File, Record<string, string | number>[]> = {
+  const fakeFileReader: TestFormat<
+    File,
+    { key: Record<string, string | number> }[]
+  > = {
     description:
       "local file reader:\tdata should not be read from nonexistant file",
     inputVars: pathStrToFile(localFakeFile),
@@ -112,7 +90,10 @@ describe("Testing localCsvReader(file) function", () => {
   };
   runReaderTest(fakeFileReader);
 
-  const oneLessReader: TestFormat<File, Record<string, string | number>[]> = {
+  const oneLessReader: TestFormat<
+    File,
+    { key: Record<string, string | number> }[]
+  > = {
     description:
       "local file reader:\tdata should be read from file with one less header",
     inputVars: pathStrToFile(localOneLessHeader),
@@ -121,7 +102,10 @@ describe("Testing localCsvReader(file) function", () => {
   };
   runReaderTest(oneLessReader);
 
-  const oneMoreReader: TestFormat<File, Record<string, string | number>[]> = {
+  const oneMoreReader: TestFormat<
+    File,
+    { key: Record<string, string | number> }[]
+  > = {
     description:
       "local file reader:\tdata should be read from file with one more header",
     inputVars: pathStrToFile(localOneMoreHeader),
@@ -130,19 +114,21 @@ describe("Testing localCsvReader(file) function", () => {
   };
   runReaderTest(oneMoreReader);
 
-  const unevenDataReader: TestFormat<File, Record<string, string | number>[]> =
-    {
-      description:
-        "local file reader:\tdata should be read from file with uneven data",
-      inputVars: pathStrToFile(localUnevenData),
-      expectSuccess: true,
-      useFunction: localFileReader,
-    };
+  const unevenDataReader: TestFormat<
+    File,
+    { key: Record<string, string | number> }[]
+  > = {
+    description:
+      "local file reader:\tdata should be read from file with uneven data",
+    inputVars: pathStrToFile(localUnevenData),
+    expectSuccess: true,
+    useFunction: localFileReader,
+  };
   runReaderTest(unevenDataReader);
 
   const differentTypesReader: TestFormat<
     File,
-    Record<string, string | number>[]
+    { key: Record<string, string | number> }[]
   > = {
     description:
       "local file reader:\tdata should be read from file with different data types",
@@ -152,7 +138,10 @@ describe("Testing localCsvReader(file) function", () => {
   };
   runReaderTest(differentTypesReader);
 
-  const inputHtmlReader: TestFormat<File, Record<string, string | number>[]> = {
+  const inputHtmlReader: TestFormat<
+    File,
+    { key: Record<string, string | number> }[]
+  > = {
     description:
       "local file reader:\tdata should not be read from non-csv file",
     inputVars: pathStrToFile(localNotCSV),
@@ -161,7 +150,10 @@ describe("Testing localCsvReader(file) function", () => {
   };
   runReaderTest(inputHtmlReader);
 
-  const emptyFileReader: TestFormat<File, Record<string, string | number>[]> = {
+  const emptyFileReader: TestFormat<
+    File,
+    { key: Record<string, string | number> }[]
+  > = {
     description:
       "local file reader:\tdata should be not read from empty csv file",
     inputVars: pathStrToFile(localEmptyFile),
@@ -187,13 +179,15 @@ const urlW3Pandas = "https://www.w3schools.com/python/pandas/data.csv";
 describe("Testing the urlCSVReader function", () => {
   //NOTE: these tests are for testing if it can read the file, not for if the csv is formatted correctly
 
-  const regularFileUrl: TestFormat<string, Record<string, string | number>[]> =
-    {
-      description: "url reader:\tdata should be read from existing file",
-      inputVars: urlRegularFile,
-      expectSuccess: true,
-      useFunction: urlReader,
-    };
+  const regularFileUrl: TestFormat<
+    string,
+    { key: Record<string, string | number> }[]
+  > = {
+    description: "url reader:\tdata should be read from existing file",
+    inputVars: urlRegularFile,
+    expectSuccess: true,
+    useFunction: urlReader,
+  };
   runReaderTest(regularFileUrl);
 
   const regularFileUrlHeaders: TestFormat<string, string[]> = {
@@ -204,7 +198,10 @@ describe("Testing the urlCSVReader function", () => {
   };
   runReaderTest(regularFileUrlHeaders);
 
-  const fakeFileUrl: TestFormat<string, Record<string, string | number>[]> = {
+  const fakeFileUrl: TestFormat<
+    string,
+    { key: Record<string, string | number> }[]
+  > = {
     description: "url reader:\tdata should not be read from nonexistant file",
     inputVars: urlFakeFile,
     expectSuccess: false,
@@ -223,7 +220,7 @@ describe("Testing the urlCSVReader function", () => {
 
   const oneLessUrlReader: TestFormat<
     string,
-    Record<string, string | number>[]
+    { key: Record<string, string | number> }[]
   > = {
     description:
       "url reader:\tdata should be read from file with one less header",
@@ -244,7 +241,7 @@ describe("Testing the urlCSVReader function", () => {
 
   const oneMoreUrlReader: TestFormat<
     string,
-    Record<string, string | number>[]
+    { key: Record<string, string | number> }[]
   > = {
     description:
       "url reader:\tdata should be read from file with one more header",
@@ -265,7 +262,7 @@ describe("Testing the urlCSVReader function", () => {
 
   const unevenDataUrlReader: TestFormat<
     string,
-    Record<string, string | number>[]
+    { key: Record<string, string | number> }[]
   > = {
     description: "url reader:\tdata should be read from file with uneven data",
     inputVars: urlUnevenData,
@@ -285,7 +282,7 @@ describe("Testing the urlCSVReader function", () => {
 
   const differentTypesUrlReader: TestFormat<
     string,
-    Record<string, string | number>[]
+    { key: Record<string, string | number> }[]
   > = {
     description:
       "url reader:\tdata should be read from file with different data types",
@@ -306,7 +303,7 @@ describe("Testing the urlCSVReader function", () => {
 
   const inputHtmlUrlReader: TestFormat<
     string,
-    Record<string, string | number>[]
+    { key: Record<string, string | number> }[]
   > = {
     description: "url reader:\tdata should not be read from non-csv file",
     inputVars: urlNotCSV,
@@ -325,7 +322,7 @@ describe("Testing the urlCSVReader function", () => {
 
   const emptyFileUrlReader: TestFormat<
     string,
-    Record<string, string | number>[]
+    { key: Record<string, string | number> }[]
   > = {
     description: "url reader:\tdata should be not read from empty csv file",
     inputVars: urlEmptyFile,
@@ -344,7 +341,7 @@ describe("Testing the urlCSVReader function", () => {
 
   const w3schoolUrlReader: TestFormat<
     string,
-    Record<string, string | number>[]
+    { key: Record<string, string | number> }[]
   > = {
     description:
       "url reader:\tdata should be read from an online csv file from another website",

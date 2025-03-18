@@ -13,7 +13,11 @@ Feature: Smoke Tests
     When the user clicks the "Load Local CSV" button
     And a file selection window opens
     And the user clicks on the valid CSV file "indexedData.csv"
-    Then a CSV should be added to the "Loaded Graphs" menu
+    And the CSV is added to the "Loaded Graphs" menu
+    And the user opens the graph menu
+    And a named CSV file <csvfile> appears in the menu
+    And the user clicks generate
+    Then the 2D graph should appear <2Dlocation> and the 3D graph should appear <3Dlocation>
 
   # Using the URL CSV loader
   Scenario: Testing the URL CSV Loader functionality
@@ -21,16 +25,12 @@ Feature: Smoke Tests
     When the user clicks the "Enter URL" text box
     And the user enters a valid URL into the text entry box
     And the user clicks the "Enter URL" button
-    Then a CSV should be added to the "Loaded Graphs" menu
-
-  Scenario Outline: Testing Graph Display functionality
-    Given the user wants to display a <graphtype> graph
-    When the user opens the graph menu
-    And a named CSV file <csvfile> apears in the menu
+    And the CSV is added to the "Loaded Graphs" menu
+    And the user opens the graph menu
+    And a named CSV file <csvfile> appears in the menu
     And the user clicks generate
-    Then the graph should appear <location>
+    Then the 2D graph should appear <2Dlocation> and the 3D graph should appear <3Dlocation>
 
     Examples:
-      | graphtype   | csvfile          | location              |
-      | TimeSeries  | indexedData.csv  | on the display board  |
-      | Embedded    | indexedData.csv  | behind the user       |
+      | csvfile          | 2Dlocation            | 3Dlocation       |
+      | indexedData.csv  | on the display board  | behind the user  |

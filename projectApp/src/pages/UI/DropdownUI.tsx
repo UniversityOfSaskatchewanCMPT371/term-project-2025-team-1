@@ -127,7 +127,29 @@ export default function DropdownUI({
 
     return( 
       <>
-      <Container width={"100%"} height={"80%"} flexDirection={"column"}borderWidth={1} borderColor={"black"}>
+      <Container width={"100%"} height={"80%"} flexDirection={"row"} alignContent={"center"} justifyContent={"center"} >
+        {/* Tao container */}
+        <Container width={"50%"} height={"100%"} flexDirection={"column"} alignContent={"center"} justifyContent={"center"}>
+          <Container width={"100%"} height={"50%"} flexDirection={"column"} alignContent={"center"}>
+            <Container width={"100%"} height={"50%"} flexDirection={"row"} justifyContent={"center"}>
+                <Text>Time Delay</Text>
+
+            </Container>
+          </Container>
+
+          <Container width={"100%"} height={"50%"} flexDirection={"column"} alignContent={"center"}>
+          <Container width={"100%"} height={"50%"} flexDirection={"row"} justifyContent={"center"}>
+                <Text>
+                  Time Window
+                </Text>
+                </Container>
+          </Container>
+        </Container>
+
+        {/* Information container?  */}
+        <Container width={"50%"} height={"100%"} flexDirection={"column"} alignContent={"center"} justifyContent={"flex-start"} borderWidth={1} borderColor={"black"}>
+          <Text> Information box</Text>
+        </Container>
 
       </Container>
       </>

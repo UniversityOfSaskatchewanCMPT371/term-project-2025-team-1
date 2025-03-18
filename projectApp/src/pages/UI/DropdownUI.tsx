@@ -49,7 +49,6 @@ export default function DropdownUI({
             alignItems={"center"}
             justifyContent={"center"}
           >
-            <RowObjectButtons data={data} />
           </Container>
         </Container>
       </>
@@ -68,24 +67,6 @@ export default function DropdownUI({
   }): React.JSX.Element {
     return (
       <>
-        <Container>
-          {/* Displaying the < button */}
-          <Container
-            backgroundColor={"gray"}
-            width={"25%"}
-            alignItems={"center"}
-            justifyContent={"center"}
-            positionRight={2}
-            backgroundOpacity={0.5}
-            hover={{ backgroundOpacity: 0.75 }}
-            onClick={() => {
-              data.decrementDisplayBoard();
-              sendLog("info", "RowObjectButtons [<] pressed");
-            }}
-          >
-            <Text fontWeight={"bold"}>&lt;</Text>
-          </Container>
-
           {/* Displaying the board number */}
           <Container
             width={"30%"}
@@ -94,25 +75,6 @@ export default function DropdownUI({
           >
             <Text fontWeight={"bold"}>{data.getDisplayBoard().toString()}</Text>
           </Container>
-
-          {/* Displaying the > button */}
-          <Container
-            backgroundColor={"gray"}
-            width={"25%"}
-            alignItems={"center"}
-            justifyContent={"center"}
-            positionLeft={2}
-            backgroundOpacity={0.5}
-            pointerEvents={"auto"}
-            hover={{ backgroundOpacity: 0.75 }}
-            onClick={() => {
-              data.incrementDisplayBoard();
-              sendLog("info", "RowObjectButtons []>] pressed");
-            }}
-          >
-            <Text fontWeight={"bold"}>&gt;</Text>
-          </Container>
-        </Container>
       </>
     );
   }
@@ -136,11 +98,11 @@ export default function DropdownUI({
       <>
         <Container flexDirection={"column"} width={"100%"}>
           <Container
-            height={"90%"}
+            height={"10%"}
             width={"100%"}
             flexDirection={"column"}
-            alignItems={"flex-start"}
-            justifyContent={"flex-start"}
+            alignItems={"center"}
+            justifyContent={"center"}
           >
             {/* Reading through Model csv data files */}
             {mainController
@@ -150,6 +112,8 @@ export default function DropdownUI({
                 <GenerateRowObject data={graph} key={graph.getName()} />
               ))}
           </Container>
+
+          <GenerateOptionsList></GenerateOptionsList>
 
           <Container
             flexDirection={"row"}
@@ -183,6 +147,17 @@ export default function DropdownUI({
     );
   }
 
+  function GenerateOptionsList(): React.JSX.Element {
+
+    return( 
+      <>
+      <Container width={"100%"} height={"80%"} flexDirection={"column"}borderWidth={1} borderColor={"black"}>
+
+      </Container>
+      </>
+    )
+  }
+
   /**
    * The main display of the DropDownUI, along with the button that displays it
    * @preconditions none
@@ -193,7 +168,7 @@ export default function DropdownUI({
       <>
         <Fullscreen
           flexDirection={"row"}
-          distanceToCamera={1}
+          distanceToCamera={inVR? 1: 0.1}
           pointerEvents={"none"}
         >
           <Container
@@ -238,7 +213,7 @@ export default function DropdownUI({
                   pointerEvents={"auto"}
                   justifyContent={"center"}
                 >
-                  <Text color={"white"}>Generate</Text>
+                  <Text color={"white"}>Drop Down</Text>
                 </Container>
               </Container>
             </Container>

@@ -36,7 +36,7 @@ export class CSVController implements ControllerInterface {
    */
   generate(): void {
     for (const csv of this.model.getData()) {
-      if (csv.getDisplayBoard() == 1) {
+      
         csv.setVRSelected(true);
         const TSGraph = new TimeSeriesGraphObject(csv);
         TSGraph.setName(csv.getName());
@@ -49,7 +49,9 @@ export class CSVController implements ControllerInterface {
         mainController.getGraphController().pushDataToModel(TSGraph, emGraph);
         console.log("Success on generate?");
         sendLog("info", "generate has pushed a new graph");
-      }
+
+        //For now return here so that the first csv file only gets loaded
+        return;
     }
   }
 

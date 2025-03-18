@@ -130,19 +130,27 @@ export default function DropdownUI({
       <Container width={"100%"} height={"80%"} flexDirection={"row"} alignContent={"center"} justifyContent={"center"} >
         {/* Tao container */}
         <Container width={"50%"} height={"100%"} flexDirection={"column"} alignContent={"center"} justifyContent={"center"}>
-          <Container width={"100%"} height={"50%"} flexDirection={"column"} alignContent={"center"}>
+          <Container width={"100%"} height={"33%"} flexDirection={"column"} alignContent={"center"}>
             <Container width={"100%"} height={"50%"} flexDirection={"row"} justifyContent={"center"}>
-                <Text>Time Delay</Text>
+                <Text>Set Time Delay</Text>
 
             </Container>
           </Container>
 
-          <Container width={"100%"} height={"50%"} flexDirection={"column"} alignContent={"center"}>
-          <Container width={"100%"} height={"50%"} flexDirection={"row"} justifyContent={"center"}>
-                <Text>
-                  Time Window
-                </Text>
-                </Container>
+          <Container width={"100%"} height={"33%"} flexDirection={"column"} alignContent={"center"}>
+            <Container width={"100%"} height={"50%"} flexDirection={"row"} justifyContent={"center"}>
+              <Text>
+                Set Tao
+              </Text>
+            </Container>
+          </Container>
+
+          <Container width={"100%"} height={"33%"} flexDirection={"column"} alignContent={"center"}>
+            <Container width={"100%"} height={"50%"} flexDirection={"row"} justifyContent={"center"}>
+              <Text>
+                Set Time Window
+              </Text>
+            </Container>
           </Container>
         </Container>
 

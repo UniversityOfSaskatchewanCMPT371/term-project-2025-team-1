@@ -31,6 +31,6 @@ Feature: Smoke Tests
     Then the graph should appear <location>
 
     Examples:
-        | graphtype   | csvfile          | location              |
-        | TimeSeries  | indexedData.csv  | on the display board  |
-        | Embedded    | indexedData.csv  | behind the user       |
+      | graphtype   | csvfile          | location              |
+      | TimeSeries  | indexedData.csv  | on the display board  |
+      | Embedded    | indexedData.csv  | behind the user       |

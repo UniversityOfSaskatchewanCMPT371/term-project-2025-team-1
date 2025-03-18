@@ -23,17 +23,14 @@ Feature: Smoke Tests
     And the user clicks the "Enter URL" button
     Then a CSV should be added to the "Loaded Graphs" menu
 
-  # Displaying the Time Series Graph
-  Scenario: Testing the Time Series Graph functionality
-    When the user opens the 2D graph menu
-    And a CSV file appears in the menu
+  Scenario Outline: Testing Graph Display functionality
+    Given the user wants to display a <graphtype> graph
+    When the user opens the graph menu
+    And a named CSV file <csvfile> apears in the menu
     And the user clicks generate
-    Then the graph should appear on the display board
+    Then the graph should appear <location>
 
-  # Displaying the Embedded Graph
-  Scenario: Testing the Embedded Graph functionality
-    When the user opens the 3D graph menu
-    And a CSV file appears in the menu
-    And the user selects "1" using the right or left indicator
-    And the user clicks generate
-    Then a placeholder box or graph should appear on the screen behind the user
+    Examples:
+        | graphtype   | csvfile          | location              |
+        | TimeSeries  | indexedData.csv  | on the display board  |
+        | Embedded    | indexedData.csv  | behind the user       |

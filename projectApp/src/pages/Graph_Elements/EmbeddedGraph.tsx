@@ -89,13 +89,6 @@ export function EmbeddedGraph({
             )
           })}
         </mesh>
-
-        <mesh rotation={[0, 3.14, 0]} position={[3, 2, 4.8]}>
-          <Text fontSize={0.35}>A 3D Graph will exist someday soon</Text>
-        </mesh>
-        <mesh rotation={[0, 3.14, 0]} position={[3, 1, 4.8]}>
-          <Text fontSize={0.35}>but here's a box in the meantime!</Text>
-        </mesh>
       </>
     );
   }

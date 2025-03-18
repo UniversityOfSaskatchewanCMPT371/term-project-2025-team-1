@@ -44,6 +44,7 @@ export class GraphController implements ControllerInterface {
     for (const graph of this.getModel().getData()) {
       if (graph.getName() == csv.getName()) {
         graph.setRange();
+        graph.setYRangeLength(graph.timeSeriesYRange().length + 1);
         return graph;
       }
     }
@@ -71,9 +72,11 @@ export class GraphController implements ControllerInterface {
 
     for (const graph of this.getModel().getEmbeddedGraphData()) {
       if (graph.getName() == csv.getName()) {
+        graph.setRange();
         return graph;
       }
     }
+    //Trow error instead later
     mainController.updateMainScene();
     return result;
   }

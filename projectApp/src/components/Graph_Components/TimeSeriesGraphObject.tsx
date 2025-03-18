@@ -137,7 +137,6 @@ export class TimeSeriesGraphObject
       `timeSeriesYRange() returned ${range} (TimeSeriesGraphClass.tsx)`,
     );
 
-    this.setYRangeLength(range.length + 1);
     return range;
   }
 
@@ -282,8 +281,11 @@ export class TimeSeriesGraphObject
    * This is used to update the graph when the model changes
    */
   updatePointPosition(): void {
+    this.setRange();
+
+    this.yRangeLength = this.timeSeriesYRange().length + 1;
     const totalSpace = 5;
-    const divider = totalSpace / this.timeSeriesYRange().length;
+    const divider = totalSpace / this.timeSeriesYRange().length; 
     let current = -1.8 + divider / 2;
 
     //Resetting points

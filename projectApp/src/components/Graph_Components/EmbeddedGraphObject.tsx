@@ -18,11 +18,31 @@ export class EmbeddedGraphObject
 {
   tao: number;
   points3D: Point3DInterface[];
+  zRange: [number, number];
 
   constructor(csv: CSVDataObject) {
     super(csv);
     this.tao = 1;
     this.points3D = [];
+    this.zRange = [0,0];
+  }
+
+  setRange(): void {
+    let max = 0;
+    this.getCSVData().getData().forEach((data) => {
+      if (
+        (data[this.getCSVData().getYHeader() as keyof typeof data] as unknown as number) >=
+        max
+      ) {
+        max = data[this.getCSVData().getYHeader() as keyof typeof data] as unknown as number;
+      }
+    });
+
+    this.axes.yRange[1] = max;
+    sendLog(
+      "info",
+      `setRange() was called; yRange was set to ${this.axes.yRange[1]} (EmbeddedGraphObject.tsx)`,
+    );
   }
 
   getCSVData(): CSVDataObject{
@@ -41,6 +61,8 @@ export class EmbeddedGraphObject
     const data = this.csvData.getData();
     var time = 0;
 
+    //Set range here
+    this.setRange()
     this.getCSVData().getPoints().forEach((point) => {
       const newPoint = new Point3DObject(point);
       // gets the time of the current line in the data set
@@ -103,11 +125,15 @@ export class EmbeddedGraphObject
     const yIndex = time - this.tao;
     const zIndex = time - (2 * this.tao);
 
+    console.log("Ranges: ", this.axes.xRange[1], ", ", this.axes.yRange[1], ", ", this.zRange)
     // gets the value of the specified indices from the csvData set
-    position[0] = this.retreiveCoordinateValue(xIndex, csvData);
-    position[1] = this.retreiveCoordinateValue(yIndex, csvData);
-    position[2] = this.retreiveCoordinateValue(zIndex, csvData);
+    position[0] = this.retreiveCoordinateValue(xIndex, csvData)/this.axes.yRange[1];
+    position[1] = this.retreiveCoordinateValue(yIndex, csvData)/this.axes.yRange[1];
+    position[2] = this.retreiveCoordinateValue(zIndex, csvData)/this.axes.yRange[1];
 
+    //Find max value and then divide position with the max
+    console.log("Point position------------------")
+    console.log("X:",position[0], " Y:", position[1], " Z:",position[2], " yRange: ", this.axes.yRange[1]);
     sendLog(
       "info",
       `vector position calculated for data at index/time ${time} (EmbeddedGraphObject.calculateVectorPosition())`,
@@ -132,13 +158,6 @@ export class EmbeddedGraphObject
     if (index < 0) {
       return 0;
     }
-    else if(index == 0){
-      const line: { key: Record<string, string | number> } = csvData[0];
-      const position = line[
-        this.getCSVData().getYHeader() as keyof typeof line
-      ] as unknown as number;
-      return position;
-    } 
     else {
       const line: { key: Record<string, string | number> } = csvData[index];
       const position = line[

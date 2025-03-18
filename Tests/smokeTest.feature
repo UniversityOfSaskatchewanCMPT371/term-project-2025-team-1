@@ -4,15 +4,15 @@ Feature: Smoke Tests
   # Background data
   Background:
     Given the user is in the VR environment
-    And the user has a local example CSV file "test.csv"
-    And the user has a URL-based example CSV file with address "https://raw.githubusercontent.com/UniversityOfSaskatchewanCMPT371/term-project-2025-team-1/refs/heads/ID2Dev/csvTestFiles/test.csv"
+    And the user has a local example CSV file "indexedData.csv"
+    And the user has a URL-based example CSV file with address "https://raw.githubusercontent.com/UniversityOfSaskatchewanCMPT371/term-project-2025-team-1/refs/heads/main/csvTestFiles/indexedData.csv"
 
   # Using the local CSV loader
   Scenario: Testing the local CSV Loader functionality
     Given the "Load Local CSV" button is visible
     When the user clicks the "Load Local CSV" button
     And a file selection window opens
-    And the user clicks on the valid CSV file "test.csv"
+    And the user clicks on the valid CSV file "indexedData.csv"
     Then a CSV should be added to the "Loaded Graphs" menu
 
   # Using the URL CSV loader

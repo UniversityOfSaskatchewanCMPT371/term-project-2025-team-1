@@ -15,9 +15,9 @@ Feature: Smoke Tests
     And the user clicks on the valid CSV file "indexedData.csv"
     And the CSV is added to the "Loaded Graphs" menu
     And the user opens the graph menu
-    And a named CSV file <csvfile> appears in the menu
+    And a named CSV file indexedData.csv appears in the menu
     And the user clicks generate
-    Then the 2D graph should appear <2Dlocation> and the 3D graph should appear <3Dlocation>
+    Then the 2D graph should appear on the display board and the 3D graph should appear behind the user 
 
   # Using the URL CSV loader
   Scenario: Testing the URL CSV Loader functionality
@@ -27,10 +27,6 @@ Feature: Smoke Tests
     And the user clicks the "Enter URL" button
     And the CSV is added to the "Loaded Graphs" menu
     And the user opens the graph menu
-    And a named CSV file <csvfile> appears in the menu
+    And a named CSV file indexedData.csv appears in the menu
     And the user clicks generate
-    Then the 2D graph should appear <2Dlocation> and the 3D graph should appear <3Dlocation>
-
-    Examples:
-      | csvfile          | 2Dlocation            | 3Dlocation       |
-      | indexedData.csv  | on the display board  | behind the user  |
+    Then the 2D graph should appear on the display board and the 3D graph should appear behind the user

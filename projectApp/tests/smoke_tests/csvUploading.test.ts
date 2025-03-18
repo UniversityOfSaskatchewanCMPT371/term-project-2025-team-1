@@ -17,8 +17,8 @@ const mainBranchUrl =
 const indexedDataUrl = `${mainBranchUrl}/indexedData.csv`;
 const indexedDataPath = "../csvTestFiles/indexedData.csv";
 
-describe("Test that mainController a file", () => {
-  test("expect mainController to load a url", async () => {
+describe("Test that a csv file can be loaded when called starting from mainController", () => {
+  test("expect csvController in mainController to create a graph from csv url input", async () => {
     await mainControllerTest.getCSVController().loadURLFile(indexedDataUrl);
     //should be Graph0
     const urlGraph = mainControllerTest
@@ -27,7 +27,7 @@ describe("Test that mainController a file", () => {
     expect(urlGraph).not.toBeNull();
     expect(urlGraph).toBeInstanceOf(CSVDataObject);
   });
-  test("Test that mainController can load a local csv file", async () => {
+  test("expect csvController in mainController to create a graph from csv file input", async () => {
     const indexedDataFile = await pathStrToFile(indexedDataPath);
     await mainControllerTest.getCSVController().loadLocalFile(indexedDataFile);
     //should be Graph1

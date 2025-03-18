@@ -55,30 +55,6 @@ export default function DropdownUI({
     );
   }
 
-  /**
-   * Buttons used for changing the display board
-   * @precondition A csv data linked to these button updates
-   * @postconditions Two buttons for incrementing and decrementing, the current display board number
-   */
-  function RowObjectButtons({
-    data,
-  }: {
-    data: CSVDataInterface;
-  }): React.JSX.Element {
-    return (
-      <>
-          {/* Displaying the board number */}
-          <Container
-            width={"30%"}
-            alignItems={"center"}
-            justifyContent={"center"}
-          >
-            <Text fontWeight={"bold"}>{data.getDisplayBoard().toString()}</Text>
-          </Container>
-      </>
-    );
-  }
-
   /*
    * Generates the graph, and then updates main scene
    */

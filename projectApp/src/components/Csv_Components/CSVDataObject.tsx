@@ -34,30 +34,23 @@ export class CSVDataObject implements CSVDataInterface {
     this.points = [];
   }
 
-  getTimeHeader(): string{
-    return this.timeHeader;
-  }
-  setTimeHeader(){
-    this.timeHeader = this.findTimeHeader();
-  }
-  populatePoints(){
+  populatePoints() {
     this.points = [];
     this.getData().forEach((data) => {
-          const newPoint = new PointObject();
-    
-          newPoint.setTimeData(
-            data[this.getTimeHeader() as keyof typeof data] as unknown as string,
-          );
-          newPoint.setYData(
-            data[this.getYHeader() as keyof typeof data] as unknown as number,
-          );
-          this.points.push(newPoint);
-        });
+      const newPoint = new PointObject();
+
+      newPoint.setTimeData(
+        data[this.getTimeHeader() as keyof typeof data] as unknown as string,
+      );
+      newPoint.setYData(
+        data[this.getYHeader() as keyof typeof data] as unknown as number,
+      );
+      this.points.push(newPoint);
+    });
   }
 
-  getPoints(){
+  getPoints() {
     return this.points;
-    
   }
   setPoints(points: PointObjectInterface[]): void {
     if (!Array.isArray(points)) {
@@ -103,7 +96,6 @@ export class CSVDataObject implements CSVDataInterface {
         this.csvHeaders = headers;
         this.setTimeHeader();
         this.setYHeader(this.findFirstHeader());
-
       }
       sendLog(
         "info",
@@ -174,7 +166,7 @@ export class CSVDataObject implements CSVDataInterface {
     }
   }
 
-  clearPoints(){
+  clearPoints() {
     this.points = [];
   }
 
@@ -351,5 +343,12 @@ export class CSVDataObject implements CSVDataInterface {
         break;
       }
     }
+  }
+
+  getTimeHeader(): string {
+    return this.timeHeader;
+  }
+  setTimeHeader() {
+    this.timeHeader = this.findTimeHeader();
   }
 }

@@ -33,7 +33,7 @@ export default function TimeSeriesGraph({
 
   // Spacing used by X and Y axis
   const xSpacing = 100 / graph.getNumPoints();
-  const ySpacing = 100 / (graph.yRangeLength);
+  const ySpacing = 100 / graph.yRangeLength;
 
   //Used to update the graph, currently updates on Y header change
   function UpdateGraph(): void {
@@ -174,7 +174,6 @@ export default function TimeSeriesGraph({
       "info",
       "a visual representation of points was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)",
     );
-  
 
     return (
       <>

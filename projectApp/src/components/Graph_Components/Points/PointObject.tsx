@@ -1,6 +1,5 @@
 import { PointObjectInterface } from "../../../types/PointInterface";
 
-
 /**
  * The PointObject class is responsible for managing the data of a single point in a graph.
  *

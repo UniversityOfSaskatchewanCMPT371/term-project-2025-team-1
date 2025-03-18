@@ -106,8 +106,7 @@ export interface GraphInterface extends DataInterface {
    * pre-condition: axes object must contain valid labels and ranges
    * post-condition: graph's axes configuration is updated to the new values
    */
-  setAxes(axes: {
-    xRange: [number, number];
-    yRange: [number, number];
-  }): void;
+  setAxes(axes: { xRange: [number, number]; yRange: [number, number] }): void;
+
+  getCSVData(): CSVDataInterface;
 }

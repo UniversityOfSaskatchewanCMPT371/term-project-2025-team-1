@@ -10,7 +10,6 @@ export interface EmbeddedInterface extends GraphInterface {
   };
   tao: number;
   points3D: Point3DInterface[];
-  zRange: [number, number];
 
   /**
    * Adds embedded point vectors to the graph.

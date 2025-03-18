@@ -215,10 +215,7 @@ export class GraphObject implements GraphInterface {
    * @precondition the 'axes' parameter must be an object with 'xLabel', 'yLabel', 'xRange', and 'yRange' properties.
    * @postcondition the 'axes' property is set to the provided object. If the 'axes' parameter is invalid, an error is thrown.
    */
-  setAxes(axes: {
-    xRange: [number, number];
-    yRange: [number, number];
-  }): void {
+  setAxes(axes: { xRange: [number, number]; yRange: [number, number] }): void {
     // if (typeof axes.xLabel !== "string" || axes.xLabel.trim() === "") {
     //   throw new Error("Invalid xLabel: must be a non-empty string");
     // }

@@ -23,14 +23,14 @@ export class TimeSeriesGraphObject
     this.yRangeLength = 0;
   }
 
-  getPoints2D(): Point2DInterface[]{
+  getPoints2D(): Point2DInterface[] {
     return this.points2D;
   }
 
-  getYRangeLength(): number{
+  getYRangeLength(): number {
     return this.yRangeLength;
   }
-  setYRangeLength(num: number): void{
+  setYRangeLength(num: number): void {
     this.yRangeLength = num;
   }
 
@@ -42,12 +42,14 @@ export class TimeSeriesGraphObject
    */
   addPoints(): void {
     this.points2D = [];
-    this.getCSVData().getPoints().forEach((point) => {
-      const newPoint = new Point2DObject(point);
+    this.getCSVData()
+      .getPoints()
+      .forEach((point) => {
+        const newPoint = new Point2DObject(point);
 
-      //Get Header by key then assign
-      this.points2D.push(newPoint);
-    });
+        //Get Header by key then assign
+        this.points2D.push(newPoint);
+      });
     sendLog(
       "info",
       "addPoint() has added new points to the graph (TimeSeriesGraphClass.tsx)",
@@ -68,7 +70,9 @@ export class TimeSeriesGraphObject
       `findPoint() is searching for a point at ${xData}, ${yData} (TimeSeriesGraphClass.tsx)`,
     );
     return this.points2D.find(
-      (point) => point.getObject().getTimeData() === xData && point.getObject().getYData() === yData,
+      (point) =>
+        point.getObject().getTimeData() === xData &&
+        point.getObject().getYData() === yData,
     );
   }
 
@@ -97,14 +101,19 @@ export class TimeSeriesGraphObject
    */
   setRange(): void {
     let max = 0;
-    this.getCSVData().getData().forEach((data) => {
-      if (
-        (data[this.getCSVData().getYHeader() as keyof typeof data] as unknown as number) >=
-        max
-      ) {
-        max = data[this.getCSVData().getYHeader() as keyof typeof data] as unknown as number;
-      }
-    });
+    this.getCSVData()
+      .getData()
+      .forEach((data) => {
+        if (
+          (data[
+            this.getCSVData().getYHeader() as keyof typeof data
+          ] as unknown as number) >= max
+        ) {
+          max = data[
+            this.getCSVData().getYHeader() as keyof typeof data
+          ] as unknown as number;
+        }
+      });
 
     while (max % 5 != 0) {
       max++;
@@ -124,7 +133,7 @@ export class TimeSeriesGraphObject
    */
   timeSeriesYRange(): number[] {
     const range: number[] = [];
-    
+
     let cur = 0;
 
     //For larger data sets, it would be possible to create a case statement
@@ -148,12 +157,14 @@ export class TimeSeriesGraphObject
   timeSeriesXRange(): string[] {
     const range: string[] = [];
 
-    this.getCSVData().getData().forEach((data) => {
-      const temp = data[
-        this.getCSVData().getTimeHeader() as keyof typeof data
-      ] as unknown as string;
-      range.push(temp);
-    });
+    this.getCSVData()
+      .getData()
+      .forEach((data) => {
+        const temp = data[
+          this.getCSVData().getTimeHeader() as keyof typeof data
+        ] as unknown as string;
+        range.push(temp);
+      });
     sendLog(
       "info",
       `timeSeriesXRange() was called and returned ${range} (TimeSeriesGraphClass.tsx)`,
@@ -176,11 +187,16 @@ export class TimeSeriesGraphObject
       return;
     }
 
-    let start = this.getCSVData().getCSVHeaders().indexOf(this.getCSVData().getYHeader());
+    let start = this.getCSVData()
+      .getCSVHeaders()
+      .indexOf(this.getCSVData().getYHeader());
 
     //Cycle to the beginning
     if (start == this.getCSVData().getCSVHeaders().length - 1) {
-      if (this.getCSVData().getCSVHeaders()[0] != this.getCSVData().getTimeHeader()) {
+      if (
+        this.getCSVData().getCSVHeaders()[0] !=
+        this.getCSVData().getTimeHeader()
+      ) {
         this.getCSVData().setYHeader(this.getCSVData().getCSVHeaders()[0]);
       } else {
         //Go to the next available header
@@ -197,8 +213,9 @@ export class TimeSeriesGraphObject
     //If second to the last but last is the Time header, go to the start
     if (
       start == this.getCSVData().getCSVHeaders().length - 2 &&
-      this.getCSVData().getCSVHeaders()[this.getCSVData().getCSVHeaders().length - 1] ==
-        this.getCSVData().getTimeHeader()
+      this.getCSVData().getCSVHeaders()[
+        this.getCSVData().getCSVHeaders().length - 1
+      ] == this.getCSVData().getTimeHeader()
     ) {
       this.getCSVData().setYHeader(this.getCSVData().getCSVHeaders()[0]);
       sendLog(
@@ -210,8 +227,10 @@ export class TimeSeriesGraphObject
 
     for (start; start < this.getCSVData().getCSVHeaders().length; start++) {
       if (
-        this.getCSVData().getCSVHeaders()[start] != this.getCSVData().getTimeHeader() &&
-        this.getCSVData().getCSVHeaders()[start] != this.getCSVData().getYHeader()
+        this.getCSVData().getCSVHeaders()[start] !=
+          this.getCSVData().getTimeHeader() &&
+        this.getCSVData().getCSVHeaders()[start] !=
+          this.getCSVData().getYHeader()
       ) {
         this.getCSVData().setYHeader(this.getCSVData().getCSVHeaders()[start]);
         return;
@@ -234,19 +253,29 @@ export class TimeSeriesGraphObject
       return;
     }
 
-    let start = this.getCSVData().getCSVHeaders().indexOf(this.getCSVData().getYHeader());
+    let start = this.getCSVData()
+      .getCSVHeaders()
+      .indexOf(this.getCSVData().getYHeader());
 
     //Cycle to the end
     if (start == 0) {
       if (
-        this.getCSVData().getCSVHeaders()[this.getCSVData().getCSVHeaders().length - 1] !=
-        this.getCSVData().getTimeHeader()
+        this.getCSVData().getCSVHeaders()[
+          this.getCSVData().getCSVHeaders().length - 1
+        ] != this.getCSVData().getTimeHeader()
       ) {
-        this.getCSVData().setYHeader(this.getCSVData().getCSVHeaders()[this.getCSVData().getCSVHeaders().length - 1]);
+        this.getCSVData().setYHeader(
+          this.getCSVData().getCSVHeaders()[
+            this.getCSVData().getCSVHeaders().length - 1
+          ],
+        );
       } else {
         //Go to the next available header
         this.getCSVData().setYHeader(
-          this.getCSVData().getCSVHeaders()[this.getCSVData().getCSVHeaders().length - 2]);
+          this.getCSVData().getCSVHeaders()[
+            this.getCSVData().getCSVHeaders().length - 2
+          ],
+        );
       }
       sendLog(
         "info",
@@ -256,9 +285,15 @@ export class TimeSeriesGraphObject
     }
 
     //If second to the first but first is the Time header, go to the end
-    if (start == 1 && this.getCSVData().getCSVHeaders()[0] == this.getCSVData().getTimeHeader()) {
+    if (
+      start == 1 &&
+      this.getCSVData().getCSVHeaders()[0] == this.getCSVData().getTimeHeader()
+    ) {
       this.getCSVData().setYHeader(
-        this.getCSVData().getCSVHeaders()[this.getCSVData().getCSVHeaders().length - 1]);
+        this.getCSVData().getCSVHeaders()[
+          this.getCSVData().getCSVHeaders().length - 1
+        ],
+      );
       sendLog(
         "info",
         "decrementYHeader() was called and successfully deccremented (TimeSeriesGraphClass.tsx)",
@@ -268,8 +303,10 @@ export class TimeSeriesGraphObject
 
     for (start; start > 0; start--) {
       if (
-        this.getCSVData().getCSVHeaders()[start] != this.getCSVData().getYHeader() &&
-        this.getCSVData().getCSVHeaders()[start] != this.getCSVData().getTimeHeader()
+        this.getCSVData().getCSVHeaders()[start] !=
+          this.getCSVData().getYHeader() &&
+        this.getCSVData().getCSVHeaders()[start] !=
+          this.getCSVData().getTimeHeader()
       ) {
         this.getCSVData().setYHeader(this.getCSVData().getCSVHeaders()[start]);
         return;
@@ -285,7 +322,7 @@ export class TimeSeriesGraphObject
 
     this.yRangeLength = this.timeSeriesYRange().length + 1;
     const totalSpace = 5;
-    const divider = totalSpace / this.timeSeriesYRange().length; 
+    const divider = totalSpace / this.timeSeriesYRange().length;
     let current = -1.8 + divider / 2;
 
     //Resetting points
@@ -303,8 +340,21 @@ export class TimeSeriesGraphObject
           (this.getYRange() / this.timeSeriesYRange().length) -
           1,
       );
-      console.log(point.getXPosition(), " y:", point.getYPosition(), " HEADERS: ", this.csvData.getTimeHeader(), " ", this.csvData.getYHeader())
-      console.log("DATA: ", point.getObject().getTimeData(), " Y:", point.getObject().getYData())
+      console.log(
+        point.getXPosition(),
+        " y:",
+        point.getYPosition(),
+        " HEADERS: ",
+        this.csvData.getTimeHeader(),
+        " ",
+        this.csvData.getYHeader(),
+      );
+      console.log(
+        "DATA: ",
+        point.getObject().getTimeData(),
+        " Y:",
+        point.getObject().getYData(),
+      );
 
       current += divider;
     });
@@ -314,7 +364,7 @@ export class TimeSeriesGraphObject
     );
   }
 
-  getCSVData(){
+  getCSVData() {
     return this.csvData;
   }
 

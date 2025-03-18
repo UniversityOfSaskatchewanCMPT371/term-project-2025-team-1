@@ -14,10 +14,10 @@ export default function Create2DPoint({
 }: {
   pointRef: Point2DInterface;
 }): React.JSX.Element {
-  const point = new Point2DObject(pointRef.getObject())
+  const point = new Point2DObject(pointRef.getObject());
   point.setXAxisPos(pointRef.getXPosition());
-  point.setYAxisPos(pointRef.getYPosition())
+  point.setYAxisPos(pointRef.getYPosition());
   point.getObject().setTimeData(pointRef.getObject().getTimeData());
-  point.getObject().setYData(pointRef.getObject().getYData())
+  point.getObject().setYData(pointRef.getObject().getYData());
   return <Point2D pointRef={point}></Point2D>;
 }

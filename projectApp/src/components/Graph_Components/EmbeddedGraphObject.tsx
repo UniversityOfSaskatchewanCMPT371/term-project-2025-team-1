@@ -31,7 +31,7 @@ export class EmbeddedGraphObject
    */
   addPoints(): void {
     const data = this.csvData.getData();
-    var time = 0;
+    let time = 0;
 
     //Set range here
     this.setRange();
@@ -186,10 +186,6 @@ export class EmbeddedGraphObject
       "info",
       `value of tao in EmbeddedGraphObject updated to the value ${newTao}`,
     );
-  }
-
-  getCSVData(): CSVDataObject {
-    return this.csvData;
   }
 
   getPoints3D(): Point3DInterface[] {

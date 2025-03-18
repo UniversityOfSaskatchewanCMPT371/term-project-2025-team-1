@@ -19,13 +19,13 @@ describe("Embedded Graph test", () => {
 
   test("points get added to points array", () => {
     graph.addPoints();
-    expect(graph.getPoints().length).toBeGreaterThan(0);
+    expect(graph.getCSVData().getPoints().length).toBeGreaterThan(0);
   });
 
   // TODO - change data set names, when label isn't hardcoded
   test("vectors gets calculated correctly for X data set", () => {
     graph.addPoints();
-    const points = graph.getPoints();
+    const points = graph.getPoints3D();
     expect(points[0].getPosition()).toStrictEqual([1, 0, 0]);
     expect(points[1].getPosition()).toStrictEqual([2, 1, 0]);
     expect(points[2].getPosition()).toStrictEqual([3, 2, 1]);
@@ -41,14 +41,14 @@ describe("Embedded Graph test", () => {
   test("vectors calculation for header row B", () => {
     const axes = graph.getAxes();
     const newAxes = {
-      xLabel: axes.xLabel,
+      xLabel: graph.getCSVData().getTimeHeader(),
       yLabel: "B",
       xRange: axes.xRange,
       yRange: axes.yRange,
     };
     graph.setAxes(newAxes);
     graph.addPoints();
-    const points = graph.getPoints();
+    const points = graph.getPoints3D();
     expect(points[0].getPosition()).toStrictEqual([2, 0, 0]);
     expect(points[1].getPosition()).toStrictEqual([4, 2, 0]);
     expect(points[2].getPosition()).toStrictEqual([6, 4, 2]);
@@ -64,7 +64,7 @@ describe("Embedded Graph test", () => {
   test("vector calculation with tao=2", () => {
     graph.setTao(2);
     graph.addPoints();
-    const points = graph.getPoints();
+    const points = graph.getPoints3D();
     expect(points[0].getPosition()).toStrictEqual([1, 0, 0]);
     expect(points[1].getPosition()).toStrictEqual([2, 0, 0]);
     expect(points[2].getPosition()).toStrictEqual([3, 1, 0]);

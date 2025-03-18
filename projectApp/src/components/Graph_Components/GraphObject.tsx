@@ -1,3 +1,4 @@
+import { CSVDataInterface } from "../../types/CSVInterfaces";
 import { GraphInterface } from "../../types/GraphInterface";
 import { CSVDataObject } from "../Csv_Components/CSVDataObject";
 
@@ -223,5 +224,9 @@ export class GraphObject implements GraphInterface {
     //   throw new Error("Invalid yLabel: must be a non-empty string");
     // }
     this.axes = axes;
+  }
+
+  getCSVData(): CSVDataObject {
+    return this.csvData;
   }
 }

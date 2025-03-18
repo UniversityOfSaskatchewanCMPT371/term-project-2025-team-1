@@ -39,6 +39,7 @@ export interface Point3DInterface extends PointInterface {
   point3Dposition: [number, number, number];
 
   getZPosition(): number;
+  getPosition(): [number, number, number];
 
   setZAxisPos(z: number): void;
   setPoint3DPosition(poisition: [number, number, number]): void;

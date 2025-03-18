@@ -17,7 +17,7 @@ Feature: Smoke Tests
     And the user opens the graph menu
     And a named CSV file indexedData.csv appears in the menu
     And the user clicks generate
-    Then the 2D graph should appear on the display board and the 3D graph should appear behind the user 
+    Then the 2D graph should appear on the display board and the 3D graph should appear behind the user
 
   # Using the URL CSV loader
   Scenario: Testing the URL CSV Loader functionality

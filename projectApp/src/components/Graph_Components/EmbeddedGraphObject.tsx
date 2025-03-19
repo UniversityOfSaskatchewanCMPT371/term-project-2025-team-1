@@ -166,6 +166,7 @@ export class EmbeddedGraphObject
   /**
    * Sets the value of tau
    * @param newTau - a number greater than or eqaul to 1
+   * pre-condition: a valid tau value
    * post-conditions: the value of tau is updated to newTau
    */
   setTau(newTau: number): void {

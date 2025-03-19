@@ -96,12 +96,9 @@ export class EmbeddedGraphObject
     const zIndex = time - 2 * this.tao;
 
     // gets the value of the specified indices from the csvData set
-    position[0] =
-      this.retreiveCoordinateValue(xIndex, csvData);
-    position[1] =
-      this.retreiveCoordinateValue(yIndex, csvData);
-    position[2] =
-      this.retreiveCoordinateValue(zIndex, csvData);
+    position[0] = this.retreiveCoordinateValue(xIndex, csvData);
+    position[1] = this.retreiveCoordinateValue(yIndex, csvData);
+    position[2] = this.retreiveCoordinateValue(zIndex, csvData);
 
     sendLog(
       "info",
@@ -195,7 +192,7 @@ export class EmbeddedGraphObject
    */
 
   getPoints3D(): Point3DInterface[] {
-    if(this.points3D.length <= 0){
+    if (this.points3D.length <= 0) {
       throw new Error("Uninitialized 3d points (EmbeddedGraphObject.ts)");
     }
     return this.points3D;
@@ -206,8 +203,8 @@ export class EmbeddedGraphObject
    * @precondition the max range must be greater than the min range
    * @postcondition the range of the csv data set
    */
-  getRange(): number{
-    if(this.axes.yRange[0] >= this.axes.yRange[1]){
+  getRange(): number {
+    if (this.axes.yRange[0] >= this.axes.yRange[1]) {
       throw new Error("Invalid max yRange set (EmbeddedGraphObject.ts)");
     }
     return this.axes.yRange[1];
@@ -219,8 +216,10 @@ export class EmbeddedGraphObject
    * @postcondition sets the max range used in the 3d Embedded graph
    */
   setRange(): void {
-    if(this.getCSVData().getData().length <= 0){
-      throw new Error("Uninitialized csv data attribute. (EmbeddedGraphObject.ts)");
+    if (this.getCSVData().getData().length <= 0) {
+      throw new Error(
+        "Uninitialized csv data attribute. (EmbeddedGraphObject.ts)",
+      );
     }
 
     let max = 0;

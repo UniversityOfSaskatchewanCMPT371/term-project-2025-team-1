@@ -169,10 +169,10 @@ export class GraphController implements ControllerInterface {
    * @precondition for the Embedded Graph to exist and initialized
    * @postcondition on success, returns the max range of the Embedded Graph
    */
-  getEmbeddedRange(): number{
-    if(this.getModel().getEmbeddedGraphData()[0] == null){
+  getEmbeddedRange(): number {
+    if (this.getModel().getEmbeddedGraphData()[0] == null) {
       throw new Error("Un-initialized Embedded Graph (GraphController.ts)");
     }
-    return this.getModel().getEmbeddedGraphData()[0].getRange();    
+    return this.getModel().getEmbeddedGraphData()[0].getRange();
   }
 }

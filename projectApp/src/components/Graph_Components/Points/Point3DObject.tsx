@@ -3,13 +3,13 @@ import { PointObjectInterface } from "../../../types/PointInterface";
 import { PointObject } from "./PointObject";
 
 /**
- * Class that represents a 3D Point used by the Embedded Graph. 
+ * Class that represents a 3D Point used by the Embedded Graph.
  * Contains the attributes and methods required for a 3D point.
- * 
+ *
  * @implements {Point3DInterface}
  */
 export class Point3DObject implements Point3DInterface {
-  object: PointObjectInterface;               //Reference to the point object used by both 2D and 3D points
+  object: PointObjectInterface; //Reference to the point object used by both 2D and 3D points
   point3Dposition: [number, number, number];
 
   constructor(object: PointObject) {

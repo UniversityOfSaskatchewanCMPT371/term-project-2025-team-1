@@ -40,7 +40,7 @@ export class CSVDataObject implements CSVDataInterface {
    * @precondition none
    * @postcondition fills up the array of PointObjects used by the two graphs
    */
-  populatePoints(): void{
+  populatePoints(): void {
     this.points = [];
     this.getData().forEach((data) => {
       const newPoint = new PointObject();
@@ -56,11 +56,11 @@ export class CSVDataObject implements CSVDataInterface {
   }
 
   /**
-   * This method gets the array of Point Objects 
+   * This method gets the array of Point Objects
    * @precondition none
-   * @postcondition returns the point objects 
+   * @postcondition returns the point objects
    */
-  getPoints(): PointObjectInterface[]{
+  getPoints(): PointObjectInterface[] {
     return this.points;
   }
 
@@ -149,7 +149,7 @@ export class CSVDataObject implements CSVDataInterface {
 
   /**
    * This method finds the first non "Time" header in the csv data file and returns it
-   * @precondition The list of headers must be greater than 1, if theres only 1 then that means that there is only a 
+   * @precondition The list of headers must be greater than 1, if theres only 1 then that means that there is only a
    * "Time" header or that the csv file loaded doesn't have a "Time" header which makes it invalid
    * @postcondition returns the first non "Time" header in the data set
    */
@@ -249,8 +249,10 @@ export class CSVDataObject implements CSVDataInterface {
    * @returns The complete data array
    */
   getData(): { key: Record<string, string | number> }[] {
-    if(this.data.length <= 0){
-      throw new Error("Unitialized data set for the csv file. (CSVDataObject.ts)");
+    if (this.data.length <= 0) {
+      throw new Error(
+        "Unitialized data set for the csv file. (CSVDataObject.ts)",
+      );
     }
     return this.data;
   }
@@ -379,7 +381,7 @@ export class CSVDataObject implements CSVDataInterface {
    * @postcondition the Time header of the data set
    */
   getTimeHeader(): string {
-    if(this.timeHeader != "Time"){
+    if (this.timeHeader != "Time") {
       throw new Error("Invalid time header, not Time (CSVDataObject.ts)");
     }
     return this.timeHeader;

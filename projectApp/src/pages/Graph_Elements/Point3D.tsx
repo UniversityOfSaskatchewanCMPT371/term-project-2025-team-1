@@ -30,11 +30,14 @@ export default function Point3D({
   return (
     <>
       <mesh
-      //Translating the positions to the 3D Embedded Graph Axis
+        //Translating the positions to the 3D Embedded Graph Axis
         position={[
-          pointRef.getPosition()[0]/ (mainController.getGraphController().getEmbeddedRange()),
-          pointRef.getPosition()[1]/(mainController.getGraphController().getEmbeddedRange()),
-          pointRef.getPosition()[2]/(mainController.getGraphController().getEmbeddedRange()),
+          pointRef.getPosition()[0] /
+            mainController.getGraphController().getEmbeddedRange(),
+          pointRef.getPosition()[1] /
+            mainController.getGraphController().getEmbeddedRange(),
+          pointRef.getPosition()[2] /
+            mainController.getGraphController().getEmbeddedRange(),
         ]}
         onClick={() => {
           setOnClick();

@@ -131,7 +131,9 @@ describe("GraphObject", async () => {
     };
     expect(() => {
       graph.setAxes(invalidAxes1);
-    }).toThrowError("Invalid xRange. First value must be less than the second value (GraphObject.ts)");
+    }).toThrowError(
+      "Invalid xRange. First value must be less than the second value (GraphObject.ts)",
+    );
 
     const invalidAxes2 = {
       xRange: [0, 10] as [number, number],
@@ -139,7 +141,9 @@ describe("GraphObject", async () => {
     };
     expect(() => {
       graph.setAxes(invalidAxes2);
-    }).toThrowError("Invalid yRange. First value must be less than the second value (GraphObject.ts)");
+    }).toThrowError(
+      "Invalid yRange. First value must be less than the second value (GraphObject.ts)",
+    );
   });
 
   /**

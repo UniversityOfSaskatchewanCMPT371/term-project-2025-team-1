@@ -154,12 +154,14 @@ export class GraphObject implements GraphInterface {
    * @postcondition the 'axes' property is set to the provided object. If the 'axes' parameter is invalid, an error is thrown.
    */
   setAxes(axes: { xRange: [number, number]; yRange: [number, number] }): void {
-
-    if(axes.xRange[0] > axes.xRange[1]){
-      throw new Error("Invalid xRange. First value must be less than the second value (GraphObject.ts)");
-    }
-    else if(axes.yRange[0] > axes.yRange[1]){
-      throw new Error("Invalid yRange. First value must be less than the second value (GraphObject.ts)");
+    if (axes.xRange[0] > axes.xRange[1]) {
+      throw new Error(
+        "Invalid xRange. First value must be less than the second value (GraphObject.ts)",
+      );
+    } else if (axes.yRange[0] > axes.yRange[1]) {
+      throw new Error(
+        "Invalid yRange. First value must be less than the second value (GraphObject.ts)",
+      );
     }
     this.axes = axes;
   }

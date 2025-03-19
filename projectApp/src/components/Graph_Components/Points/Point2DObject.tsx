@@ -3,13 +3,13 @@ import { PointObjectInterface } from "../../../types/PointInterface";
 import { PointObject } from "./PointObject";
 
 /**
- * Class that represents a 2D Point used by the Time Series Graph. 
+ * Class that represents a 2D Point used by the Time Series Graph.
  * Contains the attributes and methods required for a 2D point.
- * 
+ *
  * @implements {Point2DInterface}
  */
 export class Point2DObject implements Point2DInterface {
-  object: PointObjectInterface;       //Reference to the point object used by both 2D and 3D points
+  object: PointObjectInterface; //Reference to the point object used by both 2D and 3D points
   point2Dposition: [number, number];
 
   constructor(object: PointObject) {

@@ -164,18 +164,18 @@ export default function DropdownUI({
   }
 
   function GenerateTauSelector(): React.JSX.Element{
-    
+    console.log(tau);
     return(
       <>
       <Container width={"100%"} height={"100%"} flexDirection={"row"} alignContent={"center"} justifyContent={"center"}>
         <Container width={"45%"} height={"100%"} flexDirection={"row"} alignContent={"center"} justifyContent={"center"}>
-        <Container width={"60%"} height={"20%"} flexDirection={"row"} alignContent={"center"} justifyContent={"center"} 
+          <Container width={"60%"} height={"20%"} flexDirection={"row"} alignContent={"center"} justifyContent={"center"} 
           backgroundColor={"gray"} backgroundOpacity={0.5} hover={{backgroundOpacity:1}}
-          borderRadius={15}>
+          borderRadius={15}  borderWidth={2} borderColor={"gray"}>
             <Text>&lt;</Text>
           </Container>
         </Container>
-        <Container width={"10%"} height={"100%"} flexDirection={"row"} alignContent={"center"} justifyContent={"center"}>
+        <Container width={"10%"} height={"20%"} flexDirection={"row"} alignContent={"center"} justifyContent={"center"}>
           <Text>
             {tau}
           </Text>
@@ -183,7 +183,7 @@ export default function DropdownUI({
         <Container width={"45%"} height={"100%"} flexDirection={"row"} alignContent={"center"} justifyContent={"center"}>
           <Container width={"60%"} height={"20%"} flexDirection={"row"} alignContent={"center"} justifyContent={"center"} 
           backgroundColor={"gray"} backgroundOpacity={0.5} hover={{backgroundOpacity:1}}
-          borderRadius={15}>
+          borderRadius={15} borderWidth={2} borderColor={"gray"}>
             <Text>&gt;</Text>
           </Container>
         </Container>

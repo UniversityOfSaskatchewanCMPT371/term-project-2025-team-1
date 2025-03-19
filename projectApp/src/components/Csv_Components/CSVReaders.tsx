@@ -6,58 +6,6 @@ import { sendError, sendLog } from "../../logger-frontend";
  * This function reads the headers of a csv file and stores it
  *
  * @param file File path for csv file
- * @returns List of header strings as Promise<string[]>
- *
- * @preconditions file path must be a valid file path to a .csv file
- * @postconditions
- *    - None (the function does not modify any external state)
- *    - The returned promise resolves to an object containing the headers of the CSV file
- *    - If the file is empty or cannot be parsed, an error is thrown
- **/
-// export async function LocalCSVHeaders(file: string): Promise<string[]> {
-//   return LocalCSVReader(file)
-//     .then((timeSeries) => {
-//       const headers: string[] = Object.keys(timeSeries[0]);
-//       sendLog("info", `LocalCSVHeaders returns\n${JSON.stringify(headers)}`);
-//       return headers;
-//       // Rethrowing errors
-//     })
-//     .catch((err: unknown) => {
-//       sendError(err, `LocalCSVHeaders error`);
-//       throw err as Error;
-//     });
-// }
-
-/**
- * Get the headers of a file at a url
- *
- * @param url address of the file
- * @returns List of header strings as Promise<string[]>
- *
- * @precondition url path must be a valid file path to a .csv file
- * @postcondition
- *    - None (the function does not modify any external state)
- *    - The returned promise resolves to an object containing the headers of the CSV file
- *    - If the file is empty or cannot be parsed, an error is thrown
- */
-// export async function UrlCSVHeaders(url: string): Promise<string[]> {
-//   return UrlCSVReader(url)
-//     .then((timeSeries) => {
-//       const headers: string[] = Object.keys(timeSeries[0]);
-//       sendLog("info", `UrlCSVHeaders returns\n${JSON.stringify(headers)}`);
-//       return headers;
-//       // Rethrowing errors
-//     })
-//     .catch((err: unknown) => {
-//       sendError(err, `LocalCSVHeaders error`);
-//       throw err as Error;
-//     });
-// }
-
-/**
- * This function reads the headers of a csv file and stores it
- *
- * @param file File path for csv file
  * @returns list of Record pairs of (attribute,value) as Promise<Record<string,string | number>[]>
  *
  * @preconditions file path must be a valid file path to a .csv file

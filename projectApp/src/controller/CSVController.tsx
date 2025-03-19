@@ -49,7 +49,6 @@ export class CSVController implements ControllerInterface {
         emGraph.addPoints();
 
         mainController.getGraphController().pushDataToModel(TSGraph, emGraph);
-        console.log("Success on generate?");
         sendLog("info", "generate has pushed a new graph");
       }
     }

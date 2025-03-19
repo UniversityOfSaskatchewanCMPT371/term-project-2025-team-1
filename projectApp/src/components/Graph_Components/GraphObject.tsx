@@ -1,4 +1,3 @@
-import { CSVDataInterface } from "../../types/CSVInterfaces";
 import { GraphInterface } from "../../types/GraphInterface";
 import { CSVDataObject } from "../Csv_Components/CSVDataObject";
 
@@ -134,67 +133,6 @@ export class GraphObject implements GraphInterface {
     this.position = { x, y, z };
   }
 
-  /**
-   * Get the points array of the graph.
-   * @param none
-   *
-   * @precondition The graph instance must have a valid points array.
-   * @postcondition The 'points' property is returned as an array of PointClass instances.
-   */
-  // getPoints(): PointInterface[] {
-  //   return this.points;
-  // }
-
-  /**
-   * Set the points array of the graph.
-   * @param {PointInterface[]} points the points array - An array of PointClass instances.
-   *
-   * @precondition The 'points' parameter must be an array of PointClass instances.
-   * @postcondition The 'points' property is set to the provided array. If the 'points' parameter is not an array of PointClass instances, an error is thrown.
-   */
-  // setPoints(points: PointInterface[]): void {
-  //   if (!Array.isArray(points)) {
-  //     throw new Error(
-  //       "Invalid points: must be an array of PointClass instances",
-  //     );
-  //   }
-  //   for (const point of points) {
-  //     if (!(point instanceof PointObject)) {
-  //       throw new Error(
-  //         "Invalid point: each element must be an instance of PointClass",
-  //       );
-  //     }
-  //   }
-
-  //   this.points = points;
-  // }
-
-  /**
-   * Remove a point from the graph.
-   * @param {PointInterface[]} points the point to remove - A PointClass instance.
-   *
-   * @precondition the 'point' parameter must be a valid PointClass instance.
-   * @postcondition the 'point' is removed from the 'points' array. If the point does not exist in the array, an error is thrown.
-   */
-  // removePoint(point: PointInterface): void {
-  //   const index = this.points.indexOf(point);
-  //   if (index !== -1) {
-  //     throw new Error("The specified point does not exist in the points array");
-  //   }
-  //   this.points.splice(index, 1);
-  // }
-
-  /**
-   * Clear all points from the graph.
-   * @param none
-   *
-   * @precondition the 'points' parameter must be an array of PointClass instances.
-   * @postcondition the 'points' array is cleared.
-   */
-  // clearPoints(): void {
-  //   this.points = [];
-  // }
-
   // Axes management
   /**
    * Get the axes of the graph.
@@ -217,12 +155,6 @@ export class GraphObject implements GraphInterface {
    * @postcondition the 'axes' property is set to the provided object. If the 'axes' parameter is invalid, an error is thrown.
    */
   setAxes(axes: { xRange: [number, number]; yRange: [number, number] }): void {
-    // if (typeof axes.xLabel !== "string" || axes.xLabel.trim() === "") {
-    //   throw new Error("Invalid xLabel: must be a non-empty string");
-    // }
-    // if (typeof axes.yLabel !== "string" || axes.yLabel.trim() === "") {
-    //   throw new Error("Invalid yLabel: must be a non-empty string");
-    // }
     this.axes = axes;
   }
 

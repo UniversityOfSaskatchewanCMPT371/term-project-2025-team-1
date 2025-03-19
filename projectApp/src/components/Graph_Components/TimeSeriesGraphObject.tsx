@@ -34,7 +34,6 @@ export class TimeSeriesGraphObject
     this.yRangeLength = num;
   }
 
-  // TODO - refactor point methods to GraphObject as both TimeSeries and Embedded graphs will use same point objects
   /**
    * Adds a new point to the graph.
    * pre-codition: valid points in GraphObject
@@ -202,7 +201,6 @@ export class TimeSeriesGraphObject
         //Go to the next available header
         this.getCSVData().setYHeader(this.getCSVData().getCSVHeaders()[1]);
       }
-      // this.csvData.setYHeader(this.axes.yLabel);
       sendLog(
         "info",
         "incrementYHeader() was called and successfully incremented (TimeSeriesGraphClass.tsx)",
@@ -331,7 +329,7 @@ export class TimeSeriesGraphObject
     this.getCSVData().populatePoints();
     this.addPoints();
     this.updatePoints();
-    console.log("-------UPDATE POINTS--------");
+
     //Assigning new position values to the points
     this.getPoints2D().forEach((point) => {
       point.setXAxisPos(current);
@@ -339,21 +337,6 @@ export class TimeSeriesGraphObject
         (point.getObject().getYData() / 100) *
           (this.getYRange() / this.timeSeriesYRange().length) -
           1,
-      );
-      console.log(
-        point.getXPosition(),
-        " y:",
-        point.getYPosition(),
-        " HEADERS: ",
-        this.csvData.getTimeHeader(),
-        " ",
-        this.csvData.getYHeader(),
-      );
-      console.log(
-        "DATA: ",
-        point.getObject().getTimeData(),
-        " Y:",
-        point.getObject().getYData(),
       );
 
       current += divider;
@@ -386,32 +369,6 @@ export class TimeSeriesGraphObject
   getNumPoints(): number {
     return this.points2D.length;
   }
-
-  /**
-   * Get the current X header of the Graph
-   * @precondition none
-   * @postcondition the graph's X header
-   */
-  // getXHeader(): string {
-  //   sendLog(
-  //     "info",
-  //     `getXHeader returned ${this.axes.xLabel} (TimeSeriesGraphClass.tsx)`,
-  //   );
-  //   return this.axes.xLabel;
-  // }
-
-  /**
-   * Get the current Y header of the graph
-   * @precondition none
-   * @postcondition the graph's Y header
-   */
-  // getYHeader(): string {
-  //   sendLog(
-  //     "info",
-  //     `getYHeader returned ${this.axes.yLabel} (TimeSeriesGraphClass.tsx)`,
-  //   );
-  //   return this.axes.yLabel;
-  // }
 
   /**
    * Get max range of the Y axis

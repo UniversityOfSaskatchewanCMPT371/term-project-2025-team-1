@@ -1,5 +1,5 @@
 import { GraphInterface } from "./GraphInterface";
-import { Point3DInterface } from "./PointInterface";
+import { Point3DInterface } from "./GraphPointsInterfaces";
 
 export interface EmbeddedInterface extends GraphInterface {
   // Dimension properties

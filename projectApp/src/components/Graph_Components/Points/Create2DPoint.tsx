@@ -1,5 +1,5 @@
 import Point2D from "../../../pages/Graph_Elements/Point2D";
-import { Point2DInterface } from "../../../types/PointInterface";
+import { Point2DInterface } from "../../../types/GraphPointsInterfaces";
 import { Point2DObject } from "./Point2DObject";
 
 /**

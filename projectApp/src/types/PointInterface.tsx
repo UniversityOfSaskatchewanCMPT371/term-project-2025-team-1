@@ -1,8 +1,10 @@
 /*
- * So far, only meant to handle the 2D TimeSeriesGraph
- * Could be further specialized to be used by both graph (Creating a base interface)
+ * Interfaces that are used to represent a point object and the base interfaces for both 2D and 3D Graph
  */
 
+/**
+ * This interface is used to represent the Point Object
+ */
 export interface PointObjectInterface {
   selected: boolean;
   timeData: string; // time value for 2d graph and where needed for 3d stuff
@@ -17,6 +19,9 @@ export interface PointObjectInterface {
   setYData(y: number): void;
 }
 
+/**
+ * This interface acts as a base interface for both the 2D and 3D points
+ */
 export interface PointInterface {
   object: PointObjectInterface;
 
@@ -24,23 +29,6 @@ export interface PointInterface {
   getXPosition(): number;
   getYPosition(): number;
 
-  setObject(obj: PointObjectInterface): void;
   setXAxisPos(x: number): void;
   setYAxisPos(y: number): void;
-}
-
-export interface Point2DInterface extends PointInterface {
-  point2Dposition: [number, number];
-
-  setPoint2DPosition(position: [number, number]): void;
-}
-
-export interface Point3DInterface extends PointInterface {
-  point3Dposition: [number, number, number];
-
-  getZPosition(): number;
-  getPosition(): [number, number, number];
-
-  setZAxisPos(z: number): void;
-  setPoint3DPosition(poisition: [number, number, number]): void;
 }

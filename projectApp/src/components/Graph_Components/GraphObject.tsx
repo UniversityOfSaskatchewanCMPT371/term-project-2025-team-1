@@ -164,6 +164,11 @@ export class GraphObject implements GraphInterface {
     this.axes = axes;
   }
 
+  /**
+   * Gets the CSV Data Object used by the graph
+   * @precondition none
+   * @postcondition returns the csv data object linked to the graph
+   */
   getCSVData(): CSVDataObject {
     return this.csvData;
   }

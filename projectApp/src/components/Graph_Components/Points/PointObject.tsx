@@ -16,13 +16,11 @@ import { PointObjectInterface } from "../../../types/PointInterface";
  * - The 'yData' property is initialized as 0.
  */
 export class PointObject implements PointObjectInterface {
-  // position: [number, number, number];
   selected: boolean;
   timeData: string;
   yData: number;
 
   constructor() {
-    // this.position = [0, 0, 0];
     this.selected = false;
     this.timeData = "";
     this.yData = 0;

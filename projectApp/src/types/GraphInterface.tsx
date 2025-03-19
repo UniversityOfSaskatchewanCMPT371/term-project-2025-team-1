@@ -9,9 +9,6 @@ export interface GraphInterface extends DataInterface {
   // Basic graph properties
   id: string; // identifier for the graph
 
-  // Data points and configuration
-  // points: PointInterface[]; // Array of points using Point interface
-
   //The csv data used by the graph
   csvData: CSVDataInterface;
 
@@ -42,20 +39,6 @@ export interface GraphInterface extends DataInterface {
    */
   setId(id: string): void;
 
-  // /**
-  //  * Gets the graph's title
-  //  * pre-condition: none
-  //  * post-condition: returns the current title or undefined if not set
-  //  */
-  // getTitle(): string | undefined;
-
-  // /**
-  //  * Sets the graph's title
-  //  * pre-condition: title must be a string
-  //  * post-condition: graph's title is updated to the new value
-  //  */
-  // setTitle(title: string): void;
-
   /**
    * Gets the graph's position
    * pre-condition: none
@@ -69,27 +52,6 @@ export interface GraphInterface extends DataInterface {
    * post-condition: graph's position is updated to the new values
    */
   setPosition(x: number, y: number, z?: number): void;
-
-  /**
-   * Gets all points in the graph
-   * pre-condition: none
-   * post-condition: returns array of current points, unchanged
-   */
-  // getPoints(): PointInterface[];
-
-  /**
-   * Sets the graph's points
-   * pre-condition: points must be an array of valid PointInterface instances
-   * post-condition: graph's points are replaced with the new array
-   */
-  // setPoints(points: PointInterface[]): void;
-
-  /**
-   * Removes all points from the graph
-   * pre-condition: none
-   * post-condition: graph's points array is empty
-   */
-  // clearPoints(): void;
 
   /**
    * Gets the axes configuration

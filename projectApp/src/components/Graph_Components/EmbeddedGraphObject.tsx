@@ -1,8 +1,9 @@
 import { sendError, sendLog } from "../../logger-frontend";
 import { EmbeddedInterface } from "../../types/EmbeddedInterface";
+import { Point3DInterface } from "../../types/GraphPointsInterfaces";
 import { CSVDataObject } from "../Csv_Components/CSVDataObject";
 import { GraphObject } from "./GraphObject";
-import { PointObject } from "./PointObject";
+import { Point3DObject } from "./Points/Point3DObject";
 
 /**
  * EmbeddedGraphObject is a class that extends GraphObject and implements the EmbeddedInterface
@@ -15,10 +16,12 @@ export class EmbeddedGraphObject
   implements EmbeddedInterface
 {
   tao: number;
+  points3D: Point3DInterface[];
 
   constructor(csv: CSVDataObject) {
     super(csv);
     this.tao = 1;
+    this.points3D = [];
   }
 
   /**
@@ -28,21 +31,36 @@ export class EmbeddedGraphObject
    */
   addPoints(): void {
     const data = this.csvData.getData();
-    data.forEach((line) => {
-      const newPoint = new PointObject();
-      // gets the time of the current line in the data set
-      const time = line[
-        this.axes.xLabel as keyof typeof line
-      ] as unknown as number;
+    let time = 0;
 
-      // calculates the vector and stores it in the position attribute of a new PointObject
-      const vectorPosition = this.calculateVectorPosition(time, data);
-      newPoint.setPosition(vectorPosition);
-      this.points.push(newPoint);
-    });
+    //Set range here
+    this.setRange();
+    this.getCSVData()
+      .getPoints()
+      .forEach((point) => {
+        const newPoint = new Point3DObject(point);
+
+        // calculates the vector and stores it in the position attribute of a new PointObject
+        const vectorPosition = this.calculateVectorPosition(time, data);
+        newPoint.setPoint3DPosition(vectorPosition);
+
+        time++;
+        this.points3D.push(newPoint);
+      });
     sendLog(
       "info",
       "Points added to EmbeddedGraphObject (EmbeddedGraphObject.addPoints())",
+    );
+  }
+
+  updatePoints(): void {
+    this.points3D.forEach((point) => {
+      point.getObject().setSelected(false); // Update selection status
+      // TODO: Add color update logic if necessary
+    });
+    sendLog(
+      "info",
+      "all points have been unselected (EmbeddedGraphObject.tsx)",
     );
   }
 
@@ -108,7 +126,7 @@ export class EmbeddedGraphObject
     } else {
       const line: { key: Record<string, string | number> } = csvData[index];
       const position = line[
-        this.axes.yLabel as keyof typeof line
+        this.getCSVData().getYHeader() as keyof typeof line
       ] as unknown as number;
       return position;
     }
@@ -164,6 +182,65 @@ export class EmbeddedGraphObject
     sendLog(
       "info",
       `value of tao in EmbeddedGraphObject updated to the value ${newTao}`,
+    );
+  }
+
+  /**
+   * This method gets the points in the 3D Embedded Graph
+   * @precondition a non-empty array of 3d points
+   * @postcondition returns the 3d points of the Embedded Graph
+   */
+
+  getPoints3D(): Point3DInterface[] {
+    if (this.points3D.length <= 0) {
+      throw new Error("Uninitialized 3d points (EmbeddedGraphObject.ts)");
+    }
+    return this.points3D;
+  }
+
+  /**
+   * This methods gets the max range of the csv data file that will be used on the 3d embedded graph
+   * @precondition the max range must be greater than the min range
+   * @postcondition the range of the csv data set
+   */
+  getRange(): number {
+    if (this.axes.yRange[0] >= this.axes.yRange[1]) {
+      throw new Error("Invalid max yRange set (EmbeddedGraphObject.ts)");
+    }
+    return this.axes.yRange[1];
+  }
+
+  /**
+   * Sets the max range that will be used on the 3d Embedded graph
+   * @precondition a valid non-null data set of the csv file
+   * @postcondition sets the max range used in the 3d Embedded graph
+   */
+  setRange(): void {
+    if (this.getCSVData().getData().length <= 0) {
+      throw new Error(
+        "Uninitialized csv data attribute. (EmbeddedGraphObject.ts)",
+      );
+    }
+
+    let max = 0;
+    this.getCSVData()
+      .getData()
+      .forEach((data) => {
+        if (
+          (data[
+            this.getCSVData().getYHeader() as keyof typeof data
+          ] as unknown as number) >= max
+        ) {
+          max = data[
+            this.getCSVData().getYHeader() as keyof typeof data
+          ] as unknown as number;
+        }
+      });
+
+    this.axes.yRange[1] = max;
+    sendLog(
+      "info",
+      `setRange() was called; yRange was set to ${this.axes.yRange[1]} (EmbeddedGraphObject.tsx)`,
     );
   }
 }

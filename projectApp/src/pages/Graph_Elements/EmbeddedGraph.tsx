@@ -1,8 +1,10 @@
-import { Line, Text } from "@react-three/drei";
+import { Line } from "@react-three/drei";
 import React from "react";
 import mainController from "../../controller/MainController";
 import { EmbeddedGraphObject } from "../../components/Graph_Components/EmbeddedGraphObject";
 import { sendLog } from "../../logger-frontend";
+import { Point3DInterface } from "../../types/GraphPointsInterfaces";
+import Create3DPoint from "../../components/Graph_Components/Points/Create3DPoint";
 
 /**
  * This function will create an Embedded Graph in the VR environment using a EmbeddedGraphObject.
@@ -22,6 +24,29 @@ export function EmbeddedGraph({
     sendLog("info", "an EmbeddedGraph object was updated (EmbeddedGraph.tsx)");
   }
 
+  /**
+   * This function renders the 3D point used in the graph
+   * @param param0 a reference to the 3D Point object
+   * @precondition an accepted 3D Point object
+   * @postcondition returns a React JSX Element that represents a 3D Point
+   */
+  function GeneratePoint({
+    point,
+  }: {
+    point: Point3DInterface;
+  }): React.JSX.Element {
+    return (
+      <>
+        <Create3DPoint pointRef={point}></Create3DPoint>
+      </>
+    );
+  }
+
+  /**
+   * This function renders the axis used in the 3D Embedded Graph
+   * @precondition none
+   * @postcondition returns a x,y,z axis on the VR Scene
+   */
   function GenerateAxis() {
     return (
       <>
@@ -57,7 +82,8 @@ export function EmbeddedGraph({
 
   /**
    * This Function creates the main graph of the Embedded Graph
-   * @postcondition Body of the graph
+   * @precondtiion none
+   * @postcondition the entire 3D Graph and its components
    */
   function GenerateGraph(): React.JSX.Element {
     sendLog(
@@ -70,13 +96,14 @@ export function EmbeddedGraph({
           <boxGeometry args={[2, 2, 2]} />
           <meshBasicMaterial visible={false} />
           <GenerateAxis />
-        </mesh>
 
-        <mesh rotation={[0, 3.14, 0]} position={[3, 2, 4.8]}>
-          <Text fontSize={0.35}>A 3D Graph will exist someday soon</Text>
-        </mesh>
-        <mesh rotation={[0, 3.14, 0]} position={[3, 1, 4.8]}>
-          <Text fontSize={0.35}>but here's a box in the meantime!</Text>
+          {graph.getPoints3D().map((points) => {
+            return (
+              <>
+                <GeneratePoint point={points}></GeneratePoint>
+              </>
+            );
+          })}
         </mesh>
       </>
     );

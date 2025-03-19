@@ -15,12 +15,12 @@ export class EmbeddedGraphObject
   extends GraphObject
   implements EmbeddedInterface
 {
-  tao: number;
+  tau: number;
   points3D: Point3DInterface[];
 
   constructor(csv: CSVDataObject) {
     super(csv);
-    this.tao = 1;
+    this.tau = 1;
     this.points3D = [];
   }
 
@@ -67,7 +67,7 @@ export class EmbeddedGraphObject
   /**
    * Calculated the embedded time vector dimensions for the given time.
    * Uses the data set selected in the csvDataObject of the graph
-   * Vector return is of the form [y[time], y[time - tao], y[time - 2*tao]] where y is the data set column selected
+   * Vector return is of the form [y[time], y[time - tau], y[time - 2*tau]] where y is the data set column selected
    * pre-conditions: time >= 0, csvDataObject must contain valid data set and a valid data set much be selected
    * post-conditions: none
    * @param time - the index/time of the data set calculating the vector for
@@ -92,8 +92,8 @@ export class EmbeddedGraphObject
 
     // calculate the indexes for the 3 coordinates
     const xIndex = time;
-    const yIndex = time - this.tao;
-    const zIndex = time - 2 * this.tao;
+    const yIndex = time - this.tau;
+    const zIndex = time - 2 * this.tau;
 
     // gets the value of the specified indices from the csvData set
     position[0] = this.retreiveCoordinateValue(xIndex, csvData);
@@ -155,33 +155,33 @@ export class EmbeddedGraphObject
   }
 
   /**
-   * Gets the value of tao
+   * Gets the value of tau
    * pre-conditions: none
-   * post-conditions: returns the current value of tao
+   * post-conditions: returns the current value of tau
    */
-  getTao(): number {
-    return this.tao;
+  getTau(): number {
+    return this.tau;
   }
 
   /**
-   * Sets the value of tao
-   * @param newTao - a number greater than or eqaul to 1
-   * post-conditions: the value of tao is updated to newTao
+   * Sets the value of tau
+   * @param newTau - a number greater than or eqaul to 1
+   * post-conditions: the value of tau is updated to newTau
    */
-  setTao(newTao: number): void {
-    if (newTao < 1) {
-      const e = new TypeError("Tao must be greater than or equal to 1");
+  setTau(newTau: number): void {
+    if (newTau < 1) {
+      const e = new TypeError("Tau must be greater than or equal to 1");
       sendError(
         e,
-        `Error in setTao, ${newTao} is not greater than or equal to 1`,
+        `Error in setTau, ${newTau} is not greater than or equal to 1`,
       );
       throw e;
     }
 
-    this.tao = newTao;
+    this.tau = newTau;
     sendLog(
       "info",
-      `value of tao in EmbeddedGraphObject updated to the value ${newTao}`,
+      `value of tau in EmbeddedGraphObject updated to the value ${newTau}`,
     );
   }
 

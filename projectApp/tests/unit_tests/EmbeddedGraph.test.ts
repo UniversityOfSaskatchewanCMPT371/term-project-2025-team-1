@@ -65,8 +65,8 @@ describe("Embedded Graph test", () => {
     expect(points[9].getPosition()).toStrictEqual([20, 18, 16]);
   });
 
-  test("vector calculation with tao=2", () => {
-    graph.setTao(2);
+  test("vector calculation with tau=2", () => {
+    graph.setTau(2);
     graph.addPoints();
     const points = graph.getPoints3D();
     expect(points[0].getPosition()).toStrictEqual([2, 0, 0]);
@@ -81,9 +81,9 @@ describe("Embedded Graph test", () => {
     expect(points[9].getPosition()).toStrictEqual([20, 16, 12]);
   });
 
-  test("setting tao to an invalid value", () => {
+  test("setting tau to an invalid value", () => {
     expect(() => {
-      graph.setTao(-1);
-    }).toThrowError("Tao must be greater than or equal to 1");
+      graph.setTau(-1);
+    }).toThrowError("Tau must be greater than or equal to 1");
   });
 });

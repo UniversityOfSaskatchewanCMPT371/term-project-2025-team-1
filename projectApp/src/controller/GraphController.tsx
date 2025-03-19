@@ -161,8 +161,11 @@ export class GraphController implements ControllerInterface {
     return this.getModel().getEmbeddedGraphData().length;
   }
 
-  getTauForDropDown(): string{
-    if(this.getModel().getEmbeddedGraphData()[0] === undefined || this.getModel().getEmbeddedGraphData()[0].getTao() === undefined){
+  getTauForDropDown(): string {
+    if (
+      this.getModel().getEmbeddedGraphData()[0] === undefined ||
+      this.getModel().getEmbeddedGraphData()[0].getTao() === undefined
+    ) {
       return "";
     }
     return this.getModel().getEmbeddedGraphData()[0].getTao().toString();

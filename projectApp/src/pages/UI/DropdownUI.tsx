@@ -3,7 +3,6 @@ import { useState } from "react";
 import mainController from "../../controller/MainController.tsx";
 import { CSVDataInterface } from "../../types/CSVInterfaces.tsx";
 import { sendLog } from "../../logger-frontend.ts";
-import { C } from "vitest/dist/chunks/reporters.66aFHiyX.js";
 
 /**
  * This function is for creating the Dropdown UI in the VR Scene
@@ -18,7 +17,8 @@ export default function DropdownUI({
 }): React.JSX.Element {
   const [pressed, press] = useState(false);
   const [active, setActive] = useState(false);
-  const [ tau, setTau ] = useState("");
+  const [selectTau, setSelectTau] = useState(1);
+  const [infoTau, setInfoTau] = useState("");
 
   /**
    * This is the function for creating a loaded csv object displayed in the DropDown UI
@@ -50,8 +50,7 @@ export default function DropdownUI({
             height={"100%"}
             alignItems={"center"}
             justifyContent={"center"}
-          >
-          </Container>
+          ></Container>
         </Container>
       </>
     );
@@ -61,7 +60,9 @@ export default function DropdownUI({
    * Generates the graph, and then updates main scene
    */
   function update(): void {
-    mainController.getCSVController().generate();
+    mainController.getCSVController().generate(selectTau);
+    setInfoTau(selectTau.toString()); //Later change this to getting tau value from the graph itself rather than the other useState
+    setSelectTau(1); //Sets the tau on the Tau selector back to 1
     mainController.updateMainScene();
   }
 
@@ -72,29 +73,30 @@ export default function DropdownUI({
    * @postcondition Lists all loaded csv files and assigned components
    */
   function GenerateList(): React.JSX.Element {
-    setTau(mainController.getGraphController().getTauForDropDown());
-
     return (
       <>
         <Container flexDirection={"column"} width={"100%"}>
           <Container
-            height={"20%"}
+            height={"15%"}
             width={"100%"}
             flexDirection={"column"}
             alignItems={"center"}
             justifyContent={"center"}
           >
-            {/* Reading through Model csv data files */}
+            {/* This will dis play the name of the csv file loaded */}
             {mainController
               .getCSVController()
               .getModelData()
               .map((graph) => (
+                //Currently does a loop, so refactor for only one csv file
                 <GenerateRowObject data={graph} key={graph.getName()} />
               ))}
           </Container>
 
-          <GenerateOptionsList></GenerateOptionsList>
+          {/* The options body that allows the user to set values when generating the graph */}
+          <GenerateOptionsList />
 
+          {/* This container will contain the Generate button, which generates the graph when clicked */}
           <Container
             flexDirection={"row"}
             alignItems={"center"}
@@ -127,69 +129,195 @@ export default function DropdownUI({
     );
   }
 
+  /**
+   * This function creates a React JSX Component which is the body of the Drop Down UI.
+   * It allows the user to set the tau value and shows an information box for the current graph
+   * @returns the body of the drop down UI
+   */
   function GenerateOptionsList(): React.JSX.Element {
-
-    return( 
+    return (
       <>
-      <Container width={"100%"} height={"70%"} flexDirection={"row"} alignContent={"center"} justifyContent={"center"} >
-        {/* Tao container */}
-        <Container width={"50%"} height={"100%"} flexDirection={"column"} alignContent={"center"} justifyContent={"center"}>
-          <Container width={"100%"} height={"50%"} flexDirection={"column"} alignContent={"center"}>
-            <Container width={"100%"} height={"50%"} flexDirection={"row"} justifyContent={"center"}>
+        <Container
+          width={"100%"}
+          height={"75%"}
+          flexDirection={"row"}
+          alignContent={"center"}
+          justifyContent={"center"}
+        >
+          {/* Container for the options list that the user can interact with */}
+          <Container
+            width={"50%"}
+            height={"100%"}
+            flexDirection={"column"}
+            alignContent={"center"}
+            justifyContent={"center"}
+          >
+            {/* This contains for selecting Tau value on start up */}
+            <Container
+              width={"100%"}
+              height={"50%"}
+              flexDirection={"column"}
+              alignContent={"center"}
+            >
+              <Container
+                width={"100%"}
+                height={"50%"}
+                flexDirection={"row"}
+                justifyContent={"center"}
+              >
                 <Text>Set Time Delay</Text>
+              </Container>
+              <GenerateTauSelector />
             </Container>
-            <GenerateTauSelector></GenerateTauSelector>
-            <Container width={"100%"} height={"50%"} flexDirection={"row"} justifyContent={"center"}>
 
+            {/* Planned Time Window selector */}
+            <Container
+              width={"100%"}
+              height={"50%"}
+              flexDirection={"column"}
+              alignContent={"center"}
+            >
+              <Container
+                width={"100%"}
+                height={"50%"}
+                flexDirection={"row"}
+                justifyContent={"center"}
+              >
+                <Text>Set Time Window</Text>
+              </Container>
             </Container>
           </Container>
 
-          <Container width={"100%"} height={"50%"} flexDirection={"column"} alignContent={"center"}>
-            <Container width={"100%"} height={"50%"} flexDirection={"row"} justifyContent={"center"}>
-              <Text>
-                Set Time Window
-              </Text>
+          {/* Information container?  */}
+          <Container
+            width={"50%"}
+            height={"100%"}
+            flexDirection={"column"}
+            alignContent={"center"}
+            justifyContent={"flex-start"}
+            borderWidth={1}
+            borderColor={"black"}
+          >
+            <Container
+              width={"100%"}
+              height={"15%"}
+              flexDirection={"row"}
+              alignContent={"center"}
+              justifyContent={"flex-start"}
+            >
+              <Text positionLeft={10}>Tau Value: {infoTau}</Text>
             </Container>
           </Container>
         </Container>
-
-        {/* Information container?  */}
-        <Container width={"50%"} height={"100%"} flexDirection={"column"} alignContent={"center"} justifyContent={"flex-start"} borderWidth={1} borderColor={"black"}>
-          <Text> Information box</Text>
-        </Container>
-
-      </Container>
       </>
-    )
+    );
   }
 
-  function GenerateTauSelector(): React.JSX.Element{
-    console.log(tau);
-    return(
+  /**
+   * This function is used when the user wants to increase the tau value
+   */
+  function setOnTauIncrease(): void {
+    //For now max tau will be set to 5
+    if (selectTau != 5) {
+      setSelectTau(selectTau + 1);
+    }
+  }
+
+  /**
+   * This function is used when the user wants to decrease the tau value
+   */
+  function setOnTauDecrease(): void {
+    if (selectTau != 1) {
+      setSelectTau(selectTau - 1);
+    }
+  }
+
+  /**
+   * Thhis function creates the component for setting the Tau value on generation.
+   * Shows the buttons for both decreasing and increasing the tau value, it will also display the current Tau value
+   * @returns the Tau selector component
+   */
+  function GenerateTauSelector(): React.JSX.Element {
+    return (
       <>
-      <Container width={"100%"} height={"100%"} flexDirection={"row"} alignContent={"center"} justifyContent={"center"}>
-        <Container width={"45%"} height={"100%"} flexDirection={"row"} alignContent={"center"} justifyContent={"center"}>
-          <Container width={"60%"} height={"20%"} flexDirection={"row"} alignContent={"center"} justifyContent={"center"} 
-          backgroundColor={"gray"} backgroundOpacity={0.5} hover={{backgroundOpacity:1}}
-          borderRadius={15}  borderWidth={2} borderColor={"gray"}>
-            <Text>&lt;</Text>
+        <Container
+          width={"100%"}
+          height={"50%"}
+          flexDirection={"row"}
+          alignContent={"center"}
+          justifyContent={"center"}
+        >
+          {/* The container for the button that decreases the Tau value */}
+          <Container
+            width={"45%"}
+            height={"100%"}
+            flexDirection={"row"}
+            alignContent={"center"}
+            justifyContent={"center"}
+          >
+            <Container
+              width={"60%"}
+              height={"30%"}
+              flexDirection={"row"}
+              alignContent={"center"}
+              justifyContent={"center"}
+              backgroundColor={"gray"}
+              backgroundOpacity={0.5}
+              hover={{ backgroundOpacity: 1 }}
+              borderRadius={15}
+              borderWidth={2}
+              borderColor={"gray"}
+              onClick={() => {
+                setOnTauDecrease();
+              }}
+            >
+              <Text>&lt;</Text>
+            </Container>
+          </Container>
+
+          {/* Container for showing the current Tau value of the selector */}
+          <Container
+            width={"10%"}
+            height={"20%"}
+            flexDirection={"row"}
+            alignContent={"center"}
+            justifyContent={"center"}
+          >
+            <Text fontWeight={"bold"} positionTop={4}>
+              {selectTau.toString()}
+            </Text>
+          </Container>
+
+          {/* The container for the button that increases the Tau value */}
+          <Container
+            width={"45%"}
+            height={"100%"}
+            flexDirection={"row"}
+            alignContent={"center"}
+            justifyContent={"center"}
+          >
+            <Container
+              width={"60%"}
+              height={"30%"}
+              flexDirection={"row"}
+              alignContent={"center"}
+              justifyContent={"center"}
+              backgroundColor={"gray"}
+              backgroundOpacity={0.5}
+              hover={{ backgroundOpacity: 1 }}
+              borderRadius={15}
+              borderWidth={2}
+              borderColor={"gray"}
+              onClick={() => {
+                setOnTauIncrease();
+              }}
+            >
+              <Text>&gt;</Text>
+            </Container>
           </Container>
         </Container>
-        <Container width={"10%"} height={"20%"} flexDirection={"row"} alignContent={"center"} justifyContent={"center"}>
-          <Text>
-            {tau}
-          </Text>
-        </Container>
-        <Container width={"45%"} height={"100%"} flexDirection={"row"} alignContent={"center"} justifyContent={"center"}>
-          <Container width={"60%"} height={"20%"} flexDirection={"row"} alignContent={"center"} justifyContent={"center"} 
-          backgroundColor={"gray"} backgroundOpacity={0.5} hover={{backgroundOpacity:1}}
-          borderRadius={15} borderWidth={2} borderColor={"gray"}>
-            <Text>&gt;</Text>
-          </Container>
-        </Container>
-      </Container>
       </>
-    )
+    );
   }
 
   /**
@@ -202,7 +330,7 @@ export default function DropdownUI({
       <>
         <Fullscreen
           flexDirection={"row"}
-          distanceToCamera={inVR? 1: 0.1}
+          distanceToCamera={inVR ? 1 : 0.1}
           pointerEvents={"none"}
         >
           <Container

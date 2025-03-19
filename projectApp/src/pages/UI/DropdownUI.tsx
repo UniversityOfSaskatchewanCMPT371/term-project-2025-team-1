@@ -3,6 +3,7 @@ import { useState } from "react";
 import mainController from "../../controller/MainController.tsx";
 import { CSVDataInterface } from "../../types/CSVInterfaces.tsx";
 import { sendLog } from "../../logger-frontend.ts";
+import { C } from "vitest/dist/chunks/reporters.66aFHiyX.js";
 
 /**
  * This function is for creating the Dropdown UI in the VR Scene
@@ -17,6 +18,7 @@ export default function DropdownUI({
 }): React.JSX.Element {
   const [pressed, press] = useState(false);
   const [active, setActive] = useState(false);
+  const [ tau, setTau ] = useState("");
 
   /**
    * This is the function for creating a loaded csv object displayed in the DropDown UI
@@ -70,11 +72,13 @@ export default function DropdownUI({
    * @postcondition Lists all loaded csv files and assigned components
    */
   function GenerateList(): React.JSX.Element {
+    setTau(mainController.getGraphController().getTauForDropDown());
+
     return (
       <>
         <Container flexDirection={"column"} width={"100%"}>
           <Container
-            height={"10%"}
+            height={"20%"}
             width={"100%"}
             flexDirection={"column"}
             alignItems={"center"}
@@ -127,12 +131,15 @@ export default function DropdownUI({
 
     return( 
       <>
-      <Container width={"100%"} height={"80%"} flexDirection={"row"} alignContent={"center"} justifyContent={"center"} >
+      <Container width={"100%"} height={"70%"} flexDirection={"row"} alignContent={"center"} justifyContent={"center"} >
         {/* Tao container */}
         <Container width={"50%"} height={"100%"} flexDirection={"column"} alignContent={"center"} justifyContent={"center"}>
           <Container width={"100%"} height={"50%"} flexDirection={"column"} alignContent={"center"}>
             <Container width={"100%"} height={"50%"} flexDirection={"row"} justifyContent={"center"}>
                 <Text>Set Time Delay</Text>
+            </Container>
+            <GenerateTauSelector></GenerateTauSelector>
+            <Container width={"100%"} height={"50%"} flexDirection={"row"} justifyContent={"center"}>
 
             </Container>
           </Container>
@@ -151,6 +158,35 @@ export default function DropdownUI({
           <Text> Information box</Text>
         </Container>
 
+      </Container>
+      </>
+    )
+  }
+
+  function GenerateTauSelector(): React.JSX.Element{
+    
+    return(
+      <>
+      <Container width={"100%"} height={"100%"} flexDirection={"row"} alignContent={"center"} justifyContent={"center"}>
+        <Container width={"45%"} height={"100%"} flexDirection={"row"} alignContent={"center"} justifyContent={"center"}>
+        <Container width={"60%"} height={"20%"} flexDirection={"row"} alignContent={"center"} justifyContent={"center"} 
+          backgroundColor={"gray"} backgroundOpacity={0.5} hover={{backgroundOpacity:1}}
+          borderRadius={15}>
+            <Text>&lt;</Text>
+          </Container>
+        </Container>
+        <Container width={"10%"} height={"100%"} flexDirection={"row"} alignContent={"center"} justifyContent={"center"}>
+          <Text>
+            {tau}
+          </Text>
+        </Container>
+        <Container width={"45%"} height={"100%"} flexDirection={"row"} alignContent={"center"} justifyContent={"center"}>
+          <Container width={"60%"} height={"20%"} flexDirection={"row"} alignContent={"center"} justifyContent={"center"} 
+          backgroundColor={"gray"} backgroundOpacity={0.5} hover={{backgroundOpacity:1}}
+          borderRadius={15}>
+            <Text>&gt;</Text>
+          </Container>
+        </Container>
       </Container>
       </>
     )

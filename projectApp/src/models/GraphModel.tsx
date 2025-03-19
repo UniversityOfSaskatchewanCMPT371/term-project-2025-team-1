@@ -40,7 +40,7 @@ export class GraphModel implements ModelInterface {
   }
 
   /**
-   * Adds a TimeSeriesGraphObject to the model.
+   * Sets a new TimeSeriesGraphObject to the model.
    *
    * @preconditions The 'graph' parameter must be a valid TimeSeriesGraphObject instance.
    *
@@ -48,7 +48,7 @@ export class GraphModel implements ModelInterface {
    *
    * @param {TimeSeriesGraphObject} graph - The TimeSeriesGraphObject to add to the model.
    */
-  addTimeSeriesGraph(graph: TimeSeriesGraphObject): void {
+  setTimeSeriesGraph(graph: TimeSeriesGraphObject): void {
     this.data = graph;
   }
 
@@ -66,7 +66,7 @@ export class GraphModel implements ModelInterface {
   }
 
   /**
-   * Adds a EmbeddedGraphObject to the model.
+   * Sets a EmbeddedGraphObject to the model.
    *
    * @preconditions The 'graph' parameter must be a valid EmbeddedGraphObject instance.
    *
@@ -74,7 +74,7 @@ export class GraphModel implements ModelInterface {
    *
    * @param {EmbeddedGraphObject} graph - The EmbeddedGraphObject to add to the model.
    */
-  addEmbeddedGraph(graph: EmbeddedGraphObject): void {
+  setEmbeddedGraph(graph: EmbeddedGraphObject): void {
     this.embeddedGraphData = graph;
   }
 

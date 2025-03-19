@@ -97,11 +97,11 @@ export class EmbeddedGraphObject
 
     // gets the value of the specified indices from the csvData set
     position[0] =
-      this.retreiveCoordinateValue(xIndex, csvData) / this.axes.yRange[1];
+      this.retreiveCoordinateValue(xIndex, csvData);
     position[1] =
-      this.retreiveCoordinateValue(yIndex, csvData) / this.axes.yRange[1];
+      this.retreiveCoordinateValue(yIndex, csvData);
     position[2] =
-      this.retreiveCoordinateValue(zIndex, csvData) / this.axes.yRange[1];
+      this.retreiveCoordinateValue(zIndex, csvData);
 
     sendLog(
       "info",
@@ -190,6 +190,10 @@ export class EmbeddedGraphObject
 
   getPoints3D(): Point3DInterface[] {
     return this.points3D;
+  }
+
+  getRange(): number{
+    return this.axes.yRange[1];
   }
 
   setRange(): void {

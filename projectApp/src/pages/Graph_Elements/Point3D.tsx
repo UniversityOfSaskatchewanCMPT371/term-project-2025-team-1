@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Point3DObject } from "../../components/Graph_Components/Points/Point3DObject";
+import mainController from "../../controller/MainController";
 
 export default function Point3D({
   pointRef,
@@ -25,9 +26,9 @@ export default function Point3D({
     <>
       <mesh
         position={[
-          pointRef.getXPosition(),
-          pointRef.getYPosition(),
-          pointRef.getZPosition(),
+          pointRef.getXPosition()/mainController.getGraphController().getEmbeddedRange(),
+          pointRef.getYPosition()/mainController.getGraphController().getEmbeddedRange(),
+          pointRef.getZPosition()/mainController.getGraphController().getEmbeddedRange(),
         ]}
         onClick={() => {
           setOnClick();

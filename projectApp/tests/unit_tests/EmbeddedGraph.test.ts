@@ -27,16 +27,16 @@ describe("Embedded Graph test", () => {
     graph.getCSVData().populatePoints();
     graph.addPoints();
     const points = graph.getPoints3D();
-    expect(points[0].getPosition()).toStrictEqual([0.1, 0.1, 0]);
-    expect(points[1].getPosition()).toStrictEqual([0.2, 0.2, 0]);
-    expect(points[2].getPosition()).toStrictEqual([0.3, 0.3, 0.1]);
-    expect(points[3].getPosition()).toStrictEqual([0.4, 0.4, 0.2]);
-    expect(points[4].getPosition()).toStrictEqual([0.5, 0.5, 0.3]);
-    expect(points[5].getPosition()).toStrictEqual([0.6, 0.6, 0.4]);
-    expect(points[6].getPosition()).toStrictEqual([0.7, 0.7, 0.5]);
-    expect(points[7].getPosition()).toStrictEqual([0.8, 0.8, 0.6]);
-    expect(points[8].getPosition()).toStrictEqual([0.9, 0.9, 0.7]);
-    expect(points[9].getPosition()).toStrictEqual([1, 1, 0.8]);
+    expect(points[0].getPosition()).toStrictEqual([1, 0, 0]);
+    expect(points[1].getPosition()).toStrictEqual([2, 1, 0]);
+    expect(points[2].getPosition()).toStrictEqual([3, 2, 1]);
+    expect(points[3].getPosition()).toStrictEqual([4, 3, 2]);
+    expect(points[4].getPosition()).toStrictEqual([5, 4, 3]);
+    expect(points[5].getPosition()).toStrictEqual([6, 5, 4]);
+    expect(points[6].getPosition()).toStrictEqual([7, 6, 5]);
+    expect(points[7].getPosition()).toStrictEqual([8, 7, 6]);
+    expect(points[8].getPosition()).toStrictEqual([9, 8, 7]);
+    expect(points[9].getPosition()).toStrictEqual([10, 9, 8]);
   });
 
   test("vectors calculation for header row B", () => {
@@ -53,33 +53,32 @@ describe("Embedded Graph test", () => {
     graph.getCSVData().populatePoints();
     graph.addPoints();
     const points = graph.getPoints3D();
-    expect(points[0].getPosition()).toStrictEqual([0.1, 0.1, 0]);
-    expect(points[1].getPosition()).toStrictEqual([0.2, 0.2, 0]);
-    expect(points[2].getPosition()).toStrictEqual([0.3, 0.3, 0.1]);
-    expect(points[3].getPosition()).toStrictEqual([0.4, 0.4, 0.2]);
-    expect(points[4].getPosition()).toStrictEqual([0.5, 0.5, 0.3]);
-    expect(points[5].getPosition()).toStrictEqual([0.6, 0.6, 0.4]);
-    expect(points[6].getPosition()).toStrictEqual([0.7, 0.7, 0.5]);
-    expect(points[7].getPosition()).toStrictEqual([0.8, 0.8, 0.6]);
-    expect(points[8].getPosition()).toStrictEqual([0.9, 0.9, 0.7]);
-    expect(points[9].getPosition()).toStrictEqual([1, 1, 0.8]);
+    expect(points[0].getPosition()).toStrictEqual([2, 0, 0]);
+    expect(points[1].getPosition()).toStrictEqual([4, 2, 0]);
+    expect(points[2].getPosition()).toStrictEqual([6, 4, 2]);
+    expect(points[3].getPosition()).toStrictEqual([8, 6, 4]);
+    expect(points[4].getPosition()).toStrictEqual([10, 8, 6]);
+    expect(points[5].getPosition()).toStrictEqual([12, 10, 8]);
+    expect(points[6].getPosition()).toStrictEqual([14, 12, 10]);
+    expect(points[7].getPosition()).toStrictEqual([16, 14, 12]);
+    expect(points[8].getPosition()).toStrictEqual([18, 16, 14]);
+    expect(points[9].getPosition()).toStrictEqual([20, 18, 16]);
   });
 
   test("vector calculation with tao=2", () => {
-    graph.getCSVData().populatePoints();
     graph.setTao(2);
     graph.addPoints();
     const points = graph.getPoints3D();
-    expect(points[0].getPosition()).toStrictEqual([0.1, 0.1, 0]);
-    expect(points[1].getPosition()).toStrictEqual([0.2, 0.2, 0]);
-    expect(points[2].getPosition()).toStrictEqual([0.3, 0.3, 0]);
-    expect(points[3].getPosition()).toStrictEqual([0.4, 0.4, 0]);
-    expect(points[4].getPosition()).toStrictEqual([0.5, 0.5, 0.1]);
-    expect(points[5].getPosition()).toStrictEqual([0.6, 0.6, 0.2]);
-    expect(points[6].getPosition()).toStrictEqual([0.7, 0.7, 0.3]);
-    expect(points[7].getPosition()).toStrictEqual([0.8, 0.8, 0.4]);
-    expect(points[8].getPosition()).toStrictEqual([0.9, 0.9, 0.5]);
-    expect(points[9].getPosition()).toStrictEqual([1, 1, 0.6]);
+    expect(points[0].getPosition()).toStrictEqual([2, 0, 0]);
+    expect(points[1].getPosition()).toStrictEqual([4, 0, 0]);
+    expect(points[2].getPosition()).toStrictEqual([6, 2, 0]);
+    expect(points[3].getPosition()).toStrictEqual([8, 4, 0]);
+    expect(points[4].getPosition()).toStrictEqual([10, 6, 2]);
+    expect(points[5].getPosition()).toStrictEqual([12, 8, 4]);
+    expect(points[6].getPosition()).toStrictEqual([14, 10, 6]);
+    expect(points[7].getPosition()).toStrictEqual([16, 12, 8]);
+    expect(points[8].getPosition()).toStrictEqual([18, 14, 10]);
+    expect(points[9].getPosition()).toStrictEqual([20, 16, 12]);
   });
 
   test("setting tao to an invalid value", () => {

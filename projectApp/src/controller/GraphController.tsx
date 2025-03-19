@@ -163,4 +163,11 @@ export class GraphController implements ControllerInterface {
   getEmDataLength(): number {
     return this.getModel().getEmbeddedGraphData().length;
   }
+
+  getEmbeddedRange(): number{
+    if(this.getModel().getEmbeddedGraphData()[0] == null){
+      throw new Error("Un-initialized Embedded Graph (GraphController.ts)");
+    }
+    return this.getModel().getEmbeddedGraphData()[0].getRange();    
+  }
 }

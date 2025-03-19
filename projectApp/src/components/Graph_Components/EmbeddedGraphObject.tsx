@@ -20,7 +20,7 @@ export class EmbeddedGraphObject
 
   constructor(csv: CSVDataObject) {
     super(csv);
-    this.tao = 0;
+    this.tao = 1;
     this.points3D = [];
   }
 
@@ -169,7 +169,7 @@ export class EmbeddedGraphObject
    * post-conditions: the value of tao is updated to newTao
    */
   setTao(newTao: number): void {
-    if (newTao < 0) {
+    if (newTao < 1) {
       const e = new TypeError("Tao must be greater than or equal to 0");
       sendError(
         e,

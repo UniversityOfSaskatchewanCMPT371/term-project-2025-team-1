@@ -1,3 +1,4 @@
+import { CSVDataObject } from "../components/Csv_Components/CSVDataObject";
 import { EmbeddedGraphObject } from "../components/Graph_Components/EmbeddedGraphObject";
 import { TimeSeriesGraphObject } from "../components/Graph_Components/TimeSeriesGraphObject";
 import { ModelInterface } from "../types/BaseInterfaces";
@@ -17,12 +18,12 @@ import { CSVDataInterface } from "../types/CSVInterfaces";
 export class GraphModel implements ModelInterface {
   // TODO - change name of data to be timeSeriesData and update getters and setters
 
-  data: TimeSeriesGraphObject[];
-  embeddedGraphData: EmbeddedGraphObject[];
+  data: TimeSeriesGraphObject;
+  embeddedGraphData: EmbeddedGraphObject;
 
-  constructor() {
-    this.data = [];
-    this.embeddedGraphData = [];
+  constructor(csv: CSVDataObject) {
+    this.data = new TimeSeriesGraphObject(csv);
+    this.embeddedGraphData = new EmbeddedGraphObject(csv);
   }
 
   /**
@@ -48,7 +49,7 @@ export class GraphModel implements ModelInterface {
    * @param {TimeSeriesGraphObject} graph - The TimeSeriesGraphObject to add to the model.
    */
   addTimeSeriesGraph(graph: TimeSeriesGraphObject): void {
-    this.data.push(graph);
+    this.data = graph;
   }
 
   /**
@@ -58,9 +59,9 @@ export class GraphModel implements ModelInterface {
    *
    * @postconditions Returns the current state of the 'data' array, which includes all added TimeSeriesGraphObject instances.
    *
-   * @returns {TimeSeriesGraphObject[]} An array of TimeSeriesGraphObject instances.
+   * @returns TimeSeriesGraphObject An array of TimeSeriesGraphObject instances.
    */
-  getData(): TimeSeriesGraphObject[] {
+  getData(): TimeSeriesGraphObject {
     return this.data;
   }
 
@@ -74,7 +75,7 @@ export class GraphModel implements ModelInterface {
    * @param {EmbeddedGraphObject} graph - The EmbeddedGraphObject to add to the model.
    */
   addEmbeddedGraph(graph: EmbeddedGraphObject): void {
-    this.embeddedGraphData.push(graph);
+    this.embeddedGraphData = graph;
   }
 
   /**
@@ -84,9 +85,9 @@ export class GraphModel implements ModelInterface {
    *
    * @postconditions Returns the current state of the 'embeddedGraphData' array, which includes all added EmbeddedGraphObject instances.
    *
-   * @returns {EmbeddedGraphObject[]} An array of EmbeddedGraphObject instances.
+   * @returns {EmbeddedGraphObject} An EmbeddedGraphObject instance.
    */
-  getEmbeddedGraphData(): EmbeddedGraphObject[] {
+  getEmbeddedGraphData(): EmbeddedGraphObject {
     return this.embeddedGraphData;
   }
 }

@@ -301,7 +301,7 @@ export class CSVDataObject implements CSVDataInterface {
   /**
    * Finds and returns the time header from CSV headers
    *
-   * @precondition csvHeaders must be initialized
+   * @precondition csvHeaders must be initialized, not null and contains a Time column
    * @postcondition Returns a valid time header,
    * i.e The header string containing "Time" or "time" without modifying data
    */

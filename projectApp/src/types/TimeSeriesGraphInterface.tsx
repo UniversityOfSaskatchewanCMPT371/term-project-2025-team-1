@@ -36,6 +36,7 @@ export interface TimeSeriesGraphInterface extends GraphInterface {
    * post-condition: all points' positions are scaled by the zoom factor
    * @param {number} zoomFactor - The scaling factor for point positions
    */
+  //Left here for now, may be used when implementing zoom
   // updateOnZoom(zoomFactor: number): void;
 
   /**
@@ -45,12 +46,4 @@ export interface TimeSeriesGraphInterface extends GraphInterface {
    * @returns {PointObject[]} Array of points in the graph
    */
   get2DPoints(): Point2DObject[];
-
-  /**
-   * Sets the graph's points
-   * pre-condition: points must be an array of valid PointObject instances
-   * post-condition: graph's points are replaced with the new array
-   * @param {PointObject[]} points - Array of new points
-   */
-  // setPoints(points: PointObject[]): void;
 }

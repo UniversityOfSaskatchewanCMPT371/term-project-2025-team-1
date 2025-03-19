@@ -27,7 +27,7 @@ export class Point3DObject implements Point3DInterface {
   }
 
   getPosition(): [number, number, number] {
-    return [this.getXPosition(), this.getXPosition(), this.getZPosition()];
+    return [this.getXPosition(), this.getYPosition(), this.getZPosition()];
   }
 
   setObject(obj: PointObjectInterface): void {

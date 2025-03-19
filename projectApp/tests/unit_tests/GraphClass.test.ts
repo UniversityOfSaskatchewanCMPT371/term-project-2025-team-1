@@ -123,24 +123,24 @@ describe("GraphObject", async () => {
   /**
    * Test: Error Handling for invalid axes configuration
    */
-  // it("throws error when setting invalid axes", () => {
-  //   const graph = new GraphObject(csvDataMock);
-  //   const invalidAxes1 = {
-  //     xRange: [0, 10] as [number, number],
-  //     yRange: [0, 10] as [number, number],
-  //   };
-  //   expect(() => {
-  //     graph.setAxes(invalidAxes1);
-  //   }).toThrowError("Invalid xLabel: must be a non-empty string");
+  it("throws error when setting invalid axes", () => {
+    const graph = new GraphObject(csvDataMock);
+    const invalidAxes1 = {
+      xRange: [10, 0] as [number, number],
+      yRange: [0, 10] as [number, number],
+    };
+    expect(() => {
+      graph.setAxes(invalidAxes1);
+    }).toThrowError("Invalid xRange. First value must be less than the second value (GraphObject.ts)");
 
-  //   const invalidAxes2 = {
-  //     xRange: [0, 10] as [number, number],
-  //     yRange: [0, 10] as [number, number],
-  //   };
-  //   expect(() => {
-  //     graph.setAxes(invalidAxes2);
-  //   }).toThrowError("Invalid yLabel: must be a non-empty string");
-  // });
+    const invalidAxes2 = {
+      xRange: [0, 10] as [number, number],
+      yRange: [10, 0] as [number, number],
+    };
+    expect(() => {
+      graph.setAxes(invalidAxes2);
+    }).toThrowError("Invalid yRange. First value must be less than the second value (GraphObject.ts)");
+  });
 
   /**
    * Test: Error Handling for invalid points array

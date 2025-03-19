@@ -76,7 +76,7 @@ export class GraphController implements ControllerInterface {
         return graph;
       }
     }
-    //Trow error instead later
+    //Throw error instead later
     mainController.updateMainScene();
     return result;
   }

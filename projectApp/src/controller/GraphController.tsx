@@ -42,12 +42,12 @@ export class GraphController implements ControllerInterface {
     const result: TimeSeriesGraphObject = new TimeSeriesGraphObject(csv);
 
     // for (const graph of this.getModel().getData()) {
-      // if (graph.getName() == csv.getName()) {
-      // const graph = this.getModel().getData();
-        // this.getModel().getData().setRange();
-        // graph.setRange();
-        // return graph;
-      // }
+    // if (graph.getName() == csv.getName()) {
+    // const graph = this.getModel().getData();
+    // this.getModel().getData().setRange();
+    // graph.setRange();
+    // return graph;
+    // }
     // }
     mainController.updateMainScene();
     return result;

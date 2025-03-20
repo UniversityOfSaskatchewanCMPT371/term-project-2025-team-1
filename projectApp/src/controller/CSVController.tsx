@@ -39,23 +39,23 @@ export class CSVController implements ControllerInterface {
     // assert(csv, "CSV data is undefined");
     if (!csv) {
       throw new Error("CSV data is undefined"); // Ensure csv is always valid
-  }
+    }
 
     // for (const csv of this.model.getData()) {
     //   if (csv.getDisplayBoard() == 1) {
-        csv.setVRSelected(true);
-        const TSGraph = new TimeSeriesGraphObject(csv);
-        TSGraph.setName(csv.getName());
-        TSGraph.addPoints();
+    csv.setVRSelected(true);
+    const TSGraph = new TimeSeriesGraphObject(csv);
+    TSGraph.setName(csv.getName());
+    TSGraph.addPoints();
 
-        const emGraph = new EmbeddedGraphObject(csv);
-        emGraph.setName(csv.getName());
-        emGraph.addPoints();
+    const emGraph = new EmbeddedGraphObject(csv);
+    emGraph.setName(csv.getName());
+    emGraph.addPoints();
 
-        mainController.getGraphController().pushDataToModel(TSGraph, emGraph);
-        console.log("Success on generate?");
-        sendLog("info", "generate has pushed a new graph");
-      // }
+    mainController.getGraphController().pushDataToModel(TSGraph, emGraph);
+    console.log("Success on generate?");
+    sendLog("info", "generate has pushed a new graph");
+    // }
     // }
   }
 
@@ -109,11 +109,11 @@ export class CSVController implements ControllerInterface {
     const csv = this.getModelData();
     // for (const csv of this.model.getData()) {
     // assert(csv, "CSV data is undefined");
-      if (csv?.getVRSelected()) {
-        file = csv;
-        sendLog("info", `getVRSelected has returned ${csv.name}`);
-        return csv;
-      }
+    if (csv?.getVRSelected()) {
+      file = csv;
+      sendLog("info", `getVRSelected has returned ${csv.name}`);
+      return csv;
+    }
     // }
     sendLog("info", "getVRSelected has returned an empty CSVDataObject");
     return file;

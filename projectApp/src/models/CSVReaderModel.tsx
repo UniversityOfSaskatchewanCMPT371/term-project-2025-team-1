@@ -1,6 +1,6 @@
 import { CSVDataObject } from "../components/Csv_Components/CSVDataObject";
 import { sendError, sendLog } from "../logger-frontend";
-import {  CSVModelInterface } from "../types/CSVInterfaces";
+import { CSVModelInterface } from "../types/CSVInterfaces";
 
 /**
  * The CSVReaderModel class is responsible for managing the CSV data objects.
@@ -25,7 +25,7 @@ export class CSVReaderModel implements CSVModelInterface {
   }
 
   /**
-   * Returns a CSVData object 
+   * Returns a CSVData object
    * @param {string} name - The name of the CSV file.
    *
    * @precondition The 'data' array contains CSVDataObject instances with a valid 'name' property
@@ -37,8 +37,8 @@ export class CSVReaderModel implements CSVModelInterface {
   getCSVFileByName(name: string): CSVDataObject | undefined {
     // for (const data of this.data) {
     //   if (data.name == name) {
-        return this.data;
-      }
+    return this.data;
+  }
   //   }
   //   sendLog(
   //     "info",

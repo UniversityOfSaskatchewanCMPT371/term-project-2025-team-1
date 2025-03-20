@@ -135,7 +135,7 @@ export default function DropdownUI(props: dropDownProps) {
    */
   function GenerateList(): React.JSX.Element {
     const modelData = mainController.getCSVController().getModelData();
-    
+
     return (
       <>
         <Container flexDirection={"column"} flexGrow={props.xSize}>

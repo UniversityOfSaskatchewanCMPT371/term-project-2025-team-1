@@ -31,20 +31,20 @@ export default function MainScene(): React.JSX.Element {
     if (updateGraph) {
       const vrSelected = mainController.getCSVController().getVRSelected();
       // if (mainController.getGraphController().getDataLength() > 0) {
-        if (!vrSelected) {
-          console.error("No CSVDataObject selected");
-          return; // Stop execution if vrSelected is undefined
-        }
-        const newGraph = mainController
-          .getGraphController()
-          .generateTimeSeriesGraph(vrSelected);
-        setGraph(newGraph);
+      if (!vrSelected) {
+        console.error("No CSVDataObject selected");
+        return; // Stop execution if vrSelected is undefined
+      }
+      const newGraph = mainController
+        .getGraphController()
+        .generateTimeSeriesGraph(vrSelected);
+      setGraph(newGraph);
       // }
       // if (mainController.getGraphController().getEmDataLength() > 0) {
-        const newEmGraph = mainController
-          .getGraphController()
-          .generateEmbeddedGraph(vrSelected);
-        setEmGraph(newEmGraph);
+      const newEmGraph = mainController
+        .getGraphController()
+        .generateEmbeddedGraph(vrSelected);
+      setEmGraph(newEmGraph);
       // }
     }
     setUpdateGraph(false);

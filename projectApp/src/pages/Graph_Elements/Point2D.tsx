@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Point2DObject } from "../../components/Graph_Components/Points/Point2DObject";
+import mainController from "../../controller/MainController";
 
 /**
  * Renders a 2D point on a Time Series Graph.
@@ -21,6 +22,7 @@ export default function Point2D({ pointRef }: { pointRef: Point2DObject }) {
   function setOnClick(): void {
     pointRef.getObject().setSelected(!pointRef.getObject().getSelected());
     click(pointRef.getObject().getSelected());
+    mainController.updateMainScene();
   }
 
   return (

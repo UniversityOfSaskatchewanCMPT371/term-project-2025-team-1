@@ -17,6 +17,7 @@ export default function Create3DPoint({
   const point = new Point3DObject(pointRef.getObject());
   point.getObject().setTimeData(pointRef.getObject().getTimeData());
   point.getObject().setYData(pointRef.getObject().getYData());
+  point.getObject().setSelected(pointRef.getObject().getSelected());
 
   point.setXAxisPos(pointRef.getXPosition());
   point.setYAxisPos(pointRef.getYPosition());

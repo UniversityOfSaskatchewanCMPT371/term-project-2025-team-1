@@ -1,6 +1,7 @@
 import React from "react";
 import { CSVController } from "./CSVController";
 import { GraphController } from "./GraphController";
+import { sendLog } from "../logger-frontend";
 
 /**
  * Main controller class that coordinates between CSV and Graph controllers
@@ -67,6 +68,7 @@ export class MainController {
   updateMainScene(): void {
     if (this.updateScene.current?.updateScene) {
       this.updateScene.current.updateScene();
+      sendLog("info", "Update main scene");
     }
   }
 }

@@ -21,8 +21,6 @@ export class GraphModel implements ModelInterface {
   data?: TimeSeriesGraphObject;
   embeddedGraphData?: EmbeddedGraphObject;
 
-  constructor() {}
-
   /**
    * Sets the VRSelected flag of the given CSV data object to true.
    *

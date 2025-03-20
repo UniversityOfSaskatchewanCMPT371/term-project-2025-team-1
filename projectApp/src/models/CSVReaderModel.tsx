@@ -20,8 +20,6 @@ import { CSVModelInterface } from "../types/CSVInterfaces";
 export class CSVReaderModel implements CSVModelInterface {
   data?: CSVDataObject;
 
-  constructor() {}
-
   /**
    * Returns a CSVData object
    * @param {string} name - The name of the CSV file.

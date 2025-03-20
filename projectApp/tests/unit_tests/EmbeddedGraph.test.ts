@@ -6,7 +6,7 @@ describe("Embedded Graph test", () => {
   let graph: EmbeddedGraphObject;
   // TODO - update url when file being used is in main
   const url =
-    "https://raw.githubusercontent.com/UniversityOfSaskatchewanCMPT371/term-project-2025-team-1/refs/heads/ID4/csvTestFiles/indexedData.csv"
+    "https://raw.githubusercontent.com/UniversityOfSaskatchewanCMPT371/term-project-2025-team-1/refs/heads/ID4/csvTestFiles/indexedData.csv";
   beforeAll(async () => {
     await mainController.getCSVController().loadURLFile(url);
   });

@@ -100,7 +100,7 @@ export function EmbeddedGraph({
           {graph.getPoints3D().map((point) => {
             return (
               <>
-                <GeneratePoint point={point}/>
+                <GeneratePoint point={point} />
               </>
             );
           })}

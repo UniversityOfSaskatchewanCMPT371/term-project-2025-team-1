@@ -216,14 +216,6 @@ describe("Testing the urlCSVReader function", () => {
   };
   runReaderTest(regularFileUrl);
 
-  // const regularFileUrlHeaders: TestFormat<string, string[]> = {
-  //   description: "url headers:\theaders should be read from existing file",
-  //   inputVars: urlRegularFile,
-  //   expectSuccess: true,
-  //   useFunction: urlHeaders,
-  // };
-  // runReaderTest(regularFileUrlHeaders);
-
   const fakeFileUrl: TestFormat<
     string,
     { key: Record<string, string | number> }[]
@@ -234,15 +226,6 @@ describe("Testing the urlCSVReader function", () => {
     useFunction: urlReader,
   };
   runReaderTest(fakeFileUrl);
-
-  // const fakeFileUrlHeaders: TestFormat<string, string[]> = {
-  //   description:
-  //     "url headers:\theaders should not be read from nonexistant file",
-  //   inputVars: urlFakeFile,
-  //   expectSuccess: false,
-  //   useFunction: urlHeaders,
-  // };
-  // runReaderTest(fakeFileUrlHeaders);
 
   const oneLessUrlReader: TestFormat<
     string,
@@ -256,15 +239,6 @@ describe("Testing the urlCSVReader function", () => {
   };
   runReaderTest(oneLessUrlReader);
 
-  // const oneLessUrlHeader: TestFormat<string, string[]> = {
-  //   description:
-  //     "url headers:\theaders should be read from file with one less header",
-  //   inputVars: urlOneLessHeader,
-  //   expectSuccess: true,
-  //   useFunction: urlHeaders,
-  // };
-  // runReaderTest(oneLessUrlHeader);
-
   const oneMoreUrlReader: TestFormat<
     string,
     { key: Record<string, string | number> }[]
@@ -277,15 +251,6 @@ describe("Testing the urlCSVReader function", () => {
   };
   runReaderTest(oneMoreUrlReader);
 
-  // const oneMoreUrlHeaders: TestFormat<string, string[]> = {
-  //   description:
-  //     "url headers:\theaders should be read from file with one more header",
-  //   inputVars: urlOneMoreHeader,
-  //   expectSuccess: true,
-  //   useFunction: urlHeaders,
-  // };
-  // runReaderTest(oneMoreUrlHeaders);
-
   const unevenDataUrlReader: TestFormat<
     string,
     { key: Record<string, string | number> }[]
@@ -296,15 +261,6 @@ describe("Testing the urlCSVReader function", () => {
     useFunction: urlReader,
   };
   runReaderTest(unevenDataUrlReader);
-
-  // const unevenDataUrlHeaders: TestFormat<string, string[]> = {
-  //   description:
-  //     "url headers:\theaders should be read from file with uneven data",
-  //   inputVars: urlUnevenData,
-  //   expectSuccess: true,
-  //   useFunction: urlHeaders,
-  // };
-  // runReaderTest(unevenDataUrlHeaders);
 
   const differentTypesUrlReader: TestFormat<
     string,
@@ -318,15 +274,6 @@ describe("Testing the urlCSVReader function", () => {
   };
   runReaderTest(differentTypesUrlReader);
 
-  // const differentTypesUrlHeaders: TestFormat<string, string[]> = {
-  //   description:
-  //     "url headers:\theaders should be read from file with different data types",
-  //   inputVars: urlDifferentTypes,
-  //   expectSuccess: true,
-  //   useFunction: urlHeaders,
-  // };
-  // runReaderTest(differentTypesUrlHeaders);
-
   const inputHtmlUrlReader: TestFormat<
     string,
     { key: Record<string, string | number> }[]
@@ -337,14 +284,6 @@ describe("Testing the urlCSVReader function", () => {
     useFunction: urlReader,
   };
   runReaderTest(inputHtmlUrlReader);
-
-  // const inputHtmlUrlHeaders: TestFormat<string, string[]> = {
-  //   description: "url headers:\theaders should not be read from non-csv file",
-  //   inputVars: urlNotCSV,
-  //   expectSuccess: false,
-  //   useFunction: urlHeaders,
-  // };
-  // runReaderTest(inputHtmlUrlHeaders);
 
   const emptyFileUrlReader: TestFormat<
     string,
@@ -357,14 +296,6 @@ describe("Testing the urlCSVReader function", () => {
   };
   runReaderTest(emptyFileUrlReader);
 
-  // const emptyFileUrlHeaders: TestFormat<string, string[]> = {
-  //   description: "url headers:\theaders should not be read from empty csv file",
-  //   inputVars: urlEmptyFile,
-  //   expectSuccess: false,
-  //   useFunction: urlHeaders,
-  // };
-  // runReaderTest(emptyFileUrlHeaders);
-
   const w3schoolUrlReader: TestFormat<
     string,
     { key: Record<string, string | number> }[]
@@ -376,13 +307,4 @@ describe("Testing the urlCSVReader function", () => {
     useFunction: urlReader,
   };
   runReaderTest(w3schoolUrlReader);
-
-  // const w3schoolUrlHeaders: TestFormat<string, string[]> = {
-  //   description:
-  //     "url headers:\theaders should be read from an online csv file from another website",
-  //   inputVars: urlW3Pandas,
-  //   expectSuccess: true,
-  //   useFunction: urlHeaders,
-  // };
-  // runReaderTest(w3schoolUrlHeaders);
 });

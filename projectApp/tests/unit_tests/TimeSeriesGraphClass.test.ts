@@ -77,13 +77,6 @@ describe("Time Series Graph Class", async () => {
     expect(point.getYData()).toBe(10);
     expect(point.getTimeData()).toBe("2025-01-18");
 
-    //Testing to see if a Point's position is modifiable
-    // point.setPosition([-1.8, 1, 0.01]);
-    // expect(point.getPosition()).toEqual([-1.8, 1, 0.01]);
-
-    // expect(point.getXPosition()).toEqual(-1.8);
-    // expect(point.getYPosition()).toEqual(1);
-
     //Selected Status of Point
     expect(point.getSelected()).toEqual(false);
     point.setSelected(true);

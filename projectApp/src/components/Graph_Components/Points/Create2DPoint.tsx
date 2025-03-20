@@ -19,5 +19,5 @@ export default function Create2DPoint({
   point.setYAxisPos(pointRef.getYPosition());
   point.getObject().setTimeData(pointRef.getObject().getTimeData());
   point.getObject().setYData(pointRef.getObject().getYData());
-  return <Point2D pointRef={point}/>;
+  return <Point2D pointRef={point} />;
 }

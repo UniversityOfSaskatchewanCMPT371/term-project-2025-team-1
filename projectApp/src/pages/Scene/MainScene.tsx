@@ -28,18 +28,18 @@ export default function MainScene(): React.JSX.Element {
   });
 
   useEffect(() => {
-      const graphData = mainController.getCSVController().getGraphData();
-      if (!graphData) {
-        return; // Stop execution if vrSelected is undefined
-      }
-      const newGraph = mainController
-        .getGraphController()
-        .generateTimeSeriesGraph(graphData);
-      setGraph(newGraph);
-      const newEmGraph = mainController
-        .getGraphController()
-        .generateEmbeddedGraph(graphData);
-      setEmGraph(newEmGraph);
+    const graphData = mainController.getCSVController().getGraphData();
+    if (!graphData) {
+      return; // Stop execution if vrSelected is undefined
+    }
+    const newGraph = mainController
+      .getGraphController()
+      .generateTimeSeriesGraph(graphData);
+    setGraph(newGraph);
+    const newEmGraph = mainController
+      .getGraphController()
+      .generateEmbeddedGraph(graphData);
+    setEmGraph(newEmGraph);
     setUpdateGraph(false);
   }, [updateGraph]);
   return (

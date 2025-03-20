@@ -25,7 +25,6 @@ describe("CSVController Tests", () => {
   test("Getting Model data by controller", () => {
     const model = csvController.getModel();
     expect(model.getData()).toBeUndefined();
-
   });
 
   //Testing parsing csv files locally and by url

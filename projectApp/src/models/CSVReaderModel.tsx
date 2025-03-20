@@ -20,8 +20,7 @@ import { CSVModelInterface } from "../types/CSVInterfaces";
 export class CSVReaderModel implements CSVModelInterface {
   data?: CSVDataObject;
 
-  constructor() {
-  }
+  constructor() {}
 
   /**
    * Returns a CSVData object

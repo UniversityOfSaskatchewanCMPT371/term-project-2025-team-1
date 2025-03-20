@@ -1,5 +1,7 @@
 import { Container, Fullscreen, Text } from "@react-three/uikit";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { clearInterval } from "timers";
+import { sendLog } from "../../logger-frontend";
 
 export default function TestScene({
   inVR,
@@ -8,9 +10,26 @@ export default function TestScene({
 }): React.JSX.Element {
   const [clicked, setClicked] = useState(false);
   const [hovered, setHovered] = useState(false);
+  const [logs, setStrings] = useState<string[]>([]);
+
+  const fetchLog = async () => {
+    try {
+      const response = await fetch("../../../public/tlog.txt");
+      const text = await response.text();
+      setStrings(text.split("\n").filter((line) => line.trim() !== ""));
+    } catch (error) {
+      sendLog("info", "Can't fetch the log file for TestScene.tsx");
+    }
+  };
+
+  useEffect(() => {
+    fetchLog();
+    const interval = setInterval(fetchLog, 2000);
+    return () => clearInterval(interval);
+  }, []);
 
   // Temporary example array to use for displaying values
-  const strings: string[] = ["string 1","string 2","string 3", "string 4", "string 5"];
+  //const strings: string[] = ["string 1","string 2","string 3", "string 4", "string 5"];
 
 
   return (
@@ -109,7 +128,7 @@ export default function TestScene({
                 marginTop={10}
                 alignItems={"center"}
                 >
-                  {strings.map((item, index) => (
+                  {logs.map((item, index) => (
                     <Text key={index} fontSize={14} color={"black"}>
                       {item}
                     </Text>

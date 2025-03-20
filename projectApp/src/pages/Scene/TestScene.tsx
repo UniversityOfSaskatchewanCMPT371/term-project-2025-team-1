@@ -11,7 +11,7 @@ export default function TestScene({
 
   return (
     <>
-      {/* Maybe fullscreen component stay displaying, but the container can chang visibility, so theres always that fullscreen button top left */}
+      {/* Maybe fullscreen component stay displaying, but the container can change visibility, so theres always that fullscreen button top left */}
       <Fullscreen
         flexDirection={"row"}
         distanceToCamera={0.8}

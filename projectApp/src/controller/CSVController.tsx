@@ -103,7 +103,7 @@ export class CSVController implements ControllerInterface {
     return this.getModelData();
   }
 
-  getDataByName(name: string): CSVDataObject | undefined {
-    return this.model.getCSVFileByName(name);
+  getData(): CSVDataObject | undefined {
+    return this.model.getCSVFile();
   }
 }

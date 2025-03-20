@@ -26,8 +26,6 @@ describe("CSVController Tests", () => {
     const model = csvController.getModel();
     expect(model.getData()).toBeUndefined();
 
-    // expect(model.getData()).toStrictEqual([]);
-    // expect(model.getData().length).toBe(0);
   });
 
   //Testing parsing csv files locally and by url
@@ -42,9 +40,8 @@ describe("CSVController Tests", () => {
       "https://raw.githubusercontent.com/UniversityOfSaskatchewanCMPT371/term-project-2025-team-1/refs/heads/main/csvTestFiles/test.csv";
 
     await csvController.loadURLFile(url);
-    // expect(csvController.getModelData().length).toBe(1);
 
-    const getByName = csvController.getDataByName("Graph0");
+    const getByName = csvController.getData();
 
     expect(getByName).toBeInstanceOf(CSVDataObject);
     expect(getByName?.getName()).toBe("Graph0");

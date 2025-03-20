@@ -40,15 +40,6 @@ export class GraphController implements ControllerInterface {
    */
   generateTimeSeriesGraph(csv: CSVDataObject): TimeSeriesGraphObject {
     const result: TimeSeriesGraphObject = new TimeSeriesGraphObject(csv);
-
-    // for (const graph of this.getModel().getData()) {
-    // if (graph.getName() == csv.getName()) {
-    // const graph = this.getModel().getData();
-    // this.getModel().getData().setRange();
-    // graph.setRange();
-    // return graph;
-    // }
-    // }
     mainController.updateMainScene();
     return result;
   }
@@ -70,12 +61,6 @@ export class GraphController implements ControllerInterface {
    */
   generateEmbeddedGraph(csv: CSVDataObject): EmbeddedGraphObject {
     const result: EmbeddedGraphObject = new EmbeddedGraphObject(csv);
-
-    // for (const graph of this.getModel().getEmbeddedGraphData()) {
-    //   if (graph.getName() == csv.getName()) {
-    //     return graph;
-    //   }
-    // }
     mainController.updateMainScene();
     return result;
   }
@@ -125,19 +110,6 @@ export class GraphController implements ControllerInterface {
   }
 
   /**
-   * Returns the number of TimeSeriesGraphObject instances stored in the model.
-   *
-   * @precondition none
-   *
-   * @postcondition The number of TimeSeriesGraphObject instances is returned.
-   *
-   * @returns The number of TimeSeriesGraphObject instances in the model
-   */
-  // getDataLength(): number {
-  //   return this.getModel().getData().length;
-  // }
-
-  /**
    * Retrieves the array of EmbeddedGraphObject instances stored in the model.
    *
    * @precondition none
@@ -149,17 +121,4 @@ export class GraphController implements ControllerInterface {
   getModelEmData(): EmbeddedGraphObject | undefined {
     return this.model.getEmbeddedGraphData();
   }
-
-  /**
-   * Returns the number of EmbeddedGraphObject instances stored in the model.
-   *
-   * @precondition none
-   *
-   * @postcondition The number of EmbeddedGraphObject instances is returned.
-   *
-   * @returns The number of EmbeddedGraphObject instances in the model
-   */
-  // getEmDataLength(): number {
-  //   return this.getModel().getEmbeddedGraphData().length;
-  // }
 }

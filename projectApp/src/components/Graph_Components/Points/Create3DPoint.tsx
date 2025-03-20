@@ -22,8 +22,6 @@ export default function Create3DPoint({
   point.setYAxisPos(pointRef.getYPosition());
   point.setZAxisPos(pointRef.getZPosition());
   return (
-    <>
-      <Point3D pointRef={point}></Point3D>
-    </>
+    <Point3D pointRef={point}/>
   );
 }

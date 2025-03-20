@@ -97,10 +97,10 @@ export function EmbeddedGraph({
           <meshBasicMaterial visible={false} />
           <GenerateAxis />
 
-          {graph.getPoints3D().map((points) => {
+          {graph.getPoints3D().map((point) => {
             return (
               <>
-                <GeneratePoint point={points}></GeneratePoint>
+                <GeneratePoint point={point}></GeneratePoint>
               </>
             );
           })}

@@ -1,10 +1,11 @@
+import { assert } from "console";
 import { CSVDataObject } from "../components/Csv_Components/CSVDataObject";
 import { EmbeddedGraphObject } from "../components/Graph_Components/EmbeddedGraphObject";
 import { TimeSeriesGraphObject } from "../components/Graph_Components/TimeSeriesGraphObject";
 import { sendError, sendLog } from "../logger-frontend";
 import { CSVReaderModel } from "../models/CSVReaderModel";
 import { ControllerInterface } from "../types/BaseInterfaces";
-import { CSVDataInterface } from "../types/CSVInterfaces";
+// import { CSVDataInterface } from "../types/CSVInterfaces";
 import mainController from "./MainController";
 
 /**
@@ -35,8 +36,14 @@ export class CSVController implements ControllerInterface {
    *   - The graph is added to the main controller's graph collection
    */
   generate(): void {
-    for (const csv of this.model.getData()) {
-      if (csv.getDisplayBoard() == 1) {
+    const csv = this.getModelData();
+    // assert(csv, "CSV data is undefined");
+    if (!csv) {
+      throw new Error("CSV data is undefined"); // Ensure csv is always valid
+  }
+
+    // for (const csv of this.model.getData()) {
+    //   if (csv.getDisplayBoard() == 1) {
         csv.setVRSelected(true);
         const TSGraph = new TimeSeriesGraphObject(csv);
         TSGraph.setName(csv.getName());
@@ -49,8 +56,8 @@ export class CSVController implements ControllerInterface {
         mainController.getGraphController().pushDataToModel(TSGraph, emGraph);
         console.log("Success on generate?");
         sendLog("info", "generate has pushed a new graph");
-      }
-    }
+      // }
+    // }
   }
 
   async loadLocalFile(file: File): Promise<void> {
@@ -87,7 +94,7 @@ export class CSVController implements ControllerInterface {
     return this.model;
   }
 
-  getModelData(): CSVDataObject[] {
+  getModelData(): CSVDataObject | undefined {
     return this.model.getData();
   }
 
@@ -98,20 +105,22 @@ export class CSVController implements ControllerInterface {
    * @postcondition Returns either an existing CSV object or a new empty one (if none found)
    *  without modifying data
    */
-  getVRSelected(): CSVDataObject {
+  getVRSelected(): CSVDataObject | undefined {
     let file: CSVDataObject = new CSVDataObject();
-    for (const csv of this.model.getData()) {
-      if (csv.getVRSelected()) {
+    const csv = this.getModelData();
+    // for (const csv of this.model.getData()) {
+    // assert(csv, "CSV data is undefined");
+      if (csv?.getVRSelected()) {
         file = csv;
         sendLog("info", `getVRSelected has returned ${csv.name}`);
         return csv;
       }
-    }
+    // }
     sendLog("info", "getVRSelected has returned an empty CSVDataObject");
     return file;
   }
 
-  getDataByName(name: string): CSVDataInterface | null {
+  getDataByName(name: string): CSVDataObject | undefined {
     return this.model.getCSVFileByName(name);
   }
 }

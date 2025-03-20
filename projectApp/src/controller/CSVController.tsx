@@ -4,7 +4,6 @@ import { TimeSeriesGraphObject } from "../components/Graph_Components/TimeSeries
 import { sendError, sendLog } from "../logger-frontend";
 import { CSVReaderModel } from "../models/CSVReaderModel";
 import { ControllerInterface } from "../types/BaseInterfaces";
-// import { CSVDataInterface } from "../types/CSVInterfaces";
 import mainController from "./MainController";
 
 /**
@@ -36,13 +35,10 @@ export class CSVController implements ControllerInterface {
    */
   generate(): void {
     const csv = this.getModelData();
-    // assert(csv, "CSV data is undefined");
     if (!csv) {
       throw new Error("CSV data is undefined"); // Ensure csv is always valid
     }
 
-    // for (const csv of this.model.getData()) {
-    //   if (csv.getDisplayBoard() == 1) {
     csv.setVRSelected(true);
     const TSGraph = new TimeSeriesGraphObject(csv);
     TSGraph.setName(csv.getName());
@@ -55,8 +51,6 @@ export class CSVController implements ControllerInterface {
     mainController.getGraphController().pushDataToModel(TSGraph, emGraph);
     console.log("Success on generate?");
     sendLog("info", "generate has pushed a new graph");
-    // }
-    // }
   }
 
   async loadLocalFile(file: File): Promise<void> {
@@ -104,22 +98,11 @@ export class CSVController implements ControllerInterface {
    * @postcondition Returns either an existing CSV object or a new empty one (if none found)
    *  without modifying data
    */
-  getVRSelected(): CSVDataObject | undefined {
-    let file: CSVDataObject = new CSVDataObject();
-    const csv = this.getModelData();
-    // for (const csv of this.model.getData()) {
-    // assert(csv, "CSV data is undefined");
-    if (csv?.getVRSelected()) {
-      file = csv;
-      sendLog("info", `getVRSelected has returned ${csv.name}`);
-      return csv;
-    }
-    // }
-    sendLog("info", "getVRSelected has returned an empty CSVDataObject");
-    return file;
+  getGraphData(): CSVDataObject | undefined {
+    return this.getModelData();
   }
 
-  getDataByName(name: string): CSVDataObject | undefined {
-    return this.model.getCSVFileByName(name);
+  getData(): CSVDataObject | undefined {
+    return this.model.getCSVFile();
   }
 }

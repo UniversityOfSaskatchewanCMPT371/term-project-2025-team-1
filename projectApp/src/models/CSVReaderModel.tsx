@@ -20,10 +20,6 @@ import { CSVModelInterface } from "../types/CSVInterfaces";
 export class CSVReaderModel implements CSVModelInterface {
   data?: CSVDataObject;
 
-  constructor() {
-    // this.data = [];
-  }
-
   /**
    * Returns a CSVData object
    * @param {string} name - The name of the CSV file.
@@ -34,18 +30,9 @@ export class CSVReaderModel implements CSVModelInterface {
    *
    * @returns The CSVData object if found, otherwise null.
    */
-  getCSVFileByName(name: string): CSVDataObject | undefined {
-    // for (const data of this.data) {
-    //   if (data.name == name) {
+  getCSVFile(): CSVDataObject | undefined {
     return this.data;
   }
-  //   }
-  //   sendLog(
-  //     "info",
-  //     `getCSVRileByName could not find file ${name}, is this expected behavior?`,
-  //   );
-  //   return null;
-  // }
 
   /**
    * Reads a local CSV file and sets it as the data array.

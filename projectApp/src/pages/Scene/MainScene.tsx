@@ -28,27 +28,20 @@ export default function MainScene(): React.JSX.Element {
   });
 
   useEffect(() => {
-    if (updateGraph) {
-      const vrSelected = mainController.getCSVController().getVRSelected();
-      // if (mainController.getGraphController().getDataLength() > 0) {
-      if (!vrSelected) {
-        console.error("No CSVDataObject selected");
+      const graphData = mainController.getCSVController().getGraphData();
+      if (!graphData) {
         return; // Stop execution if vrSelected is undefined
       }
       const newGraph = mainController
         .getGraphController()
-        .generateTimeSeriesGraph(vrSelected);
+        .generateTimeSeriesGraph(graphData);
       setGraph(newGraph);
-      // }
-      // if (mainController.getGraphController().getEmDataLength() > 0) {
       const newEmGraph = mainController
         .getGraphController()
-        .generateEmbeddedGraph(vrSelected);
+        .generateEmbeddedGraph(graphData);
       setEmGraph(newEmGraph);
-      // }
-    }
     setUpdateGraph(false);
-  });
+  }, [updateGraph]);
   return (
     <>
       {/* This block of code is the sign in front of the user

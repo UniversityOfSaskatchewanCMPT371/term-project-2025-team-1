@@ -95,9 +95,26 @@ export default function TestScene({
               justifyContent={"center"}
               alignContent={"center"}
               display={clicked ? "flex" : "none"}
+              flexDirection={"column"}
+              alignItems={"center"}
             >
               {/* Items to be displayed in test scene will go here */}
               <Text>TEST BODY</Text>
+
+              <Container
+                width={"100%"}
+                alignContent={"center"}
+                justifyContent={"center"}
+                flexDirection={"column"}
+                marginTop={10}
+                alignItems={"center"}
+                >
+                  {strings.map((item, index) => (
+                    <Text key={index} fontSize={14} color={"black"}>
+                      {item}
+                    </Text>
+                  ))}
+                </Container>
             </Container>
           </Container>
         </Container>

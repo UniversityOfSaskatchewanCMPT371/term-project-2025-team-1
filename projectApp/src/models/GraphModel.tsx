@@ -1,4 +1,4 @@
-import { CSVDataObject } from "../components/Csv_Components/CSVDataObject";
+// import { CSVDataObject } from "../components/Csv_Components/CSVDataObject";
 import { EmbeddedGraphObject } from "../components/Graph_Components/EmbeddedGraphObject";
 import { TimeSeriesGraphObject } from "../components/Graph_Components/TimeSeriesGraphObject";
 import { ModelInterface } from "../types/BaseInterfaces";
@@ -18,12 +18,12 @@ import { CSVDataInterface } from "../types/CSVInterfaces";
 export class GraphModel implements ModelInterface {
   // TODO - change name of data to be timeSeriesData and update getters and setters
 
-  data: TimeSeriesGraphObject;
-  embeddedGraphData: EmbeddedGraphObject;
+  data?: TimeSeriesGraphObject;
+  embeddedGraphData?: EmbeddedGraphObject;
 
-  constructor(csv: CSVDataObject) {
-    this.data = new TimeSeriesGraphObject(csv);
-    this.embeddedGraphData = new EmbeddedGraphObject(csv);
+  constructor() {
+    // this.data = null;
+    // this.embeddedGraphData = null;
   }
 
   /**
@@ -61,7 +61,7 @@ export class GraphModel implements ModelInterface {
    *
    * @returns TimeSeriesGraphObject An array of TimeSeriesGraphObject instances.
    */
-  getData(): TimeSeriesGraphObject {
+  getData(): TimeSeriesGraphObject | undefined {
     return this.data;
   }
 
@@ -87,7 +87,7 @@ export class GraphModel implements ModelInterface {
    *
    * @returns {EmbeddedGraphObject} An EmbeddedGraphObject instance.
    */
-  getEmbeddedGraphData(): EmbeddedGraphObject {
+  getEmbeddedGraphData(): EmbeddedGraphObject | undefined {
     return this.embeddedGraphData;
   }
 }

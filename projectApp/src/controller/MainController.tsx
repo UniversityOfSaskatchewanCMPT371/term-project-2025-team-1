@@ -1,3 +1,4 @@
+import React from "react";
 import { CSVController } from "./CSVController";
 import { GraphController } from "./GraphController";
 
@@ -9,7 +10,9 @@ import { GraphController } from "./GraphController";
 export class MainController {
   private csvController: CSVController;
   private graphController: GraphController;
-  private updateScene: any;
+  private updateScene: React.RefObject<{
+    updateScene: () => void;
+  }>;
 
   /**
    * Initializes the main controller with new instances of CSV and Graph controllers
@@ -19,7 +22,7 @@ export class MainController {
   constructor() {
     this.csvController = new CSVController();
     this.graphController = new GraphController();
-    this.updateScene = null;
+    this.updateScene = React.createRef<{ updateScene: () => void }>();
   }
 
   /**
@@ -47,8 +50,12 @@ export class MainController {
    * @precondition ref must have a 'current' property
    * @postcondition updateScene is set to the provided reference's current value
    */
-  setSceneRef(ref: any): void {
-    this.updateScene = ref.current;
+  setSceneRef(
+    ref: React.MutableRefObject<{
+      updateScene: () => void;
+    }>,
+  ): void {
+    this.updateScene = ref;
   }
 
   /**
@@ -58,8 +65,8 @@ export class MainController {
    * @postcondition Scene update is triggered if preconditions are met
    */
   updateMainScene(): void {
-    if (this.updateScene?.updateScene) {
-      this.updateScene.updateScene();
+    if (this.updateScene.current?.updateScene) {
+      this.updateScene.current.updateScene();
     }
   }
 }

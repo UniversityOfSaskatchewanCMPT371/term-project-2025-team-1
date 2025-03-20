@@ -44,6 +44,7 @@ export class GraphController implements ControllerInterface {
     for (const graph of this.getModel().getData()) {
       if (graph.getName() == csv.getName()) {
         graph.setRange();
+        graph.setYRangeLength(graph.timeSeriesYRange().length + 1);
         return graph;
       }
     }
@@ -71,9 +72,11 @@ export class GraphController implements ControllerInterface {
 
     for (const graph of this.getModel().getEmbeddedGraphData()) {
       if (graph.getName() == csv.getName()) {
+        graph.setRange();
         return graph;
       }
     }
+    //Throw error instead later
     mainController.updateMainScene();
     return result;
   }
@@ -159,5 +162,14 @@ export class GraphController implements ControllerInterface {
    */
   getEmDataLength(): number {
     return this.getModel().getEmbeddedGraphData().length;
+  }
+
+  /**
+   * This method returns the max range used by the 3D Embedded Graph
+   * @precondition for the Embedded Graph to exist and initialized
+   * @postcondition on success, returns the max range of the Embedded Graph
+   */
+  getEmbeddedRange(): number {
+    return this.getModel().getEmbeddedGraphData()[0].getRange();
   }
 }

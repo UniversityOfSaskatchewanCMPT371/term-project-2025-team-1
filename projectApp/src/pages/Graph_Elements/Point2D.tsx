@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { PointObject } from "../../components/Graph_Components/PointObject";
+import { Point2DObject } from "../../components/Graph_Components/Points/Point2DObject";
 
 /**
  * Renders a 2D point on a Time Series Graph.
@@ -9,7 +9,7 @@ import { PointObject } from "../../components/Graph_Components/PointObject";
  * @precondition pointRef must be a valid PointClass instance with position and selected state
  * @postcondition Renders an interactive 2D point with hover and click functionality
  */
-export default function Point2D({ pointRef }: { pointRef: PointObject }) {
+export default function Point2D({ pointRef }: { pointRef: Point2DObject }) {
   const [hovered, hover] = useState(false);
   const [clicked, click] = useState(false);
 
@@ -19,13 +19,13 @@ export default function Point2D({ pointRef }: { pointRef: PointObject }) {
    * @postcondition Updates both local clicked state and pointRef's selected state
    */
   function setOnClick(): void {
-    click(!clicked);
-    pointRef.setSelected(!pointRef.getSelected());
+    pointRef.getObject().setSelected(!pointRef.getObject().getSelected());
+    click(pointRef.getObject().getSelected());
   }
 
   return (
     <mesh
-      position={pointRef.getPosition()}
+      position={[pointRef.getXPosition(), pointRef.getYPosition(), 0.01]}
       onClick={() => {
         setOnClick();
       }}
@@ -40,7 +40,7 @@ export default function Point2D({ pointRef }: { pointRef: PointObject }) {
 
       <meshStandardMaterial
         color={clicked ? "blue" : "skyblue"}
-        opacity={hovered ? 1.0 : 0.5}
+        opacity={hovered ? 1.0 : 0.4}
       />
     </mesh>
   );

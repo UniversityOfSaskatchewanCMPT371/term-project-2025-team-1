@@ -51,8 +51,6 @@ describe("GraphObject", async () => {
     expect(graph.getId()).toBe("TestGraph");
     expect(graph.getPosition()).toEqual({ x: 1, y: 1, z: 0 });
     expect(graph.getAxes()).toEqual({
-      xLabel: "Time",
-      yLabel: "X",
       xRange: [0, 0],
       yRange: [0, 0],
     });
@@ -128,38 +126,37 @@ describe("GraphObject", async () => {
   it("throws error when setting invalid axes", () => {
     const graph = new GraphObject(csvDataMock);
     const invalidAxes1 = {
-      xLabel: "",
-      yLabel: "Y",
-      xRange: [0, 10] as [number, number],
+      xRange: [10, 0] as [number, number],
       yRange: [0, 10] as [number, number],
     };
     expect(() => {
       graph.setAxes(invalidAxes1);
-    }).toThrowError("Invalid xLabel: must be a non-empty string");
+    }).toThrowError(
+      "Invalid xRange. First value must be less than the second value (GraphObject.ts)",
+    );
 
     const invalidAxes2 = {
-      xLabel: "X",
-      yLabel: "",
       xRange: [0, 10] as [number, number],
-      yRange: [0, 10] as [number, number],
+      yRange: [10, 0] as [number, number],
     };
     expect(() => {
       graph.setAxes(invalidAxes2);
-    }).toThrowError("Invalid yLabel: must be a non-empty string");
+    }).toThrowError(
+      "Invalid yRange. First value must be less than the second value (GraphObject.ts)",
+    );
   });
 
   /**
    * Test: Error Handling for invalid points array
    */
   it("throws error when setting invalid points array", () => {
-    const graph = new GraphObject(csvDataMock);
     expect(() => {
       // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
-      graph.setPoints(null as unknown as any[]);
+      csvDataMock.setPoints(null as unknown as any[]);
     }).toThrowError("Invalid points: must be an array of PointClass instances");
     expect(() => {
       // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
-      graph.setPoints([{}] as unknown as any[]);
+      csvDataMock.setPoints([{}] as unknown as any[]);
     }).toThrowError(
       "Invalid point: each element must be an instance of PointClass",
     );

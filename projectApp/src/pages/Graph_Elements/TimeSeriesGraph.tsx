@@ -1,11 +1,11 @@
 import { Root, Container, Text } from "@react-three/uikit";
 import { Line } from "@react-three/drei";
-import Create2DPoint from "../../components/Graph_Components/Create2DPoint";
 import { TimeSeriesGraphObject } from "../../components/Graph_Components/TimeSeriesGraphObject";
-import { PointObject } from "../../components/Graph_Components/PointObject";
 import { useState } from "react";
 import mainController from "../../controller/MainController";
 import { sendLog } from "../../logger-frontend";
+import { Point2DObject } from "../../components/Graph_Components/Points/Point2DObject";
+import Create2DPoint from "../../components/Graph_Components/Points/Create2DPoint";
 
 /**
  * This function will create a Time Series Graph on the VR scene using a TimeSeriesGraphObject.
@@ -33,12 +33,12 @@ export default function TimeSeriesGraph({
 
   // Spacing used by X and Y axis
   const xSpacing = 100 / graph.getNumPoints();
-  const ySpacing = 100 / (graph.timeSeriesYRange().length + 1);
+  const ySpacing = 100 / graph.yRangeLength;
 
   //Used to update the graph, currently updates on Y header change
   function UpdateGraph(): void {
     graph.updatePointPosition();
-    setHeader(graph.getYHeader());
+    setHeader(graph.getCSVData().getYHeader());
     mainController.updateMainScene();
     sendLog(
       "info",
@@ -52,7 +52,7 @@ export default function TimeSeriesGraph({
    * @postconditions The container that shows the current Y header and allows the cycle of the Graph's Y Header
    */
   function HeaderSelection(): React.JSX.Element {
-    setHeader(graph.getYHeader());
+    setHeader(graph.getCSVData().getYHeader());
     sendLog(
       "info",
       "a TimeSeriesGraph object header was selected and visually updated to reflect selection (TimeSeriesGraph.tsx)",
@@ -156,12 +156,13 @@ export default function TimeSeriesGraph({
   function GeneratePoints({
     point,
   }: {
-    point: PointObject;
+    point: Point2DObject;
   }): React.JSX.Element {
     //Updating the position of the point
-    point.setXPosition(current);
-    point.setYPosition(
-      (point.getYData() / 100) *
+
+    point.setXAxisPos(current);
+    point.setYAxisPos(
+      (point.getObject().getYData() / 100) *
         (graph.getYRange() / graph.timeSeriesYRange().length) -
         1,
     );
@@ -325,7 +326,7 @@ export default function TimeSeriesGraph({
         </Root>
 
         {/* Create the points and the lines */}
-        {graph.getPoints().map((points) => {
+        {graph.getPoints2D().map((points) => {
           return (
             <>
               <GeneratePoints point={points} />

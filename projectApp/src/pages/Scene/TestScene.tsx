@@ -9,6 +9,10 @@ export default function TestScene({
   const [clicked, setClicked] = useState(false);
   const [hovered, setHovered] = useState(false);
 
+  // Temporary example array to use for displaying values
+  const strings: string[] = ["string 1","string 2","string 3", "string 4", "string 5"];
+
+
   return (
     <>
       {/* Maybe fullscreen component stay displaying, but the container can change visibility, so theres always that fullscreen button top left */}

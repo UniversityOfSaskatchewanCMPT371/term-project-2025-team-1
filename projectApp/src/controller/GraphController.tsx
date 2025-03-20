@@ -41,12 +41,14 @@ export class GraphController implements ControllerInterface {
   generateTimeSeriesGraph(csv: CSVDataObject): TimeSeriesGraphObject {
     const result: TimeSeriesGraphObject = new TimeSeriesGraphObject(csv);
 
-    for (const graph of this.getModel().getData()) {
-      if (graph.getName() == csv.getName()) {
-        graph.setRange();
-        return graph;
-      }
-    }
+    // for (const graph of this.getModel().getData()) {
+      // if (graph.getName() == csv.getName()) {
+      // const graph = this.getModel().getData();
+        // this.getModel().getData().setRange();
+        // graph.setRange();
+        // return graph;
+      // }
+    // }
     mainController.updateMainScene();
     return result;
   }
@@ -69,11 +71,11 @@ export class GraphController implements ControllerInterface {
   generateEmbeddedGraph(csv: CSVDataObject): EmbeddedGraphObject {
     const result: EmbeddedGraphObject = new EmbeddedGraphObject(csv);
 
-    for (const graph of this.getModel().getEmbeddedGraphData()) {
-      if (graph.getName() == csv.getName()) {
-        return graph;
-      }
-    }
+    // for (const graph of this.getModel().getEmbeddedGraphData()) {
+    //   if (graph.getName() == csv.getName()) {
+    //     return graph;
+    //   }
+    // }
     mainController.updateMainScene();
     return result;
   }
@@ -92,8 +94,8 @@ export class GraphController implements ControllerInterface {
     graph: TimeSeriesGraphObject,
     emGraph: EmbeddedGraphObject,
   ): void {
-    this.getModel().addTimeSeriesGraph(graph);
-    this.getModel().addEmbeddedGraph(emGraph);
+    this.getModel().setTimeSeriesGraph(graph);
+    this.getModel().setEmbeddedGraph(emGraph);
   }
 
   /**
@@ -118,7 +120,7 @@ export class GraphController implements ControllerInterface {
    *
    * @returns The array of TimeSeriesGraphObject instances.
    */
-  getModelData(): TimeSeriesGraphObject[] {
+  getModelData(): TimeSeriesGraphObject | undefined {
     return this.model.getData();
   }
 
@@ -131,9 +133,9 @@ export class GraphController implements ControllerInterface {
    *
    * @returns The number of TimeSeriesGraphObject instances in the model
    */
-  getDataLength(): number {
-    return this.getModel().getData().length;
-  }
+  // getDataLength(): number {
+  //   return this.getModel().getData().length;
+  // }
 
   /**
    * Retrieves the array of EmbeddedGraphObject instances stored in the model.
@@ -144,7 +146,7 @@ export class GraphController implements ControllerInterface {
    *
    * @returns The array of EmbeddedGraphObject instances.
    */
-  getModelEmData(): EmbeddedGraphObject[] {
+  getModelEmData(): EmbeddedGraphObject | undefined {
     return this.model.getEmbeddedGraphData();
   }
 
@@ -157,7 +159,7 @@ export class GraphController implements ControllerInterface {
    *
    * @returns The number of EmbeddedGraphObject instances in the model
    */
-  getEmDataLength(): number {
-    return this.getModel().getEmbeddedGraphData().length;
-  }
+  // getEmDataLength(): number {
+  //   return this.getModel().getEmbeddedGraphData().length;
+  // }
 }

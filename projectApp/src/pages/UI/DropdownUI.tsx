@@ -134,6 +134,8 @@ export default function DropdownUI(props: dropDownProps) {
    * @postcondition Lists all loaded csv files and assigned components
    */
   function GenerateList(): React.JSX.Element {
+    const modelData = mainController.getCSVController().getModelData();
+    
     return (
       <>
         <Container flexDirection={"column"} flexGrow={props.xSize}>
@@ -145,15 +147,11 @@ export default function DropdownUI(props: dropDownProps) {
             justifyContent={"flex-start"}
           >
             {/* Reading through Model csv data files */}
-            {mainController
-              .getCSVController()
-              .getModelData()
-              .map((graph) => (
-                <GenerateRowObject
-                  data={graph}
-                  key={graph.getName()}
-                ></GenerateRowObject>
-              ))}
+            {modelData ? (
+              <GenerateRowObject data={modelData} key={modelData.getName()} />
+            ) : (
+              <Text>No data available</Text>
+            )}
           </Container>
 
           <Container

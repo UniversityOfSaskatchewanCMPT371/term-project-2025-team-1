@@ -4,7 +4,6 @@ import { TimeSeriesGraphObject } from "../components/Graph_Components/TimeSeries
 import { sendError, sendLog } from "../logger-frontend";
 import { CSVReaderModel } from "../models/CSVReaderModel";
 import { ControllerInterface } from "../types/BaseInterfaces";
-// import { CSVDataInterface } from "../types/CSVInterfaces";
 import mainController from "./MainController";
 
 /**

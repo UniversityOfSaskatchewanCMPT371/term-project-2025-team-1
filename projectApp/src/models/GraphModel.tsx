@@ -22,8 +22,7 @@ export class GraphModel implements ModelInterface {
   embeddedGraphData?: EmbeddedGraphObject;
 
   constructor() {
-    // this.data = null;
-    // this.embeddedGraphData = null;
+    
   }
 
   /**

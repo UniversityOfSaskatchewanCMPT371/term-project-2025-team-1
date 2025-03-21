@@ -251,6 +251,5 @@ export class EmbeddedGraphObject
     this.points3D = [];
     //The csv data points are already being cleared on TimeSeries updatePointPosition()
     this.addPoints();
-    this.updatePoints();
   }
 }

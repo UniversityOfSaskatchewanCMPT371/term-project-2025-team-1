@@ -1,6 +1,7 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Point3DObject } from "../../components/Graph_Components/Points/Point3DObject";
 import mainController from "../../controller/MainController";
+import { useFrame } from "@react-three/fiber";
 
 /**
  * This function will display and realize the 3D Point Object onto the VR Scene
@@ -16,17 +17,17 @@ export default function Point3D({
   const [clicked, click] = useState(false);
 
   //If the selection of this point doesn't match the selection status of the PointObject
-  useEffect(() => {
-      if(clicked !== pointRef.getObject().getSelected()){
-        click(!clicked);
-      }
-    })
+  useFrame(() => {
+    if(clicked !== pointRef.getObject().getSelected()){
+      click(pointRef.getObject().getSelected());
+    };
+  });
   
   //Function to handle when a point is clicked
   function setOnClick(): void {
     const selectedState = !pointRef.getObject().getSelected();
-    pointRef.getObject().setSelected(selectedState);
     click(selectedState);
+    pointRef.getObject().setSelected(selectedState);
   }
 
   return (

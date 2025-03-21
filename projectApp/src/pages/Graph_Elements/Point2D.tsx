@@ -1,5 +1,6 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Point2DObject } from "../../components/Graph_Components/Points/Point2DObject";
+import { useFrame } from "@react-three/fiber";
 /**
  * Renders a 2D point on a Time Series Graph.
  * The point can be interacted with through hover and click events.
@@ -13,11 +14,12 @@ export default function Point2D({ pointRef }: { pointRef: Point2DObject }) {
   const [clicked, click] = useState(false);
 
   //If the selection of this point doesn't match the selection status of the PointObject
-  useEffect(() => {
+  useFrame(() => {
     if(clicked !== pointRef.getObject().getSelected()){
-      click(!clicked);
-    }
-  })
+      click(pointRef.getObject().getSelected());
+    };
+  });
+  
   /**
    * Toggles the point's selected state and updates local click state
    * @precondition None
@@ -25,13 +27,13 @@ export default function Point2D({ pointRef }: { pointRef: Point2DObject }) {
    */
   function setOnClick(): void {
     const selectedState = !pointRef.getObject().getSelected();
-    pointRef.getObject().setSelected(selectedState);
     click(selectedState);
+    pointRef.getObject().setSelected(selectedState);
   }
 
   return (
     <mesh
-      position={[pointRef.getXPosition(), pointRef.getYPosition(), 0.01]}
+      position={[pointRef.getXPosition(), pointRef.getYPosition(), 0.05]}
       onClick={() => {
         setOnClick();
       }}

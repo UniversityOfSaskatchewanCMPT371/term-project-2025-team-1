@@ -146,9 +146,9 @@ export default function TimeSeriesGraph({
             <Text>Point Value</Text>
             <Text>(x, y):</Text>
             <Text>
-            {selectedPoint !== null
-              ? `(${selectedPoint.getXData()}, ${selectedPoint.getYData().toFixed(2)})`
-              : "None"}
+              {selectedPoint !== null
+                ? `(${selectedPoint.getXData()}, ${selectedPoint.getYData().toFixed(2)})`
+                : "None"}
             </Text>
           </Container>
         </Container>
@@ -183,9 +183,9 @@ export default function TimeSeriesGraph({
     );
 
     return (
-      <group onClick={() => setSelectedPoint(point)}>
-      <Create2DPoint pointRef={point} />
-    </group>
+      <group onClick={() => {setSelectedPoint(point);}}>
+        <Create2DPoint pointRef={point} />
+      </group>
     );
   }
 

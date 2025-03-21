@@ -74,8 +74,6 @@ describe("Scenario: Testing the local CSV Loader functionality for csvLoading", 
     expect(response).toBe(true);
   });
 
-  // Im not sure if loadedCsvBrowser is necessary since it is being changed to only one graph at a time?
-  // either way ill make a test for it
   // Check that loadedCsvBrowser has Graph0
   test("CSVReaderModel loadedCsvBrowser should send a log", async () => {
     const response = await fileContainsText(
@@ -91,8 +89,6 @@ describe("Scenario: Testing the URL CSV Loader functionality for csvLoading", ()
     "https://raw.githubusercontent.com/UniversityOfSaskatchewanCMPT371/term-project-2025-team-1/refs/heads/main/csvTestFiles/indexedData.csv";
   const indexedDataString =
     '[{\\"Time\\":0,\\"X\\":1,\\"B\\":2},{\\"Time\\":1,\\"X\\":2,\\"B\\":4},{\\"Time\\":2,\\"X\\":3,\\"B\\":6},{\\"Time\\":3,\\"X\\":4,\\"B\\":8},{\\"Time\\":4,\\"X\\":5,\\"B\\":10},{\\"Time\\":5,\\"X\\":6,\\"B\\":12},{\\"Time\\":6,\\"X\\":7,\\"B\\":14},{\\"Time\\":7,\\"X\\":8,\\"B\\":16},{\\"Time\\":8,\\"X\\":9,\\"B\\":18},{\\"Time\\":9,\\"X\\":10,\\"B\\":20}]';
-  // might not be the best idea to have done ${csv}, considering how long this is
-  // i suggest replacing it, but it can be done at a later time
 
   // Check that LoadComponent sends its log
   test("BrowserUI LoadComponent should send a log", async () => {
@@ -150,8 +146,6 @@ describe("Scenario: Testing the URL CSV Loader functionality for csvLoading", ()
     expect(response).toBe(true);
   });
 
-  // Im not sure if loadedCsvBrowser is necessary since it is being changed to only one graph at a time?
-  // either way ill make a test for it
   // Check that loadedCsvBrowser has Graph0
   test("CSVReaderModel loadedCsvBrowser should send a log", async () => {
     const response = await fileContainsText(

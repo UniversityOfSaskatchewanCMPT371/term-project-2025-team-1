@@ -15,12 +15,14 @@ export default function Point3D({
   const [hovered, hover] = useState(false);
   const [clicked, click] = useState(false);
 
+  //If the selection of this point doesn't match the selection status of the PointObject
   useEffect(() => {
       if(clicked !== pointRef.getObject().getSelected()){
-        click(pointRef.getObject().getSelected());
+        click(!clicked);
       }
     })
   
+  //Function to handle when a point is clicked
   function setOnClick(): void {
     const selectedState = !pointRef.getObject().getSelected();
     pointRef.getObject().setSelected(selectedState);

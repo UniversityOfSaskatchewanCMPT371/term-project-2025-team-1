@@ -1,6 +1,5 @@
 import { Line } from "@react-three/drei";
 import React from "react";
-import mainController from "../../controller/MainController";
 import { EmbeddedGraphObject } from "../../components/Graph_Components/EmbeddedGraphObject";
 import { sendLog } from "../../logger-frontend";
 import { Point3DInterface } from "../../types/GraphPointsInterfaces";

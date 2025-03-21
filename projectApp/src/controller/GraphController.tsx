@@ -39,7 +39,7 @@ export class GraphController implements ControllerInterface {
    *    The mainController's main scene is updated.
    */
   generateTimeSeriesGraph(): TimeSeriesGraphObject {
-    let result: TimeSeriesGraphObject | undefined = this.getModel().getData();
+    const result: TimeSeriesGraphObject | undefined = this.getModel().getData();
 
     if (result === undefined) {
       throw new Error("Uninitialized");

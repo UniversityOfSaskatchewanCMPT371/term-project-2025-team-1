@@ -17,7 +17,7 @@ export default function Create2DPoint({
   const point = new Point2DObject(pointRef.getObject());
   point.setXAxisPos(pointRef.getXPosition());
   point.setYAxisPos(pointRef.getYPosition());
-  
+
   point.getObject().setSelected(pointRef.getObject().getSelected());
   point.getObject().setTimeData(pointRef.getObject().getTimeData());
   point.getObject().setYData(pointRef.getObject().getYData());

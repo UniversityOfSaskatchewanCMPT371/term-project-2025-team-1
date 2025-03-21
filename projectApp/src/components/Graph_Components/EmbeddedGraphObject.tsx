@@ -247,7 +247,7 @@ export class EmbeddedGraphObject
   /**
    * This is used to update the 3D embedded graph
    */
-  updateEmbeddedPoints(): void{
+  updateEmbeddedPoints(): void {
     this.points3D = [];
     //The csv data points are already being cleared on TimeSeries updatePointPosition()
     this.addPoints();

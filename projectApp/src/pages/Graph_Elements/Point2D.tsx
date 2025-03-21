@@ -15,11 +15,11 @@ export default function Point2D({ pointRef }: { pointRef: Point2DObject }) {
 
   //If the selection of this point doesn't match the selection status of the PointObject
   useFrame(() => {
-    if(clicked !== pointRef.getObject().getSelected()){
+    if (clicked !== pointRef.getObject().getSelected()) {
       click(pointRef.getObject().getSelected());
-    };
+    }
   });
-  
+
   /**
    * Toggles the point's selected state and updates local click state
    * @precondition None

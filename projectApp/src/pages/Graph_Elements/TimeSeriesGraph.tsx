@@ -39,7 +39,10 @@ export default function TimeSeriesGraph({
   function UpdateGraph(): void {
     graph.updatePointPosition();
     setHeader(graph.getCSVData().getYHeader());
-    mainController.getGraphController().getModelEmData()[0].updateEmbeddedPoints();
+    mainController
+      .getGraphController()
+      .getModelEmData()[0]
+      .updateEmbeddedPoints();
     mainController.updateMainScene();
     sendLog(
       "info",
@@ -178,7 +181,7 @@ export default function TimeSeriesGraph({
 
     return (
       <>
-        <Create2DPoint pointRef={point}/>
+        <Create2DPoint pointRef={point} />
       </>
     );
   }

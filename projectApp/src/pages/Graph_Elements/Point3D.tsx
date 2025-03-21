@@ -18,11 +18,11 @@ export default function Point3D({
 
   //If the selection of this point doesn't match the selection status of the PointObject
   useFrame(() => {
-    if(clicked !== pointRef.getObject().getSelected()){
+    if (clicked !== pointRef.getObject().getSelected()) {
       click(pointRef.getObject().getSelected());
-    };
+    }
   });
-  
+
   //Function to handle when a point is clicked
   function setOnClick(): void {
     const selectedState = !pointRef.getObject().getSelected();
@@ -53,10 +53,11 @@ export default function Point3D({
         }}
         scale={0.05}
       >
-        <sphereGeometry attach="geometry" args={[1, 32, 16]}/>
+        <sphereGeometry attach="geometry" args={[1, 32, 16]} />
         <meshStandardMaterial
           color={clicked ? "red" : "orange"}
-          opacity={hovered ? 1.0 : 0.4}/>
+          opacity={hovered ? 1.0 : 0.4}
+        />
       </mesh>
     </>
   );

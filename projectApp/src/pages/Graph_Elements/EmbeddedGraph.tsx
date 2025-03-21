@@ -17,7 +17,6 @@ export function EmbeddedGraph({
 }: {
   graph: EmbeddedGraphObject;
 }): React.JSX.Element {
-
   /**
    * This function renders the 3D point used in the graph
    * @param param0 a reference to the 3D Point object
@@ -31,7 +30,7 @@ export function EmbeddedGraph({
   }): React.JSX.Element {
     return (
       <>
-        <Create3DPoint pointRef={point}/>
+        <Create3DPoint pointRef={point} />
       </>
     );
   }
@@ -94,17 +93,17 @@ export function EmbeddedGraph({
           {graph.getPoints3D().map((point) => {
             return (
               <>
-                <GeneratePoint point={point}/>
+                <GeneratePoint point={point} />
               </>
             );
           })}
-          </mesh>
-          </>
-    )
+        </mesh>
+      </>
+    );
   }
-  return(
+  return (
     <>
-    <GenerateGraph/>
+      <GenerateGraph />
     </>
-  )
+  );
 }

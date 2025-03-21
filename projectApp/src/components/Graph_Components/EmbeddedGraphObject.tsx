@@ -28,16 +28,18 @@ export class EmbeddedGraphObject
    */
   addPoints(): void {
     const data = this.csvData.getData();
-    data.forEach((line) => {
+    let time = 0;
+    data.forEach(() => {
       const newPoint = new PointObject();
       // gets the time of the current line in the data set
-      const time = line[
-        this.axes.xLabel as keyof typeof line
-      ] as unknown as number;
+      // const time = line[
+      //   this.axes.xLabel as keyof typeof line
+      // ] as unknown as string;
 
       // calculates the vector and stores it in the position attribute of a new PointObject
       const vectorPosition = this.calculateVectorPosition(time, data);
       newPoint.setPosition(vectorPosition);
+      time = time + 1;
       this.points.push(newPoint);
     });
     sendLog(

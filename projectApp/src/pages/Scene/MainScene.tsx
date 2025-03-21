@@ -34,7 +34,7 @@ export default function MainScene(): React.JSX.Element {
     }
     const newGraph = mainController
       .getGraphController()
-      .generateTimeSeriesGraph(graphData);
+      .generateTimeSeriesGraph();
     setGraph(newGraph);
     const newEmGraph = mainController
       .getGraphController()

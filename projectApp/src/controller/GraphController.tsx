@@ -38,9 +38,14 @@ export class GraphController implements ControllerInterface {
    *    If a graph with the same name as `csv` exists, its range is updated, a new graph is created and returned otherwise
    *    The mainController's main scene is updated.
    */
-  generateTimeSeriesGraph(csv: CSVDataObject): TimeSeriesGraphObject {
-    const result: TimeSeriesGraphObject = new TimeSeriesGraphObject(csv);
-    mainController.updateMainScene();
+  generateTimeSeriesGraph(): TimeSeriesGraphObject {
+    let result: TimeSeriesGraphObject | undefined = this.getModel().getData();
+
+    if (result === undefined) {
+      throw new Error("Uninitialized");
+    }
+
+    this.getModel().getData()?.setRange();
     return result;
   }
 

@@ -183,7 +183,11 @@ export default function TimeSeriesGraph({
     );
 
     return (
-      <group onClick={() => {setSelectedPoint(point);}}>
+      <group
+        onClick={() => {
+          setSelectedPoint(point);
+        }}
+      >
         <Create2DPoint pointRef={point} />
       </group>
     );

@@ -147,7 +147,7 @@ export default function TimeSeriesGraph({
             <Text>(x, y):</Text>
             <Text>
               {selectedPoint !== null
-                ? `(${selectedPoint.getXData()}, ${selectedPoint.getYData()})`
+                ? `(${selectedPoint.getXData()}, ${selectedPoint.getYData().toFixed(10)})`
                 : "None"}
             </Text>
           </Container>

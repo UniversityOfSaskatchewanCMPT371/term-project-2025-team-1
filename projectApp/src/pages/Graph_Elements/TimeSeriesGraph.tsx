@@ -21,6 +21,7 @@ export default function TimeSeriesGraph({
   graph: TimeSeriesGraphObject;
 }): React.JSX.Element {
   const [header, setHeader] = useState(""); //useState for changes in the graph's Y header
+  const [selectedPointValue, setSelectedPointValue] = useState<number | null>(null); // New state for selected point value
 
   // Values used to space Points in the X axis
   const totalSpace = 5;
@@ -138,10 +139,14 @@ export default function TimeSeriesGraph({
           {/* Section for showing point data sets */}
           <Container
             height={"50%"}
-            alignItems={"flex-start"}
+            flexDirection={"column"}
+            alignItems={"center"}
             justifyContent={"center"}
           >
-            <Text> Point Value:</Text>
+            <Text>Point Value:</Text>
+            <Text>
+            {selectedPointValue !== null ? selectedPointValue.toFixed(2) : "None"}
+            </Text>
           </Container>
         </Container>
       </>
@@ -175,9 +180,9 @@ export default function TimeSeriesGraph({
     );
 
     return (
-      <>
-        <Create2DPoint pointRef={point}></Create2DPoint>
-      </>
+      <group onClick={() => setSelectedPointValue(point.getYData())}>
+      <Create2DPoint pointRef={point} />
+    </group>
     );
   }
 

@@ -3,7 +3,7 @@ import { useState } from "react";
 
 // This will be called by other functions. It's outside of the export statement so that its persistent.
 // This will hold the reference to the actuall addLog function.
-let addLog: ((entry: string) => void) | null = null;
+let addLog: ((entry: string) => void) = (entry: string) => {console.log("hi");return};
 
 export default function TestScene({
   inVR,

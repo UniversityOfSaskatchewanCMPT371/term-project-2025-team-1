@@ -36,7 +36,7 @@ describe("GraphObject", async () => {
   await mainController.getCSVController().loadURLFile(url);
   beforeEach(() => {
     // Create a mock CSVDataObject
-    csvDataMock = mainController.getCSVController().getModelData()[0];
+    csvDataMock = mainController.getCSVController().getModelData()!;
   });
 
   /**

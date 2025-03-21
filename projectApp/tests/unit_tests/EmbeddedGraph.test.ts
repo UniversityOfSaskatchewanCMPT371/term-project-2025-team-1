@@ -13,7 +13,7 @@ describe("Embedded Graph test", () => {
   });
 
   beforeEach(() => {
-    const csv = mainController.getCSVController().getModelData()[0];
+    const csv = mainController.getCSVController().getModelData()!;
     graph = new EmbeddedGraphObject(csv);
   });
 

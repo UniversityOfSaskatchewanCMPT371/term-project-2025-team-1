@@ -13,7 +13,7 @@ describe("Time Series Graph Class", async () => {
    * Sets up a new instance of TimeSeriesGraph and a sample point before each test.
    */
   beforeEach(() => {
-    const csv = mainController.getCSVController().getModelData()[0];
+    const csv = mainController.getCSVController().getModelData()!;
     graph = new TimeSeriesGraphObject(csv);
   });
 

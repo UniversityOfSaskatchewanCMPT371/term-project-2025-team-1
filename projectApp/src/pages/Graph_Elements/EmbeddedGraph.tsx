@@ -18,11 +18,6 @@ export function EmbeddedGraph({
 }: {
   graph: EmbeddedGraphObject;
 }): React.JSX.Element {
-  //Used to update the graph 
-  function UpdateGraph(): void {
-    mainController.updateMainScene();
-    sendLog("info", "an EmbeddedGraph object was updated (EmbeddedGraph.tsx)");
-  }
 
   /**
    * This function renders the 3D point used in the graph

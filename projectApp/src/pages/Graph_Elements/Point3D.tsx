@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Point3DObject } from "../../components/Graph_Components/Points/Point3DObject";
 import mainController from "../../controller/MainController";
 
@@ -15,10 +15,16 @@ export default function Point3D({
   const [hovered, hover] = useState(false);
   const [clicked, click] = useState(false);
 
+  useEffect(() => {
+      if(clicked !== pointRef.getObject().getSelected()){
+        click(pointRef.getObject().getSelected());
+      }
+    })
   
   function setOnClick(): void {
-    pointRef.getObject().setSelected(!pointRef.getObject().getSelected());
-    click(pointRef.getObject().getSelected());
+    const selectedState = !pointRef.getObject().getSelected();
+    pointRef.getObject().setSelected(selectedState);
+    click(selectedState);
   }
 
   return (
@@ -44,11 +50,10 @@ export default function Point3D({
         }}
         scale={0.05}
       >
-        <sphereGeometry attach="geometry" args={[1, 32, 16]}></sphereGeometry>
+        <sphereGeometry attach="geometry" args={[1, 32, 16]}/>
         <meshStandardMaterial
           color={clicked ? "red" : "orange"}
-          opacity={hovered ? 1.0 : 0.4}
-        ></meshStandardMaterial>
+          opacity={hovered ? 1.0 : 0.4}/>
       </mesh>
     </>
   );

@@ -243,4 +243,11 @@ export class EmbeddedGraphObject
       `setRange() was called; yRange was set to ${this.axes.yRange[1]} (EmbeddedGraphObject.tsx)`,
     );
   }
+
+  updateEmbeddedPoints(): void{
+    this.points3D = [];
+    //The csv data points are already being cleared on TimeSeries updatePointPosition()
+    this.addPoints();
+    this.updatePoints();
+  }
 }

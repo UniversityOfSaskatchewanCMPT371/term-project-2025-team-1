@@ -15,6 +15,7 @@ export default function Create3DPoint({
   pointRef: Point3DInterface;
 }): React.JSX.Element {
   const point = new Point3DObject(pointRef.getObject());
+  
   point.getObject().setTimeData(pointRef.getObject().getTimeData());
   point.getObject().setYData(pointRef.getObject().getYData());
   point.getObject().setSelected(pointRef.getObject().getSelected());

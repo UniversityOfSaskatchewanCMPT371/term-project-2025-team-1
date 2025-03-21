@@ -1,7 +1,5 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Point2DObject } from "../../components/Graph_Components/Points/Point2DObject";
-import mainController from "../../controller/MainController";
-
 /**
  * Renders a 2D point on a Time Series Graph.
  * The point can be interacted with through hover and click events.
@@ -14,14 +12,20 @@ export default function Point2D({ pointRef }: { pointRef: Point2DObject }) {
   const [hovered, hover] = useState(false);
   const [clicked, click] = useState(false);
 
+  useEffect(() => {
+    if(clicked !== pointRef.getObject().getSelected()){
+      click(pointRef.getObject().getSelected());
+    }
+  })
   /**
    * Toggles the point's selected state and updates local click state
    * @precondition None
    * @postcondition Updates both local clicked state and pointRef's selected state
    */
   function setOnClick(): void {
-    pointRef.getObject().setSelected(!pointRef.getObject().getSelected());
-    click(pointRef.getObject().getSelected());
+    const selectedState = !pointRef.getObject().getSelected();
+    pointRef.getObject().setSelected(selectedState);
+    click(selectedState);
   }
 
   return (

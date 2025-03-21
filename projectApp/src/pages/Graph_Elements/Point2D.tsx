@@ -22,7 +22,6 @@ export default function Point2D({ pointRef }: { pointRef: Point2DObject }) {
   function setOnClick(): void {
     pointRef.getObject().setSelected(!pointRef.getObject().getSelected());
     click(pointRef.getObject().getSelected());
-    mainController.updateMainScene();
   }
 
   return (
@@ -38,7 +37,7 @@ export default function Point2D({ pointRef }: { pointRef: Point2DObject }) {
         hover(false);
       }}
     >
-      <circleGeometry attach="geometry" args={[0.06, 32]} />
+      <circleGeometry attach="geometry" args={[0.08, 32]} />
 
       <meshStandardMaterial
         color={clicked ? "blue" : "skyblue"}

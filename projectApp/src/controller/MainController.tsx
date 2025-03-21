@@ -14,6 +14,12 @@ export class MainController {
   private updateScene: React.RefObject<{
     updateScene: () => void;
   }>;
+  // private update2DPoint: React.RefObject<{
+  //   update2DPoint: () => void;
+  // }>;
+  // private update3DPoint: React.RefObject<{
+  //   update3DPoint: () => void;
+  // }>;
 
   /**
    * Initializes the main controller with new instances of CSV and Graph controllers
@@ -24,6 +30,8 @@ export class MainController {
     this.csvController = new CSVController();
     this.graphController = new GraphController();
     this.updateScene = React.createRef<{ updateScene: () => void }>();
+    // this.update2DPoint = React.createRef<{ update2DPoint: () => void}>();
+    // this.update3DPoint = React.createRef<{ update3DPoint: () => void}>();
   }
 
   /**
@@ -71,8 +79,34 @@ export class MainController {
       sendLog("info", "Update main scene");
     }
   }
-}
 
+  // set2DPointRef(
+  //   ref: React.MutableRefObject<{
+  //     update2DPoint: () => void;
+  //   }>,
+  // ): void {
+  //   this.update2DPoint = ref;
+  // }
+
+  // set3DPointRef(
+  //   ref: React.MutableRefObject<{
+  //     update3DPoint: () => void;
+  //   }>,
+  // ): void {
+  //   this.update3DPoint = ref;
+  // }
+
+  // updatePoints(): void{
+  //   if (this.update2DPoint.current?.update2DPoint) {
+  //     this.update2DPoint.current.update2DPoint();
+  //     sendLog("info", "Update the 2D Points");
+  //   }
+  //   if (this.update3DPoint.current?.update3DPoint) {
+  //     this.update3DPoint.current.update3DPoint();
+  //     sendLog("info", "Update the 3D points");
+  //   }
+  // }
+}
 /**
  * Singleton instance of the MainController
  */

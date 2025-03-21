@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Point3DObject } from "../../components/Graph_Components/Points/Point3DObject";
 import mainController from "../../controller/MainController";
 
@@ -19,7 +19,6 @@ export default function Point3D({
   function setOnClick(): void {
     pointRef.getObject().setSelected(!pointRef.getObject().getSelected());
     click(pointRef.getObject().getSelected());
-    mainController.updateMainScene();
   }
 
   return (
@@ -43,7 +42,7 @@ export default function Point3D({
         onPointerOut={() => {
           hover(false);
         }}
-        scale={0.03}
+        scale={0.05}
       >
         <sphereGeometry attach="geometry" args={[1, 32, 16]}></sphereGeometry>
         <meshStandardMaterial

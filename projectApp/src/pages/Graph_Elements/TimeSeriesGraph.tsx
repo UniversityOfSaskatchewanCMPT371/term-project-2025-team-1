@@ -153,7 +153,7 @@ export default function TimeSeriesGraph({
    * @preconditions PointObject, used to show Point
    * @postconditions  Interactable 2D Point in the Graph
    */
-  function GeneratePoints({
+  function GeneratePoint({
     point,
   }: {
     point: Point2DObject;
@@ -177,7 +177,7 @@ export default function TimeSeriesGraph({
 
     return (
       <>
-        <Create2DPoint pointRef={point}></Create2DPoint>
+        <Create2DPoint pointRef={point}/>
       </>
     );
   }
@@ -329,7 +329,7 @@ export default function TimeSeriesGraph({
         {graph.getPoints2D().map((points) => {
           return (
             <>
-              <GeneratePoints point={points} />
+              <GeneratePoint point={points} />
               <GenerateLines />
             </>
           );

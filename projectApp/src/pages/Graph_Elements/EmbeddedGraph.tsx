@@ -18,7 +18,7 @@ export function EmbeddedGraph({
 }: {
   graph: EmbeddedGraphObject;
 }): React.JSX.Element {
-  //Used to update the graph
+  //Used to update the graph 
   function UpdateGraph(): void {
     mainController.updateMainScene();
     sendLog("info", "an EmbeddedGraph object was updated (EmbeddedGraph.tsx)");
@@ -37,7 +37,7 @@ export function EmbeddedGraph({
   }): React.JSX.Element {
     return (
       <>
-        <Create3DPoint pointRef={point}></Create3DPoint>
+        <Create3DPoint pointRef={point}/>
       </>
     );
   }
@@ -100,14 +100,17 @@ export function EmbeddedGraph({
           {graph.getPoints3D().map((point) => {
             return (
               <>
-                <GeneratePoint point={point} />
+                <GeneratePoint point={point}/>
               </>
             );
           })}
-        </mesh>
-      </>
-    );
+          </mesh>
+          </>
+    )
   }
-
-  return <GenerateGraph />;
+  return(
+    <>
+    <GenerateGraph/>
+    </>
+  )
 }

@@ -101,9 +101,5 @@ export function EmbeddedGraph({
       </>
     );
   }
-  return (
-    <>
-      <GenerateGraph />
-    </>
-  );
+  return <GenerateGraph />;
 }

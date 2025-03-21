@@ -330,10 +330,10 @@ export default function TimeSeriesGraph({
         </Root>
 
         {/* Create the points and the lines */}
-        {graph.getPoints2D().map((points) => {
+        {graph.getPoints2D().map((point) => {
           return (
             <>
-              <GeneratePoint point={points} />
+              <GeneratePoint point={point} />
               <GenerateLines />
             </>
           );

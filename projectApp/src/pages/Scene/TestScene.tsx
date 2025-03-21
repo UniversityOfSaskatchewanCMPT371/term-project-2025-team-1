@@ -1,7 +1,9 @@
 import { Container, Fullscreen, Text } from "@react-three/uikit";
-import { useEffect, useState } from "react";
-import { clearInterval } from "timers";
-import { sendLog } from "../../logger-frontend";
+import { useState } from "react";
+
+// This will be called by other functions. It's outside of the export statement so that its persistent.
+// This will hold the reference to the actuall addLog function.
+let addLog: ((entry: string) => void) | null = null;
 
 export default function TestScene({
   inVR,
@@ -10,26 +12,16 @@ export default function TestScene({
 }): React.JSX.Element {
   const [clicked, setClicked] = useState(false);
   const [hovered, setHovered] = useState(false);
-  const [logs, setStrings] = useState<string[]>([]);
+  const [logs, setLogs] = useState<string[]>([]); // Use state for updating logs
 
-  const fetchLog = async () => {
-    try {
-      const response = await fetch("../../../public/tlog.txt");
-      const text = await response.text();
-      setStrings(text.split("\n").filter((line) => line.trim() !== ""));
-    } catch (error) {
-      sendLog("info", "Can't fetch the log file for TestScene.tsx");
-    }
+  // The actual addLog function
+  // Stores the newest 5 entries (this can be changed)
+  addLog = (entry: string) => {
+    setLogs((prev) => [...prev.slice(-4), entry]);
   };
 
-  useEffect(() => {
-    fetchLog();
-    const interval = setInterval(fetchLog, 2000);
-    return () => clearInterval(interval);
-  }, []);
-
-  // Temporary example array to use for displaying values
-  //const strings: string[] = ["string 1","string 2","string 3", "string 4", "string 5"];
+  // Temporary example array to use for displaying values (this will be removed later)
+  //const logs: string[] = ["string 1","string 2","string 3", "string 4", "string 5"];
 
 
   return (
@@ -141,3 +133,6 @@ export default function TestScene({
     </>
   );
 }
+
+// addLog is exported down here so other components can import and call it
+export {addLog};

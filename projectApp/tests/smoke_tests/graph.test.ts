@@ -1,4 +1,4 @@
-import { describe, test, beforeAll } from "vitest";
+import { describe, test, beforeAll, expect } from "vitest";
 import "../../src/controller/MainController";
 import { MainController } from "../../src/controller/MainController";
 import { pathStrToFile } from "../unit_tests/__mocks__/mockFileReader";
@@ -14,7 +14,10 @@ describe("Test that graph objects are properly created", () => {
         const indexedDataFile = await pathStrToFile(indexedDataPath);
         await mainControllerTest.getCSVController().loadLocalFile(indexedDataFile);
         mainControllerTest.getCSVController().generate();
-        mainControllerTest.getGraphController().getModel()
+        const graphm = mainControllerTest.getGraphController().getModel();
     })
-    test("expect")
+    test("expect graph model to contain a 10 point graph", async () =>{
+        const graphm = mainControllerTest.getGraphController().getModel();
+        expect(graphm.getData().at(0)?.getNumPoints()).toBe(10);
+    });
 });

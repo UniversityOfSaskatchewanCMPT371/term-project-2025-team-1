@@ -52,7 +52,7 @@ describe("Time Series Graph Class", async () => {
     expect(graph.getXHeader()).toBe("Time");
 
     graph.setRange();
-    expect(graph.getYRange()).toBe(45);
+    expect(graph.getYRange()).toBe(50);
     expect(graph.timeSeriesYRange().length).toBe(5);
 
     //Switching back

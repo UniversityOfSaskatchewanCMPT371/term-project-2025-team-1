@@ -34,22 +34,27 @@ export class CSVController implements ControllerInterface {
    *   - A new TimeSeriesGraph is created and initialized
    *   - The graph is added to the main controller's graph collection
    */
-  generate(): void {
+  generate(tau: number): void {
+    mainController.getGraphController().getModelData().pop();
+    mainController.getGraphController().getModelEmData().pop();
+
     for (const csv of this.model.getData()) {
-      if (csv.getDisplayBoard() == 1) {
-        csv.setVRSelected(true);
-        const TSGraph = new TimeSeriesGraphObject(csv);
-        TSGraph.setName(csv.getName());
-        TSGraph.addPoints();
+      csv.setVRSelected(true);
+      const TSGraph = new TimeSeriesGraphObject(csv);
+      TSGraph.setName(csv.getName());
+      TSGraph.addPoints();
 
-        const emGraph = new EmbeddedGraphObject(csv);
-        emGraph.setName(csv.getName());
-        emGraph.addPoints();
+      const emGraph = new EmbeddedGraphObject(csv);
+      emGraph.setName(csv.getName());
+      emGraph.setTao(tau);
+      emGraph.addPoints();
 
-        mainController.getGraphController().pushDataToModel(TSGraph, emGraph);
-        console.log("Success on generate?");
-        sendLog("info", "generate has pushed a new graph");
-      }
+      mainController.getGraphController().pushDataToModel(TSGraph, emGraph);
+      console.log("Success on generate?");
+      sendLog("info", "generate has pushed a new graph");
+
+      //For now return here so that the first csv file only gets loaded
+      return;
     }
   }
 

@@ -24,10 +24,17 @@ function App() {
   }
   return (
     <>
-      <div>CMPT 371: Team #1</div>
-      {/* This button will allow the user to enter the VR Space */}
-      <button onClick={() => store.enterAR()}>Enter AR</button>
-      <div className="canvas-container">
+      <div
+        style={{
+          position: "absolute",
+          top: 0,
+          left: 0,
+          width: "100vw",
+          height: "100vh",
+        }}
+      >
+        {/* This button will allow the user to enter the VR Space */}
+        <button onClick={() => store.enterVR()}>Enter VR</button>
         {/* Everything encapsulated by Canvas and XR will contain the Scene to be displayed in VR */}
         <Canvas>
           <color attach="background" args={["black"]}></color>
@@ -40,9 +47,8 @@ function App() {
           </XR>
         </Canvas>
       </div>
+
       <div>
-        {/* This button will allow the user to enter the VR Space (possibly not needed commented out for now) */}
-        {/* <button onClick={() => {void (async () => store.enterAR())}}>Enter AR</button> */}
         <BrowserUI />
       </div>
     </>

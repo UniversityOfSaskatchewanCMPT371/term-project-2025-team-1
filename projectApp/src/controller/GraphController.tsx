@@ -160,4 +160,8 @@ export class GraphController implements ControllerInterface {
   getEmDataLength(): number {
     return this.getModel().getEmbeddedGraphData().length;
   }
+
+  getTauForDropDown(): string {
+    return this.getModel().getEmbeddedGraphData()[0].getTao().toString();
+  }
 }

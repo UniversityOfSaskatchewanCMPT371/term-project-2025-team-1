@@ -57,10 +57,7 @@ export class EmbeddedGraphObject
       point.getObject().setSelected(false); // Update selection status
       // TODO: Add color update logic if necessary
     });
-    sendLog(
-      "info",
-      "all points have been unselected (EmbeddedGraphObject.ts)",
-    );
+    sendLog("info", "all points have been unselected (EmbeddedGraphObject.ts)");
   }
 
   /**

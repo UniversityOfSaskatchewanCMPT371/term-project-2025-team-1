@@ -55,8 +55,8 @@ export class Point2DObject implements Point2DInterface {
     this.point2Dposition[0] = x;
 
     sendLog(
-          "info",
-          `setXAxisPos() was called; xPosition of 2D Point was set to ${x} (Point2DObject.ts)`,
+      "info",
+      `setXAxisPos() was called; xPosition of 2D Point was set to ${x} (Point2DObject.ts)`,
     );
   }
 

@@ -73,9 +73,9 @@ export class Point3DObject implements Point3DInterface {
     this.point3Dposition[0] = x;
 
     sendLog(
-              "info",
-              `setXAxisPos() was called; xPosition of 3D Point was set to ${x} (Point3DObject.ts)`,
-        );
+      "info",
+      `setXAxisPos() was called; xPosition of 3D Point was set to ${x} (Point3DObject.ts)`,
+    );
   }
 
   /**

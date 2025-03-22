@@ -73,10 +73,7 @@ export class PointObject implements PointObjectInterface {
   setSelected(select: boolean): void {
     this.selected = select;
 
-    sendLog(
-          "info",
-          `setSelected() was called on PointObject (PointObject.ts)`,
-        );
+    sendLog("info", `setSelected() was called on PointObject (PointObject.ts)`);
   }
 
   /**

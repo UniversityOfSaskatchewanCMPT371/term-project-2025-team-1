@@ -57,7 +57,7 @@ export class CSVController implements ControllerInterface {
   /**
    * This method gets the csv file by opening a local file, and then loads it into the program
    * @precondition a file that represents the csv file, needs to be a valid csv file
-   * @postcondition On success, the csv file to be loaded to the program 
+   * @postcondition On success, the csv file to be loaded to the program
    */
   async loadLocalFile(file: File): Promise<void> {
     try {
@@ -72,7 +72,7 @@ export class CSVController implements ControllerInterface {
   /**
    * This method gets the csv file using a url link, and then loads it into the program
    * @precondition a string parameter representing the url link, needs to be a valid csv file
-   * @postcondition On success, the csv file to be loaded to the program 
+   * @postcondition On success, the csv file to be loaded to the program
    */
   async loadURLFile(csv: string): Promise<void> {
     try {

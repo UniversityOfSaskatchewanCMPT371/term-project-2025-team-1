@@ -23,9 +23,6 @@ export default function Create2DPoint({
   point.getObject().setTimeData(pointRef.getObject().getTimeData());
   point.getObject().setYData(pointRef.getObject().getYData());
 
-  sendLog(
-        "info",
-        "a 2D Point has been created (Create2DPoint.tsx)",
-      );
+  sendLog("info", "a 2D Point has been created (Create2DPoint.tsx)");
   return <Point2D pointRef={point} />;
 }

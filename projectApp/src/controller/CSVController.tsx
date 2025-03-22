@@ -35,6 +35,9 @@ export class CSVController implements ControllerInterface {
    *   - The graph is added to the main controller's graph collection
    */
   generate(tau: number): void {
+    mainController.getGraphController().getModelData().pop();
+    mainController.getGraphController().getModelEmData().pop();
+
     for (const csv of this.model.getData()) {
       csv.setVRSelected(true);
       const TSGraph = new TimeSeriesGraphObject(csv);

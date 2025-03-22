@@ -49,7 +49,6 @@ function App() {
       </div>
 
       <div>
-        {/* This button will allow the user to enter the VR Space */}
         <BrowserUI />
       </div>
     </>

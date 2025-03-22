@@ -50,7 +50,7 @@ export default function DropdownUI({
             height={"100%"}
             alignItems={"center"}
             justifyContent={"center"}
-          ></Container>
+          />
         </Container>
       </>
     );
@@ -62,7 +62,7 @@ export default function DropdownUI({
   function update(): void {
     mainController.getCSVController().generate(selectTau);
     setInfoTau(mainController.getGraphController().getTauForDropDown()); //Later change this to getting tau value from the graph itself rather than the other useState
-    setSelectTau(1); //Sets the tau on the Tau selector back to 1
+    setSelectTau(1);
     mainController.updateMainScene();
   }
 
@@ -327,117 +327,115 @@ export default function DropdownUI({
    */
   function DropDownBody(): React.JSX.Element {
     return (
-      <>
-        <Fullscreen
-          flexDirection={"row"}
-          distanceToCamera={inVR ? 1 : 0.1}
-          pointerEvents={"none"}
+      <Fullscreen
+        flexDirection={"row"}
+        distanceToCamera={inVR ? 1 : 0.1}
+        pointerEvents={"none"}
+      >
+        <Container
+          width={"100%"}
+          height={"100%"}
+          alignContent={"center"}
+          justifyContent={"center"}
+          flexDirection={"column"}
         >
+          <Container width={"100%"} height={inVR ? "24%" : "0%"} />
+
           <Container
             width={"100%"}
-            height={"100%"}
+            height={"7%"}
+            flexDirection={"column"}
             alignContent={"center"}
             justifyContent={"center"}
-            flexDirection={"column"}
           >
-            <Container width={"100%"} height={inVR ? "24%" : "0%"} />
-
             <Container
               width={"100%"}
-              height={"7%"}
-              flexDirection={"column"}
+              height={"100%"}
+              flexDirection={"row-reverse"}
               alignContent={"center"}
-              justifyContent={"center"}
+            >
+              <Container
+                width={inVR ? "57%" : "90%"}
+                height={"5%"}
+                backgroundOpacity={0.4}
+              />
+
+              <Container
+                width={"15%"}
+                height={"70%"}
+                borderRadius={5}
+                onClick={() => {
+                  setActive(!active);
+                  sendLog("info", "DropDownBody [active] button pressed");
+                }}
+                backgroundColor={"black"}
+                backgroundOpacity={0.5}
+                hover={{ backgroundOpacity: 1 }}
+                pointerEvents={"auto"}
+                justifyContent={"center"}
+              >
+                <Text color={"white"}>Drop Down</Text>
+              </Container>
+            </Container>
+          </Container>
+
+          {/* Container displaying loaded CSV files */}
+          <Container
+            width={"100%"}
+            height={inVR ? "54%" : "93%"}
+            flexDirection={"row-reverse"}
+            alignContent={"flex-start"}
+            justifyContent={"flex-start"}
+          >
+            <Container
+              width={inVR ? "80%" : "90%"}
+              height={"80%"}
+              flexDirection={"column"}
+              display={active ? "flex" : "none"}
             >
               <Container
                 width={"100%"}
-                height={"100%"}
-                flexDirection={"row-reverse"}
-                alignContent={"center"}
-              >
-                <Container
-                  width={inVR ? "57%" : "90%"}
-                  height={"5%"}
-                  backgroundOpacity={0.4}
-                />
-
-                <Container
-                  width={"15%"}
-                  height={"70%"}
-                  borderRadius={5}
-                  onClick={() => {
-                    setActive(!active);
-                    sendLog("info", "DropDownBody [active] button pressed");
-                  }}
-                  backgroundColor={"black"}
-                  backgroundOpacity={0.5}
-                  hover={{ backgroundOpacity: 1 }}
-                  pointerEvents={"auto"}
-                  justifyContent={"center"}
-                >
-                  <Text color={"white"}>Drop Down</Text>
-                </Container>
-              </Container>
-            </Container>
-
-            {/* Container displaying loaded CSV files */}
-            <Container
-              width={"100%"}
-              height={inVR ? "54%" : "93%"}
-              flexDirection={"row-reverse"}
-              alignContent={"flex-start"}
-              justifyContent={"flex-start"}
-            >
-              <Container
-                width={inVR ? "80%" : "90%"}
-                height={"80%"}
+                height={"90%"}
+                positionLeft={5}
                 flexDirection={"column"}
-                display={active ? "flex" : "none"}
+                alignContent={"center"}
+                justifyContent={"center"}
               >
+                {/* Title Container */}
                 <Container
-                  width={"100%"}
-                  height={"90%"}
-                  positionLeft={5}
-                  flexDirection={"column"}
-                  alignContent={"center"}
-                  justifyContent={"center"}
+                  height={"10%"}
+                  width={"70%"}
+                  margin={1}
+                  backgroundColor={"lightgray"}
                 >
-                  {/* Title Container */}
-                  <Container
-                    height={"10%"}
-                    width={"70%"}
-                    margin={1}
-                    backgroundColor={"lightgray"}
-                  >
-                    <Text fontWeight={"bold"} positionLeft={20}>
-                      Loaded Graphs
-                    </Text>
-                  </Container>
+                  <Text fontWeight={"bold"} positionLeft={20}>
+                    Loaded Graphs
+                  </Text>
+                </Container>
 
-                  {/* Body Container */}
-                  <Container
-                    height={"90%"}
-                    width={"70%"}
-                    margin={1}
-                    onClick={() => {
-                      press(!pressed);
-                      sendLog("info", "DropDownBody [create] button pressed");
-                    }}
-                    backgroundColor={"lightgray"}
-                    backgroundOpacity={0.8}
-                  >
-                    {/* Create objects representing loaded graphs in model 
+                {/* Body Container */}
+                <Container
+                  height={"90%"}
+                  width={"70%"}
+                  margin={1}
+                  onClick={() => {
+                    press(!pressed);
+                    sendLog("info", "DropDownBody [create] button pressed");
+                  }}
+                  backgroundColor={"lightgray"}
+                  backgroundOpacity={0.8}
+                >
+                  {/* Create objects representing loaded graphs in model 
                                     Each will have a button that sets a use state for selected
                                     Then a button for loading selected graph, activate use state
                                     Then on a useState, update*/}
-                    <GenerateList />
-                  </Container>
+                  <GenerateList />
                 </Container>
               </Container>
             </Container>
           </Container>
-        </Fullscreen>
-      </>
+        </Container>
+      </Fullscreen>
     );
   }
 

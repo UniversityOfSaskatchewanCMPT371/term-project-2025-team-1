@@ -14,7 +14,6 @@ describe("Test that graph objects are properly created", () => {
         const indexedDataFile = await pathStrToFile(indexedDataPath);
         await mainControllerTest.getCSVController().loadLocalFile(indexedDataFile);
         mainControllerTest.getCSVController().generate();
-        const graphm = mainControllerTest.getGraphController().getModel();
     })
     test("expect graph model to contain a 10 point graph", async () =>{
         const graphm = mainControllerTest.getGraphController().getModel();

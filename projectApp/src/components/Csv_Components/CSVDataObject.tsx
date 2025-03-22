@@ -1,6 +1,8 @@
 import { CSVDataInterface } from "../../types/CSVInterfaces";
 import { LocalCSVReader, LocalCsvReader, UrlCSVReader } from "./CSVReaders";
 import { sendError, sendLog } from "../../logger-frontend";
+import { PointObjectInterface } from "../../types/PointInterface";
+import { PointObject } from "../Graph_Components/Points/PointObject";
 
 /**
  * Class representing a CSV data structure that implements the CSVData interface.
@@ -11,9 +13,11 @@ export class CSVDataObject implements CSVDataInterface {
   csvHeaders: string[];
   data: { key: Record<string, string | number> }[];
   yHeader: string;
+  timeHeader: string;
   browserSelected: boolean;
   vrSelected: boolean;
   displayBoard: number;
+  points: PointObjectInterface[];
 
   /**
    * Initializes a new CSVDataObject with default values
@@ -23,9 +27,64 @@ export class CSVDataObject implements CSVDataInterface {
     this.csvHeaders = [];
     this.data = [];
     this.yHeader = "";
+    this.timeHeader = "";
     this.browserSelected = false;
     this.displayBoard = 0;
     this.vrSelected = false;
+    this.points = [];
+  }
+
+  /**
+   * This method creates points from the csv file that will be referenced by the points of
+   * both the 2D and 3D Graph
+   * @precondition none
+   * @postcondition fills up the array of PointObjects used by the two graphs
+   */
+  populatePoints(): void {
+    this.points = [];
+    this.getData().forEach((data) => {
+      const newPoint = new PointObject();
+
+      newPoint.setTimeData(
+        data[this.getTimeHeader() as keyof typeof data] as unknown as string,
+      );
+      newPoint.setYData(
+        data[this.getYHeader() as keyof typeof data] as unknown as number,
+      );
+      this.points.push(newPoint);
+    });
+  }
+
+  /**
+   * This method gets the array of Point Objects
+   * @precondition none
+   * @postcondition returns the point objects
+   */
+  getPoints(): PointObjectInterface[] {
+    return this.points;
+  }
+
+  /**
+   * This method sets a new point object and replaces the current point object
+   * @param points An array of point objects
+   * @precondition a valid array of objects
+   * @postcondition sets the new array of point objects
+   */
+  setPoints(points: PointObjectInterface[]): void {
+    if (!Array.isArray(points)) {
+      throw new Error(
+        "Invalid points: must be an array of PointClass instances",
+      );
+    }
+    for (const point of points) {
+      if (!(point instanceof PointObject)) {
+        throw new Error(
+          "Invalid point: each element must be an instance of PointClass",
+        );
+      }
+    }
+
+    this.points = points;
   }
 
   /**
@@ -53,6 +112,7 @@ export class CSVDataObject implements CSVDataInterface {
       if (data.length > 0) {
         const headers = Object.keys(data[0]);
         this.csvHeaders = headers;
+        this.setTimeHeader();
         this.setYHeader(this.findFirstHeader());
       }
       sendLog(
@@ -87,6 +147,12 @@ export class CSVDataObject implements CSVDataInterface {
     }
   }
 
+  /**
+   * This method finds the first non "Time" header in the csv data file and returns it
+   * @precondition The list of headers must be greater than 1, if theres only 1 then that means that there is only a
+   * "Time" header or that the csv file loaded doesn't have a "Time" header which makes it invalid
+   * @postcondition returns the first non "Time" header in the data set
+   */
   findFirstHeader(): string {
     if (this.csvHeaders.length <= 1) {
       throw new Error("Invalid csv file");
@@ -122,6 +188,11 @@ export class CSVDataObject implements CSVDataInterface {
     } else {
       this.displayBoard--;
     }
+  }
+
+  //Resets the array of point objects
+  clearPoints() {
+    this.points = [];
   }
 
   /**
@@ -174,10 +245,15 @@ export class CSVDataObject implements CSVDataInterface {
   }
 
   /**
-   * @precondition none
+   * @precondition a valid non-empty data set
    * @returns The complete data array
    */
   getData(): { key: Record<string, string | number> }[] {
+    if (this.data.length <= 0) {
+      throw new Error(
+        "Unitialized data set for the csv file. (CSVDataObject.ts)",
+      );
+    }
     return this.data;
   }
   /**
@@ -225,11 +301,11 @@ export class CSVDataObject implements CSVDataInterface {
   /**
    * Finds and returns the time header from CSV headers
    *
-   * @precondition csvHeaders must be initialized
+   * @precondition csvHeaders must be initialized, not null and contains a Time column
    * @postcondition Returns a valid time header,
    * i.e The header string containing "Time" or "time" without modifying data
    */
-  getTimeHeader(): string {
+  findTimeHeader(): string {
     for (const head of this.getCSVHeaders()) {
       if (head == "Time" || head == "time") {
         return head;
@@ -297,5 +373,26 @@ export class CSVDataObject implements CSVDataInterface {
         break;
       }
     }
+  }
+
+  /**
+   * Gets the Time header used by the csv data file
+   * @precondition the time header to be "Time"
+   * @postcondition the Time header of the data set
+   */
+  getTimeHeader(): string {
+    if (this.timeHeader != "Time") {
+      throw new Error("Invalid time header, not Time (CSVDataObject.ts)");
+    }
+    return this.timeHeader;
+  }
+
+  /**
+   * Sets the time header used on the csv data set
+   * @precondition none
+   * @postcondition sets the Time header used in the program
+   */
+  setTimeHeader() {
+    this.timeHeader = this.findTimeHeader();
   }
 }

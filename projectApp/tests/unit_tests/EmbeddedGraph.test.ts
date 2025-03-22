@@ -6,8 +6,7 @@ describe("Embedded Graph test", () => {
   let graph: EmbeddedGraphObject;
   // TODO - update url when file being used is in main
   const url =
-    "https://raw.githubusercontent.com/UniversityOfSaskatchewanCMPT371/term-project-2025-team-1/refs/heads/ID3-3DGraph-VectorCalculation/csvTestFiles/indexedData.csv";
-
+    "https://raw.githubusercontent.com/UniversityOfSaskatchewanCMPT371/term-project-2025-team-1/refs/heads/ID4/csvTestFiles/indexedData.csv";
   beforeAll(async () => {
     await mainController.getCSVController().loadURLFile(url);
   });
@@ -18,14 +17,15 @@ describe("Embedded Graph test", () => {
   });
 
   test("points get added to points array", () => {
+    graph.getCSVData().populatePoints();
     graph.addPoints();
-    expect(graph.getPoints().length).toBeGreaterThan(0);
+    expect(graph.getCSVData().getPoints().length).toBeGreaterThan(0);
   });
-
   // TODO - change data set names, when label isn't hardcoded
   test("vectors gets calculated correctly for X data set", () => {
+    graph.getCSVData().populatePoints();
     graph.addPoints();
-    const points = graph.getPoints();
+    const points = graph.getPoints3D();
     expect(points[0].getPosition()).toStrictEqual([1, 0, 0]);
     expect(points[1].getPosition()).toStrictEqual([2, 1, 0]);
     expect(points[2].getPosition()).toStrictEqual([3, 2, 1]);
@@ -41,14 +41,17 @@ describe("Embedded Graph test", () => {
   test("vectors calculation for header row B", () => {
     const axes = graph.getAxes();
     const newAxes = {
-      xLabel: axes.xLabel,
+      xLabel: graph.getCSVData().getTimeHeader(),
       yLabel: "B",
       xRange: axes.xRange,
       yRange: axes.yRange,
     };
     graph.setAxes(newAxes);
+
+    graph.getCSVData().setYHeader("B");
+    graph.getCSVData().populatePoints();
     graph.addPoints();
-    const points = graph.getPoints();
+    const points = graph.getPoints3D();
     expect(points[0].getPosition()).toStrictEqual([2, 0, 0]);
     expect(points[1].getPosition()).toStrictEqual([4, 2, 0]);
     expect(points[2].getPosition()).toStrictEqual([6, 4, 2]);
@@ -61,10 +64,11 @@ describe("Embedded Graph test", () => {
     expect(points[9].getPosition()).toStrictEqual([20, 18, 16]);
   });
 
-  test("vector calculation with tao=2", () => {
-    graph.setTao(2);
+  test("vector calculation with tau=2", () => {
+    graph.getCSVData().setYHeader("Some");
+    graph.setTau(2);
     graph.addPoints();
-    const points = graph.getPoints();
+    const points = graph.getPoints3D();
     expect(points[0].getPosition()).toStrictEqual([1, 0, 0]);
     expect(points[1].getPosition()).toStrictEqual([2, 0, 0]);
     expect(points[2].getPosition()).toStrictEqual([3, 1, 0]);
@@ -77,9 +81,9 @@ describe("Embedded Graph test", () => {
     expect(points[9].getPosition()).toStrictEqual([10, 8, 6]);
   });
 
-  test("setting tao to an invalid value", () => {
+  test("setting tau to an invalid value", () => {
     expect(() => {
-      graph.setTao(-1);
-    }).toThrowError("Tao must be greater than or equal to 1");
+      graph.setTau(-1);
+    }).toThrowError("Tau must be greater than or equal to 1");
   });
 });

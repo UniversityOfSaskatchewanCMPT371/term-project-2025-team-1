@@ -38,6 +38,8 @@ export class CSVController implements ControllerInterface {
     for (const csv of this.model.getData()) {
       if (csv.getDisplayBoard() == 1) {
         csv.setVRSelected(true);
+        csv.populatePoints();
+
         const TSGraph = new TimeSeriesGraphObject(csv);
         TSGraph.setName(csv.getName());
         TSGraph.addPoints();
@@ -47,7 +49,6 @@ export class CSVController implements ControllerInterface {
         emGraph.addPoints();
 
         mainController.getGraphController().pushDataToModel(TSGraph, emGraph);
-        console.log("Success on generate?");
         sendLog("info", "generate has pushed a new graph");
       }
     }

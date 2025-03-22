@@ -1,6 +1,7 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Point3DObject } from "../../components/Graph_Components/Points/Point3DObject";
 import mainController from "../../controller/MainController";
+import { useFrame } from "@react-three/fiber";
 
 /**
  * This function will display and realize the 3D Point Object onto the VR Scene
@@ -15,16 +16,18 @@ export default function Point3D({
   const [hovered, hover] = useState(false);
   const [clicked, click] = useState(false);
 
-  useEffect(() => {
-    if (!clicked && pointRef.getObject().getSelected()) {
-      click(true);
-    } else if (clicked && !pointRef.getObject().getSelected()) {
-      click(false);
+  //If the selection of this point doesn't match the selection status of the PointObject
+  useFrame(() => {
+    if (clicked !== pointRef.getObject().getSelected()) {
+      click(pointRef.getObject().getSelected());
     }
   });
+
+  //Function to handle when a point is clicked
   function setOnClick(): void {
-    pointRef.getObject().setSelected(!pointRef.getObject().getSelected());
-    click(pointRef.getObject().getSelected());
+    const selectedState = !pointRef.getObject().getSelected();
+    click(selectedState);
+    pointRef.getObject().setSelected(selectedState);
   }
 
   return (
@@ -48,13 +51,13 @@ export default function Point3D({
         onPointerOut={() => {
           hover(false);
         }}
-        scale={0.03}
+        scale={0.05}
       >
-        <sphereGeometry attach="geometry" args={[1, 32, 16]}></sphereGeometry>
+        <sphereGeometry attach="geometry" args={[1, 32, 16]} />
         <meshStandardMaterial
           color={clicked ? "red" : "orange"}
           opacity={hovered ? 1.0 : 0.4}
-        ></meshStandardMaterial>
+        />
       </mesh>
     </>
   );

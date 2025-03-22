@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Point2DObject } from "../../components/Graph_Components/Points/Point2DObject";
-
+import { useFrame } from "@react-three/fiber";
 /**
  * Renders a 2D point on a Time Series Graph.
  * The point can be interacted with through hover and click events.
@@ -13,19 +13,27 @@ export default function Point2D({ pointRef }: { pointRef: Point2DObject }) {
   const [hovered, hover] = useState(false);
   const [clicked, click] = useState(false);
 
+  //If the selection of this point doesn't match the selection status of the PointObject
+  useFrame(() => {
+    if (clicked !== pointRef.getObject().getSelected()) {
+      click(pointRef.getObject().getSelected());
+    }
+  });
+
   /**
    * Toggles the point's selected state and updates local click state
    * @precondition None
    * @postcondition Updates both local clicked state and pointRef's selected state
    */
   function setOnClick(): void {
-    pointRef.getObject().setSelected(!pointRef.getObject().getSelected());
-    click(pointRef.getObject().getSelected());
+    const selectedState = !pointRef.getObject().getSelected();
+    click(selectedState);
+    pointRef.getObject().setSelected(selectedState);
   }
 
   return (
     <mesh
-      position={[pointRef.getXPosition(), pointRef.getYPosition(), 0.01]}
+      position={[pointRef.getXPosition(), pointRef.getYPosition(), 0.05]}
       onClick={() => {
         setOnClick();
       }}
@@ -36,7 +44,7 @@ export default function Point2D({ pointRef }: { pointRef: Point2DObject }) {
         hover(false);
       }}
     >
-      <circleGeometry attach="geometry" args={[0.06, 32]} />
+      <circleGeometry attach="geometry" args={[0.08, 32]} />
 
       <meshStandardMaterial
         color={clicked ? "blue" : "skyblue"}

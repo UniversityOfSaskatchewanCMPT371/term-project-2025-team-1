@@ -39,6 +39,10 @@ export default function TimeSeriesGraph({
   function UpdateGraph(): void {
     graph.updatePointPosition();
     setHeader(graph.getCSVData().getYHeader());
+    mainController
+      .getGraphController()
+      .getModelEmData()[0]
+      .updateEmbeddedPoints();
     mainController.updateMainScene();
     sendLog(
       "info",
@@ -153,7 +157,7 @@ export default function TimeSeriesGraph({
    * @preconditions PointObject, used to show Point
    * @postconditions  Interactable 2D Point in the Graph
    */
-  function GeneratePoints({
+  function GeneratePoint({
     point,
   }: {
     point: Point2DObject;
@@ -177,7 +181,7 @@ export default function TimeSeriesGraph({
 
     return (
       <>
-        <Create2DPoint pointRef={point}></Create2DPoint>
+        <Create2DPoint pointRef={point} />
       </>
     );
   }
@@ -326,10 +330,10 @@ export default function TimeSeriesGraph({
         </Root>
 
         {/* Create the points and the lines */}
-        {graph.getPoints2D().map((points) => {
+        {graph.getPoints2D().map((point) => {
           return (
             <>
-              <GeneratePoints point={points} />
+              <GeneratePoint point={point} />
               <GenerateLines />
             </>
           );

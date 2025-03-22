@@ -1,6 +1,5 @@
 import { Line } from "@react-three/drei";
 import React from "react";
-import mainController from "../../controller/MainController";
 import { EmbeddedGraphObject } from "../../components/Graph_Components/EmbeddedGraphObject";
 import { sendLog } from "../../logger-frontend";
 import { Point3DInterface } from "../../types/GraphPointsInterfaces";
@@ -18,12 +17,6 @@ export function EmbeddedGraph({
 }: {
   graph: EmbeddedGraphObject;
 }): React.JSX.Element {
-  //Used to update the graph
-  function UpdateGraph(): void {
-    mainController.updateMainScene();
-    sendLog("info", "an EmbeddedGraph object was updated (EmbeddedGraph.tsx)");
-  }
-
   /**
    * This function renders the 3D point used in the graph
    * @param param0 a reference to the 3D Point object
@@ -37,7 +30,7 @@ export function EmbeddedGraph({
   }): React.JSX.Element {
     return (
       <>
-        <Create3DPoint pointRef={point}></Create3DPoint>
+        <Create3DPoint pointRef={point} />
       </>
     );
   }
@@ -108,6 +101,5 @@ export function EmbeddedGraph({
       </>
     );
   }
-
   return <GenerateGraph />;
 }

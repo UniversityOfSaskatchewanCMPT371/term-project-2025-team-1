@@ -100,7 +100,7 @@ export class TimeSeriesGraphObject
     // If max is a float, convert it to an integer by rounding up.
     max = Math.ceil(max);
 
-    while (max % 5 != 0) {
+    while (max % 10 != 0) {
       max++;
     }
 

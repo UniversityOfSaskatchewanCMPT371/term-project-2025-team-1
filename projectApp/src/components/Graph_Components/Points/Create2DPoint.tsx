@@ -1,3 +1,4 @@
+import { sendLog } from "../../../logger-frontend";
 import Point2D from "../../../pages/Graph_Elements/Point2D";
 import { Point2DInterface } from "../../../types/GraphPointsInterfaces";
 import { Point2DObject } from "./Point2DObject";
@@ -21,5 +22,10 @@ export default function Create2DPoint({
   point.getObject().setSelected(pointRef.getObject().getSelected());
   point.getObject().setTimeData(pointRef.getObject().getTimeData());
   point.getObject().setYData(pointRef.getObject().getYData());
+
+  sendLog(
+        "info",
+        "a 2D Point has been created (Create2DPoint.tsx)",
+      );
   return <Point2D pointRef={point} />;
 }

@@ -23,15 +23,36 @@ export class TimeSeriesGraphObject
     this.yRangeLength = 0;
   }
 
+  /**
+   * This methods gets the array of 2D Points
+   * @precondition a valid array of points
+   * @postcondition returns the array of 2D points associated with the 2D Graph
+   */
   getPoints2D(): Point2DInterface[] {
     return this.points2D;
   }
 
+  /**
+   * This method gets the number of ticks in the y-axis, the y range of the TimeSeriesGraph
+   * @precondition none
+   * @postcondition returns the y range of the axis
+   */
   getYRangeLength(): number {
     return this.yRangeLength;
   }
+
+  /**
+   * This method sets the range of the y-axis in the Time Series Graph
+   * @precondition number parameter wchich is the highest value in hte data set
+   * @postcondition On success, updates the y range to the new one
+   */
   setYRangeLength(num: number): void {
     this.yRangeLength = num;
+
+    sendLog(
+      "info",
+      `setYRangeLength() was called on TimeSeriesGraphObject (TimeSeriesGraphObject.ts)`,
+    );
   }
 
   /**
@@ -51,7 +72,7 @@ export class TimeSeriesGraphObject
       });
     sendLog(
       "info",
-      "addPoint() has added new points to the graph (TimeSeriesGraphClass.tsx)",
+      "addPoint() has added new points to the graph (TimeSeriesGraphObject.tss)",
     );
   }
 
@@ -66,7 +87,7 @@ export class TimeSeriesGraphObject
   findPoint(xData: string, yData: number): Point2DObject | undefined {
     sendLog(
       "info",
-      `findPoint() is searching for a point at ${xData}, ${yData} (TimeSeriesGraphClass.tsx)`,
+      `findPoint() is searching for a point at ${xData}, ${yData} (TimeSeriesGraphObject.ts)`,
     );
     return this.points2D.find(
       (point) =>
@@ -88,7 +109,7 @@ export class TimeSeriesGraphObject
     });
     sendLog(
       "info",
-      "all points have been unselected (TimeSeriesGraphClass.tsx)",
+      "all points have been unselected (TimeSeriesGraphObject.ts)",
     );
   }
 
@@ -121,7 +142,7 @@ export class TimeSeriesGraphObject
     this.axes.yRange[1] = max;
     sendLog(
       "info",
-      `setRange() was called; yRange was set to ${this.axes.yRange[1]} (TimeSeriesGraphClass.tsx)`,
+      `setRange() was called; yRange was set to ${this.axes.yRange[1]} (TimeSeriesGraphObject.ts)`,
     );
   }
 
@@ -142,7 +163,7 @@ export class TimeSeriesGraphObject
     }
     sendLog(
       "info",
-      `timeSeriesYRange() returned ${range} (TimeSeriesGraphClass.tsx)`,
+      `timeSeriesYRange() returned ${range} (TimeSeriesGraphObject.ts)`,
     );
 
     return range;
@@ -166,7 +187,7 @@ export class TimeSeriesGraphObject
       });
     sendLog(
       "info",
-      `timeSeriesXRange() was called and returned ${range} (TimeSeriesGraphClass.tsx)`,
+      `timeSeriesXRange() was called and returned ${range} (TimeSeriesGraphObject.ts)`,
     );
     return range;
   }
@@ -181,7 +202,7 @@ export class TimeSeriesGraphObject
     if (this.getCSVData().getCSVHeaders().length < 3) {
       sendLog(
         "info",
-        "incrementYHeader() was called but no changes were made (length < 3) (TimeSeriesGraphClass.tsx)",
+        "incrementYHeader() was called but no changes were made (length < 3) (TimeSeriesGraphObject.ts)",
       );
       return;
     }
@@ -203,7 +224,7 @@ export class TimeSeriesGraphObject
       }
       sendLog(
         "info",
-        "incrementYHeader() was called and successfully incremented (TimeSeriesGraphClass.tsx)",
+        "incrementYHeader() was called and successfully incremented (TimeSeriesGraphObject.ts)",
       );
       return;
     }
@@ -218,7 +239,7 @@ export class TimeSeriesGraphObject
       this.getCSVData().setYHeader(this.getCSVData().getCSVHeaders()[0]);
       sendLog(
         "info",
-        "incrementYHeader() was called and successfully incremented (TimeSeriesGraphClass.tsx)",
+        "incrementYHeader() was called and successfully incremented (TimeSeriesGraphObject.ts)",
       );
       return;
     }
@@ -246,7 +267,7 @@ export class TimeSeriesGraphObject
     if (this.getCSVData().getCSVHeaders().length < 3) {
       sendLog(
         "info",
-        "decrementYHeader() was called but no changes were made (length < 3) (TimeSeriesGraphClass.tsx)",
+        "decrementYHeader() was called but no changes were made (length < 3) (TimeSeriesGraphObject.ts)",
       );
       return;
     }
@@ -277,7 +298,7 @@ export class TimeSeriesGraphObject
       }
       sendLog(
         "info",
-        "decrementYHeader() was called and successfully deccremented (TimeSeriesGraphClass.tsx)",
+        "decrementYHeader() was called and successfully deccremented (TimeSeriesGraphObject.ts)",
       );
       return;
     }
@@ -294,7 +315,7 @@ export class TimeSeriesGraphObject
       );
       sendLog(
         "info",
-        "decrementYHeader() was called and successfully deccremented (TimeSeriesGraphClass.tsx)",
+        "decrementYHeader() was called and successfully deccremented (TimeSeriesGraphObject.ts)",
       );
       return;
     }
@@ -343,7 +364,7 @@ export class TimeSeriesGraphObject
     });
     sendLog(
       "info",
-      "updatePointPosition() has been called to update the graph (TimeSeriesGraphClass.tsx)",
+      "updatePointPosition() has been called to update the graph (TimeSeriesGraphObject.ts)",
     );
   }
 
@@ -378,7 +399,7 @@ export class TimeSeriesGraphObject
   getYRange(): number {
     sendLog(
       "info",
-      `getYRange returned ${this.axes.yRange[1]} (TimeSeriesGraphClass.tsx)`,
+      `getYRange returned ${this.axes.yRange[1]} (TimeSeriesGraphObject.ts)`,
     );
     return this.axes.yRange[1];
   }

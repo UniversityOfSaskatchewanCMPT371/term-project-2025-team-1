@@ -59,7 +59,7 @@ export class EmbeddedGraphObject
     });
     sendLog(
       "info",
-      "all points have been unselected (EmbeddedGraphObject.tsx)",
+      "all points have been unselected (EmbeddedGraphObject.ts)",
     );
   }
 
@@ -240,7 +240,7 @@ export class EmbeddedGraphObject
     this.axes.yRange[1] = max;
     sendLog(
       "info",
-      `setRange() was called; yRange was set to ${this.axes.yRange[1]} (EmbeddedGraphObject.tsx)`,
+      `setRange() was called; yRange was set to ${this.axes.yRange[1]} (EmbeddedGraphObject.ts)`,
     );
   }
 
@@ -249,7 +249,12 @@ export class EmbeddedGraphObject
    */
   updateEmbeddedPoints(): void {
     this.points3D = [];
+
     //The csv data points are already being cleared on TimeSeries updatePointPosition()
     this.addPoints();
+    sendLog(
+      "info",
+      `UpdateEmbeddedPoints() was called; 3D points in the Embedded Graph updated (EmbeddedGraphObject.ts)`,
+    );
   }
 }

@@ -1,3 +1,4 @@
+import { sendLog } from "../../logger-frontend";
 import { GraphInterface } from "../../types/GraphInterface";
 import { CSVDataObject } from "../Csv_Components/CSVDataObject";
 
@@ -72,6 +73,11 @@ export class GraphObject implements GraphInterface {
       throw new Error("ID must be a non-empty string.");
     }
     this.id = id;
+
+    sendLog(
+      "info",
+      `setID() was called on Graph Object, ID is now ${id} (GraphObject.ts)`,
+    );
   }
 
   /**
@@ -98,6 +104,11 @@ export class GraphObject implements GraphInterface {
       throw new Error("Name must be a non-empty string.");
     }
     this.name = title;
+
+    sendLog(
+      "info",
+      `setName() was called on Graph Object, name of the Graph is now ${title} (GraphObject.ts)`,
+    );
   }
 
   // Position getters and setters
@@ -130,6 +141,11 @@ export class GraphObject implements GraphInterface {
       throw new Error("Position coordinates must be numbers.");
     }
     this.position = { x, y, z };
+
+    sendLog(
+      "info",
+      `setPosition() was called on Graph Object, position: [${x}, ${y}, ${z}] (GraphObject.ts)`,
+    );
   }
 
   // Axes management
@@ -146,6 +162,7 @@ export class GraphObject implements GraphInterface {
   } {
     return this.axes;
   }
+
   /**
    * Set the axes of the graph.
    * @param {xLabel: string; yLabel: string; xRange: [number, number]; yRange: [number, number]} axes
@@ -164,6 +181,11 @@ export class GraphObject implements GraphInterface {
       );
     }
     this.axes = axes;
+
+    sendLog(
+      "info",
+      `setAxes() was called on Graph Object and now: ${axes} (GraphObject.ts)`,
+    );
   }
 
   /**

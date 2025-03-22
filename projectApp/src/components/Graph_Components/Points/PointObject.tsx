@@ -1,3 +1,4 @@
+import { sendLog } from "../../../logger-frontend";
 import { PointObjectInterface } from "../../../types/PointInterface";
 
 /**
@@ -71,6 +72,11 @@ export class PointObject implements PointObjectInterface {
    */
   setSelected(select: boolean): void {
     this.selected = select;
+
+    sendLog(
+          "info",
+          `setSelected() was called on PointObject (PointObject.ts)`,
+        );
   }
 
   /**
@@ -79,9 +85,12 @@ export class PointObject implements PointObjectInterface {
    * @postcondition The 'xData' property is updated to the provided value.
    * @param {string} x - A string representing the new x-axis data.
    */
-  setTimeData(x: string): void {
-    this.timeData = x;
-    //Error no Time Header
+  setTimeData(time: string): void {
+    this.timeData = time;
+    sendLog(
+      "info",
+      `setTimeData() was called; time Data of Point set to ${time} (PointObject.ts)`,
+    );
   }
   /**
    * Sets the y-axis data of the point.
@@ -91,6 +100,11 @@ export class PointObject implements PointObjectInterface {
    */
   setYData(y: number): void {
     this.yData = y;
+
+    sendLog(
+      "info",
+      `setYData() was called; y Data of Point set to ${y} (PointObject.ts)`,
+    );
   }
 
   //End of Setters

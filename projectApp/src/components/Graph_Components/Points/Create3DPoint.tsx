@@ -1,3 +1,4 @@
+import { sendLog } from "../../../logger-frontend";
 import Point3D from "../../../pages/Graph_Elements/Point3D";
 import { Point3DInterface } from "../../../types/GraphPointsInterfaces";
 import { Point3DObject } from "./Point3DObject";
@@ -23,5 +24,9 @@ export default function Create3DPoint({
   point.setXAxisPos(pointRef.getXPosition());
   point.setYAxisPos(pointRef.getYPosition());
   point.setZAxisPos(pointRef.getZPosition());
+  sendLog(
+      "info",
+      "a 3D Point has been created (Create3DPoint.tsx)",
+    );
   return <Point3D pointRef={point} />;
 }

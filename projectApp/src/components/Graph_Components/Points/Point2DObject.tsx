@@ -1,3 +1,4 @@
+import { sendLog } from "../../../logger-frontend";
 import { Point2DInterface } from "../../../types/GraphPointsInterfaces";
 import { PointObjectInterface } from "../../../types/PointInterface";
 import { PointObject } from "./PointObject";
@@ -52,6 +53,11 @@ export class Point2DObject implements Point2DInterface {
    */
   setXAxisPos(x: number): void {
     this.point2Dposition[0] = x;
+
+    sendLog(
+          "info",
+          `setXAxisPos() was called; xPosition of 2D Point was set to ${x} (Point2DObject.ts)`,
+    );
   }
 
   /**
@@ -62,6 +68,11 @@ export class Point2DObject implements Point2DInterface {
    */
   setYAxisPos(y: number): void {
     this.point2Dposition[1] = y;
+
+    sendLog(
+      "info",
+      `setYAxisPos() was called; yPosition of 2D Point was set to ${y} (Point2DObject.ts)`,
+    );
   }
 
   /**
@@ -72,5 +83,10 @@ export class Point2DObject implements Point2DInterface {
    */
   setPoint2DPosition(position: [number, number]): void {
     this.point2Dposition = position;
+
+    sendLog(
+      "info",
+      `setPoint2DPosition() was called; Position of 2D Point was set to ${position} (Point2DObject.ts)`,
+    );
   }
 }

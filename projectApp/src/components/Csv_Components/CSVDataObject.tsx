@@ -53,6 +53,11 @@ export class CSVDataObject implements CSVDataInterface {
       );
       this.points.push(newPoint);
     });
+
+    sendLog(
+      "info",
+      `populatePoints() was called, the program points loaded using the csv file (CSVDataObject.ts)`,
+    );
   }
 
   /**
@@ -85,6 +90,11 @@ export class CSVDataObject implements CSVDataInterface {
     }
 
     this.points = points;
+
+    sendLog(
+      "info",
+      `setPoints() was called, the points has been succesfully set (CSVDataObject.ts)`,
+    );
   }
 
   /**
@@ -159,6 +169,10 @@ export class CSVDataObject implements CSVDataInterface {
     }
     for (const head of this.csvHeaders) {
       if (head != "Time") {
+        sendLog(
+          "info",
+          `findFirstHeader() was called, the first header was found ${head} (CSVDataObject.ts)`,
+        );
         return head;
       }
     }
@@ -193,6 +207,11 @@ export class CSVDataObject implements CSVDataInterface {
   //Resets the array of point objects
   clearPoints() {
     this.points = [];
+
+    sendLog(
+      "info",
+      `clearPoints() was called, array of points reset (CSVDataObject.ts)`,
+    );
   }
 
   /**
@@ -308,6 +327,10 @@ export class CSVDataObject implements CSVDataInterface {
   findTimeHeader(): string {
     for (const head of this.getCSVHeaders()) {
       if (head == "Time" || head == "time") {
+        sendLog(
+          "info",
+          `findTimeHeader() was called, the time header in the data set has been found (CSVDataObject.ts)`,
+        );
         return head;
       }
     }
@@ -322,6 +345,10 @@ export class CSVDataObject implements CSVDataInterface {
    */
   setData(data: { key: Record<string, string | number> }[]): void {
     this.data = data;
+    sendLog(
+      "info",
+      `setData() was called, data has been set (CSVDataObject.ts)`,
+    );
   }
   // Setter getters
   // Post-condition: The `name` property is updated to the provided name.
@@ -394,5 +421,10 @@ export class CSVDataObject implements CSVDataInterface {
    */
   setTimeHeader() {
     this.timeHeader = this.findTimeHeader();
+
+    sendLog(
+      "info",
+      `setTimeHeader() was called, finding the time header in the data set (CSVDataObject.ts)`,
+    );
   }
 }

@@ -1,3 +1,4 @@
+import { sendLog } from "../../../logger-frontend";
 import { Point3DInterface } from "../../../types/GraphPointsInterfaces";
 import { PointObjectInterface } from "../../../types/PointInterface";
 import { PointObject } from "./PointObject";
@@ -70,6 +71,11 @@ export class Point3DObject implements Point3DInterface {
    */
   setXAxisPos(x: number): void {
     this.point3Dposition[0] = x;
+
+    sendLog(
+              "info",
+              `setXAxisPos() was called; xPosition of 3D Point was set to ${x} (Point3DObject.ts)`,
+        );
   }
 
   /**
@@ -80,6 +86,11 @@ export class Point3DObject implements Point3DInterface {
    */
   setYAxisPos(y: number): void {
     this.point3Dposition[1] = y;
+
+    sendLog(
+      "info",
+      `setYAxisPos() was called; yPosition of 3D Point was set to ${y} (Point3DObject.ts)`,
+    );
   }
 
   /**
@@ -90,6 +101,10 @@ export class Point3DObject implements Point3DInterface {
    */
   setZAxisPos(z: number): void {
     this.point3Dposition[2] = z;
+    sendLog(
+      "info",
+      `setZAxisPos() was called; zPosition of 3D Point was set to ${z} (Point3DObject.ts)`,
+    );
   }
 
   /**
@@ -100,5 +115,10 @@ export class Point3DObject implements Point3DInterface {
    */
   setPoint3DPosition(position: [number, number, number]): void {
     this.point3Dposition = position;
+
+    sendLog(
+      "info",
+      `setPoint3DPosition() was called; Position of 3D Point was set to ${position} (Point3DObject.ts)`,
+    );
   }
 }

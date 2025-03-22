@@ -26,7 +26,7 @@ export function CreateEmbeddedGraph({
 }): React.JSX.Element {
   sendLog(
     "info",
-    "an EmbeddedGraph has been created [not yet functional] (CreateEmbeddedGraph.tsx)",
+    "an EmbeddedGraph has been created (CreateEmbeddedGraph.tsx)",
   );
   return (
     <>

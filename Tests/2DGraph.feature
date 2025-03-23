@@ -1,5 +1,5 @@
 Feature: 2DGraph
-    As a developer or tester, I want to ensure that the 2D graph display functionality meets requirements and properly represents the provided data.
+  As a developer or tester, I want to ensure that the 2D graph display functionality meets requirements and properly represents the provided data.
 
   # Background data (assumes that all provided CSV data is valid as per csvLoader.feature) [need an example URL]
   Background:
@@ -26,17 +26,9 @@ Feature: 2DGraph
     When the user clicks generate
     Then the graph should appear on the first red display board
 
-  # This case covers the action of moving a visible graph between the (currently red in colour) display boards
-  # This case will be relevant when the feature allows for more than one display board
-  Scenario: Moving a 2D graph to and from the display board
-    Given there is more than one display board visible
-    And there is more than one 2D graph generated
-    When the user changes the number next to the corresponding 2D graph in the graph menu
-    Then the 2D graph should move to the matching display board
-
-  # This case covers the action of removing any visual representation of the 2D graph from the VR environment
-  # Future functionality
-  Scenario: Removing 2D graph from the VR environment (clearing)
+  # This case covers the action of clicking on any point of the 2D visualization and having the corresponding point in the 3D graph highlighted
+  Scenario: Clicking on a point in the 2D graph from the VR environment highlights the corresponding point in the 3D graph
     Given the user has generated a 2D graph
-    When the user clicks delete/clear next to the graph
-    Then the graph should be cleared from the VR environment
+    Given the user has generated a 3D graph
+    When the user clicks on a point on the 2D graph
+    Then the corresponding point on the 3D graph should be highlighted

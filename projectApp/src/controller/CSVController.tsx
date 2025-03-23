@@ -29,7 +29,7 @@ export class CSVController implements ControllerInterface {
    * Generates time series graphs for CSV data marked for VR display
    *
    * @precondition this.model must be initialized with CSV data
-   * @postcondition For each CSV with displayBoard=1:
+   * @postcondition For each CSV:
    *   - VR selection is enabled
    *   - A new TimeSeriesGraph is created and initialized
    *   - The graph is added to the main controller's graph collection

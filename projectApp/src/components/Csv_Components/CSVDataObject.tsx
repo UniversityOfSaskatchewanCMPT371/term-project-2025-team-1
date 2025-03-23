@@ -16,7 +16,6 @@ export class CSVDataObject implements CSVDataInterface {
   timeHeader: string;
   browserSelected: boolean;
   vrSelected: boolean;
-  displayBoard: number;
   points: PointObjectInterface[];
 
   /**
@@ -29,7 +28,6 @@ export class CSVDataObject implements CSVDataInterface {
     this.yHeader = "";
     this.timeHeader = "";
     this.browserSelected = false;
-    this.displayBoard = 0;
     this.vrSelected = false;
     this.points = [];
   }
@@ -166,30 +164,6 @@ export class CSVDataObject implements CSVDataInterface {
     throw error;
   }
 
-  /**
-   * Toggles display board index between 0 and 1
-   * @precondition displayBoard must be 0 or 1
-   * @postcondition displayBoard value will be toggled between 0 and 1
-   */
-  incrementDisplayBoard(): void {
-    if (this.displayBoard == 0) {
-      this.displayBoard++;
-    } else {
-      this.displayBoard = 0;
-    }
-  }
-
-  /**
-   * @postcondition Toggles display board index between 0 and 1
-   */
-  decrementDisplayBoard(): void {
-    if (this.displayBoard == 0) {
-      this.displayBoard = 1;
-    } else {
-      this.displayBoard--;
-    }
-  }
-
   //Resets the array of point objects
   clearPoints() {
     this.points = [];
@@ -299,13 +273,7 @@ export class CSVDataObject implements CSVDataInterface {
   getVRSelected(): boolean {
     return this.vrSelected;
   }
-  /**
-   * @precondition none
-   * @returns Current display board index
-   */
-  getDisplayBoard(): number {
-    return this.displayBoard;
-  }
+
   /**
    * Finds and returns the time header from CSV headers
    *

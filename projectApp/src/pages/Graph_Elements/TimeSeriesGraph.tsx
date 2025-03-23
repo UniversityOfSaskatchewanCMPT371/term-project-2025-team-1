@@ -29,11 +29,11 @@ export default function TimeSeriesGraph({
 
   // Values used to position lines, currently set to starting position
   let currentLine: [number, number, number] = [0, 0, 0.01];
-  let lastLine: [number, number, number] = [-1.8, -1, 0.01];
+  let lastLine: [number, number, number] = [-1.85, -1.05, 0.01];
 
   // Spacing used by X and Y axis
   const xSpacing = 100 / graph.getNumPoints();
-  const ySpacing = 100 / graph.yRangeLength;
+  const ySpacing = 100 / graph.getYRangeLength() + 1;
 
   //Used to update the graph, currently updates on Y header change
   function UpdateGraph(): void {
@@ -164,9 +164,9 @@ export default function TimeSeriesGraph({
 
     point.setXAxisPos(current);
     point.setYAxisPos(
-      (point.getObject().getYData() / 100) *
-        (graph.getYRange() / graph.timeSeriesYRange().length) -
-        1,
+      (point.getObject().getYData() / graph.getYRange()) *
+        (1.5 - (ySpacing / 100) * 2 + 1.05) -
+        1.05,
     );
 
     //Updating the position of the lines based off the point position
@@ -212,7 +212,7 @@ export default function TimeSeriesGraph({
       "info",
       "a visual representation of the Y range was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)",
     );
-    return <Text positionTop={10}>{num.toString()} -</Text>;
+    return <Text positionLeft={30}>{num.toString()} -</Text>;
   }
 
   /**
@@ -244,8 +244,16 @@ export default function TimeSeriesGraph({
                 justifyContent={"flex-start"}
                 flexDirection={"column-reverse"}
               >
-                <Container width={"100%"} flexDirection={"row-reverse"}>
-                  <Text positionTop={5}>0 -</Text>
+                <Container
+                  width={"100%"}
+                  height={"100%"}
+                  flexDirection={"column-reverse"}
+                  alignContent={"center"}
+                  justifyContent={"center"}
+                >
+                  <Container width={"100%"} positionBottom={"50%"}>
+                    <Text positionLeft={30}>0 -</Text>
+                  </Container>
                 </Container>
               </Container>
               {graph.timeSeriesYRange().map((range) => {
@@ -257,8 +265,16 @@ export default function TimeSeriesGraph({
                     justifyContent={"flex-start"}
                     flexDirection={"column-reverse"}
                   >
-                    <Container width={"100%"} flexDirection={"row-reverse"}>
-                      <GenerateYRange num={range} />
+                    <Container
+                      width={"100%"}
+                      height={"100%"}
+                      flexDirection={"column-reverse"}
+                      alignContent={"center"}
+                      justifyContent={"center"}
+                    >
+                      <Container width={"100%"} positionBottom={"50%"}>
+                        <GenerateYRange num={range} />
+                      </Container>
                     </Container>
                   </Container>
                 );

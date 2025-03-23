@@ -5,7 +5,7 @@ Feature: 2DGraph
   Background:
     Given the user is in the VR environment
     And there exists a valid local CSV file "indexedData.csv"
-    And there exists a valid URL-based CSV file with address "https://raw.githubusercontent.com/UniversityOfSaskatchewanCMPT371/term-project-2025-team-1/refs/heads/ID2Dev/csvTestFiles/indexedData.csv"
+    And there exists a valid URL-based CSV file with address "https://raw.githubusercontent.com/UniversityOfSaskatchewanCMPT371/term-project-2025-team-1/refs/heads/ID4/csvTestFiles/indexedData.csv"
 
   # This case covers the action of using the 2D graph menu to display a 2D graph sourced from a local CSV file
   Scenario: Displaying a 2D graph from a local CSV file
@@ -17,7 +17,7 @@ Feature: 2DGraph
 
   # This case covers the action of using the 2D graph menu to display a 2D graph sourced from a URL-based CSV file
   Scenario: Displaying a 2D graph from a URL-based CSV file
-    Given the user has uploaded a valid URL-based CSV file with address "https://raw.githubusercontent.com/UniversityOfSaskatchewanCMPT371/term-project-2025-team-1/refs/heads/ID2Dev/csvTestFiles/indexedData.csv"
+    Given the user has uploaded a valid URL-based CSV file with address "https://raw.githubusercontent.com/UniversityOfSaskatchewanCMPT371/term-project-2025-team-1/refs/heads/ID4/csvTestFiles/indexedData.csv"
     And the user has opened the 2D graph menu
     And the URL-based CSV file appears in the 2D graph menu
     When the user clicks generate

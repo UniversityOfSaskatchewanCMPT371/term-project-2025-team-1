@@ -82,7 +82,7 @@ export class TimeSeriesGraphObject
 
   /**
    * Sets the Y range of a time series graph
-   * Increases each tick by 5, for larger data sets this could be tuned
+   * Increases each tick by 10, for larger data sets this could be tuned
    * @precondition valid CSV data object
    * @postcondition sets the max Y range of graph to the largest value of the csv data
    */
@@ -97,7 +97,10 @@ export class TimeSeriesGraphObject
       }
     });
 
-    while (max % 5 != 0) {
+    // If max is a float, convert it to an integer by rounding up.
+    max = Math.ceil(max);
+
+    while (max % 10 != 0) {
       max++;
     }
 
@@ -119,7 +122,7 @@ export class TimeSeriesGraphObject
 
     //For larger data sets, it would be possible to create a case statement
     while (cur < this.axes.yRange[1]) {
-      cur = cur + 5;
+      cur = cur + 10;
       range.push(cur);
     }
     sendLog(

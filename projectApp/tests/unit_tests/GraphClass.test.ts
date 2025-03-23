@@ -94,14 +94,14 @@ describe("GraphObject", async () => {
     const graph = new GraphObject(csvDataMock);
     expect(() => {
       graph.setId("");
-    }).toThrowError("ID must be a non-empty string.");
+    }).toThrowError("Invalid ID");
   });
 
   it("throws error when setting invalid name", () => {
     const graph = new GraphObject(csvDataMock);
     expect(() => {
       graph.setName("");
-    }).toThrowError("Name must be a non-empty string.");
+    }).toThrowError("Invalid Name");
   });
 
   /**
@@ -111,13 +111,13 @@ describe("GraphObject", async () => {
     const graph = new GraphObject(csvDataMock);
     expect(() => {
       graph.setPosition("a" as unknown as number, 6, 7);
-    }).toThrowError("Position coordinates must be numbers.");
+    }).toThrowError("Invalid Positions");
     expect(() => {
       graph.setPosition(5, "b" as unknown as number, 7);
-    }).toThrowError("Position coordinates must be numbers.");
+    }).toThrowError("Invalid Positions");
     expect(() => {
       graph.setPosition(5, 6, "c" as unknown as number);
-    }).toThrowError("Position coordinates must be numbers.");
+    }).toThrowError("Invalid Positions");
   });
 
   /**
@@ -131,9 +131,7 @@ describe("GraphObject", async () => {
     };
     expect(() => {
       graph.setAxes(invalidAxes1);
-    }).toThrowError(
-      "Invalid xRange. First value must be less than the second value (GraphObject.ts)",
-    );
+    }).toThrowError("Invalid x axis range");
 
     const invalidAxes2 = {
       xRange: [0, 10] as [number, number],
@@ -141,9 +139,7 @@ describe("GraphObject", async () => {
     };
     expect(() => {
       graph.setAxes(invalidAxes2);
-    }).toThrowError(
-      "Invalid yRange. First value must be less than the second value (GraphObject.ts)",
-    );
+    }).toThrowError("Invalid y axis range");
   });
 
   /**
@@ -153,12 +149,10 @@ describe("GraphObject", async () => {
     expect(() => {
       // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
       csvDataMock.setPoints(null as unknown as any[]);
-    }).toThrowError("Invalid points: must be an array of PointClass instances");
+    }).toThrowError("Invalid Points");
     expect(() => {
       // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
       csvDataMock.setPoints([{}] as unknown as any[]);
-    }).toThrowError(
-      "Invalid point: each element must be an instance of PointClass",
-    );
+    }).toThrowError("Invalid points");
   });
 });

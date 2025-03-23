@@ -28,9 +28,5 @@ export function CreateEmbeddedGraph({
     "info",
     "an EmbeddedGraph has been created (CreateEmbeddedGraph.tsx)",
   );
-  return (
-    <>
-      <EmbeddedGraph graph={graphObject} />
-    </>
-  );
+  return <EmbeddedGraph graph={graphObject} />;
 }

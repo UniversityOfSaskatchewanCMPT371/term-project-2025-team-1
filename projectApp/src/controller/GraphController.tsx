@@ -187,4 +187,13 @@ export class GraphController implements ControllerInterface {
   getEmbeddedRange(): number {
     return this.getModel().getEmbeddedGraphData()[0].getRange();
   }
+
+  /**
+   * Gets the tau value and turns it to a string to be displayed on the drop down ui
+   * @precondition graph generated with a tau value implemented
+   * @postcondition returns a string of the assigned tau value
+   */
+  getTauForDropDown(): string {
+    return this.getModel().getEmbeddedGraphData()[0].getTau().toString();
+  }
 }

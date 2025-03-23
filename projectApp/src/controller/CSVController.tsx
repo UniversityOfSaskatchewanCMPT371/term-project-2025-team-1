@@ -34,23 +34,25 @@ export class CSVController implements ControllerInterface {
    *   - A new TimeSeriesGraph is created and initialized
    *   - The graph is added to the main controller's graph collection
    */
-  generate(): void {
+  generate(tau: number): void {
+    mainController.getGraphController().getModelData().pop();
+    mainController.getGraphController().getModelEmData().pop();
+
     for (const csv of this.model.getData()) {
-      if (csv.getDisplayBoard() == 1) {
-        csv.setVRSelected(true);
-        csv.populatePoints();
+      csv.setVRSelected(true);
+      csv.populatePoints();
 
-        const TSGraph = new TimeSeriesGraphObject(csv);
-        TSGraph.setName(csv.getName());
-        TSGraph.addPoints();
+      const TSGraph = new TimeSeriesGraphObject(csv);
+      TSGraph.setName(csv.getName());
+      TSGraph.addPoints();
 
-        const emGraph = new EmbeddedGraphObject(csv);
-        emGraph.setName(csv.getName());
-        emGraph.addPoints();
+      const emGraph = new EmbeddedGraphObject(csv);
+      emGraph.setName(csv.getName());
+      emGraph.setTau(tau);
+      emGraph.addPoints();
 
-        mainController.getGraphController().pushDataToModel(TSGraph, emGraph);
-        sendLog("info", "generate has pushed a new graph");
-      }
+      mainController.getGraphController().pushDataToModel(TSGraph, emGraph);
+      sendLog("info", "generate has pushed a new graph");
     }
   }
 
@@ -122,6 +124,11 @@ export class CSVController implements ControllerInterface {
     return file;
   }
 
+  /**
+   * This method gets the CSV Data by Name
+   * @precondition name, a string that is the name assigned to the CSV Data Object
+   * @postcondition returns the CSV Data Object with the specified name
+   */
   getDataByName(name: string): CSVDataInterface | null {
     return this.model.getCSVFileByName(name);
   }

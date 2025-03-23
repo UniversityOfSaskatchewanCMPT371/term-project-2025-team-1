@@ -258,7 +258,7 @@ export default function TimeSeriesGraph({
                     flexDirection={"column-reverse"}
                   >
                     <Container width={"100%"} flexDirection={"row-reverse"}>
-                      <GenerateYRange num={range}></GenerateYRange>
+                      <GenerateYRange num={range} />
                     </Container>
                   </Container>
                 );

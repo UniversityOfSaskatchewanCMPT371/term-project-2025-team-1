@@ -57,7 +57,7 @@ export default function BrowserUI() {
             //key for Re-rendering leva component
             setControlKey(controlKey + 1);
           }}
-        ></input>
+        />
       </>
     );
   }
@@ -108,7 +108,7 @@ export default function BrowserUI() {
               );
             }
           }}
-        ></input>
+        />
       </>
     );
   }

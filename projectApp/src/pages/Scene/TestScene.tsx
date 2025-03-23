@@ -5,7 +5,9 @@ import { useState } from "react";
 let info: string[] = [];
 
 export function addTestSceneInfo(s: string) {
-  info = [...info.slice(-4), s];
+  if (import.meta.env.VITE_TEST_MODE === 'true'){
+    info = [...info.slice(-4), s];
+  }
 }
 
 export default function TestScene({

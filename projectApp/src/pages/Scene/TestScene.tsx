@@ -1,5 +1,12 @@
+import { useFrame } from "@react-three/fiber";
 import { Container, Fullscreen, Text } from "@react-three/uikit";
 import { useState } from "react";
+
+var info: string[] = [];
+
+export function addTestSceneInfo(s: string) {
+  info = [...info.slice(-4), s]
+}
 
 export default function TestScene({
   inVR,
@@ -8,6 +15,11 @@ export default function TestScene({
 }): React.JSX.Element {
   const [clicked, setClicked] = useState(false);
   const [hovered, setHovered] = useState(false);
+  const [logs, setLogs] = useState<string[]>([]);
+
+  useFrame(() => {
+    setLogs([...info]);
+  });
 
   return (
     <>
@@ -94,6 +106,11 @@ export default function TestScene({
             >
               {/* Items to be displayed in test scene will go here */}
               <Text>TEST BODY</Text>
+              {logs.map((l, index) => (
+                <Text key={index} fontSize={14} color={"black"}>
+                  {l}
+                </Text>
+              ))}
             </Container>
           </Container>
         </Container>

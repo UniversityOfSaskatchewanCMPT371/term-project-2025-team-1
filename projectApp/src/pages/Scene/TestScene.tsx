@@ -2,10 +2,10 @@ import { useFrame } from "@react-three/fiber";
 import { Container, Fullscreen, Text } from "@react-three/uikit";
 import { useState } from "react";
 
-var info: string[] = [];
+let info: string[] = [];
 
 export function addTestSceneInfo(s: string) {
-  info = [...info.slice(-4), s]
+  info = [...info.slice(-4), s];
 }
 
 export default function TestScene({
@@ -116,13 +116,13 @@ export default function TestScene({
                 flexDirection={"column"}
                 marginTop={10}
                 alignItems={"center"}
-                >
-                  {logs.map((item, index) => (
-                    <Text key={index} fontSize={14} color={"black"}>
-                      {item}
-                    </Text>
-                  ))}
-                </Container>
+              >
+                {logs.map((item, index) => (
+                  <Text key={index} fontSize={14} color={"black"}>
+                    {item}
+                  </Text>
+                ))}
+              </Container>
             </Container>
           </Container>
         </Container>

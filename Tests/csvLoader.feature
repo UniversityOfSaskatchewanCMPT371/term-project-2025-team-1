@@ -3,8 +3,8 @@ Feature: csvLoader
 
   # Will add example information into background
   Background:
-    Given the user has a local example CSV file "test.csv"
-    And the user has a URL-based example CSV file with address "https://raw.githubusercontent.com/UniversityOfSaskatchewanCMPT371/term-project-2025-team-1/refs/heads/ID2Dev/csvTestFiles/test.csv"
+    Given the user has a local example CSV file "indexedData.csv"
+    And the user has a URL-based example CSV file with address "https://raw.githubusercontent.com/UniversityOfSaskatchewanCMPT371/term-project-2025-team-1/refs/heads/ID2Dev/csvTestFiles/indexedData.csv"
     And the user is in the VR environment
 
   # These assume I have entered the VR environment in its current state, and that a popup vr keyboard is utilized
@@ -34,7 +34,7 @@ Feature: csvLoader
   # In the case I want to display the local CSV file
   Scenario: Confirming Local CSV entry
     Given the user has opened the file selection window
-    When the user clicks on the valid CSV file "test.csv"
+    When the user clicks on the valid CSV file "indexedData.csv"
     Then a CSV should be added to the "Loaded Graphs" menu
 
   # In the case I want to display an invalid local file (incorrect file type etc.)
@@ -42,5 +42,3 @@ Feature: csvLoader
     Given the user has opened the file selection window
     When the user clicks on an invalid CSV file
     Then an error dialog box should appear
-
-

@@ -28,11 +28,7 @@ export function EmbeddedGraph({
   }: {
     point: Point3DInterface;
   }): React.JSX.Element {
-    return (
-      <>
-        <Create3DPoint pointRef={point} />
-      </>
-    );
+    return <Create3DPoint pointRef={point} />;
   }
 
   /**
@@ -50,7 +46,7 @@ export function EmbeddedGraph({
             [-1, 0, 0],
             [1, 0, 0],
           ]}
-        ></Line>
+        />
 
         {/* Y-axis */}
         <Line
@@ -59,7 +55,7 @@ export function EmbeddedGraph({
             [0, -1, 0],
             [0, 1, 0],
           ]}
-        ></Line>
+        />
 
         {/* Z-axis */}
         <Line
@@ -68,7 +64,7 @@ export function EmbeddedGraph({
             [0, 0, -1],
             [0, 0, 1],
           ]}
-        ></Line>
+        />
       </>
     );
   }
@@ -84,21 +80,15 @@ export function EmbeddedGraph({
       "an EmbeddedGraph visualization is being created [not yet functioning] (EmbeddedGraph.tsx)",
     );
     return (
-      <>
-        <mesh position={[2, 1, 0]}>
-          <boxGeometry args={[2, 2, 2]} />
-          <meshBasicMaterial visible={false} />
-          <GenerateAxis />
+      <mesh position={[2, 1, 0]}>
+        <boxGeometry args={[2, 2, 2]} />
+        <meshBasicMaterial visible={false} />
+        <GenerateAxis />
 
-          {graph.getPoints3D().map((point) => {
-            return (
-              <>
-                <GeneratePoint point={point} />
-              </>
-            );
-          })}
-        </mesh>
-      </>
+        {graph.getPoints3D().map((point) => {
+          return <GeneratePoint point={point} />;
+        })}
+      </mesh>
     );
   }
   return <GenerateGraph />;

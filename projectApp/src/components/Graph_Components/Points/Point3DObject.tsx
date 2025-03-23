@@ -60,7 +60,7 @@ export class Point3DObject implements Point3DInterface {
    * @postcondition returns [x, y, z] coordinate of the 3d point
    */
   getPosition(): [number, number, number] {
-    return [this.getXPosition(), this.getYPosition(), this.getZPosition()];
+    return this.point3Dposition;
   }
 
   /**

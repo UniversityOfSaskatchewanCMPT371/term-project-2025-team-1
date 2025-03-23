@@ -78,9 +78,9 @@ export class PointObject implements PointObjectInterface {
 
   /**
    * Sets the x-axis data of the point.
-   * @precondition The 'x' parameter is a string.
-   * @postcondition The 'xData' property is updated to the provided value.
-   * @param {string} x - A string representing the new x-axis data.
+   * @precondition The 'time' parameter is a string.
+   * @postcondition The 'timeData' property is updated to the provided value.
+   * @param {string} time - A string representing the new x-axis data.
    */
   setTimeData(time: string): void {
     this.timeData = time;

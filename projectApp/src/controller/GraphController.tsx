@@ -1,9 +1,9 @@
 import { CSVDataObject } from "../components/Csv_Components/CSVDataObject";
 import { EmbeddedGraphObject } from "../components/Graph_Components/EmbeddedGraphObject";
 import { TimeSeriesGraphObject } from "../components/Graph_Components/TimeSeriesGraphObject";
+import { sendLog } from "../logger-frontend";
 import { GraphModel } from "../models/GraphModel";
 import { ControllerInterface } from "../types/BaseInterfaces";
-import mainController from "./MainController";
 
 /**
  *
@@ -39,17 +39,18 @@ export class GraphController implements ControllerInterface {
    *    The mainController's main scene is updated.
    */
   generateTimeSeriesGraph(csv: CSVDataObject): TimeSeriesGraphObject {
-    const result: TimeSeriesGraphObject = new TimeSeriesGraphObject(csv);
-
     for (const graph of this.getModel().getData()) {
       if (graph.getName() == csv.getName()) {
         graph.setRange();
         graph.setYRangeLength(graph.timeSeriesYRange().length + 1);
+        sendLog(
+          "info",
+          `generateTimeSeriesGraph() was called; successfully generated Time Series Graph (GraphController.ts)`,
+        );
         return graph;
       }
     }
-    mainController.updateMainScene();
-    return result;
+    throw new Error("Unable to generate Time Series Graph");
   }
 
   /**
@@ -68,17 +69,18 @@ export class GraphController implements ControllerInterface {
    *    The mainController's main scene is updated.
    */
   generateEmbeddedGraph(csv: CSVDataObject): EmbeddedGraphObject {
-    const result: EmbeddedGraphObject = new EmbeddedGraphObject(csv);
-
     for (const graph of this.getModel().getEmbeddedGraphData()) {
       if (graph.getName() == csv.getName()) {
         graph.setRange();
+        sendLog(
+          "info",
+          `generateEmbeddedGraph() was called; successfully generated Embedded Graph (GraphController.ts)`,
+        );
         return graph;
       }
     }
-    //Throw error instead later
-    mainController.updateMainScene();
-    return result;
+
+    throw new Error("Unable to generate Embedded Graph");
   }
 
   /**
@@ -97,6 +99,11 @@ export class GraphController implements ControllerInterface {
   ): void {
     this.getModel().addTimeSeriesGraph(graph);
     this.getModel().addEmbeddedGraph(emGraph);
+
+    sendLog(
+      "info",
+      `pushDataToModel() was called; successfully added both 2D and 3D Graphs(GraphController.ts)`,
+    );
   }
 
   /**

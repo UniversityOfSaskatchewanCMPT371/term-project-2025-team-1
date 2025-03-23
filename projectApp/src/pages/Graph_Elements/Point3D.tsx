@@ -34,34 +34,32 @@ export default function Point3D({
   }
 
   return (
-    <>
-      <mesh
-        //Translating the positions to the 3D Embedded Graph Axis
-        position={[
-          pointRef.getPosition()[0] /
-            mainController.getGraphController().getEmbeddedRange(),
-          pointRef.getPosition()[1] /
-            mainController.getGraphController().getEmbeddedRange(),
-          pointRef.getPosition()[2] /
-            mainController.getGraphController().getEmbeddedRange(),
-        ]}
-        onClick={() => {
-          setOnClick();
-        }}
-        onPointerOver={() => {
-          hover(true);
-        }}
-        onPointerOut={() => {
-          hover(false);
-        }}
-        scale={0.05}
-      >
-        <sphereGeometry attach="geometry" args={[1, 32, 16]} />
-        <meshStandardMaterial
-          color={clicked ? "red" : "orange"}
-          opacity={hovered ? 1.0 : 0.4}
-        />
-      </mesh>
-    </>
+    <mesh
+      //Translating the positions to the 3D Embedded Graph Axis
+      position={[
+        pointRef.getPosition()[0] /
+          mainController.getGraphController().getEmbeddedRange(),
+        pointRef.getPosition()[1] /
+          mainController.getGraphController().getEmbeddedRange(),
+        pointRef.getPosition()[2] /
+          mainController.getGraphController().getEmbeddedRange(),
+      ]}
+      onClick={() => {
+        setOnClick();
+      }}
+      onPointerOver={() => {
+        hover(true);
+      }}
+      onPointerOut={() => {
+        hover(false);
+      }}
+      scale={0.05}
+    >
+      <sphereGeometry attach="geometry" args={[1, 32, 16]} />
+      <meshStandardMaterial
+        color={clicked ? "red" : "orange"}
+        opacity={hovered ? 1.0 : 0.4}
+      />
+    </mesh>
   );
 }

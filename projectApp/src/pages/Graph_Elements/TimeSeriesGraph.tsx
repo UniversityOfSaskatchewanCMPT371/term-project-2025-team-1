@@ -121,34 +121,32 @@ export default function TimeSeriesGraph({
       "a TimeSeriesGraph object sidebar was created (TimeSeriesGraph.tsx)",
     );
     return (
-      <>
+      <Container
+        width={"15%"}
+        height={"100%"}
+        backgroundColor={"skyblue"}
+        flexDirection={"column"}
+      >
+        {/* Section for showing and cycling of Y Header */}
         <Container
-          width={"15%"}
-          height={"100%"}
-          backgroundColor={"skyblue"}
+          height={"50%"}
+          alignItems={"center"}
+          justifyContent={"center"}
           flexDirection={"column"}
         >
-          {/* Section for showing and cycling of Y Header */}
-          <Container
-            height={"50%"}
-            alignItems={"center"}
-            justifyContent={"center"}
-            flexDirection={"column"}
-          >
-            <Text>Y Header </Text>
-            <HeaderSelection />
-          </Container>
-
-          {/* Section for showing point data sets */}
-          <Container
-            height={"50%"}
-            alignItems={"flex-start"}
-            justifyContent={"center"}
-          >
-            <Text> Point Value:</Text>
-          </Container>
+          <Text>Y Header </Text>
+          <HeaderSelection />
         </Container>
-      </>
+
+        {/* Section for showing point data sets */}
+        <Container
+          height={"50%"}
+          alignItems={"flex-start"}
+          justifyContent={"center"}
+        >
+          <Text> Point Value:</Text>
+        </Container>
+      </Container>
     );
   }
 
@@ -179,11 +177,7 @@ export default function TimeSeriesGraph({
       "a visual representation of points was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)",
     );
 
-    return (
-      <>
-        <Create2DPoint pointRef={point} />
-      </>
-    );
+    return <Create2DPoint pointRef={point} />;
   }
 
   /**
@@ -197,16 +191,14 @@ export default function TimeSeriesGraph({
       "the lines on a TimeSeriesGraph object were created (TimeSeriesGraph.tsx)",
     );
     return (
-      <>
-        <Line
-          points={[
-            [currentLine[0], currentLine[1], currentLine[2]],
-            [lastLine[0], lastLine[1], lastLine[2]],
-          ]}
-          color={"black"}
-          lineWidth={2}
-        ></Line>
-      </>
+      <Line
+        points={[
+          [currentLine[0], currentLine[1], currentLine[2]],
+          [lastLine[0], lastLine[1], lastLine[2]],
+        ]}
+        color={"black"}
+        lineWidth={2}
+      />
     );
   }
 
@@ -220,11 +212,7 @@ export default function TimeSeriesGraph({
       "info",
       "a visual representation of the Y range was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)",
     );
-    return (
-      <>
-        <Text positionTop={10}>{num.toString()} -</Text>
-      </>
-    );
+    return <Text positionTop={10}>{num.toString()} -</Text>;
   }
 
   /**
@@ -262,19 +250,17 @@ export default function TimeSeriesGraph({
               </Container>
               {graph.timeSeriesYRange().map((range) => {
                 return (
-                  <>
-                    <Container
-                      width={"100%"}
-                      height={`${ySpacing}%`}
-                      alignContent={"flex-end"}
-                      justifyContent={"flex-start"}
-                      flexDirection={"column-reverse"}
-                    >
-                      <Container width={"100%"} flexDirection={"row-reverse"}>
-                        <GenerateYRange num={range}></GenerateYRange>
-                      </Container>
+                  <Container
+                    width={"100%"}
+                    height={`${ySpacing}%`}
+                    alignContent={"flex-end"}
+                    justifyContent={"flex-start"}
+                    flexDirection={"column-reverse"}
+                  >
+                    <Container width={"100%"} flexDirection={"row-reverse"}>
+                      <GenerateYRange num={range}></GenerateYRange>
                     </Container>
-                  </>
+                  </Container>
                 );
               })}
               ;
@@ -294,7 +280,7 @@ export default function TimeSeriesGraph({
                 width={"100%"}
                 height={"4%"}
                 backgroundColor={"black"}
-              ></Container>
+              />
 
               <Container height={"96%"} width={"100%"}>
                 {graph.timeSeriesXRange().map((data) => {

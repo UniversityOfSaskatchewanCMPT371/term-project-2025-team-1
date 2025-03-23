@@ -1,7 +1,7 @@
 Feature: 2DGraph
   As a developer or tester, I want to ensure that the 2D graph display functionality meets requirements and properly represents the provided data.
 
-  # Background data (assumes that all provided CSV data is valid as per csvLoader.feature) [need an example URL]
+  # Background data (assumes that all provided CSV data is valid as per csvLoader.feature)
   Background:
     Given the user is in the VR environment
     And there exists a valid local CSV file "indexedData.csv"
@@ -28,4 +28,4 @@ Feature: 2DGraph
     Given the user has generated a 2D graph
     Given the user has generated a 3D graph
     When the user clicks on a point on the 2D graph
-    Then the corresponding point on the 3D graph should be highlighted
+    Then the corresponding point on the 3D graph should change color

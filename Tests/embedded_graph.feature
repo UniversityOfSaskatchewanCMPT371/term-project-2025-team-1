@@ -6,7 +6,6 @@ Feature: Embedded Graph Creation
     And there exists a valid local CSV file "indexedData.csv"
     And there exists a valid URL-based CSV file with address "https://raw.githubusercontent.com/UniversityOfSaskatchewanCMPT371/term-project-2025-team-1/refs/heads/ID3/csvTestFiles/indexedData.csv"
 
-
   Scenario: Displaying the embedded graph
     Given the user has opened the graph menu / dropdown UI
     And the user has uploaded a valid local CSV file "indexedData.csv"

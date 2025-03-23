@@ -21,6 +21,9 @@ export default function TimeSeriesGraph({
   graph: TimeSeriesGraphObject;
 }): React.JSX.Element {
   const [header, setHeader] = useState(""); //useState for changes in the graph's Y header
+  const [selectedPoint, setSelectedPoint] = useState<Point2DObject | null>(
+    null,
+  ); // New state for selected point value
 
   // Values used to space Points in the X axis
   const totalSpace = 5;
@@ -141,10 +144,17 @@ export default function TimeSeriesGraph({
         {/* Section for showing point data sets */}
         <Container
           height={"50%"}
-          alignItems={"flex-start"}
+          flexDirection={"column"}
+          alignItems={"center"}
           justifyContent={"center"}
         >
-          <Text> Point Value:</Text>
+          <Text>Point Value</Text>
+          <Text>(x, y):</Text>
+          <Text>
+            {selectedPoint !== null
+              ? `(${selectedPoint.getObject().getTimeData()}, ${selectedPoint.getObject().getYData()})`
+              : "None"}
+          </Text>
         </Container>
       </Container>
     );
@@ -176,8 +186,19 @@ export default function TimeSeriesGraph({
       "info",
       "a visual representation of points was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)",
     );
-
-    return <Create2DPoint pointRef={point} />;
+    return (
+      <group
+        onClick={() => {
+          if (point.getObject().getSelected()) {
+            setSelectedPoint(point);
+          } else {
+            setSelectedPoint(null);
+          }
+        }}
+      >
+        <Create2DPoint pointRef={point} />
+      </group>
+    );
   }
 
   /**
@@ -322,7 +343,7 @@ export default function TimeSeriesGraph({
   return (
     <>
       {/* Sets the mesh of the Time Series Graph in the scene */}
-      <mesh position={[4, 2, -3.5]}>
+      <mesh position={[-1, 2, -3.5]}>
         <Root sizeX={7} sizeY={3} backgroundColor={"lightgrey"}>
           <Container flexDirection={"row"} width={"100%"} height={"100%"}>
             {/* Bodies of the Graph */}

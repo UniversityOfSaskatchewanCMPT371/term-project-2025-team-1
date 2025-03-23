@@ -50,8 +50,8 @@ export default function MainScene({
     <>
       {/* This block of code is the sign in front of the user
         A red box with the text Front */}
-      <mesh position={[4.5, 1, -4.55]}>
-        <boxGeometry args={[6, 5.5, 2]} />
+      <mesh position={[-1, 1.8, -3.65]}>
+        <boxGeometry args={[6, 3.6, 0.25]} />
         <meshBasicMaterial color="gray" />
       </mesh>
 

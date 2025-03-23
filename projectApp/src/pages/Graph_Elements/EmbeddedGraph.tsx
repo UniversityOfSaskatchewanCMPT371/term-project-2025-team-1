@@ -80,7 +80,7 @@ export function EmbeddedGraph({
       "an EmbeddedGraph visualization is being created [not yet functioning] (EmbeddedGraph.tsx)",
     );
     return (
-      <mesh position={[2, 1, 0]}>
+      <mesh position={[1, 1, 0]}>
         <boxGeometry args={[2, 2, 2]} />
         <meshBasicMaterial visible={false} />
         <GenerateAxis />

@@ -1,5 +1,5 @@
 import { CSVDataInterface } from "../../types/CSVInterfaces";
-import { LocalCSVReader, LocalCsvReader, UrlCSVReader } from "./CSVReaders";
+import { LocalCsvReader, UrlCSVReader } from "./CSVReaders";
 import { sendError, sendLog } from "../../logger-frontend";
 import { PointObjectInterface } from "../../types/PointInterface";
 import { PointObject } from "../Graph_Components/Points/PointObject";
@@ -133,27 +133,6 @@ export class CSVDataObject implements CSVDataInterface {
     } catch (error: unknown) {
       //Log the error
       sendError(error, "loadCSVData error");
-      throw error;
-    }
-  }
-
-  /**
-   * Loads CSV data from a local file path (used for testing)
-   * @param index Index number used to generate the graph name
-   * @param file File path string
-   */
-  async loadLocalByPath(index: number, file: string): Promise<void> {
-    try {
-      const data = await LocalCSVReader(file);
-      //this.setData(data);
-      this.name = "Graph" + index.toString();
-      sendLog(
-        "info",
-        `loadLocalByPath has loaded csv data\n${JSON.stringify(this.data)}}`,
-      );
-    } catch (error: unknown) {
-      //Log the error
-      sendError(error, "loadLocalByPath error");
       throw error;
     }
   }

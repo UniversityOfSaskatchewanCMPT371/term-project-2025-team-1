@@ -190,7 +190,9 @@ export class EmbeddedGraphObject
 
   getPoints3D(): Point3DInterface[] {
     if (this.points3D.length <= 0) {
-      throw new Error("Uninitialized 3d points (EmbeddedGraphObject.ts)");
+      const error = new RangeError("Invalid Points 3D");
+      sendError(error, "Uninitialized 3d points (EmbeddedGraphObject.ts)");
+      throw error;
     }
     return this.points3D;
   }
@@ -202,8 +204,13 @@ export class EmbeddedGraphObject
    */
   getRange(): number {
     if (this.axes.yRange[0] >= this.axes.yRange[1]) {
-      throw new Error("Invalid max yRange set (EmbeddedGraphObject.ts)");
+      const error = new SyntaxError(
+        "Start of range greater than or equal end of range",
+      );
+      sendError(error, "Invalid max yRange set (EmbeddedGraphObject.ts)");
+      throw error;
     }
+
     return this.axes.yRange[1];
   }
 
@@ -214,9 +221,12 @@ export class EmbeddedGraphObject
    */
   setRange(): void {
     if (this.getCSVData().getData().length <= 0) {
-      throw new Error(
+      const error = new RangeError("Invalid CSV Data Objects");
+      sendError(
+        error,
         "Uninitialized csv data attribute. (EmbeddedGraphObject.ts)",
       );
+      throw error;
     }
 
     let max = 0;

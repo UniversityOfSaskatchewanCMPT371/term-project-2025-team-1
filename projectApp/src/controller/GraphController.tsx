@@ -1,7 +1,7 @@
 import { CSVDataObject } from "../components/Csv_Components/CSVDataObject";
 import { EmbeddedGraphObject } from "../components/Graph_Components/EmbeddedGraphObject";
 import { TimeSeriesGraphObject } from "../components/Graph_Components/TimeSeriesGraphObject";
-import { sendLog } from "../logger-frontend";
+import { sendError, sendLog } from "../logger-frontend";
 import { GraphModel } from "../models/GraphModel";
 import { ControllerInterface } from "../types/BaseInterfaces";
 
@@ -50,7 +50,13 @@ export class GraphController implements ControllerInterface {
         return graph;
       }
     }
-    throw new Error("Unable to generate Time Series Graph");
+
+    const error = new SyntaxError("Error on Time Series Graph");
+    sendError(
+      error,
+      "Unable to generate Time Series Graph (GraphController.ts",
+    );
+    throw error;
   }
 
   /**
@@ -80,7 +86,9 @@ export class GraphController implements ControllerInterface {
       }
     }
 
-    throw new Error("Unable to generate Embedded Graph");
+    const error = new SyntaxError("Error Generating Embedded Graph");
+    sendError(error, "Unable to generate Embedded Graph");
+    throw error;
   }
 
   /**

@@ -76,16 +76,17 @@ export class CSVDataObject implements CSVDataInterface {
    * @postcondition sets the new array of point objects
    */
   setPoints(points: PointObjectInterface[]): void {
+    let error;
     if (!Array.isArray(points)) {
-      throw new Error(
-        "Invalid points: must be an array of PointClass instances",
-      );
+      error = new TypeError("Invalid Points");
+      sendError(error, "must be an array of PointObject instances");
+      throw error;
     }
     for (const point of points) {
       if (!(point instanceof PointObject)) {
-        throw new Error(
-          "Invalid point: each element must be an instance of PointClass",
-        );
+        error = new TypeError("Invalid points");
+        sendError(error, "each element must be a PointObject instances");
+        throw error;
       }
     }
 
@@ -164,9 +165,13 @@ export class CSVDataObject implements CSVDataInterface {
    * @postcondition returns the first non "Time" header in the data set
    */
   findFirstHeader(): string {
+    let error;
     if (this.csvHeaders.length <= 1) {
-      throw new Error("Invalid csv file");
+      error = new RangeError("Invalid csv file");
+      sendError(error, "uninitialized csv file headers (CSVDataObject.ts)");
+      throw error;
     }
+
     for (const head of this.csvHeaders) {
       if (head != "Time") {
         sendLog(
@@ -177,7 +182,9 @@ export class CSVDataObject implements CSVDataInterface {
       }
     }
 
-    throw new Error("Unable to find valid header");
+    error = new SyntaxError("Invalid csv filer");
+    sendError(error, "Unable to find valid header (CSVDataObject.ts)");
+    throw error;
   }
 
   /**
@@ -269,9 +276,12 @@ export class CSVDataObject implements CSVDataInterface {
    */
   getData(): { key: Record<string, string | number> }[] {
     if (this.data.length <= 0) {
-      throw new Error(
+      const error = new RangeError("Invalid csv data object");
+      sendError(
+        error,
         "Unitialized data set for the csv file. (CSVDataObject.ts)",
       );
+      throw error;
     }
     return this.data;
   }
@@ -334,7 +344,10 @@ export class CSVDataObject implements CSVDataInterface {
         return head;
       }
     }
-    throw new Error("No allowed time header in csv file");
+
+    const error = new SyntaxError("CSV file doesn't have a Time header");
+    sendError(error, "No allowed time header in csv file (CSVDataObject.ts)");
+    throw error;
   }
 
   /**
@@ -409,7 +422,9 @@ export class CSVDataObject implements CSVDataInterface {
    */
   getTimeHeader(): string {
     if (this.timeHeader != "Time") {
-      throw new Error("Invalid time header, not Time (CSVDataObject.ts)");
+      const error = new SyntaxError("No Time header");
+      sendError(error, "Invalid time header, not Time (CSVDataObject.ts)");
+      throw error;
     }
     return this.timeHeader;
   }

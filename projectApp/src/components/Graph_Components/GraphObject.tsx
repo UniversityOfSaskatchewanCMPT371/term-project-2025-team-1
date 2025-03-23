@@ -1,4 +1,4 @@
-import { sendLog } from "../../logger-frontend";
+import { sendError, sendLog } from "../../logger-frontend";
 import { GraphInterface } from "../../types/GraphInterface";
 import { CSVDataObject } from "../Csv_Components/CSVDataObject";
 
@@ -70,7 +70,9 @@ export class GraphObject implements GraphInterface {
    */
   setId(id: string): void {
     if (id.trim() === "" || typeof id !== "string") {
-      throw new Error("ID must be a non-empty string.");
+      const error = new SyntaxError("Invalid ID");
+      sendError(error, "ID must be a non-empty string. (GraphObject.ts");
+      throw error;
     }
     this.id = id;
 
@@ -101,7 +103,9 @@ export class GraphObject implements GraphInterface {
    */
   setName(title: string): void {
     if (title.trim() === "" || typeof title !== "string") {
-      throw new Error("Name must be a non-empty string.");
+      const error = new SyntaxError("Invalid Name");
+      sendError(error, "Name must be a non-empty string. (GraphObject.ts");
+      throw error;
     }
     this.name = title;
 
@@ -138,7 +142,9 @@ export class GraphObject implements GraphInterface {
       typeof y !== "number" ||
       typeof z !== "number"
     ) {
-      throw new Error("Position coordinates must be numbers.");
+      const error = new TypeError("Invalid Positions");
+      sendError(error, "Position coordinates must be numbers. (GraphObject.ts");
+      throw error;
     }
     this.position = { x, y, z };
 
@@ -171,14 +177,21 @@ export class GraphObject implements GraphInterface {
    * @postcondition the 'axes' property is set to the provided object. If the 'axes' parameter is invalid, an error is thrown.
    */
   setAxes(axes: { xRange: [number, number]; yRange: [number, number] }): void {
+    let error;
     if (axes.xRange[0] > axes.xRange[1]) {
-      throw new Error(
+      error = new RangeError("Invalid x axis range");
+      sendError(
+        error,
         "Invalid xRange. First value must be less than the second value (GraphObject.ts)",
       );
+      throw error;
     } else if (axes.yRange[0] > axes.yRange[1]) {
-      throw new Error(
+      error = new RangeError("Invalid y axis range");
+      sendError(
+        error,
         "Invalid yRange. First value must be less than the second value (GraphObject.ts)",
       );
+      throw error;
     }
     this.axes = axes;
 

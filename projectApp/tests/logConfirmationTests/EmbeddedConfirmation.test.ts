@@ -12,7 +12,7 @@ describe("Embedded graph log tests", () => {
   test("file contains CreateEmbeddedGraph logging", async () => {
     const response = await fileContainsText(
       filePath,
-      "an EmbeddedGraph has been created [not yet functional] (CreateEmbeddedGraph.tsx)",
+      "an EmbeddedGraph has been created (CreateEmbeddedGraph.tsx)",
     );
     expect(response).toBe(true);
   });
@@ -60,5 +60,14 @@ describe("Embedded graph log tests", () => {
       "an EmbeddedGraph visualization is being created [not yet functioning] (EmbeddedGraph.tsx)",
     );
     expect(response).toBe(true);
+  });
+
+  // Check that tau can be updated for EmbeddedGraph
+  test("file contains tau value logging", async () => {
+    const newTau = await fileContainsText(
+      filePath,
+      "value of tau in EmbeddedGraphObject updated to the value",
+    );
+    expect(newTau).toBe(true);
   });
 });

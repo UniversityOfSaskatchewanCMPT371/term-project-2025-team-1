@@ -79,3 +79,1009 @@
 {"level":30,"time":1742787676491,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"UnmountedComponents unmount: 7"}
 {"level":30,"time":1742787676492,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"UnmountedComponents unmount: 7"}
 {"level":30,"time":1742787676492,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"loadedCsvBrowser() returns list\n[[\"Graph0\",false],[\"Graph1\",false]]"}
+{"level":30,"time":1742788410161,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"LocalCsvReader(file) has read data\n[{\"Time\":0,\"Some\":1,\"B\":2},{\"Time\":1,\"Some\":2,\"B\":4},{\"Time\":2,\"Some\":3,\"B\":6},{\"Time\":3,\"Some\":4,\"B\":8},{\"Time\":4,\"Some\":5,\"B\":10},{\"Time\":5,\"Some\":6,\"B\":12},{\"Time\":6,\"Some\":7,\"B\":14},{\"Time\":7,\"Some\":8,\"B\":16},{\"Time\":8,\"Some\":9,\"B\":18},{\"Time\":9,\"Some\":10,\"B\":20}]"}
+{"level":30,"time":1742788410163,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setName,  will now be called Graph0"}
+{"level":30,"time":1742788410163,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setData() was called, data has been set (CSVDataObject.ts)"}
+{"level":30,"time":1742788410164,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYHeader, Graph0 yHeader is set to Some"}
+{"level":30,"time":1742788410165,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"readLocalFile read a file\n[{\"Time\":0,\"Some\":1,\"B\":2},{\"Time\":1,\"Some\":2,\"B\":4},{\"Time\":2,\"Some\":3,\"B\":6},{\"Time\":3,\"Some\":4,\"B\":8},{\"Time\":4,\"Some\":5,\"B\":10},{\"Time\":5,\"Some\":6,\"B\":12},{\"Time\":6,\"Some\":7,\"B\":14},{\"Time\":7,\"Some\":8,\"B\":16},{\"Time\":8,\"Some\":9,\"B\":18},{\"Time\":9,\"Some\":10,\"B\":20}]"}
+{"level":30,"time":1742788410165,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setTimeHeader() was called, finding the time header in the data set (CSVDataObject.ts)"}
+{"level":30,"time":1742788410166,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"loadCSVData has loaded csv data\n[{\"Time\":0,\"Some\":1,\"B\":2},{\"Time\":1,\"Some\":2,\"B\":4},{\"Time\":2,\"Some\":3,\"B\":6},{\"Time\":3,\"Some\":4,\"B\":8},{\"Time\":4,\"Some\":5,\"B\":10},{\"Time\":5,\"Some\":6,\"B\":12},{\"Time\":6,\"Some\":7,\"B\":14},{\"Time\":7,\"Some\":8,\"B\":16},{\"Time\":8,\"Some\":9,\"B\":18},{\"Time\":9,\"Some\":10,\"B\":20}]"}
+{"level":30,"time":1742788410166,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"findTimeHeader() was called, the time header in the data set has been found (CSVDataObject.ts)"}
+{"level":30,"time":1742788410166,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"findFirstHeader() was called, the first header was found Some (CSVDataObject.ts)"}
+{"level":30,"time":1742788411024,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"LoadComponent read: indexedData.csv"}
+{"level":30,"time":1742788411028,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"loadedCsvBrowser() returns list\n[[\"Graph0\",false]]"}
+{"level":30,"time":1742788411028,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"UnmountedComponents unmount: 1"}
+{"level":30,"time":1742788411029,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"loadedCsvBrowser() returns list\n[[\"Graph0\",false]]"}
+{"level":30,"time":1742788411030,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"UnmountedComponents unmount: 1"}
+{"level":30,"time":1742788434194,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"DropDownBody [active] button pressed"}
+{"level":30,"time":1742788434195,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"DropDownBody [active] button pressed"}
+{"level":30,"time":1742788436990,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setVRSelected, Graph0 vr is set to true"}
+{"level":30,"time":1742788436991,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setTimeData() was called; time Data of Point set to 0 (PointObject.ts)"}
+{"level":30,"time":1742788436992,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYData() was called; y Data of Point set to 1 (PointObject.ts)"}
+{"level":30,"time":1742788436992,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setTimeData() was called; time Data of Point set to 1 (PointObject.ts)"}
+{"level":30,"time":1742788436993,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYData() was called; y Data of Point set to 2 (PointObject.ts)"}
+{"level":30,"time":1742788436993,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setTimeData() was called; time Data of Point set to 2 (PointObject.ts)"}
+{"level":30,"time":1742788436995,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYData() was called; y Data of Point set to 3 (PointObject.ts)"}
+{"level":30,"time":1742788436996,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setTimeData() was called; time Data of Point set to 3 (PointObject.ts)"}
+{"level":30,"time":1742788436996,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYData() was called; y Data of Point set to 4 (PointObject.ts)"}
+{"level":30,"time":1742788436998,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setTimeData() was called; time Data of Point set to 4 (PointObject.ts)"}
+{"level":30,"time":1742788436998,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYData() was called; y Data of Point set to 5 (PointObject.ts)"}
+{"level":30,"time":1742788436999,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setTimeData() was called; time Data of Point set to 5 (PointObject.ts)"}
+{"level":30,"time":1742788436999,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setTimeData() was called; time Data of Point set to 7 (PointObject.ts)"}
+{"level":30,"time":1742788436999,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYData() was called; y Data of Point set to 6 (PointObject.ts)"}
+{"level":30,"time":1742788437000,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setTimeData() was called; time Data of Point set to 6 (PointObject.ts)"}
+{"level":30,"time":1742788437001,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYData() was called; y Data of Point set to 7 (PointObject.ts)"}
+{"level":30,"time":1742788437002,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYData() was called; y Data of Point set to 8 (PointObject.ts)"}
+{"level":30,"time":1742788437002,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setTimeData() was called; time Data of Point set to 8 (PointObject.ts)"}
+{"level":30,"time":1742788437002,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYData() was called; y Data of Point set to 9 (PointObject.ts)"}
+{"level":30,"time":1742788437003,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setTimeData() was called; time Data of Point set to 9 (PointObject.ts)"}
+{"level":30,"time":1742788437004,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYData() was called; y Data of Point set to 10 (PointObject.ts)"}
+{"level":30,"time":1742788437004,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"populatePoints() was called, the program points loaded using the csv file (CSVDataObject.ts)"}
+{"level":30,"time":1742788437005,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setName() was called on Graph Object, name of the Graph is now Graph0 (GraphObject.ts)"}
+{"level":30,"time":1742788437005,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"addPoint() has added new points to the graph (TimeSeriesGraphObject.tss)"}
+{"level":30,"time":1742788437006,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setName() was called on Graph Object, name of the Graph is now Graph0 (GraphObject.ts)"}
+{"level":30,"time":1742788437006,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"value of tau in EmbeddedGraphObject updated to the value 1"}
+{"level":30,"time":1742788437007,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setRange() was called; yRange was set to 10 (EmbeddedGraphObject.ts)"}
+{"level":30,"time":1742788437008,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"vector position calculated for data at index/time 0 (EmbeddedGraphObject.calculateVectorPosition())"}
+{"level":30,"time":1742788437008,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setPoint3DPosition() was called; Position of 3D Point was set to 1,0,0 (Point3DObject.ts)"}
+{"level":30,"time":1742788437010,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"vector position calculated for data at index/time 1 (EmbeddedGraphObject.calculateVectorPosition())"}
+{"level":30,"time":1742788437012,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setPoint3DPosition() was called; Position of 3D Point was set to 2,1,0 (Point3DObject.ts)"}
+{"level":30,"time":1742788437013,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"vector position calculated for data at index/time 2 (EmbeddedGraphObject.calculateVectorPosition())"}
+{"level":30,"time":1742788437015,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setPoint3DPosition() was called; Position of 3D Point was set to 3,2,1 (Point3DObject.ts)"}
+{"level":30,"time":1742788437016,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"vector position calculated for data at index/time 3 (EmbeddedGraphObject.calculateVectorPosition())"}
+{"level":30,"time":1742788437017,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setPoint3DPosition() was called; Position of 3D Point was set to 4,3,2 (Point3DObject.ts)"}
+{"level":30,"time":1742788437018,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"vector position calculated for data at index/time 4 (EmbeddedGraphObject.calculateVectorPosition())"}
+{"level":30,"time":1742788437019,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setPoint3DPosition() was called; Position of 3D Point was set to 5,4,3 (Point3DObject.ts)"}
+{"level":30,"time":1742788437019,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setPoint3DPosition() was called; Position of 3D Point was set to 7,6,5 (Point3DObject.ts)"}
+{"level":30,"time":1742788437019,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"vector position calculated for data at index/time 7 (EmbeddedGraphObject.calculateVectorPosition())"}
+{"level":30,"time":1742788437020,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"vector position calculated for data at index/time 5 (EmbeddedGraphObject.calculateVectorPosition())"}
+{"level":30,"time":1742788437021,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setPoint3DPosition() was called; Position of 3D Point was set to 6,5,4 (Point3DObject.ts)"}
+{"level":30,"time":1742788437021,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"vector position calculated for data at index/time 6 (EmbeddedGraphObject.calculateVectorPosition())"}
+{"level":30,"time":1742788437022,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"vector position calculated for data at index/time 8 (EmbeddedGraphObject.calculateVectorPosition())"}
+{"level":30,"time":1742788437022,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setPoint3DPosition() was called; Position of 3D Point was set to 9,8,7 (Point3DObject.ts)"}
+{"level":30,"time":1742788437023,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"vector position calculated for data at index/time 9 (EmbeddedGraphObject.calculateVectorPosition())"}
+{"level":30,"time":1742788437023,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setPoint3DPosition() was called; Position of 3D Point was set to 10,9,8 (Point3DObject.ts)"}
+{"level":30,"time":1742788437024,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setPoint3DPosition() was called; Position of 3D Point was set to 8,7,6 (Point3DObject.ts)"}
+{"level":30,"time":1742788437024,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"pushDataToModel() was called; successfully added both 2D and 3D Graphs(GraphController.ts)"}
+{"level":30,"time":1742788437024,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"generate has pushed a new graph"}
+{"level":30,"time":1742788437025,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"Update main scene"}
+{"level":30,"time":1742788437025,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"GenerateList [BUTTON]? pressed"}
+{"level":30,"time":1742788437025,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"Points added to EmbeddedGraphObject (EmbeddedGraphObject.addPoints())"}
+{"level":30,"time":1742788437026,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setVRSelected, Graph0 vr is set to true"}
+{"level":30,"time":1742788437026,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setTimeData() was called; time Data of Point set to 0 (PointObject.ts)"}
+{"level":30,"time":1742788437026,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYData() was called; y Data of Point set to 1 (PointObject.ts)"}
+{"level":30,"time":1742788437027,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"DropDownBody [create] button pressed"}
+{"level":30,"time":1742788437027,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setTimeData() was called; time Data of Point set to 2 (PointObject.ts)"}
+{"level":30,"time":1742788437027,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setTimeData() was called; time Data of Point set to 1 (PointObject.ts)"}
+{"level":30,"time":1742788437028,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYData() was called; y Data of Point set to 2 (PointObject.ts)"}
+{"level":30,"time":1742788437029,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setTimeData() was called; time Data of Point set to 4 (PointObject.ts)"}
+{"level":30,"time":1742788437029,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYData() was called; y Data of Point set to 5 (PointObject.ts)"}
+{"level":30,"time":1742788437029,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYData() was called; y Data of Point set to 3 (PointObject.ts)"}
+{"level":30,"time":1742788437030,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setTimeData() was called; time Data of Point set to 3 (PointObject.ts)"}
+{"level":30,"time":1742788437030,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYData() was called; y Data of Point set to 4 (PointObject.ts)"}
+{"level":30,"time":1742788437030,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYData() was called; y Data of Point set to 6 (PointObject.ts)"}
+{"level":30,"time":1742788437031,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setTimeData() was called; time Data of Point set to 6 (PointObject.ts)"}
+{"level":30,"time":1742788437031,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYData() was called; y Data of Point set to 7 (PointObject.ts)"}
+{"level":30,"time":1742788437031,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setTimeData() was called; time Data of Point set to 7 (PointObject.ts)"}
+{"level":30,"time":1742788437031,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setTimeData() was called; time Data of Point set to 5 (PointObject.ts)"}
+{"level":30,"time":1742788437032,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setTimeData() was called; time Data of Point set to 8 (PointObject.ts)"}
+{"level":30,"time":1742788437033,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYData() was called; y Data of Point set to 9 (PointObject.ts)"}
+{"level":30,"time":1742788437033,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setTimeData() was called; time Data of Point set to 9 (PointObject.ts)"}
+{"level":30,"time":1742788437033,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYData() was called; y Data of Point set to 10 (PointObject.ts)"}
+{"level":30,"time":1742788437033,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"populatePoints() was called, the program points loaded using the csv file (CSVDataObject.ts)"}
+{"level":30,"time":1742788437034,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYData() was called; y Data of Point set to 8 (PointObject.ts)"}
+{"level":30,"time":1742788437035,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setName() was called on Graph Object, name of the Graph is now Graph0 (GraphObject.ts)"}
+{"level":30,"time":1742788437036,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"addPoint() has added new points to the graph (TimeSeriesGraphObject.tss)"}
+{"level":30,"time":1742788437036,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setName() was called on Graph Object, name of the Graph is now Graph0 (GraphObject.ts)"}
+{"level":30,"time":1742788437037,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"value of tau in EmbeddedGraphObject updated to the value 1"}
+{"level":30,"time":1742788437037,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setRange() was called; yRange was set to 10 (EmbeddedGraphObject.ts)"}
+{"level":30,"time":1742788437037,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setPoint3DPosition() was called; Position of 3D Point was set to 1,0,0 (Point3DObject.ts)"}
+{"level":30,"time":1742788437037,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"vector position calculated for data at index/time 1 (EmbeddedGraphObject.calculateVectorPosition())"}
+{"level":30,"time":1742788437038,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setPoint3DPosition() was called; Position of 3D Point was set to 2,1,0 (Point3DObject.ts)"}
+{"level":30,"time":1742788437038,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"vector position calculated for data at index/time 0 (EmbeddedGraphObject.calculateVectorPosition())"}
+{"level":30,"time":1742788437038,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"vector position calculated for data at index/time 3 (EmbeddedGraphObject.calculateVectorPosition())"}
+{"level":30,"time":1742788437038,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"vector position calculated for data at index/time 2 (EmbeddedGraphObject.calculateVectorPosition())"}
+{"level":30,"time":1742788437039,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setPoint3DPosition() was called; Position of 3D Point was set to 3,2,1 (Point3DObject.ts)"}
+{"level":30,"time":1742788437039,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"vector position calculated for data at index/time 5 (EmbeddedGraphObject.calculateVectorPosition())"}
+{"level":30,"time":1742788437039,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setPoint3DPosition() was called; Position of 3D Point was set to 4,3,2 (Point3DObject.ts)"}
+{"level":30,"time":1742788437040,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"vector position calculated for data at index/time 4 (EmbeddedGraphObject.calculateVectorPosition())"}
+{"level":30,"time":1742788437041,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setPoint3DPosition() was called; Position of 3D Point was set to 5,4,3 (Point3DObject.ts)"}
+{"level":30,"time":1742788437041,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setPoint3DPosition() was called; Position of 3D Point was set to 7,6,5 (Point3DObject.ts)"}
+{"level":30,"time":1742788437041,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"vector position calculated for data at index/time 7 (EmbeddedGraphObject.calculateVectorPosition())"}
+{"level":30,"time":1742788437041,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setPoint3DPosition() was called; Position of 3D Point was set to 8,7,6 (Point3DObject.ts)"}
+{"level":30,"time":1742788437042,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setPoint3DPosition() was called; Position of 3D Point was set to 6,5,4 (Point3DObject.ts)"}
+{"level":30,"time":1742788437042,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"vector position calculated for data at index/time 6 (EmbeddedGraphObject.calculateVectorPosition())"}
+{"level":30,"time":1742788437042,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setPoint3DPosition() was called; Position of 3D Point was set to 9,8,7 (Point3DObject.ts)"}
+{"level":30,"time":1742788437043,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"vector position calculated for data at index/time 8 (EmbeddedGraphObject.calculateVectorPosition())"}
+{"level":30,"time":1742788437043,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"generate has pushed a new graph"}
+{"level":30,"time":1742788437043,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"vector position calculated for data at index/time 9 (EmbeddedGraphObject.calculateVectorPosition())"}
+{"level":30,"time":1742788437044,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setPoint3DPosition() was called; Position of 3D Point was set to 10,9,8 (Point3DObject.ts)"}
+{"level":30,"time":1742788437044,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"Points added to EmbeddedGraphObject (EmbeddedGraphObject.addPoints())"}
+{"level":30,"time":1742788437044,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"pushDataToModel() was called; successfully added both 2D and 3D Graphs(GraphController.ts)"}
+{"level":30,"time":1742788437044,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"Update main scene"}
+{"level":30,"time":1742788437046,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"GenerateList [BUTTON]? pressed"}
+{"level":30,"time":1742788437047,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"DropDownBody [create] button pressed"}
+{"level":30,"time":1742788437047,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"DropDownBody [create] button pressed"}
+{"level":30,"time":1742788437047,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"DropDownBody [create] button pressed"}
+{"level":30,"time":1742788437048,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"DropDownBody [create] button pressed"}
+{"level":30,"time":1742788437048,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"getVRSelected has returned Graph0"}
+{"level":30,"time":1742788437050,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"timeSeriesYRange() returned 10 (TimeSeriesGraphObject.ts)"}
+{"level":30,"time":1742788437051,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYRangeLength() was called on TimeSeriesGraphObject (TimeSeriesGraphObject.ts)"}
+{"level":30,"time":1742788437051,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"generateTimeSeriesGraph() was called; successfully generated Time Series Graph (GraphController.ts)"}
+{"level":30,"time":1742788437052,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setRange() was called; yRange was set to 10 (EmbeddedGraphObject.ts)"}
+{"level":30,"time":1742788437052,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setRange() was called; yRange was set to 10 (TimeSeriesGraphObject.ts)"}
+{"level":30,"time":1742788437053,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"a TimeSeriesGraph has been created (CreateTimeSeries.tsx)"}
+{"level":30,"time":1742788437053,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"generateEmbeddedGraph() was called; successfully generated Embedded Graph (GraphController.ts)"}
+{"level":30,"time":1742788437053,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"a TimeSeriesGraph object sidebar was created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742788437054,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"a TimeSeriesGraph object header was selected and visually updated to reflect selection (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742788437054,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"a TimeSeriesGraph object sidebar was created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742788437055,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"a TimeSeriesGraph object header was selected and visually updated to reflect selection (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742788437055,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"a TimeSeriesGraph visualization is being created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742788437055,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"timeSeriesYRange() returned 10 (TimeSeriesGraphObject.ts)"}
+{"level":30,"time":1742788437055,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"a TimeSeriesGraph visualization is being created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742788437055,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"timeSeriesYRange() returned 10 (TimeSeriesGraphObject.ts)"}
+{"level":30,"time":1742788437056,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"timeSeriesXRange() was called and returned 0,1,2,3,4,5,6,7,8,9 (TimeSeriesGraphObject.ts)"}
+{"level":30,"time":1742788437056,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"a visual representation of the Y range was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742788437056,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setXAxisPos() was called; xPosition of 2D Point was set to -1.55 (Point2DObject.ts)"}
+{"level":30,"time":1742788437056,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"getYRange returned 10 (TimeSeriesGraphObject.ts)"}
+{"level":30,"time":1742788437057,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"timeSeriesXRange() was called and returned 0,1,2,3,4,5,6,7,8,9 (TimeSeriesGraphObject.ts)"}
+{"level":30,"time":1742788437057,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYAxisPos() was called; yPosition of 2D Point was set to -0.897 (Point2DObject.ts)"}
+{"level":30,"time":1742788437058,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"a visual representation of points was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742788437058,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setXAxisPos() was called; xPosition of 2D Point was set to -1.55 (Point2DObject.ts)"}
+{"level":30,"time":1742788437059,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYAxisPos() was called; yPosition of 2D Point was set to -0.897 (Point2DObject.ts)"}
+{"level":30,"time":1742788437059,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setSelected() was called on PointObject (PointObject.ts)"}
+{"level":30,"time":1742788437060,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setTimeData() was called; time Data of Point set to 0 (PointObject.ts)"}
+{"level":30,"time":1742788437061,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYData() was called; y Data of Point set to 1 (PointObject.ts)"}
+{"level":30,"time":1742788437063,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"a 2D Point has been created (Create2DPoint.tsx)"}
+{"level":30,"time":1742788437063,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"getYRange returned 10 (TimeSeriesGraphObject.ts)"}
+{"level":30,"time":1742788437064,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYAxisPos() was called; yPosition of 2D Point was set to -0.744 (Point2DObject.ts)"}
+{"level":30,"time":1742788437064,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"a visual representation of points was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742788437064,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"the lines on a TimeSeriesGraph object were created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742788437065,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setXAxisPos() was called; xPosition of 2D Point was set to -1.05 (Point2DObject.ts)"}
+{"level":30,"time":1742788437065,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYAxisPos() was called; yPosition of 2D Point was set to -0.744 (Point2DObject.ts)"}
+{"level":30,"time":1742788437066,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setSelected() was called on PointObject (PointObject.ts)"}
+{"level":30,"time":1742788437066,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setTimeData() was called; time Data of Point set to 1 (PointObject.ts)"}
+{"level":30,"time":1742788437067,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYData() was called; y Data of Point set to 2 (PointObject.ts)"}
+{"level":30,"time":1742788437067,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setXAxisPos() was called; xPosition of 2D Point was set to -1.05 (Point2DObject.ts)"}
+{"level":30,"time":1742788437067,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"a 2D Point has been created (Create2DPoint.tsx)"}
+{"level":30,"time":1742788437070,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"the lines on a TimeSeriesGraph object were created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742788437072,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setXAxisPos() was called; xPosition of 2D Point was set to -0.55 (Point2DObject.ts)"}
+{"level":30,"time":1742788437073,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"getYRange returned 10 (TimeSeriesGraphObject.ts)"}
+{"level":30,"time":1742788437074,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYAxisPos() was called; yPosition of 2D Point was set to -0.5910000000000001 (Point2DObject.ts)"}
+{"level":30,"time":1742788437075,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"a visual representation of points was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742788437076,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setXAxisPos() was called; xPosition of 2D Point was set to -0.55 (Point2DObject.ts)"}
+{"level":30,"time":1742788437076,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYAxisPos() was called; yPosition of 2D Point was set to -0.5910000000000001 (Point2DObject.ts)"}
+{"level":30,"time":1742788437077,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setSelected() was called on PointObject (PointObject.ts)"}
+{"level":30,"time":1742788437077,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setTimeData() was called; time Data of Point set to 2 (PointObject.ts)"}
+{"level":30,"time":1742788437078,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYData() was called; y Data of Point set to 3 (PointObject.ts)"}
+{"level":30,"time":1742788437078,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"a 2D Point has been created (Create2DPoint.tsx)"}
+{"level":30,"time":1742788437079,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"the lines on a TimeSeriesGraph object were created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742788437079,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setXAxisPos() was called; xPosition of 2D Point was set to -0.050000000000000044 (Point2DObject.ts)"}
+{"level":30,"time":1742788437079,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"getYRange returned 10 (TimeSeriesGraphObject.ts)"}
+{"level":30,"time":1742788437079,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYAxisPos() was called; yPosition of 2D Point was set to -0.43799999999999994 (Point2DObject.ts)"}
+{"level":30,"time":1742788437080,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"a visual representation of points was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742788437080,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setXAxisPos() was called; xPosition of 2D Point was set to -0.050000000000000044 (Point2DObject.ts)"}
+{"level":30,"time":1742788437081,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYAxisPos() was called; yPosition of 2D Point was set to -0.43799999999999994 (Point2DObject.ts)"}
+{"level":30,"time":1742788437081,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setSelected() was called on PointObject (PointObject.ts)"}
+{"level":30,"time":1742788437082,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setTimeData() was called; time Data of Point set to 3 (PointObject.ts)"}
+{"level":30,"time":1742788437082,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYData() was called; y Data of Point set to 4 (PointObject.ts)"}
+{"level":30,"time":1742788437082,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"a 2D Point has been created (Create2DPoint.tsx)"}
+{"level":30,"time":1742788437083,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"the lines on a TimeSeriesGraph object were created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742788437084,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setXAxisPos() was called; xPosition of 2D Point was set to 0.44999999999999996 (Point2DObject.ts)"}
+{"level":30,"time":1742788437085,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"getYRange returned 10 (TimeSeriesGraphObject.ts)"}
+{"level":30,"time":1742788437085,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYAxisPos() was called; yPosition of 2D Point was set to -0.28500000000000003 (Point2DObject.ts)"}
+{"level":30,"time":1742788437085,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"a visual representation of points was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742788437086,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setXAxisPos() was called; xPosition of 2D Point was set to 0.44999999999999996 (Point2DObject.ts)"}
+{"level":30,"time":1742788437086,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYAxisPos() was called; yPosition of 2D Point was set to -0.28500000000000003 (Point2DObject.ts)"}
+{"level":30,"time":1742788437086,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setSelected() was called on PointObject (PointObject.ts)"}
+{"level":30,"time":1742788437087,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setTimeData() was called; time Data of Point set to 4 (PointObject.ts)"}
+{"level":30,"time":1742788437087,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYData() was called; y Data of Point set to 5 (PointObject.ts)"}
+{"level":30,"time":1742788437087,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"a 2D Point has been created (Create2DPoint.tsx)"}
+{"level":30,"time":1742788437088,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"the lines on a TimeSeriesGraph object were created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742788437088,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setXAxisPos() was called; xPosition of 2D Point was set to 0.95 (Point2DObject.ts)"}
+{"level":30,"time":1742788437089,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"getYRange returned 10 (TimeSeriesGraphObject.ts)"}
+{"level":30,"time":1742788437089,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYAxisPos() was called; yPosition of 2D Point was set to -0.13200000000000012 (Point2DObject.ts)"}
+{"level":30,"time":1742788437089,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"a visual representation of points was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742788437090,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setXAxisPos() was called; xPosition of 2D Point was set to 0.95 (Point2DObject.ts)"}
+{"level":30,"time":1742788437091,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYAxisPos() was called; yPosition of 2D Point was set to -0.13200000000000012 (Point2DObject.ts)"}
+{"level":30,"time":1742788437091,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setSelected() was called on PointObject (PointObject.ts)"}
+{"level":30,"time":1742788437092,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setTimeData() was called; time Data of Point set to 5 (PointObject.ts)"}
+{"level":30,"time":1742788437092,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYData() was called; y Data of Point set to 6 (PointObject.ts)"}
+{"level":30,"time":1742788437092,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"a 2D Point has been created (Create2DPoint.tsx)"}
+{"level":30,"time":1742788437092,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"the lines on a TimeSeriesGraph object were created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742788437093,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setXAxisPos() was called; xPosition of 2D Point was set to 1.45 (Point2DObject.ts)"}
+{"level":30,"time":1742788437093,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"getYRange returned 10 (TimeSeriesGraphObject.ts)"}
+{"level":30,"time":1742788437093,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"a visual representation of points was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742788437094,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setXAxisPos() was called; xPosition of 2D Point was set to 1.45 (Point2DObject.ts)"}
+{"level":30,"time":1742788437094,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYAxisPos() was called; yPosition of 2D Point was set to 0.020999999999999908 (Point2DObject.ts)"}
+{"level":30,"time":1742788437094,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYAxisPos() was called; yPosition of 2D Point was set to 0.020999999999999908 (Point2DObject.ts)"}
+{"level":30,"time":1742788437095,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setSelected() was called on PointObject (PointObject.ts)"}
+{"level":30,"time":1742788437096,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setTimeData() was called; time Data of Point set to 6 (PointObject.ts)"}
+{"level":30,"time":1742788437096,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"getYRange returned 10 (TimeSeriesGraphObject.ts)"}
+{"level":30,"time":1742788437097,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYData() was called; y Data of Point set to 7 (PointObject.ts)"}
+{"level":30,"time":1742788437099,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"a 2D Point has been created (Create2DPoint.tsx)"}
+{"level":30,"time":1742788437099,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"the lines on a TimeSeriesGraph object were created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742788437100,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setXAxisPos() was called; xPosition of 2D Point was set to 1.95 (Point2DObject.ts)"}
+{"level":30,"time":1742788437100,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"a visual representation of points was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742788437101,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setXAxisPos() was called; xPosition of 2D Point was set to 1.95 (Point2DObject.ts)"}
+{"level":30,"time":1742788437105,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYAxisPos() was called; yPosition of 2D Point was set to 0.17400000000000015 (Point2DObject.ts)"}
+{"level":30,"time":1742788437105,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYAxisPos() was called; yPosition of 2D Point was set to 0.17400000000000015 (Point2DObject.ts)"}
+{"level":30,"time":1742788437106,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYData() was called; y Data of Point set to 8 (PointObject.ts)"}
+{"level":30,"time":1742788437107,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setSelected() was called on PointObject (PointObject.ts)"}
+{"level":30,"time":1742788437111,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setTimeData() was called; time Data of Point set to 7 (PointObject.ts)"}
+{"level":30,"time":1742788437112,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"getYRange returned 10 (TimeSeriesGraphObject.ts)"}
+{"level":30,"time":1742788437114,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYAxisPos() was called; yPosition of 2D Point was set to 0.32699999999999996 (Point2DObject.ts)"}
+{"level":30,"time":1742788437114,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"a 2D Point has been created (Create2DPoint.tsx)"}
+{"level":30,"time":1742788437115,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"the lines on a TimeSeriesGraph object were created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742788437115,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setXAxisPos() was called; xPosition of 2D Point was set to 2.45 (Point2DObject.ts)"}
+{"level":30,"time":1742788437116,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setXAxisPos() was called; xPosition of 2D Point was set to 2.45 (Point2DObject.ts)"}
+{"level":30,"time":1742788437116,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYAxisPos() was called; yPosition of 2D Point was set to 0.32699999999999996 (Point2DObject.ts)"}
+{"level":30,"time":1742788437116,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setSelected() was called on PointObject (PointObject.ts)"}
+{"level":30,"time":1742788437116,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setTimeData() was called; time Data of Point set to 8 (PointObject.ts)"}
+{"level":30,"time":1742788437117,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"a visual representation of points was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742788437117,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"a 2D Point has been created (Create2DPoint.tsx)"}
+{"level":30,"time":1742788437118,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"the lines on a TimeSeriesGraph object were created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742788437118,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYData() was called; y Data of Point set to 9 (PointObject.ts)"}
+{"level":30,"time":1742788437119,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"a visual representation of points was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742788437119,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setXAxisPos() was called; xPosition of 2D Point was set to 2.95 (Point2DObject.ts)"}
+{"level":30,"time":1742788437121,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setXAxisPos() was called; xPosition of 2D Point was set to 2.95 (Point2DObject.ts)"}
+{"level":30,"time":1742788437121,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"getYRange returned 10 (TimeSeriesGraphObject.ts)"}
+{"level":30,"time":1742788437128,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYAxisPos() was called; yPosition of 2D Point was set to 0.48 (Point2DObject.ts)"}
+{"level":30,"time":1742788437130,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setSelected() was called on PointObject (PointObject.ts)"}
+{"level":30,"time":1742788437133,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setTimeData() was called; time Data of Point set to 9 (PointObject.ts)"}
+{"level":30,"time":1742788437134,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYData() was called; y Data of Point set to 10 (PointObject.ts)"}
+{"level":30,"time":1742788437134,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"a 2D Point has been created (Create2DPoint.tsx)"}
+{"level":30,"time":1742788437134,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYAxisPos() was called; yPosition of 2D Point was set to 0.48 (Point2DObject.ts)"}
+{"level":30,"time":1742788437135,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"an EmbeddedGraph has been created (CreateEmbeddedGraph.tsx)"}
+{"level":30,"time":1742788437135,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"an EmbeddedGraph visualization is being created [not yet functioning] (EmbeddedGraph.tsx)"}
+{"level":30,"time":1742788437135,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setTimeData() was called; time Data of Point set to 0 (PointObject.ts)"}
+{"level":30,"time":1742788437135,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"the lines on a TimeSeriesGraph object were created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742788437135,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setXAxisPos() was called; xPosition of 3D Point was set to 1 (Point3DObject.ts)"}
+{"level":30,"time":1742788437135,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYData() was called; y Data of Point set to 1 (PointObject.ts)"}
+{"level":30,"time":1742788437135,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setSelected() was called on PointObject (PointObject.ts)"}
+{"level":30,"time":1742788437145,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYAxisPos() was called; yPosition of 3D Point was set to 0 (Point3DObject.ts)"}
+{"level":30,"time":1742788437145,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setZAxisPos() was called; zPosition of 3D Point was set to 0 (Point3DObject.ts)"}
+{"level":30,"time":1742788437145,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setXAxisPos() was called; xPosition of 3D Point was set to 2 (Point3DObject.ts)"}
+{"level":30,"time":1742788437146,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"a 3D Point has been created (Create3DPoint.tsx)"}
+{"level":30,"time":1742788437146,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setTimeData() was called; time Data of Point set to 1 (PointObject.ts)"}
+{"level":30,"time":1742788437146,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYData() was called; y Data of Point set to 2 (PointObject.ts)"}
+{"level":30,"time":1742788437146,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setSelected() was called on PointObject (PointObject.ts)"}
+{"level":30,"time":1742788437147,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setZAxisPos() was called; zPosition of 3D Point was set to 0 (Point3DObject.ts)"}
+{"level":30,"time":1742788437147,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"a 3D Point has been created (Create3DPoint.tsx)"}
+{"level":30,"time":1742788437147,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setTimeData() was called; time Data of Point set to 2 (PointObject.ts)"}
+{"level":30,"time":1742788437147,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYData() was called; y Data of Point set to 3 (PointObject.ts)"}
+{"level":30,"time":1742788437148,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYAxisPos() was called; yPosition of 3D Point was set to 1 (Point3DObject.ts)"}
+{"level":30,"time":1742788437148,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setXAxisPos() was called; xPosition of 3D Point was set to 3 (Point3DObject.ts)"}
+{"level":30,"time":1742788437149,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYAxisPos() was called; yPosition of 3D Point was set to 2 (Point3DObject.ts)"}
+{"level":30,"time":1742788437149,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setZAxisPos() was called; zPosition of 3D Point was set to 1 (Point3DObject.ts)"}
+{"level":30,"time":1742788437150,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"a 3D Point has been created (Create3DPoint.tsx)"}
+{"level":30,"time":1742788437150,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setSelected() was called on PointObject (PointObject.ts)"}
+{"level":30,"time":1742788437150,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYData() was called; y Data of Point set to 4 (PointObject.ts)"}
+{"level":30,"time":1742788437150,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setSelected() was called on PointObject (PointObject.ts)"}
+{"level":30,"time":1742788437150,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setXAxisPos() was called; xPosition of 3D Point was set to 4 (Point3DObject.ts)"}
+{"level":30,"time":1742788437151,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setTimeData() was called; time Data of Point set to 3 (PointObject.ts)"}
+{"level":30,"time":1742788437151,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"a 3D Point has been created (Create3DPoint.tsx)"}
+{"level":30,"time":1742788437151,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYAxisPos() was called; yPosition of 3D Point was set to 3 (Point3DObject.ts)"}
+{"level":30,"time":1742788437151,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setZAxisPos() was called; zPosition of 3D Point was set to 2 (Point3DObject.ts)"}
+{"level":30,"time":1742788437152,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setTimeData() was called; time Data of Point set to 4 (PointObject.ts)"}
+{"level":30,"time":1742788437153,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYData() was called; y Data of Point set to 5 (PointObject.ts)"}
+{"level":30,"time":1742788437153,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setSelected() was called on PointObject (PointObject.ts)"}
+{"level":30,"time":1742788437153,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setXAxisPos() was called; xPosition of 3D Point was set to 5 (Point3DObject.ts)"}
+{"level":30,"time":1742788437153,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYAxisPos() was called; yPosition of 3D Point was set to 4 (Point3DObject.ts)"}
+{"level":30,"time":1742788437154,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setZAxisPos() was called; zPosition of 3D Point was set to 3 (Point3DObject.ts)"}
+{"level":30,"time":1742788437154,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setTimeData() was called; time Data of Point set to 5 (PointObject.ts)"}
+{"level":30,"time":1742788437154,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYData() was called; y Data of Point set to 6 (PointObject.ts)"}
+{"level":30,"time":1742788437154,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setSelected() was called on PointObject (PointObject.ts)"}
+{"level":30,"time":1742788437154,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"a 3D Point has been created (Create3DPoint.tsx)"}
+{"level":30,"time":1742788437155,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setZAxisPos() was called; zPosition of 3D Point was set to 4 (Point3DObject.ts)"}
+{"level":30,"time":1742788437155,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"a 3D Point has been created (Create3DPoint.tsx)"}
+{"level":30,"time":1742788437155,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setXAxisPos() was called; xPosition of 3D Point was set to 6 (Point3DObject.ts)"}
+{"level":30,"time":1742788437156,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYAxisPos() was called; yPosition of 3D Point was set to 5 (Point3DObject.ts)"}
+{"level":30,"time":1742788437156,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setSelected() was called on PointObject (PointObject.ts)"}
+{"level":30,"time":1742788437156,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setXAxisPos() was called; xPosition of 3D Point was set to 7 (Point3DObject.ts)"}
+{"level":30,"time":1742788437156,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYAxisPos() was called; yPosition of 3D Point was set to 6 (Point3DObject.ts)"}
+{"level":30,"time":1742788437156,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setTimeData() was called; time Data of Point set to 6 (PointObject.ts)"}
+{"level":30,"time":1742788437156,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYData() was called; y Data of Point set to 7 (PointObject.ts)"}
+{"level":30,"time":1742788437157,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"a 3D Point has been created (Create3DPoint.tsx)"}
+{"level":30,"time":1742788437157,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setTimeData() was called; time Data of Point set to 7 (PointObject.ts)"}
+{"level":30,"time":1742788437157,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYData() was called; y Data of Point set to 8 (PointObject.ts)"}
+{"level":30,"time":1742788437158,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setSelected() was called on PointObject (PointObject.ts)"}
+{"level":30,"time":1742788437158,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setXAxisPos() was called; xPosition of 3D Point was set to 8 (Point3DObject.ts)"}
+{"level":30,"time":1742788437159,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setZAxisPos() was called; zPosition of 3D Point was set to 5 (Point3DObject.ts)"}
+{"level":30,"time":1742788437159,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYAxisPos() was called; yPosition of 3D Point was set to 7 (Point3DObject.ts)"}
+{"level":30,"time":1742788437160,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setZAxisPos() was called; zPosition of 3D Point was set to 6 (Point3DObject.ts)"}
+{"level":30,"time":1742788437160,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"a 3D Point has been created (Create3DPoint.tsx)"}
+{"level":30,"time":1742788437160,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setTimeData() was called; time Data of Point set to 8 (PointObject.ts)"}
+{"level":30,"time":1742788437160,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYData() was called; y Data of Point set to 9 (PointObject.ts)"}
+{"level":30,"time":1742788437161,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setXAxisPos() was called; xPosition of 3D Point was set to 9 (Point3DObject.ts)"}
+{"level":30,"time":1742788437161,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYAxisPos() was called; yPosition of 3D Point was set to 8 (Point3DObject.ts)"}
+{"level":30,"time":1742788437161,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setSelected() was called on PointObject (PointObject.ts)"}
+{"level":30,"time":1742788437161,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYData() was called; y Data of Point set to 10 (PointObject.ts)"}
+{"level":30,"time":1742788437162,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setSelected() was called on PointObject (PointObject.ts)"}
+{"level":30,"time":1742788437162,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setZAxisPos() was called; zPosition of 3D Point was set to 7 (Point3DObject.ts)"}
+{"level":30,"time":1742788437162,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"a 3D Point has been created (Create3DPoint.tsx)"}
+{"level":30,"time":1742788437162,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setTimeData() was called; time Data of Point set to 9 (PointObject.ts)"}
+{"level":30,"time":1742788437163,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setXAxisPos() was called; xPosition of 3D Point was set to 10 (Point3DObject.ts)"}
+{"level":30,"time":1742788437163,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYAxisPos() was called; yPosition of 3D Point was set to 9 (Point3DObject.ts)"}
+{"level":30,"time":1742788437163,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setZAxisPos() was called; zPosition of 3D Point was set to 8 (Point3DObject.ts)"}
+{"level":30,"time":1742788437164,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"a 3D Point has been created (Create3DPoint.tsx)"}
+{"level":30,"time":1742788437164,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"a TimeSeriesGraph object sidebar was created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742788437164,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"a TimeSeriesGraph object header was selected and visually updated to reflect selection (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742788437164,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"a TimeSeriesGraph visualization is being created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742788437164,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"timeSeriesYRange() returned 10 (TimeSeriesGraphObject.ts)"}
+{"level":30,"time":1742788437165,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"timeSeriesXRange() was called and returned 0,1,2,3,4,5,6,7,8,9 (TimeSeriesGraphObject.ts)"}
+{"level":30,"time":1742788437165,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"a visual representation of the Y range was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742788437165,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setXAxisPos() was called; xPosition of 2D Point was set to -1.55 (Point2DObject.ts)"}
+{"level":30,"time":1742788437165,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"getYRange returned 10 (TimeSeriesGraphObject.ts)"}
+{"level":30,"time":1742788437166,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYAxisPos() was called; yPosition of 2D Point was set to -0.897 (Point2DObject.ts)"}
+{"level":30,"time":1742788437166,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"a visual representation of points was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742788437166,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setXAxisPos() was called; xPosition of 2D Point was set to -1.55 (Point2DObject.ts)"}
+{"level":30,"time":1742788437167,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYAxisPos() was called; yPosition of 2D Point was set to -0.897 (Point2DObject.ts)"}
+{"level":30,"time":1742788437168,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setSelected() was called on PointObject (PointObject.ts)"}
+{"level":30,"time":1742788437168,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setTimeData() was called; time Data of Point set to 0 (PointObject.ts)"}
+{"level":30,"time":1742788437168,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYData() was called; y Data of Point set to 1 (PointObject.ts)"}
+{"level":30,"time":1742788437169,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"a 2D Point has been created (Create2DPoint.tsx)"}
+{"level":30,"time":1742788437169,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"the lines on a TimeSeriesGraph object were created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742788437169,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setXAxisPos() was called; xPosition of 2D Point was set to -1.05 (Point2DObject.ts)"}
+{"level":30,"time":1742788437170,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"getYRange returned 10 (TimeSeriesGraphObject.ts)"}
+{"level":30,"time":1742788437170,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYAxisPos() was called; yPosition of 2D Point was set to -0.744 (Point2DObject.ts)"}
+{"level":30,"time":1742788437170,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"a visual representation of points was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742788437171,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setXAxisPos() was called; xPosition of 2D Point was set to -1.05 (Point2DObject.ts)"}
+{"level":30,"time":1742788437171,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYAxisPos() was called; yPosition of 2D Point was set to -0.744 (Point2DObject.ts)"}
+{"level":30,"time":1742788437171,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setSelected() was called on PointObject (PointObject.ts)"}
+{"level":30,"time":1742788437172,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setTimeData() was called; time Data of Point set to 1 (PointObject.ts)"}
+{"level":30,"time":1742788437172,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYData() was called; y Data of Point set to 2 (PointObject.ts)"}
+{"level":30,"time":1742788437172,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"a 2D Point has been created (Create2DPoint.tsx)"}
+{"level":30,"time":1742788437172,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"the lines on a TimeSeriesGraph object were created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742788437173,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setXAxisPos() was called; xPosition of 2D Point was set to -0.55 (Point2DObject.ts)"}
+{"level":30,"time":1742788437173,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"getYRange returned 10 (TimeSeriesGraphObject.ts)"}
+{"level":30,"time":1742788437174,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYAxisPos() was called; yPosition of 2D Point was set to -0.5910000000000001 (Point2DObject.ts)"}
+{"level":30,"time":1742788437174,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"a visual representation of points was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742788437174,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setXAxisPos() was called; xPosition of 2D Point was set to -0.55 (Point2DObject.ts)"}
+{"level":30,"time":1742788437174,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYAxisPos() was called; yPosition of 2D Point was set to -0.5910000000000001 (Point2DObject.ts)"}
+{"level":30,"time":1742788437175,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"a 2D Point has been created (Create2DPoint.tsx)"}
+{"level":30,"time":1742788437175,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setSelected() was called on PointObject (PointObject.ts)"}
+{"level":30,"time":1742788437175,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setTimeData() was called; time Data of Point set to 2 (PointObject.ts)"}
+{"level":30,"time":1742788437175,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYData() was called; y Data of Point set to 3 (PointObject.ts)"}
+{"level":30,"time":1742788437175,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"the lines on a TimeSeriesGraph object were created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742788437176,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setXAxisPos() was called; xPosition of 2D Point was set to -0.050000000000000044 (Point2DObject.ts)"}
+{"level":30,"time":1742788437177,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"getYRange returned 10 (TimeSeriesGraphObject.ts)"}
+{"level":30,"time":1742788437177,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYAxisPos() was called; yPosition of 2D Point was set to -0.43799999999999994 (Point2DObject.ts)"}
+{"level":30,"time":1742788437177,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"a visual representation of points was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742788437178,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setXAxisPos() was called; xPosition of 2D Point was set to -0.050000000000000044 (Point2DObject.ts)"}
+{"level":30,"time":1742788437179,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYAxisPos() was called; yPosition of 2D Point was set to -0.43799999999999994 (Point2DObject.ts)"}
+{"level":30,"time":1742788437179,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setSelected() was called on PointObject (PointObject.ts)"}
+{"level":30,"time":1742788437180,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYData() was called; y Data of Point set to 4 (PointObject.ts)"}
+{"level":30,"time":1742788437181,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"a 2D Point has been created (Create2DPoint.tsx)"}
+{"level":30,"time":1742788437182,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"the lines on a TimeSeriesGraph object were created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742788437183,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setXAxisPos() was called; xPosition of 2D Point was set to 0.44999999999999996 (Point2DObject.ts)"}
+{"level":30,"time":1742788437183,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setTimeData() was called; time Data of Point set to 3 (PointObject.ts)"}
+{"level":30,"time":1742788437183,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYAxisPos() was called; yPosition of 2D Point was set to -0.28500000000000003 (Point2DObject.ts)"}
+{"level":30,"time":1742788437184,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"a visual representation of points was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742788437184,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setXAxisPos() was called; xPosition of 2D Point was set to 0.44999999999999996 (Point2DObject.ts)"}
+{"level":30,"time":1742788437184,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYAxisPos() was called; yPosition of 2D Point was set to -0.28500000000000003 (Point2DObject.ts)"}
+{"level":30,"time":1742788437184,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setSelected() was called on PointObject (PointObject.ts)"}
+{"level":30,"time":1742788437185,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"getYRange returned 10 (TimeSeriesGraphObject.ts)"}
+{"level":30,"time":1742788437186,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setTimeData() was called; time Data of Point set to 4 (PointObject.ts)"}
+{"level":30,"time":1742788437187,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYData() was called; y Data of Point set to 5 (PointObject.ts)"}
+{"level":30,"time":1742788437188,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"a 2D Point has been created (Create2DPoint.tsx)"}
+{"level":30,"time":1742788437188,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"the lines on a TimeSeriesGraph object were created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742788437188,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setXAxisPos() was called; xPosition of 2D Point was set to 0.95 (Point2DObject.ts)"}
+{"level":30,"time":1742788437189,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYAxisPos() was called; yPosition of 2D Point was set to -0.13200000000000012 (Point2DObject.ts)"}
+{"level":30,"time":1742788437189,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"a visual representation of points was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742788437189,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setXAxisPos() was called; xPosition of 2D Point was set to 0.95 (Point2DObject.ts)"}
+{"level":30,"time":1742788437190,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYAxisPos() was called; yPosition of 2D Point was set to -0.13200000000000012 (Point2DObject.ts)"}
+{"level":30,"time":1742788437190,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"getYRange returned 10 (TimeSeriesGraphObject.ts)"}
+{"level":30,"time":1742788437190,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setTimeData() was called; time Data of Point set to 5 (PointObject.ts)"}
+{"level":30,"time":1742788437191,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYData() was called; y Data of Point set to 6 (PointObject.ts)"}
+{"level":30,"time":1742788437191,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"a 2D Point has been created (Create2DPoint.tsx)"}
+{"level":30,"time":1742788437191,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"the lines on a TimeSeriesGraph object were created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742788437192,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setSelected() was called on PointObject (PointObject.ts)"}
+{"level":30,"time":1742788437192,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"getYRange returned 10 (TimeSeriesGraphObject.ts)"}
+{"level":30,"time":1742788437192,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYAxisPos() was called; yPosition of 2D Point was set to 0.020999999999999908 (Point2DObject.ts)"}
+{"level":30,"time":1742788437193,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"a visual representation of points was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742788437193,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setXAxisPos() was called; xPosition of 2D Point was set to 1.45 (Point2DObject.ts)"}
+{"level":30,"time":1742788437193,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setXAxisPos() was called; xPosition of 2D Point was set to 1.45 (Point2DObject.ts)"}
+{"level":30,"time":1742788437193,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setSelected() was called on PointObject (PointObject.ts)"}
+{"level":30,"time":1742788437194,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setTimeData() was called; time Data of Point set to 6 (PointObject.ts)"}
+{"level":30,"time":1742788437194,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYData() was called; y Data of Point set to 7 (PointObject.ts)"}
+{"level":30,"time":1742788437194,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"a 2D Point has been created (Create2DPoint.tsx)"}
+{"level":30,"time":1742788437195,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYAxisPos() was called; yPosition of 2D Point was set to 0.020999999999999908 (Point2DObject.ts)"}
+{"level":30,"time":1742788437195,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setXAxisPos() was called; xPosition of 2D Point was set to 1.95 (Point2DObject.ts)"}
+{"level":30,"time":1742788437195,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"getYRange returned 10 (TimeSeriesGraphObject.ts)"}
+{"level":30,"time":1742788437195,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYAxisPos() was called; yPosition of 2D Point was set to 0.17400000000000015 (Point2DObject.ts)"}
+{"level":30,"time":1742788437195,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"a visual representation of points was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742788437196,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"the lines on a TimeSeriesGraph object were created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742788437196,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYAxisPos() was called; yPosition of 2D Point was set to 0.17400000000000015 (Point2DObject.ts)"}
+{"level":30,"time":1742788437196,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setSelected() was called on PointObject (PointObject.ts)"}
+{"level":30,"time":1742788437196,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setTimeData() was called; time Data of Point set to 7 (PointObject.ts)"}
+{"level":30,"time":1742788437196,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYData() was called; y Data of Point set to 8 (PointObject.ts)"}
+{"level":30,"time":1742788437197,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setXAxisPos() was called; xPosition of 2D Point was set to 1.95 (Point2DObject.ts)"}
+{"level":30,"time":1742788437198,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"the lines on a TimeSeriesGraph object were created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742788437198,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setXAxisPos() was called; xPosition of 2D Point was set to 2.45 (Point2DObject.ts)"}
+{"level":30,"time":1742788437199,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"getYRange returned 10 (TimeSeriesGraphObject.ts)"}
+{"level":30,"time":1742788437200,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYAxisPos() was called; yPosition of 2D Point was set to 0.32699999999999996 (Point2DObject.ts)"}
+{"level":30,"time":1742788437200,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"a 2D Point has been created (Create2DPoint.tsx)"}
+{"level":30,"time":1742788437201,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setXAxisPos() was called; xPosition of 2D Point was set to 2.45 (Point2DObject.ts)"}
+{"level":30,"time":1742788437201,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYAxisPos() was called; yPosition of 2D Point was set to 0.32699999999999996 (Point2DObject.ts)"}
+{"level":30,"time":1742788437201,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setSelected() was called on PointObject (PointObject.ts)"}
+{"level":30,"time":1742788437201,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"a visual representation of points was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742788437202,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"a 2D Point has been created (Create2DPoint.tsx)"}
+{"level":30,"time":1742788437202,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"the lines on a TimeSeriesGraph object were created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742788437203,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setTimeData() was called; time Data of Point set to 8 (PointObject.ts)"}
+{"level":30,"time":1742788437204,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYData() was called; y Data of Point set to 9 (PointObject.ts)"}
+{"level":30,"time":1742788437204,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYAxisPos() was called; yPosition of 2D Point was set to 0.48 (Point2DObject.ts)"}
+{"level":30,"time":1742788437205,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"a visual representation of points was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742788437206,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setXAxisPos() was called; xPosition of 2D Point was set to 2.95 (Point2DObject.ts)"}
+{"level":30,"time":1742788437206,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setXAxisPos() was called; xPosition of 2D Point was set to 2.95 (Point2DObject.ts)"}
+{"level":30,"time":1742788437207,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"getYRange returned 10 (TimeSeriesGraphObject.ts)"}
+{"level":30,"time":1742788437208,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setSelected() was called on PointObject (PointObject.ts)"}
+{"level":30,"time":1742788437208,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setTimeData() was called; time Data of Point set to 9 (PointObject.ts)"}
+{"level":30,"time":1742788437209,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYData() was called; y Data of Point set to 10 (PointObject.ts)"}
+{"level":30,"time":1742788437210,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"a 2D Point has been created (Create2DPoint.tsx)"}
+{"level":30,"time":1742788437210,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"the lines on a TimeSeriesGraph object were created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742788437210,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYAxisPos() was called; yPosition of 2D Point was set to 0.48 (Point2DObject.ts)"}
+{"level":30,"time":1742788440974,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"DropDownBody [active] button pressed"}
+{"level":30,"time":1742788440975,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"DropDownBody [active] button pressed"}
+{"level":30,"time":1742789887879,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setName,  will now be called Graph0"}
+{"level":30,"time":1742789887880,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"URLCSVReader has successfully parsed\n[{\"Time\":0,\"Some\":1,\"B\":2},{\"Time\":1,\"Some\":2,\"B\":4},{\"Time\":2,\"Some\":3,\"B\":6},{\"Time\":3,\"Some\":4,\"B\":8},{\"Time\":4,\"Some\":5,\"B\":10},{\"Time\":5,\"Some\":6,\"B\":12},{\"Time\":6,\"Some\":7,\"B\":14},{\"Time\":7,\"Some\":8,\"B\":16},{\"Time\":8,\"Some\":9,\"B\":18},{\"Time\":9,\"Some\":10,\"B\":20}]"}
+{"level":30,"time":1742789887880,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setData() was called, data has been set (CSVDataObject.ts)"}
+{"level":30,"time":1742789887881,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYHeader, Graph0 yHeader is set to Some"}
+{"level":30,"time":1742789887881,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"findTimeHeader() was called, the time header in the data set has been found (CSVDataObject.ts)"}
+{"level":30,"time":1742789887882,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setTimeHeader() was called, finding the time header in the data set (CSVDataObject.ts)"}
+{"level":30,"time":1742789887882,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"loadCSVData has loaded csv data\n[{\"Time\":0,\"Some\":1,\"B\":2},{\"Time\":1,\"Some\":2,\"B\":4},{\"Time\":2,\"Some\":3,\"B\":6},{\"Time\":3,\"Some\":4,\"B\":8},{\"Time\":4,\"Some\":5,\"B\":10},{\"Time\":5,\"Some\":6,\"B\":12},{\"Time\":6,\"Some\":7,\"B\":14},{\"Time\":7,\"Some\":8,\"B\":16},{\"Time\":8,\"Some\":9,\"B\":18},{\"Time\":9,\"Some\":10,\"B\":20}]"}
+{"level":30,"time":1742789887882,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"readURLFile read a file\n[{\"Time\":0,\"Some\":1,\"B\":2},{\"Time\":1,\"Some\":2,\"B\":4},{\"Time\":2,\"Some\":3,\"B\":6},{\"Time\":3,\"Some\":4,\"B\":8},{\"Time\":4,\"Some\":5,\"B\":10},{\"Time\":5,\"Some\":6,\"B\":12},{\"Time\":6,\"Some\":7,\"B\":14},{\"Time\":7,\"Some\":8,\"B\":16},{\"Time\":8,\"Some\":9,\"B\":18},{\"Time\":9,\"Some\":10,\"B\":20}]"}
+{"level":30,"time":1742789887883,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"findFirstHeader() was called, the first header was found Some (CSVDataObject.ts)"}
+{"level":30,"time":1742789888745,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"URLComponent read: https://raw.githubusercontent.com/UniversityOfSaskatchewanCMPT371/term-project-2025-team-1/refs/heads/ID4/csvTestFiles/indexedData.csv"}
+{"level":30,"time":1742789888747,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"loadedCsvBrowser() returns list\n[[\"Graph0\",false]]"}
+{"level":30,"time":1742789888748,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"UnmountedComponents unmount: 1"}
+{"level":30,"time":1742789888749,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"loadedCsvBrowser() returns list\n[[\"Graph0\",false]]"}
+{"level":30,"time":1742789888749,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"UnmountedComponents unmount: 1"}
+{"level":30,"time":1742789891074,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"DropDownBody [active] button pressed"}
+{"level":30,"time":1742789891075,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"DropDownBody [active] button pressed"}
+{"level":30,"time":1742789892351,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setVRSelected, Graph0 vr is set to true"}
+{"level":30,"time":1742789892353,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setTimeData() was called; time Data of Point set to 0 (PointObject.ts)"}
+{"level":30,"time":1742789892356,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYData() was called; y Data of Point set to 3 (PointObject.ts)"}
+{"level":30,"time":1742789892356,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYData() was called; y Data of Point set to 1 (PointObject.ts)"}
+{"level":30,"time":1742789892357,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setTimeData() was called; time Data of Point set to 3 (PointObject.ts)"}
+{"level":30,"time":1742789892357,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setTimeData() was called; time Data of Point set to 1 (PointObject.ts)"}
+{"level":30,"time":1742789892358,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYData() was called; y Data of Point set to 4 (PointObject.ts)"}
+{"level":30,"time":1742789892359,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setTimeData() was called; time Data of Point set to 4 (PointObject.ts)"}
+{"level":30,"time":1742789892360,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYData() was called; y Data of Point set to 2 (PointObject.ts)"}
+{"level":30,"time":1742789892360,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYData() was called; y Data of Point set to 6 (PointObject.ts)"}
+{"level":30,"time":1742789892360,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setTimeData() was called; time Data of Point set to 6 (PointObject.ts)"}
+{"level":30,"time":1742789892361,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYData() was called; y Data of Point set to 5 (PointObject.ts)"}
+{"level":30,"time":1742789892361,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setTimeData() was called; time Data of Point set to 5 (PointObject.ts)"}
+{"level":30,"time":1742789892362,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setTimeData() was called; time Data of Point set to 2 (PointObject.ts)"}
+{"level":30,"time":1742789892363,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYData() was called; y Data of Point set to 7 (PointObject.ts)"}
+{"level":30,"time":1742789892364,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setTimeData() was called; time Data of Point set to 7 (PointObject.ts)"}
+{"level":30,"time":1742789892365,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYData() was called; y Data of Point set to 8 (PointObject.ts)"}
+{"level":30,"time":1742789892365,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setTimeData() was called; time Data of Point set to 8 (PointObject.ts)"}
+{"level":30,"time":1742789892365,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYData() was called; y Data of Point set to 9 (PointObject.ts)"}
+{"level":30,"time":1742789892365,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setTimeData() was called; time Data of Point set to 9 (PointObject.ts)"}
+{"level":30,"time":1742789892367,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYData() was called; y Data of Point set to 10 (PointObject.ts)"}
+{"level":30,"time":1742789892368,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"populatePoints() was called, the program points loaded using the csv file (CSVDataObject.ts)"}
+{"level":30,"time":1742789892369,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setName() was called on Graph Object, name of the Graph is now Graph0 (GraphObject.ts)"}
+{"level":30,"time":1742789892369,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"addPoint() has added new points to the graph (TimeSeriesGraphObject.tss)"}
+{"level":30,"time":1742789892370,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setName() was called on Graph Object, name of the Graph is now Graph0 (GraphObject.ts)"}
+{"level":30,"time":1742789892373,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"value of tau in EmbeddedGraphObject updated to the value 1"}
+{"level":30,"time":1742789892374,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setRange() was called; yRange was set to 10 (EmbeddedGraphObject.ts)"}
+{"level":30,"time":1742789892375,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"vector position calculated for data at index/time 0 (EmbeddedGraphObject.calculateVectorPosition())"}
+{"level":30,"time":1742789892376,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setPoint3DPosition() was called; Position of 3D Point was set to 1,0,0 (Point3DObject.ts)"}
+{"level":30,"time":1742789892377,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"vector position calculated for data at index/time 1 (EmbeddedGraphObject.calculateVectorPosition())"}
+{"level":30,"time":1742789892377,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setPoint3DPosition() was called; Position of 3D Point was set to 2,1,0 (Point3DObject.ts)"}
+{"level":30,"time":1742789892378,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"vector position calculated for data at index/time 2 (EmbeddedGraphObject.calculateVectorPosition())"}
+{"level":30,"time":1742789892378,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setPoint3DPosition() was called; Position of 3D Point was set to 3,2,1 (Point3DObject.ts)"}
+{"level":30,"time":1742789892378,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"vector position calculated for data at index/time 3 (EmbeddedGraphObject.calculateVectorPosition())"}
+{"level":30,"time":1742789892378,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setPoint3DPosition() was called; Position of 3D Point was set to 4,3,2 (Point3DObject.ts)"}
+{"level":30,"time":1742789892379,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"vector position calculated for data at index/time 4 (EmbeddedGraphObject.calculateVectorPosition())"}
+{"level":30,"time":1742789892380,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setPoint3DPosition() was called; Position of 3D Point was set to 5,4,3 (Point3DObject.ts)"}
+{"level":30,"time":1742789892381,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"vector position calculated for data at index/time 5 (EmbeddedGraphObject.calculateVectorPosition())"}
+{"level":30,"time":1742789892381,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setPoint3DPosition() was called; Position of 3D Point was set to 6,5,4 (Point3DObject.ts)"}
+{"level":30,"time":1742789892382,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"vector position calculated for data at index/time 6 (EmbeddedGraphObject.calculateVectorPosition())"}
+{"level":30,"time":1742789892382,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setPoint3DPosition() was called; Position of 3D Point was set to 7,6,5 (Point3DObject.ts)"}
+{"level":30,"time":1742789892383,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"vector position calculated for data at index/time 8 (EmbeddedGraphObject.calculateVectorPosition())"}
+{"level":30,"time":1742789892383,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setPoint3DPosition() was called; Position of 3D Point was set to 9,8,7 (Point3DObject.ts)"}
+{"level":30,"time":1742789892384,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"vector position calculated for data at index/time 9 (EmbeddedGraphObject.calculateVectorPosition())"}
+{"level":30,"time":1742789892384,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"vector position calculated for data at index/time 7 (EmbeddedGraphObject.calculateVectorPosition())"}
+{"level":30,"time":1742789892384,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setPoint3DPosition() was called; Position of 3D Point was set to 8,7,6 (Point3DObject.ts)"}
+{"level":30,"time":1742789892385,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"Points added to EmbeddedGraphObject (EmbeddedGraphObject.addPoints())"}
+{"level":30,"time":1742789892385,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setPoint3DPosition() was called; Position of 3D Point was set to 10,9,8 (Point3DObject.ts)"}
+{"level":30,"time":1742789892385,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"pushDataToModel() was called; successfully added both 2D and 3D Graphs(GraphController.ts)"}
+{"level":30,"time":1742789892385,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"generate has pushed a new graph"}
+{"level":30,"time":1742789892385,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"Update main scene"}
+{"level":30,"time":1742789892387,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"GenerateList [BUTTON]? pressed"}
+{"level":30,"time":1742789892388,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"DropDownBody [create] button pressed"}
+{"level":30,"time":1742789892388,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setVRSelected, Graph0 vr is set to true"}
+{"level":30,"time":1742789892388,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setTimeData() was called; time Data of Point set to 0 (PointObject.ts)"}
+{"level":30,"time":1742789892389,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYData() was called; y Data of Point set to 1 (PointObject.ts)"}
+{"level":30,"time":1742789892389,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setTimeData() was called; time Data of Point set to 1 (PointObject.ts)"}
+{"level":30,"time":1742789892390,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setTimeData() was called; time Data of Point set to 2 (PointObject.ts)"}
+{"level":30,"time":1742789892390,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYData() was called; y Data of Point set to 3 (PointObject.ts)"}
+{"level":30,"time":1742789892390,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setTimeData() was called; time Data of Point set to 3 (PointObject.ts)"}
+{"level":30,"time":1742789892390,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYData() was called; y Data of Point set to 2 (PointObject.ts)"}
+{"level":30,"time":1742789892393,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYData() was called; y Data of Point set to 4 (PointObject.ts)"}
+{"level":30,"time":1742789892393,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setTimeData() was called; time Data of Point set to 4 (PointObject.ts)"}
+{"level":30,"time":1742789892393,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYData() was called; y Data of Point set to 5 (PointObject.ts)"}
+{"level":30,"time":1742789892393,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setTimeData() was called; time Data of Point set to 5 (PointObject.ts)"}
+{"level":30,"time":1742789892394,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYData() was called; y Data of Point set to 6 (PointObject.ts)"}
+{"level":30,"time":1742789892394,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setTimeData() was called; time Data of Point set to 6 (PointObject.ts)"}
+{"level":30,"time":1742789892394,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setTimeData() was called; time Data of Point set to 7 (PointObject.ts)"}
+{"level":30,"time":1742789892394,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYData() was called; y Data of Point set to 8 (PointObject.ts)"}
+{"level":30,"time":1742789892395,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setTimeData() was called; time Data of Point set to 8 (PointObject.ts)"}
+{"level":30,"time":1742789892395,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYData() was called; y Data of Point set to 7 (PointObject.ts)"}
+{"level":30,"time":1742789892395,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYData() was called; y Data of Point set to 10 (PointObject.ts)"}
+{"level":30,"time":1742789892395,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"populatePoints() was called, the program points loaded using the csv file (CSVDataObject.ts)"}
+{"level":30,"time":1742789892396,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setName() was called on Graph Object, name of the Graph is now Graph0 (GraphObject.ts)"}
+{"level":30,"time":1742789892396,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYData() was called; y Data of Point set to 9 (PointObject.ts)"}
+{"level":30,"time":1742789892396,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setTimeData() was called; time Data of Point set to 9 (PointObject.ts)"}
+{"level":30,"time":1742789892397,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setName() was called on Graph Object, name of the Graph is now Graph0 (GraphObject.ts)"}
+{"level":30,"time":1742789892398,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"value of tau in EmbeddedGraphObject updated to the value 1"}
+{"level":30,"time":1742789892398,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"addPoint() has added new points to the graph (TimeSeriesGraphObject.tss)"}
+{"level":30,"time":1742789892398,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"vector position calculated for data at index/time 1 (EmbeddedGraphObject.calculateVectorPosition())"}
+{"level":30,"time":1742789892398,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setRange() was called; yRange was set to 10 (EmbeddedGraphObject.ts)"}
+{"level":30,"time":1742789892399,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"vector position calculated for data at index/time 0 (EmbeddedGraphObject.calculateVectorPosition())"}
+{"level":30,"time":1742789892399,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setPoint3DPosition() was called; Position of 3D Point was set to 1,0,0 (Point3DObject.ts)"}
+{"level":30,"time":1742789892400,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setPoint3DPosition() was called; Position of 3D Point was set to 3,2,1 (Point3DObject.ts)"}
+{"level":30,"time":1742789892400,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"vector position calculated for data at index/time 3 (EmbeddedGraphObject.calculateVectorPosition())"}
+{"level":30,"time":1742789892400,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setPoint3DPosition() was called; Position of 3D Point was set to 4,3,2 (Point3DObject.ts)"}
+{"level":30,"time":1742789892400,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setPoint3DPosition() was called; Position of 3D Point was set to 2,1,0 (Point3DObject.ts)"}
+{"level":30,"time":1742789892401,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"vector position calculated for data at index/time 2 (EmbeddedGraphObject.calculateVectorPosition())"}
+{"level":30,"time":1742789892402,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"vector position calculated for data at index/time 4 (EmbeddedGraphObject.calculateVectorPosition())"}
+{"level":30,"time":1742789892403,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setPoint3DPosition() was called; Position of 3D Point was set to 5,4,3 (Point3DObject.ts)"}
+{"level":30,"time":1742789892406,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"vector position calculated for data at index/time 5 (EmbeddedGraphObject.calculateVectorPosition())"}
+{"level":30,"time":1742789892406,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setPoint3DPosition() was called; Position of 3D Point was set to 6,5,4 (Point3DObject.ts)"}
+{"level":30,"time":1742789892407,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"vector position calculated for data at index/time 6 (EmbeddedGraphObject.calculateVectorPosition())"}
+{"level":30,"time":1742789892407,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setPoint3DPosition() was called; Position of 3D Point was set to 7,6,5 (Point3DObject.ts)"}
+{"level":30,"time":1742789892408,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"vector position calculated for data at index/time 7 (EmbeddedGraphObject.calculateVectorPosition())"}
+{"level":30,"time":1742789892408,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setPoint3DPosition() was called; Position of 3D Point was set to 8,7,6 (Point3DObject.ts)"}
+{"level":30,"time":1742789892410,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"vector position calculated for data at index/time 8 (EmbeddedGraphObject.calculateVectorPosition())"}
+{"level":30,"time":1742789892411,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setPoint3DPosition() was called; Position of 3D Point was set to 9,8,7 (Point3DObject.ts)"}
+{"level":30,"time":1742789892411,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"vector position calculated for data at index/time 9 (EmbeddedGraphObject.calculateVectorPosition())"}
+{"level":30,"time":1742789892411,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setPoint3DPosition() was called; Position of 3D Point was set to 10,9,8 (Point3DObject.ts)"}
+{"level":30,"time":1742789892412,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"Points added to EmbeddedGraphObject (EmbeddedGraphObject.addPoints())"}
+{"level":30,"time":1742789892417,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"pushDataToModel() was called; successfully added both 2D and 3D Graphs(GraphController.ts)"}
+{"level":30,"time":1742789892418,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"generate has pushed a new graph"}
+{"level":30,"time":1742789892418,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"Update main scene"}
+{"level":30,"time":1742789892419,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"GenerateList [BUTTON]? pressed"}
+{"level":30,"time":1742789892419,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"DropDownBody [create] button pressed"}
+{"level":30,"time":1742789892420,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"DropDownBody [create] button pressed"}
+{"level":30,"time":1742789892420,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"DropDownBody [create] button pressed"}
+{"level":30,"time":1742789892421,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"DropDownBody [create] button pressed"}
+{"level":30,"time":1742789892421,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"getVRSelected has returned Graph0"}
+{"level":30,"time":1742789892422,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setRange() was called; yRange was set to 10 (TimeSeriesGraphObject.ts)"}
+{"level":30,"time":1742789892422,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"timeSeriesYRange() returned 10 (TimeSeriesGraphObject.ts)"}
+{"level":30,"time":1742789892423,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYRangeLength() was called on TimeSeriesGraphObject (TimeSeriesGraphObject.ts)"}
+{"level":30,"time":1742789892424,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"generateTimeSeriesGraph() was called; successfully generated Time Series Graph (GraphController.ts)"}
+{"level":30,"time":1742789892425,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setRange() was called; yRange was set to 10 (EmbeddedGraphObject.ts)"}
+{"level":30,"time":1742789892426,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"generateEmbeddedGraph() was called; successfully generated Embedded Graph (GraphController.ts)"}
+{"level":30,"time":1742789892427,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"a TimeSeriesGraph has been created (CreateTimeSeries.tsx)"}
+{"level":30,"time":1742789892427,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"a TimeSeriesGraph object sidebar was created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742789892428,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"a TimeSeriesGraph object header was selected and visually updated to reflect selection (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742789892428,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"a TimeSeriesGraph object sidebar was created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742789892429,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"a TimeSeriesGraph object header was selected and visually updated to reflect selection (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742789892434,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"a TimeSeriesGraph visualization is being created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742789892435,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"timeSeriesYRange() returned 10 (TimeSeriesGraphObject.ts)"}
+{"level":30,"time":1742789892437,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"a TimeSeriesGraph visualization is being created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742789892438,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"timeSeriesYRange() returned 10 (TimeSeriesGraphObject.ts)"}
+{"level":30,"time":1742789892440,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"timeSeriesXRange() was called and returned 0,1,2,3,4,5,6,7,8,9 (TimeSeriesGraphObject.ts)"}
+{"level":30,"time":1742789892441,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setXAxisPos() was called; xPosition of 2D Point was set to -1.55 (Point2DObject.ts)"}
+{"level":30,"time":1742789892441,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"getYRange returned 10 (TimeSeriesGraphObject.ts)"}
+{"level":30,"time":1742789892441,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYAxisPos() was called; yPosition of 2D Point was set to -0.897 (Point2DObject.ts)"}
+{"level":30,"time":1742789892442,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"timeSeriesXRange() was called and returned 0,1,2,3,4,5,6,7,8,9 (TimeSeriesGraphObject.ts)"}
+{"level":30,"time":1742789892442,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"a visual representation of the Y range was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742789892448,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"a visual representation of points was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742789892449,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setXAxisPos() was called; xPosition of 2D Point was set to -1.55 (Point2DObject.ts)"}
+{"level":30,"time":1742789892449,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYAxisPos() was called; yPosition of 2D Point was set to -0.897 (Point2DObject.ts)"}
+{"level":30,"time":1742789892449,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setSelected() was called on PointObject (PointObject.ts)"}
+{"level":30,"time":1742789892449,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setTimeData() was called; time Data of Point set to 0 (PointObject.ts)"}
+{"level":30,"time":1742789892449,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYData() was called; y Data of Point set to 1 (PointObject.ts)"}
+{"level":30,"time":1742789892450,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"a 2D Point has been created (Create2DPoint.tsx)"}
+{"level":30,"time":1742789892451,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"the lines on a TimeSeriesGraph object were created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742789892451,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setXAxisPos() was called; xPosition of 2D Point was set to -1.05 (Point2DObject.ts)"}
+{"level":30,"time":1742789892452,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"getYRange returned 10 (TimeSeriesGraphObject.ts)"}
+{"level":30,"time":1742789892452,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYAxisPos() was called; yPosition of 2D Point was set to -0.744 (Point2DObject.ts)"}
+{"level":30,"time":1742789892453,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"a visual representation of points was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742789892455,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setXAxisPos() was called; xPosition of 2D Point was set to -1.05 (Point2DObject.ts)"}
+{"level":30,"time":1742789892456,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setSelected() was called on PointObject (PointObject.ts)"}
+{"level":30,"time":1742789892456,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setTimeData() was called; time Data of Point set to 1 (PointObject.ts)"}
+{"level":30,"time":1742789892456,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYData() was called; y Data of Point set to 2 (PointObject.ts)"}
+{"level":30,"time":1742789892457,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"a 2D Point has been created (Create2DPoint.tsx)"}
+{"level":30,"time":1742789892457,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYAxisPos() was called; yPosition of 2D Point was set to -0.744 (Point2DObject.ts)"}
+{"level":30,"time":1742789892458,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"the lines on a TimeSeriesGraph object were created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742789892459,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setXAxisPos() was called; xPosition of 2D Point was set to -0.55 (Point2DObject.ts)"}
+{"level":30,"time":1742789892459,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"getYRange returned 10 (TimeSeriesGraphObject.ts)"}
+{"level":30,"time":1742789892459,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYAxisPos() was called; yPosition of 2D Point was set to -0.5910000000000001 (Point2DObject.ts)"}
+{"level":30,"time":1742789892459,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"a visual representation of points was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742789892460,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setXAxisPos() was called; xPosition of 2D Point was set to -0.55 (Point2DObject.ts)"}
+{"level":30,"time":1742789892461,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setSelected() was called on PointObject (PointObject.ts)"}
+{"level":30,"time":1742789892462,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setTimeData() was called; time Data of Point set to 2 (PointObject.ts)"}
+{"level":30,"time":1742789892463,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYData() was called; y Data of Point set to 3 (PointObject.ts)"}
+{"level":30,"time":1742789892463,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"a 2D Point has been created (Create2DPoint.tsx)"}
+{"level":30,"time":1742789892464,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYAxisPos() was called; yPosition of 2D Point was set to -0.5910000000000001 (Point2DObject.ts)"}
+{"level":30,"time":1742789892464,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setXAxisPos() was called; xPosition of 2D Point was set to -0.050000000000000044 (Point2DObject.ts)"}
+{"level":30,"time":1742789892465,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"getYRange returned 10 (TimeSeriesGraphObject.ts)"}
+{"level":30,"time":1742789892465,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYAxisPos() was called; yPosition of 2D Point was set to -0.43799999999999994 (Point2DObject.ts)"}
+{"level":30,"time":1742789892465,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"a visual representation of points was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742789892465,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"the lines on a TimeSeriesGraph object were created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742789892465,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYAxisPos() was called; yPosition of 2D Point was set to -0.43799999999999994 (Point2DObject.ts)"}
+{"level":30,"time":1742789892466,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setXAxisPos() was called; xPosition of 2D Point was set to -0.050000000000000044 (Point2DObject.ts)"}
+{"level":30,"time":1742789892466,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setSelected() was called on PointObject (PointObject.ts)"}
+{"level":30,"time":1742789892467,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setTimeData() was called; time Data of Point set to 3 (PointObject.ts)"}
+{"level":30,"time":1742789892467,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYData() was called; y Data of Point set to 4 (PointObject.ts)"}
+{"level":30,"time":1742789892469,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"a 2D Point has been created (Create2DPoint.tsx)"}
+{"level":30,"time":1742789892486,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"the lines on a TimeSeriesGraph object were created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742789892487,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setXAxisPos() was called; xPosition of 2D Point was set to 0.44999999999999996 (Point2DObject.ts)"}
+{"level":30,"time":1742789892488,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYAxisPos() was called; yPosition of 2D Point was set to -0.28500000000000003 (Point2DObject.ts)"}
+{"level":30,"time":1742789892488,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"a visual representation of points was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742789892489,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setXAxisPos() was called; xPosition of 2D Point was set to 0.44999999999999996 (Point2DObject.ts)"}
+{"level":30,"time":1742789892490,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"getYRange returned 10 (TimeSeriesGraphObject.ts)"}
+{"level":30,"time":1742789892495,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYAxisPos() was called; yPosition of 2D Point was set to -0.28500000000000003 (Point2DObject.ts)"}
+{"level":30,"time":1742789892497,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setSelected() was called on PointObject (PointObject.ts)"}
+{"level":30,"time":1742789892497,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setTimeData() was called; time Data of Point set to 4 (PointObject.ts)"}
+{"level":30,"time":1742789892497,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYData() was called; y Data of Point set to 5 (PointObject.ts)"}
+{"level":30,"time":1742789892498,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"a 2D Point has been created (Create2DPoint.tsx)"}
+{"level":30,"time":1742789892498,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"the lines on a TimeSeriesGraph object were created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742789892498,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setXAxisPos() was called; xPosition of 2D Point was set to 0.95 (Point2DObject.ts)"}
+{"level":30,"time":1742789892499,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"getYRange returned 10 (TimeSeriesGraphObject.ts)"}
+{"level":30,"time":1742789892500,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYAxisPos() was called; yPosition of 2D Point was set to -0.13200000000000012 (Point2DObject.ts)"}
+{"level":30,"time":1742789892502,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"a visual representation of points was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742789892503,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setXAxisPos() was called; xPosition of 2D Point was set to 0.95 (Point2DObject.ts)"}
+{"level":30,"time":1742789892504,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYAxisPos() was called; yPosition of 2D Point was set to -0.13200000000000012 (Point2DObject.ts)"}
+{"level":30,"time":1742789892504,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setSelected() was called on PointObject (PointObject.ts)"}
+{"level":30,"time":1742789892505,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setTimeData() was called; time Data of Point set to 5 (PointObject.ts)"}
+{"level":30,"time":1742789892506,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYData() was called; y Data of Point set to 6 (PointObject.ts)"}
+{"level":30,"time":1742789892507,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"a 2D Point has been created (Create2DPoint.tsx)"}
+{"level":30,"time":1742789892507,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"the lines on a TimeSeriesGraph object were created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742789892509,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setXAxisPos() was called; xPosition of 2D Point was set to 1.45 (Point2DObject.ts)"}
+{"level":30,"time":1742789892527,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"getYRange returned 10 (TimeSeriesGraphObject.ts)"}
+{"level":30,"time":1742789892530,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYAxisPos() was called; yPosition of 2D Point was set to 0.020999999999999908 (Point2DObject.ts)"}
+{"level":30,"time":1742789892548,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setSelected() was called on PointObject (PointObject.ts)"}
+{"level":30,"time":1742789892558,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setTimeData() was called; time Data of Point set to 6 (PointObject.ts)"}
+{"level":30,"time":1742789892561,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYData() was called; y Data of Point set to 7 (PointObject.ts)"}
+{"level":30,"time":1742789892562,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"a visual representation of points was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742789892563,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setXAxisPos() was called; xPosition of 2D Point was set to 1.45 (Point2DObject.ts)"}
+{"level":30,"time":1742789892566,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYAxisPos() was called; yPosition of 2D Point was set to 0.020999999999999908 (Point2DObject.ts)"}
+{"level":30,"time":1742789892568,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"a 2D Point has been created (Create2DPoint.tsx)"}
+{"level":30,"time":1742789892574,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"the lines on a TimeSeriesGraph object were created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742789892574,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setXAxisPos() was called; xPosition of 2D Point was set to 1.95 (Point2DObject.ts)"}
+{"level":30,"time":1742789892575,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"getYRange returned 10 (TimeSeriesGraphObject.ts)"}
+{"level":30,"time":1742789892575,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYAxisPos() was called; yPosition of 2D Point was set to 0.17400000000000015 (Point2DObject.ts)"}
+{"level":30,"time":1742789892575,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setXAxisPos() was called; xPosition of 2D Point was set to 1.95 (Point2DObject.ts)"}
+{"level":30,"time":1742789892576,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYAxisPos() was called; yPosition of 2D Point was set to 0.17400000000000015 (Point2DObject.ts)"}
+{"level":30,"time":1742789892576,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"a visual representation of points was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742789892577,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"a 2D Point has been created (Create2DPoint.tsx)"}
+{"level":30,"time":1742789892577,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"the lines on a TimeSeriesGraph object were created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742789892577,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setSelected() was called on PointObject (PointObject.ts)"}
+{"level":30,"time":1742789892577,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setTimeData() was called; time Data of Point set to 7 (PointObject.ts)"}
+{"level":30,"time":1742789892577,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYData() was called; y Data of Point set to 8 (PointObject.ts)"}
+{"level":30,"time":1742789892578,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"getYRange returned 10 (TimeSeriesGraphObject.ts)"}
+{"level":30,"time":1742789892578,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setXAxisPos() was called; xPosition of 2D Point was set to 2.45 (Point2DObject.ts)"}
+{"level":30,"time":1742789892578,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYAxisPos() was called; yPosition of 2D Point was set to 0.32699999999999996 (Point2DObject.ts)"}
+{"level":30,"time":1742789892579,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"a visual representation of points was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742789892579,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setXAxisPos() was called; xPosition of 2D Point was set to 2.45 (Point2DObject.ts)"}
+{"level":30,"time":1742789892580,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYAxisPos() was called; yPosition of 2D Point was set to 0.32699999999999996 (Point2DObject.ts)"}
+{"level":30,"time":1742789892581,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYData() was called; y Data of Point set to 9 (PointObject.ts)"}
+{"level":30,"time":1742789892581,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"a 2D Point has been created (Create2DPoint.tsx)"}
+{"level":30,"time":1742789892581,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"the lines on a TimeSeriesGraph object were created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742789892582,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setSelected() was called on PointObject (PointObject.ts)"}
+{"level":30,"time":1742789892583,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setTimeData() was called; time Data of Point set to 8 (PointObject.ts)"}
+{"level":30,"time":1742789892584,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"getYRange returned 10 (TimeSeriesGraphObject.ts)"}
+{"level":30,"time":1742789892585,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYAxisPos() was called; yPosition of 2D Point was set to 0.48 (Point2DObject.ts)"}
+{"level":30,"time":1742789892585,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"a visual representation of points was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742789892586,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setXAxisPos() was called; xPosition of 2D Point was set to 2.95 (Point2DObject.ts)"}
+{"level":30,"time":1742789892587,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setXAxisPos() was called; xPosition of 2D Point was set to 2.95 (Point2DObject.ts)"}
+{"level":30,"time":1742789892587,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setSelected() was called on PointObject (PointObject.ts)"}
+{"level":30,"time":1742789892590,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setTimeData() was called; time Data of Point set to 9 (PointObject.ts)"}
+{"level":30,"time":1742789892592,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYData() was called; y Data of Point set to 10 (PointObject.ts)"}
+{"level":30,"time":1742789892592,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"a 2D Point has been created (Create2DPoint.tsx)"}
+{"level":30,"time":1742789892592,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYAxisPos() was called; yPosition of 2D Point was set to 0.48 (Point2DObject.ts)"}
+{"level":30,"time":1742789892593,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"an EmbeddedGraph has been created (CreateEmbeddedGraph.tsx)"}
+{"level":30,"time":1742789892593,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"an EmbeddedGraph visualization is being created [not yet functioning] (EmbeddedGraph.tsx)"}
+{"level":30,"time":1742789892594,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setTimeData() was called; time Data of Point set to 0 (PointObject.ts)"}
+{"level":30,"time":1742789892594,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"the lines on a TimeSeriesGraph object were created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742789892594,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setXAxisPos() was called; xPosition of 3D Point was set to 1 (Point3DObject.ts)"}
+{"level":30,"time":1742789892594,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYAxisPos() was called; yPosition of 3D Point was set to 0 (Point3DObject.ts)"}
+{"level":30,"time":1742789892595,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setZAxisPos() was called; zPosition of 3D Point was set to 0 (Point3DObject.ts)"}
+{"level":30,"time":1742789892595,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYData() was called; y Data of Point set to 1 (PointObject.ts)"}
+{"level":30,"time":1742789892595,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setSelected() was called on PointObject (PointObject.ts)"}
+{"level":30,"time":1742789892596,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setTimeData() was called; time Data of Point set to 1 (PointObject.ts)"}
+{"level":30,"time":1742789892596,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYData() was called; y Data of Point set to 2 (PointObject.ts)"}
+{"level":30,"time":1742789892596,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setSelected() was called on PointObject (PointObject.ts)"}
+{"level":30,"time":1742789892596,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setXAxisPos() was called; xPosition of 3D Point was set to 2 (Point3DObject.ts)"}
+{"level":30,"time":1742789892597,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYAxisPos() was called; yPosition of 3D Point was set to 1 (Point3DObject.ts)"}
+{"level":30,"time":1742789892597,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"a 3D Point has been created (Create3DPoint.tsx)"}
+{"level":30,"time":1742789892597,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setZAxisPos() was called; zPosition of 3D Point was set to 0 (Point3DObject.ts)"}
+{"level":30,"time":1742789892598,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"a 3D Point has been created (Create3DPoint.tsx)"}
+{"level":30,"time":1742789892598,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setTimeData() was called; time Data of Point set to 2 (PointObject.ts)"}
+{"level":30,"time":1742789892598,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYData() was called; y Data of Point set to 3 (PointObject.ts)"}
+{"level":30,"time":1742789892599,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYAxisPos() was called; yPosition of 3D Point was set to 2 (Point3DObject.ts)"}
+{"level":30,"time":1742789892599,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setZAxisPos() was called; zPosition of 3D Point was set to 1 (Point3DObject.ts)"}
+{"level":30,"time":1742789892599,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"a 3D Point has been created (Create3DPoint.tsx)"}
+{"level":30,"time":1742789892599,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setSelected() was called on PointObject (PointObject.ts)"}
+{"level":30,"time":1742789892599,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setXAxisPos() was called; xPosition of 3D Point was set to 3 (Point3DObject.ts)"}
+{"level":30,"time":1742789892599,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setTimeData() was called; time Data of Point set to 3 (PointObject.ts)"}
+{"level":30,"time":1742789892600,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYData() was called; y Data of Point set to 4 (PointObject.ts)"}
+{"level":30,"time":1742789892600,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setSelected() was called on PointObject (PointObject.ts)"}
+{"level":30,"time":1742789892600,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setXAxisPos() was called; xPosition of 3D Point was set to 4 (Point3DObject.ts)"}
+{"level":30,"time":1742789892601,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYAxisPos() was called; yPosition of 3D Point was set to 3 (Point3DObject.ts)"}
+{"level":30,"time":1742789892601,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setZAxisPos() was called; zPosition of 3D Point was set to 2 (Point3DObject.ts)"}
+{"level":30,"time":1742789892602,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"a 3D Point has been created (Create3DPoint.tsx)"}
+{"level":30,"time":1742789892602,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setXAxisPos() was called; xPosition of 3D Point was set to 5 (Point3DObject.ts)"}
+{"level":30,"time":1742789892602,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYAxisPos() was called; yPosition of 3D Point was set to 4 (Point3DObject.ts)"}
+{"level":30,"time":1742789892602,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setTimeData() was called; time Data of Point set to 4 (PointObject.ts)"}
+{"level":30,"time":1742789892602,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYData() was called; y Data of Point set to 5 (PointObject.ts)"}
+{"level":30,"time":1742789892603,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setSelected() was called on PointObject (PointObject.ts)"}
+{"level":30,"time":1742789892603,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"a 3D Point has been created (Create3DPoint.tsx)"}
+{"level":30,"time":1742789892603,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setTimeData() was called; time Data of Point set to 5 (PointObject.ts)"}
+{"level":30,"time":1742789892603,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYData() was called; y Data of Point set to 6 (PointObject.ts)"}
+{"level":30,"time":1742789892604,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setSelected() was called on PointObject (PointObject.ts)"}
+{"level":30,"time":1742789892604,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setZAxisPos() was called; zPosition of 3D Point was set to 3 (Point3DObject.ts)"}
+{"level":30,"time":1742789892604,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYAxisPos() was called; yPosition of 3D Point was set to 5 (Point3DObject.ts)"}
+{"level":30,"time":1742789892604,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setZAxisPos() was called; zPosition of 3D Point was set to 4 (Point3DObject.ts)"}
+{"level":30,"time":1742789892604,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"a 3D Point has been created (Create3DPoint.tsx)"}
+{"level":30,"time":1742789892605,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setXAxisPos() was called; xPosition of 3D Point was set to 6 (Point3DObject.ts)"}
+{"level":30,"time":1742789892605,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setSelected() was called on PointObject (PointObject.ts)"}
+{"level":30,"time":1742789892605,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setXAxisPos() was called; xPosition of 3D Point was set to 7 (Point3DObject.ts)"}
+{"level":30,"time":1742789892606,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYAxisPos() was called; yPosition of 3D Point was set to 6 (Point3DObject.ts)"}
+{"level":30,"time":1742789892606,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setTimeData() was called; time Data of Point set to 6 (PointObject.ts)"}
+{"level":30,"time":1742789892606,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYData() was called; y Data of Point set to 7 (PointObject.ts)"}
+{"level":30,"time":1742789892606,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"a 3D Point has been created (Create3DPoint.tsx)"}
+{"level":30,"time":1742789892607,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setTimeData() was called; time Data of Point set to 7 (PointObject.ts)"}
+{"level":30,"time":1742789892607,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYData() was called; y Data of Point set to 8 (PointObject.ts)"}
+{"level":30,"time":1742789892607,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setSelected() was called on PointObject (PointObject.ts)"}
+{"level":30,"time":1742789892607,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setZAxisPos() was called; zPosition of 3D Point was set to 5 (Point3DObject.ts)"}
+{"level":30,"time":1742789892608,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYAxisPos() was called; yPosition of 3D Point was set to 7 (Point3DObject.ts)"}
+{"level":30,"time":1742789892608,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setZAxisPos() was called; zPosition of 3D Point was set to 6 (Point3DObject.ts)"}
+{"level":30,"time":1742789892608,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setXAxisPos() was called; xPosition of 3D Point was set to 8 (Point3DObject.ts)"}
+{"level":30,"time":1742789892609,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setSelected() was called on PointObject (PointObject.ts)"}
+{"level":30,"time":1742789892609,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setXAxisPos() was called; xPosition of 3D Point was set to 9 (Point3DObject.ts)"}
+{"level":30,"time":1742789892609,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"a 3D Point has been created (Create3DPoint.tsx)"}
+{"level":30,"time":1742789892609,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setTimeData() was called; time Data of Point set to 8 (PointObject.ts)"}
+{"level":30,"time":1742789892610,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYData() was called; y Data of Point set to 9 (PointObject.ts)"}
+{"level":30,"time":1742789892610,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setZAxisPos() was called; zPosition of 3D Point was set to 7 (Point3DObject.ts)"}
+{"level":30,"time":1742789892610,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"a 3D Point has been created (Create3DPoint.tsx)"}
+{"level":30,"time":1742789892610,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setTimeData() was called; time Data of Point set to 9 (PointObject.ts)"}
+{"level":30,"time":1742789892610,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYData() was called; y Data of Point set to 10 (PointObject.ts)"}
+{"level":30,"time":1742789892611,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYAxisPos() was called; yPosition of 3D Point was set to 8 (Point3DObject.ts)"}
+{"level":30,"time":1742789892611,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setSelected() was called on PointObject (PointObject.ts)"}
+{"level":30,"time":1742789892611,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setXAxisPos() was called; xPosition of 3D Point was set to 10 (Point3DObject.ts)"}
+{"level":30,"time":1742789892611,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYAxisPos() was called; yPosition of 3D Point was set to 9 (Point3DObject.ts)"}
+{"level":30,"time":1742789892611,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setZAxisPos() was called; zPosition of 3D Point was set to 8 (Point3DObject.ts)"}
+{"level":30,"time":1742789892612,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"a 3D Point has been created (Create3DPoint.tsx)"}
+{"level":30,"time":1742789892612,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"a TimeSeriesGraph object sidebar was created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742789892612,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"a TimeSeriesGraph object header was selected and visually updated to reflect selection (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742789892612,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"a TimeSeriesGraph visualization is being created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742789892613,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"timeSeriesYRange() returned 10 (TimeSeriesGraphObject.ts)"}
+{"level":30,"time":1742789892614,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"timeSeriesXRange() was called and returned 0,1,2,3,4,5,6,7,8,9 (TimeSeriesGraphObject.ts)"}
+{"level":30,"time":1742789892614,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"a visual representation of the Y range was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742789892614,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setXAxisPos() was called; xPosition of 2D Point was set to -1.55 (Point2DObject.ts)"}
+{"level":30,"time":1742789892614,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"getYRange returned 10 (TimeSeriesGraphObject.ts)"}
+{"level":30,"time":1742789892614,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYAxisPos() was called; yPosition of 2D Point was set to -0.897 (Point2DObject.ts)"}
+{"level":30,"time":1742789892615,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"a visual representation of points was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742789892615,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setTimeData() was called; time Data of Point set to 0 (PointObject.ts)"}
+{"level":30,"time":1742789892615,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYData() was called; y Data of Point set to 1 (PointObject.ts)"}
+{"level":30,"time":1742789892615,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setXAxisPos() was called; xPosition of 2D Point was set to -1.55 (Point2DObject.ts)"}
+{"level":30,"time":1742789892616,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYAxisPos() was called; yPosition of 2D Point was set to -0.897 (Point2DObject.ts)"}
+{"level":30,"time":1742789892616,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setSelected() was called on PointObject (PointObject.ts)"}
+{"level":30,"time":1742789892616,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"the lines on a TimeSeriesGraph object were created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742789892616,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"a 2D Point has been created (Create2DPoint.tsx)"}
+{"level":30,"time":1742789892616,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setXAxisPos() was called; xPosition of 2D Point was set to -1.05 (Point2DObject.ts)"}
+{"level":30,"time":1742789892616,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"getYRange returned 10 (TimeSeriesGraphObject.ts)"}
+{"level":30,"time":1742789892617,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYAxisPos() was called; yPosition of 2D Point was set to -0.744 (Point2DObject.ts)"}
+{"level":30,"time":1742789892617,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"a visual representation of points was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742789892617,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setXAxisPos() was called; xPosition of 2D Point was set to -1.05 (Point2DObject.ts)"}
+{"level":30,"time":1742789892617,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYAxisPos() was called; yPosition of 2D Point was set to -0.744 (Point2DObject.ts)"}
+{"level":30,"time":1742789892618,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setSelected() was called on PointObject (PointObject.ts)"}
+{"level":30,"time":1742789892618,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setTimeData() was called; time Data of Point set to 1 (PointObject.ts)"}
+{"level":30,"time":1742789892618,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYData() was called; y Data of Point set to 2 (PointObject.ts)"}
+{"level":30,"time":1742789892619,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"a 2D Point has been created (Create2DPoint.tsx)"}
+{"level":30,"time":1742789892619,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"the lines on a TimeSeriesGraph object were created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742789892619,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setXAxisPos() was called; xPosition of 2D Point was set to -0.55 (Point2DObject.ts)"}
+{"level":30,"time":1742789892620,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"getYRange returned 10 (TimeSeriesGraphObject.ts)"}
+{"level":30,"time":1742789892620,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYAxisPos() was called; yPosition of 2D Point was set to -0.5910000000000001 (Point2DObject.ts)"}
+{"level":30,"time":1742789892620,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"a visual representation of points was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742789892620,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setXAxisPos() was called; xPosition of 2D Point was set to -0.55 (Point2DObject.ts)"}
+{"level":30,"time":1742789892620,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setTimeData() was called; time Data of Point set to 2 (PointObject.ts)"}
+{"level":30,"time":1742789892620,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYAxisPos() was called; yPosition of 2D Point was set to -0.5910000000000001 (Point2DObject.ts)"}
+{"level":30,"time":1742789892621,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setSelected() was called on PointObject (PointObject.ts)"}
+{"level":30,"time":1742789892621,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYData() was called; y Data of Point set to 3 (PointObject.ts)"}
+{"level":30,"time":1742789892621,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"a 2D Point has been created (Create2DPoint.tsx)"}
+{"level":30,"time":1742789892621,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"the lines on a TimeSeriesGraph object were created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742789892621,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setXAxisPos() was called; xPosition of 2D Point was set to -0.050000000000000044 (Point2DObject.ts)"}
+{"level":30,"time":1742789892622,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"getYRange returned 10 (TimeSeriesGraphObject.ts)"}
+{"level":30,"time":1742789892622,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYAxisPos() was called; yPosition of 2D Point was set to -0.43799999999999994 (Point2DObject.ts)"}
+{"level":30,"time":1742789892623,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"a visual representation of points was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742789892623,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setXAxisPos() was called; xPosition of 2D Point was set to -0.050000000000000044 (Point2DObject.ts)"}
+{"level":30,"time":1742789892623,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYAxisPos() was called; yPosition of 2D Point was set to -0.43799999999999994 (Point2DObject.ts)"}
+{"level":30,"time":1742789892623,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setSelected() was called on PointObject (PointObject.ts)"}
+{"level":30,"time":1742789892623,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setTimeData() was called; time Data of Point set to 3 (PointObject.ts)"}
+{"level":30,"time":1742789892624,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYData() was called; y Data of Point set to 4 (PointObject.ts)"}
+{"level":30,"time":1742789892624,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"a 2D Point has been created (Create2DPoint.tsx)"}
+{"level":30,"time":1742789892624,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"the lines on a TimeSeriesGraph object were created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742789892624,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setXAxisPos() was called; xPosition of 2D Point was set to 0.44999999999999996 (Point2DObject.ts)"}
+{"level":30,"time":1742789892625,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"getYRange returned 10 (TimeSeriesGraphObject.ts)"}
+{"level":30,"time":1742789892625,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYAxisPos() was called; yPosition of 2D Point was set to -0.28500000000000003 (Point2DObject.ts)"}
+{"level":30,"time":1742789892625,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"a visual representation of points was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742789892626,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setXAxisPos() was called; xPosition of 2D Point was set to 0.44999999999999996 (Point2DObject.ts)"}
+{"level":30,"time":1742789892626,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYAxisPos() was called; yPosition of 2D Point was set to -0.28500000000000003 (Point2DObject.ts)"}
+{"level":30,"time":1742789892626,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setSelected() was called on PointObject (PointObject.ts)"}
+{"level":30,"time":1742789892626,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setTimeData() was called; time Data of Point set to 4 (PointObject.ts)"}
+{"level":30,"time":1742789892627,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setXAxisPos() was called; xPosition of 2D Point was set to 0.95 (Point2DObject.ts)"}
+{"level":30,"time":1742789892627,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYData() was called; y Data of Point set to 5 (PointObject.ts)"}
+{"level":30,"time":1742789892627,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"a 2D Point has been created (Create2DPoint.tsx)"}
+{"level":30,"time":1742789892627,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"the lines on a TimeSeriesGraph object were created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742789892627,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"a visual representation of points was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742789892628,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setXAxisPos() was called; xPosition of 2D Point was set to 0.95 (Point2DObject.ts)"}
+{"level":30,"time":1742789892628,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYAxisPos() was called; yPosition of 2D Point was set to -0.13200000000000012 (Point2DObject.ts)"}
+{"level":30,"time":1742789892628,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"getYRange returned 10 (TimeSeriesGraphObject.ts)"}
+{"level":30,"time":1742789892628,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYAxisPos() was called; yPosition of 2D Point was set to -0.13200000000000012 (Point2DObject.ts)"}
+{"level":30,"time":1742789892628,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setTimeData() was called; time Data of Point set to 5 (PointObject.ts)"}
+{"level":30,"time":1742789892628,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYData() was called; y Data of Point set to 6 (PointObject.ts)"}
+{"level":30,"time":1742789892629,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"a 2D Point has been created (Create2DPoint.tsx)"}
+{"level":30,"time":1742789892629,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setSelected() was called on PointObject (PointObject.ts)"}
+{"level":30,"time":1742789892629,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"getYRange returned 10 (TimeSeriesGraphObject.ts)"}
+{"level":30,"time":1742789892629,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYAxisPos() was called; yPosition of 2D Point was set to 0.020999999999999908 (Point2DObject.ts)"}
+{"level":30,"time":1742789892630,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"a visual representation of points was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742789892630,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"the lines on a TimeSeriesGraph object were created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742789892630,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setXAxisPos() was called; xPosition of 2D Point was set to 1.45 (Point2DObject.ts)"}
+{"level":30,"time":1742789892630,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYAxisPos() was called; yPosition of 2D Point was set to 0.020999999999999908 (Point2DObject.ts)"}
+{"level":30,"time":1742789892631,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setSelected() was called on PointObject (PointObject.ts)"}
+{"level":30,"time":1742789892631,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setTimeData() was called; time Data of Point set to 6 (PointObject.ts)"}
+{"level":30,"time":1742789892631,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setXAxisPos() was called; xPosition of 2D Point was set to 1.45 (Point2DObject.ts)"}
+{"level":30,"time":1742789892632,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYData() was called; y Data of Point set to 7 (PointObject.ts)"}
+{"level":30,"time":1742789892632,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"a 2D Point has been created (Create2DPoint.tsx)"}
+{"level":30,"time":1742789892632,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"the lines on a TimeSeriesGraph object were created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742789892633,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setXAxisPos() was called; xPosition of 2D Point was set to 1.95 (Point2DObject.ts)"}
+{"level":30,"time":1742789892633,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"getYRange returned 10 (TimeSeriesGraphObject.ts)"}
+{"level":30,"time":1742789892633,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYAxisPos() was called; yPosition of 2D Point was set to 0.17400000000000015 (Point2DObject.ts)"}
+{"level":30,"time":1742789892634,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setXAxisPos() was called; xPosition of 2D Point was set to 1.95 (Point2DObject.ts)"}
+{"level":30,"time":1742789892634,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYAxisPos() was called; yPosition of 2D Point was set to 0.17400000000000015 (Point2DObject.ts)"}
+{"level":30,"time":1742789892634,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setSelected() was called on PointObject (PointObject.ts)"}
+{"level":30,"time":1742789892634,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setTimeData() was called; time Data of Point set to 7 (PointObject.ts)"}
+{"level":30,"time":1742789892634,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"a visual representation of points was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742789892635,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"a 2D Point has been created (Create2DPoint.tsx)"}
+{"level":30,"time":1742789892635,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"the lines on a TimeSeriesGraph object were created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742789892635,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYData() was called; y Data of Point set to 8 (PointObject.ts)"}
+{"level":30,"time":1742789892635,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"a visual representation of points was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742789892636,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setXAxisPos() was called; xPosition of 2D Point was set to 2.45 (Point2DObject.ts)"}
+{"level":30,"time":1742789892636,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"getYRange returned 10 (TimeSeriesGraphObject.ts)"}
+{"level":30,"time":1742789892636,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYAxisPos() was called; yPosition of 2D Point was set to 0.32699999999999996 (Point2DObject.ts)"}
+{"level":30,"time":1742789892637,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setSelected() was called on PointObject (PointObject.ts)"}
+{"level":30,"time":1742789892637,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setTimeData() was called; time Data of Point set to 8 (PointObject.ts)"}
+{"level":30,"time":1742789892637,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYData() was called; y Data of Point set to 9 (PointObject.ts)"}
+{"level":30,"time":1742789892637,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setXAxisPos() was called; xPosition of 2D Point was set to 2.45 (Point2DObject.ts)"}
+{"level":30,"time":1742789892637,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYAxisPos() was called; yPosition of 2D Point was set to 0.32699999999999996 (Point2DObject.ts)"}
+{"level":30,"time":1742789892637,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"the lines on a TimeSeriesGraph object were created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742789892638,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"a 2D Point has been created (Create2DPoint.tsx)"}
+{"level":30,"time":1742789892638,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setXAxisPos() was called; xPosition of 2D Point was set to 2.95 (Point2DObject.ts)"}
+{"level":30,"time":1742789892639,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"getYRange returned 10 (TimeSeriesGraphObject.ts)"}
+{"level":30,"time":1742789892639,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYAxisPos() was called; yPosition of 2D Point was set to 0.48 (Point2DObject.ts)"}
+{"level":30,"time":1742789892639,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"a visual representation of points was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742789892640,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setXAxisPos() was called; xPosition of 2D Point was set to 2.95 (Point2DObject.ts)"}
+{"level":30,"time":1742789892640,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYAxisPos() was called; yPosition of 2D Point was set to 0.48 (Point2DObject.ts)"}
+{"level":30,"time":1742789892640,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setTimeData() was called; time Data of Point set to 9 (PointObject.ts)"}
+{"level":30,"time":1742789892640,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYData() was called; y Data of Point set to 10 (PointObject.ts)"}
+{"level":30,"time":1742789892640,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setSelected() was called on PointObject (PointObject.ts)"}
+{"level":30,"time":1742789892641,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"a 2D Point has been created (Create2DPoint.tsx)"}
+{"level":30,"time":1742789892641,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"the lines on a TimeSeriesGraph object were created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742789894085,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"DropDownBody [active] button pressed"}
+{"level":30,"time":1742789894085,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"DropDownBody [active] button pressed"}
+{"level":30,"time":1742789897495,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setSelected() was called on PointObject (PointObject.ts)"}
+{"level":30,"time":1742789897495,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setOnClick(), 2D Point has been clicked (Point2D.tsx)"}
+{"level":30,"time":1742789897512,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"a TimeSeriesGraph object sidebar was created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742789897515,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"a TimeSeriesGraph object header was selected and visually updated to reflect selection (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742789897516,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setXAxisPos() was called; xPosition of 2D Point was set to -1.55 (Point2DObject.ts)"}
+{"level":30,"time":1742789897517,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"a visual representation of the Y range was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742789897517,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"a TimeSeriesGraph visualization is being created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742789897517,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"timeSeriesYRange() returned 10 (TimeSeriesGraphObject.ts)"}
+{"level":30,"time":1742789897517,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"timeSeriesXRange() was called and returned 0,1,2,3,4,5,6,7,8,9 (TimeSeriesGraphObject.ts)"}
+{"level":30,"time":1742789897518,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"getYRange returned 10 (TimeSeriesGraphObject.ts)"}
+{"level":30,"time":1742789897518,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYAxisPos() was called; yPosition of 2D Point was set to -0.897 (Point2DObject.ts)"}
+{"level":30,"time":1742789897519,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"a visual representation of points was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742789897519,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setXAxisPos() was called; xPosition of 2D Point was set to -1.55 (Point2DObject.ts)"}
+{"level":30,"time":1742789897519,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYAxisPos() was called; yPosition of 2D Point was set to -0.897 (Point2DObject.ts)"}
+{"level":30,"time":1742789897519,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setSelected() was called on PointObject (PointObject.ts)"}
+{"level":30,"time":1742789897520,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setTimeData() was called; time Data of Point set to 0 (PointObject.ts)"}
+{"level":30,"time":1742789897521,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYData() was called; y Data of Point set to 1 (PointObject.ts)"}
+{"level":30,"time":1742789897521,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"a 2D Point has been created (Create2DPoint.tsx)"}
+{"level":30,"time":1742789897521,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"the lines on a TimeSeriesGraph object were created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742789897521,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setXAxisPos() was called; xPosition of 2D Point was set to -1.05 (Point2DObject.ts)"}
+{"level":30,"time":1742789897522,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"getYRange returned 10 (TimeSeriesGraphObject.ts)"}
+{"level":30,"time":1742789897522,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYAxisPos() was called; yPosition of 2D Point was set to -0.744 (Point2DObject.ts)"}
+{"level":30,"time":1742789897522,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"a visual representation of points was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742789897524,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setXAxisPos() was called; xPosition of 2D Point was set to -1.05 (Point2DObject.ts)"}
+{"level":30,"time":1742789897524,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYAxisPos() was called; yPosition of 2D Point was set to -0.744 (Point2DObject.ts)"}
+{"level":30,"time":1742789897525,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setSelected() was called on PointObject (PointObject.ts)"}
+{"level":30,"time":1742789897525,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setTimeData() was called; time Data of Point set to 1 (PointObject.ts)"}
+{"level":30,"time":1742789897525,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYData() was called; y Data of Point set to 2 (PointObject.ts)"}
+{"level":30,"time":1742789897526,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"a 2D Point has been created (Create2DPoint.tsx)"}
+{"level":30,"time":1742789897527,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"the lines on a TimeSeriesGraph object were created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742789897528,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setXAxisPos() was called; xPosition of 2D Point was set to -0.55 (Point2DObject.ts)"}
+{"level":30,"time":1742789897528,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"getYRange returned 10 (TimeSeriesGraphObject.ts)"}
+{"level":30,"time":1742789897528,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYAxisPos() was called; yPosition of 2D Point was set to -0.5910000000000001 (Point2DObject.ts)"}
+{"level":30,"time":1742789897529,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"a visual representation of points was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742789897529,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setXAxisPos() was called; xPosition of 2D Point was set to -0.55 (Point2DObject.ts)"}
+{"level":30,"time":1742789897530,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYAxisPos() was called; yPosition of 2D Point was set to -0.5910000000000001 (Point2DObject.ts)"}
+{"level":30,"time":1742789897530,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setSelected() was called on PointObject (PointObject.ts)"}
+{"level":30,"time":1742789897531,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setTimeData() was called; time Data of Point set to 2 (PointObject.ts)"}
+{"level":30,"time":1742789897531,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYData() was called; y Data of Point set to 3 (PointObject.ts)"}
+{"level":30,"time":1742789897531,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"a 2D Point has been created (Create2DPoint.tsx)"}
+{"level":30,"time":1742789897532,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"the lines on a TimeSeriesGraph object were created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742789897533,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setXAxisPos() was called; xPosition of 2D Point was set to -0.050000000000000044 (Point2DObject.ts)"}
+{"level":30,"time":1742789897534,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"getYRange returned 10 (TimeSeriesGraphObject.ts)"}
+{"level":30,"time":1742789897535,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYAxisPos() was called; yPosition of 2D Point was set to -0.43799999999999994 (Point2DObject.ts)"}
+{"level":30,"time":1742789897535,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"a visual representation of points was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742789897535,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setXAxisPos() was called; xPosition of 2D Point was set to -0.050000000000000044 (Point2DObject.ts)"}
+{"level":30,"time":1742789897535,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYAxisPos() was called; yPosition of 2D Point was set to -0.43799999999999994 (Point2DObject.ts)"}
+{"level":30,"time":1742789897536,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setTimeData() was called; time Data of Point set to 3 (PointObject.ts)"}
+{"level":30,"time":1742789897536,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setSelected() was called on PointObject (PointObject.ts)"}
+{"level":30,"time":1742789897536,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYData() was called; y Data of Point set to 4 (PointObject.ts)"}
+{"level":30,"time":1742789897537,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"a 2D Point has been created (Create2DPoint.tsx)"}
+{"level":30,"time":1742789897537,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"the lines on a TimeSeriesGraph object were created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742789897537,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setXAxisPos() was called; xPosition of 2D Point was set to 0.44999999999999996 (Point2DObject.ts)"}
+{"level":30,"time":1742789897538,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"getYRange returned 10 (TimeSeriesGraphObject.ts)"}
+{"level":30,"time":1742789897538,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYAxisPos() was called; yPosition of 2D Point was set to -0.28500000000000003 (Point2DObject.ts)"}
+{"level":30,"time":1742789897538,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"a visual representation of points was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742789897538,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setXAxisPos() was called; xPosition of 2D Point was set to 0.44999999999999996 (Point2DObject.ts)"}
+{"level":30,"time":1742789897539,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYAxisPos() was called; yPosition of 2D Point was set to -0.28500000000000003 (Point2DObject.ts)"}
+{"level":30,"time":1742789897539,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"a 2D Point has been created (Create2DPoint.tsx)"}
+{"level":30,"time":1742789897539,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"the lines on a TimeSeriesGraph object were created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742789897539,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setSelected() was called on PointObject (PointObject.ts)"}
+{"level":30,"time":1742789897539,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setTimeData() was called; time Data of Point set to 4 (PointObject.ts)"}
+{"level":30,"time":1742789897540,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYData() was called; y Data of Point set to 5 (PointObject.ts)"}
+{"level":30,"time":1742789897540,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"getYRange returned 10 (TimeSeriesGraphObject.ts)"}
+{"level":30,"time":1742789897540,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYAxisPos() was called; yPosition of 2D Point was set to -0.13200000000000012 (Point2DObject.ts)"}
+{"level":30,"time":1742789897541,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"a visual representation of points was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742789897541,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setXAxisPos() was called; xPosition of 2D Point was set to 0.95 (Point2DObject.ts)"}
+{"level":30,"time":1742789897541,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setSelected() was called on PointObject (PointObject.ts)"}
+{"level":30,"time":1742789897541,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setTimeData() was called; time Data of Point set to 5 (PointObject.ts)"}
+{"level":30,"time":1742789897542,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYData() was called; y Data of Point set to 6 (PointObject.ts)"}
+{"level":30,"time":1742789897542,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setXAxisPos() was called; xPosition of 2D Point was set to 0.95 (Point2DObject.ts)"}
+{"level":30,"time":1742789897542,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYAxisPos() was called; yPosition of 2D Point was set to -0.13200000000000012 (Point2DObject.ts)"}
+{"level":30,"time":1742789897542,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"a 2D Point has been created (Create2DPoint.tsx)"}
+{"level":30,"time":1742789897543,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"the lines on a TimeSeriesGraph object were created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742789897543,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setXAxisPos() was called; xPosition of 2D Point was set to 1.45 (Point2DObject.ts)"}
+{"level":30,"time":1742789897543,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"getYRange returned 10 (TimeSeriesGraphObject.ts)"}
+{"level":30,"time":1742789897544,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYAxisPos() was called; yPosition of 2D Point was set to 0.020999999999999908 (Point2DObject.ts)"}
+{"level":30,"time":1742789897544,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"a visual representation of points was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742789897544,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setXAxisPos() was called; xPosition of 2D Point was set to 1.45 (Point2DObject.ts)"}
+{"level":30,"time":1742789897544,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYAxisPos() was called; yPosition of 2D Point was set to 0.020999999999999908 (Point2DObject.ts)"}
+{"level":30,"time":1742789897545,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYData() was called; y Data of Point set to 7 (PointObject.ts)"}
+{"level":30,"time":1742789897546,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"a 2D Point has been created (Create2DPoint.tsx)"}
+{"level":30,"time":1742789897547,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setSelected() was called on PointObject (PointObject.ts)"}
+{"level":30,"time":1742789897547,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setTimeData() was called; time Data of Point set to 6 (PointObject.ts)"}
+{"level":30,"time":1742789897548,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"getYRange returned 10 (TimeSeriesGraphObject.ts)"}
+{"level":30,"time":1742789897549,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYAxisPos() was called; yPosition of 2D Point was set to 0.17400000000000015 (Point2DObject.ts)"}
+{"level":30,"time":1742789897549,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"the lines on a TimeSeriesGraph object were created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742789897549,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setXAxisPos() was called; xPosition of 2D Point was set to 1.95 (Point2DObject.ts)"}
+{"level":30,"time":1742789897549,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"a visual representation of points was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742789897550,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setXAxisPos() was called; xPosition of 2D Point was set to 1.95 (Point2DObject.ts)"}
+{"level":30,"time":1742789897550,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYAxisPos() was called; yPosition of 2D Point was set to 0.17400000000000015 (Point2DObject.ts)"}
+{"level":30,"time":1742789897551,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setSelected() was called on PointObject (PointObject.ts)"}
+{"level":30,"time":1742789897551,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setTimeData() was called; time Data of Point set to 7 (PointObject.ts)"}
+{"level":30,"time":1742789897552,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYData() was called; y Data of Point set to 8 (PointObject.ts)"}
+{"level":30,"time":1742789897552,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"a 2D Point has been created (Create2DPoint.tsx)"}
+{"level":30,"time":1742789897552,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"the lines on a TimeSeriesGraph object were created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742789897552,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYAxisPos() was called; yPosition of 2D Point was set to 0.32699999999999996 (Point2DObject.ts)"}
+{"level":30,"time":1742789897553,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setXAxisPos() was called; xPosition of 2D Point was set to 2.45 (Point2DObject.ts)"}
+{"level":30,"time":1742789897553,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"getYRange returned 10 (TimeSeriesGraphObject.ts)"}
+{"level":30,"time":1742789897553,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setSelected() was called on PointObject (PointObject.ts)"}
+{"level":30,"time":1742789897553,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"a visual representation of points was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742789897553,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setXAxisPos() was called; xPosition of 2D Point was set to 2.45 (Point2DObject.ts)"}
+{"level":30,"time":1742789897553,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYAxisPos() was called; yPosition of 2D Point was set to 0.32699999999999996 (Point2DObject.ts)"}
+{"level":30,"time":1742789897554,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setTimeData() was called; time Data of Point set to 8 (PointObject.ts)"}
+{"level":30,"time":1742789897554,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYData() was called; y Data of Point set to 9 (PointObject.ts)"}
+{"level":30,"time":1742789897554,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"a 2D Point has been created (Create2DPoint.tsx)"}
+{"level":30,"time":1742789897554,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"the lines on a TimeSeriesGraph object were created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742789897554,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setXAxisPos() was called; xPosition of 2D Point was set to 2.95 (Point2DObject.ts)"}
+{"level":30,"time":1742789897554,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"getYRange returned 10 (TimeSeriesGraphObject.ts)"}
+{"level":30,"time":1742789897555,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYAxisPos() was called; yPosition of 2D Point was set to 0.48 (Point2DObject.ts)"}
+{"level":30,"time":1742789897556,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"a visual representation of points was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742789897556,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setXAxisPos() was called; xPosition of 2D Point was set to 2.95 (Point2DObject.ts)"}
+{"level":30,"time":1742789897557,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYAxisPos() was called; yPosition of 2D Point was set to 0.48 (Point2DObject.ts)"}
+{"level":30,"time":1742789897557,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setSelected() was called on PointObject (PointObject.ts)"}
+{"level":30,"time":1742789897557,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setTimeData() was called; time Data of Point set to 9 (PointObject.ts)"}
+{"level":30,"time":1742789897558,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"setYData() was called; y Data of Point set to 10 (PointObject.ts)"}
+{"level":30,"time":1742789897558,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"a 2D Point has been created (Create2DPoint.tsx)"}
+{"level":30,"time":1742789897558,"pid":76806,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"the lines on a TimeSeriesGraph object were created (TimeSeriesGraph.tsx)"}

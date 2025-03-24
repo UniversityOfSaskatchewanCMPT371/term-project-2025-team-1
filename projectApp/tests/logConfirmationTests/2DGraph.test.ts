@@ -60,15 +60,6 @@ describe("2D graph log tests", () => {
     expect(response).toBe(true);
   });
 
-  // Check if the getYHeader() log calls are being reached
-  test("file contains getYHeader() logging", async () => {
-    const response = await fileContainsText(
-      filePath,
-      "getYHeader returned Some (TimeSeriesGraphClass.tsx)",
-    );
-    expect(response).toBe(true);
-  });
-
   // Check if the logger is notifying the user when a TimeSeriesGraph header is selected
   test("file contains TimeSeriesGraph header selection logging", async () => {
     const response = await fileContainsText(
@@ -118,5 +109,19 @@ describe("2D graph log tests", () => {
       "the lines on a TimeSeriesGraph object were created",
     );
     expect(response).toBe(true);
+  });
+
+  // Check that when a point on TimeSeriesGraph is pressed on, it gets selected
+  test("file contains setOnClick (Point2D) and setSelected (PointObject)", async () => {
+    const setSelected = await fileContainsText(
+      filePath,
+      "setSelected() was called on PointObject (PointObject.ts)"
+    );
+    expect(setSelected).toBe(true);
+    const setOnClick = await fileContainsText(
+      filePath,
+      "setOnClick(), 2D Point has been clicked (Point2D.tsx)"
+    );
+    expect(setOnClick).toBe(true);
   });
 });

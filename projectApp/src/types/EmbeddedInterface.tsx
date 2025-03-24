@@ -1,4 +1,5 @@
 import { GraphInterface } from "./GraphInterface";
+import { Point3DInterface } from "./GraphPointsInterfaces";
 
 export interface EmbeddedInterface extends GraphInterface {
   // Dimension properties
@@ -7,7 +8,8 @@ export interface EmbeddedInterface extends GraphInterface {
     height: number;
     depth?: number; //for 3D graphs? Yes for 3D Graph
   };
-  tao: number;
+  tau: number;
+  points3D: Point3DInterface[];
 
   /**
    * Adds embedded point vectors to the graph.
@@ -19,7 +21,7 @@ export interface EmbeddedInterface extends GraphInterface {
   /**
    * Calculated the embedded time vector dimensions for the given time.
    * Uses the data set selected in the csvDataObject of the graph
-   * Vector return is of the form [y[time], y[time - tao], y[time - 2*tao]] where y is the data set column selected
+   * Vector return is of the form [y[time], y[time - tau], y[time - 2*tau]] where y is the data set column selected
    * pre-conditions: time >= 0, csvDataObject must contain valid data set and a valid data set much be selected
    * post-conditions: none
    * @param time - the index/time of the data set calculating the vector for
@@ -62,16 +64,16 @@ export interface EmbeddedInterface extends GraphInterface {
   setDimensions(width: number, height: number, depth?: number): void;
 
   /**
-   * Gets the value of tao
+   * Gets the value of tau
    * pre-conditions: none
-   * post-conditions: returns the current value of tao
+   * post-conditions: returns the current value of tau
    */
-  getTao(): number;
+  getTau(): number;
 
   /**
-   * Sets the value of tao
-   * @param newTao - a number greater than or eqaul to 1
-   * post-conditions: the value of tao is updated to newTao
+   * Sets the value of tau
+   * @param newTau - a number greater than or eqaul to 1
+   * post-conditions: the value of tau is updated to newTau
    */
-  setTao(newTao: number): void;
+  setTau(newTau: number): void;
 }

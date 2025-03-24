@@ -1,6 +1,7 @@
 import { useState } from "react";
-import { PointObject } from "../../components/Graph_Components/PointObject";
-
+import { Point2DObject } from "../../components/Graph_Components/Points/Point2DObject";
+import { useFrame } from "@react-three/fiber";
+import { sendLog } from "../../logger-frontend";
 /**
  * Renders a 2D point on a Time Series Graph.
  * The point can be interacted with through hover and click events.
@@ -9,35 +10,49 @@ import { PointObject } from "../../components/Graph_Components/PointObject";
  * @precondition pointRef must be a valid PointClass instance with position and selected state
  * @postcondition Renders an interactive 2D point with hover and click functionality
  */
-export default function Point2D({pointRef} : {pointRef: PointObject}){
-    const [ hovered, hover ] = useState(false);
-    const [ clicked, click ] = useState(false);
+export default function Point2D({ pointRef }: { pointRef: Point2DObject }) {
+  const [hovered, hover] = useState(false);
+  const [clicked, click] = useState(false);
 
-    /**
-     * Toggles the point's selected state and updates local click state
-     * @precondition None
-     * @postcondition Updates both local clicked state and pointRef's selected state
-     */
-    function setOnClick(): void{
-        click(!(clicked));
-        pointRef.setSelected(!(pointRef.getSelected()))
+  //If the selection of this point doesn't match the selection status of the PointObject
+  useFrame(() => {
+    if (clicked !== pointRef.getObject().getSelected()) {
+      click(pointRef.getObject().getSelected());
     }
+  });
 
-    return (
-        <mesh
-            position={pointRef.getPosition()}
-            onClick={() => {setOnClick()}}
-            onPointerOver={()=>{hover(true)}}
-            onPointerOut={()=>{hover(false)}}>
-                
-                <circleGeometry 
-                    attach = "geometry"
-                    args={[0.06, 32]}/>
-                    
+  /**
+   * Toggles the point's selected state and updates local click state
+   * @precondition None
+   * @postcondition Updates both local clicked state and pointRef's selected state
+   */
+  function setOnClick(): void {
+    const selectedState = !pointRef.getObject().getSelected();
+    click(selectedState);
+    pointRef.getObject().setSelected(selectedState);
 
-                <meshStandardMaterial
-                    color={clicked? "blue": "skyblue"}
-                    opacity={ hovered? 1.00 : 0.50}/>
-        </mesh>
-    )
+    sendLog("info", `setOnClick(), 2D Point has been clicked (Point2D.tsx)`);
+  }
+
+  return (
+    <mesh
+      position={[pointRef.getXPosition(), pointRef.getYPosition(), 0.05]}
+      onClick={() => {
+        setOnClick();
+      }}
+      onPointerOver={() => {
+        hover(true);
+      }}
+      onPointerOut={() => {
+        hover(false);
+      }}
+    >
+      <circleGeometry attach="geometry" args={[0.08, 32]} />
+
+      <meshStandardMaterial
+        color={clicked ? "blue" : "skyblue"}
+        opacity={hovered ? 1.0 : 0.4}
+      />
+    </mesh>
+  );
 }

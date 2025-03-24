@@ -1,58 +1,58 @@
-import './styles/App.css'
-import { Canvas } from '@react-three/fiber';
-import InitScene from './pages/Scene/InitScene';
-import { Sky } from '@react-three/drei';
-import { createXRStore, useXR, XR } from '@react-three/xr';
-import BrowserUI from './pages/UI/BrowserUI';
-import { useState } from 'react';
+import "./styles/App.css";
+import { Canvas } from "@react-three/fiber";
+import InitScene from "./pages/Scene/InitScene";
+import { Sky } from "@react-three/drei";
+import { createXRStore, useXR, XR } from "@react-three/xr";
+import BrowserUI from "./pages/UI/BrowserUI";
+import { useState } from "react";
 
 //Initializes and configures various parts integral to a VR experienceq
-const store = createXRStore()
+const store = createXRStore();
 
 //The main function for the program
 function App() {
   const [inVR, setInVR] = useState(false);
 
-  function XRScene({setInVR}: {setInVR: (value:boolean) => void}){
+  function XRScene({ setInVR }: { setInVR: (value: boolean) => void }) {
     const { session } = useXR();
-    if(session){
+    if (session) {
       setInVR(true);
-    }
-    else{
+    } else {
       setInVR(false);
     }
     return null;
   }
   return (
     <>
-      <div>
-        CMPT 371: Team #1
-      </div>
-      {/* This button will allow the user to enter the VR Space */}
-      <button onClick={() => store.enterAR()}>Enter AR</button>
-      <div className="canvas-container">
-      <div>
-        <BrowserUI/>
-      </div>
+      <div
+        style={{
+          position: "absolute",
+          top: 0,
+          left: 0,
+          width: "100vw",
+          height: "100vh",
+        }}
+      >
+        {/* This button will allow the user to enter the VR Space */}
+        <button onClick={() => store.enterVR()}>Enter VR</button>
         {/* Everything encapsulated by Canvas and XR will contain the Scene to be displayed in VR */}
         <Canvas>
-          <color attach="background" args={["black"]}></color>
+          <color attach="background" args={["black"]} />
           <XR store={store}>
-            <XRScene setInVR={setInVR}></XRScene>
-          <Sky sunPosition={[0.5,0,0.5]}/>
-            <ambientLight/>
+            <XRScene setInVR={setInVR} />
+            <Sky sunPosition={[0.5, 0, 0.5]} />
+            <ambientLight />
             {/* InitScene starts up the scene displayed */}
-            <InitScene inVR={inVR}/> 
+            <InitScene inVR={inVR} />
           </XR>
         </Canvas>
       </div>
+
       <div>
-        {/* This button will allow the user to enter the VR Space (possibly not needed commented out for now) */}
-        {/* <button onClick={() => {void (async () => store.enterAR())}}>Enter AR</button> */}
-        <BrowserUI/>
+        <BrowserUI />
       </div>
     </>
-  )
+  );
 }
 
-export default App
+export default App;

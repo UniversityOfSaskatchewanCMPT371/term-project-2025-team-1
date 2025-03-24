@@ -1,0 +1,992 @@
+{"level":50,"time":1742795252101,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","name":"Error","errmessage":"Failed to fetch csv format. https://localhost:5173/, {}","stack":"Error: Failed to fetch csv format. https://localhost:5173/, {}\n    at https://localhost:5173/src/components/Csv_Components/CSVReaders.tsx:118:28\n    at async CSVDataObject.loadCSVData (https://localhost:5173/src/components/Csv_Components/CSVDataObject.tsx:96:28)\n    at async CSVReaderModel.readURLFile (https://localhost:5173/src/models/CSVReaderModel.tsx:64:7)\n    at async CSVController.loadURLFile (https://localhost:5173/src/controller/CSVController.tsx:64:7)\n    at async onClick (https://localhost:5173/src/pages/UI/BrowserUI.tsx:52:13)","msg":"Final URL destination is not csv readable"}
+{"level":50,"time":1742795252103,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","name":"Error","errmessage":"Failed to fetch csv format. https://localhost:5173/, {}","stack":"Error: Failed to fetch csv format. https://localhost:5173/, {}\n    at https://localhost:5173/src/components/Csv_Components/CSVReaders.tsx:118:28\n    at async CSVDataObject.loadCSVData (https://localhost:5173/src/components/Csv_Components/CSVDataObject.tsx:96:28)\n    at async CSVReaderModel.readURLFile (https://localhost:5173/src/models/CSVReaderModel.tsx:64:7)\n    at async CSVController.loadURLFile (https://localhost:5173/src/controller/CSVController.tsx:64:7)\n    at async onClick (https://localhost:5173/src/pages/UI/BrowserUI.tsx:52:13)","msg":"URLCSVReader error"}
+{"level":50,"time":1742795252104,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","name":"Error","errmessage":"Failed to fetch csv format. https://localhost:5173/, {}","stack":"Error: Failed to fetch csv format. https://localhost:5173/, {}\n    at https://localhost:5173/src/components/Csv_Components/CSVReaders.tsx:118:28\n    at async CSVDataObject.loadCSVData (https://localhost:5173/src/components/Csv_Components/CSVDataObject.tsx:96:28)\n    at async CSVReaderModel.readURLFile (https://localhost:5173/src/models/CSVReaderModel.tsx:64:7)\n    at async CSVController.loadURLFile (https://localhost:5173/src/controller/CSVController.tsx:64:7)\n    at async onClick (https://localhost:5173/src/pages/UI/BrowserUI.tsx:52:13)","msg":"loadCSVData error"}
+{"level":50,"time":1742795252105,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","name":"Error","errmessage":"Failed to fetch csv format. https://localhost:5173/, {}","stack":"Error: Failed to fetch csv format. https://localhost:5173/, {}\n    at https://localhost:5173/src/components/Csv_Components/CSVReaders.tsx:118:28\n    at async CSVDataObject.loadCSVData (https://localhost:5173/src/components/Csv_Components/CSVDataObject.tsx:96:28)\n    at async CSVReaderModel.readURLFile (https://localhost:5173/src/models/CSVReaderModel.tsx:64:7)\n    at async CSVController.loadURLFile (https://localhost:5173/src/controller/CSVController.tsx:64:7)\n    at async onClick (https://localhost:5173/src/pages/UI/BrowserUI.tsx:52:13)","msg":"readURLFile error"}
+{"level":50,"time":1742795252105,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","name":"Error","errmessage":"Failed to fetch csv format. https://localhost:5173/, {}","stack":"Error: Failed to fetch csv format. https://localhost:5173/, {}\n    at https://localhost:5173/src/components/Csv_Components/CSVReaders.tsx:118:28\n    at async CSVDataObject.loadCSVData (https://localhost:5173/src/components/Csv_Components/CSVDataObject.tsx:96:28)\n    at async CSVReaderModel.readURLFile (https://localhost:5173/src/models/CSVReaderModel.tsx:64:7)\n    at async CSVController.loadURLFile (https://localhost:5173/src/controller/CSVController.tsx:64:7)\n    at async onClick (https://localhost:5173/src/pages/UI/BrowserUI.tsx:52:13)","msg":"loadURLFile Error"}
+{"level":30,"time":1742795253307,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"URLComponent read: "}
+{"level":30,"time":1742795256004,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"URLCSVReader has successfully parsed\n[{\"Time\":0,\"X\":1,\"B\":2},{\"Time\":1,\"X\":2,\"B\":4},{\"Time\":2,\"X\":3,\"B\":6},{\"Time\":3,\"X\":4,\"B\":8},{\"Time\":4,\"X\":5,\"B\":10},{\"Time\":5,\"X\":6,\"B\":12},{\"Time\":6,\"X\":7,\"B\":14},{\"Time\":7,\"X\":8,\"B\":16},{\"Time\":8,\"X\":9,\"B\":18},{\"Time\":9,\"X\":10,\"B\":20}]"}
+{"level":30,"time":1742795256006,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setData() was called, data has been set (CSVDataObject.ts)"}
+{"level":30,"time":1742795256023,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setName,  will now be called Graph0"}
+{"level":30,"time":1742795256025,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"findTimeHeader() was called, the time header in the data set has been found (CSVDataObject.ts)"}
+{"level":30,"time":1742795256026,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setTimeHeader() was called, finding the time header in the data set (CSVDataObject.ts)"}
+{"level":30,"time":1742795256028,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"findFirstHeader() was called, the first header was found X (CSVDataObject.ts)"}
+{"level":30,"time":1742795256030,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYHeader, Graph0 yHeader is set to X"}
+{"level":30,"time":1742795256032,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"readURLFile read a file\n[{\"Time\":0,\"X\":1,\"B\":2},{\"Time\":1,\"X\":2,\"B\":4},{\"Time\":2,\"X\":3,\"B\":6},{\"Time\":3,\"X\":4,\"B\":8},{\"Time\":4,\"X\":5,\"B\":10},{\"Time\":5,\"X\":6,\"B\":12},{\"Time\":6,\"X\":7,\"B\":14},{\"Time\":7,\"X\":8,\"B\":16},{\"Time\":8,\"X\":9,\"B\":18},{\"Time\":9,\"X\":10,\"B\":20}]"}
+{"level":30,"time":1742795256034,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"loadCSVData has loaded csv data\n[{\"Time\":0,\"X\":1,\"B\":2},{\"Time\":1,\"X\":2,\"B\":4},{\"Time\":2,\"X\":3,\"B\":6},{\"Time\":3,\"X\":4,\"B\":8},{\"Time\":4,\"X\":5,\"B\":10},{\"Time\":5,\"X\":6,\"B\":12},{\"Time\":6,\"X\":7,\"B\":14},{\"Time\":7,\"X\":8,\"B\":16},{\"Time\":8,\"X\":9,\"B\":18},{\"Time\":9,\"X\":10,\"B\":20}]"}
+{"level":30,"time":1742795257207,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"URLComponent read: https://raw.githubusercontent.com/UniversityOfSaskatchewanCMPT371/term-project-2025-team-1/refs/heads/main/csvTestFiles/indexedData.csv"}
+{"level":30,"time":1742795257214,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"loadedCsvBrowser() returns list\n[[\"Graph0\",false]]"}
+{"level":30,"time":1742795257215,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"UnmountedComponents unmount: 2"}
+{"level":30,"time":1742795257217,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"loadedCsvBrowser() returns list\n[[\"Graph0\",false]]"}
+{"level":30,"time":1742795257218,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"UnmountedComponents unmount: 2"}
+{"level":30,"time":1742795258185,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"DropDownBody [active] button pressed"}
+{"level":30,"time":1742795259237,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setVRSelected, Graph0 vr is set to true"}
+{"level":30,"time":1742795259239,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setTimeData() was called; time Data of Point set to 0 (PointObject.ts)"}
+{"level":30,"time":1742795259240,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYData() was called; y Data of Point set to 1 (PointObject.ts)"}
+{"level":30,"time":1742795259241,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setTimeData() was called; time Data of Point set to 1 (PointObject.ts)"}
+{"level":30,"time":1742795259242,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYData() was called; y Data of Point set to 2 (PointObject.ts)"}
+{"level":30,"time":1742795259242,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setTimeData() was called; time Data of Point set to 2 (PointObject.ts)"}
+{"level":30,"time":1742795259242,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setTimeData() was called; time Data of Point set to 3 (PointObject.ts)"}
+{"level":30,"time":1742795259243,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYData() was called; y Data of Point set to 4 (PointObject.ts)"}
+{"level":30,"time":1742795259243,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setTimeData() was called; time Data of Point set to 4 (PointObject.ts)"}
+{"level":30,"time":1742795259243,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYData() was called; y Data of Point set to 5 (PointObject.ts)"}
+{"level":30,"time":1742795259244,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYData() was called; y Data of Point set to 3 (PointObject.ts)"}
+{"level":30,"time":1742795259244,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYData() was called; y Data of Point set to 6 (PointObject.ts)"}
+{"level":30,"time":1742795259245,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setTimeData() was called; time Data of Point set to 6 (PointObject.ts)"}
+{"level":30,"time":1742795259245,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYData() was called; y Data of Point set to 7 (PointObject.ts)"}
+{"level":30,"time":1742795259245,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setTimeData() was called; time Data of Point set to 5 (PointObject.ts)"}
+{"level":30,"time":1742795259246,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setTimeData() was called; time Data of Point set to 8 (PointObject.ts)"}
+{"level":30,"time":1742795259246,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYData() was called; y Data of Point set to 9 (PointObject.ts)"}
+{"level":30,"time":1742795259246,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setRange() was called; yRange was set to 10 (TimeSeriesGraphObject.ts)"}
+{"level":30,"time":1742795259246,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setTimeData() was called; time Data of Point set to 7 (PointObject.ts)"}
+{"level":30,"time":1742795259247,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYData() was called; y Data of Point set to 8 (PointObject.ts)"}
+{"level":30,"time":1742795259247,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setTimeData() was called; time Data of Point set to 9 (PointObject.ts)"}
+{"level":30,"time":1742795259247,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYRangeLength() was called on TimeSeriesGraphObject (TimeSeriesGraphObject.ts)"}
+{"level":30,"time":1742795259247,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"generateTimeSeriesGraph() was called; successfully generated Time Series Graph (GraphController.ts)"}
+{"level":30,"time":1742795259248,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setRange() was called; yRange was set to 10 (EmbeddedGraphObject.ts)"}
+{"level":30,"time":1742795259248,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"timeSeriesYRange() returned 10 (TimeSeriesGraphObject.ts)"}
+{"level":30,"time":1742795259249,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYData() was called; y Data of Point set to 10 (PointObject.ts)"}
+{"level":30,"time":1742795259250,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"populatePoints() was called, the program points loaded using the csv file (CSVDataObject.ts)"}
+{"level":30,"time":1742795259250,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setName() was called on Graph Object, name of the Graph is now Graph0 (GraphObject.ts)"}
+{"level":30,"time":1742795259250,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"addPoint() has added new points to the graph (TimeSeriesGraphObject.tss)"}
+{"level":30,"time":1742795259251,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"generateEmbeddedGraph() was called; successfully generated Embedded Graph (GraphController.ts)"}
+{"level":30,"time":1742795259251,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"value of tau in EmbeddedGraphObject updated to the value 1"}
+{"level":30,"time":1742795259251,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setRange() was called; yRange was set to 10 (EmbeddedGraphObject.ts)"}
+{"level":30,"time":1742795259252,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"vector position calculated for data at index/time 0 (EmbeddedGraphObject.calculateVectorPosition())"}
+{"level":30,"time":1742795259252,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setPoint3DPosition() was called; Position of 3D Point was set to 1,0,0 (Point3DObject.ts)"}
+{"level":30,"time":1742795259252,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setName() was called on Graph Object, name of the Graph is now Graph0 (GraphObject.ts)"}
+{"level":30,"time":1742795259253,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setPoint3DPosition() was called; Position of 3D Point was set to 2,1,0 (Point3DObject.ts)"}
+{"level":30,"time":1742795259253,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"vector position calculated for data at index/time 1 (EmbeddedGraphObject.calculateVectorPosition())"}
+{"level":30,"time":1742795259253,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"vector position calculated for data at index/time 2 (EmbeddedGraphObject.calculateVectorPosition())"}
+{"level":30,"time":1742795259253,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setPoint3DPosition() was called; Position of 3D Point was set to 3,2,1 (Point3DObject.ts)"}
+{"level":30,"time":1742795259254,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"vector position calculated for data at index/time 3 (EmbeddedGraphObject.calculateVectorPosition())"}
+{"level":30,"time":1742795259254,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setPoint3DPosition() was called; Position of 3D Point was set to 5,4,3 (Point3DObject.ts)"}
+{"level":30,"time":1742795259255,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setPoint3DPosition() was called; Position of 3D Point was set to 6,5,4 (Point3DObject.ts)"}
+{"level":30,"time":1742795259255,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setPoint3DPosition() was called; Position of 3D Point was set to 4,3,2 (Point3DObject.ts)"}
+{"level":30,"time":1742795259255,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"vector position calculated for data at index/time 4 (EmbeddedGraphObject.calculateVectorPosition())"}
+{"level":30,"time":1742795259255,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"vector position calculated for data at index/time 5 (EmbeddedGraphObject.calculateVectorPosition())"}
+{"level":30,"time":1742795259256,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setPoint3DPosition() was called; Position of 3D Point was set to 7,6,5 (Point3DObject.ts)"}
+{"level":30,"time":1742795259256,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"vector position calculated for data at index/time 7 (EmbeddedGraphObject.calculateVectorPosition())"}
+{"level":30,"time":1742795259257,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setPoint3DPosition() was called; Position of 3D Point was set to 9,8,7 (Point3DObject.ts)"}
+{"level":30,"time":1742795259257,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"vector position calculated for data at index/time 6 (EmbeddedGraphObject.calculateVectorPosition())"}
+{"level":30,"time":1742795259258,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"vector position calculated for data at index/time 8 (EmbeddedGraphObject.calculateVectorPosition())"}
+{"level":30,"time":1742795259258,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setPoint3DPosition() was called; Position of 3D Point was set to 10,9,8 (Point3DObject.ts)"}
+{"level":30,"time":1742795259258,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"Points added to EmbeddedGraphObject (EmbeddedGraphObject.addPoints())"}
+{"level":30,"time":1742795259259,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"vector position calculated for data at index/time 9 (EmbeddedGraphObject.calculateVectorPosition())"}
+{"level":30,"time":1742795259259,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setPoint3DPosition() was called; Position of 3D Point was set to 8,7,6 (Point3DObject.ts)"}
+{"level":30,"time":1742795259260,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"generate has pushed a new graph"}
+{"level":30,"time":1742795259260,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"Update main scene"}
+{"level":30,"time":1742795259260,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"pushDataToModel() was called; successfully added both 2D and 3D Graphs(GraphController.ts)"}
+{"level":30,"time":1742795259261,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"GenerateList [BUTTON]? pressed"}
+{"level":30,"time":1742795259261,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"DropDownBody [create] button pressed"}
+{"level":30,"time":1742795259261,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"DropDownBody [create] button pressed"}
+{"level":30,"time":1742795259262,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"DropDownBody [create] button pressed"}
+{"level":30,"time":1742795259263,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"DropDownBody [create] button pressed"}
+{"level":30,"time":1742795259263,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"a TimeSeriesGraph has been created (CreateTimeSeries.tsx)"}
+{"level":30,"time":1742795259264,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"a TimeSeriesGraph object sidebar was created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742795259264,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"a TimeSeriesGraph object header was selected and visually updated to reflect selection (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742795259265,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"a TimeSeriesGraph object sidebar was created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742795259265,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"a TimeSeriesGraph object header was selected and visually updated to reflect selection (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742795259267,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"a TimeSeriesGraph visualization is being created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742795259269,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"timeSeriesYRange() returned 10 (TimeSeriesGraphObject.ts)"}
+{"level":30,"time":1742795259269,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"a TimeSeriesGraph visualization is being created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742795259269,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"timeSeriesYRange() returned 10 (TimeSeriesGraphObject.ts)"}
+{"level":30,"time":1742795259269,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"timeSeriesXRange() was called and returned 0,1,2,3,4,5,6,7,8,9 (TimeSeriesGraphObject.ts)"}
+{"level":30,"time":1742795259270,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"timeSeriesXRange() was called and returned 0,1,2,3,4,5,6,7,8,9 (TimeSeriesGraphObject.ts)"}
+{"level":30,"time":1742795259271,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of the Y range was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742795259273,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setXAxisPos() was called; xPosition of 2D Point was set to -1.55 (Point2DObject.ts)"}
+{"level":30,"time":1742795259274,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"getYRange returned 10 (TimeSeriesGraphObject.ts)"}
+{"level":30,"time":1742795259275,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYAxisPos() was called; yPosition of 2D Point was set to -0.897 (Point2DObject.ts)"}
+{"level":30,"time":1742795259276,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of points was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742795259276,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setXAxisPos() was called; xPosition of 2D Point was set to -1.55 (Point2DObject.ts)"}
+{"level":30,"time":1742795259276,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYAxisPos() was called; yPosition of 2D Point was set to -0.897 (Point2DObject.ts)"}
+{"level":30,"time":1742795259277,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setTimeData() was called; time Data of Point set to 0 (PointObject.ts)"}
+{"level":30,"time":1742795259277,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYData() was called; y Data of Point set to 1 (PointObject.ts)"}
+{"level":30,"time":1742795259277,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"a 2D Point has been created (Create2DPoint.tsx)"}
+{"level":30,"time":1742795259277,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"the lines on a TimeSeriesGraph object were created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742795259277,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setSelected() was called on PointObject (PointObject.ts)"}
+{"level":30,"time":1742795259278,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"getYRange returned 10 (TimeSeriesGraphObject.ts)"}
+{"level":30,"time":1742795259278,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYAxisPos() was called; yPosition of 2D Point was set to -0.744 (Point2DObject.ts)"}
+{"level":30,"time":1742795259278,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of points was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742795259279,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setXAxisPos() was called; xPosition of 2D Point was set to -1.05 (Point2DObject.ts)"}
+{"level":30,"time":1742795259279,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setXAxisPos() was called; xPosition of 2D Point was set to -1.05 (Point2DObject.ts)"}
+{"level":30,"time":1742795259279,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setSelected() was called on PointObject (PointObject.ts)"}
+{"level":30,"time":1742795259280,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setTimeData() was called; time Data of Point set to 1 (PointObject.ts)"}
+{"level":30,"time":1742795259280,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYData() was called; y Data of Point set to 2 (PointObject.ts)"}
+{"level":30,"time":1742795259280,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"a 2D Point has been created (Create2DPoint.tsx)"}
+{"level":30,"time":1742795259281,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYAxisPos() was called; yPosition of 2D Point was set to -0.744 (Point2DObject.ts)"}
+{"level":30,"time":1742795259281,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setXAxisPos() was called; xPosition of 2D Point was set to -0.55 (Point2DObject.ts)"}
+{"level":30,"time":1742795259281,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"getYRange returned 10 (TimeSeriesGraphObject.ts)"}
+{"level":30,"time":1742795259282,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYAxisPos() was called; yPosition of 2D Point was set to -0.5910000000000001 (Point2DObject.ts)"}
+{"level":30,"time":1742795259282,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of points was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742795259282,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"the lines on a TimeSeriesGraph object were created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742795259282,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYAxisPos() was called; yPosition of 2D Point was set to -0.5910000000000001 (Point2DObject.ts)"}
+{"level":30,"time":1742795259282,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setSelected() was called on PointObject (PointObject.ts)"}
+{"level":30,"time":1742795259283,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setTimeData() was called; time Data of Point set to 2 (PointObject.ts)"}
+{"level":30,"time":1742795259283,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYData() was called; y Data of Point set to 3 (PointObject.ts)"}
+{"level":30,"time":1742795259283,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setXAxisPos() was called; xPosition of 2D Point was set to -0.55 (Point2DObject.ts)"}
+{"level":30,"time":1742795259283,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"the lines on a TimeSeriesGraph object were created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742795259283,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setXAxisPos() was called; xPosition of 2D Point was set to -0.050000000000000044 (Point2DObject.ts)"}
+{"level":30,"time":1742795259283,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"getYRange returned 10 (TimeSeriesGraphObject.ts)"}
+{"level":30,"time":1742795259284,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYAxisPos() was called; yPosition of 2D Point was set to -0.43799999999999994 (Point2DObject.ts)"}
+{"level":30,"time":1742795259284,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"a 2D Point has been created (Create2DPoint.tsx)"}
+{"level":30,"time":1742795259284,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setXAxisPos() was called; xPosition of 2D Point was set to -0.050000000000000044 (Point2DObject.ts)"}
+{"level":30,"time":1742795259284,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYAxisPos() was called; yPosition of 2D Point was set to -0.43799999999999994 (Point2DObject.ts)"}
+{"level":30,"time":1742795259285,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setSelected() was called on PointObject (PointObject.ts)"}
+{"level":30,"time":1742795259285,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setTimeData() was called; time Data of Point set to 3 (PointObject.ts)"}
+{"level":30,"time":1742795259285,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of points was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742795259286,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"a 2D Point has been created (Create2DPoint.tsx)"}
+{"level":30,"time":1742795259286,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"the lines on a TimeSeriesGraph object were created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742795259287,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setXAxisPos() was called; xPosition of 2D Point was set to 0.44999999999999996 (Point2DObject.ts)"}
+{"level":30,"time":1742795259287,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"getYRange returned 10 (TimeSeriesGraphObject.ts)"}
+{"level":30,"time":1742795259287,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYData() was called; y Data of Point set to 4 (PointObject.ts)"}
+{"level":30,"time":1742795259287,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of points was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742795259288,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setXAxisPos() was called; xPosition of 2D Point was set to 0.44999999999999996 (Point2DObject.ts)"}
+{"level":30,"time":1742795259288,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYAxisPos() was called; yPosition of 2D Point was set to -0.28500000000000003 (Point2DObject.ts)"}
+{"level":30,"time":1742795259288,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setSelected() was called on PointObject (PointObject.ts)"}
+{"level":30,"time":1742795259288,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYAxisPos() was called; yPosition of 2D Point was set to -0.28500000000000003 (Point2DObject.ts)"}
+{"level":30,"time":1742795259289,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYData() was called; y Data of Point set to 5 (PointObject.ts)"}
+{"level":30,"time":1742795259289,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setTimeData() was called; time Data of Point set to 4 (PointObject.ts)"}
+{"level":30,"time":1742795259289,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"a 2D Point has been created (Create2DPoint.tsx)"}
+{"level":30,"time":1742795259289,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"the lines on a TimeSeriesGraph object were created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742795259289,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setXAxisPos() was called; xPosition of 2D Point was set to 0.95 (Point2DObject.ts)"}
+{"level":30,"time":1742795259290,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYAxisPos() was called; yPosition of 2D Point was set to -0.13200000000000012 (Point2DObject.ts)"}
+{"level":30,"time":1742795259290,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"getYRange returned 10 (TimeSeriesGraphObject.ts)"}
+{"level":30,"time":1742795259290,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYAxisPos() was called; yPosition of 2D Point was set to -0.13200000000000012 (Point2DObject.ts)"}
+{"level":30,"time":1742795259290,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of points was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742795259290,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setXAxisPos() was called; xPosition of 2D Point was set to 0.95 (Point2DObject.ts)"}
+{"level":30,"time":1742795259291,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setTimeData() was called; time Data of Point set to 5 (PointObject.ts)"}
+{"level":30,"time":1742795259291,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYData() was called; y Data of Point set to 6 (PointObject.ts)"}
+{"level":30,"time":1742795259291,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"a 2D Point has been created (Create2DPoint.tsx)"}
+{"level":30,"time":1742795259291,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"the lines on a TimeSeriesGraph object were created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742795259292,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setSelected() was called on PointObject (PointObject.ts)"}
+{"level":30,"time":1742795259292,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"getYRange returned 10 (TimeSeriesGraphObject.ts)"}
+{"level":30,"time":1742795259292,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYAxisPos() was called; yPosition of 2D Point was set to 0.020999999999999908 (Point2DObject.ts)"}
+{"level":30,"time":1742795259292,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of points was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742795259292,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setXAxisPos() was called; xPosition of 2D Point was set to 1.45 (Point2DObject.ts)"}
+{"level":30,"time":1742795259293,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setXAxisPos() was called; xPosition of 2D Point was set to 1.45 (Point2DObject.ts)"}
+{"level":30,"time":1742795259293,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setSelected() was called on PointObject (PointObject.ts)"}
+{"level":30,"time":1742795259293,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setTimeData() was called; time Data of Point set to 6 (PointObject.ts)"}
+{"level":30,"time":1742795259294,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYData() was called; y Data of Point set to 7 (PointObject.ts)"}
+{"level":30,"time":1742795259294,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"a 2D Point has been created (Create2DPoint.tsx)"}
+{"level":30,"time":1742795259295,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYAxisPos() was called; yPosition of 2D Point was set to 0.020999999999999908 (Point2DObject.ts)"}
+{"level":30,"time":1742795259295,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setXAxisPos() was called; xPosition of 2D Point was set to 1.95 (Point2DObject.ts)"}
+{"level":30,"time":1742795259296,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"getYRange returned 10 (TimeSeriesGraphObject.ts)"}
+{"level":30,"time":1742795259296,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYAxisPos() was called; yPosition of 2D Point was set to 0.17400000000000015 (Point2DObject.ts)"}
+{"level":30,"time":1742795259297,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of points was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742795259297,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"the lines on a TimeSeriesGraph object were created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742795259297,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYAxisPos() was called; yPosition of 2D Point was set to 0.17400000000000015 (Point2DObject.ts)"}
+{"level":30,"time":1742795259298,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setSelected() was called on PointObject (PointObject.ts)"}
+{"level":30,"time":1742795259298,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setTimeData() was called; time Data of Point set to 7 (PointObject.ts)"}
+{"level":30,"time":1742795259299,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYData() was called; y Data of Point set to 8 (PointObject.ts)"}
+{"level":30,"time":1742795259300,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setXAxisPos() was called; xPosition of 2D Point was set to 1.95 (Point2DObject.ts)"}
+{"level":30,"time":1742795259300,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"the lines on a TimeSeriesGraph object were created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742795259301,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setXAxisPos() was called; xPosition of 2D Point was set to 2.45 (Point2DObject.ts)"}
+{"level":30,"time":1742795259301,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"getYRange returned 10 (TimeSeriesGraphObject.ts)"}
+{"level":30,"time":1742795259302,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYAxisPos() was called; yPosition of 2D Point was set to 0.32699999999999996 (Point2DObject.ts)"}
+{"level":30,"time":1742795259302,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"a 2D Point has been created (Create2DPoint.tsx)"}
+{"level":30,"time":1742795259303,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setXAxisPos() was called; xPosition of 2D Point was set to 2.45 (Point2DObject.ts)"}
+{"level":30,"time":1742795259303,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYAxisPos() was called; yPosition of 2D Point was set to 0.32699999999999996 (Point2DObject.ts)"}
+{"level":30,"time":1742795259303,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setSelected() was called on PointObject (PointObject.ts)"}
+{"level":30,"time":1742795259304,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setTimeData() was called; time Data of Point set to 8 (PointObject.ts)"}
+{"level":30,"time":1742795259304,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of points was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742795259305,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"a 2D Point has been created (Create2DPoint.tsx)"}
+{"level":30,"time":1742795259305,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"the lines on a TimeSeriesGraph object were created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742795259305,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setXAxisPos() was called; xPosition of 2D Point was set to 2.95 (Point2DObject.ts)"}
+{"level":30,"time":1742795259306,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"getYRange returned 10 (TimeSeriesGraphObject.ts)"}
+{"level":30,"time":1742795259306,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYData() was called; y Data of Point set to 9 (PointObject.ts)"}
+{"level":30,"time":1742795259307,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of points was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742795259307,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setXAxisPos() was called; xPosition of 2D Point was set to 2.95 (Point2DObject.ts)"}
+{"level":30,"time":1742795259308,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYAxisPos() was called; yPosition of 2D Point was set to 0.48 (Point2DObject.ts)"}
+{"level":30,"time":1742795259308,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setSelected() was called on PointObject (PointObject.ts)"}
+{"level":30,"time":1742795259308,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYAxisPos() was called; yPosition of 2D Point was set to 0.48 (Point2DObject.ts)"}
+{"level":30,"time":1742795259308,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYData() was called; y Data of Point set to 10 (PointObject.ts)"}
+{"level":30,"time":1742795259308,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"a 2D Point has been created (Create2DPoint.tsx)"}
+{"level":30,"time":1742795259309,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"the lines on a TimeSeriesGraph object were created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742795259309,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"an EmbeddedGraph has been created (CreateEmbeddedGraph.tsx)"}
+{"level":30,"time":1742795259309,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setTimeData() was called; time Data of Point set to 9 (PointObject.ts)"}
+{"level":30,"time":1742795259309,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setTimeData() was called; time Data of Point set to 0 (PointObject.ts)"}
+{"level":30,"time":1742795259309,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYData() was called; y Data of Point set to 1 (PointObject.ts)"}
+{"level":30,"time":1742795259310,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setSelected() was called on PointObject (PointObject.ts)"}
+{"level":30,"time":1742795259310,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"an EmbeddedGraph visualization is being created [not yet functioning] (EmbeddedGraph.tsx)"}
+{"level":30,"time":1742795259310,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setZAxisPos() was called; zPosition of 3D Point was set to 0 (Point3DObject.ts)"}
+{"level":30,"time":1742795259311,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"a 3D Point has been created (Create3DPoint.tsx)"}
+{"level":30,"time":1742795259311,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setXAxisPos() was called; xPosition of 3D Point was set to 1 (Point3DObject.ts)"}
+{"level":30,"time":1742795259311,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYAxisPos() was called; yPosition of 3D Point was set to 0 (Point3DObject.ts)"}
+{"level":30,"time":1742795259311,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setTimeData() was called; time Data of Point set to 1 (PointObject.ts)"}
+{"level":30,"time":1742795259312,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYData() was called; y Data of Point set to 2 (PointObject.ts)"}
+{"level":30,"time":1742795259312,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setSelected() was called on PointObject (PointObject.ts)"}
+{"level":30,"time":1742795259312,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setXAxisPos() was called; xPosition of 3D Point was set to 2 (Point3DObject.ts)"}
+{"level":30,"time":1742795259312,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYAxisPos() was called; yPosition of 3D Point was set to 1 (Point3DObject.ts)"}
+{"level":30,"time":1742795259312,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setZAxisPos() was called; zPosition of 3D Point was set to 0 (Point3DObject.ts)"}
+{"level":30,"time":1742795259313,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYData() was called; y Data of Point set to 3 (PointObject.ts)"}
+{"level":30,"time":1742795259314,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"a 3D Point has been created (Create3DPoint.tsx)"}
+{"level":30,"time":1742795259314,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setTimeData() was called; time Data of Point set to 2 (PointObject.ts)"}
+{"level":30,"time":1742795259314,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setSelected() was called on PointObject (PointObject.ts)"}
+{"level":30,"time":1742795259316,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setXAxisPos() was called; xPosition of 3D Point was set to 3 (Point3DObject.ts)"}
+{"level":30,"time":1742795259317,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYAxisPos() was called; yPosition of 3D Point was set to 2 (Point3DObject.ts)"}
+{"level":30,"time":1742795259317,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setZAxisPos() was called; zPosition of 3D Point was set to 1 (Point3DObject.ts)"}
+{"level":30,"time":1742795259317,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"a 3D Point has been created (Create3DPoint.tsx)"}
+{"level":30,"time":1742795259318,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setTimeData() was called; time Data of Point set to 3 (PointObject.ts)"}
+{"level":30,"time":1742795259318,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYData() was called; y Data of Point set to 4 (PointObject.ts)"}
+{"level":30,"time":1742795259321,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setSelected() was called on PointObject (PointObject.ts)"}
+{"level":30,"time":1742795259321,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setXAxisPos() was called; xPosition of 3D Point was set to 4 (Point3DObject.ts)"}
+{"level":30,"time":1742795259322,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYAxisPos() was called; yPosition of 3D Point was set to 3 (Point3DObject.ts)"}
+{"level":30,"time":1742795259323,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setZAxisPos() was called; zPosition of 3D Point was set to 2 (Point3DObject.ts)"}
+{"level":30,"time":1742795259323,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"a 3D Point has been created (Create3DPoint.tsx)"}
+{"level":30,"time":1742795259324,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setTimeData() was called; time Data of Point set to 4 (PointObject.ts)"}
+{"level":30,"time":1742795259325,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYData() was called; y Data of Point set to 5 (PointObject.ts)"}
+{"level":30,"time":1742795259326,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setSelected() was called on PointObject (PointObject.ts)"}
+{"level":30,"time":1742795259326,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setXAxisPos() was called; xPosition of 3D Point was set to 5 (Point3DObject.ts)"}
+{"level":30,"time":1742795259326,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYAxisPos() was called; yPosition of 3D Point was set to 4 (Point3DObject.ts)"}
+{"level":30,"time":1742795259327,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setZAxisPos() was called; zPosition of 3D Point was set to 3 (Point3DObject.ts)"}
+{"level":30,"time":1742795259327,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"a 3D Point has been created (Create3DPoint.tsx)"}
+{"level":30,"time":1742795259327,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setTimeData() was called; time Data of Point set to 5 (PointObject.ts)"}
+{"level":30,"time":1742795259328,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setSelected() was called on PointObject (PointObject.ts)"}
+{"level":30,"time":1742795259329,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setXAxisPos() was called; xPosition of 3D Point was set to 6 (Point3DObject.ts)"}
+{"level":30,"time":1742795259330,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYAxisPos() was called; yPosition of 3D Point was set to 5 (Point3DObject.ts)"}
+{"level":30,"time":1742795259330,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setZAxisPos() was called; zPosition of 3D Point was set to 4 (Point3DObject.ts)"}
+{"level":30,"time":1742795259331,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYData() was called; y Data of Point set to 6 (PointObject.ts)"}
+{"level":30,"time":1742795259331,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setTimeData() was called; time Data of Point set to 6 (PointObject.ts)"}
+{"level":30,"time":1742795259331,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYData() was called; y Data of Point set to 7 (PointObject.ts)"}
+{"level":30,"time":1742795259332,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setSelected() was called on PointObject (PointObject.ts)"}
+{"level":30,"time":1742795259332,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setXAxisPos() was called; xPosition of 3D Point was set to 7 (Point3DObject.ts)"}
+{"level":30,"time":1742795259332,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"a 3D Point has been created (Create3DPoint.tsx)"}
+{"level":30,"time":1742795259333,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setZAxisPos() was called; zPosition of 3D Point was set to 5 (Point3DObject.ts)"}
+{"level":30,"time":1742795259333,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"a 3D Point has been created (Create3DPoint.tsx)"}
+{"level":30,"time":1742795259333,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setTimeData() was called; time Data of Point set to 7 (PointObject.ts)"}
+{"level":30,"time":1742795259333,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYData() was called; y Data of Point set to 8 (PointObject.ts)"}
+{"level":30,"time":1742795259334,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYAxisPos() was called; yPosition of 3D Point was set to 6 (Point3DObject.ts)"}
+{"level":30,"time":1742795259334,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setXAxisPos() was called; xPosition of 3D Point was set to 8 (Point3DObject.ts)"}
+{"level":30,"time":1742795259334,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYAxisPos() was called; yPosition of 3D Point was set to 7 (Point3DObject.ts)"}
+{"level":30,"time":1742795259334,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setZAxisPos() was called; zPosition of 3D Point was set to 6 (Point3DObject.ts)"}
+{"level":30,"time":1742795259334,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"a 3D Point has been created (Create3DPoint.tsx)"}
+{"level":30,"time":1742795259335,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setSelected() was called on PointObject (PointObject.ts)"}
+{"level":30,"time":1742795259335,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYData() was called; y Data of Point set to 9 (PointObject.ts)"}
+{"level":30,"time":1742795259335,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setSelected() was called on PointObject (PointObject.ts)"}
+{"level":30,"time":1742795259335,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setXAxisPos() was called; xPosition of 3D Point was set to 9 (Point3DObject.ts)"}
+{"level":30,"time":1742795259337,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setTimeData() was called; time Data of Point set to 8 (PointObject.ts)"}
+{"level":30,"time":1742795259337,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"a 3D Point has been created (Create3DPoint.tsx)"}
+{"level":30,"time":1742795259338,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setTimeData() was called; time Data of Point set to 9 (PointObject.ts)"}
+{"level":30,"time":1742795259338,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYData() was called; y Data of Point set to 10 (PointObject.ts)"}
+{"level":30,"time":1742795259339,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYAxisPos() was called; yPosition of 3D Point was set to 8 (Point3DObject.ts)"}
+{"level":30,"time":1742795259339,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setZAxisPos() was called; zPosition of 3D Point was set to 7 (Point3DObject.ts)"}
+{"level":30,"time":1742795259340,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setXAxisPos() was called; xPosition of 3D Point was set to 10 (Point3DObject.ts)"}
+{"level":30,"time":1742795259340,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYAxisPos() was called; yPosition of 3D Point was set to 9 (Point3DObject.ts)"}
+{"level":30,"time":1742795259340,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setZAxisPos() was called; zPosition of 3D Point was set to 8 (Point3DObject.ts)"}
+{"level":30,"time":1742795259340,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"a 3D Point has been created (Create3DPoint.tsx)"}
+{"level":30,"time":1742795259341,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setSelected() was called on PointObject (PointObject.ts)"}
+{"level":30,"time":1742795259341,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"timeSeriesYRange() returned 10 (TimeSeriesGraphObject.ts)"}
+{"level":30,"time":1742795259341,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYRangeLength() was called on TimeSeriesGraphObject (TimeSeriesGraphObject.ts)"}
+{"level":30,"time":1742795259341,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"generateTimeSeriesGraph() was called; successfully generated Time Series Graph (GraphController.ts)"}
+{"level":30,"time":1742795259342,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setRange() was called; yRange was set to 10 (EmbeddedGraphObject.ts)"}
+{"level":30,"time":1742795259342,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setRange() was called; yRange was set to 10 (TimeSeriesGraphObject.ts)"}
+{"level":30,"time":1742795259342,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"a TimeSeriesGraph object sidebar was created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742795259342,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"a TimeSeriesGraph object header was selected and visually updated to reflect selection (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742795259343,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"a TimeSeriesGraph visualization is being created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742795259343,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"generateEmbeddedGraph() was called; successfully generated Embedded Graph (GraphController.ts)"}
+{"level":30,"time":1742795259343,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of the Y range was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742795259344,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setXAxisPos() was called; xPosition of 2D Point was set to -1.55 (Point2DObject.ts)"}
+{"level":30,"time":1742795259345,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"getYRange returned 10 (TimeSeriesGraphObject.ts)"}
+{"level":30,"time":1742795259345,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"timeSeriesYRange() returned 10 (TimeSeriesGraphObject.ts)"}
+{"level":30,"time":1742795259345,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"timeSeriesXRange() was called and returned 0,1,2,3,4,5,6,7,8,9 (TimeSeriesGraphObject.ts)"}
+{"level":30,"time":1742795259345,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of points was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742795259346,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setXAxisPos() was called; xPosition of 2D Point was set to -1.55 (Point2DObject.ts)"}
+{"level":30,"time":1742795259346,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYAxisPos() was called; yPosition of 2D Point was set to -0.897 (Point2DObject.ts)"}
+{"level":30,"time":1742795259346,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setSelected() was called on PointObject (PointObject.ts)"}
+{"level":30,"time":1742795259346,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYAxisPos() was called; yPosition of 2D Point was set to -0.897 (Point2DObject.ts)"}
+{"level":30,"time":1742795259347,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYData() was called; y Data of Point set to 1 (PointObject.ts)"}
+{"level":30,"time":1742795259347,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"a 2D Point has been created (Create2DPoint.tsx)"}
+{"level":30,"time":1742795259347,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"the lines on a TimeSeriesGraph object were created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742795259347,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setXAxisPos() was called; xPosition of 2D Point was set to -1.05 (Point2DObject.ts)"}
+{"level":30,"time":1742795259348,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setTimeData() was called; time Data of Point set to 0 (PointObject.ts)"}
+{"level":30,"time":1742795259348,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYAxisPos() was called; yPosition of 2D Point was set to -0.744 (Point2DObject.ts)"}
+{"level":30,"time":1742795259348,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of points was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742795259348,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setXAxisPos() was called; xPosition of 2D Point was set to -1.05 (Point2DObject.ts)"}
+{"level":30,"time":1742795259349,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"getYRange returned 10 (TimeSeriesGraphObject.ts)"}
+{"level":30,"time":1742795259349,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setTimeData() was called; time Data of Point set to 1 (PointObject.ts)"}
+{"level":30,"time":1742795259349,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYData() was called; y Data of Point set to 2 (PointObject.ts)"}
+{"level":30,"time":1742795259350,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"a 2D Point has been created (Create2DPoint.tsx)"}
+{"level":30,"time":1742795259350,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYAxisPos() was called; yPosition of 2D Point was set to -0.744 (Point2DObject.ts)"}
+{"level":30,"time":1742795259351,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setSelected() was called on PointObject (PointObject.ts)"}
+{"level":30,"time":1742795259351,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setXAxisPos() was called; xPosition of 2D Point was set to -0.55 (Point2DObject.ts)"}
+{"level":30,"time":1742795259351,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"getYRange returned 10 (TimeSeriesGraphObject.ts)"}
+{"level":30,"time":1742795259351,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYAxisPos() was called; yPosition of 2D Point was set to -0.5910000000000001 (Point2DObject.ts)"}
+{"level":30,"time":1742795259352,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of points was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742795259352,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"the lines on a TimeSeriesGraph object were created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742795259352,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setXAxisPos() was called; xPosition of 2D Point was set to -0.55 (Point2DObject.ts)"}
+{"level":30,"time":1742795259353,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYAxisPos() was called; yPosition of 2D Point was set to -0.5910000000000001 (Point2DObject.ts)"}
+{"level":30,"time":1742795259353,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setSelected() was called on PointObject (PointObject.ts)"}
+{"level":30,"time":1742795259353,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setTimeData() was called; time Data of Point set to 2 (PointObject.ts)"}
+{"level":30,"time":1742795259353,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setXAxisPos() was called; xPosition of 2D Point was set to -0.050000000000000044 (Point2DObject.ts)"}
+{"level":30,"time":1742795259353,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"getYRange returned 10 (TimeSeriesGraphObject.ts)"}
+{"level":30,"time":1742795259354,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYData() was called; y Data of Point set to 3 (PointObject.ts)"}
+{"level":30,"time":1742795259355,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"a 2D Point has been created (Create2DPoint.tsx)"}
+{"level":30,"time":1742795259356,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"the lines on a TimeSeriesGraph object were created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742795259357,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of points was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742795259358,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setXAxisPos() was called; xPosition of 2D Point was set to -0.050000000000000044 (Point2DObject.ts)"}
+{"level":30,"time":1742795259359,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYAxisPos() was called; yPosition of 2D Point was set to -0.43799999999999994 (Point2DObject.ts)"}
+{"level":30,"time":1742795259360,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setSelected() was called on PointObject (PointObject.ts)"}
+{"level":30,"time":1742795259360,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYAxisPos() was called; yPosition of 2D Point was set to -0.43799999999999994 (Point2DObject.ts)"}
+{"level":30,"time":1742795259361,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYData() was called; y Data of Point set to 4 (PointObject.ts)"}
+{"level":30,"time":1742795259361,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"a 2D Point has been created (Create2DPoint.tsx)"}
+{"level":30,"time":1742795259361,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"the lines on a TimeSeriesGraph object were created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742795259361,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setTimeData() was called; time Data of Point set to 3 (PointObject.ts)"}
+{"level":30,"time":1742795259362,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYAxisPos() was called; yPosition of 2D Point was set to -0.28500000000000003 (Point2DObject.ts)"}
+{"level":30,"time":1742795259362,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of points was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742795259362,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setXAxisPos() was called; xPosition of 2D Point was set to 0.44999999999999996 (Point2DObject.ts)"}
+{"level":30,"time":1742795259362,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"getYRange returned 10 (TimeSeriesGraphObject.ts)"}
+{"level":30,"time":1742795259363,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setSelected() was called on PointObject (PointObject.ts)"}
+{"level":30,"time":1742795259363,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setTimeData() was called; time Data of Point set to 4 (PointObject.ts)"}
+{"level":30,"time":1742795259363,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYData() was called; y Data of Point set to 5 (PointObject.ts)"}
+{"level":30,"time":1742795259364,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setXAxisPos() was called; xPosition of 2D Point was set to 0.44999999999999996 (Point2DObject.ts)"}
+{"level":30,"time":1742795259364,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYAxisPos() was called; yPosition of 2D Point was set to -0.28500000000000003 (Point2DObject.ts)"}
+{"level":30,"time":1742795259364,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"the lines on a TimeSeriesGraph object were created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742795259365,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setXAxisPos() was called; xPosition of 2D Point was set to 0.95 (Point2DObject.ts)"}
+{"level":30,"time":1742795259366,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"getYRange returned 10 (TimeSeriesGraphObject.ts)"}
+{"level":30,"time":1742795259367,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYAxisPos() was called; yPosition of 2D Point was set to -0.13200000000000012 (Point2DObject.ts)"}
+{"level":30,"time":1742795259367,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"a 2D Point has been created (Create2DPoint.tsx)"}
+{"level":30,"time":1742795259367,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setXAxisPos() was called; xPosition of 2D Point was set to 0.95 (Point2DObject.ts)"}
+{"level":30,"time":1742795259368,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYAxisPos() was called; yPosition of 2D Point was set to -0.13200000000000012 (Point2DObject.ts)"}
+{"level":30,"time":1742795259368,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setSelected() was called on PointObject (PointObject.ts)"}
+{"level":30,"time":1742795259368,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of points was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742795259368,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"a 2D Point has been created (Create2DPoint.tsx)"}
+{"level":30,"time":1742795259368,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"the lines on a TimeSeriesGraph object were created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742795259369,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setXAxisPos() was called; xPosition of 2D Point was set to 1.45 (Point2DObject.ts)"}
+{"level":30,"time":1742795259369,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setTimeData() was called; time Data of Point set to 5 (PointObject.ts)"}
+{"level":30,"time":1742795259369,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYData() was called; y Data of Point set to 6 (PointObject.ts)"}
+{"level":30,"time":1742795259369,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYAxisPos() was called; yPosition of 2D Point was set to 0.020999999999999908 (Point2DObject.ts)"}
+{"level":30,"time":1742795259369,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of points was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742795259369,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setXAxisPos() was called; xPosition of 2D Point was set to 1.45 (Point2DObject.ts)"}
+{"level":30,"time":1742795259370,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYAxisPos() was called; yPosition of 2D Point was set to 0.020999999999999908 (Point2DObject.ts)"}
+{"level":30,"time":1742795259370,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"getYRange returned 10 (TimeSeriesGraphObject.ts)"}
+{"level":30,"time":1742795259370,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setTimeData() was called; time Data of Point set to 6 (PointObject.ts)"}
+{"level":30,"time":1742795259370,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYData() was called; y Data of Point set to 7 (PointObject.ts)"}
+{"level":30,"time":1742795259370,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"a 2D Point has been created (Create2DPoint.tsx)"}
+{"level":30,"time":1742795259371,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"the lines on a TimeSeriesGraph object were created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742795259371,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setSelected() was called on PointObject (PointObject.ts)"}
+{"level":30,"time":1742795259371,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"getYRange returned 10 (TimeSeriesGraphObject.ts)"}
+{"level":30,"time":1742795259371,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYAxisPos() was called; yPosition of 2D Point was set to 0.17400000000000015 (Point2DObject.ts)"}
+{"level":30,"time":1742795259371,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of points was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742795259372,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setXAxisPos() was called; xPosition of 2D Point was set to 1.95 (Point2DObject.ts)"}
+{"level":30,"time":1742795259372,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setSelected() was called on PointObject (PointObject.ts)"}
+{"level":30,"time":1742795259372,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setTimeData() was called; time Data of Point set to 7 (PointObject.ts)"}
+{"level":30,"time":1742795259372,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYData() was called; y Data of Point set to 8 (PointObject.ts)"}
+{"level":30,"time":1742795259373,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setXAxisPos() was called; xPosition of 2D Point was set to 1.95 (Point2DObject.ts)"}
+{"level":30,"time":1742795259373,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYAxisPos() was called; yPosition of 2D Point was set to 0.17400000000000015 (Point2DObject.ts)"}
+{"level":30,"time":1742795259374,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"the lines on a TimeSeriesGraph object were created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742795259374,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setXAxisPos() was called; xPosition of 2D Point was set to 2.45 (Point2DObject.ts)"}
+{"level":30,"time":1742795259374,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"getYRange returned 10 (TimeSeriesGraphObject.ts)"}
+{"level":30,"time":1742795259374,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYAxisPos() was called; yPosition of 2D Point was set to 0.32699999999999996 (Point2DObject.ts)"}
+{"level":30,"time":1742795259375,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of points was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742795259375,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"a 2D Point has been created (Create2DPoint.tsx)"}
+{"level":30,"time":1742795259375,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setXAxisPos() was called; xPosition of 2D Point was set to 2.45 (Point2DObject.ts)"}
+{"level":30,"time":1742795259375,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYAxisPos() was called; yPosition of 2D Point was set to 0.32699999999999996 (Point2DObject.ts)"}
+{"level":30,"time":1742795259375,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setSelected() was called on PointObject (PointObject.ts)"}
+{"level":30,"time":1742795259375,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setTimeData() was called; time Data of Point set to 8 (PointObject.ts)"}
+{"level":30,"time":1742795259376,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYData() was called; y Data of Point set to 9 (PointObject.ts)"}
+{"level":30,"time":1742795259376,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"the lines on a TimeSeriesGraph object were created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742795259376,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setXAxisPos() was called; xPosition of 2D Point was set to 2.95 (Point2DObject.ts)"}
+{"level":30,"time":1742795259376,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"a 2D Point has been created (Create2DPoint.tsx)"}
+{"level":30,"time":1742795259376,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setXAxisPos() was called; xPosition of 2D Point was set to 2.95 (Point2DObject.ts)"}
+{"level":30,"time":1742795259377,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"getYRange returned 10 (TimeSeriesGraphObject.ts)"}
+{"level":30,"time":1742795259377,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYAxisPos() was called; yPosition of 2D Point was set to 0.48 (Point2DObject.ts)"}
+{"level":30,"time":1742795259377,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of points was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742795259377,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setTimeData() was called; time Data of Point set to 9 (PointObject.ts)"}
+{"level":30,"time":1742795259377,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYData() was called; y Data of Point set to 10 (PointObject.ts)"}
+{"level":30,"time":1742795259377,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYAxisPos() was called; yPosition of 2D Point was set to 0.48 (Point2DObject.ts)"}
+{"level":30,"time":1742795259378,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setSelected() was called on PointObject (PointObject.ts)"}
+{"level":30,"time":1742795259378,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"a 2D Point has been created (Create2DPoint.tsx)"}
+{"level":30,"time":1742795259378,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"the lines on a TimeSeriesGraph object were created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742795260077,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"DropDownBody [active] button pressed"}
+{"level":30,"time":1742795263042,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"LocalCsvReader(file) has read data\n[{\"Time\":0,\"Basic_SIR_I\":1,\"Basic_SIR_R\":0},{\"Time\":1,\"Basic_SIR_I\":2,\"Basic_SIR_R\":0},{\"Time\":2,\"Basic_SIR_I\":13,\"Basic_SIR_R\":1},{\"Time\":3,\"Basic_SIR_I\":33,\"Basic_SIR_R\":1},{\"Time\":4,\"Basic_SIR_I\":48,\"Basic_SIR_R\":8},{\"Time\":5,\"Basic_SIR_I\":61,\"Basic_SIR_R\":20},{\"Time\":6,\"Basic_SIR_I\":87,\"Basic_SIR_R\":28},{\"Time\":7,\"Basic_SIR_I\":124,\"Basic_SIR_R\":42},{\"Time\":8,\"Basic_SIR_I\":147,\"Basic_SIR_R\":60}]"}
+{"level":30,"time":1742795263043,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setData() was called, data has been set (CSVDataObject.ts)"}
+{"level":30,"time":1742795263043,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setName,  will now be called Graph0"}
+{"level":30,"time":1742795263044,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"findTimeHeader() was called, the time header in the data set has been found (CSVDataObject.ts)"}
+{"level":30,"time":1742795263044,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setTimeHeader() was called, finding the time header in the data set (CSVDataObject.ts)"}
+{"level":30,"time":1742795263044,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"findFirstHeader() was called, the first header was found Basic_SIR_I (CSVDataObject.ts)"}
+{"level":30,"time":1742795263045,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYHeader, Graph0 yHeader is set to Basic_SIR_I"}
+{"level":30,"time":1742795263047,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"loadCSVData has loaded csv data\n[{\"Time\":0,\"Basic_SIR_I\":1,\"Basic_SIR_R\":0},{\"Time\":1,\"Basic_SIR_I\":2,\"Basic_SIR_R\":0},{\"Time\":2,\"Basic_SIR_I\":13,\"Basic_SIR_R\":1},{\"Time\":3,\"Basic_SIR_I\":33,\"Basic_SIR_R\":1},{\"Time\":4,\"Basic_SIR_I\":48,\"Basic_SIR_R\":8},{\"Time\":5,\"Basic_SIR_I\":61,\"Basic_SIR_R\":20},{\"Time\":6,\"Basic_SIR_I\":87,\"Basic_SIR_R\":28},{\"Time\":7,\"Basic_SIR_I\":124,\"Basic_SIR_R\":42},{\"Time\":8,\"Basic_SIR_I\":147,\"Basic_SIR_R\":60}]"}
+{"level":30,"time":1742795263047,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"readLocalFile read a file\n[{\"Time\":0,\"Basic_SIR_I\":1,\"Basic_SIR_R\":0},{\"Time\":1,\"Basic_SIR_I\":2,\"Basic_SIR_R\":0},{\"Time\":2,\"Basic_SIR_I\":13,\"Basic_SIR_R\":1},{\"Time\":3,\"Basic_SIR_I\":33,\"Basic_SIR_R\":1},{\"Time\":4,\"Basic_SIR_I\":48,\"Basic_SIR_R\":8},{\"Time\":5,\"Basic_SIR_I\":61,\"Basic_SIR_R\":20},{\"Time\":6,\"Basic_SIR_I\":87,\"Basic_SIR_R\":28},{\"Time\":7,\"Basic_SIR_I\":124,\"Basic_SIR_R\":42},{\"Time\":8,\"Basic_SIR_I\":147,\"Basic_SIR_R\":60}]"}
+{"level":30,"time":1742795263818,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"LoadComponent read: indexedRealData.csv"}
+{"level":30,"time":1742795263824,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"loadedCsvBrowser() returns list\n[[\"Graph0\",false]]"}
+{"level":30,"time":1742795263826,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"UnmountedComponents unmount: 3"}
+{"level":30,"time":1742795263827,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"loadedCsvBrowser() returns list\n[[\"Graph0\",false]]"}
+{"level":30,"time":1742795263827,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"UnmountedComponents unmount: 3"}
+{"level":30,"time":1742795266732,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"LocalCsvReader(file) has read data\n[{\"Time\":0,\"Some\":1,\"B\":2},{\"Time\":1,\"Some\":2,\"B\":4},{\"Time\":2,\"Some\":3,\"B\":6},{\"Time\":3,\"Some\":4,\"B\":8},{\"Time\":4,\"Some\":5,\"B\":10},{\"Time\":5,\"Some\":6,\"B\":12},{\"Time\":6,\"Some\":7,\"B\":14},{\"Time\":7,\"Some\":8,\"B\":16},{\"Time\":8,\"Some\":9,\"B\":18},{\"Time\":9,\"Some\":10,\"B\":20}]"}
+{"level":30,"time":1742795266733,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"findFirstHeader() was called, the first header was found Some (CSVDataObject.ts)"}
+{"level":30,"time":1742795266733,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setData() was called, data has been set (CSVDataObject.ts)"}
+{"level":30,"time":1742795266734,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setName,  will now be called Graph0"}
+{"level":30,"time":1742795266734,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"findTimeHeader() was called, the time header in the data set has been found (CSVDataObject.ts)"}
+{"level":30,"time":1742795266734,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setTimeHeader() was called, finding the time header in the data set (CSVDataObject.ts)"}
+{"level":30,"time":1742795266735,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"loadCSVData has loaded csv data\n[{\"Time\":0,\"Some\":1,\"B\":2},{\"Time\":1,\"Some\":2,\"B\":4},{\"Time\":2,\"Some\":3,\"B\":6},{\"Time\":3,\"Some\":4,\"B\":8},{\"Time\":4,\"Some\":5,\"B\":10},{\"Time\":5,\"Some\":6,\"B\":12},{\"Time\":6,\"Some\":7,\"B\":14},{\"Time\":7,\"Some\":8,\"B\":16},{\"Time\":8,\"Some\":9,\"B\":18},{\"Time\":9,\"Some\":10,\"B\":20}]"}
+{"level":30,"time":1742795266735,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"readLocalFile read a file\n[{\"Time\":0,\"Some\":1,\"B\":2},{\"Time\":1,\"Some\":2,\"B\":4},{\"Time\":2,\"Some\":3,\"B\":6},{\"Time\":3,\"Some\":4,\"B\":8},{\"Time\":4,\"Some\":5,\"B\":10},{\"Time\":5,\"Some\":6,\"B\":12},{\"Time\":6,\"Some\":7,\"B\":14},{\"Time\":7,\"Some\":8,\"B\":16},{\"Time\":8,\"Some\":9,\"B\":18},{\"Time\":9,\"Some\":10,\"B\":20}]"}
+{"level":30,"time":1742795266735,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYHeader, Graph0 yHeader is set to Some"}
+{"level":30,"time":1742795267711,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"LoadComponent read: indexedData.csv"}
+{"level":30,"time":1742795267719,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"loadedCsvBrowser() returns list\n[[\"Graph0\",false]]"}
+{"level":30,"time":1742795267723,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"UnmountedComponents unmount: 4"}
+{"level":30,"time":1742795267724,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"loadedCsvBrowser() returns list\n[[\"Graph0\",false]]"}
+{"level":30,"time":1742795267725,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"UnmountedComponents unmount: 4"}
+{"level":30,"time":1742795268687,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"DropDownBody [active] button pressed"}
+{"level":30,"time":1742795269691,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setVRSelected, Graph0 vr is set to true"}
+{"level":30,"time":1742795269692,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setTimeData() was called; time Data of Point set to 0 (PointObject.ts)"}
+{"level":30,"time":1742795269693,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYData() was called; y Data of Point set to 1 (PointObject.ts)"}
+{"level":30,"time":1742795269694,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setTimeData() was called; time Data of Point set to 1 (PointObject.ts)"}
+{"level":30,"time":1742795269694,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYData() was called; y Data of Point set to 2 (PointObject.ts)"}
+{"level":30,"time":1742795269695,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setTimeData() was called; time Data of Point set to 2 (PointObject.ts)"}
+{"level":30,"time":1742795269696,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYData() was called; y Data of Point set to 3 (PointObject.ts)"}
+{"level":30,"time":1742795269696,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setTimeData() was called; time Data of Point set to 3 (PointObject.ts)"}
+{"level":30,"time":1742795269697,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYData() was called; y Data of Point set to 4 (PointObject.ts)"}
+{"level":30,"time":1742795269698,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setTimeData() was called; time Data of Point set to 4 (PointObject.ts)"}
+{"level":30,"time":1742795269699,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYData() was called; y Data of Point set to 5 (PointObject.ts)"}
+{"level":30,"time":1742795269699,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setTimeData() was called; time Data of Point set to 5 (PointObject.ts)"}
+{"level":30,"time":1742795269699,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYData() was called; y Data of Point set to 7 (PointObject.ts)"}
+{"level":30,"time":1742795269700,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setTimeData() was called; time Data of Point set to 7 (PointObject.ts)"}
+{"level":30,"time":1742795269700,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYData() was called; y Data of Point set to 8 (PointObject.ts)"}
+{"level":30,"time":1742795269701,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYData() was called; y Data of Point set to 6 (PointObject.ts)"}
+{"level":30,"time":1742795269701,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setTimeData() was called; time Data of Point set to 6 (PointObject.ts)"}
+{"level":30,"time":1742795269702,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYData() was called; y Data of Point set to 9 (PointObject.ts)"}
+{"level":30,"time":1742795269702,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setTimeData() was called; time Data of Point set to 9 (PointObject.ts)"}
+{"level":30,"time":1742795269703,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYData() was called; y Data of Point set to 10 (PointObject.ts)"}
+{"level":30,"time":1742795269703,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"populatePoints() was called, the program points loaded using the csv file (CSVDataObject.ts)"}
+{"level":30,"time":1742795269703,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setTimeData() was called; time Data of Point set to 8 (PointObject.ts)"}
+{"level":30,"time":1742795269704,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"addPoint() has added new points to the graph (TimeSeriesGraphObject.tss)"}
+{"level":30,"time":1742795269704,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setName() was called on Graph Object, name of the Graph is now Graph0 (GraphObject.ts)"}
+{"level":30,"time":1742795269704,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"value of tau in EmbeddedGraphObject updated to the value 1"}
+{"level":30,"time":1742795269704,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setRange() was called; yRange was set to 10 (EmbeddedGraphObject.ts)"}
+{"level":30,"time":1742795269705,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setName() was called on Graph Object, name of the Graph is now Graph0 (GraphObject.ts)"}
+{"level":30,"time":1742795269707,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setPoint3DPosition() was called; Position of 3D Point was set to 1,0,0 (Point3DObject.ts)"}
+{"level":30,"time":1742795269708,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"vector position calculated for data at index/time 1 (EmbeddedGraphObject.calculateVectorPosition())"}
+{"level":30,"time":1742795269708,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setPoint3DPosition() was called; Position of 3D Point was set to 2,1,0 (Point3DObject.ts)"}
+{"level":30,"time":1742795269709,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"vector position calculated for data at index/time 2 (EmbeddedGraphObject.calculateVectorPosition())"}
+{"level":30,"time":1742795269710,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setPoint3DPosition() was called; Position of 3D Point was set to 3,2,1 (Point3DObject.ts)"}
+{"level":30,"time":1742795269711,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"vector position calculated for data at index/time 0 (EmbeddedGraphObject.calculateVectorPosition())"}
+{"level":30,"time":1742795269712,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"vector position calculated for data at index/time 3 (EmbeddedGraphObject.calculateVectorPosition())"}
+{"level":30,"time":1742795269712,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setPoint3DPosition() was called; Position of 3D Point was set to 4,3,2 (Point3DObject.ts)"}
+{"level":30,"time":1742795269712,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"vector position calculated for data at index/time 4 (EmbeddedGraphObject.calculateVectorPosition())"}
+{"level":30,"time":1742795269713,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setPoint3DPosition() was called; Position of 3D Point was set to 5,4,3 (Point3DObject.ts)"}
+{"level":30,"time":1742795269713,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"vector position calculated for data at index/time 5 (EmbeddedGraphObject.calculateVectorPosition())"}
+{"level":30,"time":1742795269713,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"vector position calculated for data at index/time 6 (EmbeddedGraphObject.calculateVectorPosition())"}
+{"level":30,"time":1742795269714,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setPoint3DPosition() was called; Position of 3D Point was set to 7,6,5 (Point3DObject.ts)"}
+{"level":30,"time":1742795269714,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"vector position calculated for data at index/time 7 (EmbeddedGraphObject.calculateVectorPosition())"}
+{"level":30,"time":1742795269714,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setPoint3DPosition() was called; Position of 3D Point was set to 8,7,6 (Point3DObject.ts)"}
+{"level":30,"time":1742795269715,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setPoint3DPosition() was called; Position of 3D Point was set to 6,5,4 (Point3DObject.ts)"}
+{"level":30,"time":1742795269717,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setPoint3DPosition() was called; Position of 3D Point was set to 9,8,7 (Point3DObject.ts)"}
+{"level":30,"time":1742795269717,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"vector position calculated for data at index/time 9 (EmbeddedGraphObject.calculateVectorPosition())"}
+{"level":30,"time":1742795269718,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setPoint3DPosition() was called; Position of 3D Point was set to 10,9,8 (Point3DObject.ts)"}
+{"level":30,"time":1742795269719,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"Points added to EmbeddedGraphObject (EmbeddedGraphObject.addPoints())"}
+{"level":30,"time":1742795269719,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"vector position calculated for data at index/time 8 (EmbeddedGraphObject.calculateVectorPosition())"}
+{"level":30,"time":1742795269719,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"pushDataToModel() was called; successfully added both 2D and 3D Graphs(GraphController.ts)"}
+{"level":30,"time":1742795269720,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"generate has pushed a new graph"}
+{"level":30,"time":1742795269721,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"Update main scene"}
+{"level":30,"time":1742795269721,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"GenerateList [BUTTON]? pressed"}
+{"level":30,"time":1742795269723,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"DropDownBody [create] button pressed"}
+{"level":30,"time":1742795269724,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"DropDownBody [create] button pressed"}
+{"level":30,"time":1742795269724,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"DropDownBody [create] button pressed"}
+{"level":30,"time":1742795269725,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"DropDownBody [create] button pressed"}
+{"level":30,"time":1742795269725,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"a TimeSeriesGraph has been created (CreateTimeSeries.tsx)"}
+{"level":30,"time":1742795269726,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"a TimeSeriesGraph object sidebar was created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742795269728,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"a TimeSeriesGraph object header was selected and visually updated to reflect selection (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742795269728,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"a TimeSeriesGraph visualization is being created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742795269730,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"timeSeriesYRange() returned 10 (TimeSeriesGraphObject.ts)"}
+{"level":30,"time":1742795269730,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"timeSeriesXRange() was called and returned 0,1,2,3,4,5,6,7,8,9 (TimeSeriesGraphObject.ts)"}
+{"level":30,"time":1742795269731,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of the Y range was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742795269731,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setXAxisPos() was called; xPosition of 2D Point was set to -1.55 (Point2DObject.ts)"}
+{"level":30,"time":1742795269733,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"getYRange returned 10 (TimeSeriesGraphObject.ts)"}
+{"level":30,"time":1742795269733,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYAxisPos() was called; yPosition of 2D Point was set to -0.897 (Point2DObject.ts)"}
+{"level":30,"time":1742795269734,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of points was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742795269734,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setXAxisPos() was called; xPosition of 2D Point was set to -1.55 (Point2DObject.ts)"}
+{"level":30,"time":1742795269734,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYAxisPos() was called; yPosition of 2D Point was set to -0.897 (Point2DObject.ts)"}
+{"level":30,"time":1742795269734,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setSelected() was called on PointObject (PointObject.ts)"}
+{"level":30,"time":1742795269735,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setTimeData() was called; time Data of Point set to 0 (PointObject.ts)"}
+{"level":30,"time":1742795269735,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYData() was called; y Data of Point set to 1 (PointObject.ts)"}
+{"level":30,"time":1742795269736,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"a 2D Point has been created (Create2DPoint.tsx)"}
+{"level":30,"time":1742795269736,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"the lines on a TimeSeriesGraph object were created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742795269736,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setXAxisPos() was called; xPosition of 2D Point was set to -1.05 (Point2DObject.ts)"}
+{"level":30,"time":1742795269736,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"getYRange returned 10 (TimeSeriesGraphObject.ts)"}
+{"level":30,"time":1742795269737,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of points was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742795269737,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setXAxisPos() was called; xPosition of 2D Point was set to -1.05 (Point2DObject.ts)"}
+{"level":30,"time":1742795269737,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYAxisPos() was called; yPosition of 2D Point was set to -0.744 (Point2DObject.ts)"}
+{"level":30,"time":1742795269737,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setSelected() was called on PointObject (PointObject.ts)"}
+{"level":30,"time":1742795269737,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYAxisPos() was called; yPosition of 2D Point was set to -0.744 (Point2DObject.ts)"}
+{"level":30,"time":1742795269738,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYData() was called; y Data of Point set to 2 (PointObject.ts)"}
+{"level":30,"time":1742795269738,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setTimeData() was called; time Data of Point set to 1 (PointObject.ts)"}
+{"level":30,"time":1742795269738,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYAxisPos() was called; yPosition of 2D Point was set to -0.5910000000000001 (Point2DObject.ts)"}
+{"level":30,"time":1742795269738,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"a 2D Point has been created (Create2DPoint.tsx)"}
+{"level":30,"time":1742795269739,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"the lines on a TimeSeriesGraph object were created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742795269739,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setXAxisPos() was called; xPosition of 2D Point was set to -0.55 (Point2DObject.ts)"}
+{"level":30,"time":1742795269739,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"getYRange returned 10 (TimeSeriesGraphObject.ts)"}
+{"level":30,"time":1742795269739,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setXAxisPos() was called; xPosition of 2D Point was set to -0.55 (Point2DObject.ts)"}
+{"level":30,"time":1742795269740,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYAxisPos() was called; yPosition of 2D Point was set to -0.5910000000000001 (Point2DObject.ts)"}
+{"level":30,"time":1742795269740,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setSelected() was called on PointObject (PointObject.ts)"}
+{"level":30,"time":1742795269740,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setTimeData() was called; time Data of Point set to 2 (PointObject.ts)"}
+{"level":30,"time":1742795269740,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of points was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742795269741,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"a 2D Point has been created (Create2DPoint.tsx)"}
+{"level":30,"time":1742795269741,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"the lines on a TimeSeriesGraph object were created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742795269741,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setXAxisPos() was called; xPosition of 2D Point was set to -0.050000000000000044 (Point2DObject.ts)"}
+{"level":30,"time":1742795269741,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYData() was called; y Data of Point set to 3 (PointObject.ts)"}
+{"level":30,"time":1742795269742,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of points was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742795269742,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setXAxisPos() was called; xPosition of 2D Point was set to -0.050000000000000044 (Point2DObject.ts)"}
+{"level":30,"time":1742795269742,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYAxisPos() was called; yPosition of 2D Point was set to -0.43799999999999994 (Point2DObject.ts)"}
+{"level":30,"time":1742795269743,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"getYRange returned 10 (TimeSeriesGraphObject.ts)"}
+{"level":30,"time":1742795269743,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYAxisPos() was called; yPosition of 2D Point was set to -0.43799999999999994 (Point2DObject.ts)"}
+{"level":30,"time":1742795269744,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setTimeData() was called; time Data of Point set to 3 (PointObject.ts)"}
+{"level":30,"time":1742795269744,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYData() was called; y Data of Point set to 4 (PointObject.ts)"}
+{"level":30,"time":1742795269744,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"a 2D Point has been created (Create2DPoint.tsx)"}
+{"level":30,"time":1742795269744,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"the lines on a TimeSeriesGraph object were created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742795269744,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setSelected() was called on PointObject (PointObject.ts)"}
+{"level":30,"time":1742795269744,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"getYRange returned 10 (TimeSeriesGraphObject.ts)"}
+{"level":30,"time":1742795269745,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYAxisPos() was called; yPosition of 2D Point was set to -0.28500000000000003 (Point2DObject.ts)"}
+{"level":30,"time":1742795269745,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of points was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742795269745,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setXAxisPos() was called; xPosition of 2D Point was set to 0.44999999999999996 (Point2DObject.ts)"}
+{"level":30,"time":1742795269745,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setXAxisPos() was called; xPosition of 2D Point was set to 0.44999999999999996 (Point2DObject.ts)"}
+{"level":30,"time":1742795269745,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setSelected() was called on PointObject (PointObject.ts)"}
+{"level":30,"time":1742795269746,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setTimeData() was called; time Data of Point set to 4 (PointObject.ts)"}
+{"level":30,"time":1742795269746,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYData() was called; y Data of Point set to 5 (PointObject.ts)"}
+{"level":30,"time":1742795269746,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"a 2D Point has been created (Create2DPoint.tsx)"}
+{"level":30,"time":1742795269746,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYAxisPos() was called; yPosition of 2D Point was set to -0.28500000000000003 (Point2DObject.ts)"}
+{"level":30,"time":1742795269746,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setXAxisPos() was called; xPosition of 2D Point was set to 0.95 (Point2DObject.ts)"}
+{"level":30,"time":1742795269746,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"getYRange returned 10 (TimeSeriesGraphObject.ts)"}
+{"level":30,"time":1742795269747,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYAxisPos() was called; yPosition of 2D Point was set to -0.13200000000000012 (Point2DObject.ts)"}
+{"level":30,"time":1742795269747,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"the lines on a TimeSeriesGraph object were created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742795269748,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYAxisPos() was called; yPosition of 2D Point was set to -0.13200000000000012 (Point2DObject.ts)"}
+{"level":30,"time":1742795269748,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setSelected() was called on PointObject (PointObject.ts)"}
+{"level":30,"time":1742795269749,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setTimeData() was called; time Data of Point set to 5 (PointObject.ts)"}
+{"level":30,"time":1742795269750,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of points was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742795269750,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setXAxisPos() was called; xPosition of 2D Point was set to 0.95 (Point2DObject.ts)"}
+{"level":30,"time":1742795269751,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"a 2D Point has been created (Create2DPoint.tsx)"}
+{"level":30,"time":1742795269751,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"the lines on a TimeSeriesGraph object were created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742795269751,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setXAxisPos() was called; xPosition of 2D Point was set to 1.45 (Point2DObject.ts)"}
+{"level":30,"time":1742795269751,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"getYRange returned 10 (TimeSeriesGraphObject.ts)"}
+{"level":30,"time":1742795269752,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYData() was called; y Data of Point set to 6 (PointObject.ts)"}
+{"level":30,"time":1742795269752,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of points was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742795269752,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setXAxisPos() was called; xPosition of 2D Point was set to 1.45 (Point2DObject.ts)"}
+{"level":30,"time":1742795269752,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYAxisPos() was called; yPosition of 2D Point was set to 0.020999999999999908 (Point2DObject.ts)"}
+{"level":30,"time":1742795269752,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setSelected() was called on PointObject (PointObject.ts)"}
+{"level":30,"time":1742795269753,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYAxisPos() was called; yPosition of 2D Point was set to 0.020999999999999908 (Point2DObject.ts)"}
+{"level":30,"time":1742795269753,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYData() was called; y Data of Point set to 7 (PointObject.ts)"}
+{"level":30,"time":1742795269753,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"a 2D Point has been created (Create2DPoint.tsx)"}
+{"level":30,"time":1742795269753,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"the lines on a TimeSeriesGraph object were created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742795269753,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setTimeData() was called; time Data of Point set to 6 (PointObject.ts)"}
+{"level":30,"time":1742795269754,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYAxisPos() was called; yPosition of 2D Point was set to 0.17400000000000015 (Point2DObject.ts)"}
+{"level":30,"time":1742795269754,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setXAxisPos() was called; xPosition of 2D Point was set to 1.95 (Point2DObject.ts)"}
+{"level":30,"time":1742795269754,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"getYRange returned 10 (TimeSeriesGraphObject.ts)"}
+{"level":30,"time":1742795269754,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setSelected() was called on PointObject (PointObject.ts)"}
+{"level":30,"time":1742795269755,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setTimeData() was called; time Data of Point set to 7 (PointObject.ts)"}
+{"level":30,"time":1742795269755,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of points was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742795269755,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setXAxisPos() was called; xPosition of 2D Point was set to 1.95 (Point2DObject.ts)"}
+{"level":30,"time":1742795269755,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYAxisPos() was called; yPosition of 2D Point was set to 0.17400000000000015 (Point2DObject.ts)"}
+{"level":30,"time":1742795269756,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"a 2D Point has been created (Create2DPoint.tsx)"}
+{"level":30,"time":1742795269756,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"the lines on a TimeSeriesGraph object were created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742795269756,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setXAxisPos() was called; xPosition of 2D Point was set to 2.45 (Point2DObject.ts)"}
+{"level":30,"time":1742795269756,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYData() was called; y Data of Point set to 8 (PointObject.ts)"}
+{"level":30,"time":1742795269756,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of points was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742795269757,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setXAxisPos() was called; xPosition of 2D Point was set to 2.45 (Point2DObject.ts)"}
+{"level":30,"time":1742795269757,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"getYRange returned 10 (TimeSeriesGraphObject.ts)"}
+{"level":30,"time":1742795269757,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYAxisPos() was called; yPosition of 2D Point was set to 0.32699999999999996 (Point2DObject.ts)"}
+{"level":30,"time":1742795269757,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setTimeData() was called; time Data of Point set to 8 (PointObject.ts)"}
+{"level":30,"time":1742795269757,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYData() was called; y Data of Point set to 9 (PointObject.ts)"}
+{"level":30,"time":1742795269757,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYAxisPos() was called; yPosition of 2D Point was set to 0.32699999999999996 (Point2DObject.ts)"}
+{"level":30,"time":1742795269758,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setSelected() was called on PointObject (PointObject.ts)"}
+{"level":30,"time":1742795269758,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setXAxisPos() was called; xPosition of 2D Point was set to 2.95 (Point2DObject.ts)"}
+{"level":30,"time":1742795269758,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"getYRange returned 10 (TimeSeriesGraphObject.ts)"}
+{"level":30,"time":1742795269758,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYAxisPos() was called; yPosition of 2D Point was set to 0.48 (Point2DObject.ts)"}
+{"level":30,"time":1742795269759,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"a 2D Point has been created (Create2DPoint.tsx)"}
+{"level":30,"time":1742795269760,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"the lines on a TimeSeriesGraph object were created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742795269760,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setXAxisPos() was called; xPosition of 2D Point was set to 2.95 (Point2DObject.ts)"}
+{"level":30,"time":1742795269760,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYAxisPos() was called; yPosition of 2D Point was set to 0.48 (Point2DObject.ts)"}
+{"level":30,"time":1742795269760,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setSelected() was called on PointObject (PointObject.ts)"}
+{"level":30,"time":1742795269761,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setTimeData() was called; time Data of Point set to 9 (PointObject.ts)"}
+{"level":30,"time":1742795269761,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of points was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742795269761,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"a 2D Point has been created (Create2DPoint.tsx)"}
+{"level":30,"time":1742795269762,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"the lines on a TimeSeriesGraph object were created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742795269762,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"an EmbeddedGraph has been created (CreateEmbeddedGraph.tsx)"}
+{"level":30,"time":1742795269762,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYData() was called; y Data of Point set to 10 (PointObject.ts)"}
+{"level":30,"time":1742795269763,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"an EmbeddedGraph visualization is being created [not yet functioning] (EmbeddedGraph.tsx)"}
+{"level":30,"time":1742795269763,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setTimeData() was called; time Data of Point set to 0 (PointObject.ts)"}
+{"level":30,"time":1742795269764,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYData() was called; y Data of Point set to 1 (PointObject.ts)"}
+{"level":30,"time":1742795269765,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setSelected() was called on PointObject (PointObject.ts)"}
+{"level":30,"time":1742795269765,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setXAxisPos() was called; xPosition of 3D Point was set to 1 (Point3DObject.ts)"}
+{"level":30,"time":1742795269766,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYAxisPos() was called; yPosition of 3D Point was set to 0 (Point3DObject.ts)"}
+{"level":30,"time":1742795269766,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setZAxisPos() was called; zPosition of 3D Point was set to 0 (Point3DObject.ts)"}
+{"level":30,"time":1742795269767,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"a 3D Point has been created (Create3DPoint.tsx)"}
+{"level":30,"time":1742795269768,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setTimeData() was called; time Data of Point set to 1 (PointObject.ts)"}
+{"level":30,"time":1742795269769,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYData() was called; y Data of Point set to 2 (PointObject.ts)"}
+{"level":30,"time":1742795269770,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setSelected() was called on PointObject (PointObject.ts)"}
+{"level":30,"time":1742795269770,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setXAxisPos() was called; xPosition of 3D Point was set to 2 (Point3DObject.ts)"}
+{"level":30,"time":1742795269770,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYAxisPos() was called; yPosition of 3D Point was set to 1 (Point3DObject.ts)"}
+{"level":30,"time":1742795269770,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setZAxisPos() was called; zPosition of 3D Point was set to 0 (Point3DObject.ts)"}
+{"level":30,"time":1742795269771,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"a 3D Point has been created (Create3DPoint.tsx)"}
+{"level":30,"time":1742795269771,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setTimeData() was called; time Data of Point set to 2 (PointObject.ts)"}
+{"level":30,"time":1742795269771,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYData() was called; y Data of Point set to 3 (PointObject.ts)"}
+{"level":30,"time":1742795269772,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setSelected() was called on PointObject (PointObject.ts)"}
+{"level":30,"time":1742795269773,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setXAxisPos() was called; xPosition of 3D Point was set to 3 (Point3DObject.ts)"}
+{"level":30,"time":1742795269773,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYAxisPos() was called; yPosition of 3D Point was set to 2 (Point3DObject.ts)"}
+{"level":30,"time":1742795269773,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setZAxisPos() was called; zPosition of 3D Point was set to 1 (Point3DObject.ts)"}
+{"level":30,"time":1742795269774,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"a 3D Point has been created (Create3DPoint.tsx)"}
+{"level":30,"time":1742795269774,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setTimeData() was called; time Data of Point set to 3 (PointObject.ts)"}
+{"level":30,"time":1742795269774,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setSelected() was called on PointObject (PointObject.ts)"}
+{"level":30,"time":1742795269774,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYData() was called; y Data of Point set to 4 (PointObject.ts)"}
+{"level":30,"time":1742795269774,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setXAxisPos() was called; xPosition of 3D Point was set to 4 (Point3DObject.ts)"}
+{"level":30,"time":1742795269775,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYAxisPos() was called; yPosition of 3D Point was set to 3 (Point3DObject.ts)"}
+{"level":30,"time":1742795269775,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setZAxisPos() was called; zPosition of 3D Point was set to 2 (Point3DObject.ts)"}
+{"level":30,"time":1742795269775,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"a 3D Point has been created (Create3DPoint.tsx)"}
+{"level":30,"time":1742795269776,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setTimeData() was called; time Data of Point set to 4 (PointObject.ts)"}
+{"level":30,"time":1742795269776,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYData() was called; y Data of Point set to 5 (PointObject.ts)"}
+{"level":30,"time":1742795269776,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setSelected() was called on PointObject (PointObject.ts)"}
+{"level":30,"time":1742795269777,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setXAxisPos() was called; xPosition of 3D Point was set to 5 (Point3DObject.ts)"}
+{"level":30,"time":1742795269777,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYAxisPos() was called; yPosition of 3D Point was set to 4 (Point3DObject.ts)"}
+{"level":30,"time":1742795269777,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setZAxisPos() was called; zPosition of 3D Point was set to 3 (Point3DObject.ts)"}
+{"level":30,"time":1742795269778,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"a 3D Point has been created (Create3DPoint.tsx)"}
+{"level":30,"time":1742795269778,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setTimeData() was called; time Data of Point set to 5 (PointObject.ts)"}
+{"level":30,"time":1742795269779,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYData() was called; y Data of Point set to 6 (PointObject.ts)"}
+{"level":30,"time":1742795269779,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setSelected() was called on PointObject (PointObject.ts)"}
+{"level":30,"time":1742795269779,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setXAxisPos() was called; xPosition of 3D Point was set to 6 (Point3DObject.ts)"}
+{"level":30,"time":1742795269780,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYAxisPos() was called; yPosition of 3D Point was set to 5 (Point3DObject.ts)"}
+{"level":30,"time":1742795269780,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setZAxisPos() was called; zPosition of 3D Point was set to 4 (Point3DObject.ts)"}
+{"level":30,"time":1742795269780,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"a 3D Point has been created (Create3DPoint.tsx)"}
+{"level":30,"time":1742795269780,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setTimeData() was called; time Data of Point set to 6 (PointObject.ts)"}
+{"level":30,"time":1742795269780,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYData() was called; y Data of Point set to 7 (PointObject.ts)"}
+{"level":30,"time":1742795269781,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setSelected() was called on PointObject (PointObject.ts)"}
+{"level":30,"time":1742795269781,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setXAxisPos() was called; xPosition of 3D Point was set to 7 (Point3DObject.ts)"}
+{"level":30,"time":1742795269781,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYAxisPos() was called; yPosition of 3D Point was set to 6 (Point3DObject.ts)"}
+{"level":30,"time":1742795269781,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setZAxisPos() was called; zPosition of 3D Point was set to 5 (Point3DObject.ts)"}
+{"level":30,"time":1742795269781,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYData() was called; y Data of Point set to 8 (PointObject.ts)"}
+{"level":30,"time":1742795269781,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setSelected() was called on PointObject (PointObject.ts)"}
+{"level":30,"time":1742795269781,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"a 3D Point has been created (Create3DPoint.tsx)"}
+{"level":30,"time":1742795269782,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setTimeData() was called; time Data of Point set to 7 (PointObject.ts)"}
+{"level":30,"time":1742795269782,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setZAxisPos() was called; zPosition of 3D Point was set to 6 (Point3DObject.ts)"}
+{"level":30,"time":1742795269782,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"a 3D Point has been created (Create3DPoint.tsx)"}
+{"level":30,"time":1742795269782,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setTimeData() was called; time Data of Point set to 8 (PointObject.ts)"}
+{"level":30,"time":1742795269783,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setXAxisPos() was called; xPosition of 3D Point was set to 8 (Point3DObject.ts)"}
+{"level":30,"time":1742795269783,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYAxisPos() was called; yPosition of 3D Point was set to 7 (Point3DObject.ts)"}
+{"level":30,"time":1742795269783,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setSelected() was called on PointObject (PointObject.ts)"}
+{"level":30,"time":1742795269783,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setXAxisPos() was called; xPosition of 3D Point was set to 9 (Point3DObject.ts)"}
+{"level":30,"time":1742795269783,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYAxisPos() was called; yPosition of 3D Point was set to 8 (Point3DObject.ts)"}
+{"level":30,"time":1742795269784,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYData() was called; y Data of Point set to 9 (PointObject.ts)"}
+{"level":30,"time":1742795269784,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setTimeData() was called; time Data of Point set to 9 (PointObject.ts)"}
+{"level":30,"time":1742795269785,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYData() was called; y Data of Point set to 10 (PointObject.ts)"}
+{"level":30,"time":1742795269785,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setSelected() was called on PointObject (PointObject.ts)"}
+{"level":30,"time":1742795269785,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setZAxisPos() was called; zPosition of 3D Point was set to 7 (Point3DObject.ts)"}
+{"level":30,"time":1742795269785,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"a 3D Point has been created (Create3DPoint.tsx)"}
+{"level":30,"time":1742795269786,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYAxisPos() was called; yPosition of 3D Point was set to 9 (Point3DObject.ts)"}
+{"level":30,"time":1742795269786,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setZAxisPos() was called; zPosition of 3D Point was set to 8 (Point3DObject.ts)"}
+{"level":30,"time":1742795269786,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"a 3D Point has been created (Create3DPoint.tsx)"}
+{"level":30,"time":1742795269786,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setXAxisPos() was called; xPosition of 3D Point was set to 10 (Point3DObject.ts)"}
+{"level":30,"time":1742795269787,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYRangeLength() was called on TimeSeriesGraphObject (TimeSeriesGraphObject.ts)"}
+{"level":30,"time":1742795269788,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"generateTimeSeriesGraph() was called; successfully generated Time Series Graph (GraphController.ts)"}
+{"level":30,"time":1742795269788,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setRange() was called; yRange was set to 10 (TimeSeriesGraphObject.ts)"}
+{"level":30,"time":1742795269788,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"timeSeriesYRange() returned 10 (TimeSeriesGraphObject.ts)"}
+{"level":30,"time":1742795269788,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"a TimeSeriesGraph has been created (CreateTimeSeries.tsx)"}
+{"level":30,"time":1742795269788,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"a TimeSeriesGraph object sidebar was created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742795269789,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setRange() was called; yRange was set to 10 (EmbeddedGraphObject.ts)"}
+{"level":30,"time":1742795269789,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"generateEmbeddedGraph() was called; successfully generated Embedded Graph (GraphController.ts)"}
+{"level":30,"time":1742795269789,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"timeSeriesYRange() returned 10 (TimeSeriesGraphObject.ts)"}
+{"level":30,"time":1742795269789,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"timeSeriesXRange() was called and returned 0,1,2,3,4,5,6,7,8,9 (TimeSeriesGraphObject.ts)"}
+{"level":30,"time":1742795269789,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"a TimeSeriesGraph object header was selected and visually updated to reflect selection (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742795269790,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"a TimeSeriesGraph visualization is being created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742795269790,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"getYRange returned 10 (TimeSeriesGraphObject.ts)"}
+{"level":30,"time":1742795269790,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYAxisPos() was called; yPosition of 2D Point was set to -0.897 (Point2DObject.ts)"}
+{"level":30,"time":1742795269790,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of points was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742795269790,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of the Y range was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742795269790,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setXAxisPos() was called; xPosition of 2D Point was set to -1.55 (Point2DObject.ts)"}
+{"level":30,"time":1742795269791,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYAxisPos() was called; yPosition of 2D Point was set to -0.897 (Point2DObject.ts)"}
+{"level":30,"time":1742795269791,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setSelected() was called on PointObject (PointObject.ts)"}
+{"level":30,"time":1742795269791,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setTimeData() was called; time Data of Point set to 0 (PointObject.ts)"}
+{"level":30,"time":1742795269792,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYData() was called; y Data of Point set to 1 (PointObject.ts)"}
+{"level":30,"time":1742795269792,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setXAxisPos() was called; xPosition of 2D Point was set to -1.55 (Point2DObject.ts)"}
+{"level":30,"time":1742795269792,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"the lines on a TimeSeriesGraph object were created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742795269792,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setXAxisPos() was called; xPosition of 2D Point was set to -1.05 (Point2DObject.ts)"}
+{"level":30,"time":1742795269792,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"getYRange returned 10 (TimeSeriesGraphObject.ts)"}
+{"level":30,"time":1742795269793,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYAxisPos() was called; yPosition of 2D Point was set to -0.744 (Point2DObject.ts)"}
+{"level":30,"time":1742795269793,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"a 2D Point has been created (Create2DPoint.tsx)"}
+{"level":30,"time":1742795269793,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setXAxisPos() was called; xPosition of 2D Point was set to -1.05 (Point2DObject.ts)"}
+{"level":30,"time":1742795269793,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYAxisPos() was called; yPosition of 2D Point was set to -0.744 (Point2DObject.ts)"}
+{"level":30,"time":1742795269794,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setSelected() was called on PointObject (PointObject.ts)"}
+{"level":30,"time":1742795269794,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setTimeData() was called; time Data of Point set to 1 (PointObject.ts)"}
+{"level":30,"time":1742795269794,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of points was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742795269794,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"a 2D Point has been created (Create2DPoint.tsx)"}
+{"level":30,"time":1742795269794,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"the lines on a TimeSeriesGraph object were created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742795269795,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setXAxisPos() was called; xPosition of 2D Point was set to -0.55 (Point2DObject.ts)"}
+{"level":30,"time":1742795269795,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"getYRange returned 10 (TimeSeriesGraphObject.ts)"}
+{"level":30,"time":1742795269795,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYData() was called; y Data of Point set to 2 (PointObject.ts)"}
+{"level":30,"time":1742795269795,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of points was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742795269795,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setXAxisPos() was called; xPosition of 2D Point was set to -0.55 (Point2DObject.ts)"}
+{"level":30,"time":1742795269796,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYAxisPos() was called; yPosition of 2D Point was set to -0.5910000000000001 (Point2DObject.ts)"}
+{"level":30,"time":1742795269796,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYAxisPos() was called; yPosition of 2D Point was set to -0.5910000000000001 (Point2DObject.ts)"}
+{"level":30,"time":1742795269796,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYData() was called; y Data of Point set to 3 (PointObject.ts)"}
+{"level":30,"time":1742795269796,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"a 2D Point has been created (Create2DPoint.tsx)"}
+{"level":30,"time":1742795269796,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setSelected() was called on PointObject (PointObject.ts)"}
+{"level":30,"time":1742795269796,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setTimeData() was called; time Data of Point set to 2 (PointObject.ts)"}
+{"level":30,"time":1742795269797,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"getYRange returned 10 (TimeSeriesGraphObject.ts)"}
+{"level":30,"time":1742795269797,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYAxisPos() was called; yPosition of 2D Point was set to -0.43799999999999994 (Point2DObject.ts)"}
+{"level":30,"time":1742795269798,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of points was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742795269798,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setXAxisPos() was called; xPosition of 2D Point was set to -0.050000000000000044 (Point2DObject.ts)"}
+{"level":30,"time":1742795269799,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"the lines on a TimeSeriesGraph object were created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742795269799,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setXAxisPos() was called; xPosition of 2D Point was set to -0.050000000000000044 (Point2DObject.ts)"}
+{"level":30,"time":1742795269800,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYAxisPos() was called; yPosition of 2D Point was set to -0.43799999999999994 (Point2DObject.ts)"}
+{"level":30,"time":1742795269800,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setSelected() was called on PointObject (PointObject.ts)"}
+{"level":30,"time":1742795269800,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setTimeData() was called; time Data of Point set to 3 (PointObject.ts)"}
+{"level":30,"time":1742795269800,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYData() was called; y Data of Point set to 4 (PointObject.ts)"}
+{"level":30,"time":1742795269801,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"a 2D Point has been created (Create2DPoint.tsx)"}
+{"level":30,"time":1742795269801,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setXAxisPos() was called; xPosition of 2D Point was set to 0.44999999999999996 (Point2DObject.ts)"}
+{"level":30,"time":1742795269801,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"getYRange returned 10 (TimeSeriesGraphObject.ts)"}
+{"level":30,"time":1742795269801,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYAxisPos() was called; yPosition of 2D Point was set to -0.28500000000000003 (Point2DObject.ts)"}
+{"level":30,"time":1742795269801,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"the lines on a TimeSeriesGraph object were created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742795269801,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYAxisPos() was called; yPosition of 2D Point was set to -0.28500000000000003 (Point2DObject.ts)"}
+{"level":30,"time":1742795269802,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setSelected() was called on PointObject (PointObject.ts)"}
+{"level":30,"time":1742795269802,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setTimeData() was called; time Data of Point set to 4 (PointObject.ts)"}
+{"level":30,"time":1742795269802,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of points was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742795269802,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setXAxisPos() was called; xPosition of 2D Point was set to 0.44999999999999996 (Point2DObject.ts)"}
+{"level":30,"time":1742795269802,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"a 2D Point has been created (Create2DPoint.tsx)"}
+{"level":30,"time":1742795269803,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"the lines on a TimeSeriesGraph object were created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742795269803,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setXAxisPos() was called; xPosition of 2D Point was set to 0.95 (Point2DObject.ts)"}
+{"level":30,"time":1742795269803,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"getYRange returned 10 (TimeSeriesGraphObject.ts)"}
+{"level":30,"time":1742795269803,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYData() was called; y Data of Point set to 5 (PointObject.ts)"}
+{"level":30,"time":1742795269803,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of points was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742795269803,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setXAxisPos() was called; xPosition of 2D Point was set to 0.95 (Point2DObject.ts)"}
+{"level":30,"time":1742795269804,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYAxisPos() was called; yPosition of 2D Point was set to -0.13200000000000012 (Point2DObject.ts)"}
+{"level":30,"time":1742795269804,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYAxisPos() was called; yPosition of 2D Point was set to -0.13200000000000012 (Point2DObject.ts)"}
+{"level":30,"time":1742795269804,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYData() was called; y Data of Point set to 6 (PointObject.ts)"}
+{"level":30,"time":1742795269804,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"a 2D Point has been created (Create2DPoint.tsx)"}
+{"level":30,"time":1742795269804,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setSelected() was called on PointObject (PointObject.ts)"}
+{"level":30,"time":1742795269805,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setTimeData() was called; time Data of Point set to 5 (PointObject.ts)"}
+{"level":30,"time":1742795269805,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"getYRange returned 10 (TimeSeriesGraphObject.ts)"}
+{"level":30,"time":1742795269805,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYAxisPos() was called; yPosition of 2D Point was set to 0.020999999999999908 (Point2DObject.ts)"}
+{"level":30,"time":1742795269805,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of points was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742795269805,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"the lines on a TimeSeriesGraph object were created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742795269805,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setXAxisPos() was called; xPosition of 2D Point was set to 1.45 (Point2DObject.ts)"}
+{"level":30,"time":1742795269806,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYAxisPos() was called; yPosition of 2D Point was set to 0.020999999999999908 (Point2DObject.ts)"}
+{"level":30,"time":1742795269806,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setSelected() was called on PointObject (PointObject.ts)"}
+{"level":30,"time":1742795269806,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setTimeData() was called; time Data of Point set to 6 (PointObject.ts)"}
+{"level":30,"time":1742795269807,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setXAxisPos() was called; xPosition of 2D Point was set to 1.45 (Point2DObject.ts)"}
+{"level":30,"time":1742795269807,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"the lines on a TimeSeriesGraph object were created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742795269807,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setXAxisPos() was called; xPosition of 2D Point was set to 1.95 (Point2DObject.ts)"}
+{"level":30,"time":1742795269807,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"getYRange returned 10 (TimeSeriesGraphObject.ts)"}
+{"level":30,"time":1742795269807,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYData() was called; y Data of Point set to 7 (PointObject.ts)"}
+{"level":30,"time":1742795269808,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"a 2D Point has been created (Create2DPoint.tsx)"}
+{"level":30,"time":1742795269808,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of points was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742795269808,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setXAxisPos() was called; xPosition of 2D Point was set to 1.95 (Point2DObject.ts)"}
+{"level":30,"time":1742795269808,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYAxisPos() was called; yPosition of 2D Point was set to 0.17400000000000015 (Point2DObject.ts)"}
+{"level":30,"time":1742795269809,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYAxisPos() was called; yPosition of 2D Point was set to 0.17400000000000015 (Point2DObject.ts)"}
+{"level":30,"time":1742795269811,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYData() was called; y Data of Point set to 8 (PointObject.ts)"}
+{"level":30,"time":1742795269811,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"a 2D Point has been created (Create2DPoint.tsx)"}
+{"level":30,"time":1742795269812,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"the lines on a TimeSeriesGraph object were created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742795269813,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setSelected() was called on PointObject (PointObject.ts)"}
+{"level":30,"time":1742795269813,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setTimeData() was called; time Data of Point set to 7 (PointObject.ts)"}
+{"level":30,"time":1742795269814,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"getYRange returned 10 (TimeSeriesGraphObject.ts)"}
+{"level":30,"time":1742795269815,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYAxisPos() was called; yPosition of 2D Point was set to 0.32699999999999996 (Point2DObject.ts)"}
+{"level":30,"time":1742795269815,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of points was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742795269819,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setXAxisPos() was called; xPosition of 2D Point was set to 2.45 (Point2DObject.ts)"}
+{"level":30,"time":1742795269820,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setSelected() was called on PointObject (PointObject.ts)"}
+{"level":30,"time":1742795269820,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setTimeData() was called; time Data of Point set to 8 (PointObject.ts)"}
+{"level":30,"time":1742795269820,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYData() was called; y Data of Point set to 9 (PointObject.ts)"}
+{"level":30,"time":1742795269821,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setXAxisPos() was called; xPosition of 2D Point was set to 2.45 (Point2DObject.ts)"}
+{"level":30,"time":1742795269821,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYAxisPos() was called; yPosition of 2D Point was set to 0.32699999999999996 (Point2DObject.ts)"}
+{"level":30,"time":1742795269822,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"a 2D Point has been created (Create2DPoint.tsx)"}
+{"level":30,"time":1742795269822,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"the lines on a TimeSeriesGraph object were created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742795269822,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setXAxisPos() was called; xPosition of 2D Point was set to 2.95 (Point2DObject.ts)"}
+{"level":30,"time":1742795269822,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"getYRange returned 10 (TimeSeriesGraphObject.ts)"}
+{"level":30,"time":1742795269823,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYAxisPos() was called; yPosition of 2D Point was set to 0.48 (Point2DObject.ts)"}
+{"level":30,"time":1742795269823,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of points was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742795269824,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setXAxisPos() was called; xPosition of 2D Point was set to 2.95 (Point2DObject.ts)"}
+{"level":30,"time":1742795269825,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYAxisPos() was called; yPosition of 2D Point was set to 0.48 (Point2DObject.ts)"}
+{"level":30,"time":1742795269825,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setSelected() was called on PointObject (PointObject.ts)"}
+{"level":30,"time":1742795269825,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setTimeData() was called; time Data of Point set to 9 (PointObject.ts)"}
+{"level":30,"time":1742795269826,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYData() was called; y Data of Point set to 10 (PointObject.ts)"}
+{"level":30,"time":1742795269826,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"a 2D Point has been created (Create2DPoint.tsx)"}
+{"level":30,"time":1742795269826,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"an EmbeddedGraph has been created (CreateEmbeddedGraph.tsx)"}
+{"level":30,"time":1742795269826,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"an EmbeddedGraph visualization is being created [not yet functioning] (EmbeddedGraph.tsx)"}
+{"level":30,"time":1742795269826,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setTimeData() was called; time Data of Point set to 0 (PointObject.ts)"}
+{"level":30,"time":1742795269827,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYData() was called; y Data of Point set to 1 (PointObject.ts)"}
+{"level":30,"time":1742795269827,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"the lines on a TimeSeriesGraph object were created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742795269827,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setXAxisPos() was called; xPosition of 3D Point was set to 1 (Point3DObject.ts)"}
+{"level":30,"time":1742795269827,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYAxisPos() was called; yPosition of 3D Point was set to 0 (Point3DObject.ts)"}
+{"level":30,"time":1742795269827,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setZAxisPos() was called; zPosition of 3D Point was set to 0 (Point3DObject.ts)"}
+{"level":30,"time":1742795269827,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setSelected() was called on PointObject (PointObject.ts)"}
+{"level":30,"time":1742795269828,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYData() was called; y Data of Point set to 2 (PointObject.ts)"}
+{"level":30,"time":1742795269828,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setSelected() was called on PointObject (PointObject.ts)"}
+{"level":30,"time":1742795269828,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setXAxisPos() was called; xPosition of 3D Point was set to 2 (Point3DObject.ts)"}
+{"level":30,"time":1742795269828,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"a 3D Point has been created (Create3DPoint.tsx)"}
+{"level":30,"time":1742795269828,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setTimeData() was called; time Data of Point set to 1 (PointObject.ts)"}
+{"level":30,"time":1742795269829,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setZAxisPos() was called; zPosition of 3D Point was set to 0 (Point3DObject.ts)"}
+{"level":30,"time":1742795269829,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"a 3D Point has been created (Create3DPoint.tsx)"}
+{"level":30,"time":1742795269829,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setTimeData() was called; time Data of Point set to 2 (PointObject.ts)"}
+{"level":30,"time":1742795269829,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYData() was called; y Data of Point set to 3 (PointObject.ts)"}
+{"level":30,"time":1742795269830,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYAxisPos() was called; yPosition of 3D Point was set to 1 (Point3DObject.ts)"}
+{"level":30,"time":1742795269830,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setXAxisPos() was called; xPosition of 3D Point was set to 3 (Point3DObject.ts)"}
+{"level":30,"time":1742795269830,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYAxisPos() was called; yPosition of 3D Point was set to 2 (Point3DObject.ts)"}
+{"level":30,"time":1742795269830,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setZAxisPos() was called; zPosition of 3D Point was set to 1 (Point3DObject.ts)"}
+{"level":30,"time":1742795269830,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"a 3D Point has been created (Create3DPoint.tsx)"}
+{"level":30,"time":1742795269831,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setSelected() was called on PointObject (PointObject.ts)"}
+{"level":30,"time":1742795269831,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYData() was called; y Data of Point set to 4 (PointObject.ts)"}
+{"level":30,"time":1742795269831,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setSelected() was called on PointObject (PointObject.ts)"}
+{"level":30,"time":1742795269831,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setXAxisPos() was called; xPosition of 3D Point was set to 4 (Point3DObject.ts)"}
+{"level":30,"time":1742795269832,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYAxisPos() was called; yPosition of 3D Point was set to 3 (Point3DObject.ts)"}
+{"level":30,"time":1742795269832,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setTimeData() was called; time Data of Point set to 3 (PointObject.ts)"}
+{"level":30,"time":1742795269832,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"a 3D Point has been created (Create3DPoint.tsx)"}
+{"level":30,"time":1742795269832,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setTimeData() was called; time Data of Point set to 4 (PointObject.ts)"}
+{"level":30,"time":1742795269833,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYData() was called; y Data of Point set to 5 (PointObject.ts)"}
+{"level":30,"time":1742795269833,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setSelected() was called on PointObject (PointObject.ts)"}
+{"level":30,"time":1742795269833,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setZAxisPos() was called; zPosition of 3D Point was set to 2 (Point3DObject.ts)"}
+{"level":30,"time":1742795269833,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYAxisPos() was called; yPosition of 3D Point was set to 4 (Point3DObject.ts)"}
+{"level":30,"time":1742795269833,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setZAxisPos() was called; zPosition of 3D Point was set to 3 (Point3DObject.ts)"}
+{"level":30,"time":1742795269833,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"a 3D Point has been created (Create3DPoint.tsx)"}
+{"level":30,"time":1742795269834,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setTimeData() was called; time Data of Point set to 5 (PointObject.ts)"}
+{"level":30,"time":1742795269834,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setXAxisPos() was called; xPosition of 3D Point was set to 5 (Point3DObject.ts)"}
+{"level":30,"time":1742795269834,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setSelected() was called on PointObject (PointObject.ts)"}
+{"level":30,"time":1742795269834,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setXAxisPos() was called; xPosition of 3D Point was set to 6 (Point3DObject.ts)"}
+{"level":30,"time":1742795269835,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYAxisPos() was called; yPosition of 3D Point was set to 5 (Point3DObject.ts)"}
+{"level":30,"time":1742795269835,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYData() was called; y Data of Point set to 6 (PointObject.ts)"}
+{"level":30,"time":1742795269835,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setTimeData() was called; time Data of Point set to 6 (PointObject.ts)"}
+{"level":30,"time":1742795269835,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYData() was called; y Data of Point set to 7 (PointObject.ts)"}
+{"level":30,"time":1742795269835,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setZAxisPos() was called; zPosition of 3D Point was set to 4 (Point3DObject.ts)"}
+{"level":30,"time":1742795269835,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"a 3D Point has been created (Create3DPoint.tsx)"}
+{"level":30,"time":1742795269836,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYAxisPos() was called; yPosition of 3D Point was set to 6 (Point3DObject.ts)"}
+{"level":30,"time":1742795269836,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setZAxisPos() was called; zPosition of 3D Point was set to 5 (Point3DObject.ts)"}
+{"level":30,"time":1742795269836,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setSelected() was called on PointObject (PointObject.ts)"}
+{"level":30,"time":1742795269837,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setXAxisPos() was called; xPosition of 3D Point was set to 7 (Point3DObject.ts)"}
+{"level":30,"time":1742795269837,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYData() was called; y Data of Point set to 8 (PointObject.ts)"}
+{"level":30,"time":1742795269837,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setSelected() was called on PointObject (PointObject.ts)"}
+{"level":30,"time":1742795269837,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setXAxisPos() was called; xPosition of 3D Point was set to 8 (Point3DObject.ts)"}
+{"level":30,"time":1742795269838,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"a 3D Point has been created (Create3DPoint.tsx)"}
+{"level":30,"time":1742795269838,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setTimeData() was called; time Data of Point set to 7 (PointObject.ts)"}
+{"level":30,"time":1742795269838,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setZAxisPos() was called; zPosition of 3D Point was set to 6 (Point3DObject.ts)"}
+{"level":30,"time":1742795269838,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"a 3D Point has been created (Create3DPoint.tsx)"}
+{"level":30,"time":1742795269838,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setTimeData() was called; time Data of Point set to 8 (PointObject.ts)"}
+{"level":30,"time":1742795269839,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYData() was called; y Data of Point set to 9 (PointObject.ts)"}
+{"level":30,"time":1742795269839,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYAxisPos() was called; yPosition of 3D Point was set to 7 (Point3DObject.ts)"}
+{"level":30,"time":1742795269839,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setXAxisPos() was called; xPosition of 3D Point was set to 9 (Point3DObject.ts)"}
+{"level":30,"time":1742795269839,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYAxisPos() was called; yPosition of 3D Point was set to 8 (Point3DObject.ts)"}
+{"level":30,"time":1742795269839,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setZAxisPos() was called; zPosition of 3D Point was set to 7 (Point3DObject.ts)"}
+{"level":30,"time":1742795269840,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"a 3D Point has been created (Create3DPoint.tsx)"}
+{"level":30,"time":1742795269840,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setSelected() was called on PointObject (PointObject.ts)"}
+{"level":30,"time":1742795269840,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYData() was called; y Data of Point set to 10 (PointObject.ts)"}
+{"level":30,"time":1742795269840,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setSelected() was called on PointObject (PointObject.ts)"}
+{"level":30,"time":1742795269840,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setXAxisPos() was called; xPosition of 3D Point was set to 10 (Point3DObject.ts)"}
+{"level":30,"time":1742795269841,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYAxisPos() was called; yPosition of 3D Point was set to 9 (Point3DObject.ts)"}
+{"level":30,"time":1742795269841,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setTimeData() was called; time Data of Point set to 9 (PointObject.ts)"}
+{"level":30,"time":1742795269841,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"a 3D Point has been created (Create3DPoint.tsx)"}
+{"level":30,"time":1742795269841,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setRange() was called; yRange was set to 10 (TimeSeriesGraphObject.ts)"}
+{"level":30,"time":1742795269841,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"timeSeriesYRange() returned 10 (TimeSeriesGraphObject.ts)"}
+{"level":30,"time":1742795269842,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYRangeLength() was called on TimeSeriesGraphObject (TimeSeriesGraphObject.ts)"}
+{"level":30,"time":1742795269842,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setZAxisPos() was called; zPosition of 3D Point was set to 8 (Point3DObject.ts)"}
+{"level":30,"time":1742795269842,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setRange() was called; yRange was set to 10 (EmbeddedGraphObject.ts)"}
+{"level":30,"time":1742795269842,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"generateEmbeddedGraph() was called; successfully generated Embedded Graph (GraphController.ts)"}
+{"level":30,"time":1742795269843,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"a TimeSeriesGraph object sidebar was created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742795269844,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"generateTimeSeriesGraph() was called; successfully generated Time Series Graph (GraphController.ts)"}
+{"level":30,"time":1742795269844,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"timeSeriesYRange() returned 10 (TimeSeriesGraphObject.ts)"}
+{"level":30,"time":1742795269845,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"timeSeriesXRange() was called and returned 0,1,2,3,4,5,6,7,8,9 (TimeSeriesGraphObject.ts)"}
+{"level":30,"time":1742795269846,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"a TimeSeriesGraph object header was selected and visually updated to reflect selection (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742795269846,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"a TimeSeriesGraph visualization is being created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742795269848,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"getYRange returned 10 (TimeSeriesGraphObject.ts)"}
+{"level":30,"time":1742795269850,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of the Y range was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742795269851,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setXAxisPos() was called; xPosition of 2D Point was set to -1.55 (Point2DObject.ts)"}
+{"level":30,"time":1742795269852,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYAxisPos() was called; yPosition of 2D Point was set to -0.897 (Point2DObject.ts)"}
+{"level":30,"time":1742795269852,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYAxisPos() was called; yPosition of 2D Point was set to -0.897 (Point2DObject.ts)"}
+{"level":30,"time":1742795269852,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of points was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742795269852,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setXAxisPos() was called; xPosition of 2D Point was set to -1.55 (Point2DObject.ts)"}
+{"level":30,"time":1742795269853,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYData() was called; y Data of Point set to 1 (PointObject.ts)"}
+{"level":30,"time":1742795269853,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"a 2D Point has been created (Create2DPoint.tsx)"}
+{"level":30,"time":1742795269853,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"the lines on a TimeSeriesGraph object were created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742795269853,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setSelected() was called on PointObject (PointObject.ts)"}
+{"level":30,"time":1742795269853,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setTimeData() was called; time Data of Point set to 0 (PointObject.ts)"}
+{"level":30,"time":1742795269854,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"getYRange returned 10 (TimeSeriesGraphObject.ts)"}
+{"level":30,"time":1742795269854,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYAxisPos() was called; yPosition of 2D Point was set to -0.744 (Point2DObject.ts)"}
+{"level":30,"time":1742795269854,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of points was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742795269854,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setXAxisPos() was called; xPosition of 2D Point was set to -1.05 (Point2DObject.ts)"}
+{"level":30,"time":1742795269855,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setXAxisPos() was called; xPosition of 2D Point was set to -1.05 (Point2DObject.ts)"}
+{"level":30,"time":1742795269855,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setSelected() was called on PointObject (PointObject.ts)"}
+{"level":30,"time":1742795269855,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setTimeData() was called; time Data of Point set to 1 (PointObject.ts)"}
+{"level":30,"time":1742795269855,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYData() was called; y Data of Point set to 2 (PointObject.ts)"}
+{"level":30,"time":1742795269855,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"a 2D Point has been created (Create2DPoint.tsx)"}
+{"level":30,"time":1742795269856,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYAxisPos() was called; yPosition of 2D Point was set to -0.744 (Point2DObject.ts)"}
+{"level":30,"time":1742795269856,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setXAxisPos() was called; xPosition of 2D Point was set to -0.55 (Point2DObject.ts)"}
+{"level":30,"time":1742795269858,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"getYRange returned 10 (TimeSeriesGraphObject.ts)"}
+{"level":30,"time":1742795269858,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYAxisPos() was called; yPosition of 2D Point was set to -0.5910000000000001 (Point2DObject.ts)"}
+{"level":30,"time":1742795269859,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"the lines on a TimeSeriesGraph object were created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742795269859,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYAxisPos() was called; yPosition of 2D Point was set to -0.5910000000000001 (Point2DObject.ts)"}
+{"level":30,"time":1742795269859,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setSelected() was called on PointObject (PointObject.ts)"}
+{"level":30,"time":1742795269859,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setTimeData() was called; time Data of Point set to 2 (PointObject.ts)"}
+{"level":30,"time":1742795269859,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of points was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742795269860,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setXAxisPos() was called; xPosition of 2D Point was set to -0.55 (Point2DObject.ts)"}
+{"level":30,"time":1742795269860,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"a 2D Point has been created (Create2DPoint.tsx)"}
+{"level":30,"time":1742795269860,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"the lines on a TimeSeriesGraph object were created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742795269860,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setXAxisPos() was called; xPosition of 2D Point was set to -0.050000000000000044 (Point2DObject.ts)"}
+{"level":30,"time":1742795269860,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYData() was called; y Data of Point set to 3 (PointObject.ts)"}
+{"level":30,"time":1742795269860,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of points was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742795269861,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setXAxisPos() was called; xPosition of 2D Point was set to -0.050000000000000044 (Point2DObject.ts)"}
+{"level":30,"time":1742795269861,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYAxisPos() was called; yPosition of 2D Point was set to -0.43799999999999994 (Point2DObject.ts)"}
+{"level":30,"time":1742795269861,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"getYRange returned 10 (TimeSeriesGraphObject.ts)"}
+{"level":30,"time":1742795269861,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYAxisPos() was called; yPosition of 2D Point was set to -0.43799999999999994 (Point2DObject.ts)"}
+{"level":30,"time":1742795269861,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setTimeData() was called; time Data of Point set to 3 (PointObject.ts)"}
+{"level":30,"time":1742795269861,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYData() was called; y Data of Point set to 4 (PointObject.ts)"}
+{"level":30,"time":1742795269862,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"a 2D Point has been created (Create2DPoint.tsx)"}
+{"level":30,"time":1742795269862,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setSelected() was called on PointObject (PointObject.ts)"}
+{"level":30,"time":1742795269862,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"getYRange returned 10 (TimeSeriesGraphObject.ts)"}
+{"level":30,"time":1742795269862,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYAxisPos() was called; yPosition of 2D Point was set to -0.28500000000000003 (Point2DObject.ts)"}
+{"level":30,"time":1742795269862,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"the lines on a TimeSeriesGraph object were created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742795269863,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setXAxisPos() was called; xPosition of 2D Point was set to 0.44999999999999996 (Point2DObject.ts)"}
+{"level":30,"time":1742795269863,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYAxisPos() was called; yPosition of 2D Point was set to -0.28500000000000003 (Point2DObject.ts)"}
+{"level":30,"time":1742795269863,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setSelected() was called on PointObject (PointObject.ts)"}
+{"level":30,"time":1742795269863,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setTimeData() was called; time Data of Point set to 4 (PointObject.ts)"}
+{"level":30,"time":1742795269863,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of points was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742795269863,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setXAxisPos() was called; xPosition of 2D Point was set to 0.44999999999999996 (Point2DObject.ts)"}
+{"level":30,"time":1742795269864,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"a 2D Point has been created (Create2DPoint.tsx)"}
+{"level":30,"time":1742795269864,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"the lines on a TimeSeriesGraph object were created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742795269864,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setXAxisPos() was called; xPosition of 2D Point was set to 0.95 (Point2DObject.ts)"}
+{"level":30,"time":1742795269864,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"getYRange returned 10 (TimeSeriesGraphObject.ts)"}
+{"level":30,"time":1742795269864,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYData() was called; y Data of Point set to 5 (PointObject.ts)"}
+{"level":30,"time":1742795269865,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of points was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742795269865,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setXAxisPos() was called; xPosition of 2D Point was set to 0.95 (Point2DObject.ts)"}
+{"level":30,"time":1742795269865,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYAxisPos() was called; yPosition of 2D Point was set to -0.13200000000000012 (Point2DObject.ts)"}
+{"level":30,"time":1742795269865,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setSelected() was called on PointObject (PointObject.ts)"}
+{"level":30,"time":1742795269865,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYAxisPos() was called; yPosition of 2D Point was set to -0.13200000000000012 (Point2DObject.ts)"}
+{"level":30,"time":1742795269866,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYData() was called; y Data of Point set to 6 (PointObject.ts)"}
+{"level":30,"time":1742795269866,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"a 2D Point has been created (Create2DPoint.tsx)"}
+{"level":30,"time":1742795269866,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"the lines on a TimeSeriesGraph object were created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742795269867,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setTimeData() was called; time Data of Point set to 5 (PointObject.ts)"}
+{"level":30,"time":1742795269867,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setXAxisPos() was called; xPosition of 2D Point was set to 1.45 (Point2DObject.ts)"}
+{"level":30,"time":1742795269867,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"getYRange returned 10 (TimeSeriesGraphObject.ts)"}
+{"level":30,"time":1742795269867,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYAxisPos() was called; yPosition of 2D Point was set to 0.020999999999999908 (Point2DObject.ts)"}
+{"level":30,"time":1742795269867,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of points was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742795269868,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setXAxisPos() was called; xPosition of 2D Point was set to 1.45 (Point2DObject.ts)"}
+{"level":30,"time":1742795269868,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYAxisPos() was called; yPosition of 2D Point was set to 0.020999999999999908 (Point2DObject.ts)"}
+{"level":30,"time":1742795269868,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setSelected() was called on PointObject (PointObject.ts)"}
+{"level":30,"time":1742795269868,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setTimeData() was called; time Data of Point set to 6 (PointObject.ts)"}
+{"level":30,"time":1742795269868,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setXAxisPos() was called; xPosition of 2D Point was set to 1.95 (Point2DObject.ts)"}
+{"level":30,"time":1742795269868,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"getYRange returned 10 (TimeSeriesGraphObject.ts)"}
+{"level":30,"time":1742795269869,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYData() was called; y Data of Point set to 7 (PointObject.ts)"}
+{"level":30,"time":1742795269869,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"a 2D Point has been created (Create2DPoint.tsx)"}
+{"level":30,"time":1742795269869,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"the lines on a TimeSeriesGraph object were created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742795269869,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of points was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742795269869,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setXAxisPos() was called; xPosition of 2D Point was set to 1.95 (Point2DObject.ts)"}
+{"level":30,"time":1742795269869,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYAxisPos() was called; yPosition of 2D Point was set to 0.17400000000000015 (Point2DObject.ts)"}
+{"level":30,"time":1742795269870,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setSelected() was called on PointObject (PointObject.ts)"}
+{"level":30,"time":1742795269870,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYAxisPos() was called; yPosition of 2D Point was set to 0.17400000000000015 (Point2DObject.ts)"}
+{"level":30,"time":1742795269870,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYData() was called; y Data of Point set to 8 (PointObject.ts)"}
+{"level":30,"time":1742795269870,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"a 2D Point has been created (Create2DPoint.tsx)"}
+{"level":30,"time":1742795269870,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"the lines on a TimeSeriesGraph object were created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742795269871,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setTimeData() was called; time Data of Point set to 7 (PointObject.ts)"}
+{"level":30,"time":1742795269871,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYAxisPos() was called; yPosition of 2D Point was set to 0.32699999999999996 (Point2DObject.ts)"}
+{"level":30,"time":1742795269871,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of points was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742795269871,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setXAxisPos() was called; xPosition of 2D Point was set to 2.45 (Point2DObject.ts)"}
+{"level":30,"time":1742795269871,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setXAxisPos() was called; xPosition of 2D Point was set to 2.45 (Point2DObject.ts)"}
+{"level":30,"time":1742795269871,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"getYRange returned 10 (TimeSeriesGraphObject.ts)"}
+{"level":30,"time":1742795269872,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setSelected() was called on PointObject (PointObject.ts)"}
+{"level":30,"time":1742795269872,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setTimeData() was called; time Data of Point set to 8 (PointObject.ts)"}
+{"level":30,"time":1742795269872,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYData() was called; y Data of Point set to 9 (PointObject.ts)"}
+{"level":30,"time":1742795269872,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"a 2D Point has been created (Create2DPoint.tsx)"}
+{"level":30,"time":1742795269872,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYAxisPos() was called; yPosition of 2D Point was set to 0.32699999999999996 (Point2DObject.ts)"}
+{"level":30,"time":1742795269872,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setXAxisPos() was called; xPosition of 2D Point was set to 2.95 (Point2DObject.ts)"}
+{"level":30,"time":1742795269872,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"getYRange returned 10 (TimeSeriesGraphObject.ts)"}
+{"level":30,"time":1742795269873,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYAxisPos() was called; yPosition of 2D Point was set to 0.48 (Point2DObject.ts)"}
+{"level":30,"time":1742795269873,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"the lines on a TimeSeriesGraph object were created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742795269873,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYAxisPos() was called; yPosition of 2D Point was set to 0.48 (Point2DObject.ts)"}
+{"level":30,"time":1742795269873,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setSelected() was called on PointObject (PointObject.ts)"}
+{"level":30,"time":1742795269873,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"a visual representation of points was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742795269873,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setXAxisPos() was called; xPosition of 2D Point was set to 2.95 (Point2DObject.ts)"}
+{"level":30,"time":1742795269874,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"a 2D Point has been created (Create2DPoint.tsx)"}
+{"level":30,"time":1742795269874,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"the lines on a TimeSeriesGraph object were created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742795269874,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setTimeData() was called; time Data of Point set to 9 (PointObject.ts)"}
+{"level":30,"time":1742795269874,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"setYData() was called; y Data of Point set to 10 (PointObject.ts)"}
+{"level":30,"time":1742795270592,"pid":30501,"hostname":"Madisons-MacBook-Pro.local","msg":"DropDownBody [active] button pressed"}

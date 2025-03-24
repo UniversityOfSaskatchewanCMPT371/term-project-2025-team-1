@@ -1,6 +1,6 @@
 import { CSVDataObject } from "../components/Csv_Components/CSVDataObject";
 import { sendError, sendLog } from "../logger-frontend";
-import { CSVDataInterface, CSVModelInterface } from "../types/CSVInterfaces";
+import { CSVModelInterface } from "../types/CSVInterfaces";
 
 /**
  * The CSVReaderModel class is responsible for managing the CSV data objects.
@@ -18,14 +18,10 @@ import { CSVDataInterface, CSVModelInterface } from "../types/CSVInterfaces";
  *
  */
 export class CSVReaderModel implements CSVModelInterface {
-  data: CSVDataObject[];
-
-  constructor() {
-    this.data = [];
-  }
+  data?: CSVDataObject;
 
   /**
-   * Returns a CSVData object if a file named 'name' exists
+   * Returns a CSVData object
    * @param {string} name - The name of the CSV file.
    *
    * @precondition The 'data' array contains CSVDataObject instances with a valid 'name' property
@@ -34,21 +30,18 @@ export class CSVReaderModel implements CSVModelInterface {
    *
    * @returns The CSVData object if found, otherwise null.
    */
-  getCSVFileByName(name: string): CSVDataInterface | null {
-    for (const data of this.data) {
-      if (data.name == name) {
-        return data;
-      }
+  getCSVFile(): CSVDataObject {
+    const data = this.data;
+    if (data === undefined) {
+      const error = new SyntaxError("Error getting csvfile");
+      sendError(error, "Unable to getCSVFile");
+      throw error;
     }
-    sendLog(
-      "info",
-      `getCSVRileByName could not find file ${name}, is this expected behavior?`,
-    );
-    return null;
+    return data;
   }
 
   /**
-   * Reads a local CSV file and adds it to the data array.
+   * Reads a local CSV file and sets it as the data array.
    *
    * @precondition The 'file' parameter is a valid File object representing a CSV file. The CSV file is successfully read.
    *
@@ -59,7 +52,7 @@ export class CSVReaderModel implements CSVModelInterface {
   async readLocalFile(file: File): Promise<void> {
     const data: CSVDataObject = new CSVDataObject();
     try {
-      await data.loadCSVData(this.data.length, file, false);
+      await data.loadCSVData(0, file, false);
       sendLog(
         "info",
         `readLocalFile read a file\n${JSON.stringify(data.getData())}`,
@@ -69,7 +62,7 @@ export class CSVReaderModel implements CSVModelInterface {
       sendError(error, "readLocalFile error");
       throw error;
     }
-    this.data.push(data);
+    this.data = data;
   }
 
   /**
@@ -84,7 +77,7 @@ export class CSVReaderModel implements CSVModelInterface {
   async readURLFile(file: string): Promise<void> {
     const data: CSVDataObject = new CSVDataObject();
     try {
-      await data.loadCSVData(this.data.length, file, true);
+      await data.loadCSVData(0, file, true);
       sendLog(
         "info",
         `readURLFile read a file\n${JSON.stringify(data.getData())}`,
@@ -94,7 +87,7 @@ export class CSVReaderModel implements CSVModelInterface {
       sendError(error, "readURLFile error");
       throw error;
     }
-    this.data.push(data);
+    this.data = data;
   }
 
   /**
@@ -109,12 +102,10 @@ export class CSVReaderModel implements CSVModelInterface {
    */
   loadedCsvBrowser(): [string, boolean][] {
     const csvBrowser: [string, boolean][] = [];
+    const file = this.getData();
 
-    if (this.getData().length > 0) {
-      this.getData().forEach((file) => {
-        const arrVal = file.getName();
-        csvBrowser.push([arrVal, file.getBrowserSelected()]);
-      });
+    if (file) {
+      csvBrowser.push([file.getName(), file.getBrowserSelected()]);
       sendLog(
         "info",
         `loadedCsvBrowser() returns list\n${JSON.stringify(csvBrowser)}`,
@@ -132,7 +123,7 @@ export class CSVReaderModel implements CSVModelInterface {
    *
    * @returns The internal data array of CSVDataObject instances.
    */
-  getData(): CSVDataObject[] {
+  getData(): CSVDataObject | undefined {
     return this.data;
   }
 }

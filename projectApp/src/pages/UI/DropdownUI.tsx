@@ -72,6 +72,8 @@ export default function DropdownUI({
    * @postcondition Lists all loaded csv files and assigned components
    */
   function GenerateList(): React.JSX.Element {
+    const modelData = mainController.getCSVController().getModelData();
+
     return (
       <>
         <Container flexDirection={"column"} width={"100%"}>
@@ -82,14 +84,12 @@ export default function DropdownUI({
             alignItems={"center"}
             justifyContent={"center"}
           >
-            {/* This will dis play the name of the csv file loaded */}
-            {mainController
-              .getCSVController()
-              .getModelData()
-              .map((graph) => (
-                //Currently does a loop, so refactor for only one csv file
-                <GenerateRowObject data={graph} key={graph.getName()} />
-              ))}
+            {/* Reading through Model csv data files */}
+            {modelData ? (
+              <GenerateRowObject data={modelData} key={modelData.getName()} />
+            ) : (
+              <Text>No data available</Text>
+            )}
           </Container>
 
           {/* The options body that allows the user to set values when generating the graph */}

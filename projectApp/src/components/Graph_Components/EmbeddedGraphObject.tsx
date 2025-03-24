@@ -32,7 +32,6 @@ export class EmbeddedGraphObject
   addPoints(): void {
     const data = this.csvData.getData();
     let time = 0;
-
     this.setRange();
     this.getCSVData()
       .getPoints()

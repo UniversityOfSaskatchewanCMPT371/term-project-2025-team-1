@@ -1,9 +1,9 @@
 import { CSVDataObject } from "../components/Csv_Components/CSVDataObject";
 import { EmbeddedGraphObject } from "../components/Graph_Components/EmbeddedGraphObject";
 import { TimeSeriesGraphObject } from "../components/Graph_Components/TimeSeriesGraphObject";
+import { sendError, sendLog } from "../logger-frontend";
 import { GraphModel } from "../models/GraphModel";
 import { ControllerInterface } from "../types/BaseInterfaces";
-import mainController from "./MainController";
 
 /**
  *
@@ -39,16 +39,24 @@ export class GraphController implements ControllerInterface {
    *    The mainController's main scene is updated.
    */
   generateTimeSeriesGraph(csv: CSVDataObject): TimeSeriesGraphObject {
-    const result: TimeSeriesGraphObject = new TimeSeriesGraphObject(csv);
-
     for (const graph of this.getModel().getData()) {
       if (graph.getName() == csv.getName()) {
         graph.setRange();
+        graph.setYRangeLength(graph.timeSeriesYRange().length + 1);
+        sendLog(
+          "info",
+          `generateTimeSeriesGraph() was called; successfully generated Time Series Graph (GraphController.ts)`,
+        );
         return graph;
       }
     }
-    mainController.updateMainScene();
-    return result;
+
+    const error = new SyntaxError("Error on Time Series Graph");
+    sendError(
+      error,
+      "Unable to generate Time Series Graph (GraphController.ts",
+    );
+    throw error;
   }
 
   /**
@@ -67,15 +75,20 @@ export class GraphController implements ControllerInterface {
    *    The mainController's main scene is updated.
    */
   generateEmbeddedGraph(csv: CSVDataObject): EmbeddedGraphObject {
-    const result: EmbeddedGraphObject = new EmbeddedGraphObject(csv);
-
     for (const graph of this.getModel().getEmbeddedGraphData()) {
       if (graph.getName() == csv.getName()) {
+        graph.setRange();
+        sendLog(
+          "info",
+          `generateEmbeddedGraph() was called; successfully generated Embedded Graph (GraphController.ts)`,
+        );
         return graph;
       }
     }
-    mainController.updateMainScene();
-    return result;
+
+    const error = new SyntaxError("Error Generating Embedded Graph");
+    sendError(error, "Unable to generate Embedded Graph");
+    throw error;
   }
 
   /**
@@ -94,6 +107,11 @@ export class GraphController implements ControllerInterface {
   ): void {
     this.getModel().addTimeSeriesGraph(graph);
     this.getModel().addEmbeddedGraph(emGraph);
+
+    sendLog(
+      "info",
+      `pushDataToModel() was called; successfully added both 2D and 3D Graphs(GraphController.ts)`,
+    );
   }
 
   /**
@@ -161,7 +179,21 @@ export class GraphController implements ControllerInterface {
     return this.getModel().getEmbeddedGraphData().length;
   }
 
+  /**
+   * This method returns the max range used by the 3D Embedded Graph
+   * @precondition for the Embedded Graph to exist and initialized
+   * @postcondition on success, returns the max range of the Embedded Graph
+   */
+  getEmbeddedRange(): number {
+    return this.getModel().getEmbeddedGraphData()[0].getRange();
+  }
+
+  /**
+   * Gets the tau value and turns it to a string to be displayed on the drop down ui
+   * @precondition graph generated with a tau value implemented
+   * @postcondition returns a string of the assigned tau value
+   */
   getTauForDropDown(): string {
-    return this.getModel().getEmbeddedGraphData()[0].getTao().toString();
+    return this.getModel().getEmbeddedGraphData()[0].getTau().toString();
   }
 }

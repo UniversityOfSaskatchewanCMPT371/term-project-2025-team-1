@@ -29,7 +29,7 @@ export class CSVController implements ControllerInterface {
    * Generates time series graphs for CSV data marked for VR display
    *
    * @precondition this.model must be initialized with CSV data
-   * @postcondition For each CSV with displayBoard=1:
+   * @postcondition For each CSV:
    *   - VR selection is enabled
    *   - A new TimeSeriesGraph is created and initialized
    *   - The graph is added to the main controller's graph collection
@@ -40,24 +40,27 @@ export class CSVController implements ControllerInterface {
 
     for (const csv of this.model.getData()) {
       csv.setVRSelected(true);
+      csv.populatePoints();
+
       const TSGraph = new TimeSeriesGraphObject(csv);
       TSGraph.setName(csv.getName());
       TSGraph.addPoints();
 
       const emGraph = new EmbeddedGraphObject(csv);
       emGraph.setName(csv.getName());
-      emGraph.setTao(tau);
+      emGraph.setTau(tau);
       emGraph.addPoints();
 
       mainController.getGraphController().pushDataToModel(TSGraph, emGraph);
-      console.log("Success on generate?");
       sendLog("info", "generate has pushed a new graph");
-
-      //For now return here so that the first csv file only gets loaded
-      return;
     }
   }
 
+  /**
+   * This method gets the csv file by opening a local file, and then loads it into the program
+   * @precondition a file that represents the csv file, needs to be a valid csv file
+   * @postcondition On success, the csv file to be loaded to the program
+   */
   async loadLocalFile(file: File): Promise<void> {
     try {
       await this.getModel().readLocalFile(file);
@@ -68,6 +71,11 @@ export class CSVController implements ControllerInterface {
     }
   }
 
+  /**
+   * This method gets the csv file using a url link, and then loads it into the program
+   * @precondition a string parameter representing the url link, needs to be a valid csv file
+   * @postcondition On success, the csv file to be loaded to the program
+   */
   async loadURLFile(csv: string): Promise<void> {
     try {
       await this.getModel().readURLFile(csv);
@@ -116,6 +124,11 @@ export class CSVController implements ControllerInterface {
     return file;
   }
 
+  /**
+   * This method gets the CSV Data by Name
+   * @precondition name, a string that is the name assigned to the CSV Data Object
+   * @postcondition returns the CSV Data Object with the specified name
+   */
   getDataByName(name: string): CSVDataInterface | null {
     return this.model.getCSVFileByName(name);
   }

@@ -2,9 +2,8 @@ import { OrbitControls } from "@react-three/drei";
 import MainScene from "./MainScene";
 import TestScene from "./TestScene";
 
-/* Starting scene
- * Not really needed anymore since we are using modules that deals with initialization
- * However, could be useful for future testing when working with different scenes
+/* Starting scene used by the program
+ * All of the other used scenes will get called here
  */
 export default function InitScene({
   inVR,

@@ -37,9 +37,9 @@ function App() {
         <button onClick={() => store.enterVR()}>Enter VR</button>
         {/* Everything encapsulated by Canvas and XR will contain the Scene to be displayed in VR */}
         <Canvas>
-          <color attach="background" args={["black"]}></color>
+          <color attach="background" args={["black"]} />
           <XR store={store}>
-            <XRScene setInVR={setInVR}></XRScene>
+            <XRScene setInVR={setInVR} />
             <Sky sunPosition={[0.5, 0, 0.5]} />
             <ambientLight />
             {/* InitScene starts up the scene displayed */}

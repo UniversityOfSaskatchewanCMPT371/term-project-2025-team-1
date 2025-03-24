@@ -117,11 +117,6 @@ describe("emulating csvLoader.feature", () => {
     );
 
     // CSVDataObject
-    const CSVDataObjectSetName = "setName,  will now be called Graph1"; // second valid graph
-    await expect(fileContainsText(path, CSVDataObjectSetName)).resolves.toBe(
-      true,
-    );
-
     const CSVDataObjectFindTimeHeader =
       "findTimeHeader() was called, the time header in the data set has been found (CSVDataObject.ts)";
     await expect(

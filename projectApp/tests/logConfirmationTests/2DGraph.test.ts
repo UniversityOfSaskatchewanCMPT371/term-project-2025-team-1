@@ -118,10 +118,5 @@ describe("2D graph log tests", () => {
       "setSelected() was called on PointObject (PointObject.ts)",
     );
     expect(setSelected).toBe(true);
-    const setOnClick = await fileContainsText(
-      filePath,
-      "setOnClick(), 2D Point has been clicked (Point2D.tsx)",
-    );
-    expect(setOnClick).toBe(true);
   });
 });

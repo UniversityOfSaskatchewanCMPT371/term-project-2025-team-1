@@ -1,5 +1,6 @@
 import { CSVDataObject } from "../components/Csv_Components/CSVDataObject";
 import { sendError, sendLog } from "../logger-frontend";
+import { addTestSceneInfo } from "../pages/Scene/TestScene";
 import { CSVModelInterface } from "../types/CSVInterfaces";
 
 /**
@@ -63,6 +64,7 @@ export class CSVReaderModel implements CSVModelInterface {
       throw error;
     }
     this.data = data;
+    addTestSceneInfo("CSVReaderModel now contains a CSVDataObject for the local file just read in");
   }
 
   /**
@@ -88,6 +90,7 @@ export class CSVReaderModel implements CSVModelInterface {
       throw error;
     }
     this.data = data;
+    addTestSceneInfo("CSVReaderModel now contains a CSVDataObject for the url file just read in");
   }
 
   /**

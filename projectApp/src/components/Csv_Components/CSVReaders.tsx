@@ -1,6 +1,7 @@
 import Papa from "papaparse";
 import * as fsPromise from "fs/promises";
 import { sendError, sendLog } from "../../logger-frontend";
+import { addTestSceneInfo } from "../../pages/Scene/TestScene";
 
 /**
  * This function reads the headers of a csv file and stores it
@@ -72,6 +73,7 @@ export async function LocalCSVReader(
 export function LocalCsvReader(
   file: File,
 ): Promise<{ key: Record<string, string | number> }[]> {
+  addTestSceneInfo("reading local csv reader")
   return new Promise<{ key: Record<string, string | number> }[]>(
     (resolve, reject) => {
       if (!file.name.endsWith("csv")) {
@@ -150,6 +152,7 @@ export async function UrlCSVReader(
   url: string,
 ): Promise<{ key: Record<string, string | number> }[]> {
   //Update: now any invalid url is by fetch bad response
+  addTestSceneInfo("starting url reader");
   return fetch(url, { redirect: "follow" })
     .then((response: Response) => {
       if (!response.ok) {

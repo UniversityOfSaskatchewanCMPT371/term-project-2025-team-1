@@ -18,3 +18,444 @@
 {"level":30,"time":1742520741448,"pid":74367,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"UnmountedComponents unmount: 1"}
 {"level":30,"time":1742520741452,"pid":74367,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"loadedCsvBrowser() returns list\n[[\"Graph0\",false]]"}
 {"level":30,"time":1742520741454,"pid":74367,"hostname":"Stevens-MBP.gateway.sasktel.net","msg":"UnmountedComponents unmount: 1"}
+{"level":30,"time":1742789933807,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"LocalCsvReader(file) has read data\n[{\"Time\":0,\"Some\":1,\"B\":2},{\"Time\":1,\"Some\":2,\"B\":4},{\"Time\":2,\"Some\":3,\"B\":6},{\"Time\":3,\"Some\":4,\"B\":8},{\"Time\":4,\"Some\":5,\"B\":10},{\"Time\":5,\"Some\":6,\"B\":12},{\"Time\":6,\"Some\":7,\"B\":14},{\"Time\":7,\"Some\":8,\"B\":16},{\"Time\":8,\"Some\":9,\"B\":18},{\"Time\":9,\"Some\":10,\"B\":20}]"}
+{"level":30,"time":1742789933810,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setData() was called, data has been set (CSVDataObject.ts)"}
+{"level":30,"time":1742789933811,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setName,  will now be called Graph0"}
+{"level":30,"time":1742789933812,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"findTimeHeader() was called, the time header in the data set has been found (CSVDataObject.ts)"}
+{"level":30,"time":1742789933814,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setTimeHeader() was called, finding the time header in the data set (CSVDataObject.ts)"}
+{"level":30,"time":1742789933815,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"findFirstHeader() was called, the first header was found Some (CSVDataObject.ts)"}
+{"level":30,"time":1742789933816,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setYHeader, Graph0 yHeader is set to Some"}
+{"level":30,"time":1742789933817,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"loadCSVData has loaded csv data\n[{\"Time\":0,\"Some\":1,\"B\":2},{\"Time\":1,\"Some\":2,\"B\":4},{\"Time\":2,\"Some\":3,\"B\":6},{\"Time\":3,\"Some\":4,\"B\":8},{\"Time\":4,\"Some\":5,\"B\":10},{\"Time\":5,\"Some\":6,\"B\":12},{\"Time\":6,\"Some\":7,\"B\":14},{\"Time\":7,\"Some\":8,\"B\":16},{\"Time\":8,\"Some\":9,\"B\":18},{\"Time\":9,\"Some\":10,\"B\":20}]"}
+{"level":30,"time":1742789933818,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"readLocalFile read a file\n[{\"Time\":0,\"Some\":1,\"B\":2},{\"Time\":1,\"Some\":2,\"B\":4},{\"Time\":2,\"Some\":3,\"B\":6},{\"Time\":3,\"Some\":4,\"B\":8},{\"Time\":4,\"Some\":5,\"B\":10},{\"Time\":5,\"Some\":6,\"B\":12},{\"Time\":6,\"Some\":7,\"B\":14},{\"Time\":7,\"Some\":8,\"B\":16},{\"Time\":8,\"Some\":9,\"B\":18},{\"Time\":9,\"Some\":10,\"B\":20}]"}
+{"level":30,"time":1742789935086,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"LoadComponent read: indexedData.csv"}
+{"level":30,"time":1742789935090,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"loadedCsvBrowser() returns list\n[[\"Graph0\",false]]"}
+{"level":30,"time":1742789935092,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"UnmountedComponents unmount: 1"}
+{"level":30,"time":1742789935093,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"loadedCsvBrowser() returns list\n[[\"Graph0\",false]]"}
+{"level":30,"time":1742789935094,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"UnmountedComponents unmount: 1"}
+{"level":30,"time":1742789937590,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"DropDownBody [active] button pressed"}
+{"level":30,"time":1742789939971,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setVRSelected, Graph0 vr is set to true"}
+{"level":30,"time":1742789939974,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setYData() was called; y Data of Point set to 2 (PointObject.ts)"}
+{"level":30,"time":1742789939975,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setTimeData() was called; time Data of Point set to 2 (PointObject.ts)"}
+{"level":30,"time":1742789939979,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setYData() was called; y Data of Point set to 3 (PointObject.ts)"}
+{"level":30,"time":1742789939980,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setTimeData() was called; time Data of Point set to 0 (PointObject.ts)"}
+{"level":30,"time":1742789939981,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setTimeData() was called; time Data of Point set to 3 (PointObject.ts)"}
+{"level":30,"time":1742789939982,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setYData() was called; y Data of Point set to 1 (PointObject.ts)"}
+{"level":30,"time":1742789939983,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setYData() was called; y Data of Point set to 4 (PointObject.ts)"}
+{"level":30,"time":1742789939983,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setTimeData() was called; time Data of Point set to 4 (PointObject.ts)"}
+{"level":30,"time":1742789939984,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setYData() was called; y Data of Point set to 5 (PointObject.ts)"}
+{"level":30,"time":1742789939985,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setTimeData() was called; time Data of Point set to 5 (PointObject.ts)"}
+{"level":30,"time":1742789939986,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setYData() was called; y Data of Point set to 6 (PointObject.ts)"}
+{"level":30,"time":1742789939987,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setTimeData() was called; time Data of Point set to 1 (PointObject.ts)"}
+{"level":30,"time":1742789939987,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setTimeData() was called; time Data of Point set to 6 (PointObject.ts)"}
+{"level":30,"time":1742789939988,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setYData() was called; y Data of Point set to 7 (PointObject.ts)"}
+{"level":30,"time":1742789939989,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setTimeData() was called; time Data of Point set to 7 (PointObject.ts)"}
+{"level":30,"time":1742789939990,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setYData() was called; y Data of Point set to 8 (PointObject.ts)"}
+{"level":30,"time":1742789939990,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setTimeData() was called; time Data of Point set to 8 (PointObject.ts)"}
+{"level":30,"time":1742789939991,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setYData() was called; y Data of Point set to 9 (PointObject.ts)"}
+{"level":30,"time":1742789939992,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setTimeData() was called; time Data of Point set to 9 (PointObject.ts)"}
+{"level":30,"time":1742789939993,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setYData() was called; y Data of Point set to 10 (PointObject.ts)"}
+{"level":30,"time":1742789939994,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"populatePoints() was called, the program points loaded using the csv file (CSVDataObject.ts)"}
+{"level":30,"time":1742789939995,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setName() was called on Graph Object, name of the Graph is now Graph0 (GraphObject.ts)"}
+{"level":30,"time":1742789939996,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"addPoint() has added new points to the graph (TimeSeriesGraphObject.tss)"}
+{"level":30,"time":1742789939997,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setName() was called on Graph Object, name of the Graph is now Graph0 (GraphObject.ts)"}
+{"level":30,"time":1742789939998,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"value of tau in EmbeddedGraphObject updated to the value 1"}
+{"level":30,"time":1742789939999,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setRange() was called; yRange was set to 10 (EmbeddedGraphObject.ts)"}
+{"level":30,"time":1742789940000,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"vector position calculated for data at index/time 0 (EmbeddedGraphObject.calculateVectorPosition())"}
+{"level":30,"time":1742789940001,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setPoint3DPosition() was called; Position of 3D Point was set to 1,0,0 (Point3DObject.ts)"}
+{"level":30,"time":1742789940002,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"vector position calculated for data at index/time 1 (EmbeddedGraphObject.calculateVectorPosition())"}
+{"level":30,"time":1742789940003,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setPoint3DPosition() was called; Position of 3D Point was set to 2,1,0 (Point3DObject.ts)"}
+{"level":30,"time":1742789940004,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"vector position calculated for data at index/time 2 (EmbeddedGraphObject.calculateVectorPosition())"}
+{"level":30,"time":1742789940005,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setPoint3DPosition() was called; Position of 3D Point was set to 3,2,1 (Point3DObject.ts)"}
+{"level":30,"time":1742789940006,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"vector position calculated for data at index/time 3 (EmbeddedGraphObject.calculateVectorPosition())"}
+{"level":30,"time":1742789940007,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setPoint3DPosition() was called; Position of 3D Point was set to 4,3,2 (Point3DObject.ts)"}
+{"level":30,"time":1742789940008,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"vector position calculated for data at index/time 4 (EmbeddedGraphObject.calculateVectorPosition())"}
+{"level":30,"time":1742789940008,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setPoint3DPosition() was called; Position of 3D Point was set to 5,4,3 (Point3DObject.ts)"}
+{"level":30,"time":1742789940009,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"vector position calculated for data at index/time 5 (EmbeddedGraphObject.calculateVectorPosition())"}
+{"level":30,"time":1742789940010,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setPoint3DPosition() was called; Position of 3D Point was set to 6,5,4 (Point3DObject.ts)"}
+{"level":30,"time":1742789940012,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"vector position calculated for data at index/time 6 (EmbeddedGraphObject.calculateVectorPosition())"}
+{"level":30,"time":1742789940013,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setPoint3DPosition() was called; Position of 3D Point was set to 7,6,5 (Point3DObject.ts)"}
+{"level":30,"time":1742789940015,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"vector position calculated for data at index/time 7 (EmbeddedGraphObject.calculateVectorPosition())"}
+{"level":30,"time":1742789940016,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setPoint3DPosition() was called; Position of 3D Point was set to 8,7,6 (Point3DObject.ts)"}
+{"level":30,"time":1742789940016,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"vector position calculated for data at index/time 8 (EmbeddedGraphObject.calculateVectorPosition())"}
+{"level":30,"time":1742789940017,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setPoint3DPosition() was called; Position of 3D Point was set to 9,8,7 (Point3DObject.ts)"}
+{"level":30,"time":1742789940019,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"vector position calculated for data at index/time 9 (EmbeddedGraphObject.calculateVectorPosition())"}
+{"level":30,"time":1742789940024,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setPoint3DPosition() was called; Position of 3D Point was set to 10,9,8 (Point3DObject.ts)"}
+{"level":30,"time":1742789940025,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"Points added to EmbeddedGraphObject (EmbeddedGraphObject.addPoints())"}
+{"level":30,"time":1742789940027,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"pushDataToModel() was called; successfully added both 2D and 3D Graphs(GraphController.ts)"}
+{"level":30,"time":1742789940028,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"generate has pushed a new graph"}
+{"level":30,"time":1742789940029,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"Update main scene"}
+{"level":30,"time":1742789940030,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"GenerateList [BUTTON]? pressed"}
+{"level":30,"time":1742789940032,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"DropDownBody [create] button pressed"}
+{"level":30,"time":1742789940033,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setVRSelected, Graph0 vr is set to true"}
+{"level":30,"time":1742789940035,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setTimeData() was called; time Data of Point set to 0 (PointObject.ts)"}
+{"level":30,"time":1742789940035,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setYData() was called; y Data of Point set to 1 (PointObject.ts)"}
+{"level":30,"time":1742789940036,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setTimeData() was called; time Data of Point set to 1 (PointObject.ts)"}
+{"level":30,"time":1742789940037,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setYData() was called; y Data of Point set to 2 (PointObject.ts)"}
+{"level":30,"time":1742789940040,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setTimeData() was called; time Data of Point set to 2 (PointObject.ts)"}
+{"level":30,"time":1742789940042,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setYData() was called; y Data of Point set to 3 (PointObject.ts)"}
+{"level":30,"time":1742789940044,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setTimeData() was called; time Data of Point set to 3 (PointObject.ts)"}
+{"level":30,"time":1742789940045,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setYData() was called; y Data of Point set to 4 (PointObject.ts)"}
+{"level":30,"time":1742789940046,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setTimeData() was called; time Data of Point set to 4 (PointObject.ts)"}
+{"level":30,"time":1742789940047,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setYData() was called; y Data of Point set to 5 (PointObject.ts)"}
+{"level":30,"time":1742789940047,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setTimeData() was called; time Data of Point set to 5 (PointObject.ts)"}
+{"level":30,"time":1742789940048,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setYData() was called; y Data of Point set to 6 (PointObject.ts)"}
+{"level":30,"time":1742789940049,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setTimeData() was called; time Data of Point set to 6 (PointObject.ts)"}
+{"level":30,"time":1742789940050,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setYData() was called; y Data of Point set to 7 (PointObject.ts)"}
+{"level":30,"time":1742789940050,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setTimeData() was called; time Data of Point set to 7 (PointObject.ts)"}
+{"level":30,"time":1742789940051,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setYData() was called; y Data of Point set to 8 (PointObject.ts)"}
+{"level":30,"time":1742789940053,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setTimeData() was called; time Data of Point set to 8 (PointObject.ts)"}
+{"level":30,"time":1742789940053,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setYData() was called; y Data of Point set to 9 (PointObject.ts)"}
+{"level":30,"time":1742789940054,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setTimeData() was called; time Data of Point set to 9 (PointObject.ts)"}
+{"level":30,"time":1742789940055,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setYData() was called; y Data of Point set to 10 (PointObject.ts)"}
+{"level":30,"time":1742789940055,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"populatePoints() was called, the program points loaded using the csv file (CSVDataObject.ts)"}
+{"level":30,"time":1742789940056,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setName() was called on Graph Object, name of the Graph is now Graph0 (GraphObject.ts)"}
+{"level":30,"time":1742789940057,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"addPoint() has added new points to the graph (TimeSeriesGraphObject.tss)"}
+{"level":30,"time":1742789940058,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setName() was called on Graph Object, name of the Graph is now Graph0 (GraphObject.ts)"}
+{"level":30,"time":1742789940059,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"value of tau in EmbeddedGraphObject updated to the value 1"}
+{"level":30,"time":1742789940059,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setRange() was called; yRange was set to 10 (EmbeddedGraphObject.ts)"}
+{"level":30,"time":1742789940060,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"vector position calculated for data at index/time 0 (EmbeddedGraphObject.calculateVectorPosition())"}
+{"level":30,"time":1742789940061,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setPoint3DPosition() was called; Position of 3D Point was set to 1,0,0 (Point3DObject.ts)"}
+{"level":30,"time":1742789940061,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"vector position calculated for data at index/time 1 (EmbeddedGraphObject.calculateVectorPosition())"}
+{"level":30,"time":1742789940062,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setPoint3DPosition() was called; Position of 3D Point was set to 2,1,0 (Point3DObject.ts)"}
+{"level":30,"time":1742789940062,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"vector position calculated for data at index/time 2 (EmbeddedGraphObject.calculateVectorPosition())"}
+{"level":30,"time":1742789940063,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setPoint3DPosition() was called; Position of 3D Point was set to 3,2,1 (Point3DObject.ts)"}
+{"level":30,"time":1742789940065,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"vector position calculated for data at index/time 3 (EmbeddedGraphObject.calculateVectorPosition())"}
+{"level":30,"time":1742789940065,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setPoint3DPosition() was called; Position of 3D Point was set to 4,3,2 (Point3DObject.ts)"}
+{"level":30,"time":1742789940066,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"vector position calculated for data at index/time 4 (EmbeddedGraphObject.calculateVectorPosition())"}
+{"level":30,"time":1742789940066,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setPoint3DPosition() was called; Position of 3D Point was set to 5,4,3 (Point3DObject.ts)"}
+{"level":30,"time":1742789940067,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"vector position calculated for data at index/time 5 (EmbeddedGraphObject.calculateVectorPosition())"}
+{"level":30,"time":1742789940068,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setPoint3DPosition() was called; Position of 3D Point was set to 6,5,4 (Point3DObject.ts)"}
+{"level":30,"time":1742789940068,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"vector position calculated for data at index/time 6 (EmbeddedGraphObject.calculateVectorPosition())"}
+{"level":30,"time":1742789940069,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setPoint3DPosition() was called; Position of 3D Point was set to 7,6,5 (Point3DObject.ts)"}
+{"level":30,"time":1742789940070,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"vector position calculated for data at index/time 7 (EmbeddedGraphObject.calculateVectorPosition())"}
+{"level":30,"time":1742789940071,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setPoint3DPosition() was called; Position of 3D Point was set to 8,7,6 (Point3DObject.ts)"}
+{"level":30,"time":1742789940071,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"vector position calculated for data at index/time 8 (EmbeddedGraphObject.calculateVectorPosition())"}
+{"level":30,"time":1742789940072,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setPoint3DPosition() was called; Position of 3D Point was set to 9,8,7 (Point3DObject.ts)"}
+{"level":30,"time":1742789940073,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"vector position calculated for data at index/time 9 (EmbeddedGraphObject.calculateVectorPosition())"}
+{"level":30,"time":1742789940074,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setPoint3DPosition() was called; Position of 3D Point was set to 10,9,8 (Point3DObject.ts)"}
+{"level":30,"time":1742789940075,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"Points added to EmbeddedGraphObject (EmbeddedGraphObject.addPoints())"}
+{"level":30,"time":1742789940076,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"pushDataToModel() was called; successfully added both 2D and 3D Graphs(GraphController.ts)"}
+{"level":30,"time":1742789940077,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"generate has pushed a new graph"}
+{"level":30,"time":1742789940078,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"Update main scene"}
+{"level":30,"time":1742789940079,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"GenerateList [BUTTON]? pressed"}
+{"level":30,"time":1742789940080,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"DropDownBody [create] button pressed"}
+{"level":30,"time":1742789940080,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"DropDownBody [create] button pressed"}
+{"level":30,"time":1742789940081,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"DropDownBody [create] button pressed"}
+{"level":30,"time":1742789940081,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"DropDownBody [create] button pressed"}
+{"level":30,"time":1742789940082,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"getVRSelected has returned Graph0"}
+{"level":30,"time":1742789940084,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setRange() was called; yRange was set to 10 (TimeSeriesGraphObject.ts)"}
+{"level":30,"time":1742789940085,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"timeSeriesYRange() returned 10 (TimeSeriesGraphObject.ts)"}
+{"level":30,"time":1742789940085,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setYRangeLength() was called on TimeSeriesGraphObject (TimeSeriesGraphObject.ts)"}
+{"level":30,"time":1742789940086,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"generateTimeSeriesGraph() was called; successfully generated Time Series Graph (GraphController.ts)"}
+{"level":30,"time":1742789940087,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setRange() was called; yRange was set to 10 (EmbeddedGraphObject.ts)"}
+{"level":30,"time":1742789940088,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"generateEmbeddedGraph() was called; successfully generated Embedded Graph (GraphController.ts)"}
+{"level":30,"time":1742789940090,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"a TimeSeriesGraph has been created (CreateTimeSeries.tsx)"}
+{"level":30,"time":1742789940092,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"a TimeSeriesGraph object sidebar was created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742789940093,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"a TimeSeriesGraph object header was selected and visually updated to reflect selection (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742789940094,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"a TimeSeriesGraph object sidebar was created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742789940095,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"a TimeSeriesGraph object header was selected and visually updated to reflect selection (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742789940096,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"a TimeSeriesGraph visualization is being created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742789940097,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"timeSeriesYRange() returned 10 (TimeSeriesGraphObject.ts)"}
+{"level":30,"time":1742789940097,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"a TimeSeriesGraph visualization is being created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742789940098,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"timeSeriesYRange() returned 10 (TimeSeriesGraphObject.ts)"}
+{"level":30,"time":1742789940098,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"timeSeriesXRange() was called and returned 0,1,2,3,4,5,6,7,8,9 (TimeSeriesGraphObject.ts)"}
+{"level":30,"time":1742789940099,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"timeSeriesXRange() was called and returned 0,1,2,3,4,5,6,7,8,9 (TimeSeriesGraphObject.ts)"}
+{"level":30,"time":1742789940100,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"a visual representation of the Y range was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742789940101,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setXAxisPos() was called; xPosition of 2D Point was set to -1.55 (Point2DObject.ts)"}
+{"level":30,"time":1742789940102,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"getYRange returned 10 (TimeSeriesGraphObject.ts)"}
+{"level":30,"time":1742789940102,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setYAxisPos() was called; yPosition of 2D Point was set to -0.897 (Point2DObject.ts)"}
+{"level":30,"time":1742789940103,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"a visual representation of points was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742789940103,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setXAxisPos() was called; xPosition of 2D Point was set to -1.55 (Point2DObject.ts)"}
+{"level":30,"time":1742789940104,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setYAxisPos() was called; yPosition of 2D Point was set to -0.897 (Point2DObject.ts)"}
+{"level":30,"time":1742789940105,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setSelected() was called on PointObject (PointObject.ts)"}
+{"level":30,"time":1742789940105,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setTimeData() was called; time Data of Point set to 0 (PointObject.ts)"}
+{"level":30,"time":1742789940106,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setYData() was called; y Data of Point set to 1 (PointObject.ts)"}
+{"level":30,"time":1742789940107,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"a 2D Point has been created (Create2DPoint.tsx)"}
+{"level":30,"time":1742789940108,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"the lines on a TimeSeriesGraph object were created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742789940110,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setXAxisPos() was called; xPosition of 2D Point was set to -1.05 (Point2DObject.ts)"}
+{"level":30,"time":1742789940111,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"getYRange returned 10 (TimeSeriesGraphObject.ts)"}
+{"level":30,"time":1742789940111,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setYAxisPos() was called; yPosition of 2D Point was set to -0.744 (Point2DObject.ts)"}
+{"level":30,"time":1742789940112,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"a visual representation of points was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742789940112,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setXAxisPos() was called; xPosition of 2D Point was set to -1.05 (Point2DObject.ts)"}
+{"level":30,"time":1742789940113,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setYAxisPos() was called; yPosition of 2D Point was set to -0.744 (Point2DObject.ts)"}
+{"level":30,"time":1742789940116,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setSelected() was called on PointObject (PointObject.ts)"}
+{"level":30,"time":1742789940117,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setTimeData() was called; time Data of Point set to 1 (PointObject.ts)"}
+{"level":30,"time":1742789940117,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setYData() was called; y Data of Point set to 2 (PointObject.ts)"}
+{"level":30,"time":1742789940118,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"a 2D Point has been created (Create2DPoint.tsx)"}
+{"level":30,"time":1742789940119,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"the lines on a TimeSeriesGraph object were created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742789940120,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setXAxisPos() was called; xPosition of 2D Point was set to -0.55 (Point2DObject.ts)"}
+{"level":30,"time":1742789940121,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"getYRange returned 10 (TimeSeriesGraphObject.ts)"}
+{"level":30,"time":1742789940121,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setYAxisPos() was called; yPosition of 2D Point was set to -0.5910000000000001 (Point2DObject.ts)"}
+{"level":30,"time":1742789940122,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"a visual representation of points was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742789940123,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setXAxisPos() was called; xPosition of 2D Point was set to -0.55 (Point2DObject.ts)"}
+{"level":30,"time":1742789940124,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setYAxisPos() was called; yPosition of 2D Point was set to -0.5910000000000001 (Point2DObject.ts)"}
+{"level":30,"time":1742789940124,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setSelected() was called on PointObject (PointObject.ts)"}
+{"level":30,"time":1742789940125,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setTimeData() was called; time Data of Point set to 2 (PointObject.ts)"}
+{"level":30,"time":1742789940126,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setYData() was called; y Data of Point set to 3 (PointObject.ts)"}
+{"level":30,"time":1742789940127,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"a 2D Point has been created (Create2DPoint.tsx)"}
+{"level":30,"time":1742789940128,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"the lines on a TimeSeriesGraph object were created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742789940129,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setXAxisPos() was called; xPosition of 2D Point was set to -0.050000000000000044 (Point2DObject.ts)"}
+{"level":30,"time":1742789940130,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"getYRange returned 10 (TimeSeriesGraphObject.ts)"}
+{"level":30,"time":1742789940130,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setYAxisPos() was called; yPosition of 2D Point was set to -0.43799999999999994 (Point2DObject.ts)"}
+{"level":30,"time":1742789940131,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"a visual representation of points was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742789940132,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setXAxisPos() was called; xPosition of 2D Point was set to -0.050000000000000044 (Point2DObject.ts)"}
+{"level":30,"time":1742789940134,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setYAxisPos() was called; yPosition of 2D Point was set to -0.43799999999999994 (Point2DObject.ts)"}
+{"level":30,"time":1742789940136,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setSelected() was called on PointObject (PointObject.ts)"}
+{"level":30,"time":1742789940137,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setTimeData() was called; time Data of Point set to 3 (PointObject.ts)"}
+{"level":30,"time":1742789940138,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setYData() was called; y Data of Point set to 4 (PointObject.ts)"}
+{"level":30,"time":1742789940139,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"a 2D Point has been created (Create2DPoint.tsx)"}
+{"level":30,"time":1742789940139,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"the lines on a TimeSeriesGraph object were created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742789940142,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setXAxisPos() was called; xPosition of 2D Point was set to 0.44999999999999996 (Point2DObject.ts)"}
+{"level":30,"time":1742789940143,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"getYRange returned 10 (TimeSeriesGraphObject.ts)"}
+{"level":30,"time":1742789940145,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setYAxisPos() was called; yPosition of 2D Point was set to -0.28500000000000003 (Point2DObject.ts)"}
+{"level":30,"time":1742789940147,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"a visual representation of points was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742789940147,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setXAxisPos() was called; xPosition of 2D Point was set to 0.44999999999999996 (Point2DObject.ts)"}
+{"level":30,"time":1742789940148,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setYAxisPos() was called; yPosition of 2D Point was set to -0.28500000000000003 (Point2DObject.ts)"}
+{"level":30,"time":1742789940150,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setSelected() was called on PointObject (PointObject.ts)"}
+{"level":30,"time":1742789940151,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setTimeData() was called; time Data of Point set to 4 (PointObject.ts)"}
+{"level":30,"time":1742789940154,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setYData() was called; y Data of Point set to 5 (PointObject.ts)"}
+{"level":30,"time":1742789940155,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"a 2D Point has been created (Create2DPoint.tsx)"}
+{"level":30,"time":1742789940156,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"the lines on a TimeSeriesGraph object were created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742789940157,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setXAxisPos() was called; xPosition of 2D Point was set to 0.95 (Point2DObject.ts)"}
+{"level":30,"time":1742789940159,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"getYRange returned 10 (TimeSeriesGraphObject.ts)"}
+{"level":30,"time":1742789940160,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setYAxisPos() was called; yPosition of 2D Point was set to -0.13200000000000012 (Point2DObject.ts)"}
+{"level":30,"time":1742789940162,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"a visual representation of points was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742789940164,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setXAxisPos() was called; xPosition of 2D Point was set to 0.95 (Point2DObject.ts)"}
+{"level":30,"time":1742789940165,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setYAxisPos() was called; yPosition of 2D Point was set to -0.13200000000000012 (Point2DObject.ts)"}
+{"level":30,"time":1742789940166,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setSelected() was called on PointObject (PointObject.ts)"}
+{"level":30,"time":1742789940168,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setTimeData() was called; time Data of Point set to 5 (PointObject.ts)"}
+{"level":30,"time":1742789940169,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setYData() was called; y Data of Point set to 6 (PointObject.ts)"}
+{"level":30,"time":1742789940171,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"a 2D Point has been created (Create2DPoint.tsx)"}
+{"level":30,"time":1742789940172,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"the lines on a TimeSeriesGraph object were created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742789940173,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setXAxisPos() was called; xPosition of 2D Point was set to 1.45 (Point2DObject.ts)"}
+{"level":30,"time":1742789940173,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"getYRange returned 10 (TimeSeriesGraphObject.ts)"}
+{"level":30,"time":1742789940174,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setYAxisPos() was called; yPosition of 2D Point was set to 0.020999999999999908 (Point2DObject.ts)"}
+{"level":30,"time":1742789940174,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"a visual representation of points was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742789940175,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setXAxisPos() was called; xPosition of 2D Point was set to 1.45 (Point2DObject.ts)"}
+{"level":30,"time":1742789940175,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setYAxisPos() was called; yPosition of 2D Point was set to 0.020999999999999908 (Point2DObject.ts)"}
+{"level":30,"time":1742789940176,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setSelected() was called on PointObject (PointObject.ts)"}
+{"level":30,"time":1742789940176,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setTimeData() was called; time Data of Point set to 6 (PointObject.ts)"}
+{"level":30,"time":1742789940177,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setYData() was called; y Data of Point set to 7 (PointObject.ts)"}
+{"level":30,"time":1742789940177,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"a 2D Point has been created (Create2DPoint.tsx)"}
+{"level":30,"time":1742789940178,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"the lines on a TimeSeriesGraph object were created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742789940178,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setXAxisPos() was called; xPosition of 2D Point was set to 1.95 (Point2DObject.ts)"}
+{"level":30,"time":1742789940179,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"getYRange returned 10 (TimeSeriesGraphObject.ts)"}
+{"level":30,"time":1742789940179,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setYAxisPos() was called; yPosition of 2D Point was set to 0.17400000000000015 (Point2DObject.ts)"}
+{"level":30,"time":1742789940180,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"a visual representation of points was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742789940180,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setXAxisPos() was called; xPosition of 2D Point was set to 1.95 (Point2DObject.ts)"}
+{"level":30,"time":1742789940180,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setYAxisPos() was called; yPosition of 2D Point was set to 0.17400000000000015 (Point2DObject.ts)"}
+{"level":30,"time":1742789940181,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setSelected() was called on PointObject (PointObject.ts)"}
+{"level":30,"time":1742789940182,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setTimeData() was called; time Data of Point set to 7 (PointObject.ts)"}
+{"level":30,"time":1742789940182,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setYData() was called; y Data of Point set to 8 (PointObject.ts)"}
+{"level":30,"time":1742789940183,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"a 2D Point has been created (Create2DPoint.tsx)"}
+{"level":30,"time":1742789940184,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"the lines on a TimeSeriesGraph object were created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742789940185,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setXAxisPos() was called; xPosition of 2D Point was set to 2.45 (Point2DObject.ts)"}
+{"level":30,"time":1742789940186,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"getYRange returned 10 (TimeSeriesGraphObject.ts)"}
+{"level":30,"time":1742789940187,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setYAxisPos() was called; yPosition of 2D Point was set to 0.32699999999999996 (Point2DObject.ts)"}
+{"level":30,"time":1742789940187,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"a visual representation of points was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742789940188,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setXAxisPos() was called; xPosition of 2D Point was set to 2.45 (Point2DObject.ts)"}
+{"level":30,"time":1742789940189,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setYAxisPos() was called; yPosition of 2D Point was set to 0.32699999999999996 (Point2DObject.ts)"}
+{"level":30,"time":1742789940189,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setSelected() was called on PointObject (PointObject.ts)"}
+{"level":30,"time":1742789940190,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setTimeData() was called; time Data of Point set to 8 (PointObject.ts)"}
+{"level":30,"time":1742789940190,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setYData() was called; y Data of Point set to 9 (PointObject.ts)"}
+{"level":30,"time":1742789940191,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"a 2D Point has been created (Create2DPoint.tsx)"}
+{"level":30,"time":1742789940192,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"the lines on a TimeSeriesGraph object were created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742789940192,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setXAxisPos() was called; xPosition of 2D Point was set to 2.95 (Point2DObject.ts)"}
+{"level":30,"time":1742789940193,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"getYRange returned 10 (TimeSeriesGraphObject.ts)"}
+{"level":30,"time":1742789940193,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setYAxisPos() was called; yPosition of 2D Point was set to 0.48 (Point2DObject.ts)"}
+{"level":30,"time":1742789940194,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"a visual representation of points was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742789940194,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setXAxisPos() was called; xPosition of 2D Point was set to 2.95 (Point2DObject.ts)"}
+{"level":30,"time":1742789940196,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setYAxisPos() was called; yPosition of 2D Point was set to 0.48 (Point2DObject.ts)"}
+{"level":30,"time":1742789940196,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setSelected() was called on PointObject (PointObject.ts)"}
+{"level":30,"time":1742789940197,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setTimeData() was called; time Data of Point set to 9 (PointObject.ts)"}
+{"level":30,"time":1742789940198,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setYData() was called; y Data of Point set to 10 (PointObject.ts)"}
+{"level":30,"time":1742789940198,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"a 2D Point has been created (Create2DPoint.tsx)"}
+{"level":30,"time":1742789940199,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"the lines on a TimeSeriesGraph object were created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742789940200,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"an EmbeddedGraph has been created (CreateEmbeddedGraph.tsx)"}
+{"level":30,"time":1742789940201,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"an EmbeddedGraph visualization is being created [not yet functioning] (EmbeddedGraph.tsx)"}
+{"level":30,"time":1742789940202,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setTimeData() was called; time Data of Point set to 0 (PointObject.ts)"}
+{"level":30,"time":1742789940202,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setYData() was called; y Data of Point set to 1 (PointObject.ts)"}
+{"level":30,"time":1742789940203,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setSelected() was called on PointObject (PointObject.ts)"}
+{"level":30,"time":1742789940203,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setXAxisPos() was called; xPosition of 3D Point was set to 1 (Point3DObject.ts)"}
+{"level":30,"time":1742789940204,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setYAxisPos() was called; yPosition of 3D Point was set to 0 (Point3DObject.ts)"}
+{"level":30,"time":1742789940205,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setZAxisPos() was called; zPosition of 3D Point was set to 0 (Point3DObject.ts)"}
+{"level":30,"time":1742789940205,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"a 3D Point has been created (Create3DPoint.tsx)"}
+{"level":30,"time":1742789940206,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setTimeData() was called; time Data of Point set to 1 (PointObject.ts)"}
+{"level":30,"time":1742789940206,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setYData() was called; y Data of Point set to 2 (PointObject.ts)"}
+{"level":30,"time":1742789940207,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setSelected() was called on PointObject (PointObject.ts)"}
+{"level":30,"time":1742789940207,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setXAxisPos() was called; xPosition of 3D Point was set to 2 (Point3DObject.ts)"}
+{"level":30,"time":1742789940208,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setYAxisPos() was called; yPosition of 3D Point was set to 1 (Point3DObject.ts)"}
+{"level":30,"time":1742789940209,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setZAxisPos() was called; zPosition of 3D Point was set to 0 (Point3DObject.ts)"}
+{"level":30,"time":1742789940209,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"a 3D Point has been created (Create3DPoint.tsx)"}
+{"level":30,"time":1742789940210,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setTimeData() was called; time Data of Point set to 2 (PointObject.ts)"}
+{"level":30,"time":1742789940210,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setYData() was called; y Data of Point set to 3 (PointObject.ts)"}
+{"level":30,"time":1742789940210,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setSelected() was called on PointObject (PointObject.ts)"}
+{"level":30,"time":1742789940211,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setXAxisPos() was called; xPosition of 3D Point was set to 3 (Point3DObject.ts)"}
+{"level":30,"time":1742789940211,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setYAxisPos() was called; yPosition of 3D Point was set to 2 (Point3DObject.ts)"}
+{"level":30,"time":1742789940212,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setZAxisPos() was called; zPosition of 3D Point was set to 1 (Point3DObject.ts)"}
+{"level":30,"time":1742789940213,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"a 3D Point has been created (Create3DPoint.tsx)"}
+{"level":30,"time":1742789940214,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setTimeData() was called; time Data of Point set to 3 (PointObject.ts)"}
+{"level":30,"time":1742789940215,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setYData() was called; y Data of Point set to 4 (PointObject.ts)"}
+{"level":30,"time":1742789940216,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setSelected() was called on PointObject (PointObject.ts)"}
+{"level":30,"time":1742789940216,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setXAxisPos() was called; xPosition of 3D Point was set to 4 (Point3DObject.ts)"}
+{"level":30,"time":1742789940217,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setYAxisPos() was called; yPosition of 3D Point was set to 3 (Point3DObject.ts)"}
+{"level":30,"time":1742789940218,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setZAxisPos() was called; zPosition of 3D Point was set to 2 (Point3DObject.ts)"}
+{"level":30,"time":1742789940218,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"a 3D Point has been created (Create3DPoint.tsx)"}
+{"level":30,"time":1742789940219,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setTimeData() was called; time Data of Point set to 4 (PointObject.ts)"}
+{"level":30,"time":1742789940219,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setYData() was called; y Data of Point set to 5 (PointObject.ts)"}
+{"level":30,"time":1742789940220,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setSelected() was called on PointObject (PointObject.ts)"}
+{"level":30,"time":1742789940221,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setXAxisPos() was called; xPosition of 3D Point was set to 5 (Point3DObject.ts)"}
+{"level":30,"time":1742789940221,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setYAxisPos() was called; yPosition of 3D Point was set to 4 (Point3DObject.ts)"}
+{"level":30,"time":1742789940222,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setZAxisPos() was called; zPosition of 3D Point was set to 3 (Point3DObject.ts)"}
+{"level":30,"time":1742789940223,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"a 3D Point has been created (Create3DPoint.tsx)"}
+{"level":30,"time":1742789940223,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setTimeData() was called; time Data of Point set to 5 (PointObject.ts)"}
+{"level":30,"time":1742789940224,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setYData() was called; y Data of Point set to 6 (PointObject.ts)"}
+{"level":30,"time":1742789940225,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setSelected() was called on PointObject (PointObject.ts)"}
+{"level":30,"time":1742789940226,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setXAxisPos() was called; xPosition of 3D Point was set to 6 (Point3DObject.ts)"}
+{"level":30,"time":1742789940227,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setYAxisPos() was called; yPosition of 3D Point was set to 5 (Point3DObject.ts)"}
+{"level":30,"time":1742789940228,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setZAxisPos() was called; zPosition of 3D Point was set to 4 (Point3DObject.ts)"}
+{"level":30,"time":1742789940228,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"a 3D Point has been created (Create3DPoint.tsx)"}
+{"level":30,"time":1742789940229,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setTimeData() was called; time Data of Point set to 6 (PointObject.ts)"}
+{"level":30,"time":1742789940229,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setYData() was called; y Data of Point set to 7 (PointObject.ts)"}
+{"level":30,"time":1742789940230,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setSelected() was called on PointObject (PointObject.ts)"}
+{"level":30,"time":1742789940230,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setXAxisPos() was called; xPosition of 3D Point was set to 7 (Point3DObject.ts)"}
+{"level":30,"time":1742789940231,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setYAxisPos() was called; yPosition of 3D Point was set to 6 (Point3DObject.ts)"}
+{"level":30,"time":1742789940231,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setZAxisPos() was called; zPosition of 3D Point was set to 5 (Point3DObject.ts)"}
+{"level":30,"time":1742789940232,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"a 3D Point has been created (Create3DPoint.tsx)"}
+{"level":30,"time":1742789940233,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setTimeData() was called; time Data of Point set to 7 (PointObject.ts)"}
+{"level":30,"time":1742789940235,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setYData() was called; y Data of Point set to 8 (PointObject.ts)"}
+{"level":30,"time":1742789940235,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setSelected() was called on PointObject (PointObject.ts)"}
+{"level":30,"time":1742789940236,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setXAxisPos() was called; xPosition of 3D Point was set to 8 (Point3DObject.ts)"}
+{"level":30,"time":1742789940236,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setYAxisPos() was called; yPosition of 3D Point was set to 7 (Point3DObject.ts)"}
+{"level":30,"time":1742789940237,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setZAxisPos() was called; zPosition of 3D Point was set to 6 (Point3DObject.ts)"}
+{"level":30,"time":1742789940238,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"a 3D Point has been created (Create3DPoint.tsx)"}
+{"level":30,"time":1742789940239,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setTimeData() was called; time Data of Point set to 8 (PointObject.ts)"}
+{"level":30,"time":1742789940239,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setYData() was called; y Data of Point set to 9 (PointObject.ts)"}
+{"level":30,"time":1742789940240,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setSelected() was called on PointObject (PointObject.ts)"}
+{"level":30,"time":1742789940240,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setXAxisPos() was called; xPosition of 3D Point was set to 9 (Point3DObject.ts)"}
+{"level":30,"time":1742789940241,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setYAxisPos() was called; yPosition of 3D Point was set to 8 (Point3DObject.ts)"}
+{"level":30,"time":1742789940242,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setZAxisPos() was called; zPosition of 3D Point was set to 7 (Point3DObject.ts)"}
+{"level":30,"time":1742789940243,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"a 3D Point has been created (Create3DPoint.tsx)"}
+{"level":30,"time":1742789940244,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setTimeData() was called; time Data of Point set to 9 (PointObject.ts)"}
+{"level":30,"time":1742789940245,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setYData() was called; y Data of Point set to 10 (PointObject.ts)"}
+{"level":30,"time":1742789940245,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setSelected() was called on PointObject (PointObject.ts)"}
+{"level":30,"time":1742789940246,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setXAxisPos() was called; xPosition of 3D Point was set to 10 (Point3DObject.ts)"}
+{"level":30,"time":1742789940247,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setYAxisPos() was called; yPosition of 3D Point was set to 9 (Point3DObject.ts)"}
+{"level":30,"time":1742789940251,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setZAxisPos() was called; zPosition of 3D Point was set to 8 (Point3DObject.ts)"}
+{"level":30,"time":1742789940252,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"a 3D Point has been created (Create3DPoint.tsx)"}
+{"level":30,"time":1742789940254,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"a TimeSeriesGraph object sidebar was created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742789940255,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"a TimeSeriesGraph object header was selected and visually updated to reflect selection (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742789940256,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"a TimeSeriesGraph visualization is being created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742789940257,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"timeSeriesYRange() returned 10 (TimeSeriesGraphObject.ts)"}
+{"level":30,"time":1742789940258,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"timeSeriesXRange() was called and returned 0,1,2,3,4,5,6,7,8,9 (TimeSeriesGraphObject.ts)"}
+{"level":30,"time":1742789940260,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"a visual representation of the Y range was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742789940261,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setXAxisPos() was called; xPosition of 2D Point was set to -1.55 (Point2DObject.ts)"}
+{"level":30,"time":1742789940262,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"getYRange returned 10 (TimeSeriesGraphObject.ts)"}
+{"level":30,"time":1742789940262,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setYAxisPos() was called; yPosition of 2D Point was set to -0.897 (Point2DObject.ts)"}
+{"level":30,"time":1742789940263,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"a visual representation of points was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742789940265,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setXAxisPos() was called; xPosition of 2D Point was set to -1.55 (Point2DObject.ts)"}
+{"level":30,"time":1742789940266,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setYAxisPos() was called; yPosition of 2D Point was set to -0.897 (Point2DObject.ts)"}
+{"level":30,"time":1742789940267,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setSelected() was called on PointObject (PointObject.ts)"}
+{"level":30,"time":1742789940268,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setTimeData() was called; time Data of Point set to 0 (PointObject.ts)"}
+{"level":30,"time":1742789940268,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setYData() was called; y Data of Point set to 1 (PointObject.ts)"}
+{"level":30,"time":1742789940269,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"a 2D Point has been created (Create2DPoint.tsx)"}
+{"level":30,"time":1742789940269,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"the lines on a TimeSeriesGraph object were created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742789940270,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setXAxisPos() was called; xPosition of 2D Point was set to -1.05 (Point2DObject.ts)"}
+{"level":30,"time":1742789940270,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"getYRange returned 10 (TimeSeriesGraphObject.ts)"}
+{"level":30,"time":1742789940271,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setYAxisPos() was called; yPosition of 2D Point was set to -0.744 (Point2DObject.ts)"}
+{"level":30,"time":1742789940271,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"a visual representation of points was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742789940272,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setXAxisPos() was called; xPosition of 2D Point was set to -1.05 (Point2DObject.ts)"}
+{"level":30,"time":1742789940272,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setYAxisPos() was called; yPosition of 2D Point was set to -0.744 (Point2DObject.ts)"}
+{"level":30,"time":1742789940273,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setSelected() was called on PointObject (PointObject.ts)"}
+{"level":30,"time":1742789940273,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setTimeData() was called; time Data of Point set to 1 (PointObject.ts)"}
+{"level":30,"time":1742789940273,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setYData() was called; y Data of Point set to 2 (PointObject.ts)"}
+{"level":30,"time":1742789940274,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"a 2D Point has been created (Create2DPoint.tsx)"}
+{"level":30,"time":1742789940274,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"the lines on a TimeSeriesGraph object were created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742789940275,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setXAxisPos() was called; xPosition of 2D Point was set to -0.55 (Point2DObject.ts)"}
+{"level":30,"time":1742789940275,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"getYRange returned 10 (TimeSeriesGraphObject.ts)"}
+{"level":30,"time":1742789940276,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setYAxisPos() was called; yPosition of 2D Point was set to -0.5910000000000001 (Point2DObject.ts)"}
+{"level":30,"time":1742789940277,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"a visual representation of points was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742789940277,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setXAxisPos() was called; xPosition of 2D Point was set to -0.55 (Point2DObject.ts)"}
+{"level":30,"time":1742789940278,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setYAxisPos() was called; yPosition of 2D Point was set to -0.5910000000000001 (Point2DObject.ts)"}
+{"level":30,"time":1742789940278,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setSelected() was called on PointObject (PointObject.ts)"}
+{"level":30,"time":1742789940279,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setTimeData() was called; time Data of Point set to 2 (PointObject.ts)"}
+{"level":30,"time":1742789940279,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setYData() was called; y Data of Point set to 3 (PointObject.ts)"}
+{"level":30,"time":1742789940280,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"a 2D Point has been created (Create2DPoint.tsx)"}
+{"level":30,"time":1742789940280,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"the lines on a TimeSeriesGraph object were created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742789940281,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setXAxisPos() was called; xPosition of 2D Point was set to -0.050000000000000044 (Point2DObject.ts)"}
+{"level":30,"time":1742789940282,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"getYRange returned 10 (TimeSeriesGraphObject.ts)"}
+{"level":30,"time":1742789940282,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setYAxisPos() was called; yPosition of 2D Point was set to -0.43799999999999994 (Point2DObject.ts)"}
+{"level":30,"time":1742789940283,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"a visual representation of points was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742789940284,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setXAxisPos() was called; xPosition of 2D Point was set to -0.050000000000000044 (Point2DObject.ts)"}
+{"level":30,"time":1742789940284,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setYAxisPos() was called; yPosition of 2D Point was set to -0.43799999999999994 (Point2DObject.ts)"}
+{"level":30,"time":1742789940285,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setSelected() was called on PointObject (PointObject.ts)"}
+{"level":30,"time":1742789940285,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setTimeData() was called; time Data of Point set to 3 (PointObject.ts)"}
+{"level":30,"time":1742789940286,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setYData() was called; y Data of Point set to 4 (PointObject.ts)"}
+{"level":30,"time":1742789940287,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"a 2D Point has been created (Create2DPoint.tsx)"}
+{"level":30,"time":1742789940287,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"the lines on a TimeSeriesGraph object were created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742789940288,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setXAxisPos() was called; xPosition of 2D Point was set to 0.44999999999999996 (Point2DObject.ts)"}
+{"level":30,"time":1742789940289,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"getYRange returned 10 (TimeSeriesGraphObject.ts)"}
+{"level":30,"time":1742789940289,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setYAxisPos() was called; yPosition of 2D Point was set to -0.28500000000000003 (Point2DObject.ts)"}
+{"level":30,"time":1742789940290,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"a visual representation of points was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742789940290,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setXAxisPos() was called; xPosition of 2D Point was set to 0.44999999999999996 (Point2DObject.ts)"}
+{"level":30,"time":1742789940291,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setYAxisPos() was called; yPosition of 2D Point was set to -0.28500000000000003 (Point2DObject.ts)"}
+{"level":30,"time":1742789940292,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setSelected() was called on PointObject (PointObject.ts)"}
+{"level":30,"time":1742789940293,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setTimeData() was called; time Data of Point set to 4 (PointObject.ts)"}
+{"level":30,"time":1742789940294,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setYData() was called; y Data of Point set to 5 (PointObject.ts)"}
+{"level":30,"time":1742789940294,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"a 2D Point has been created (Create2DPoint.tsx)"}
+{"level":30,"time":1742789940295,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"the lines on a TimeSeriesGraph object were created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742789940295,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setXAxisPos() was called; xPosition of 2D Point was set to 0.95 (Point2DObject.ts)"}
+{"level":30,"time":1742789940296,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"getYRange returned 10 (TimeSeriesGraphObject.ts)"}
+{"level":30,"time":1742789940296,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setYAxisPos() was called; yPosition of 2D Point was set to -0.13200000000000012 (Point2DObject.ts)"}
+{"level":30,"time":1742789940296,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"a visual representation of points was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742789940297,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setXAxisPos() was called; xPosition of 2D Point was set to 0.95 (Point2DObject.ts)"}
+{"level":30,"time":1742789940297,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setYAxisPos() was called; yPosition of 2D Point was set to -0.13200000000000012 (Point2DObject.ts)"}
+{"level":30,"time":1742789940298,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setSelected() was called on PointObject (PointObject.ts)"}
+{"level":30,"time":1742789940298,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setTimeData() was called; time Data of Point set to 5 (PointObject.ts)"}
+{"level":30,"time":1742789940299,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setYData() was called; y Data of Point set to 6 (PointObject.ts)"}
+{"level":30,"time":1742789940300,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"a 2D Point has been created (Create2DPoint.tsx)"}
+{"level":30,"time":1742789940300,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"the lines on a TimeSeriesGraph object were created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742789940300,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setXAxisPos() was called; xPosition of 2D Point was set to 1.45 (Point2DObject.ts)"}
+{"level":30,"time":1742789940301,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"getYRange returned 10 (TimeSeriesGraphObject.ts)"}
+{"level":30,"time":1742789940301,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setYAxisPos() was called; yPosition of 2D Point was set to 0.020999999999999908 (Point2DObject.ts)"}
+{"level":30,"time":1742789940302,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"a visual representation of points was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742789940302,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setXAxisPos() was called; xPosition of 2D Point was set to 1.45 (Point2DObject.ts)"}
+{"level":30,"time":1742789940302,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setYAxisPos() was called; yPosition of 2D Point was set to 0.020999999999999908 (Point2DObject.ts)"}
+{"level":30,"time":1742789940303,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setSelected() was called on PointObject (PointObject.ts)"}
+{"level":30,"time":1742789940303,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setTimeData() was called; time Data of Point set to 6 (PointObject.ts)"}
+{"level":30,"time":1742789940304,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setYData() was called; y Data of Point set to 7 (PointObject.ts)"}
+{"level":30,"time":1742789940304,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"a 2D Point has been created (Create2DPoint.tsx)"}
+{"level":30,"time":1742789940305,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"the lines on a TimeSeriesGraph object were created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742789940305,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setXAxisPos() was called; xPosition of 2D Point was set to 1.95 (Point2DObject.ts)"}
+{"level":30,"time":1742789940306,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"getYRange returned 10 (TimeSeriesGraphObject.ts)"}
+{"level":30,"time":1742789940306,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setYAxisPos() was called; yPosition of 2D Point was set to 0.17400000000000015 (Point2DObject.ts)"}
+{"level":30,"time":1742789940306,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"a visual representation of points was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742789940307,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setXAxisPos() was called; xPosition of 2D Point was set to 1.95 (Point2DObject.ts)"}
+{"level":30,"time":1742789940307,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setYAxisPos() was called; yPosition of 2D Point was set to 0.17400000000000015 (Point2DObject.ts)"}
+{"level":30,"time":1742789940307,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setSelected() was called on PointObject (PointObject.ts)"}
+{"level":30,"time":1742789940308,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setTimeData() was called; time Data of Point set to 7 (PointObject.ts)"}
+{"level":30,"time":1742789940308,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setYData() was called; y Data of Point set to 8 (PointObject.ts)"}
+{"level":30,"time":1742789940309,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"a 2D Point has been created (Create2DPoint.tsx)"}
+{"level":30,"time":1742789940310,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"the lines on a TimeSeriesGraph object were created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742789940310,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setXAxisPos() was called; xPosition of 2D Point was set to 2.45 (Point2DObject.ts)"}
+{"level":30,"time":1742789940311,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"getYRange returned 10 (TimeSeriesGraphObject.ts)"}
+{"level":30,"time":1742789940312,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setYAxisPos() was called; yPosition of 2D Point was set to 0.32699999999999996 (Point2DObject.ts)"}
+{"level":30,"time":1742789940312,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"a visual representation of points was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742789940312,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setXAxisPos() was called; xPosition of 2D Point was set to 2.45 (Point2DObject.ts)"}
+{"level":30,"time":1742789940313,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setYAxisPos() was called; yPosition of 2D Point was set to 0.32699999999999996 (Point2DObject.ts)"}
+{"level":30,"time":1742789940313,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setSelected() was called on PointObject (PointObject.ts)"}
+{"level":30,"time":1742789940314,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setTimeData() was called; time Data of Point set to 8 (PointObject.ts)"}
+{"level":30,"time":1742789940314,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setYData() was called; y Data of Point set to 9 (PointObject.ts)"}
+{"level":30,"time":1742789940315,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"a 2D Point has been created (Create2DPoint.tsx)"}
+{"level":30,"time":1742789940315,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"the lines on a TimeSeriesGraph object were created (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742789940315,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setXAxisPos() was called; xPosition of 2D Point was set to 2.95 (Point2DObject.ts)"}
+{"level":30,"time":1742789940316,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"getYRange returned 10 (TimeSeriesGraphObject.ts)"}
+{"level":30,"time":1742789940316,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setYAxisPos() was called; yPosition of 2D Point was set to 0.48 (Point2DObject.ts)"}
+{"level":30,"time":1742789940317,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"a visual representation of points was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)"}
+{"level":30,"time":1742789940317,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setXAxisPos() was called; xPosition of 2D Point was set to 2.95 (Point2DObject.ts)"}
+{"level":30,"time":1742789940317,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setYAxisPos() was called; yPosition of 2D Point was set to 0.48 (Point2DObject.ts)"}
+{"level":30,"time":1742789940318,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setSelected() was called on PointObject (PointObject.ts)"}
+{"level":30,"time":1742789940318,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setTimeData() was called; time Data of Point set to 9 (PointObject.ts)"}
+{"level":30,"time":1742789940319,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"setYData() was called; y Data of Point set to 10 (PointObject.ts)"}
+{"level":30,"time":1742789940320,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"a 2D Point has been created (Create2DPoint.tsx)"}
+{"level":30,"time":1742789940320,"pid":27156,"hostname":"LAPTOP-8HAPGTLF","msg":"the lines on a TimeSeriesGraph object were created (TimeSeriesGraph.tsx)"}

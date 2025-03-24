@@ -12,17 +12,17 @@ describe("Test that graph objects are properly created", () => {
     await mainController.getCSVController().loadURLFile(indexedDataUrl);
     mainController.getCSVController().generate(1);
   });
-  test("expect Time Series graph model to contain a 10 point graph", async () => {
+  test("expect Time Series graph model to contain a 10 point graph", () => {
     // Get the Time Series model and check that 10 points are generated
     const graphm = mainController.getGraphController().getModel();
     expect(graphm.getData()[0].getNumPoints()).toBe(10);
   });
-  test("expect Embedded graph model to contain a 10 point graph", async () => {
+  test("expect Embedded graph model to contain a 10 point graph", () => {
     // Get the Embedded model and check that 10 points are generated
     const graphm = mainController.getGraphController().getModel();
     expect(graphm.getEmbeddedGraphData()[0].getPoints3D().length).toBe(10);
   });
-  test("expect correct Time Series Graph points to be calculated", async () => {
+  test("expect correct Time Series Graph points to be calculated", () => {
     // Test each x and y point individually after getting each point object
     const graphm = mainController.getGraphController().getModel();
     const points = graphm.getData()[0].get2DPoints();
@@ -48,7 +48,7 @@ describe("Test that graph objects are properly created", () => {
     expect(points[9].getObject().getTimeData()).toBe(9);
     expect(points[9].getObject().getYData()).toBe(10);
   });
-  test("expect correct Embedded Graph points to be calculated", async () => {
+  test("expect correct Embedded Graph points to be calculated", () => {
     // Test each x and y point individually after getting each point object
     const graphm = mainController.getGraphController().getModel();
     const points = graphm.getEmbeddedGraphData()[0].getPoints3D();
@@ -63,7 +63,7 @@ describe("Test that graph objects are properly created", () => {
     expect(points[8].getPosition()).toStrictEqual([9, 8, 7]);
     expect(points[9].getPosition()).toStrictEqual([10, 9, 8]);
   });
-  test("expect correct Time Series range", async () => {
+  test("expect correct Time Series range", () => {
     const graphm = mainController.getGraphController().getModel();
     const graphaxes = graphm.getData()[0].getYRange();
     expect(graphaxes).toBe(0);

@@ -1,7 +1,6 @@
+import { sendError, sendLog } from "../../logger-frontend";
 import { GraphInterface } from "../../types/GraphInterface";
-import { PointInterface } from "../../types/PointInterface";
 import { CSVDataObject } from "../Csv_Components/CSVDataObject";
-import { PointObject } from "./PointObject";
 
 /**
  * The GraphClass represents a graph structure that manages points, dimensions, styling, and interactivity.
@@ -21,11 +20,8 @@ export class GraphObject implements GraphInterface {
   name: string;
   csvData: CSVDataObject;
   dimensions: { width: number; height: number; depth?: number };
-  points: PointInterface[];
   position: { x: number; y: number; z: number };
   axes: {
-    xLabel: string;
-    yLabel: string;
     xRange: [number, number];
     yRange: [number, number];
   };
@@ -47,11 +43,8 @@ export class GraphObject implements GraphInterface {
     this.name = csvdata.getName();
     this.csvData = csvdata;
     this.dimensions = { width: 10, height: 10, depth: 10 };
-    this.points = [];
     this.position = { x: 1, y: 1, z: 0 };
     this.axes = {
-      xLabel: csvdata.getTimeHeader(),
-      yLabel: csvdata.getYHeader(),
       xRange: [0, 0],
       yRange: [0, 0],
     };
@@ -77,9 +70,16 @@ export class GraphObject implements GraphInterface {
    */
   setId(id: string): void {
     if (id.trim() === "" || typeof id !== "string") {
-      throw new Error("ID must be a non-empty string.");
+      const error = new SyntaxError("Invalid ID");
+      sendError(error, "ID must be a non-empty string. (GraphObject.ts");
+      throw error;
     }
     this.id = id;
+
+    sendLog(
+      "info",
+      `setID() was called on Graph Object, ID is now ${id} (GraphObject.ts)`,
+    );
   }
 
   /**
@@ -103,9 +103,16 @@ export class GraphObject implements GraphInterface {
    */
   setName(title: string): void {
     if (title.trim() === "" || typeof title !== "string") {
-      throw new Error("Name must be a non-empty string.");
+      const error = new SyntaxError("Invalid Name");
+      sendError(error, "Name must be a non-empty string. (GraphObject.ts");
+      throw error;
     }
     this.name = title;
+
+    sendLog(
+      "info",
+      `setName() was called on Graph Object, name of the Graph is now ${title} (GraphObject.ts)`,
+    );
   }
 
   // Position getters and setters
@@ -135,70 +142,16 @@ export class GraphObject implements GraphInterface {
       typeof y !== "number" ||
       typeof z !== "number"
     ) {
-      throw new Error("Position coordinates must be numbers.");
+      const error = new TypeError("Invalid Positions");
+      sendError(error, "Position coordinates must be numbers. (GraphObject.ts");
+      throw error;
     }
     this.position = { x, y, z };
-  }
 
-  /**
-   * Get the points array of the graph.
-   * @param none
-   *
-   * @precondition The graph instance must have a valid points array.
-   * @postcondition The 'points' property is returned as an array of PointClass instances.
-   */
-  getPoints(): PointInterface[] {
-    return this.points;
-  }
-
-  /**
-   * Set the points array of the graph.
-   * @param {PointInterface[]} points the points array - An array of PointClass instances.
-   *
-   * @precondition The 'points' parameter must be an array of PointClass instances.
-   * @postcondition The 'points' property is set to the provided array. If the 'points' parameter is not an array of PointClass instances, an error is thrown.
-   */
-  setPoints(points: PointInterface[]): void {
-    if (!Array.isArray(points)) {
-      throw new Error(
-        "Invalid points: must be an array of PointClass instances",
-      );
-    }
-    for (const point of points) {
-      if (!(point instanceof PointObject)) {
-        throw new Error(
-          "Invalid point: each element must be an instance of PointClass",
-        );
-      }
-    }
-
-    this.points = points;
-  }
-
-  /**
-   * Remove a point from the graph.
-   * @param {PointInterface[]} points the point to remove - A PointClass instance.
-   *
-   * @precondition the 'point' parameter must be a valid PointClass instance.
-   * @postcondition the 'point' is removed from the 'points' array. If the point does not exist in the array, an error is thrown.
-   */
-  removePoint(point: PointInterface): void {
-    const index = this.points.indexOf(point);
-    if (index !== -1) {
-      throw new Error("The specified point does not exist in the points array");
-    }
-    this.points.splice(index, 1);
-  }
-
-  /**
-   * Clear all points from the graph.
-   * @param none
-   *
-   * @precondition the 'points' parameter must be an array of PointClass instances.
-   * @postcondition the 'points' array is cleared.
-   */
-  clearPoints(): void {
-    this.points = [];
+    sendLog(
+      "info",
+      `setPosition() was called on Graph Object, position: [${x}, ${y}, ${z}] (GraphObject.ts)`,
+    );
   }
 
   // Axes management
@@ -210,13 +163,12 @@ export class GraphObject implements GraphInterface {
    * @postcondition the 'axes' property is returned as an object with 'xLabel', 'yLabel', 'xRange', and 'yRange' properties.
    */
   getAxes(): {
-    xLabel: string;
-    yLabel: string;
     xRange: [number, number];
     yRange: [number, number];
   } {
     return this.axes;
   }
+
   /**
    * Set the axes of the graph.
    * @param {xLabel: string; yLabel: string; xRange: [number, number]; yRange: [number, number]} axes
@@ -224,18 +176,37 @@ export class GraphObject implements GraphInterface {
    * @precondition the 'axes' parameter must be an object with 'xLabel', 'yLabel', 'xRange', and 'yRange' properties.
    * @postcondition the 'axes' property is set to the provided object. If the 'axes' parameter is invalid, an error is thrown.
    */
-  setAxes(axes: {
-    xLabel: string;
-    yLabel: string;
-    xRange: [number, number];
-    yRange: [number, number];
-  }): void {
-    if (typeof axes.xLabel !== "string" || axes.xLabel.trim() === "") {
-      throw new Error("Invalid xLabel: must be a non-empty string");
-    }
-    if (typeof axes.yLabel !== "string" || axes.yLabel.trim() === "") {
-      throw new Error("Invalid yLabel: must be a non-empty string");
+  setAxes(axes: { xRange: [number, number]; yRange: [number, number] }): void {
+    let error;
+    if (axes.xRange[0] > axes.xRange[1]) {
+      error = new RangeError("Invalid x axis range");
+      sendError(
+        error,
+        "Invalid xRange. First value must be less than the second value (GraphObject.ts)",
+      );
+      throw error;
+    } else if (axes.yRange[0] > axes.yRange[1]) {
+      error = new RangeError("Invalid y axis range");
+      sendError(
+        error,
+        "Invalid yRange. First value must be less than the second value (GraphObject.ts)",
+      );
+      throw error;
     }
     this.axes = axes;
+
+    sendLog(
+      "info",
+      `setAxes() was called on Graph Object and now: ${axes} (GraphObject.ts)`,
+    );
+  }
+
+  /**
+   * Gets the CSV Data Object used by the graph
+   * @precondition none
+   * @postcondition returns the csv data object linked to the graph
+   */
+  getCSVData(): CSVDataObject {
+    return this.csvData;
   }
 }

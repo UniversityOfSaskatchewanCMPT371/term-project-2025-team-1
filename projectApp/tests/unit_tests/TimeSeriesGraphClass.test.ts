@@ -21,68 +21,61 @@ describe("Time Series Graph Class", async () => {
    * Verifies that a new GraphObject instance initializes with an empty points array.
    */
   test("Should Initialize Points to the number of data set loaded", () => {
-    // graph.clearPoints();
-    graph.addPoints();
-    expect(graph.getPoints().length).toEqual(4);
+    graph.getCSVData().populatePoints();
+    expect(graph.getCSVData().getPoints().length).toEqual(4);
 
     //Testing resetting points
-    graph.clearPoints();
-    expect(graph.getPoints()).toEqual([]);
+    graph.getCSVData().clearPoints();
+    expect(graph.getCSVData().getPoints()).toEqual([]);
 
     //Repopulating the points
-    graph.addPoints();
-    expect(graph.getPoints().length).toEqual(4);
+    graph.getCSVData().populatePoints();
+    expect(graph.getCSVData().getPoints().length).toEqual(4);
   });
 
   test("Testing headers and range", () => {
-    expect(graph.getYHeader()).toBe("X");
-    expect(graph.getXHeader()).toBe("Time");
+    expect(graph.getCSVData().getYHeader()).toBe("X");
+    expect(graph.getCSVData().getTimeHeader()).toBe("Time");
 
     expect(graph.getYRange()).toBe(0);
 
     //Setting the range of the Graph
     graph.setRange();
-    expect(graph.getYRange()).toBe(40); //Largest value divisible by 5 on the csv file
-    expect(graph.timeSeriesYRange().length).toBe(8);
+    expect(graph.getYRange()).toBe(40); //Largest value divisible by 10 on the csv file
+    expect(graph.timeSeriesYRange().length).toBe(4);
 
     //Testing if able to switch headers
     graph.incrementYHeader();
 
-    expect(graph.getYHeader()).toBe("Y");
-    expect(graph.getXHeader()).toBe("Time");
+    expect(graph.getCSVData().getYHeader()).toBe("Y");
+    expect(graph.getCSVData().getTimeHeader()).toBe("Time");
 
     graph.setRange();
-    expect(graph.getYRange()).toBe(45);
-    expect(graph.timeSeriesYRange().length).toBe(9);
+    expect(graph.getYRange()).toBe(50);
+    expect(graph.timeSeriesYRange().length).toBe(5);
 
     //Switching back
     graph.decrementYHeader();
 
-    expect(graph.getYHeader()).toBe("X");
-    expect(graph.getXHeader()).toBe("Time");
+    expect(graph.getCSVData().getYHeader()).toBe("X");
+    expect(graph.getCSVData().getTimeHeader()).toBe("Time");
 
     graph.setRange();
     expect(graph.getYRange()).toBe(40);
-    expect(graph.timeSeriesYRange().length).toBe(8);
+    expect(graph.timeSeriesYRange().length).toBe(4);
 
     //Testing points now
-    graph.clearPoints();
+    graph.getCSVData().clearPoints();
+    graph.getCSVData().populatePoints();
     graph.addPoints();
 
     //First point in the graph
-    const point = graph.getPoints()[0];
-    expect(graph.getPoints()[0]).toBe(point);
+    const point = graph.getCSVData().getPoints()[0];
+    expect(graph.getCSVData().getPoints()[0]).toBe(point);
 
     //The expected values of the first point in the graph
     expect(point.getYData()).toBe(10);
-    expect(point.getXData()).toBe("2025-01-18");
-
-    //Testing to see if a Point's position is modifiable
-    point.setPosition([-1.8, 1, 0.01]);
-    expect(point.getPosition()).toEqual([-1.8, 1, 0.01]);
-
-    expect(point.getXPosition()).toEqual(-1.8);
-    expect(point.getYPosition()).toEqual(1);
+    expect(point.getTimeData()).toBe("2025-01-18");
 
     //Selected Status of Point
     expect(point.getSelected()).toEqual(false);
@@ -90,6 +83,6 @@ describe("Time Series Graph Class", async () => {
     expect(point.getSelected()).toEqual(true);
 
     graph.updatePoints();
-    expect(graph.getPoints()[0].getSelected()).toEqual(false);
+    expect(graph.get2DPoints()[0].getObject().getSelected()).toEqual(false);
   });
 });

@@ -18,7 +18,7 @@ import { CSVModelInterface } from "../types/CSVInterfaces";
  *
  */
 export class CSVReaderModel implements CSVModelInterface {
-  data!: CSVDataObject;
+  data?: CSVDataObject;
 
   /**
    * Returns a CSVData object
@@ -31,7 +31,13 @@ export class CSVReaderModel implements CSVModelInterface {
    * @returns The CSVData object if found, otherwise null.
    */
   getCSVFile(): CSVDataObject {
-    return this.data;
+    const data = this.data;
+    if (data === undefined) {
+      const error = new SyntaxError("Error getting csvfile");
+      sendError(error, "Unable to getCSVFile");
+      throw error;
+    }
+    return data;
   }
 
   /**
@@ -117,7 +123,7 @@ export class CSVReaderModel implements CSVModelInterface {
    *
    * @returns The internal data array of CSVDataObject instances.
    */
-  getData(): CSVDataObject {
+  getData(): CSVDataObject | undefined {
     return this.data;
   }
 }

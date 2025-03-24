@@ -34,18 +34,22 @@ export class CSVController implements ControllerInterface {
    *   - The graph is added to the main controller's graph collection
    */
   generate(tau: number): void {
-    // mainController.getGraphController().getModelData().pop();
-    // mainController.getGraphController().getModelEmData().pop();
+    const emData = this.getModelData();
+    if (emData === undefined) {
+      const error = new SyntaxError("Error getting CSVDataObject");
+      sendError(error, "Unable to get csv data object (CSVController.ts)");
+      throw error;
+    }
 
-    this.getModelData().setVRSelected(true);
-    this.getModelData().populatePoints();
+    emData.setVRSelected(true);
+    emData.populatePoints();
 
-    const TSGraph = new TimeSeriesGraphObject(this.getModelData());
-    TSGraph.setName(this.getModelData().getName());
+    const TSGraph = new TimeSeriesGraphObject(emData);
+    TSGraph.setName(emData.getName());
     TSGraph.addPoints();
 
-    const emGraph = new EmbeddedGraphObject(this.getModelData());
-    emGraph.setName(this.getModelData().getName());
+    const emGraph = new EmbeddedGraphObject(emData);
+    emGraph.setName(emData.getName());
     emGraph.setTau(tau);
     emGraph.addPoints();
 
@@ -101,7 +105,7 @@ export class CSVController implements ControllerInterface {
    * Gets the csv data linked to the model
    * @returns
    */
-  getModelData(): CSVDataObject {
+  getModelData(): CSVDataObject | undefined {
     return this.model.getData();
   }
 }

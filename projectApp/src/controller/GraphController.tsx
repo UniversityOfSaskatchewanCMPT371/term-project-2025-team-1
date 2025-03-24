@@ -38,7 +38,8 @@ export class GraphController implements ControllerInterface {
    *    The mainController's main scene is updated.
    */
   generateTimeSeriesGraph(): TimeSeriesGraphObject {
-    if (this.getModel().getData() === undefined) {
+    const graph = this.getModel().getData();
+    if (graph === undefined) {
       const error = new SyntaxError("Error on Time Series Graph");
       sendError(
         error,
@@ -47,15 +48,13 @@ export class GraphController implements ControllerInterface {
       throw error;
     }
 
-    this.getModel().getData().setRange();
-    this.getModel()
-      .getData()
-      .setYRangeLength(this.getModel().getData().timeSeriesYRange().length + 1);
+    graph.setRange();
+    graph.setYRangeLength(graph.timeSeriesYRange().length + 1);
     sendLog(
       "info",
       `generateTimeSeriesGraph() was called; successfully generated Time Series Graph (GraphController.ts)`,
     );
-    return this.getModel().getData();
+    return graph;
   }
 
   /**
@@ -74,17 +73,18 @@ export class GraphController implements ControllerInterface {
    *    The mainController's main scene is updated.
    */
   generateEmbeddedGraph(): EmbeddedGraphObject {
-    if (this.getModel().getEmbeddedGraphData() === undefined) {
+    const graph = this.getModel().getEmbeddedGraphData();
+    if (graph === undefined) {
       const error = new SyntaxError("Error Generating Embedded Graph");
       sendError(error, "Unable to generate Embedded Graph");
       throw error;
     }
-    this.getModel().getEmbeddedGraphData().setRange();
+    graph.setRange();
     sendLog(
       "info",
       `generateEmbeddedGraph() was called; successfully generated Embedded Graph (GraphController.ts)`,
     );
-    return this.getModel().getEmbeddedGraphData();
+    return graph;
   }
 
   /**
@@ -133,7 +133,13 @@ export class GraphController implements ControllerInterface {
    * @returns The array of TimeSeriesGraphObject instances.
    */
   getModelData(): TimeSeriesGraphObject {
-    return this.model.getData();
+    const emData = this.getModel().getData();
+    if (emData === undefined) {
+      const error = new SyntaxError("Error getting Time Series Data");
+      sendError(error, "Unable to get Time Series Data");
+      throw error;
+    }
+    return emData;
   }
 
   /**
@@ -146,7 +152,13 @@ export class GraphController implements ControllerInterface {
    * @returns The array of EmbeddedGraphObject instances.
    */
   getModelEmData(): EmbeddedGraphObject {
-    return this.model.getEmbeddedGraphData();
+    const emData = this.getModel().getEmbeddedGraphData();
+    if (emData === undefined) {
+      const error = new SyntaxError("Error getting Embedded Data");
+      sendError(error, "Unable to get Embedded Data");
+      throw error;
+    }
+    return emData;
   }
 
   /**
@@ -155,7 +167,13 @@ export class GraphController implements ControllerInterface {
    * @postcondition on success, returns the max range of the Embedded Graph
    */
   getEmbeddedRange(): number {
-    return this.getModel().getEmbeddedGraphData().getRange();
+    const emData = this.getModel().getEmbeddedGraphData();
+    if (emData === undefined) {
+      const error = new SyntaxError("Error getting Embedded Data");
+      sendError(error, "Unable to get range of Embedded graph");
+      throw error;
+    }
+    return emData.getRange();
   }
 
   /**
@@ -164,6 +182,12 @@ export class GraphController implements ControllerInterface {
    * @postcondition returns a string of the assigned tau value
    */
   getTauForDropDown(): string {
-    return this.getModel().getEmbeddedGraphData().getTau().toString();
+    const emData = this.getModel().getEmbeddedGraphData();
+    if (emData === undefined) {
+      const error = new SyntaxError("Error getting Embedded Data");
+      sendError(error, "Unable to get tau value");
+      throw error;
+    }
+    return emData.getTau().toString();
   }
 }

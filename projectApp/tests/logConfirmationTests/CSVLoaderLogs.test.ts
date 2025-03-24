@@ -82,7 +82,7 @@ describe("emulating csvLoader.feature", () => {
       fileContainsText(path, UrlReaderFetchFail),
     ]).then((items) => items.includes(true));
     await expect(urlAnyInvalid).resolves.toBe(true);
-    
+
     const UrlCSVReaderError = "URLCSVReader error";
     await expect(fileContainsText(path, UrlCSVReaderError)).resolves.toBe(true);
 
@@ -174,7 +174,7 @@ describe("emulating csvLoader.feature", () => {
       fileContainsText(path, LocalCSVReaderError),
     ]).then((items) => items.includes(true));
     await expect(urlAnyInvalid).resolves.toBe(true);
-    
+
     //CSVDataObject
     const loadCSVDataError = "loadCSVData error";
     await expect(fileContainsText(path, loadCSVDataError)).resolves.toBe(true);

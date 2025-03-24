@@ -66,8 +66,8 @@ describe("Embedded graph log tests", () => {
   test("file contains tau value logging", async () => {
     const newTau = await fileContainsText(
       filePath,
-      "value of tau in EmbeddedGraphObject updated to the value"
+      "value of tau in EmbeddedGraphObject updated to the value",
     );
     expect(newTau).toBe(true);
-  })
+  });
 });

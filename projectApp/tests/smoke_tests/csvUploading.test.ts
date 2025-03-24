@@ -21,9 +21,7 @@ describe("Test that a csv file can be loaded when called starting from mainContr
   test("expect csvController in mainController to create a graph from csv url input", async () => {
     await mainControllerTest.getCSVController().loadURLFile(indexedDataUrl);
     //should be Graph0
-    const urlGraph = mainControllerTest
-      .getCSVController()
-      .getDataByName("Graph0");
+    const urlGraph = mainControllerTest.getCSVController().getModelData();
     expect(urlGraph).not.toBeNull();
     expect(urlGraph).toBeInstanceOf(CSVDataObject);
   });
@@ -31,9 +29,7 @@ describe("Test that a csv file can be loaded when called starting from mainContr
     const indexedDataFile = await pathStrToFile(indexedDataPath);
     await mainControllerTest.getCSVController().loadLocalFile(indexedDataFile);
     //should be Graph1
-    const fileGraph = mainControllerTest
-      .getCSVController()
-      .getDataByName("Graph1");
+    const fileGraph = mainControllerTest.getCSVController().getModelData();
     expect(fileGraph).not.toBeNull();
     expect(fileGraph).toBeInstanceOf(CSVDataObject);
   });

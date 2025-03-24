@@ -26,7 +26,6 @@ describe("Test that graph objects are properly created", () => {
     // Test each x and y point individually after getting each point object
     const graphm = mainController.getGraphController().getModel();
     const points = graphm.getData()[0].get2DPoints();
-    console.log(points);
     expect(points[0].getObject().getTimeData()).toBe(0);
     expect(points[0].getObject().getYData()).toBe(1);
     expect(points[1].getObject().getTimeData()).toBe(1);

@@ -7,19 +7,23 @@ const mainBranchUrl =
 const indexedDataUrl = `${mainBranchUrl}/indexedData.csv`;
 
 describe("Test that graph objects are properly created", () => {
+    // Before any of the tests are run, load a URL CSV file and generate a graph
     beforeAll(async () => {
         await mainController.getCSVController().loadURLFile(indexedDataUrl);
         mainController.getCSVController().generate(1);
     })
     test("expect Time Series graph model to contain a 10 point graph", async () =>{
+        // Get the Time Series model and check that 10 points are generated
         const graphm = mainController.getGraphController().getModel();
         expect(graphm.getData()[0].getNumPoints()).toBe(10);
     });
     test("expect Embedded graph model to contain a 10 point graph", async () =>{
+        // Get the Embedded model and check that 10 points are generated
         const graphm = mainController.getGraphController().getModel();
         expect(graphm.getEmbeddedGraphData()[0].getPoints3D().length).toBe(10);
     });
     test("expect correct Time Series Graph points to be calculated", async () =>{
+        // Test each x and y point individually after getting each point object
         const graphm = mainController.getGraphController().getModel();
         const points = graphm.getData()[0].get2DPoints();
         console.log(points);
@@ -45,6 +49,7 @@ describe("Test that graph objects are properly created", () => {
         expect(points[9].getObject().getYData()).toBe(10);
     });
     test("expect correct Embedded Graph points to be calculated", async () =>{
+        // Test each x and y point individually after getting each point object
         const graphm = mainController.getGraphController().getModel();
         const points = graphm.getEmbeddedGraphData()[0].getPoints3D();
         expect(points[0].getPosition()).toStrictEqual([1, 0, 0]);

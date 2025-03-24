@@ -73,7 +73,7 @@ export async function LocalCSVReader(
 export function LocalCsvReader(
   file: File,
 ): Promise<{ key: Record<string, string | number> }[]> {
-  addTestSceneInfo("reading local csv reader")
+  addTestSceneInfo("reading local csv reader");
   return new Promise<{ key: Record<string, string | number> }[]>(
     (resolve, reject) => {
       if (!file.name.endsWith("csv")) {

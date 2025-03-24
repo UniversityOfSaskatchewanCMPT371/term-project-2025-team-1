@@ -124,7 +124,7 @@ export class CSVDataObject implements CSVDataInterface {
         this.csvHeaders = headers;
         this.setTimeHeader();
         this.setYHeader(this.findFirstHeader());
-        addTestSceneInfo("setting headers in loadCSVData()")
+        addTestSceneInfo("setting headers in loadCSVData()");
       }
       sendLog(
         "info",

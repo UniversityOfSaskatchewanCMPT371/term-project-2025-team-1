@@ -64,7 +64,9 @@ export class CSVReaderModel implements CSVModelInterface {
       throw error;
     }
     this.data = data;
-    addTestSceneInfo("CSVReaderModel now contains a CSVDataObject for the local file just read in");
+    addTestSceneInfo(
+      "CSVReaderModel now contains a CSVDataObject for the local file just read in",
+    );
   }
 
   /**
@@ -90,7 +92,9 @@ export class CSVReaderModel implements CSVModelInterface {
       throw error;
     }
     this.data = data;
-    addTestSceneInfo("CSVReaderModel now contains a CSVDataObject for the url file just read in");
+    addTestSceneInfo(
+      "CSVReaderModel now contains a CSVDataObject for the url file just read in",
+    );
   }
 
   /**

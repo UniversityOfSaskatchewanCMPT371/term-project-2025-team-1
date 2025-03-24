@@ -18,7 +18,7 @@ import { CSVModelInterface } from "../types/CSVInterfaces";
  *
  */
 export class CSVReaderModel implements CSVModelInterface {
-  data?: CSVDataObject;
+  data!: CSVDataObject;
 
   /**
    * Returns a CSVData object
@@ -30,7 +30,7 @@ export class CSVReaderModel implements CSVModelInterface {
    *
    * @returns The CSVData object if found, otherwise null.
    */
-  getCSVFile(): CSVDataObject | undefined {
+  getCSVFile(): CSVDataObject {
     return this.data;
   }
 
@@ -85,33 +85,6 @@ export class CSVReaderModel implements CSVModelInterface {
   }
 
   /**
-   * Reads a CSV file from a URL and adds it to the data array.
-   *
-   * @precondition The 'file' parameter is a valid URL string representing a CSV file. The CSV file is successfully read.
-   *
-   * @postcondition If the file is successfully read, a new CSVDataObject is created and added to the 'data' array. Otherwise, an error is logged.
-   *
-   * @param {string} file - The URL string of the CSV file.
-   */
-
-  async readLocalByPath(file: string): Promise<void> {
-    const data: CSVDataObject = new CSVDataObject();
-    try {
-      await data.loadLocalByPath(0, file);
-      sendLog(
-        "info",
-        `readLocalByPath read a file\n${JSON.stringify(data.getData())}`,
-      );
-    } catch (error: unknown) {
-      // Log the error
-      sendError(error, "readLocalByPath error");
-      throw error;
-    }
-
-    this.data = data;
-  }
-
-  /**
    * Provides an array of tuples for the browser UI, where each tuple contains the CSV file's name
    * and its browser selection status.
    *
@@ -144,7 +117,7 @@ export class CSVReaderModel implements CSVModelInterface {
    *
    * @returns The internal data array of CSVDataObject instances.
    */
-  getData(): CSVDataObject | undefined {
+  getData(): CSVDataObject {
     return this.data;
   }
 }

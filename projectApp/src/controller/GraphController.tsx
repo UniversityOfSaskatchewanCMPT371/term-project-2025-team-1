@@ -1,9 +1,8 @@
-import { CSVDataObject } from "../components/Csv_Components/CSVDataObject";
 import { EmbeddedGraphObject } from "../components/Graph_Components/EmbeddedGraphObject";
 import { TimeSeriesGraphObject } from "../components/Graph_Components/TimeSeriesGraphObject";
+import { sendError, sendLog } from "../logger-frontend";
 import { GraphModel } from "../models/GraphModel";
 import { ControllerInterface } from "../types/BaseInterfaces";
-import mainController from "./MainController";
 
 /**
  *
@@ -39,14 +38,24 @@ export class GraphController implements ControllerInterface {
    *    The mainController's main scene is updated.
    */
   generateTimeSeriesGraph(): TimeSeriesGraphObject {
-    const result: TimeSeriesGraphObject | undefined = this.getModel().getData();
-
-    if (result === undefined) {
-      throw new Error("Uninitialized");
+    if (this.getModel().getData() === undefined) {
+      const error = new SyntaxError("Error on Time Series Graph");
+      sendError(
+        error,
+        "Unable to generate Time Series Graph (GraphController.ts",
+      );
+      throw error;
     }
 
-    this.getModel().getData()?.setRange();
-    return result;
+    this.getModel().getData().setRange();
+    this.getModel()
+      .getData()
+      .setYRangeLength(this.getModel().getData().timeSeriesYRange().length + 1);
+    sendLog(
+      "info",
+      `generateTimeSeriesGraph() was called; successfully generated Time Series Graph (GraphController.ts)`,
+    );
+    return this.getModel().getData();
   }
 
   /**
@@ -64,10 +73,18 @@ export class GraphController implements ControllerInterface {
    *    If a graph with the same name as `csv` exists, its range is updated, a new graph is created and returned otherwise
    *    The mainController's main scene is updated.
    */
-  generateEmbeddedGraph(csv: CSVDataObject): EmbeddedGraphObject {
-    const result: EmbeddedGraphObject = new EmbeddedGraphObject(csv);
-    mainController.updateMainScene();
-    return result;
+  generateEmbeddedGraph(): EmbeddedGraphObject {
+    if (this.getModel().getEmbeddedGraphData() === undefined) {
+      const error = new SyntaxError("Error Generating Embedded Graph");
+      sendError(error, "Unable to generate Embedded Graph");
+      throw error;
+    }
+    this.getModel().getEmbeddedGraphData().setRange();
+    sendLog(
+      "info",
+      `generateEmbeddedGraph() was called; successfully generated Embedded Graph (GraphController.ts)`,
+    );
+    return this.getModel().getEmbeddedGraphData();
   }
 
   /**
@@ -86,6 +103,11 @@ export class GraphController implements ControllerInterface {
   ): void {
     this.getModel().setTimeSeriesGraph(graph);
     this.getModel().setEmbeddedGraph(emGraph);
+
+    sendLog(
+      "info",
+      `pushDataToModel() was called; successfully added both 2D and 3D Graphs(GraphController.ts)`,
+    );
   }
 
   /**
@@ -110,7 +132,7 @@ export class GraphController implements ControllerInterface {
    *
    * @returns The array of TimeSeriesGraphObject instances.
    */
-  getModelData(): TimeSeriesGraphObject | undefined {
+  getModelData(): TimeSeriesGraphObject {
     return this.model.getData();
   }
 
@@ -123,7 +145,25 @@ export class GraphController implements ControllerInterface {
    *
    * @returns The array of EmbeddedGraphObject instances.
    */
-  getModelEmData(): EmbeddedGraphObject | undefined {
+  getModelEmData(): EmbeddedGraphObject {
     return this.model.getEmbeddedGraphData();
+  }
+
+  /**
+   * This method returns the max range used by the 3D Embedded Graph
+   * @precondition for the Embedded Graph to exist and initialized
+   * @postcondition on success, returns the max range of the Embedded Graph
+   */
+  getEmbeddedRange(): number {
+    return this.getModel().getEmbeddedGraphData().getRange();
+  }
+
+  /**
+   * Gets the tau value and turns it to a string to be displayed on the drop down ui
+   * @precondition graph generated with a tau value implemented
+   * @postcondition returns a string of the assigned tau value
+   */
+  getTauForDropDown(): string {
+    return this.getModel().getEmbeddedGraphData().getTau().toString();
   }
 }

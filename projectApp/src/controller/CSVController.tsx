@@ -28,31 +28,36 @@ export class CSVController implements ControllerInterface {
    * Generates time series graphs for CSV data marked for VR display
    *
    * @precondition this.model must be initialized with CSV data
-   * @postcondition For each CSV with displayBoard=1:
+   * @postcondition For each CSV:
    *   - VR selection is enabled
    *   - A new TimeSeriesGraph is created and initialized
    *   - The graph is added to the main controller's graph collection
    */
-  generate(): void {
-    const csv = this.getModelData();
-    if (!csv) {
-      throw new Error("CSV data is undefined"); // Ensure csv is always valid
-    }
+  generate(tau: number): void {
+    // mainController.getGraphController().getModelData().pop();
+    // mainController.getGraphController().getModelEmData().pop();
 
-    csv.setVRSelected(true);
-    const TSGraph = new TimeSeriesGraphObject(csv);
-    TSGraph.setName(csv.getName());
+    this.getModelData().setVRSelected(true);
+    this.getModelData().populatePoints();
+
+    const TSGraph = new TimeSeriesGraphObject(this.getModelData());
+    TSGraph.setName(this.getModelData().getName());
     TSGraph.addPoints();
 
-    const emGraph = new EmbeddedGraphObject(csv);
-    emGraph.setName(csv.getName());
+    const emGraph = new EmbeddedGraphObject(this.getModelData());
+    emGraph.setName(this.getModelData().getName());
+    emGraph.setTau(tau);
     emGraph.addPoints();
 
     mainController.getGraphController().pushDataToModel(TSGraph, emGraph);
-    console.log("Success on generate?");
     sendLog("info", "generate has pushed a new graph");
   }
 
+  /**
+   * This method gets the csv file by opening a local file, and then loads it into the program
+   * @precondition a file that represents the csv file, needs to be a valid csv file
+   * @postcondition On success, the csv file to be loaded to the program
+   */
   async loadLocalFile(file: File): Promise<void> {
     try {
       await this.getModel().readLocalFile(file);
@@ -63,6 +68,11 @@ export class CSVController implements ControllerInterface {
     }
   }
 
+  /**
+   * This method gets the csv file using a url link, and then loads it into the program
+   * @precondition a string parameter representing the url link, needs to be a valid csv file
+   * @postcondition On success, the csv file to be loaded to the program
+   */
   async loadURLFile(csv: string): Promise<void> {
     try {
       await this.getModel().readURLFile(csv);
@@ -87,22 +97,11 @@ export class CSVController implements ControllerInterface {
     return this.model;
   }
 
-  getModelData(): CSVDataObject | undefined {
-    return this.model.getData();
-  }
-
   /**
-   * Retrieves the first CSV data object that is selected for VR visualization
-   *
-   * @precondition this.model must be initialized
-   * @postcondition Returns either an existing CSV object or a new empty one (if none found)
-   *  without modifying data
+   * Gets the csv data linked to the model
+   * @returns
    */
-  getGraphData(): CSVDataObject | undefined {
-    return this.getModelData();
-  }
-
-  getData(): CSVDataObject | undefined {
-    return this.model.getCSVFile();
+  getModelData(): CSVDataObject {
+    return this.model.getData();
   }
 }

@@ -40,7 +40,7 @@ describe("CSVController Tests", () => {
 
     await csvController.loadURLFile(url);
 
-    const getByName = csvController.getData();
+    const getByName = csvController.getModelData();
 
     expect(getByName).toBeInstanceOf(CSVDataObject);
     expect(getByName?.getName()).toBe("Graph0");

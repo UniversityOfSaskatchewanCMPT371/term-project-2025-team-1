@@ -27,7 +27,7 @@ export default function BrowserUI() {
   function URLComponent(): React.JSX.Element {
     const { csv } = useControls(
       {
-        csv: { label: "CSV by URL", value: "Enter URL" },
+        csv: { label: "CSV by URL", value: "", placeholder: "Enter URL" },
         "Enter URL": button(() => {
           const urlFile = () => {
             urlInputRef.current?.click();
@@ -57,7 +57,7 @@ export default function BrowserUI() {
             //key for Re-rendering leva component
             setControlKey(controlKey + 1);
           }}
-        ></input>
+        />
       </>
     );
   }
@@ -108,7 +108,7 @@ export default function BrowserUI() {
               );
             }
           }}
-        ></input>
+        />
       </>
     );
   }

@@ -16,10 +16,8 @@ import { CSVDataInterface } from "../types/CSVInterfaces";
  *
  */
 export class GraphModel implements ModelInterface {
-  // TODO - change name of data to be timeSeriesData and update getters and setters
-
-  data?: TimeSeriesGraphObject;
-  embeddedGraphData?: EmbeddedGraphObject;
+  data!: TimeSeriesGraphObject;
+  embeddedGraphData!: EmbeddedGraphObject;
 
   /**
    * Sets the VRSelected flag of the given CSV data object to true.
@@ -56,7 +54,7 @@ export class GraphModel implements ModelInterface {
    *
    * @returns TimeSeriesGraphObject An array of TimeSeriesGraphObject instances.
    */
-  getData(): TimeSeriesGraphObject | undefined {
+  getData(): TimeSeriesGraphObject {
     return this.data;
   }
 
@@ -82,7 +80,7 @@ export class GraphModel implements ModelInterface {
    *
    * @returns {EmbeddedGraphObject} An EmbeddedGraphObject instance.
    */
-  getEmbeddedGraphData(): EmbeddedGraphObject | undefined {
+  getEmbeddedGraphData(): EmbeddedGraphObject {
     return this.embeddedGraphData;
   }
 }

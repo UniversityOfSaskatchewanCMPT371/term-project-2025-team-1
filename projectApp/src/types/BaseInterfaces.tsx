@@ -1,5 +1,5 @@
 export interface ModelInterface {
-  data?: DataInterface; //data assigned to model
+  data: DataInterface; //data assigned to model
 
   getData(): DataInterface | undefined; //Get the data   //Uses name to find the CSVData
 }

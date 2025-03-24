@@ -4,6 +4,7 @@ import { ButtonInput } from "leva/dist/declarations/src/types";
 import React, { useState } from "react";
 
 import { sendLog, sendError } from "../../logger-frontend.ts";
+import { addTestSceneInfo } from "../Scene/TestScene.tsx";
 
 /**
  * The UI that appears when the webpage is opened, created using module leva.
@@ -47,10 +48,13 @@ export default function BrowserUI() {
           onClick={async (): Promise<void> => {
             //Try using the string value to load csv file
             try {
+              addTestSceneInfo("Starting url csv loading");
               await mainController.getCSVController().loadURLFile(csv);
+              addTestSceneInfo("url csv file upload succeded");
               alert(`Successfully Loaded: ${csv}`);
               sendLog("info", `URLComponent read: ${csv}`);
             } catch (error: unknown) {
+              addTestSceneInfo("url csv loading failed");
               alert(`${error} Failed Loading: ${csv}`);
               sendLog("info", `URLComponent read: ${csv}`);
             }
@@ -90,10 +94,13 @@ export default function BrowserUI() {
 
               //If the file is valid, try to read the local csv file
               try {
+                addTestSceneInfo("Starting local csv file reading");
                 await mainController.getCSVController().loadLocalFile(file);
+                addTestSceneInfo("local csv file loading succeeded");
                 alert(`Successfully Loaded: ${file.name}`);
                 sendLog("info", `LoadComponent read: ${file.name.toString()}`);
               } catch (error: unknown) {
+                addTestSceneInfo("local csv file loading failed");
                 alert(`${error} Failed Loading: ${file.name}`);
                 sendError(
                   new Error("Invalid File"),

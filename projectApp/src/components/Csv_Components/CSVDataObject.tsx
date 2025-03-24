@@ -3,6 +3,7 @@ import { LocalCsvReader, UrlCSVReader } from "./CSVReaders";
 import { sendError, sendLog } from "../../logger-frontend";
 import { PointObjectInterface } from "../../types/PointInterface";
 import { PointObject } from "../Graph_Components/Points/PointObject";
+import { addTestSceneInfo } from "../../pages/Scene/TestScene";
 
 /**
  * Class representing a CSV data structure that implements the CSVData interface.
@@ -123,6 +124,7 @@ export class CSVDataObject implements CSVDataInterface {
         this.csvHeaders = headers;
         this.setTimeHeader();
         this.setYHeader(this.findFirstHeader());
+        addTestSceneInfo("setting headers in loadCSVData()");
       }
       sendLog(
         "info",

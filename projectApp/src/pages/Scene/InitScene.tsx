@@ -14,8 +14,7 @@ export default function InitScene({
     <>
       <OrbitControls />
       {/* Over here we could specify the scene */}
-
-      <TestScene inVR={inVR} />
+      {import.meta.env.VITE_TEST_MODE === "true" && <TestScene inVR={inVR} />}
       <MainScene inVR={inVR} />
     </>
   );

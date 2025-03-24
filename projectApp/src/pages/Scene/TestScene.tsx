@@ -1,5 +1,14 @@
+import { useFrame } from "@react-three/fiber";
 import { Container, Fullscreen, Text } from "@react-three/uikit";
 import { useState } from "react";
+
+let info: string[] = [];
+
+export function addTestSceneInfo(s: string) {
+  if (import.meta.env.VITE_TEST_MODE === "true") {
+    info = [...info.slice(-4), s];
+  }
+}
 
 export default function TestScene({
   inVR,
@@ -8,6 +17,11 @@ export default function TestScene({
 }): React.JSX.Element {
   const [clicked, setClicked] = useState(false);
   const [hovered, setHovered] = useState(false);
+  const [logs, setLogs] = useState<string[]>([]);
+
+  useFrame(() => {
+    setLogs([...info]);
+  });
 
   return (
     <>
@@ -22,7 +36,6 @@ export default function TestScene({
         <Container
           width={"100%"}
           height={"100%"}
-          backgroundColor={"darkgray"}
           backgroundOpacity={clicked ? 0.5 : 0.01}
           alignContent={"center"}
           justifyContent={"center"}
@@ -91,9 +104,24 @@ export default function TestScene({
               justifyContent={"center"}
               alignContent={"center"}
               display={clicked ? "flex" : "none"}
+              flexDirection={"column"}
+              alignItems={"center"}
             >
               {/* Items to be displayed in test scene will go here */}
-              <Text>TEST BODY</Text>
+              <Container
+                width={"100%"}
+                alignContent={"center"}
+                justifyContent={"center"}
+                flexDirection={"column"}
+                marginTop={10}
+                alignItems={"center"}
+              >
+                {logs.map((item, index) => (
+                  <Text key={index} fontSize={14} color={"black"}>
+                    {item}
+                  </Text>
+                ))}
+              </Container>
             </Container>
           </Container>
         </Container>

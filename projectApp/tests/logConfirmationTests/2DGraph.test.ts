@@ -64,7 +64,7 @@ describe("2D graph log tests", () => {
   test("file contains getYHeader() logging", async () => {
     const response = await fileContainsText(
       filePath,
-      "getYHeader returned X (TimeSeriesGraphClass.tsx)",
+      "getYHeader returned Some (TimeSeriesGraphClass.tsx)",
     );
     expect(response).toBe(true);
   });

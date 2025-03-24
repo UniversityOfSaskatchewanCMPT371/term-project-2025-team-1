@@ -36,7 +36,6 @@ export default function TestScene({
         <Container
           width={"100%"}
           height={"100%"}
-          backgroundColor={"darkgray"}
           backgroundOpacity={clicked ? 0.5 : 0.01}
           alignContent={"center"}
           justifyContent={"center"}
@@ -109,8 +108,6 @@ export default function TestScene({
               alignItems={"center"}
             >
               {/* Items to be displayed in test scene will go here */}
-              <Text>TEST BODY</Text>
-
               <Container
                 width={"100%"}
                 alignContent={"center"}

@@ -7,7 +7,6 @@ export interface CSVDataInterface extends DataInterface {
   data: { key: Record<string, string | number> }[]; //Data sets of csv files
   browserSelected: boolean; //Checks if loaded file is selected on the Browser
   vrSelected: boolean; //Checks if loaded file is selected on the VR Scene
-  displayBoard: number; //Board graph is displayed in
 
   yHeader: string;
   //Will use the TIME and yHeader to get data
@@ -24,9 +23,6 @@ export interface CSVDataInterface extends DataInterface {
   getVRSelected(): boolean; //Get vrSelected attribute
   setVRSelected(bool: boolean): void; //Set vrSelected attribute
   setYHeader(header: string): void; //Set the Y Header
-  getDisplayBoard(): number; //Get displayBoard attribute
-  incrementDisplayBoard(): void; //Increment Y header by one column
-  decrementDisplayBoard(): void; //Decrement Y header by one column
 }
 
 export interface CSVModelInterface extends ModelInterface {

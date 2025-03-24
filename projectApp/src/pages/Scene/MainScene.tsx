@@ -15,9 +15,6 @@ export default function MainScene({
 }: {
   inVR: boolean;
 }): React.JSX.Element {
-  //TODO
-  //Add a UI to the MainScene
-  //Then make it possible for the ui to  stay in view of the camera (maybe top left)
   const [updateGraph, setUpdateGraph] = useState(false);
   const [graph, setGraph] = useState<TimeSeriesGraphObject>();
   const [emGraph, setEmGraph] = useState<EmbeddedGraphObject>();
@@ -53,8 +50,8 @@ export default function MainScene({
     <>
       {/* This block of code is the sign in front of the user
         A red box with the text Front */}
-      <mesh position={[4.5, 1, -4.55]}>
-        <boxGeometry args={[6, 5.5, 2]} />
+      <mesh position={[-1, 1.8, -3.65]}>
+        <boxGeometry args={[6, 3.6, 0.25]} />
         <meshBasicMaterial color="gray" />
       </mesh>
 
@@ -65,9 +62,8 @@ export default function MainScene({
       </mesh>
 
       {/* Displays the Sample Drop Down UI */}
-      {/* <CreateTimeSeries graphObject={graph}></CreateTimeSeries> */}
       <DropdownUI inVR={inVR} />
-      {graph && <CreateTimeSeries graphObject={graph}></CreateTimeSeries>}
+      {graph && <CreateTimeSeries graphObject={graph} />}
       {emGraph && <CreateEmbeddedGraph graphObject={emGraph} />}
     </>
   );

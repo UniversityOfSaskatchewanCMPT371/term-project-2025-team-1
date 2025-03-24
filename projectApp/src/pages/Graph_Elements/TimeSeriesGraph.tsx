@@ -42,10 +42,7 @@ export default function TimeSeriesGraph({
   function UpdateGraph(): void {
     graph.updatePointPosition();
     setHeader(graph.getCSVData().getYHeader());
-    mainController
-      .getGraphController()
-      .getModelEmData()[0]
-      .updateEmbeddedPoints();
+    mainController.getGraphController().getModelEmData().updateEmbeddedPoints();
     mainController.updateMainScene();
     sendLog(
       "info",

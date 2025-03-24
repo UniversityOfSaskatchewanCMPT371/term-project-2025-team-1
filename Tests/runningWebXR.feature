@@ -14,13 +14,11 @@ Feature: WebXR Vite Spike Manual Test Cases
     And the first URL should be for localhost
     And the second URL should be for hosting over the network
 
-
   Scenario: Verifying Controls in the Browser emulator
     Given I am in the WebXR environment in the browser emulator
     When I use my mouse and keyboard
     Then I should be able to navigate and interact with the environment
     And the controls should mimic the functionality of the Meta Quest controllers
-
 
   Scenario: Running the Program on the Meta Quest
     Given I have started the program using "npm run dev"
@@ -30,7 +28,6 @@ Feature: WebXR Vite Spike Manual Test Cases
     And I click the "Enter VR" button in the address bar
     Then I should be able to see the WebXR environment in VR
 
-
 # Looking left, right, up, and down.
 # Implicit Signifier: an average user should automatically know that they will need to move their head to look anywhere in a VR.
   Scenario: Looking to the left in VR
@@ -39,13 +36,11 @@ Feature: WebXR Vite Spike Manual Test Cases
     Then the camera orientation should change to face left
     And the change in orientation should be detectable by the emulator
 
-
   Scenario: Looking to the right in VR
     Given I am in the VR environment
     When I move my head to the right
     Then the camera orientation should change to face right
     And the change in orientation should be detectable by the emulator
-
 
   Scenario: Looking up in VR
     Given I am in the VR environment
@@ -58,7 +53,6 @@ Feature: WebXR Vite Spike Manual Test Cases
     When I move my head down
     Then the camera orientation should change to face downward
     And the change in orientation should be detectable by the emulator
-
 
   Scenario: Moving in VR
     Given I am in the VR environment

@@ -1,4 +1,3 @@
-import { CSVDataObject } from "../components/Csv_Components/CSVDataObject";
 import { EmbeddedGraphObject } from "../components/Graph_Components/EmbeddedGraphObject";
 import { TimeSeriesGraphObject } from "../components/Graph_Components/TimeSeriesGraphObject";
 import { sendError, sendLog } from "../logger-frontend";
@@ -38,25 +37,24 @@ export class GraphController implements ControllerInterface {
    *    If a graph with the same name as `csv` exists, its range is updated, a new graph is created and returned otherwise
    *    The mainController's main scene is updated.
    */
-  generateTimeSeriesGraph(csv: CSVDataObject): TimeSeriesGraphObject {
-    for (const graph of this.getModel().getData()) {
-      if (graph.getName() == csv.getName()) {
-        graph.setRange();
-        graph.setYRangeLength(graph.timeSeriesYRange().length + 1);
-        sendLog(
-          "info",
-          `generateTimeSeriesGraph() was called; successfully generated Time Series Graph (GraphController.ts)`,
-        );
-        return graph;
-      }
+  generateTimeSeriesGraph(): TimeSeriesGraphObject {
+    const graph = this.getModel().getData();
+    if (graph === undefined) {
+      const error = new SyntaxError("Error on Time Series Graph");
+      sendError(
+        error,
+        "Unable to generate Time Series Graph (GraphController.ts",
+      );
+      throw error;
     }
 
-    const error = new SyntaxError("Error on Time Series Graph");
-    sendError(
-      error,
-      "Unable to generate Time Series Graph (GraphController.ts",
+    graph.setRange();
+    graph.setYRangeLength(graph.timeSeriesYRange().length + 1);
+    sendLog(
+      "info",
+      `generateTimeSeriesGraph() was called; successfully generated Time Series Graph (GraphController.ts)`,
     );
-    throw error;
+    return graph;
   }
 
   /**
@@ -74,21 +72,19 @@ export class GraphController implements ControllerInterface {
    *    If a graph with the same name as `csv` exists, its range is updated, a new graph is created and returned otherwise
    *    The mainController's main scene is updated.
    */
-  generateEmbeddedGraph(csv: CSVDataObject): EmbeddedGraphObject {
-    for (const graph of this.getModel().getEmbeddedGraphData()) {
-      if (graph.getName() == csv.getName()) {
-        graph.setRange();
-        sendLog(
-          "info",
-          `generateEmbeddedGraph() was called; successfully generated Embedded Graph (GraphController.ts)`,
-        );
-        return graph;
-      }
+  generateEmbeddedGraph(): EmbeddedGraphObject {
+    const graph = this.getModel().getEmbeddedGraphData();
+    if (graph === undefined) {
+      const error = new SyntaxError("Error Generating Embedded Graph");
+      sendError(error, "Unable to generate Embedded Graph");
+      throw error;
     }
-
-    const error = new SyntaxError("Error Generating Embedded Graph");
-    sendError(error, "Unable to generate Embedded Graph");
-    throw error;
+    graph.setRange();
+    sendLog(
+      "info",
+      `generateEmbeddedGraph() was called; successfully generated Embedded Graph (GraphController.ts)`,
+    );
+    return graph;
   }
 
   /**
@@ -105,8 +101,8 @@ export class GraphController implements ControllerInterface {
     graph: TimeSeriesGraphObject,
     emGraph: EmbeddedGraphObject,
   ): void {
-    this.getModel().addTimeSeriesGraph(graph);
-    this.getModel().addEmbeddedGraph(emGraph);
+    this.getModel().setTimeSeriesGraph(graph);
+    this.getModel().setEmbeddedGraph(emGraph);
 
     sendLog(
       "info",
@@ -136,21 +132,14 @@ export class GraphController implements ControllerInterface {
    *
    * @returns The array of TimeSeriesGraphObject instances.
    */
-  getModelData(): TimeSeriesGraphObject[] {
-    return this.model.getData();
-  }
-
-  /**
-   * Returns the number of TimeSeriesGraphObject instances stored in the model.
-   *
-   * @precondition none
-   *
-   * @postcondition The number of TimeSeriesGraphObject instances is returned.
-   *
-   * @returns The number of TimeSeriesGraphObject instances in the model
-   */
-  getDataLength(): number {
-    return this.getModel().getData().length;
+  getModelData(): TimeSeriesGraphObject {
+    const emData = this.getModel().getData();
+    if (emData === undefined) {
+      const error = new SyntaxError("Error getting Time Series Data");
+      sendError(error, "Unable to get Time Series Data");
+      throw error;
+    }
+    return emData;
   }
 
   /**
@@ -162,21 +151,14 @@ export class GraphController implements ControllerInterface {
    *
    * @returns The array of EmbeddedGraphObject instances.
    */
-  getModelEmData(): EmbeddedGraphObject[] {
-    return this.model.getEmbeddedGraphData();
-  }
-
-  /**
-   * Returns the number of EmbeddedGraphObject instances stored in the model.
-   *
-   * @precondition none
-   *
-   * @postcondition The number of EmbeddedGraphObject instances is returned.
-   *
-   * @returns The number of EmbeddedGraphObject instances in the model
-   */
-  getEmDataLength(): number {
-    return this.getModel().getEmbeddedGraphData().length;
+  getModelEmData(): EmbeddedGraphObject {
+    const emData = this.getModel().getEmbeddedGraphData();
+    if (emData === undefined) {
+      const error = new SyntaxError("Error getting Embedded Data");
+      sendError(error, "Unable to get Embedded Data");
+      throw error;
+    }
+    return emData;
   }
 
   /**
@@ -185,7 +167,13 @@ export class GraphController implements ControllerInterface {
    * @postcondition on success, returns the max range of the Embedded Graph
    */
   getEmbeddedRange(): number {
-    return this.getModel().getEmbeddedGraphData()[0].getRange();
+    const emData = this.getModel().getEmbeddedGraphData();
+    if (emData === undefined) {
+      const error = new SyntaxError("Error getting Embedded Data");
+      sendError(error, "Unable to get range of Embedded graph");
+      throw error;
+    }
+    return emData.getRange();
   }
 
   /**
@@ -194,6 +182,12 @@ export class GraphController implements ControllerInterface {
    * @postcondition returns a string of the assigned tau value
    */
   getTauForDropDown(): string {
-    return this.getModel().getEmbeddedGraphData()[0].getTau().toString();
+    const emData = this.getModel().getEmbeddedGraphData();
+    if (emData === undefined) {
+      const error = new SyntaxError("Error getting Embedded Data");
+      sendError(error, "Unable to get tau value");
+      throw error;
+    }
+    return emData.getTau().toString();
   }
 }

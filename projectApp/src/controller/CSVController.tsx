@@ -4,7 +4,6 @@ import { TimeSeriesGraphObject } from "../components/Graph_Components/TimeSeries
 import { sendError, sendLog } from "../logger-frontend";
 import { CSVReaderModel } from "../models/CSVReaderModel";
 import { ControllerInterface } from "../types/BaseInterfaces";
-import { CSVDataInterface } from "../types/CSVInterfaces";
 import mainController from "./MainController";
 
 /**
@@ -35,25 +34,27 @@ export class CSVController implements ControllerInterface {
    *   - The graph is added to the main controller's graph collection
    */
   generate(tau: number): void {
-    mainController.getGraphController().getModelData().pop();
-    mainController.getGraphController().getModelEmData().pop();
-
-    for (const csv of this.model.getData()) {
-      csv.setVRSelected(true);
-      csv.populatePoints();
-
-      const TSGraph = new TimeSeriesGraphObject(csv);
-      TSGraph.setName(csv.getName());
-      TSGraph.addPoints();
-
-      const emGraph = new EmbeddedGraphObject(csv);
-      emGraph.setName(csv.getName());
-      emGraph.setTau(tau);
-      emGraph.addPoints();
-
-      mainController.getGraphController().pushDataToModel(TSGraph, emGraph);
-      sendLog("info", "generate has pushed a new graph");
+    const emData = this.getModelData();
+    if (emData === undefined) {
+      const error = new SyntaxError("Error getting CSVDataObject");
+      sendError(error, "Unable to get csv data object (CSVController.ts)");
+      throw error;
     }
+
+    emData.setVRSelected(true);
+    emData.populatePoints();
+
+    const TSGraph = new TimeSeriesGraphObject(emData);
+    TSGraph.setName(emData.getName());
+    TSGraph.addPoints();
+
+    const emGraph = new EmbeddedGraphObject(emData);
+    emGraph.setName(emData.getName());
+    emGraph.setTau(tau);
+    emGraph.addPoints();
+
+    mainController.getGraphController().pushDataToModel(TSGraph, emGraph);
+    sendLog("info", "generate has pushed a new graph");
   }
 
   /**
@@ -100,36 +101,11 @@ export class CSVController implements ControllerInterface {
     return this.model;
   }
 
-  getModelData(): CSVDataObject[] {
+  /**
+   * Gets the csv data linked to the model
+   * @returns
+   */
+  getModelData(): CSVDataObject | undefined {
     return this.model.getData();
-  }
-
-  /**
-   * Retrieves the first CSV data object that is selected for VR visualization
-   *
-   * @precondition this.model must be initialized
-   * @postcondition Returns either an existing CSV object or a new empty one (if none found)
-   *  without modifying data
-   */
-  getVRSelected(): CSVDataObject {
-    let file: CSVDataObject = new CSVDataObject();
-    for (const csv of this.model.getData()) {
-      if (csv.getVRSelected()) {
-        file = csv;
-        sendLog("info", `getVRSelected has returned ${csv.name}`);
-        return csv;
-      }
-    }
-    sendLog("info", "getVRSelected has returned an empty CSVDataObject");
-    return file;
-  }
-
-  /**
-   * This method gets the CSV Data by Name
-   * @precondition name, a string that is the name assigned to the CSV Data Object
-   * @postcondition returns the CSV Data Object with the specified name
-   */
-  getDataByName(name: string): CSVDataInterface | null {
-    return this.model.getCSVFileByName(name);
   }
 }

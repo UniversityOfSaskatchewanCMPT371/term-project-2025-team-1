@@ -29,23 +29,20 @@ export default function MainScene({
   });
 
   useEffect(() => {
-    if (updateGraph) {
-      const vrSelected = mainController.getCSVController().getVRSelected();
-      if (mainController.getGraphController().getDataLength() > 0) {
-        const newGraph = mainController
-          .getGraphController()
-          .generateTimeSeriesGraph(vrSelected);
-        setGraph(newGraph);
-      }
-      if (mainController.getGraphController().getEmDataLength() > 0) {
-        const newEmGraph = mainController
-          .getGraphController()
-          .generateEmbeddedGraph(vrSelected);
-        setEmGraph(newEmGraph);
-      }
+    const graphData = mainController.getCSVController().getModelData();
+    if (!graphData) {
+      return; // Stop execution if vrSelected is undefined
     }
+    const newGraph = mainController
+      .getGraphController()
+      .generateTimeSeriesGraph();
+    setGraph(newGraph);
+    const newEmGraph = mainController
+      .getGraphController()
+      .generateEmbeddedGraph();
+    setEmGraph(newEmGraph);
     setUpdateGraph(false);
-  });
+  }, [updateGraph]);
   return (
     <>
       {/* This block of code is the sign in front of the user

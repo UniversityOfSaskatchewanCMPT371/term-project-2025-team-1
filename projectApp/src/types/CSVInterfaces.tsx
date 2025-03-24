@@ -1,3 +1,4 @@
+import { CSVDataObject } from "../components/Csv_Components/CSVDataObject";
 import { DataInterface, ModelInterface } from "./BaseInterfaces";
 
 //Planned new interfaces for csv files
@@ -28,5 +29,5 @@ export interface CSVDataInterface extends DataInterface {
 export interface CSVModelInterface extends ModelInterface {
   readLocalFile(file: File): Promise<void>; //Will read the csv through local file and load it
   readURLFile(file: string): Promise<void>; //Will read the csv file through url link and load it
-  getCSVFileByName(name: string): CSVDataInterface | null; //Get specific csv data by Name value
+  getCSVFile(): CSVDataObject | undefined; //Get specific csv data by Name value
 }

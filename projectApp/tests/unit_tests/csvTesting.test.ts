@@ -3,7 +3,7 @@ import { describe, expect, test, vi } from "vitest";
 import {
   UrlCSVReader as urlReader,
   LocalCsvReader as localFileReader,
-} from "../../src/components/Csv_Components/CSVReaders.tsx";
+} from "../../src/components/Csv_Components/CSVReaders.ts";
 import MockFile from "./__mocks__/MockFile.ts";
 import MockFileReader, { pathStrToFile } from "./__mocks__/mockFileReader";
 

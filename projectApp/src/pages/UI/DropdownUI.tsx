@@ -1,7 +1,7 @@
 import { Container, Text, Fullscreen } from "@react-three/uikit";
 import { useState } from "react";
-import mainController from "../../controller/MainController.tsx";
-import { CSVDataInterface } from "../../types/CSVInterfaces.tsx";
+import mainController from "../../controller/MainController";
+import { CSVDataInterface } from "../../types/CSVInterfaces";
 import { sendLog } from "../../logger-frontend.ts";
 
 /**

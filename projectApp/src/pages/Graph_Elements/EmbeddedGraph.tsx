@@ -77,7 +77,7 @@ export function EmbeddedGraph({
   function GenerateGraph(): React.JSX.Element {
     sendLog(
       "info",
-      "an EmbeddedGraph visualization is being created [not yet functioning] (EmbeddedGraph.tsx)",
+      "an EmbeddedGraph visualization is being created (EmbeddedGraph.tsx)",
     );
     return (
       <mesh position={[1, 1, 0]}>

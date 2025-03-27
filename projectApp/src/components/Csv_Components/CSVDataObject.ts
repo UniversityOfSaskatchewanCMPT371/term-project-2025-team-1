@@ -36,6 +36,22 @@ export class CSVDataObject implements CSVDataInterface {
   }
 
   // TODO - add first differencing calculation function
+  calculateFirstDifferencingValues(): number[] {
+    const d: number[] = [0]
+    const num = this.getData().length;
+    console.log(num);
+    
+    for (let i = 1; i < num; i += 1) {
+      const rowI = this.data[i];
+      const rowL = this.data[i-1];
+      const m = rowI[this.getYHeader() as keyof typeof rowI] as unknown as number;
+      const n = rowL[this.getYHeader() as keyof typeof rowL] as unknown as number;
+      const b = m-n;
+      d.push(b);
+    }
+
+    return d;
+  }
 
   /**
    * This method creates points from the csv file that will be referenced by the points of
@@ -45,17 +61,28 @@ export class CSVDataObject implements CSVDataInterface {
    */
   populatePoints(): void {
     this.points = [];
-    this.getData().forEach((data) => {
-      const newPoint = new PointObject();
+    if (this.isFirstDifferencing) {
+      const firstDiffedData = this.calculateFirstDifferencingValues();
 
-      newPoint.setTimeData(
-        data[this.getTimeHeader() as keyof typeof data] as unknown as string,
-      );
-      newPoint.setYData(
-        data[this.getYHeader() as keyof typeof data] as unknown as number,
-      );
-      this.points.push(newPoint);
-    });
+      firstDiffedData.forEach((data) => {
+        const newPoint = new PointObject();
+        newPoint.setYData(data);
+        // this.points.push(newPoint);
+      })
+
+    } else {
+      this.getData().forEach((data) => {
+        const newPoint = new PointObject();
+
+        newPoint.setTimeData(
+          data[this.getTimeHeader() as keyof typeof data] as unknown as string,
+        );
+        newPoint.setYData(
+          data[this.getYHeader() as keyof typeof data] as unknown as number,
+        );
+        this.points.push(newPoint);
+      });
+    }
 
     sendLog(
       "info",

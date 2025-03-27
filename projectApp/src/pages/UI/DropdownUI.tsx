@@ -65,7 +65,7 @@ export default function DropdownUI({
   function update(): void {
     // TODO - do something with the first differencing here (i think change the boolean being added to CSVDataObject here)
     // then in generate do call the calculation fucntion
-    mainController.getCSVController().generate(selectTau);
+    mainController.getCSVController().generate(selectTau, isFirstDifferencing);
     setInfoTau(mainController.getGraphController().getTauForDropDown()); //Later change this to getting tau value from the graph itself rather than the other useState
     mainController.updateMainScene();
   }
@@ -274,7 +274,6 @@ export default function DropdownUI({
             borderRadius={15}
             borderWidth={2}
             borderColor={"grey"}
-            // TODO - add onClick
             onClick={() => {
               setOnFDDecrease();
             }}
@@ -314,7 +313,6 @@ export default function DropdownUI({
             borderRadius={15}
             borderWidth={2}
             borderColor={"gray"}
-            // TODO - add onClick
             onClick={() => {
               setOnFDIncrease();
             }}

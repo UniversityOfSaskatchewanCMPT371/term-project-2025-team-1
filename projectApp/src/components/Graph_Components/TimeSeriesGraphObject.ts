@@ -158,7 +158,7 @@ export class TimeSeriesGraphObject
     const range: number[] = [];
 
     let cur = 0;
-    let max = this.axes.yRange[1];
+    const max = this.axes.yRange[1];
 
     //For larger data sets, it would be possible to create a switch statement
     //Since setRange() max is set to be divisible by 10, we might be able to divide by 10

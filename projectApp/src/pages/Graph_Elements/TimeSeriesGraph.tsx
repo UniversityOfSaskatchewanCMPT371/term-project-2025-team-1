@@ -28,15 +28,15 @@ export default function TimeSeriesGraph({
   // Values used to space Points in the X axis
   const totalSpace = 5;
   const divider = totalSpace / graph.getNumPoints();
-  let current = -1.8 + divider / 2;
+  let current = -1.85 + divider / 2;
 
   // Values used to position lines, currently set to starting position
   let currentLine: [number, number, number] = [0, 0, 0.01];
-  let lastLine: [number, number, number] = [-1.85, -1.05, 0.01];
+  let lastLine: [number, number, number] = [0, 0, 0.01];
 
   // Spacing used by X and Y axis
   const xSpacing = 100 / graph.getNumPoints();
-  const ySpacing = 100 / graph.getYRangeLength() + 1;
+  const ySpacing = 100 / graph.getYRangeLength();
 
   //Used to update the graph, currently updates on Y header change
   function UpdateGraph(): void {
@@ -175,6 +175,11 @@ export default function TimeSeriesGraph({
         (1.5 - (ySpacing / 100) * 2 + 1.05) -
         1.05,
     );
+
+    const index = graph.getPoints2D().indexOf(point);
+    if (index === 0) {
+      lastLine = [point.getXPosition(), point.getYPosition(), 0.01];
+    }
 
     //Updating the position of the lines based off the point position
     currentLine = lastLine;

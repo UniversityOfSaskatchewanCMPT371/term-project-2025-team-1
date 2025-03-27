@@ -18,7 +18,7 @@ export class CSVDataObject implements CSVDataInterface {
   browserSelected: boolean;
   vrSelected: boolean;
   points: PointObjectInterface[];
-  // TODO - add FD attribute
+  isFirstDifferencing: boolean;
 
   /**
    * Initializes a new CSVDataObject with default values
@@ -32,7 +32,7 @@ export class CSVDataObject implements CSVDataInterface {
     this.browserSelected = false;
     this.vrSelected = false;
     this.points = [];
-    // TODO - add FD to constructor
+    this.isFirstDifferencing = false;
   }
 
   // TODO - add first differencing calculation function
@@ -281,6 +281,14 @@ export class CSVDataObject implements CSVDataInterface {
   }
 
   /**
+   * @precondition none
+   * @returns Boolean indicating if first differencing is in effect
+   */
+  getIsFirstDifferencing(): boolean {
+    return this.isFirstDifferencing;
+  }
+
+  /**
    * Finds and returns the time header from CSV headers
    *
    * @precondition csvHeaders must be initialized, not null and contains a Time column
@@ -394,5 +402,15 @@ export class CSVDataObject implements CSVDataInterface {
       "info",
       `setTimeHeader() was called, finding the time header in the data set (CSVDataObject.ts)`,
     );
+  }
+
+  /**
+   * Sets the boolean for if first differening is in effect to the given value
+   * @param firstDiff boolean indicating if first differencing is in effect
+   * @postcondition if firstDiff is true, first differencing is now if effect
+   *                else firstDiff is false, first differencing is not in effect
+   */
+  setIsFirstDifferencing(firstDiff: boolean): void {
+    this.isFirstDifferencing = firstDiff;
   }
 }

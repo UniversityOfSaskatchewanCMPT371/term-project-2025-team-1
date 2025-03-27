@@ -37,16 +37,20 @@ export class CSVDataObject implements CSVDataInterface {
 
   // TODO - add first differencing calculation function
   calculateFirstDifferencingValues(): number[] {
-    const d: number[] = [0]
+    const d: number[] = [0];
     const num = this.getData().length;
     console.log(num);
-    
+
     for (let i = 1; i < num; i += 1) {
       const rowI = this.data[i];
-      const rowL = this.data[i-1];
-      const m = rowI[this.getYHeader() as keyof typeof rowI] as unknown as number;
-      const n = rowL[this.getYHeader() as keyof typeof rowL] as unknown as number;
-      const b = m-n;
+      const rowL = this.data[i - 1];
+      const m = rowI[
+        this.getYHeader() as keyof typeof rowI
+      ] as unknown as number;
+      const n = rowL[
+        this.getYHeader() as keyof typeof rowL
+      ] as unknown as number;
+      const b = m - n;
       d.push(b);
     }
 
@@ -68,8 +72,7 @@ export class CSVDataObject implements CSVDataInterface {
         const newPoint = new PointObject();
         newPoint.setYData(data);
         // this.points.push(newPoint);
-      })
-
+      });
     } else {
       this.getData().forEach((data) => {
         const newPoint = new PointObject();

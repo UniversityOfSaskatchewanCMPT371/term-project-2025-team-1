@@ -6,15 +6,13 @@ const mainBranchUrl =
 const indexedDataUrl = `${mainBranchUrl}/indexedRealData.csv`;
 
 describe("testing csv data object stuff", () => {
+  beforeAll(async () => {
+    await mainController.getCSVController().loadURLFile(indexedDataUrl);
+  });
 
-    beforeAll(async ()=> {
-        await mainController.getCSVController().loadURLFile(indexedDataUrl);
-    });
-
-    test("first diff", () => {
-        const mData = mainController.getCSVController().getModelData()
-        const r = mData?.calculateFirstDifferencingValues();
-        console.log(r)
-    })
-
+  test("first diff", () => {
+    const mData = mainController.getCSVController().getModelData();
+    const r = mData?.calculateFirstDifferencingValues();
+    console.log(r);
+  });
 });

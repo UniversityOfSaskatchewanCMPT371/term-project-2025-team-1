@@ -63,7 +63,8 @@ export default function DropdownUI({
    * Generates the graph, and then updates main scene
    */
   function update(): void {
-    // TODO - do something with the first differencing here
+    // TODO - do something with the first differencing here (i think change the boolean being added to CSVDataObject here)
+    // then in generate do call the calculation fucntion
     mainController.getCSVController().generate(selectTau);
     setInfoTau(mainController.getGraphController().getTauForDropDown()); //Later change this to getting tau value from the graph itself rather than the other useState
     mainController.updateMainScene();
@@ -208,6 +209,7 @@ export default function DropdownUI({
           </Container>
 
           {/* Information container?  */}
+          {/* TODO - add first differencing to info container???? */}
           <Container
             width={"50%"}
             height={"100%"}

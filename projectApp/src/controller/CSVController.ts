@@ -41,6 +41,8 @@ export class CSVController implements ControllerInterface {
       throw error;
     }
 
+    // TODO - if first differening selected then call the CSVDataObject first differencing calculation function???
+
     emData.setVRSelected(true);
     emData.populatePoints();
 

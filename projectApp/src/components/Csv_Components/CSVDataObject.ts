@@ -18,6 +18,7 @@ export class CSVDataObject implements CSVDataInterface {
   browserSelected: boolean;
   vrSelected: boolean;
   points: PointObjectInterface[];
+  // TODO - add FD attribute
 
   /**
    * Initializes a new CSVDataObject with default values
@@ -31,7 +32,10 @@ export class CSVDataObject implements CSVDataInterface {
     this.browserSelected = false;
     this.vrSelected = false;
     this.points = [];
+    // TODO - add FD to constructor
   }
+
+  // TODO - add first differencing calculation function
 
   /**
    * This method creates points from the csv file that will be referenced by the points of

@@ -19,6 +19,8 @@ export default function DropdownUI({
   const [active, setActive] = useState(false);
   const [selectTau, setSelectTau] = useState(1);
   const [infoTau, setInfoTau] = useState("");
+  const [selectFirstDifferencing, setSelectFirstDifferencing] = useState<number>(0);
+  const [infoFirstDifferencing, setInfoFirstDifferencing] = useState();
 
   /**
    * This is the function for creating a loaded csv object displayed in the DropDown UI
@@ -60,6 +62,7 @@ export default function DropdownUI({
    * Generates the graph, and then updates main scene
    */
   function update(): void {
+    // TODO - do something with the first differencing here
     mainController.getCSVController().generate(selectTau);
     setInfoTau(mainController.getGraphController().getTauForDropDown()); //Later change this to getting tau value from the graph itself rather than the other useState
     mainController.updateMainScene();
@@ -151,6 +154,22 @@ export default function DropdownUI({
             alignContent={"center"}
             justifyContent={"center"}
           >
+            <Container
+              width={"100%"}
+              height={"50%"}
+              flexDirection={"column"}
+              alignContent={"center"}
+            >
+              <Container
+                width={"100%"}
+                height={"50%"}
+                flexDirection={"row"}
+                justifyContent={"center"}
+              >
+                <Text>Enable First Differencing</Text>
+              </Container>
+              <GenerateFirstDifferencingSelector />
+            </Container>
             {/* This contains for selecting Tau value on start up */}
             <Container
               width={"100%"}
@@ -209,6 +228,98 @@ export default function DropdownUI({
           </Container>
         </Container>
       </>
+    );
+  }
+
+  function setOnFDIncrease(): void {
+    if (selectFirstDifferencing != 1) {
+      setSelectFirstDifferencing(selectFirstDifferencing+1);
+    }
+  }
+
+  function setOnFDDecrease(): void {
+    if (selectFirstDifferencing != 0) {
+      setSelectFirstDifferencing(selectFirstDifferencing-1);
+    }
+  }
+
+  function GenerateFirstDifferencingSelector(): React.JSX.Element {
+    return (
+      <Container
+        width={"100%"}
+        height={"50%"}
+        flexDirection={"row"}
+        alignContent={"center"}
+        justifyContent={"center"}
+      >
+        <Container
+          width={"45%"}
+          height={"100%"}
+          flexDirection={"row"}
+          alignContent={"center"}
+          justifyContent={"center"}
+        >
+          <Container
+            width={"60%"}
+            height={"30%"}
+            flexDirection={"row"}
+            alignContent={"center"}
+            justifyContent={"center"}
+            backgroundColor={"grey"}
+            backgroundOpacity={0.5}
+            hover={{backgroundOpacity: 1}}
+            borderRadius={15}
+            borderWidth={2}
+            borderColor={"grey"}
+            // TODO - add onClick
+            onClick={() => {
+              setOnFDDecrease();
+            }}
+          >
+            <Text>&lt;</Text>
+          </Container>
+        </Container>
+
+        <Container
+            width={"10%"}
+            height={"20%"}
+            flexDirection={"row"}
+            alignContent={"center"}
+            justifyContent={"center"}
+          >
+            <Text fontWeight={"bold"} positionTop={4}>
+              {selectFirstDifferencing == 1 ? "Enabled" : "Disabled"}
+            </Text>
+          </Container>
+
+        <Container
+            width={"45%"}
+            height={"100%"}
+            flexDirection={"row"}
+            alignContent={"center"}
+            justifyContent={"center"}
+          >
+            <Container
+              width={"60%"}
+              height={"30%"}
+              flexDirection={"row"}
+              alignContent={"center"}
+              justifyContent={"center"}
+              backgroundColor={"gray"}
+              backgroundOpacity={0.5}
+              hover={{ backgroundOpacity: 1 }}
+              borderRadius={15}
+              borderWidth={2}
+              borderColor={"gray"}
+              // TODO - add onClick
+              onClick={() => {
+                setOnFDIncrease();
+              }}
+            >
+              <Text>&gt;</Text>
+            </Container>
+          </Container>
+      </Container>
     );
   }
 

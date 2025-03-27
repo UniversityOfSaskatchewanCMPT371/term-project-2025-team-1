@@ -19,7 +19,8 @@ export default function DropdownUI({
   const [active, setActive] = useState(false);
   const [selectTau, setSelectTau] = useState(1);
   const [infoTau, setInfoTau] = useState("");
-  const [selectFirstDifferencing, setSelectFirstDifferencing] = useState<number>(0);
+  const [isFirstDifferencing, setIsFirstDifferencing] =
+    useState<boolean>(false);
   const [infoFirstDifferencing, setInfoFirstDifferencing] = useState();
 
   /**
@@ -166,7 +167,7 @@ export default function DropdownUI({
                 flexDirection={"row"}
                 justifyContent={"center"}
               >
-                <Text>Enable First Differencing</Text>
+                <Text>First Differencing</Text>
               </Container>
               <GenerateFirstDifferencingSelector />
             </Container>
@@ -232,14 +233,14 @@ export default function DropdownUI({
   }
 
   function setOnFDIncrease(): void {
-    if (selectFirstDifferencing != 1) {
-      setSelectFirstDifferencing(selectFirstDifferencing+1);
+    if (!isFirstDifferencing) {
+      setIsFirstDifferencing(!isFirstDifferencing);
     }
   }
 
   function setOnFDDecrease(): void {
-    if (selectFirstDifferencing != 0) {
-      setSelectFirstDifferencing(selectFirstDifferencing-1);
+    if (isFirstDifferencing) {
+      setIsFirstDifferencing(!isFirstDifferencing);
     }
   }
 
@@ -267,7 +268,7 @@ export default function DropdownUI({
             justifyContent={"center"}
             backgroundColor={"grey"}
             backgroundOpacity={0.5}
-            hover={{backgroundOpacity: 1}}
+            hover={{ backgroundOpacity: 1 }}
             borderRadius={15}
             borderWidth={2}
             borderColor={"grey"}
@@ -281,44 +282,44 @@ export default function DropdownUI({
         </Container>
 
         <Container
-            width={"10%"}
-            height={"20%"}
-            flexDirection={"row"}
-            alignContent={"center"}
-            justifyContent={"center"}
-          >
-            <Text fontWeight={"bold"} positionTop={4}>
-              {selectFirstDifferencing == 1 ? "Enabled" : "Disabled"}
-            </Text>
-          </Container>
+          width={"10%"}
+          height={"20%"}
+          flexDirection={"row"}
+          alignContent={"center"}
+          justifyContent={"center"}
+        >
+          <Text fontWeight={"bold"} positionTop={4}>
+            {isFirstDifferencing ? "Enabled" : "Disabled"}
+          </Text>
+        </Container>
 
         <Container
-            width={"45%"}
-            height={"100%"}
+          width={"45%"}
+          height={"100%"}
+          flexDirection={"row"}
+          alignContent={"center"}
+          justifyContent={"center"}
+        >
+          <Container
+            width={"60%"}
+            height={"30%"}
             flexDirection={"row"}
             alignContent={"center"}
             justifyContent={"center"}
+            backgroundColor={"gray"}
+            backgroundOpacity={0.5}
+            hover={{ backgroundOpacity: 1 }}
+            borderRadius={15}
+            borderWidth={2}
+            borderColor={"gray"}
+            // TODO - add onClick
+            onClick={() => {
+              setOnFDIncrease();
+            }}
           >
-            <Container
-              width={"60%"}
-              height={"30%"}
-              flexDirection={"row"}
-              alignContent={"center"}
-              justifyContent={"center"}
-              backgroundColor={"gray"}
-              backgroundOpacity={0.5}
-              hover={{ backgroundOpacity: 1 }}
-              borderRadius={15}
-              borderWidth={2}
-              borderColor={"gray"}
-              // TODO - add onClick
-              onClick={() => {
-                setOnFDIncrease();
-              }}
-            >
-              <Text>&gt;</Text>
-            </Container>
+            <Text>&gt;</Text>
           </Container>
+        </Container>
       </Container>
     );
   }

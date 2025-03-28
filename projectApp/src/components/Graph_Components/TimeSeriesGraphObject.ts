@@ -156,11 +156,11 @@ export class TimeSeriesGraphObject
    */
   timeSeriesYRange(): number[] {
     const range: number[] = [];
-
-    let cur = this.axes.yRange[0];
     const max = this.axes.yRange[1] - this.axes.yRange[0];
     const spacing = max / 10;
-    let current = cur + spacing;
+
+    let cur = 0;
+    let current = this.axes.yRange[0] + spacing;
 
     while (cur < max) {
       cur = current;

@@ -1,7 +1,5 @@
-// import { CSVDataObject } from "../components/Csv_Components/CSVDataObject";
 import { EmbeddedGraphObject } from "../components/Graph_Components/EmbeddedGraphObject";
 import { TimeSeriesGraphObject } from "../components/Graph_Components/TimeSeriesGraphObject";
-import { sendError } from "../logger-frontend";
 import { ModelInterface } from "../types/BaseInterfaces";
 import { CSVDataInterface } from "../types/CSVInterfaces";
 
@@ -114,10 +112,6 @@ export class GraphModel implements ModelInterface {
   setPointSize(size: number): void {
     if (size <= 0) {
       const error = new SyntaxError("Invalid Point Size");
-      sendError(
-        error,
-        "Point size cannot be less than or equal 0 (GraphModel.ts)",
-      );
       throw error;
     }
     this.pointSize = size;

@@ -190,4 +190,32 @@ export class GraphController implements ControllerInterface {
     }
     return emData.getTau().toString();
   }
+
+  /**
+   * Returns the value of the pointSize attribute of GraphModel
+   * @preconditions none.
+   * @postconditions Returns the value of GraphModel's pointSize attribute.
+   * @returns {number} GraphModel's pointSize attribute.
+   */
+  getPointSize(): number {
+    return this.getModel().getPointSize();
+  }
+
+  /**
+   * Sets the pointSize attribute of the GraphModel to the parameter value.
+   * @preconditions The size cant be zero or negative.
+   * @postconditions pointSize attribute of the Graph Model is set to size value.
+   * @param {number} size - The new value of GraphModel's pointSize attribute
+   */
+  setPointSize(size: number): void {
+    try {
+      this.getModel().setPointSize(size);
+    } catch (error: unknown) {
+      sendError(
+        error,
+        "Point size cannot be less than or equal 0 (GraphController.ts)",
+      );
+      throw error;
+    }
+  }
 }

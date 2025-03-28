@@ -49,7 +49,7 @@ function App() {
             <XRScene setInVR={setInVR} />
             <Sky sunPosition={[0.5, 0, 0.5]} />
             <ambientLight />
-            <Locomotion speed={2}/>
+            <Locomotion speed={2} />
             {/* InitScene starts up the scene displayed */}
             <InitScene inVR={inVR} />
           </XR>
@@ -63,7 +63,7 @@ function App() {
   );
 }
 
-function Locomotion({speed}:{speed:number}) {
+function Locomotion({ speed }: { speed: number }) {
   const controller = useXRInputSourceState("controller", "right");
   const ref = useRef<Group>(null);
   useFrame((_, delta) => {
@@ -75,12 +75,12 @@ function Locomotion({speed}:{speed:number}) {
       return;
     }
     const headset = ref.current.children[0]; // Assuming the first child is the camera
-    if (headset == null){
-      return;
-    }
 
     // Apply headset rotation (approximating quaternion application without `three.js`)
-    const angle = Math.atan2(-headset.matrix.elements[8], headset.matrix.elements[10]);
+    const angle = Math.atan2(
+      -headset.matrix.elements[8],
+      headset.matrix.elements[10],
+    );
     const cos = Math.cos(angle);
     const sin = Math.sin(angle);
 
@@ -92,7 +92,6 @@ function Locomotion({speed}:{speed:number}) {
     // Move the player
     ref.current.position.x += rotatedX;
     ref.current.position.z += rotatedZ;
-
   });
   return <XROrigin ref={ref} />;
 }

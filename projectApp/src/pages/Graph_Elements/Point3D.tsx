@@ -53,7 +53,7 @@ export default function Point3D({
       onPointerOut={() => {
         hover(false);
       }}
-      scale={0.05}
+      scale={0.08}
     >
       <sphereGeometry attach="geometry" args={[1, 32, 16]} />
       <meshStandardMaterial

@@ -1,6 +1,7 @@
 // import { CSVDataObject } from "../components/Csv_Components/CSVDataObject";
 import { EmbeddedGraphObject } from "../components/Graph_Components/EmbeddedGraphObject";
 import { TimeSeriesGraphObject } from "../components/Graph_Components/TimeSeriesGraphObject";
+import { sendError } from "../logger-frontend";
 import { ModelInterface } from "../types/BaseInterfaces";
 import { CSVDataInterface } from "../types/CSVInterfaces";
 
@@ -18,7 +19,11 @@ import { CSVDataInterface } from "../types/CSVInterfaces";
 export class GraphModel implements ModelInterface {
   data?: TimeSeriesGraphObject;
   embeddedGraphData?: EmbeddedGraphObject;
+  pointSize: number;
 
+  constructor() {
+    this.pointSize = 0.08;
+  }
   /**
    * Sets the VRSelected flag of the given CSV data object to true.
    *
@@ -82,5 +87,39 @@ export class GraphModel implements ModelInterface {
    */
   getEmbeddedGraphData(): EmbeddedGraphObject | undefined {
     return this.embeddedGraphData;
+  }
+
+  /**
+   * Returns the size of points in the program.
+   *
+   * @preconditions none.
+   *
+   * @postconditions Returns the size of points in the program.
+   *
+   * @returns {number} Size of the points.
+   */
+  getPointSize(): number {
+    return this.pointSize;
+  }
+
+  /**
+   * Sets the size of the points.
+   *
+   * @preconditions The size cant be zero or negative.
+   *
+   * @postconditions The size of the points is set to the specified value.
+   *
+   * @param {number} size - The new size of the points
+   */
+  setPointSize(size: number): void {
+    if (size <= 0) {
+      const error = new SyntaxError("Invalid Point Size");
+      sendError(
+        error,
+        "Point size cannot be less than or equal 0 (GraphModel.ts)",
+      );
+      throw error;
+    }
+    this.pointSize = size;
   }
 }

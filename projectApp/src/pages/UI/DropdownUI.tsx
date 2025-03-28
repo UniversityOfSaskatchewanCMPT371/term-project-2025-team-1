@@ -189,23 +189,6 @@ export default function DropdownUI({
               </Container>
               <GenerateTauSelector />
             </Container>
-
-            {/* Planned Time Window selector */}
-            <Container
-              width={"100%"}
-              height={"50%"}
-              flexDirection={"column"}
-              alignContent={"center"}
-            >
-              <Container
-                width={"100%"}
-                height={"50%"}
-                flexDirection={"row"}
-                justifyContent={"center"}
-              >
-                <Text>Set Time Window</Text>
-              </Container>
-            </Container>
           </Container>
 
           {/* Information container?  */}

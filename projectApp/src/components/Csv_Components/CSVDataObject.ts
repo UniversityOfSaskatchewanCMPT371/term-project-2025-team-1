@@ -37,24 +37,24 @@ export class CSVDataObject implements CSVDataInterface {
 
   // TODO - add first differencing calculation function
   calculateFirstDifferencingValues(): number[] {
-    const d: number[] = [0];
-    const num = this.getData().length;
-    console.log(num);
+    const differencedData: number[] = [0];
+    const numPoints = this.getData().length;
 
-    for (let i = 1; i < num; i += 1) {
-      const rowI = this.data[i];
-      const rowL = this.data[i - 1];
-      const m = rowI[
-        this.getYHeader() as keyof typeof rowI
+    for (let i = 1; i < numPoints; i += 1) {
+      const currRow = this.data[i];
+      const prevRow = this.data[i - 1];
+
+      const currVal = currRow[
+        this.getYHeader() as keyof typeof currRow
       ] as unknown as number;
-      const n = rowL[
-        this.getYHeader() as keyof typeof rowL
+      const prevVal = prevRow[
+        this.getYHeader() as keyof typeof prevRow
       ] as unknown as number;
-      const b = m - n;
-      d.push(b);
+      
+      const difference = currVal - prevVal;
+      differencedData.push(difference);
     }
-
-    return d;
+    return differencedData;
   }
 
   /**

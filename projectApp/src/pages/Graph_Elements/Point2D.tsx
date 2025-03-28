@@ -14,11 +14,16 @@ import mainController from "../../controller/MainController";
 export default function Point2D({ pointRef }: { pointRef: Point2DObject }) {
   const [hovered, hover] = useState(false);
   const [clicked, click] = useState(false);
+  const [pointSize, setPointSize] = useState(0);
 
   //If the selection of this point doesn't match the selection status of the PointObject
   useFrame(() => {
     if (clicked !== pointRef.getObject().getSelected()) {
       click(pointRef.getObject().getSelected());
+    } else if (
+      pointSize !== mainController.getGraphController().getPointSize()
+    ) {
+      setPointSize(mainController.getGraphController().getPointSize());
     }
   });
 
@@ -48,10 +53,7 @@ export default function Point2D({ pointRef }: { pointRef: Point2DObject }) {
         hover(false);
       }}
     >
-      <circleGeometry
-        attach="geometry"
-        args={[mainController.getGraphController().getPointSize(), 32]}
-      />
+      <circleGeometry attach="geometry" args={[pointSize, 32]} />
 
       <meshStandardMaterial
         color={clicked ? "blue" : "skyblue"}

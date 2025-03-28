@@ -187,8 +187,50 @@ export default function DropdownUI({
                 height={"50%"}
                 flexDirection={"row"}
                 justifyContent={"center"}
+                alignContent={"center"}
               >
-                <Text>Set Point Size</Text>
+                <Container
+                  width={"100%"}
+                  height={"100%"}
+                  flexDirection={"row"}
+                  alignContent={"center"}
+                  justifyContent={"center"}
+                >
+                  <Container
+                    width={"60%"}
+                    height={"100%"}
+                    flexDirection={"row"}
+                    alignContent={"flex-end"}
+                    justifyContent={"flex-end"}
+                  >
+                    <Text>Point Size</Text>
+                  </Container>
+                  <Container
+                    width={"40%"}
+                    height={"100%"}
+                    flexDirection={"column"}
+                    alignContent={"center"}
+                    justifyContent={"center"}
+                  >
+                    <Container
+                      positionLeft={10}
+                      borderWidth={1}
+                      borderRadius={5}
+                      borderColor={"black"}
+                      width={"35%"}
+                      height={"30%"}
+                      flexDirection={"row"}
+                      alignContent={"center"}
+                      justifyContent={"center"}
+                      backgroundColor={"gray"}
+                      backgroundOpacity={0.5}
+                      hover={{ backgroundOpacity: 1 }}
+                      onClick={() => setOnlyPointSize()}
+                    >
+                      <Text>Set</Text>
+                    </Container>
+                  </Container>
+                </Container>
               </Container>
               <GeneratePointSizeSelector />
             </Container>
@@ -352,6 +394,13 @@ export default function DropdownUI({
     if (selectPointSize != 1) {
       setSelectPointSize(selectPointSize - 1);
     }
+  }
+
+  function setOnlyPointSize(): void {
+    mainController.getGraphController().setPointSize(selectPointSize / 100);
+    setInfoPointSize(
+      (mainController.getGraphController().getPointSize() * 100).toString(),
+    );
   }
 
   /**

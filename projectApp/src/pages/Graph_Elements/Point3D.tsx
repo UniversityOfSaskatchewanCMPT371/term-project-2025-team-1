@@ -16,11 +16,16 @@ export default function Point3D({
 }): React.JSX.Element {
   const [hovered, hover] = useState(false);
   const [clicked, click] = useState(false);
+  const [pointSize, setPointSize] = useState(0);
 
   //If the selection of this point doesn't match the selection status of the PointObject
   useFrame(() => {
     if (clicked !== pointRef.getObject().getSelected()) {
       click(pointRef.getObject().getSelected());
+    } else if (
+      pointSize !== mainController.getGraphController().getPointSize()
+    ) {
+      setPointSize(mainController.getGraphController().getPointSize());
     }
   });
 
@@ -53,7 +58,7 @@ export default function Point3D({
       onPointerOut={() => {
         hover(false);
       }}
-      scale={mainController.getGraphController().getPointSize()}
+      scale={pointSize}
     >
       <sphereGeometry attach="geometry" args={[1, 32, 16]} />
       <meshStandardMaterial

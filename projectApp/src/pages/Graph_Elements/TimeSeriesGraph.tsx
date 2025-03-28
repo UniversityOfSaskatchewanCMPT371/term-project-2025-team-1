@@ -235,7 +235,16 @@ export default function TimeSeriesGraph({
       "info",
       "a visual representation of the Y range was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)",
     );
-    return <Text positionLeft={30}>{num.toString()} -</Text>;
+    return (
+      <Container width={"100%"} height={"100%"} flexDirection={"row"}>
+        <Container width={"90%"} height={"100%"} flexDirection={"row-reverse"}>
+          <Text>{num.toString()}</Text>
+        </Container>
+        <Container width={"10%"} height={"100%"} flexDirection={"row-reverse"}>
+          <Text> -</Text>
+        </Container>
+      </Container>
+    );
   }
 
   /**
@@ -275,7 +284,7 @@ export default function TimeSeriesGraph({
                   justifyContent={"center"}
                 >
                   <Container width={"100%"} positionBottom={"50%"}>
-                    <Text positionLeft={30}>0 -</Text>
+                    <Text positionLeft={42}>0-</Text>
                   </Container>
                 </Container>
               </Container>

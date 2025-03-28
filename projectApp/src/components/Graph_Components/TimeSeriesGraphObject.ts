@@ -157,33 +157,11 @@ export class TimeSeriesGraphObject
   timeSeriesYRange(): number[] {
     const range: number[] = [];
 
-    let cur = 0;
+    let cur = this.axes.yRange[0];
     const max = this.axes.yRange[1] - this.axes.yRange[0];
     const spacing = max / 10;
-    let current = spacing;
+    let current = cur + spacing;
 
-    //For larger data sets, it would be possible to create a switch statement
-    //Since setRange() max is set to be divisible by 10, we might be able to divide by 10
-    //and only have ten ticks in the y-axis
-    // switch (true) {
-    //   case max <= 10:
-    //     while (cur < max) {
-    //       cur = cur + 1;
-    //       range.push(cur);
-    //     }
-    //     break;
-    //   case max <= 50:
-    //     while (cur < max) {
-    //       cur = cur + 10;
-    //       range.push(cur);
-    //     }
-    //     break;
-    //   default:
-    //     while (cur < max) {
-    //       cur = cur + 10;
-    //       range.push(cur);
-    //     }
-    // }
     while (cur < max) {
       cur = current;
       current = current + spacing;

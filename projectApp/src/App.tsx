@@ -1,10 +1,17 @@
 import "./styles/App.css";
-import { Canvas } from "@react-three/fiber";
+import { Canvas, useFrame } from "@react-three/fiber";
 import InitScene from "./pages/Scene/InitScene";
 import { Sky } from "@react-three/drei";
-import { createXRStore, useXR, XR } from "@react-three/xr";
+import {
+  createXRStore,
+  useXR,
+  useXRInputSourceState,
+  XR,
+  XROrigin,
+} from "@react-three/xr";
 import BrowserUI from "./pages/UI/BrowserUI";
-import { useState } from "react";
+import { useRef, useState } from "react";
+import { Group } from "three";
 
 //Initializes and configures various parts integral to a VR experienceq
 const store = createXRStore();
@@ -42,6 +49,7 @@ function App() {
             <XRScene setInVR={setInVR} />
             <Sky sunPosition={[0.5, 0, 0.5]} />
             <ambientLight />
+            <Locomotion />
             {/* InitScene starts up the scene displayed */}
             <InitScene inVR={inVR} />
           </XR>
@@ -55,4 +63,20 @@ function App() {
   );
 }
 
+function Locomotion() {
+  const controller = useXRInputSourceState("controller", "right");
+  const ref = useRef<Group>(null);
+  useFrame((_, delta) => {
+    if (ref.current == null || controller == null) {
+      return;
+    }
+    const thumstickState = controller.gamepad["xr-standard-thumbstick"];
+    if (thumstickState == null) {
+      return;
+    }
+    ref.current.position.x += (thumstickState.xAxis ?? 0) * delta;
+    ref.current.position.z += (thumstickState.yAxis ?? 0) * delta;
+  });
+  return <XROrigin ref={ref} />;
+}
 export default App;

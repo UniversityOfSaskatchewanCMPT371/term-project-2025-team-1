@@ -26,9 +26,9 @@ export default function TimeSeriesGraph({
   ); // New state for selected point value
 
   // Values used to space Points in the X axis
-  const totalSpace = 5;
+  const totalSpace = 6.5;
   const divider = totalSpace / graph.getNumPoints();
-  let current = -1.85 + divider / 2;
+  let current = -2.58 + divider / 2;
 
   // Values used to position lines, currently set to starting position
   let currentLine: [number, number, number] = [0, 0, 0.01];
@@ -122,7 +122,7 @@ export default function TimeSeriesGraph({
     );
     return (
       <Container
-        width={"15%"}
+        width={"10%"}
         height={"100%"}
         backgroundColor={"skyblue"}
         flexDirection={"column"}
@@ -260,8 +260,8 @@ export default function TimeSeriesGraph({
     return (
       <>
         {/* Container responsible for Y section of the graph */}
-        <Container width={"85%"} height={"100%"} flexDirection={"row"}>
-          <Container width={"10%"} flexDirection={"row-reverse"}>
+        <Container width={"90%"} height={"100%"} flexDirection={"row"}>
+          <Container width={"8%"} flexDirection={"row-reverse"}>
             {/* This is the line on the left side */}
             <Container width={"4%"} height={"85%"} backgroundColor={"black"} />
 
@@ -284,7 +284,7 @@ export default function TimeSeriesGraph({
                   justifyContent={"center"}
                 >
                   <Container width={"100%"} positionBottom={"50%"}>
-                    <Text positionLeft={42}>0-</Text>
+                    <Text positionLeft={41}>0-</Text>
                   </Container>
                 </Container>
               </Container>
@@ -316,7 +316,7 @@ export default function TimeSeriesGraph({
           </Container>
 
           {/* Container responsible for X section of the graph */}
-          <Container width={"90%"} flexDirection={"column"}>
+          <Container width={"92%"} flexDirection={"column"}>
             <Container
               height={"85%"}
               alignItems={"center"}
@@ -355,7 +355,7 @@ export default function TimeSeriesGraph({
     <>
       {/* Sets the mesh of the Time Series Graph in the scene */}
       <mesh position={[-1, 2, -3.5]}>
-        <Root sizeX={7} sizeY={3} backgroundColor={"lightgrey"}>
+        <Root sizeX={8} sizeY={3} backgroundColor={"lightgrey"}>
           <Container flexDirection={"row"} width={"100%"} height={"100%"}>
             {/* Bodies of the Graph */}
             <GenerateSideBar />

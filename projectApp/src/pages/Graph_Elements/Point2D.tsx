@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Point2DObject } from "../../components/Graph_Components/Points/Point2DObject";
 import { useFrame } from "@react-three/fiber";
 import { sendLog } from "../../logger-frontend";
+import mainController from "../../controller/MainController";
 /**
  * Renders a 2D point on a Time Series Graph.
  * The point can be interacted with through hover and click events.
@@ -47,7 +48,10 @@ export default function Point2D({ pointRef }: { pointRef: Point2DObject }) {
         hover(false);
       }}
     >
-      <circleGeometry attach="geometry" args={[0.08, 32]} />
+      <circleGeometry
+        attach="geometry"
+        args={[mainController.getGraphController().getPointSize(), 32]}
+      />
 
       <meshStandardMaterial
         color={clicked ? "blue" : "skyblue"}

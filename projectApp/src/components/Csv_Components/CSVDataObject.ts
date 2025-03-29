@@ -50,7 +50,7 @@ export class CSVDataObject implements CSVDataInterface {
       const prevVal = prevRow[
         this.getYHeader() as keyof typeof prevRow
       ] as unknown as number;
-      
+
       const difference = currVal - prevVal;
       differencedData.push(difference);
     }
@@ -70,7 +70,7 @@ export class CSVDataObject implements CSVDataInterface {
 
       firstDiffedData.forEach((data, index) => {
         const newPoint = new PointObject();
-        newPoint.setTimeData(index.toString())
+        newPoint.setTimeData(index.toString());
         newPoint.setYData(data);
         this.points.push(newPoint);
       });
@@ -79,7 +79,9 @@ export class CSVDataObject implements CSVDataInterface {
         const newPoint = new PointObject();
 
         newPoint.setTimeData(
-          data[this.getTimeHeader() as keyof typeof data] as unknown as string,
+          (
+            data[this.getTimeHeader() as keyof typeof data] as unknown as string
+          ).toString(),
         );
         newPoint.setYData(
           data[this.getYHeader() as keyof typeof data] as unknown as number,

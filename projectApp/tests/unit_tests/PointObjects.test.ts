@@ -19,7 +19,7 @@ describe("Point2DObject", () => {
   beforeEach(() => {
     // Spy on the sendLog function and replace its implementation with a no-op.
     vi.spyOn(LoggerFrontend, "sendLog").mockImplementation(() => {
-        // intentionally empty
+      // intentionally empty
     });
     // Create a dummy point instance.
     dummyPoint = {} as PointObject;
@@ -75,7 +75,7 @@ describe("Point3DObject", () => {
 
   beforeEach(() => {
     vi.spyOn(LoggerFrontend, "sendLog").mockImplementation(() => {
-        // intentionally empty
+      // intentionally empty
     });
     dummyPoint = {} as PointObject;
     point3D = new Point3DObject(dummyPoint);

@@ -23,19 +23,15 @@ export class GraphController implements ControllerInterface {
   }
 
   /**
-   * Generates a time series graph for the given CSV data object.
+   * Generates a time series graph for the CSV data in the `model` object.
    *
-   * @param csv The CSV data object for which to generate or retrieve the graph.
-   * @returns {TimeSeriesGraphClass} The generated or retrieved time series graph.
+   * @returns `TimeSeriesGraphObject`: The generated or retrieved time series graph.
    *
-   * @preconditions:
-   *    The `csv` parameter must be a valid `CSVDataObject`.
-   *    The `model` property must be initialized and contain valid graph data.
-   *    The `mainController` must be initialized and valid.
+   * @precondition
+   *    The `model` property must contain a valid `data` property.
    *
-   * @postconditions:
-   *    If a graph with the same name as `csv` exists, its range is updated, a new graph is created and returned otherwise
-   *    The mainController's main scene is updated.
+   * @postcondition
+   *    The TimeSeriesGraphObject `model.data` is modified with updated range
    */
   generateTimeSeriesGraph(): TimeSeriesGraphObject {
     const graph = this.getModel().getData();
@@ -58,19 +54,15 @@ export class GraphController implements ControllerInterface {
   }
 
   /**
-   * Generates an embedded graph for the given CSV data object.
+   * Generates an embedded graph for the CSV data in the `model` object.
    *
-   * @param csv The CSV data object for which to generate or retrieve the graph.
-   * @returns {EmbeddedGraphClass} The generated or retrieved time series graph.
+   * @returns `EmbeddedGraphObject`: The generated or retrieved embedded graph.
    *
-   * @precondition:
-   *    The `csv` parameter must be a valid `CSVDataObject`.
-   *    The `model` property must be initialized and contain valid graph data.
-   *    The `mainController` must be initialized and valid.
+   * @precondition
+   *    The `model` property must contain a valid `embeddedGraphData` property.
    *
-   * @postconditions:
-   *    If a graph with the same name as `csv` exists, its range is updated, a new graph is created and returned otherwise
-   *    The mainController's main scene is updated.
+   * @postcondition
+   *    The EmbeddedGraphObject `model.embeddedGraphData` is modified with updated range
    */
   generateEmbeddedGraph(): EmbeddedGraphObject {
     const graph = this.getModel().getEmbeddedGraphData();

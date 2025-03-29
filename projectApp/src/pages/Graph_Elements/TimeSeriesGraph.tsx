@@ -220,7 +220,7 @@ export default function TimeSeriesGraph({
           [lastLine[0], lastLine[1], lastLine[2]],
         ]}
         color={"black"}
-        lineWidth={0.5}
+        lineWidth={mainController.getGraphController().getPointSize() * 10}
       />
     );
   }

@@ -1,3 +1,4 @@
+import { CSVDataObject } from "../components/Csv_Components/CSVDataObject";
 import { EmbeddedGraphObject } from "../components/Graph_Components/EmbeddedGraphObject";
 import { TimeSeriesGraphObject } from "../components/Graph_Components/TimeSeriesGraphObject";
 import { sendError, sendLog } from "../logger-frontend";
@@ -216,6 +217,45 @@ export class GraphController implements ControllerInterface {
         "Point size cannot be less than or equal 0 (GraphController.ts)",
       );
       throw error;
+    }
+  }
+
+  /**
+   * Sets the recommended point size based on the size of the data set
+   * @preconditions It must be a valid csv file.
+   * @postconditions A recommended Point size is set for graph points
+   * @param {CSVDataObject} data - The CSVDataObject with initialized data set
+   */
+  setRecommendedPointSize(data: CSVDataObject): void {
+    const csv = data;
+
+    switch (true) {
+      case csv.getData().length >= 500:
+        this.setPointSize(0.01);
+        break;
+      case csv.getData().length < 500 && csv.getData().length >= 400:
+        this.setPointSize(0.02);
+        break;
+      case csv.getData().length < 400 && csv.getData().length >= 300:
+        this.setPointSize(0.03);
+        break;
+      case csv.getData().length < 300 && csv.getData().length >= 200:
+        this.setPointSize(0.04);
+        break;
+      case csv.getData().length < 200 && csv.getData().length >= 100:
+        this.setPointSize(0.05);
+        break;
+      case csv.getData().length < 100 && csv.getData().length >= 50:
+        this.setPointSize(0.06);
+        break;
+      case csv.getData().length < 50 && csv.getData().length >= 25:
+        this.setPointSize(0.07);
+        break;
+      case csv.getData().length < 25 && csv.getData().length >= 10:
+        this.setPointSize(0.08);
+        break;
+      default:
+        this.setPointSize(0.09);
     }
   }
 }

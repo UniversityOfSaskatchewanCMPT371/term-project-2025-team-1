@@ -19,7 +19,7 @@ export default function DropdownUI({
   const [active, setActive] = useState(false);
   const [selectTau, setSelectTau] = useState(1);
   const [infoTau, setInfoTau] = useState("");
-  const [selectPointSize, setSelectPointSize] = useState(8);
+  const [selectPointSize, setSelectPointSize] = useState(0);
   const [infoPointSize, setInfoPointSize] = useState("");
 
   /**
@@ -225,7 +225,9 @@ export default function DropdownUI({
                       backgroundColor={"gray"}
                       backgroundOpacity={0.5}
                       hover={{ backgroundOpacity: 1 }}
-                      onClick={() => setOnlyPointSize()}
+                      onClick={() => {
+                        setOnlyPointSize();
+                      }}
                     >
                       <Text>Set</Text>
                     </Container>
@@ -396,6 +398,9 @@ export default function DropdownUI({
     }
   }
 
+  /**
+   * This function is used to render only the point size change rather than generating the whole graph
+   */
   function setOnlyPointSize(): void {
     mainController.getGraphController().setPointSize(selectPointSize / 100);
     setInfoPointSize(
@@ -537,6 +542,11 @@ export default function DropdownUI({
                 borderRadius={5}
                 onClick={() => {
                   setActive(!active);
+                  if (selectPointSize === 0) {
+                    setSelectPointSize(
+                      mainController.getGraphController().getPointSize() * 100,
+                    );
+                  }
                   sendLog("info", "DropDownBody [active] button pressed");
                 }}
                 backgroundColor={"black"}

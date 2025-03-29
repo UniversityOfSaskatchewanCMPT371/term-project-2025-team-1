@@ -20,7 +20,7 @@ export class GraphModel implements ModelInterface {
   pointSize: number;
 
   constructor() {
-    this.pointSize = 0.08;
+    this.pointSize = 0.01;
   }
   /**
    * Sets the VRSelected flag of the given CSV data object to true.
@@ -111,7 +111,7 @@ export class GraphModel implements ModelInterface {
    */
   setPointSize(size: number): void {
     if (size <= 0) {
-      const error = new SyntaxError("Invalid Point Size");
+      const error = new Error("Invalid Point Size");
       throw error;
     }
     this.pointSize = size;

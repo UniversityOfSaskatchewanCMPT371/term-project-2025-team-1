@@ -4,6 +4,8 @@ import { GraphModel } from "../../src/models/GraphModel";
 import { TimeSeriesGraphObject } from "../../src/components/Graph_Components/TimeSeriesGraphObject";
 import { CSVDataObject } from "../../src/components/Csv_Components/CSVDataObject";
 import { EmbeddedGraphObject } from "../../src/components/Graph_Components/EmbeddedGraphObject";
+
+// mocking CSVDataObject, TimeSeriesGraphObject, and EmbeddedGraphObject
 vi.mock("../../src/components/Csv_Components/CSVDataObject", async () => {
   const actual = await vi.importActual<
     typeof import("../../src/components/Csv_Components/CSVDataObject")
@@ -11,19 +13,7 @@ vi.mock("../../src/components/Csv_Components/CSVDataObject", async () => {
   return {
     ...actual,
     CSVDataObject: class extends actual.CSVDataObject {
-      constructor() {
-        super();
-        const data = [
-          { Time: 10, A: 2, B: 3 },
-          { Time: 20, A: 4, B: 5 },
-          { Time: 30, A: 7, B: 8 },
-        ] as unknown as { key: Record<string, string | number> }[];
-        this.setData(data);
-        this.csvHeaders = Object.keys(data[0]);
-        this.setTimeHeader();
-        this.populatePoints();
-        this.setYHeader("A");
-      }
+      // implement any overrides
     },
   };
 });
@@ -36,9 +26,7 @@ vi.mock(
     return {
       ...actual,
       TimeSeriesGraphObject: class extends actual.TimeSeriesGraphObject {
-        constructor(csv: CSVDataObject) {
-          super(csv);
-        }
+        // implement any overrides
       },
     };
   },
@@ -52,11 +40,7 @@ vi.mock(
     return {
       ...actual,
       EmbeddedGraphObject: class extends actual.EmbeddedGraphObject {
-        constructor(csv: CSVDataObject) {
-          super(csv);
-          this.addPoints();
-          this.setRange();
-        }
+        // implement any overrides
       },
     };
   },
@@ -64,6 +48,14 @@ vi.mock(
 describe("Tests for methods in GraphController", () => {
   let gc: GraphController; // is reset before each test
   const csv = new CSVDataObject();
+  const data = [
+    { Time: 10, A: 2, B: 3 },
+    { Time: 20, A: 4, B: 5 },
+    { Time: 30, A: 7, B: 8 },
+  ] as unknown as { key: Record<string, string | number> }[];
+  csv.setData(data);
+  csv.csvHeaders = Object.keys(data[0]);
+  csv.setYHeader("A");
   const tsgo = new TimeSeriesGraphObject(csv);
   const ego = new EmbeddedGraphObject(csv);
   beforeEach(() => {

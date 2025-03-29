@@ -1,5 +1,7 @@
 import { beforeAll, beforeEach, describe, expect, test } from "vitest";
 import mainController from "../../src/controller/MainController";
+import { PointObjectInterface } from "../../src/types/PointInterface";
+import { PointObject } from "../../src/components/Graph_Components/Points/PointObject";
 
 const mainBranchUrl =
   "https://raw.githubusercontent.com/UniversityOfSaskatchewanCMPT371/term-project-2025-team-1/refs/heads/ID4/csvTestFiles";
@@ -16,7 +18,6 @@ describe("testing csv data object stuff", () => {
     csvModelData?.setIsFirstDifferencing(false);
   });
 
-  // TODO - calculateFirstDifferencingValues
   test("populating points without first differencing", () => {
     const csvModelData = mainController.getCSVController().getModelData();
     csvModelData?.populatePoints();
@@ -43,7 +44,6 @@ describe("testing csv data object stuff", () => {
     }
   });
 
-  // TODO - populatePoints without first diff
   test("populate points with first differencing enabled", () => {
     const csvModelData = mainController.getCSVController().getModelData();
     csvModelData?.setIsFirstDifferencing(true);
@@ -71,11 +71,30 @@ describe("testing csv data object stuff", () => {
     }
   });
 
-  // TODO - setPoints
+  test("setting points in a csvDataObject", () => {
+    const csvModelData = mainController.getCSVController().getModelData()
+    const newPoints: PointObjectInterface[] = [];
+    
+    for(let i = 0; i < 3; i+=1) {
+      const p = new PointObject();
+      p.setTimeData(i.toString())
+      p.setYData(i)
+      newPoints.push(p)
+    }
+    csvModelData?.setPoints(newPoints);
+    const points = csvModelData?.getPoints();
+    if (points) {
+      expect(points[0].getTimeData()).toStrictEqual("0");
+      expect(points[0].getYData()).toStrictEqual(0);
+      expect(points[1].getTimeData()).toStrictEqual("1");
+      expect(points[1].getYData()).toStrictEqual(1);
+    }
+  })
 
-  // TODO - findFirstHeader
+  test("getting data for a time that doesn't exist", () => {
+    const csvModelData = mainController.getCSVController().getModelData();
+    csvModelData?.populatePoints();
+    expect(csvModelData?.getDataByTime("145")).toBe(null)
+  })
 
-  // TODO - getDataByTime
-
-  // TODO - findTimeHeader
 });

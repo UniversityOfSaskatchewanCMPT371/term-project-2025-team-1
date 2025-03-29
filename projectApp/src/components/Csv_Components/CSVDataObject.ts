@@ -68,10 +68,11 @@ export class CSVDataObject implements CSVDataInterface {
     if (this.isFirstDifferencing) {
       const firstDiffedData = this.calculateFirstDifferencingValues();
 
-      firstDiffedData.forEach((data) => {
+      firstDiffedData.forEach((data, index) => {
         const newPoint = new PointObject();
+        newPoint.setTimeData(index.toString())
         newPoint.setYData(data);
-        // this.points.push(newPoint);
+        this.points.push(newPoint);
       });
     } else {
       this.getData().forEach((data) => {

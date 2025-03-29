@@ -72,14 +72,14 @@ describe("testing csv data object stuff", () => {
   });
 
   test("setting points in a csvDataObject", () => {
-    const csvModelData = mainController.getCSVController().getModelData()
+    const csvModelData = mainController.getCSVController().getModelData();
     const newPoints: PointObjectInterface[] = [];
-    
-    for(let i = 0; i < 3; i+=1) {
+
+    for (let i = 0; i < 3; i += 1) {
       const p = new PointObject();
-      p.setTimeData(i.toString())
-      p.setYData(i)
-      newPoints.push(p)
+      p.setTimeData(i.toString());
+      p.setYData(i);
+      newPoints.push(p);
     }
     csvModelData?.setPoints(newPoints);
     const points = csvModelData?.getPoints();
@@ -89,12 +89,11 @@ describe("testing csv data object stuff", () => {
       expect(points[1].getTimeData()).toStrictEqual("1");
       expect(points[1].getYData()).toStrictEqual(1);
     }
-  })
+  });
 
   test("getting data for a time that doesn't exist", () => {
     const csvModelData = mainController.getCSVController().getModelData();
     csvModelData?.populatePoints();
-    expect(csvModelData?.getDataByTime("145")).toBe(null)
-  })
-
+    expect(csvModelData?.getDataByTime("145")).toBe(null);
+  });
 });

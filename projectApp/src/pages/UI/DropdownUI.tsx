@@ -15,7 +15,6 @@ export default function DropdownUI({
 }: {
   inVR: boolean;
 }): React.JSX.Element {
-  const [pressed, press] = useState(false);
   const [active, setActive] = useState(false);
   const [selectTau, setSelectTau] = useState(1);
   const [infoTau, setInfoTau] = useState("");
@@ -542,7 +541,10 @@ export default function DropdownUI({
                 borderRadius={5}
                 onClick={() => {
                   setActive(!active);
-                  if (selectPointSize === 0) {
+                  if (
+                    selectPointSize !==
+                    mainController.getGraphController().getPointSize() * 100
+                  ) {
                     setSelectPointSize(
                       mainController.getGraphController().getPointSize() * 100,
                     );
@@ -599,17 +601,9 @@ export default function DropdownUI({
                   height={"90%"}
                   width={"70%"}
                   margin={1}
-                  onClick={() => {
-                    press(!pressed);
-                    sendLog("info", "DropDownBody [create] button pressed");
-                  }}
                   backgroundColor={"lightgray"}
                   backgroundOpacity={0.8}
                 >
-                  {/* Create objects representing loaded graphs in model 
-                                    Each will have a button that sets a use state for selected
-                                    Then a button for loading selected graph, activate use state
-                                    Then on a useState, update*/}
                   <GenerateList />
                 </Container>
               </Container>

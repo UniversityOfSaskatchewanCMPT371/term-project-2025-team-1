@@ -6,9 +6,16 @@ Feature: Embedded Graph Creation
     And there exists a valid local CSV file "indexedData.csv"
     And there exists a valid URL-based CSV file with address "https://raw.githubusercontent.com/UniversityOfSaskatchewanCMPT371/term-project-2025-team-1/refs/heads/ID4/csvTiestFiles/indexedData.csv"
 
-  Scenario: Displaying the embedded graph
+  Scenario: Displaying the embedded graph with a local CSV file
     Given the user has opened the graph menu / dropdown UI
     And the user has uploaded a valid local CSV file "indexedData.csv"
+    And the file appears in the graph menu
+    When the user select "1-5" tau using the right or left indicator
+    And the user clicks generate
+    Then the graph should appear on the screen behind the user
+
+  Scenario: Displaying the embedded graph with a URL-based CSV file
+    Given the user has opened the graph menu / dropdown UI
     And the user has uploaded a valid URL-based CSV file with address "https://raw.githubusercontent.com/UniversityOfSaskatchewanCMPT371/term-project-2025-team-1/refs/heads/ID4/csvTestFiles/indexedData.csv"
     And the file appears in the graph menu
     When the user select "1-5" tau using the right or left indicator

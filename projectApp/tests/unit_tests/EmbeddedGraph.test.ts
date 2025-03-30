@@ -86,4 +86,14 @@ describe("Embedded Graph test", () => {
       graph.setTau(-1);
     }).toThrowError("Tau must be greater than or equal to 1");
   });
+
+
+  // testing setDimensions() and getDimensions()
+    test("should set and get dimensions correctly", () => {
+      graph.setDimensions(100, 200, 300);
+      const dims = graph.getDimensions();
+      expect(dims).toEqual({ width: 100, height: 200, depth: 300 });
+    });
+  
+
 });

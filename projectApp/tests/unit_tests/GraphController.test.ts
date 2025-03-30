@@ -17,6 +17,7 @@ vi.mock("../../src/components/Csv_Components/CSVDataObject", async () => {
     },
   };
 });
+
 vi.mock(
   "../../src/components/Graph_Components/TimeSeriesGraphObject",
   async () => {
@@ -31,6 +32,7 @@ vi.mock(
     };
   },
 );
+
 vi.mock(
   "../../src/components/Graph_Components/EmbeddedGraphObject",
   async () => {
@@ -45,10 +47,12 @@ vi.mock(
     };
   },
 );
+
 describe("Tests for methods in GraphController", () => {
   let gc: GraphController; // is reset before each test
   let tsgo: TimeSeriesGraphObject; // is set before all
   let ego: EmbeddedGraphObject; // is set before all
+
   beforeAll(() => {
     const csv = new CSVDataObject();
     const data = [
@@ -66,9 +70,11 @@ describe("Tests for methods in GraphController", () => {
   beforeEach(() => {
     gc = new GraphController();
   });
+
   test("GraphController constructor initializes correctly", () => {
     expect(gc.getModel()).toBeInstanceOf(GraphModel); // model must be valid
   });
+
   test("pushDataToModel sets the data in the model", () => {
     gc.pushDataToModel(tsgo, ego);
     // expect equality using gc.getModel get data
@@ -78,6 +84,7 @@ describe("Tests for methods in GraphController", () => {
     expect(gc.getModelData()).toBe(tsgo);
     expect(gc.getModelEmData()).toBe(ego);
   });
+
   test("generateTimeSeriesGraph and generateEmbeddedGraph", () => {
     gc.pushDataToModel(tsgo, ego);
 
@@ -89,11 +96,13 @@ describe("Tests for methods in GraphController", () => {
     // expect it to not throw assertions or errors, and return a valud EGO
     expect(generatedEGO).toBeTruthy();
   });
+
   test("getEmbeddedRange", () => {
     gc.pushDataToModel(tsgo, ego);
     const range = gc.getEmbeddedRange();
     expect(range).toBe(7); // highest A value from mock
   });
+
   test("getTauForDropDown", () => {
     gc.pushDataToModel(tsgo, ego);
     const range = gc.getTauForDropDown();

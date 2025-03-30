@@ -35,7 +35,6 @@ export class CSVDataObject implements CSVDataInterface {
     this.isFirstDifferencing = false;
   }
 
-
   /**
    * calculates the values to be used for yValues when first differencing is in effect
    * @preconditions none

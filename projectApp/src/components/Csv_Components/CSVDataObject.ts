@@ -298,6 +298,7 @@ export class CSVDataObject implements CSVDataInterface {
   }
 
   /**
+   * Gets the boolean for whether first differencing is in effect
    * @precondition none
    * @returns Boolean indicating if first differencing is in effect
    */

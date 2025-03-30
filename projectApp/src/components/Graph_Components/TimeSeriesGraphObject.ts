@@ -426,7 +426,7 @@ export class TimeSeriesGraphObject
         throw error;
       } else if (range.length >= 500) {
         sendLog(
-          "warning",
+          "warn",
           "Loading an extremely large data set intervalForXAxis() on TimeSeriesGraphObject.ts",
         );
       }

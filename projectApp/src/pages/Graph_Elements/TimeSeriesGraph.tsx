@@ -26,9 +26,9 @@ export default function TimeSeriesGraph({
   ); // New state for selected point value
 
   // Values used to space Points in the X axis
-  const totalSpace = 6.5;
+  const totalSpace = 6.38;
   const divider = totalSpace / graph.getNumPoints();
-  let current = -2.58 + divider / 2;
+  let current = -2.62 + divider / 2;
 
   // Values used to position lines, currently set to starting position
   let currentLine: [number, number, number] = [0, 0, 0.01];
@@ -37,6 +37,9 @@ export default function TimeSeriesGraph({
   // Spacing used by X and Y axis
   const xSpacing = 100 / graph.getNumPoints();
   const ySpacing = 100 / graph.getYRangeLength();
+
+  const xAxis = graph.timeSeriesXRange();
+  const xAxisInterval = graph.intervalForXAxis(xAxis);
 
   //Used to update the graph, currently updates on Y header change
   function UpdateGraph(): void {
@@ -172,7 +175,7 @@ export default function TimeSeriesGraph({
     point.setXAxisPos(current);
     point.setYAxisPos(
       (point.getObject().getYData() / graph.getYRange()) *
-        (1.5 - (ySpacing / 100) * 2 + 1.05) -
+        (1.42 - (ySpacing / 100) * 2 + 1.05) -
         1.05,
     );
 
@@ -331,16 +334,26 @@ export default function TimeSeriesGraph({
               />
 
               <Container height={"96%"} width={"100%"}>
-                {graph.timeSeriesXRange().map((data) => {
-                  return (
-                    <Container
-                      height={"100%"}
-                      width={`${xSpacing}%`}
-                      justifyContent={"center"}
-                    >
-                      <Text>{data.toString()}</Text>
-                    </Container>
-                  );
+                {xAxis.map((data, index) => {
+                  if (index % xAxisInterval === 0) {
+                    return (
+                      <Container
+                        height={"100%"}
+                        width={`${xSpacing}%`}
+                        justifyContent={"center"}
+                      >
+                        <Text>{data.toString()}</Text>
+                      </Container>
+                    );
+                  } else {
+                    return (
+                      <Container
+                        height={"100%"}
+                        width={`${xSpacing}%`}
+                        justifyContent={"center"}
+                      />
+                    );
+                  }
                 })}
                 ;
               </Container>
@@ -360,6 +373,14 @@ export default function TimeSeriesGraph({
             {/* Bodies of the Graph */}
             <GenerateSideBar />
             <GenerateGraph />
+            <Container width={"2.5%"} flexDirection={"row"}>
+              {/* This is the line on the right side of the graph*/}
+              <Container
+                width={"8%"}
+                height={"85%"}
+                backgroundColor={"black"}
+              />
+            </Container>
           </Container>
         </Root>
 

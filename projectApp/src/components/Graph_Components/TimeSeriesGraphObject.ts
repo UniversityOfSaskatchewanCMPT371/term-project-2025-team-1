@@ -1,7 +1,7 @@
 import { TimeSeriesGraphInterface } from "../../types/TimeSeriesGraphInterface";
 import { CSVDataObject } from "../Csv_Components/CSVDataObject";
 import { GraphObject } from "./GraphObject";
-import { sendLog } from "../../logger-frontend";
+import { sendError, sendLog } from "../../logger-frontend";
 import { Point2DObject } from "./Points/Point2DObject";
 import { Point2DInterface } from "../../types/GraphPointsInterfaces";
 
@@ -409,5 +409,44 @@ export class TimeSeriesGraphObject
       `getYRange returned ${this.axes.yRange[1]} (TimeSeriesGraphObject.ts)`,
     );
     return this.axes.yRange[1];
+  }
+
+  /**
+   * Sets the interval for the x-axis of the Time Series Graph in order to deal with large data sets
+   * @precondition a valid array of time lables, the length cannot be 0
+   * @postcondition On success, sets the interval for the x-axis in the Time Series Graph
+   *
+   * @param range the array of time labels in the csv file
+   * @returns the interval to be used in the x-axis of the Time Series Graph
+   */
+  intervalForXAxis(range: string[]): number {
+    try {
+      if (range.length <= 0) {
+        const error = new Error("Invalid array of time labels");
+        throw error;
+      } else if (range.length >= 500) {
+        sendLog(
+          "warning",
+          "Loading an extremely large data set intervalForXAxis() on TimeSeriesGraphObject.ts",
+        );
+      }
+      let interval;
+
+      if (range.length <= 5) {
+        interval = 1;
+      } else if (range.length > 5 && range.length <= 10) {
+        interval = Math.ceil(range.length / 8);
+      } else {
+        interval = Math.floor(range.length / 4);
+      }
+
+      return interval;
+    } catch (error: unknown) {
+      sendError(
+        error,
+        "Error occurs in setting the interval for the x-axis of the Time Series Graph (TimeSeriesGraphObject.ts)",
+      );
+      throw error;
+    }
   }
 }

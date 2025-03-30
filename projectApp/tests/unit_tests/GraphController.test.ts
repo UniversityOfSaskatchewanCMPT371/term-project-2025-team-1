@@ -1,4 +1,4 @@
-import { describe, test, expect, beforeEach, vi } from "vitest";
+import { describe, test, expect, beforeAll, beforeEach, vi } from "vitest";
 import { GraphController } from "../../src/controller/GraphController";
 import { GraphModel } from "../../src/models/GraphModel";
 import { TimeSeriesGraphObject } from "../../src/components/Graph_Components/TimeSeriesGraphObject";
@@ -47,17 +47,22 @@ vi.mock(
 );
 describe("Tests for methods in GraphController", () => {
   let gc: GraphController; // is reset before each test
-  const csv = new CSVDataObject();
-  const data = [
-    { Time: 10, A: 2, B: 3 },
-    { Time: 20, A: 4, B: 5 },
-    { Time: 30, A: 7, B: 8 },
-  ] as unknown as { key: Record<string, string | number> }[];
-  csv.setData(data);
-  csv.csvHeaders = Object.keys(data[0]);
-  csv.setYHeader("A");
-  const tsgo = new TimeSeriesGraphObject(csv);
-  const ego = new EmbeddedGraphObject(csv);
+  let tsgo: TimeSeriesGraphObject; // is set before all
+  let ego: EmbeddedGraphObject; // is set before all
+  beforeAll(() => {
+    const csv = new CSVDataObject();
+    const data = [
+      { Time: 10, A: 2, B: 3 },
+      { Time: 20, A: 4, B: 5 },
+      { Time: 30, A: 7, B: 8 },
+    ] as unknown as { key: Record<string, string | number> }[];
+    csv.setData(data);
+    csv.csvHeaders = Object.keys(data[0]);
+    csv.setYHeader("A");
+    tsgo = new TimeSeriesGraphObject(csv);
+    ego = new EmbeddedGraphObject(csv);
+  });
+
   beforeEach(() => {
     gc = new GraphController();
   });

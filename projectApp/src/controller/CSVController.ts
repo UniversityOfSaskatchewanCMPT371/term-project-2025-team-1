@@ -41,7 +41,6 @@ export class CSVController implements ControllerInterface {
       throw error;
     }
 
-    // TODO - if first differening selected then call the CSVDataObject first differencing calculation function???
     if (isFirstDiff) {
       emData.setIsFirstDifferencing(isFirstDiff);
     }

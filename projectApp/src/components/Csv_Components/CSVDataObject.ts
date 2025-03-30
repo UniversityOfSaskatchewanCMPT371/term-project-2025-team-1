@@ -60,6 +60,11 @@ export class CSVDataObject implements CSVDataInterface {
       const difference = currVal - prevVal;
       differencedData.push(difference);
     }
+
+    sendLog(
+      "info",
+      `first differencing point calculation completed, result - ${differencedData} (CSVDataObject.ts)`,
+    );
     return differencedData;
   }
 
@@ -430,5 +435,9 @@ export class CSVDataObject implements CSVDataInterface {
    */
   setIsFirstDifferencing(firstDiff: boolean): void {
     this.isFirstDifferencing = firstDiff;
+    sendLog(
+      "info",
+      `setIsFirstDifferencing() was called, first differencing is set to ${firstDiff}`,
+    );
   }
 }

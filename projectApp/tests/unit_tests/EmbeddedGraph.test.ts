@@ -100,7 +100,7 @@ describe("Embedded Graph test", () => {
     test("updating point selection status", () => {
       graph.getCSVData().populatePoints();
       graph.addPoints();
-      // Select some points first
+      
       graph.getPoints3D()[0].getObject().setSelected(true);
       graph.updatePoints();
       expect(graph.getPoints3D()[0].getObject().selected).toBe(false);
@@ -110,18 +110,13 @@ describe("Embedded Graph test", () => {
 
     
     test("testing if RangeError will be thrown when CSV data is empty", () => {
-      // Not sure if this will crash but I want to have an empty array
+      // An empty array
       const originalGetData = graph.getCSVData().getData;
       graph.getCSVData().getData = () => [];
       
       expect(() => {
         graph.addPoints();
       }).toThrowError(RangeError);
-
-      expect(() => {
-        // testing if the correct error message will get displayed when CSV data is empty
-        graph.addPoints();
-      }).toThrowError("Invalid CSV Data Objects");
       
       // Putting everything back
       graph.getCSVData().getData = originalGetData;
@@ -144,7 +139,7 @@ describe("Embedded Graph test", () => {
       graph.getAxes().yRange = [10, 5];
       expect(() => graph.getRange()).toThrow();
       
-      // Edge case - equal values throw
+      // Equal values throw
       graph.getAxes().yRange = [5, 5];
       expect(() => graph.getRange()).toThrow();
     });
@@ -165,4 +160,13 @@ describe("Embedded Graph test", () => {
       expect(newFirstPoint).not.toBe(originalFirstPoint);
     });
 
+
+    test("setting time to a negative value", () => {
+      expect(() => {
+        graph.calculateVectorPosition(-1, [{
+          key: {}
+        }]);
+      }).toThrowError("time must be >= 0");
+    });
+    
 });

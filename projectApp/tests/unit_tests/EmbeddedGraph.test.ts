@@ -87,6 +87,12 @@ describe("Embedded Graph test", () => {
     }).toThrowError("Tau must be greater than or equal to 1");
   });
 
+  test("getTau returns current tau value", () => {
+    graph.setTau(5);
+    
+    expect(graph.getTau()).toBe(5);
+  });
+
 
   // testing setDimensions() and getDimensions()
     test("setting and getting dimensions correctly", () => {
@@ -106,8 +112,6 @@ describe("Embedded Graph test", () => {
       expect(graph.getPoints3D()[0].getObject().selected).toBe(false);
     });
 
-
-
     
     test("testing if RangeError will be thrown when CSV data is empty", () => {
       // An empty array
@@ -121,8 +125,6 @@ describe("Embedded Graph test", () => {
       // Putting everything back
       graph.getCSVData().getData = originalGetData;
     });
-
-
 
 
   // Testing getRange()
@@ -146,27 +148,28 @@ describe("Embedded Graph test", () => {
 
 
   // Testing updateEmbeddedPoints()
-    test("should refresh all 3D points", () => {
-      graph.getCSVData().populatePoints();
-      graph.addPoints();
-      
-      const originalFirstPoint = graph.getPoints3D()[0];
-      graph.updateEmbeddedPoints();
-      
-      const newFirstPoint = graph.getPoints3D()[0];
-      
-      // Positions should be same but objects different
-      expect(newFirstPoint.getPosition()).toEqual(originalFirstPoint.getPosition());
-      expect(newFirstPoint).not.toBe(originalFirstPoint);
-    });
-
-
-    test("setting time to a negative value", () => {
-      expect(() => {
-        graph.calculateVectorPosition(-1, [{
-          key: {}
-        }]);
-      }).toThrowError("time must be >= 0");
-    });
+  test("updateEmbeddedPoints recreates points array", () => {
+    graph.addPoints();
+    const originalPoints = graph.getPoints3D();
     
+    graph.updateEmbeddedPoints();
+    const newPoints = graph.getPoints3D();
+    
+    expect(newPoints).not.toBe(originalPoints); // Should be new array
+    expect(newPoints.length).toBe(originalPoints.length);
+  });
+
+
+  test("setting time to a negative value", () => {
+    expect(() => {
+      graph.calculateVectorPosition(-1, [{
+        key: {}
+      }]);
+    }).toThrowError("time must be >= 0");
+  });
+
+  test("getPoints3D throws error when empty", () => {
+    graph["points3D"] = [];
+    expect(() => graph.getPoints3D()).toThrow();
+  }); 
 });

@@ -35,7 +35,13 @@ export class CSVDataObject implements CSVDataInterface {
     this.isFirstDifferencing = false;
   }
 
-  // TODO - add first differencing calculation function
+
+  /**
+   * calculates the values to be used for yValues when first differencing is in effect
+   * @preconditions none
+   * @postconditions none
+   * @returns an array of the first differenced yValues
+   */
   calculateFirstDifferencingValues(): number[] {
     const differencedData: number[] = [0];
     const numPoints = this.getData().length;
@@ -51,6 +57,7 @@ export class CSVDataObject implements CSVDataInterface {
         this.getYHeader() as keyof typeof prevRow
       ] as unknown as number;
 
+      // calculate the difference between value at yHeader in row i and row i-1
       const difference = currVal - prevVal;
       differencedData.push(difference);
     }

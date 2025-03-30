@@ -63,8 +63,6 @@ export default function DropdownUI({
    * Generates the graph, and then updates main scene
    */
   function update(): void {
-    // TODO - do something with the first differencing here (i think change the boolean being added to CSVDataObject here)
-    // then in generate do call the calculation fucntion
     mainController.getCSVController().generate(selectTau, isFirstDifferencing);
     setInfoTau(mainController.getGraphController().getTauForDropDown()); //Later change this to getting tau value from the graph itself rather than the other useState
     mainController.updateMainScene();
@@ -217,12 +215,18 @@ export default function DropdownUI({
     );
   }
 
+  /**
+   * This function is used when the user wants to enable first differencing
+   */
   function setOnFDIncrease(): void {
     if (!isFirstDifferencing) {
       setIsFirstDifferencing(!isFirstDifferencing);
     }
   }
 
+  /**
+   * This fuction is used when the user wants to disable first differencing
+   */
   function setOnFDDecrease(): void {
     if (isFirstDifferencing) {
       setIsFirstDifferencing(!isFirstDifferencing);

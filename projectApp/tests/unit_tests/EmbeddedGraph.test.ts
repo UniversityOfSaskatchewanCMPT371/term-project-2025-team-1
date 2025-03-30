@@ -106,4 +106,26 @@ describe("Embedded Graph test", () => {
       expect(graph.getPoints3D()[0].getObject().selected).toBe(false);
     });
 
+
+
+    
+    test("testing if RangeError will be thrown when CSV data is empty", () => {
+      // Not sure if this will crash but I want to have an empty array
+      const originalGetData = graph.getCSVData().getData;
+      graph.getCSVData().getData = () => [];
+      
+      expect(() => {
+        graph.addPoints();
+      }).toThrowError(RangeError);
+
+      expect(() => {
+        // testing if the correct error message will get displayed when CSV data is empty
+        graph.addPoints();
+      }).toThrowError("Invalid CSV Data Objects");
+      
+      // Putting everything back
+      graph.getCSVData().getData = originalGetData;
+    });
+
+
 });

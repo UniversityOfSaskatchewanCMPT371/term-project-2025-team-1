@@ -89,11 +89,21 @@ describe("Embedded Graph test", () => {
 
 
   // testing setDimensions() and getDimensions()
-    test("should set and get dimensions correctly", () => {
+    test("setting and getting dimensions correctly", () => {
       graph.setDimensions(100, 200, 300);
       const dims = graph.getDimensions();
-      expect(dims).toEqual({ width: 100, height: 200, depth: 300 });
+      expect(dims).toStrictEqual({ width: 100, height: 200, depth: 300 });
     });
   
+
+    // test updatePoints() and addPoints()
+    test("updating point selection status", () => {
+      graph.getCSVData().populatePoints();
+      graph.addPoints();
+      // Select some points first
+      graph.getPoints3D()[0].getObject().setSelected(true);
+      graph.updatePoints();
+      expect(graph.getPoints3D()[0].getObject().selected).toBe(false);
+    });
 
 });

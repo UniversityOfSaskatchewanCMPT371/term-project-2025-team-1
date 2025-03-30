@@ -19,6 +19,8 @@ export default function DropdownUI({
   const [active, setActive] = useState(false);
   const [selectTau, setSelectTau] = useState(1);
   const [infoTau, setInfoTau] = useState("");
+  const [infoRange, setInfoRange] = useState("");
+  const [infoHeader, setInfoHeader] = useState("");
 
   /**
    * This is the function for creating a loaded csv object displayed in the DropDown UI
@@ -62,6 +64,8 @@ export default function DropdownUI({
   function update(): void {
     mainController.getCSVController().generate(selectTau);
     setInfoTau(mainController.getGraphController().getTauForDropDown()); //Later change this to getting tau value from the graph itself rather than the other useState
+    setInfoRange(mainController.getGraphController().getEmbeddedRange().toString());
+    setInfoHeader(mainController.getGraphController().getModelEmData().getCSVData().getYHeader());
     mainController.updateMainScene();
   }
 
@@ -206,6 +210,9 @@ export default function DropdownUI({
             >
               <Text positionLeft={10}>Tau Value: {infoTau}</Text>
             </Container>
+            <Text positionLeft={10}>Current Y Header: {infoHeader}</Text>
+            <Text positionLeft={10} positionTop={15}>EG Range: {infoRange}</Text>
+            <Text positionLeft={10} positionTop={30}>Headers: </Text>
           </Container>
         </Container>
       </>
@@ -232,7 +239,7 @@ export default function DropdownUI({
   }
 
   /**
-   * Thhis function creates the component for setting the Tau value on generation.
+   * This function creates the component for setting the Tau value on generation.
    * Shows the buttons for both decreasing and increasing the tau value, it will also display the current Tau value
    * @returns the Tau selector component
    */

@@ -98,30 +98,6 @@ export class CSVReaderModel implements CSVModelInterface {
   }
 
   /**
-   * Provides an array of tuples for the browser UI, where each tuple contains the CSV file's name
-   * and its browser selection status.
-   *
-   * @precondition The 'data' array contains CSVDataObject instances with a valid 'name' property
-   *
-   * @postcondition An array of tuples is returned where each tuple contains the CSV file name and its browser selection status.
-   *
-   * @returns An array of tuples where each tuple contains the CSV file name and its browser selection status.
-   */
-  loadedCsvBrowser(): [string, boolean][] {
-    const csvBrowser: [string, boolean][] = [];
-    const file = this.getData();
-
-    if (file) {
-      csvBrowser.push([file.getName(), file.getBrowserSelected()]);
-      sendLog(
-        "info",
-        `loadedCsvBrowser() returns list\n${JSON.stringify(csvBrowser)}`,
-      );
-    }
-    return csvBrowser;
-  }
-
-  /**
    * Returns the current array of CSVDataObject instances.
    *
    * @precondition none

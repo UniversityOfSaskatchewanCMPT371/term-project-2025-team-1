@@ -6,7 +6,10 @@ import { sendLog } from "../logger-frontend";
 /**
  * Main controller class that coordinates between CSV and Graph controllers
  * and manages scene updates in the application.
- *
+ * 
+ * @invariants
+ * - The 'csvController' and 'graphController' property are initialized on construction and are never set again
+ * - The 'updateScene' property is a reference that is set and called whenever the scene needs updating
  */
 export class MainController {
   private csvController: CSVController;
@@ -29,7 +32,7 @@ export class MainController {
   /**
    * Retrieves the CSV controller instance
    * @precondition none
-   * @postcondition Returns existing CSV controller without modification
+   * @returns existing CSV controller without modification
    */
   getCSVController(): CSVController {
     return this.csvController;
@@ -37,8 +40,8 @@ export class MainController {
 
   /**
    * Retrieves the Graph controller instance
-   *
-   * @postcondition Returns existing Graph controller without modification
+   * @precondition none
+   * @returns existing Graph controller without modification
    */
   getGraphController(): GraphController {
     return this.graphController;
@@ -48,7 +51,7 @@ export class MainController {
    * Sets the reference to the scene update function
    *
    * @param {any} ref - Reference to the scene component
-   * @precondition ref must have a 'current' property
+   * @precondition `ref` must have a 'current' property
    * @postcondition updateScene is set to the provided reference's current value
    */
   setSceneRef(

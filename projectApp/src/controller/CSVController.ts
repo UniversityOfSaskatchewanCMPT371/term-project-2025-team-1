@@ -11,6 +11,9 @@ import mainController from "./MainController";
  * Implements the ControllerInterface for standardized controller behavior.
  *
  * @implements {ControllerInterface}
+ * 
+ * @invariants
+ * - The 'model' property is initialized on construction and is never set again
  */
 export class CSVController implements ControllerInterface {
   model: CSVReaderModel;
@@ -26,7 +29,7 @@ export class CSVController implements ControllerInterface {
 
   /**
    * Generates time series graphs for CSV data marked for VR display
-   *
+   * @param tau value of tau used in generation
    * @precondition this.model must be initialized with CSV data
    * @postcondition For each CSV:
    *   - VR selection is enabled
@@ -58,44 +61,51 @@ export class CSVController implements ControllerInterface {
   }
 
   /**
-   * This method gets the csv file by opening a local file, and then loads it into the program
-   * @precondition a file that represents the csv file, needs to be a valid csv file
+   * Get the csv file by opening a local file, and then loads it into the program
+   * @param file local file that contains csv data
+   * @precondition `file` must be a valid csv file
    * @postcondition On success, the csv file to be loaded to the program
    */
   async loadLocalFile(file: File): Promise<void> {
     try {
       await this.getModel().readLocalFile(file);
     } catch (error: unknown) {
-      //Log the error
+      // Log the error
       sendError(error, "loadLocalFile Error");
       throw error;
     }
   }
 
   /**
-   * This method gets the csv file using a url link, and then loads it into the program
-   * @precondition a string parameter representing the url link, needs to be a valid csv file
+   * Get the csv file using a url link, and then loads it into the program
+   * @param csv url path to a csv file
+   * @precondition `csv` must be a valid csv file
    * @postcondition On success, the csv file to be loaded to the program
    */
   async loadURLFile(csv: string): Promise<void> {
     try {
       await this.getModel().readURLFile(csv);
     } catch (error: unknown) {
-      //Log the error
+      // Log the error
       sendError(error, "loadURLFile Error");
       throw error;
     }
   }
 
+  /**
+   * Get the loaded csv browser of this controller's model
+   * @precondition model must have a loadedCsvBrowser list
+   * @returns tuple set of csv file names and selection status boolean
+   */
   browserCSVFiles(): [string, boolean][] {
     return this.getModel().loadedCsvBrowser();
   }
 
   /**
    * Retrieves the controller's associated model
-   *
+   * @precondition none
    * @returns {CSVReaderModel} The CSV reader model instance
-   * @postcondition Returns the existing model without modification
+   * @postcondition the existing model is not modified
    */
   getModel(): CSVReaderModel {
     return this.model;
@@ -103,7 +113,8 @@ export class CSVController implements ControllerInterface {
 
   /**
    * Gets the csv data linked to the model
-   * @returns
+   * @precondition none
+   * @returns this model's csv data
    */
   getModelData(): CSVDataObject | undefined {
     return this.model.getData();

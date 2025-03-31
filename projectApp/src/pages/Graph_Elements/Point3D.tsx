@@ -27,11 +27,12 @@ export default function Point3D({
     }
   });
 
-    /**
-    * Toggles the point's selected state and updates local click state
-    * @precondition None
-    * @postcondition Updates both local clicked state and pointRef's selected state
-    */  function setOnClick(): void {
+  /**
+   * Toggles the point's selected state and updates local click state
+   * @precondition None
+   * @postcondition Updates both local clicked state and pointRef's selected state
+   */
+  function setOnClick(): void {
     const selectedState = !pointRef.getObject().getSelected();
     click(selectedState);
     pointRef.getObject().setSelected(selectedState);

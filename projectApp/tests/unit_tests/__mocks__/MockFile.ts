@@ -1,4 +1,4 @@
-/** 
+/**
  * Mock File class,
  * used for mockFileReader since original cant be called in non-browser environment
  * */

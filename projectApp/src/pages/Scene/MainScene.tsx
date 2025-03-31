@@ -21,7 +21,7 @@ export default function MainScene({
   const [graph, setGraph] = useState<TimeSeriesGraphObject>();
   const [emGraph, setEmGraph] = useState<EmbeddedGraphObject>();
 
-  /** 
+  /**
    * This is used as a reference so that the controller can update the main scene.
    * Only runs on the begining, might keep graph on and update file on graph instead
    * @precondition none

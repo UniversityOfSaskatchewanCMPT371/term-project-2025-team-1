@@ -6,7 +6,7 @@ import { sendLog } from "../logger-frontend";
 /**
  * Main controller class that coordinates between CSV and Graph controllers
  * and manages scene updates in the application.
- * 
+ *
  * @invariants
  * - The 'csvController' and 'graphController' property are initialized on construction and are never set again
  * - The 'updateScene' property is a reference that is set and called whenever the scene needs updating

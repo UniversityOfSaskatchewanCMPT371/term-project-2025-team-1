@@ -11,7 +11,7 @@ import mainController from "./MainController";
  * Implements the ControllerInterface for standardized controller behavior.
  *
  * @implements {ControllerInterface}
- * 
+ *
  * @invariants
  * - The 'model' property is initialized on construction and is never set again
  */

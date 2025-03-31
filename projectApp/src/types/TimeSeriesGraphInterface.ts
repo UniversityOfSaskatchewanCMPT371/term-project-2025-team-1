@@ -40,7 +40,7 @@ export interface TimeSeriesGraphInterface extends GraphInterface {
    * @postcondition all points' positions are scaled by the zoom factor
    * @param {number} zoomFactor - The scaling factor for point positions
    */
-  
+
   // Left here for now, may be used when implementing zoom
   // updateOnZoom(zoomFactor: number): void;
 

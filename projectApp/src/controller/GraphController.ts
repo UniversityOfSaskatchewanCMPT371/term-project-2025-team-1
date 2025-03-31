@@ -94,7 +94,7 @@ export class GraphController implements ControllerInterface {
    *
    * @param graph The TimeSeriesGraphObject to add to the model.
    * @param emGraph The EmbeddedGraphObject to add to the model.
-   * 
+   *
    * @precondition The provided `graph` is a valid TimeSeriesGraphObject and `emGraph` is a valid EmbeddedGraphObject.
    *
    * @postcondition The `graph` and `emGraph` graphs are added to the model's data collection.

@@ -9,7 +9,7 @@ let info: string[] = [];
  * add a log to the TestScene
  * @param s log string to be put into 'info'
  * @precondition `import.meta.env.VITE_TEST_MODE` must be true
- * @postconditions 
+ * @postconditions
  * - on success, `s` is pushed into info array
  * - if 'info' has more than 4 entries, slice out the first (oldest)
  * - if `VITE_TEST_MODE` is false, nothing happens

@@ -1,7 +1,7 @@
 // Note: trace and debug levels also exist but they don't log to the locations chosen currently
 /**
  * sendLog: Creates and sends a log to the log server
- * @param level level of the log 
+ * @param level level of the log
  * @param message non-empty message string describing the log
  * @precondition
  * - Level should be one of the following: "info", "warn", "error", "fatal", or "test", which determines severity of log message
@@ -21,15 +21,13 @@ export function sendLog(level: string, message: string) {
   // .then(() => {alert("log sent")});
 }
 
-    
-
 /**
  * sendError: Creates and sends an *error* log to the log server
  * (used specifically in error cases to provide more info)
  * @param error type of error that is sent
  * @param message non-empty message string describing the error context
  * @precondition
- * - "error" must represent the error object that is thrown 
+ * - "error" must represent the error object that is thrown
  * - message != null
  * @postcondition An error log will be written to the log server with additional messaging to provide context regarding the error
  */

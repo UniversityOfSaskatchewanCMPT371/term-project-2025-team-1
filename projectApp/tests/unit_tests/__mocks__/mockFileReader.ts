@@ -1,6 +1,6 @@
 import { sendError } from "../../../src/logger-frontend";
 import { readFile } from "fs/promises";
-/** 
+/**
  * Mock FileReader class,
  * since original cant be called in non-browser environment
  * */

@@ -7,7 +7,7 @@ import { Point2DInterface } from "../../types/GraphPointsInterfaces";
 
 /**
  * TimeSeriesGraphObject is a class that extends GraphObject
- * 
+ *
  * Holds attributes and methods required of a TimeSeriesGraph
  * @history
  * - This inhenrits the history properties of `GraphObject`

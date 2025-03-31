@@ -1,6 +1,61 @@
 import Papa from "papaparse";
+import * as fsPromise from "fs/promises";
 import { sendError, sendLog } from "../../logger-frontend";
 import { addTestSceneInfo } from "../../pages/Scene/TestScene";
+
+/**
+ * This function reads the headers of a csv file and stores it
+ *
+ * @param file File path for csv file
+ * @returns list of Record pairs of (attribute,value) as Promise<Record<string,string | number>[]>
+ *
+ * @preconditions file path must be a valid file path to a .csv file
+ * @postconditions
+ *    - None (the function does not modify any external state)
+ *    - The returned promise resolves to an object containing a list of record of (attribute,value) pairs
+ *    - If the file is empty or cannot be parsed, an error is thrown
+ **/
+export async function LocalCSVReader(
+  file: string,
+): Promise<Record<string, string | number>[]> {
+  //Update: now any noncsv file is caught here
+  //and invalid csv files are thrown by fsPromise
+  if (!file.endsWith(".csv")) {
+    const notCsvErr = new Error("This file is not csv");
+    sendError(notCsvErr, "LocalCSVReader(path) receives a non csv file");
+    throw notCsvErr;
+  }
+  return fsPromise
+    .readFile(file, "utf8")
+    .then((data: string) => {
+      let timeSeries: Record<string, string | number>[] = [];
+      Papa.parse(data, {
+        header: true,
+        dynamicTyping: true,
+        complete: function (
+          parsed: Papa.ParseResult<Record<string, string | number>>,
+        ) {
+          timeSeries = parsed.data;
+          if (timeSeries.length === 0) {
+            throw new Error("LocalCSVReader is empty");
+          }
+          sendLog(
+            "info",
+            `LocalCSVReader has successfully parsed\n${JSON.stringify(timeSeries)}`,
+          );
+        },
+        error: function (parseError: Error) {
+          // this will be caught by promise.catch
+          throw parseError;
+        },
+      });
+      return timeSeries;
+    })
+    .catch((err: unknown) => {
+      sendError(err, "LocalCSVReader error");
+      throw err as Error;
+    });
+}
 
 /**
  * Reads a CSV file from a File Object (local reader) and returns an array of time series data.

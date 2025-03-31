@@ -120,7 +120,6 @@ export default function BrowserUI() {
     );
   }
 
-
   return (
     <>
       <URLComponent />

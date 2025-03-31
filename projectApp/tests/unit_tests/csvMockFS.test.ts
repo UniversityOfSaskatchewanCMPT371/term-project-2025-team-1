@@ -33,31 +33,31 @@ describe("testing fs mocking", () => {
     expect(fs.writeFileSync).toHaveBeenCalledTimes(1);
     expect(fs.writeFileSync).toHaveBeenCalledWith(path, data);
 
-    const writtenData = memVol.readFileSync(path, 'utf8');
-    expect(writtenData).toBe(data)
+    const writtenData = memVol.readFileSync(path, "utf8");
+    expect(writtenData).toBe(data);
   });
 
   test("readFileSync reads data correctly", () => {
     memVol.writeFileSync(path, data);
 
-    const writtenData = fs.readFileSync(path, 'utf8');
+    const writtenData = fs.readFileSync(path, "utf8");
     expect(fs.readFileSync).toHaveBeenCalledTimes(1);
-    expect(fs.readFileSync).toHaveBeenCalledWith(path, 'utf8');
+    expect(fs.readFileSync).toHaveBeenCalledWith(path, "utf8");
 
     expect(writtenData).toBe(data);
   });
 
-  test("writeFile writes data correctly", async() => {
+  test("writeFile writes data correctly", async () => {
     await fsPromise.writeFile(path, data);
 
     expect(fsPromise.writeFile).toHaveBeenCalledTimes(1);
     expect(fsPromise.writeFile).toHaveBeenCalledWith(path, data);
 
     const writtenData = await memVol.promises.readFile(path, "utf8");
-    expect(writtenData).toBe(data)
+    expect(writtenData).toBe(data);
   });
 
-  test("readFile reads data correctly", async() => {
+  test("readFile reads data correctly", async () => {
     await memVol.promises.writeFile(path, data);
 
     const writtenData = await fsPromise.readFile(path, "utf8");

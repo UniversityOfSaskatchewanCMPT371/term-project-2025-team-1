@@ -3,18 +3,18 @@ import { Point2DObject } from "../../components/Graph_Components/Points/Point2DO
 import { useFrame } from "@react-three/fiber";
 import { sendLog } from "../../logger-frontend";
 /**
- * Renders a 2D point on a Time Series Graph.
+ * Renders a 2D point on a `TimeSeriesGraph`.
  * The point can be interacted with through hover and click events.
- * @param props - Component props
- * @param {PointClass} props.pointRef - Reference to the point data and state
- * @precondition pointRef must be a valid PointClass instance with position and selected state
+ * @param {Point2DObject} pointRef Reference to the point data and state
+ * @precondition `pointRef` must be a valid `Point2DObject` instance with position and selected state
  * @postcondition Renders an interactive 2D point with hover and click functionality
+ * @returns a React JSX Component for the 2D point used on a `TimeSeriesGraph`
  */
 export default function Point2D({ pointRef }: { pointRef: Point2DObject }) {
   const [hovered, hover] = useState(false);
   const [clicked, click] = useState(false);
 
-  //If the selection of this point doesn't match the selection status of the PointObject
+  // If the selection of this point doesn't match the selection status of the PointObject
   useFrame(() => {
     if (clicked !== pointRef.getObject().getSelected()) {
       click(pointRef.getObject().getSelected());

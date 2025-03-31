@@ -5,9 +5,12 @@ import { useFrame } from "@react-three/fiber";
 import { sendLog } from "../../logger-frontend";
 
 /**
- * This function will display and realize the 3D Point Object onto the VR Scene
- * @param param0 takes a Point3DObject
- * @returns a JSX element that displays the 3D Point
+ * Renders a 3D Point on an `EmbeddedGraph`.
+ * The point can be interacted with through hover and click events.
+ * @param {Point3DObject} pointRef Reference to the point data and state
+ * @precondition `pointRef` must be a valid `Point3DObject` instance with position and selected state
+ * @postcondition Renders an interactive 3D point with hover and click functionality
+ * @returns a React JSX element for the 3D point used on an `EmbeddedGraph`
  */
 export default function Point3D({
   pointRef,
@@ -17,15 +20,18 @@ export default function Point3D({
   const [hovered, hover] = useState(false);
   const [clicked, click] = useState(false);
 
-  //If the selection of this point doesn't match the selection status of the PointObject
+  // If the selection of this point doesn't match the selection status of the PointObject
   useFrame(() => {
     if (clicked !== pointRef.getObject().getSelected()) {
       click(pointRef.getObject().getSelected());
     }
   });
 
-  //Function to handle when a point is clicked
-  function setOnClick(): void {
+    /**
+    * Toggles the point's selected state and updates local click state
+    * @precondition None
+    * @postcondition Updates both local clicked state and pointRef's selected state
+    */  function setOnClick(): void {
     const selectedState = !pointRef.getObject().getSelected();
     click(selectedState);
     pointRef.getObject().setSelected(selectedState);
@@ -35,7 +41,7 @@ export default function Point3D({
 
   return (
     <mesh
-      //Translating the positions to the 3D Embedded Graph Axis
+      // Translating the positions to the 3D Embedded Graph Axis
       position={[
         pointRef.getPosition()[0] /
           mainController.getGraphController().getEmbeddedRange(),

@@ -1,11 +1,14 @@
 import { sendError } from "../../../src/logger-frontend";
 import { readFile } from "fs/promises";
-
+/** 
+ * Mock FileReader class,
+ * since original cant be called in non-browser environment
+ * */
 export default class MockFileReader {
   result: string | null = null;
   onload: ((event: ProgressEvent<FileReader>) => void) | null = null;
   onerror: ((event: ProgressEvent<FileReader>) => void) | null = null;
-
+  /** Mocks original readAsText to unpace MockFile for fileBits BlobPart[] */
   readAsText(file: File) {
     try {
       const readerContent = (
@@ -28,6 +31,7 @@ export default class MockFileReader {
 /**
  * Returns a file that has the contents of the file at the filePath
  * @param filePath path string to the file
+ * @precondition `filePath` must be a valid file path
  * @returns `File` {fileBits: contents at filePath, name: filePath, options: in text/csv}
  */
 export async function pathStrToFile(filePath: string): Promise<File> {
@@ -37,9 +41,9 @@ export async function pathStrToFile(filePath: string): Promise<File> {
     data = await reader;
   } catch {
     data = "";
-    //for some reason, if await reader throws the error, vitest still receives ENOENT error
-    //vitest cant handle errors outside of expect
-    //so instead data will be returned as empty (aka couldnt read)
+    // for some reason, if await reader throws the error, vitest still receives ENOENT error
+    // vitest cant handle errors outside of expect
+    // so instead data will be returned as empty (aka couldnt read)
   }
   return new File([data], filePath, { type: "text/csv" });
 }

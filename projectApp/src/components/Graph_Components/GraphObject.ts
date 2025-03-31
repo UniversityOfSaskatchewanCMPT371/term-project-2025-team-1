@@ -43,6 +43,7 @@ export class GraphObject implements GraphInterface {
     this.name = csvdata.getName();
     this.csvData = csvdata;
     this.dimensions = { width: 10, height: 10, depth: 10 };
+    this.position = { x: 1, y: 1, z: 0 };
     this.axes = {
       xRange: [0, 0],
       yRange: [0, 0],

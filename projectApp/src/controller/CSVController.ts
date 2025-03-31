@@ -41,10 +41,7 @@ export class CSVController implements ControllerInterface {
       throw error;
     }
 
-    if (isFirstDiff) {
-      emData.setIsFirstDifferencing(isFirstDiff);
-    }
-
+    emData.setIsFirstDifferencing(isFirstDiff);
     emData.setVRSelected(true);
     emData.populatePoints();
 

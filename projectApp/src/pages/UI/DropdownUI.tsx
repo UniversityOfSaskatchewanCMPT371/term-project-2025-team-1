@@ -24,8 +24,8 @@ export default function DropdownUI({
   const [headers, setHeaders] = useState<string[]>([]);
   const itemsPerColumn = 6; // Number of items per column for headers
   // This divides the columns
-  const itemGroup = [...Array(Math.ceil(headers.length / itemsPerColumn))].map((_, i) =>
-    headers.slice(i * itemsPerColumn, (i + 1) * itemsPerColumn)
+  const itemGroup = [...Array(Math.ceil(headers.length / itemsPerColumn))].map(
+    (_, i) => headers.slice(i * itemsPerColumn, (i + 1) * itemsPerColumn),
   );
 
   /**
@@ -70,9 +70,23 @@ export default function DropdownUI({
   function update(): void {
     mainController.getCSVController().generate(selectTau);
     setInfoTau(mainController.getGraphController().getTauForDropDown()); //Later change this to getting tau value from the graph itself rather than the other useState
-    setInfoRange(mainController.getGraphController().getEmbeddedRange().toString());
-    setInfoHeader(mainController.getGraphController().getModelEmData().getCSVData().getYHeader());
-    setHeaders(mainController.getGraphController().getModelEmData().getCSVData().getCSVHeaders());
+    setInfoRange(
+      mainController.getGraphController().getEmbeddedRange().toString(),
+    );
+    setInfoHeader(
+      mainController
+        .getGraphController()
+        .getModelEmData()
+        .getCSVData()
+        .getYHeader(),
+    );
+    setHeaders(
+      mainController
+        .getGraphController()
+        .getModelEmData()
+        .getCSVData()
+        .getCSVHeaders(),
+    );
     mainController.updateMainScene();
   }
 
@@ -217,8 +231,10 @@ export default function DropdownUI({
             >
               <Text positionLeft={10}>Tau Value: {infoTau}</Text>
             </Container>
-            <Text positionLeft={10}>Y Header:  {infoHeader}</Text>
-            <Text positionLeft={10} positionTop={15}>EG Range: {infoRange}</Text>
+            <Text positionLeft={10}>Y Header: {infoHeader}</Text>
+            <Text positionLeft={10} positionTop={15}>
+              EG Range: {infoRange}
+            </Text>
             <Container
               flexDirection={"row"}
               alignItems={"flex-start"}

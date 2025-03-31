@@ -9,7 +9,7 @@ import { addTestSceneInfo } from "../../pages/Scene/TestScene";
  * @param file File path for csv file
  * @returns list of Record pairs of (attribute,value) as Promise<Record<string,string | number>[]>
  *
- * @preconditions file path must be a valid file path to a .csv file
+ * @preconditions `file` path must be a valid file path to a .csv file
  * @postconditions
  *    - None (the function does not modify any external state)
  *    - The returned promise resolves to an object containing a list of record of (attribute,value) pairs
@@ -18,8 +18,7 @@ import { addTestSceneInfo } from "../../pages/Scene/TestScene";
 export async function LocalCSVReader(
   file: string,
 ): Promise<Record<string, string | number>[]> {
-  //Update: now any noncsv file is caught here
-  //and invalid csv files are thrown by fsPromise
+  // any noncsv file is caught here and invalid csv files are thrown by fsPromise
   if (!file.endsWith(".csv")) {
     const notCsvErr = new Error("This file is not csv");
     sendError(notCsvErr, "LocalCSVReader(path) receives a non csv file");
@@ -63,13 +62,12 @@ export async function LocalCSVReader(
  * @param file File object that contains a csv file
  * @returns list of Record pairs of (attribute,value) as Promise<Record<string,string | number>[]>
  *
- * @preconditions File must have a name that ends with ".csv" extension
+ * @preconditions `File` must have a name that ends with ".csv" extension
  * @postconditions
  *    - None (the function does not modify any external state)
  *    - The returned promise resolves to an object containing a list of record of (attribute,value) pairs
  *    - If the file is empty or cannot be parsed, an error is thrown
  **/
-// TODO - unit tests for this version of the local reader, it accepts a File instead of a string
 export function LocalCsvReader(
   file: File,
 ): Promise<{ key: Record<string, string | number> }[]> {
@@ -77,15 +75,15 @@ export function LocalCsvReader(
   return new Promise<{ key: Record<string, string | number> }[]>(
     (resolve, reject) => {
       if (!file.name.endsWith("csv")) {
-        //This is relying on the fact that we name the file with extension
-        //BrowserUI LoadComponent e.target.file gives the file name and extension
-        //any testing MUST have files that end with .csv for success
+        // This is relying on the fact that we name the file with extension
+        // BrowserUI LoadComponent e.target.file gives the file name and extension
+        // any testing MUST have files that end with .csv for success
         const notCsvErr = new Error("This file is not csv");
         sendError(notCsvErr, "LocalCsvReader(file) receives a non csv file");
         throw notCsvErr;
       }
 
-      //invalid file is thrown by onerror
+      // invalid file is thrown by onerror
 
       const reader = new FileReader();
 
@@ -142,7 +140,7 @@ export function LocalCsvReader(
  * @param url address of the file
  * @returns list of Record pairs of (attribute,value) as Promise<Record<string,string | number>[]>
  *
- * @precondition url must be a valid url to a csv file, either ends with ".csv" or contains a csv file
+ * @precondition `url` must be a valid url to a csv file, either ends with ".csv" or contains a csv file
  * @postcondition
  *    - None (the function does not modify any external state)
  *    - The returned promise resolves to an object containing a list of record of (attribute,value) pairs
@@ -151,7 +149,7 @@ export function LocalCsvReader(
 export async function UrlCSVReader(
   url: string,
 ): Promise<{ key: Record<string, string | number> }[]> {
-  //Update: now any invalid url is by fetch bad response
+  // any invalid url is caught by fetch bad response
   addTestSceneInfo("starting url reader");
   return fetch(url, { redirect: "follow" })
     .then((response: Response) => {
@@ -162,11 +160,11 @@ export async function UrlCSVReader(
         sendError(badResponseErr, "UrlCSVReader response is not ok");
         throw badResponseErr;
       }
-      //follow the url until it reaches result and get the content type
+      // follow the url until it reaches result and get the content type
       const resultUrl = response.url;
       const contentType = response.headers.get("Content-Type");
-      //assert that either resultingURL is csv or contentType is text/csv
-      //if both fail, throw error
+      // assert that either resultingURL is csv or contentType is text/csv
+      // if both fail, throw error
       if (!(resultUrl.endsWith(".csv") || contentType?.includes("text/csv"))) {
         const badResultErr = Error(
           `Failed to fetch csv format. ${response.url}, ${JSON.stringify(response.headers)}`,
@@ -194,7 +192,7 @@ export async function UrlCSVReader(
           );
         },
         error: function (parseError: Error) {
-          //this will be caught by promise.catch
+          // this will be caught by promise.catch
           throw parseError;
         },
       });

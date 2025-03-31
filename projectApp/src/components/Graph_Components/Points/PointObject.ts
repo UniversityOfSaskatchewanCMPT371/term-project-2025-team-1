@@ -34,7 +34,7 @@ export class PointObject implements PointObjectInterface {
    * Gets the selected status of the point.
    * @returns The selected status of the point as a boolean value.
    * @precondition none
-   * @postcondition Returns the current 'selected' value
+   * @returns the current 'selected' value
    */
   getSelected(): boolean {
     return this.selected;
@@ -44,7 +44,7 @@ export class PointObject implements PointObjectInterface {
    * Gets the x-axis data of the point.
    * @returns The x-axis data of the point as a string.
    * @precondition none
-   * @postcondition Returns the current 'xData' value
+   * @returns the current 'xData' value
    */
   getTimeData(): string {
     return this.timeData;
@@ -54,7 +54,7 @@ export class PointObject implements PointObjectInterface {
    * Gets the y-axis data of the point.
    * @returns The y-axis data of the point as a number.
    * @precondition none
-   * @postcondition Returns the current 'yData' value
+   * @returns the current 'yData' value
    */
   getYData(): number {
     return this.yData;

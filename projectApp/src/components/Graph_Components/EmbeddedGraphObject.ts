@@ -6,10 +6,13 @@ import { GraphObject } from "./GraphObject";
 import { Point3DObject } from "./Points/Point3DObject";
 
 /**
- * EmbeddedGraphObject is a class that extends GraphObject and implements the EmbeddedInterface
+ * EmbeddedGraphObject is a class that extends `GraphObject` and implements `EmbeddedInterface`
+ *
  * Holds attributes and methods required of a EmbeddedGraph
- * @preconditions A valid CSVDataObject
- * @postconditions Creates a new EmbeddedGraph Object
+ * @history
+ * - This inhenrits the history properties of `GraphObject`
+ * - The 'tau' property is initialized as 1.
+ * - The 'points3D' is initialized as an empty set.
  */
 export class EmbeddedGraphObject
   extends GraphObject
@@ -26,8 +29,8 @@ export class EmbeddedGraphObject
 
   /**
    * Adds embedded point vectors to the graph.
-   * pre-conditions: valid points exist in the csvDataObject of the graph
-   * post-conditions: PointObject's containing the vectors are stored in the points array attribute
+   * @precondition this graph's csv is a valid non-null data set
+   * @postcondition the points3D array now contains PointObjects for each point in the csv data
    */
   addPoints(): void {
     const data = this.csvData.getData();
@@ -61,14 +64,18 @@ export class EmbeddedGraphObject
 
   /**
    * Calculated the embedded time vector dimensions for the given time.
-   * Uses the data set selected in the csvDataObject of the graph
-   * Vector return is of the form [y[time], y[time - tau], y[time - 2*tau]] where y is the data set column selected
-   * pre-conditions: time >= 0, csvDataObject must contain valid data set and a valid data set much be selected
-   * post-conditions: none
-   * @param time - the index/time of the data set calculating the vector for
-   * @param csvData - the data contained in the csvDataObject of the graph
-   *                - this is passed in instead of calling the method to obtain it to avoid uneccessary calls to the methods for every point being calculated
+   * - Uses the data set selected in the csvDataObject of the graph.
+   * - Vector return is of the form [y[time], y[time - tau], y[time - 2*tau]] where y is the data set column selected
+   *
+   * @param time the index/time of the data set calculating the vector for
+   * @param csvData the data contained in the csvDataObject of the graph
+   * - this is passed in instead of calling the method to obtain it to avoid uneccessary calls to the methods for every point being calculated
    * @returns an array contaning the coordinates of the vector in the form [x, y, z]
+   * - for [data[time], data[time - tau], data[time - 2*tau]] of the selected data column
+   * @preconditions
+   * - `time` >= 0
+   * - `csvDataObject` must contain valid data set and a valid data set much be selected
+   * @postcondition none
    */
   calculateVectorPosition(
     time: number,
@@ -104,13 +111,16 @@ export class EmbeddedGraphObject
 
   /**
    * gets the value of the currently seelcted column at the line specified in index
-   * pre-conditions: csvData contains valid data, and the graph has a column selected that exists in the csv file
-   * post-conditions: none
    * @param index line in csv file that contains the coordniate value being retreived
-   * @param csvData - the data contained in the csvDataObject of the graph
-   *                - this is passed in instead of calling the method to obtain it to avoid uneccessary calls to the methods for every point being calculated
-   * @returns if index is >=0, the value at the index (line) of the csv in the column currently selected
-   *          otherwise, 0
+   * @param csvData the data contained in the csvDataObject of the graph
+   * - this is passed in instead of calling the method to obtain it to avoid uneccessary calls to the methods for every point being calculated
+   * @returns
+   * - if `index` is >=0, the value at the index (line) of the csv in the column currently selected
+   * - otherwise, 0
+   * @preconditions
+   * - `csvData` contains valid data
+   * - the graph has a column selected that exists in the csv file
+   * @postcondition none
    */
   retreiveCoordinateValue(
     index: number,
@@ -129,7 +139,7 @@ export class EmbeddedGraphObject
 
   /**
    * gets the dimensions of the graph
-   * @preconditions none
+   * @precondition none
    * @returns the current dimensions of the graph
    */
   getDimensions(): { width: number; height: number; depth?: number } {
@@ -138,11 +148,11 @@ export class EmbeddedGraphObject
 
   /**
    * Sets the dimenstion of the graph to the new values
-   * @preconditions all given dimenstions must be valid numbers for the dimensions of a graph
+   * @param width new width of the graph
+   * @param height new height of the graph
+   * @param depth new depth of the graph
+   * @preconditions `width`, `height`, and `depth` must be valid numbers for the dimensions of a graph
    * @postconditions the dimension attribute of the graphis updated to contain the given values
-   * @param width the new width of the graph
-   * @param height the new height of the graph
-   * @param depth thew new depth of the graph
    */
   setDimensions(width: number, height: number, depth?: number): void {
     const newDimensions = { width: width, height: height, depth: depth };
@@ -151,8 +161,8 @@ export class EmbeddedGraphObject
 
   /**
    * Gets the value of tau
-   * pre-conditions: none
-   * post-conditions: returns the current value of tau
+   * @precondition none
+   * @returns returns the current value of tau
    */
   getTau(): number {
     return this.tau;
@@ -160,9 +170,9 @@ export class EmbeddedGraphObject
 
   /**
    * Sets the value of tau
-   * @param newTau - a number greater than or eqaul to 1
-   * pre-condition: a valid tau value
-   * post-conditions: the value of tau is updated to newTau
+   * @param newTau a number greater than or equal to 1
+   * @precondition `newTau` is a positive number
+   * @postcondition the value of tau is updated to newTau
    */
   setTau(newTau: number): void {
     if (newTau < 1) {
@@ -182,9 +192,9 @@ export class EmbeddedGraphObject
   }
 
   /**
-   * This method gets the points in the 3D Embedded Graph
+   * Get the points in the 3D Embedded Graph
    * @precondition a non-empty array of 3d points
-   * @postcondition returns the 3d points of the Embedded Graph
+   * @returns the 3d points of the Embedded Graph
    */
 
   getPoints3D(): Point3DInterface[] {
@@ -197,7 +207,7 @@ export class EmbeddedGraphObject
   }
 
   /**
-   * This methods gets the max range of the csv data file that will be used on the 3d embedded graph
+   * Get the max range of the csv data file that will be used on the 3d embedded graph
    * @precondition the max range must be greater than the min range
    * @postcondition the range of the csv data set
    */
@@ -214,9 +224,9 @@ export class EmbeddedGraphObject
   }
 
   /**
-   * Sets the max range that will be used on the 3d Embedded graph
-   * @precondition a valid non-null data set of the csv file
-   * @postcondition sets the max range used in the 3d Embedded graph
+   * Set the max range that will be used on the 3d Embedded graph
+   * @precondition this graph's csv is a valid non-null data set
+   * @postcondition sets the max range used in the 3D Embedded graph
    */
   setRange(): void {
     if (this.getCSVData().getData().length <= 0) {
@@ -251,12 +261,14 @@ export class EmbeddedGraphObject
   }
 
   /**
-   * This is used to update the 3D embedded graph
+   * Update the 3D embedded graph
+   * @precondition this graph's csv is a valid non-null data set
+   * @postcondition the graph is cleared and updated with new points
    */
   updateEmbeddedPoints(): void {
     this.points3D = [];
 
-    //The csv data points are already being cleared on TimeSeries updatePointPosition()
+    // The csv data points are already being cleared on TimeSeries updatePointPosition()
     this.addPoints();
     sendLog(
       "info",

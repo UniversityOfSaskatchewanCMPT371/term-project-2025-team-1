@@ -29,7 +29,7 @@ export class Point3DObject implements Point3DInterface {
   /**
    * Gets the point object that the 3D point is referencing to
    * @precondition none
-   * @postcondition returns the point object reference
+   * @returns the point object reference
    */
   getObject(): PointObjectInterface {
     return this.object;
@@ -38,7 +38,7 @@ export class Point3DObject implements Point3DInterface {
   /**
    * Get the x position of the point in the VR scene
    * @precondition none
-   * @postcondition returns the x-coordinate of the 3D point
+   * @returns the x-coordinate of the 3D point
    */
   getXPosition(): number {
     return this.point3Dposition[0];
@@ -47,7 +47,7 @@ export class Point3DObject implements Point3DInterface {
   /**
    * Get the y position of the point in the VR scene
    * @precondition none
-   * @postcondition returns the y-coordinate of the 3D point
+   * @returns the y-coordinate of the 3D point
    */
   getYPosition(): number {
     return this.point3Dposition[1];
@@ -56,7 +56,7 @@ export class Point3DObject implements Point3DInterface {
   /**
    * Get the z position of the point in the VR scene
    * @precondition none
-   * @postcondition returns the z-coordinate of the 3D point
+   * @returns the z-coordinate of the 3D point
    */
   getZPosition(): number {
     return this.point3Dposition[2];
@@ -65,7 +65,7 @@ export class Point3DObject implements Point3DInterface {
   /**
    * Get the x, y and z position of the 3d point in the vr scene
    * @precondition none
-   * @postcondition returns [x, y, z] coordinate of the 3d point
+   * @returns [x, y, z] coordinate of the 3d point
    */
   getPosition(): [number, number, number] {
     return this.point3Dposition;

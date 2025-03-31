@@ -8,7 +8,7 @@ import { Point3DObject } from "./Point3DObject";
  *
  * @param {PointRef} pointRef - Reference object containing point data and state
  * @precondition `pointRef` must be a valid PointRef object with defined position, selected state, and x,y,z data
- * @postcondition Returns a Point3D component with initialized Point Object data
+ * @returns a Point3D component with initialized Point Object data
  */
 export default function Create3DPoint({
   pointRef,

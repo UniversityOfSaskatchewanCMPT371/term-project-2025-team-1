@@ -8,7 +8,7 @@ import { addTestSceneInfo } from "../../pages/Scene/TestScene";
 /**
  * Class representing a CSV data structure that implements the CSVData interface.
  * Handles loading, storing, and managing CSV data for VR visualization.
- * 
+ *
  * @history
  * - The 'name', 'yHeader', and 'timeHeader' properties are initialized as empty strings.
  * - The 'csvHeaders', 'data', and 'points' properties are initialized as empty sets.
@@ -67,7 +67,7 @@ export class CSVDataObject implements CSVDataInterface {
   /**
    * Get the array of Point Objects
    * @precondition none
-   * @postcondition returns the point objects array
+   * @returns the point objects array
    */
   getPoints(): PointObjectInterface[] {
     return this.points;
@@ -151,7 +151,7 @@ export class CSVDataObject implements CSVDataInterface {
    * - if theres only 1, then that means that there is only a "Time" header,
    *   or that the csv file loaded doesn't have a "Time" header,
    *   with both cases being invalid
-   * @postcondition returns the first non "Time" header in the data set
+   * @returns the first non "Time" header in the data set
    */
   findFirstHeader(): string {
     let error;
@@ -196,7 +196,7 @@ export class CSVDataObject implements CSVDataInterface {
    * @preconditions
    * - `key` must be a non-empty string
    * - this.data must be initialized
-   * @postcondition Returns matching record or null without modifying data
+   * @returns matching record or null without modifying data
    */
   getDataByKey(key: string): Record<string, string | number> | null {
     let result: Record<string, string | number> | null = null;
@@ -222,7 +222,7 @@ export class CSVDataObject implements CSVDataInterface {
    * - `time` must be a valid time string format
    * - this.data must be initialized
    * - this.yHeader must be set
-   * @postcondition Returns matching record if found or null otherwise without modifying data
+   * @returns matching record if found or null otherwise without modifying data
    */
   getDataByTime(time: string): Record<string, string | number> | null {
     let result: Record<string, string | number> | null = null;

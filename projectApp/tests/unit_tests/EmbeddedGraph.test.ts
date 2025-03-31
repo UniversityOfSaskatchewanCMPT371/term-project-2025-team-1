@@ -89,87 +89,83 @@ describe("Embedded Graph test", () => {
 
   test("getTau returns current tau value", () => {
     graph.setTau(5);
-    
+
     expect(graph.getTau()).toBe(5);
   });
 
-
   // testing setDimensions() and getDimensions()
-    test("setting and getting dimensions correctly", () => {
-      graph.setDimensions(100, 200, 300);
-      const dims = graph.getDimensions();
-      expect(dims).toStrictEqual({ width: 100, height: 200, depth: 300 });
-    });
-  
+  test("setting and getting dimensions correctly", () => {
+    graph.setDimensions(100, 200, 300);
+    const dims = graph.getDimensions();
+    expect(dims).toStrictEqual({ width: 100, height: 200, depth: 300 });
+  });
 
-    // test updatePoints() and addPoints()
-    test("updating point selection status", () => {
-      graph.getCSVData().populatePoints();
+  // test updatePoints() and addPoints()
+  test("updating point selection status", () => {
+    graph.getCSVData().populatePoints();
+    graph.addPoints();
+
+    graph.getPoints3D()[0].getObject().setSelected(true);
+    graph.updatePoints();
+    expect(graph.getPoints3D()[0].getObject().selected).toBe(false);
+  });
+
+  test("testing if RangeError will be thrown when CSV data is empty", () => {
+    // An empty array
+    const originalGetData = graph.getCSVData().getData();
+    graph.getCSVData().getData = () => [];
+
+    expect(() => {
       graph.addPoints();
-      
-      graph.getPoints3D()[0].getObject().setSelected(true);
-      graph.updatePoints();
-      expect(graph.getPoints3D()[0].getObject().selected).toBe(false);
-    });
+    }).toThrowError(RangeError);
 
-    
-    test("testing if RangeError will be thrown when CSV data is empty", () => {
-      // An empty array
-      const originalGetData = graph.getCSVData().getData;
-      graph.getCSVData().getData = () => [];
-      
-      expect(() => {
-        graph.addPoints();
-      }).toThrowError(RangeError);
-      
-      // Putting everything back
-      graph.getCSVData().getData = originalGetData;
-    });
-
+    // Putting everything back
+    graph.getCSVData().data = originalGetData;
+  });
 
   // Testing getRange()
-    test("returns yRange[1] if valid else, throws error", () => {
-      // Test valid range return
-      graph.getAxes().yRange = [1, 10];
-      expect(graph.getRange()).toBe(10);
-      
-      // Test different valid value
-      graph.getAxes().yRange = [5, 100];
-      expect(graph.getRange()).toBe(100);
-      
-      // Test invalid range throws
-      graph.getAxes().yRange = [10, 5];
-      expect(() => graph.getRange()).toThrow();
-      
-      // Equal values throw
-      graph.getAxes().yRange = [5, 5];
-      expect(() => graph.getRange()).toThrow();
-    });
+  test("returns yRange[1] if valid else, throws error", () => {
+    // Test valid range return
+    graph.getAxes().yRange = [1, 10];
+    expect(graph.getRange()).toBe(10);
 
+    // Test different valid value
+    graph.getAxes().yRange = [5, 100];
+    expect(graph.getRange()).toBe(100);
+
+    // Test invalid range throws
+    graph.getAxes().yRange = [10, 5];
+    expect(() => graph.getRange()).toThrow();
+
+    // Equal values throw
+    graph.getAxes().yRange = [5, 5];
+    expect(() => graph.getRange()).toThrow();
+  });
 
   // Testing updateEmbeddedPoints()
   test("updateEmbeddedPoints recreates points array", () => {
     graph.addPoints();
     const originalPoints = graph.getPoints3D();
-    
+
     graph.updateEmbeddedPoints();
     const newPoints = graph.getPoints3D();
-    
+
     expect(newPoints).not.toBe(originalPoints); // Should be new array
     expect(newPoints.length).toBe(originalPoints.length);
   });
 
-
   test("setting time to a negative value", () => {
     expect(() => {
-      graph.calculateVectorPosition(-1, [{
-        key: {}
-      }]);
+      graph.calculateVectorPosition(-1, [
+        {
+          key: {},
+        },
+      ]);
     }).toThrowError("time must be >= 0");
   });
 
   test("getPoints3D throws error when empty", () => {
-    graph["points3D"] = [];
+    graph.points3D = [];
     expect(() => graph.getPoints3D()).toThrow();
-  }); 
+  });
 });

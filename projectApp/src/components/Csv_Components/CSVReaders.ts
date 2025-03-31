@@ -4,14 +4,14 @@ import { sendError, sendLog } from "../../logger-frontend";
 import { addTestSceneInfo } from "../../pages/Scene/TestScene";
 
 /**
- * This function reads the headers of a csv file and stores it
+ * Read the headers of a csv file and stores it
  *
  * @param file File path for csv file
  * @returns list of Record pairs of (attribute,value) as Promise<Record<string,string | number>[]>
  *
  * @preconditions `file` path must be a valid file path to a .csv file
  * @postconditions
- *    - None (the function does not modify any external state)
+ *    - None (does not modify any external state)
  *    - The returned promise resolves to an object containing a list of record of (attribute,value) pairs
  *    - If the file is empty or cannot be parsed, an error is thrown
  **/
@@ -64,7 +64,7 @@ export async function LocalCSVReader(
  *
  * @preconditions `File` must have a name that ends with ".csv" extension
  * @postconditions
- *    - None (the function does not modify any external state)
+ *    - None (does not modify any external state)
  *    - The returned promise resolves to an object containing a list of record of (attribute,value) pairs
  *    - If the file is empty or cannot be parsed, an error is thrown
  **/
@@ -142,7 +142,7 @@ export function LocalCsvReader(
  *
  * @precondition `url` must be a valid url to a csv file, either ends with ".csv" or contains a csv file
  * @postcondition
- *    - None (the function does not modify any external state)
+ *    - None (does not modify any external state)
  *    - The returned promise resolves to an object containing a list of record of (attribute,value) pairs
  *    - If the file is empty or cannot be parsed, an error is thrown
  */

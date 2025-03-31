@@ -39,7 +39,7 @@ export class CSVDataObject implements CSVDataInterface {
   }
 
   /**
-   * This method creates points from the csv file that will be referenced by the points of
+   * Create points from the csv file that will be referenced by the points of
    * both the 2D and 3D Graph
    * @precondition none
    * @postcondition fills up the array of PointObjects used by the two graphs
@@ -65,7 +65,7 @@ export class CSVDataObject implements CSVDataInterface {
   }
 
   /**
-   * This method gets the array of Point Objects
+   * Get the array of Point Objects
    * @precondition none
    * @postcondition returns the point objects array
    */
@@ -74,7 +74,7 @@ export class CSVDataObject implements CSVDataInterface {
   }
 
   /**
-   * This method sets a new point object and replaces the current point object
+   * Set a new point object and replaces the current point object
    * @param points An array of point objects
    * @precondition `points` is a valid array of PointObjects
    * @postcondition sets the new array of point objects
@@ -146,7 +146,7 @@ export class CSVDataObject implements CSVDataInterface {
   }
 
   /**
-   * This method finds the first non "Time" header in the csv data file and returns it
+   * Find the first non "Time" header in the csv data file and returns it
    * @precondition The list of headers must be greater than 1
    * - if theres only 1, then that means that there is only a "Time" header,
    *   or that the csv file loaded doesn't have a "Time" header,

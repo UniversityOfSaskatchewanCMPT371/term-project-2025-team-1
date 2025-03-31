@@ -21,6 +21,7 @@ export default function DropdownUI({
   const [infoTau, setInfoTau] = useState("");
   const [infoRange, setInfoRange] = useState("");
   const [infoHeader, setInfoHeader] = useState("");
+  const [headers, setHeaders] = useState<string[]>([]); 
 
   /**
    * This is the function for creating a loaded csv object displayed in the DropDown UI
@@ -66,6 +67,7 @@ export default function DropdownUI({
     setInfoTau(mainController.getGraphController().getTauForDropDown()); //Later change this to getting tau value from the graph itself rather than the other useState
     setInfoRange(mainController.getGraphController().getEmbeddedRange().toString());
     setInfoHeader(mainController.getGraphController().getModelEmData().getCSVData().getYHeader());
+    setHeaders(mainController.getGraphController().getModelEmData().getCSVData().getCSVHeaders());
     mainController.updateMainScene();
   }
 
@@ -210,9 +212,14 @@ export default function DropdownUI({
             >
               <Text positionLeft={10}>Tau Value: {infoTau}</Text>
             </Container>
-            <Text positionLeft={10}>Current Y Header: {infoHeader}</Text>
+            <Text positionLeft={10}>Y Header:  {infoHeader}</Text>
             <Text positionLeft={10} positionTop={15}>EG Range: {infoRange}</Text>
             <Text positionLeft={10} positionTop={30}>Headers: </Text>
+            {headers.map((header, index) => (
+              <Text key={index} positionLeft={92} positionTop={30 + (index + 1) * 10}>
+                {header}
+              </Text>
+            ))}
           </Container>
         </Container>
       </>

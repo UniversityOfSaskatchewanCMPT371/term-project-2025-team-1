@@ -11,8 +11,7 @@ test("log file exists", () => {
 });
 
 const indexedDataString =
-    '[{\\"Time\\":0,\\"Some\\":1,\\"B\\":2},{\\"Time\\":1,\\"Some\\":2,\\"B\\":4},{\\"Time\\":2,\\"Some\\":3,\\"B\\":6},{\\"Time\\":3,\\"Some\\":4,\\"B\\":8},{\\"Time\\":4,\\"Some\\":5,\\"B\\":10},{\\"Time\\":5,\\"Some\\":6,\\"B\\":12},{\\"Time\\":6,\\"Some\\":7,\\"B\\":14},{\\"Time\\":7,\\"Some\\":8,\\"B\\":16},{\\"Time\\":8,\\"Some\\":9,\\"B\\":18},{\\"Time\\":9,\\"Some\\":10,\\"B\\":20}]';
-  
+  '[{\\"Time\\":0,\\"Some\\":1,\\"B\\":2},{\\"Time\\":1,\\"Some\\":2,\\"B\\":4},{\\"Time\\":2,\\"Some\\":3,\\"B\\":6},{\\"Time\\":3,\\"Some\\":4,\\"B\\":8},{\\"Time\\":4,\\"Some\\":5,\\"B\\":10},{\\"Time\\":5,\\"Some\\":6,\\"B\\":12},{\\"Time\\":6,\\"Some\\":7,\\"B\\":14},{\\"Time\\":7,\\"Some\\":8,\\"B\\":16},{\\"Time\\":8,\\"Some\\":9,\\"B\\":18},{\\"Time\\":9,\\"Some\\":10,\\"B\\":20}]';
 
 describe("Scenario: Testing the local CSV Loader functionality for csvLoading", () => {
   const filename = "indexedData.csv";
@@ -72,7 +71,6 @@ describe("Scenario: Testing the local CSV Loader functionality for csvLoading", 
     ); // in main branch, the first yHeader is X
     expect(response).toBe(true);
   });
-
 });
 
 describe("Scenario: Testing the URL CSV Loader functionality for csvLoading", () => {
@@ -134,5 +132,4 @@ describe("Scenario: Testing the URL CSV Loader functionality for csvLoading", ()
     );
     expect(response).toBe(true);
   });
-
 });

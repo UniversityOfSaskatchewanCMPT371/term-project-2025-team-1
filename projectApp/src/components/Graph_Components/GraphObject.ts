@@ -18,7 +18,6 @@ import { CSVDataObject } from "../Csv_Components/CSVDataObject";
 export class GraphObject implements GraphInterface {
   name: string;
   csvData: CSVDataObject;
-  dimensions: { width: number; height: number; depth?: number };
   axes: {
     xRange: [number, number];
     yRange: [number, number];
@@ -39,7 +38,6 @@ export class GraphObject implements GraphInterface {
     // CSVDataObject is required, so the check is unnecessary.
     this.name = csvdata.getName();
     this.csvData = csvdata;
-    this.dimensions = { width: 10, height: 10, depth: 10 };
     this.axes = {
       xRange: [0, 0],
       yRange: [0, 0],

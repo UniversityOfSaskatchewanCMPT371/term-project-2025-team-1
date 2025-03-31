@@ -8,9 +8,17 @@ import { PointObject } from "./PointObject";
  * Contains the attributes and methods required for a 3D point.
  *
  * @implements {Point3DInterface}
+ *
+ * @invariants
+ * - 'object' property is always initialized on construction and is never set again
+ * - 'point3Dposition' property is always a three length number array of [x, y, z] that holds the point's 3D position
+ *
+ * @history
+ * - 'object' is initialized as the passed in `object`
+ * - 'point3Dposition' is initialized as [0, 0, 0]
  */
 export class Point3DObject implements Point3DInterface {
-  object: PointObjectInterface; //Reference to the point object used by both 2D and 3D points
+  object: PointObjectInterface; // Reference to the point object used by both 2D and 3D points
   point3Dposition: [number, number, number];
 
   constructor(object: PointObject) {
@@ -80,7 +88,7 @@ export class Point3DObject implements Point3DInterface {
 
   /**
    * This method sets the position of the 3D point in the y axis of the vr scene
-   * @param x number representing the y position
+   * @param y number representing the y position
    * @precondition none
    * @postcondition sets the y position of the 3d point
    */
@@ -95,7 +103,7 @@ export class Point3DObject implements Point3DInterface {
 
   /**
    * This method sets the position of the 3D point in the z axis of the vr scene
-   * @param x number representing the z position
+   * @param z number representing the z position
    * @precondition none
    * @postcondition sets the z position of the 3d point
    */
@@ -110,7 +118,7 @@ export class Point3DObject implements Point3DInterface {
   /**
    * This method sets the [x, y, z] position of the 3d point in the vr scene
    * @param position [number, number, number] representing a x,y,z coordinate
-   * @precondition parameter must be an array of three numbers
+   * @precondition `position` must be an array of three numbers
    * @postcondition On success, this method will set the new position of the 3d point
    */
   setPoint3DPosition(position: [number, number, number]): void {

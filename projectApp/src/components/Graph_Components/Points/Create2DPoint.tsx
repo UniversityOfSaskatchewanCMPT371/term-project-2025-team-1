@@ -7,7 +7,7 @@ import { Point2DObject } from "./Point2DObject";
  * Creates and renders a 2D point visualization based on provided point data.
  *
  * @param {PointRef} pointRef - Reference object containing point data and state
- * @precondition pointRef must be a valid PointRef object with defined position, selected state, and x/y data
+ * @precondition `pointRef` must be a valid PointRef object with defined position, selected state, and x/y data
  * @postcondition Returns a Point2D component with initialized PointClass data
  */
 export default function Create2DPoint({

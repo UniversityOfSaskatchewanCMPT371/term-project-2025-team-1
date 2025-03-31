@@ -8,9 +8,17 @@ import { PointObject } from "./PointObject";
  * Contains the attributes and methods required for a 2D point.
  *
  * @implements {Point2DInterface}
+ *
+ * @invariants
+ * - 'object' property is always initialized on construction and is never set again
+ * - 'point2Dposition' property is always a two length number array of [x, y] that holds the point's 2D position
+ *
+ * @history
+ * - 'object' is initialized as the passed in `object`
+ * - 'point2Dposition' is initialized as [0, 0]
  */
 export class Point2DObject implements Point2DInterface {
-  object: PointObjectInterface; //Reference to the point object used by both 2D and 3D points
+  object: PointObjectInterface; // Reference to the point object used by both 2D and 3D points
   point2Dposition: [number, number];
 
   constructor(object: PointObject) {
@@ -62,7 +70,7 @@ export class Point2DObject implements Point2DInterface {
 
   /**
    * This method sets the position of the 2D point in the y axis of the 2D Time Series Graph
-   * @param x number representing the y position
+   * @param y number representing the y position
    * @precondition none
    * @postcondition sets the y position of the 2d point
    */
@@ -78,7 +86,7 @@ export class Point2DObject implements Point2DInterface {
   /**
    * This method sets the x and y positions of the 2d point in the 2D Time Series Graph
    * @param position [number, number] representing the x and y coordinate
-   * @precondition parameter must be an array of two numbers
+   * @precondition `position` must be an array of two numbers
    * @postcondition On success, this method will set the new position of the 2d point
    */
   setPoint2DPosition(position: [number, number]): void {

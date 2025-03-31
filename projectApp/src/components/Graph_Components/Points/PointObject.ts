@@ -27,14 +27,14 @@ export class PointObject implements PointObjectInterface {
     this.yData = 0;
   }
 
-  //The setters and getters for the Point Class
-  //Getters
+  // The setters and getters for the Point Class
+  // Getters
 
   /**
    * Gets the selected status of the point.
+   * @returns The selected status of the point as a boolean value.
    * @precondition none
    * @postcondition Returns the current 'selected' value
-   * @returns The selected status of the point as a boolean value.
    */
   getSelected(): boolean {
     return this.selected;
@@ -42,9 +42,9 @@ export class PointObject implements PointObjectInterface {
 
   /**
    * Gets the x-axis data of the point.
+   * @returns The x-axis data of the point as a string.
    * @precondition none
    * @postcondition Returns the current 'xData' value
-   * @returns The x-axis data of the point as a string.
    */
   getTimeData(): string {
     return this.timeData;
@@ -52,23 +52,23 @@ export class PointObject implements PointObjectInterface {
 
   /**
    * Gets the y-axis data of the point.
+   * @returns The y-axis data of the point as a number.
    * @precondition none
    * @postcondition Returns the current 'yData' value
-   * @returns The y-axis data of the point as a number.
    */
   getYData(): number {
     return this.yData;
   }
 
-  //End of Getters
+  // End of Getters
 
-  //Setters
+  // Setters
 
   /**
    * Sets the selected status of the point.
-   * @precondition The 'select' parameter is a boolean value.
-   * @postcondition The 'selected' property is updated to the provided value.
    * @param {boolean} select - A boolean value representing the new selected status.
+   * @precondition The `select` parameter is a boolean value.
+   * @postcondition The 'selected' property is updated to the provided value.
    */
   setSelected(select: boolean): void {
     this.selected = select;
@@ -78,9 +78,9 @@ export class PointObject implements PointObjectInterface {
 
   /**
    * Sets the x-axis data of the point.
-   * @precondition The 'time' parameter is a string.
-   * @postcondition The 'timeData' property is updated to the provided value.
    * @param {string} time - A string representing the new x-axis data.
+   * @precondition The `time` parameter is a string.
+   * @postcondition The 'timeData' property is updated to the provided value.
    */
   setTimeData(time: string): void {
     this.timeData = time;
@@ -91,9 +91,9 @@ export class PointObject implements PointObjectInterface {
   }
   /**
    * Sets the y-axis data of the point.
-   * @precondition The 'y' parameter is a number.
-   * @postcondition The 'yData' property is updated to the provided value.
    * @param {number} y - A number representing the new y-axis data.
+   * @precondition The `y` parameter is a number.
+   * @postcondition The 'yData' property is updated to the provided value.
    */
   setYData(y: number): void {
     this.yData = y;
@@ -104,5 +104,5 @@ export class PointObject implements PointObjectInterface {
     );
   }
 
-  //End of Setters
+  // End of Setters
 }

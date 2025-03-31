@@ -75,15 +75,9 @@ export default function DropdownUI({
   function update(): void {
     mainController.getCSVController().generate(selectTau);
     setInfoTau(graphController.getTauForDropDown()); //Later change this to getting tau value from the graph itself rather than the other useState
-    setInfoRange(
-      graphController.getEmbeddedRange().toString(),
-    );
-    setInfoHeader(
-      csvData.getYHeader(),
-    );
-    setHeaders(
-      csvData.getCSVHeaders(),
-    );
+    setInfoRange(graphController.getEmbeddedRange().toString());
+    setInfoHeader(csvData.getYHeader());
+    setHeaders(csvData.getCSVHeaders());
     mainController.updateMainScene();
   }
 

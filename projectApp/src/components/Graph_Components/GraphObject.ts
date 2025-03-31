@@ -16,6 +16,7 @@ import { CSVDataObject } from "../Csv_Components/CSVDataObject";
  * The 'points' array is mutable.
  */
 export class GraphObject implements GraphInterface {
+  id: string;
   name: string;
   csvData: CSVDataObject;
   axes: {
@@ -36,12 +37,45 @@ export class GraphObject implements GraphInterface {
    */
   constructor(csvdata: CSVDataObject) {
     // CSVDataObject is required, so the check is unnecessary.
+    this.id = csvdata.getName();
     this.name = csvdata.getName();
     this.csvData = csvdata;
     this.axes = {
       xRange: [0, 0],
       yRange: [0, 0],
     };
+  }
+
+  /**
+   * Gets the ID of the graph.
+   * @param none
+   *
+   * @precondition The graph instance must have a valid ID.
+   * @postcondition The 'id' property is returned as a string.
+   */
+  getId(): string {
+    return this.id;
+  }
+
+  /**
+   * Sets the ID of the graph.
+   * @param {string} id - A string representing the ID of the graph.
+   *
+   * @precondition The 'id' parameter must be a non-empty string.
+   * @postcondition The 'id' property is set to the provided ID. If the ID is empty or not a string, an error is thrown.
+   */
+  setId(id: string): void {
+    if (id.trim() === "" || typeof id !== "string") {
+      const error = new SyntaxError("Invalid ID");
+      sendError(error, "ID must be a non-empty string. (GraphObject.ts");
+      throw error;
+    }
+    this.id = id;
+
+    sendLog(
+      "info",
+      `setID() was called on Graph Object, ID is now ${id} (GraphObject.ts)`,
+    );
   }
 
   /**

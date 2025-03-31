@@ -7,6 +7,7 @@ import { CSVDataInterface } from "./CSVInterfaces";
 
 export interface GraphInterface extends DataInterface {
   // Basic graph properties
+  id: string; // identifier for the graph
 
   //The csv data used by the graph
   csvData: CSVDataInterface;
@@ -18,6 +19,19 @@ export interface GraphInterface extends DataInterface {
   };
 
   // Basic getters and setters
+  /**
+   * Gets the graph's unique identifier
+   * pre-condition: none
+   * post-condition: returns the current id string, unchanged
+   */
+  getId(): string;
+
+  /**
+   * Sets the graph's unique identifier
+   * pre-condition: id must be a non-empty string
+   * post-condition: graph's id is updated to the new value
+   */
+  setId(id: string): void;
 
   /**
    * Gets the axes configuration

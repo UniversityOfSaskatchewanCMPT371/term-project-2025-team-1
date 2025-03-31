@@ -21,7 +21,12 @@ export default function DropdownUI({
   const [infoTau, setInfoTau] = useState("");
   const [infoRange, setInfoRange] = useState("");
   const [infoHeader, setInfoHeader] = useState("");
-  const [headers, setHeaders] = useState<string[]>([]); 
+  const [headers, setHeaders] = useState<string[]>([]);
+  const itemsPerColumn = 6; // Number of items per column for headers
+  // This divides the columns
+  const itemGroup = [...Array(Math.ceil(headers.length / itemsPerColumn))].map((_, i) =>
+    headers.slice(i * itemsPerColumn, (i + 1) * itemsPerColumn)
+  );
 
   /**
    * This is the function for creating a loaded csv object displayed in the DropDown UI
@@ -214,12 +219,30 @@ export default function DropdownUI({
             </Container>
             <Text positionLeft={10}>Y Header:  {infoHeader}</Text>
             <Text positionLeft={10} positionTop={15}>EG Range: {infoRange}</Text>
-            <Text positionLeft={10} positionTop={30}>Headers: </Text>
-            {headers.map((header, index) => (
-              <Text key={index} positionLeft={92} positionTop={30 + (index + 1) * 10}>
-                {header}
-              </Text>
-            ))}
+            <Container
+              flexDirection={"row"}
+              alignItems={"flex-start"}
+              justifyContent={"flex-start"}
+              positionLeft={10}
+              positionTop={30}
+            >
+              <Text>Headers:</Text>
+              {itemGroup.map((group, col) => (
+                <Container
+                  key={col}
+                  flexDirection={"column"}
+                  alignItems={"flex-start"}
+                  justifyContent={"flex-start"}
+                  marginRight={20}
+                  positionTop={25}
+                  positionLeft={15}
+                >
+                  {group.map((header, row) => (
+                    <Text key={row}>{header}</Text>
+                  ))}
+                </Container>
+              ))}
+            </Container>
           </Container>
         </Container>
       </>

@@ -12,6 +12,12 @@ export interface GraphInterface extends DataInterface {
   //The csv data used by the graph
   csvData: CSVDataInterface;
 
+  position: {
+    x: number;
+    y: number;
+    z: number; // Optional for possible 3D implementation
+  };
+
   // Axes configuration
   axes: {
     xRange: [number, number]; // Min and max values for x-axis
@@ -32,6 +38,20 @@ export interface GraphInterface extends DataInterface {
    * post-condition: graph's id is updated to the new value
    */
   setId(id: string): void;
+
+  /**
+   * Gets the graph's position
+   * pre-condition: none
+   * post-condition: returns the current position object
+   */
+  getPosition(): { x: number; y: number; z?: number };
+
+  /**
+   * Sets the graph's position
+   * pre-condition: x, y must be valid numbers
+   * post-condition: graph's position is updated to the new values
+   */
+  setPosition(x: number, y: number, z?: number): void;
 
   /**
    * Gets the axes configuration

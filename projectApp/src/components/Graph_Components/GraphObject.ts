@@ -19,6 +19,8 @@ export class GraphObject implements GraphInterface {
   id: string;
   name: string;
   csvData: CSVDataObject;
+  dimensions: { width: number; height: number; depth?: number };
+  position: { x: number; y: number; z: number };
   axes: {
     xRange: [number, number];
     yRange: [number, number];
@@ -40,6 +42,7 @@ export class GraphObject implements GraphInterface {
     this.id = csvdata.getName();
     this.name = csvdata.getName();
     this.csvData = csvdata;
+    this.dimensions = { width: 10, height: 10, depth: 10 };
     this.axes = {
       xRange: [0, 0],
       yRange: [0, 0],
@@ -108,6 +111,45 @@ export class GraphObject implements GraphInterface {
     sendLog(
       "info",
       `setName() was called on Graph Object, name of the Graph is now ${title} (GraphObject.ts)`,
+    );
+  }
+
+  // Position getters and setters
+  /**
+   * Get the position of the graph.
+   * @param none
+   *
+   * @precondition The graph instance must have a valid position.
+   * @postcondition The 'position' property is returned as an object with 'x', 'y', and 'z' properties.
+   */
+  getPosition(): { x: number; y: number; z?: number } {
+    return this.position;
+  }
+
+  /**
+   * Set the position of the graph.
+   * @param {number} x - A number representing the x-coordinate of the graph.
+   * @param {number} y - A number representing the y-coordinate of the graph.
+   * @param {number} z - A number representing the z-coordinate of the graph.
+   *
+   * @precondition The 'x', 'y', and 'z' parameters must be numbers.
+   * @postcondition The 'position' property is set to an object with 'x', 'y', and 'z' properties. If any of the parameters are not numbers, an error is thrown.
+   */
+  setPosition(x: number, y: number, z: number): void {
+    if (
+      typeof x !== "number" ||
+      typeof y !== "number" ||
+      typeof z !== "number"
+    ) {
+      const error = new TypeError("Invalid Positions");
+      sendError(error, "Position coordinates must be numbers. (GraphObject.ts");
+      throw error;
+    }
+    this.position = { x, y, z };
+
+    sendLog(
+      "info",
+      `setPosition() was called on Graph Object, position: [${x}, ${y}, ${z}] (GraphObject.ts)`,
     );
   }
 

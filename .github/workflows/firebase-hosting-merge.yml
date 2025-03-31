@@ -13,6 +13,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      # need to build and test before deploying, as this job runs
+      # independently of the main CI workflow
       - name: Run the build, lint, test flow
         run: |
           npm ci
@@ -28,3 +30,29 @@ jobs:
           entryPoint: './projectApp'
           channelId: live
           projectId: cmpt371-2025-t1
+
+  # Elastic running at OC during term
+  send-logs-to-elastic:
+    runs-on: ubuntu-latest
+    needs: [build_and_deploy]
+    if: always()
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Install dependencies
+        run: npm install
+      - name: Upload GitHub Action workflows logs to elastic
+        uses: loop1dev/github-actions-to-elk@v1.0.0
+        with:
+          githubToken: "${{ secrets.GITHUB }}"
+          githubOrg: "UniversityOfSaskatchewanCMPT371"
+          githubRepository: "term-project-2025-team-1"
+          githubRunId: "${{ github.run_id }}"
+          elasticHost: "${{ secrets.ELASTIC_HOST }}"
+          elasticApiKeyId: "${{ secrets.ELASTIC_KEY_ID }}"
+          elasticApiKey: "${{ secrets.ELASTIC_API_KEY }}"
+          elasticIndex: "ci-cd"

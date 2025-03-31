@@ -342,7 +342,28 @@ export default function TimeSeriesGraph({
                         width={`${xSpacing}%`}
                         justifyContent={"center"}
                       >
-                        <Text>{data.toString()}</Text>
+                        <Container
+                          width={"100%"}
+                          height={"100%"}
+                          flexDirection={"column"}
+                        >
+                          <Container
+                            width={"100%"}
+                            flexDirection={"row"}
+                            alignContent={"center"}
+                            justifyContent={"center"}
+                          >
+                            <Text>|</Text>
+                          </Container>
+                          <Container
+                            width={"100%"}
+                            flexDirection={"row"}
+                            alignContent={"center"}
+                            justifyContent={"center"}
+                          >
+                            <Text>{data.toString()}</Text>
+                          </Container>
+                        </Container>
                       </Container>
                     );
                   } else {

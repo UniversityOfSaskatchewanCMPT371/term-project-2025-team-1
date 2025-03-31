@@ -21,23 +21,31 @@ Feature: Embedded Graph Creation
     Then the graph should appear on the screen behind the user
 
   Scenario: Changing Tau value
-    Given the embedded graph is displayed with either a URL-based CSV file or local CSV file
+    Given the embedded graph is displayed with a valid CSV file
     When the user selects "1-5" tau using the right or left indicator
     Then the position of points in the embedded graph is changed
 
   Scenario: Selecting a 3D point
-    Given the embedded graph is displayed with either a URL-based CSV file or local CSV file
+    Given the embedded graph is displayed with a valid CSV file
     When the user selects a 3D point
     Then the 3D point is selected
     And the 2D point associated with the 3D point is selected
 
   Scenario: Selecting a 2D point
-    Given the embedded graph is displayed with either a URL-based CSV file or local CSV file
+    Given the embedded graph is displayed with a valid CSV file
     When the user selects a 2D point
     Then the 2D point is selected
     And the 3D point associated with the 2D point is selected
 
   Scenario: Changing column header
-    Given the embedded graph is displayed with either a URL-based CSV file or local CSV file
+    Given the embedded graph is displayed with a valid CSV file
     When the user changes column header
     Then the embedded graph updates the new column header
+
+  #Scenario: Turning First Differencing On and Off
+   # Given the embedded graph is displayed with a valid CSV file
+   # When the user turns First Differencing on
+   # I got an error when I ran npm run server
+
+  # Scenario: Setting Point Size
+    

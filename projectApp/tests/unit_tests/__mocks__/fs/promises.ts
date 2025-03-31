@@ -16,7 +16,7 @@ export const readFile = vi.fn(
 );
 export const writeFile = vi.fn(
   (path: string, data: string, options?: IWriteFileOptions) => {
-    mockFs.promises.writeFile(path, data, options).catch((err: unknown) => {
+    return mockFs.promises.writeFile(path, data, options).catch((err: unknown) => {
       throw err as Error;
     });
   },

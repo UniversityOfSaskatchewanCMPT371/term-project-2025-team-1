@@ -8,6 +8,11 @@ import { addTestSceneInfo } from "../../pages/Scene/TestScene";
 /**
  * Class representing a CSV data structure that implements the CSVData interface.
  * Handles loading, storing, and managing CSV data for VR visualization.
+ * 
+ * @history
+ * - The 'name', 'yHeader', and 'timeHeader' properties are initialized as empty strings.
+ * - The 'csvHeaders', 'data', and 'points' properties are initialized as empty sets.
+ * - The 'browserSelected', and 'vrSelected' properties are initialized as false.
  */
 export class CSVDataObject implements CSVDataInterface {
   name: string;
@@ -134,7 +139,7 @@ export class CSVDataObject implements CSVDataInterface {
         `loadCSVData has loaded csv data\n${JSON.stringify(this.data)}`,
       );
     } catch (error: unknown) {
-      //Log the error
+      // Log the error
       sendError(error, "loadCSVData error");
       throw error;
     }
@@ -175,7 +180,7 @@ export class CSVDataObject implements CSVDataInterface {
    * Resets the array of point objects
    * @precondition none
    * @postcondition points array is cleared
-  */
+   */
   clearPoints() {
     this.points = [];
 
@@ -340,7 +345,7 @@ export class CSVDataObject implements CSVDataInterface {
       `setData() was called, data has been set (CSVDataObject.ts)`,
     );
   }
-  
+
   /**
    * Sets the name for the CSV object
    * @param name string to name this CSV object

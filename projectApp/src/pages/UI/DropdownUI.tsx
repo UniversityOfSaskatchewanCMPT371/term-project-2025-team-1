@@ -5,7 +5,7 @@ import { CSVDataInterface } from "../../types/CSVInterfaces";
 import { sendLog } from "../../logger-frontend.ts";
 
 /**
- * This function is for creating the Dropdown UI in the VR Scene
+ * Create the Dropdown UI in the VR Scene
  * This displays loaded csv files and allows the generation of a TimeSeriesGraph
  * @preconditions props used for position in the VR scene
  * @postconditions the specified drop down UI
@@ -21,7 +21,7 @@ export default function DropdownUI({
   const [infoTau, setInfoTau] = useState("");
 
   /**
-   * This is the function for creating a loaded csv object displayed in the DropDown UI
+   * Create a loaded csv object displayed in the DropDown UI
    * @preconditions A csv data to be displayed
    * @postcondition Display loaded csv file
    */
@@ -30,7 +30,7 @@ export default function DropdownUI({
   }: {
     data: CSVDataInterface;
   }): React.JSX.Element {
-    //The list of objects/loaded csv files row by row
+    // The list of objects/loaded csv files row by row
     return (
       <>
         <Container
@@ -61,7 +61,7 @@ export default function DropdownUI({
    */
   function update(): void {
     mainController.getCSVController().generate(selectTau);
-    setInfoTau(mainController.getGraphController().getTauForDropDown()); //Later change this to getting tau value from the graph itself rather than the other useState
+    setInfoTau(mainController.getGraphController().getTauForDropDown()); // Later change this to getting tau value from the graph itself rather than the other useState
     mainController.updateMainScene();
   }
 
@@ -129,7 +129,7 @@ export default function DropdownUI({
   }
 
   /**
-   * This function creates a React JSX Component which is the body of the Drop Down UI.
+   * Create a React JSX Component which is the body of the Drop Down UI.
    * It allows the user to set the tau value and shows an information box for the current graph
    * @returns the body of the drop down UI
    */
@@ -213,17 +213,16 @@ export default function DropdownUI({
   }
 
   /**
-   * This function is used when the user wants to increase the tau value
+   * Increase the tau value
    */
   function setOnTauIncrease(): void {
-    //For now max tau will be set to 5
     if (selectTau != 5) {
       setSelectTau(selectTau + 1);
     }
   }
 
   /**
-   * This function is used when the user wants to decrease the tau value
+   * Decrease the tau value
    */
   function setOnTauDecrease(): void {
     if (selectTau != 1) {

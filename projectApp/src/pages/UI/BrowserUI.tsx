@@ -17,11 +17,11 @@ export default function BrowserUI() {
   const fileInputRef = React.useRef<HTMLInputElement>(null);
   const urlInputRef = React.useRef<HTMLInputElement>(null);
 
-  //Using dynamic key change for unmounted component
+  // Using dynamic key change for unmounted component
   const [controlKey, setControlKey] = useState(0);
 
   /**
-   * leva component that loads a csv file using a url.
+   * Create a leva component that loads a csv file using a url.
    * @preconditions None
    * @postconditions a leva textfield component and its linked button
    */
@@ -46,7 +46,7 @@ export default function BrowserUI() {
           ref={urlInputRef}
           style={{ display: "none" }}
           onClick={async (): Promise<void> => {
-            //Try using the string value to load csv file
+            // Try using the string value to load csv file
             try {
               addTestSceneInfo("Starting url csv loading");
               await mainController.getCSVController().loadURLFile(csv);
@@ -58,7 +58,7 @@ export default function BrowserUI() {
               alert(`${error} Failed Loading: ${csv}`);
               sendLog("info", `URLComponent read: ${csv}`);
             }
-            //key for Re-rendering leva component
+            // key for Re-rendering leva component
             setControlKey(controlKey + 1);
           }}
         />
@@ -67,7 +67,7 @@ export default function BrowserUI() {
   }
 
   /**
-   * A leva button component that allows the reading of a local file
+   * Create a leva button component that allows the reading of a local file
    * @preconditions None
    * @postconditions leva button component that reads a local file
    */
@@ -92,7 +92,7 @@ export default function BrowserUI() {
             if (files && files.length > 0) {
               const file = files[0];
 
-              //If the file is valid, try to read the local csv file
+              // If the file is valid, try to read the local csv file
               try {
                 addTestSceneInfo("Starting local csv file reading");
                 await mainController.getCSVController().loadLocalFile(file);
@@ -121,7 +121,7 @@ export default function BrowserUI() {
   }
 
   /**
-   * Component that displays the loaded csv files on the browser UI
+   * Create a component that displays the loaded csv files on the browser UI
    * @preconditions None
    * @postconditions Unmounted component that displays loaded csv files when opened
    */
@@ -130,7 +130,7 @@ export default function BrowserUI() {
       .getCSVController()
       .browserCSVFiles();
 
-    //Setting the objects to be displayed
+    // Setting the objects to be displayed
     const controlsObject: Record<string, boolean | ButtonInput> = names.reduce(
       (acc, [name, value]) => {
         acc[name] = value;

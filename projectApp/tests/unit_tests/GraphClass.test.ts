@@ -46,8 +46,7 @@ describe("GraphObject", async () => {
   it("initializes with correct properties from CSVDataObject", () => {
     const graph = new GraphObject(csvDataMock);
 
-    // Verify id, position, and axes set by the constructor
-    expect(graph.getPosition()).toEqual({ x: 1, y: 1, z: 0 });
+    // Verify axes set by the constructor
     expect(graph.getAxes()).toEqual({
       xRange: [0, 0],
       yRange: [0, 0],
@@ -55,20 +54,13 @@ describe("GraphObject", async () => {
   });
 
   /**
-   * Test: Setting and Getting the ID, Dimensions, Position, and Axes
+   * Test: Setting and Getting the Dimensions, and Axes
    */
-
-  it("sets and gets the id correctly", () => {
+  it("sets and gets the name correctly", () => {
     const graph = new GraphObject(csvDataMock);
 
     graph.setName("NewName");
     expect(graph.getName()).toBe("NewName");
-  });
-
-  it("sets and gets position correctly", () => {
-    const graph = new GraphObject(csvDataMock);
-    graph.setPosition(5, 6, 7);
-    expect(graph.getPosition()).toEqual({ x: 5, y: 6, z: 7 });
   });
 
   it("sets and gets axes correctly", () => {
@@ -91,22 +83,6 @@ describe("GraphObject", async () => {
     expect(() => {
       graph.setName("");
     }).toThrowError("Invalid Name");
-  });
-
-  /**
-   * Test: Error Handling for invalid position
-   */
-  it("throws error when setting invalid position", () => {
-    const graph = new GraphObject(csvDataMock);
-    expect(() => {
-      graph.setPosition("a" as unknown as number, 6, 7);
-    }).toThrowError("Invalid Positions");
-    expect(() => {
-      graph.setPosition(5, "b" as unknown as number, 7);
-    }).toThrowError("Invalid Positions");
-    expect(() => {
-      graph.setPosition(5, 6, "c" as unknown as number);
-    }).toThrowError("Invalid Positions");
   });
 
   /**

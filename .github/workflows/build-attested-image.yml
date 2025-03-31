@@ -1,12 +1,13 @@
 # Will sign the image with the GitHub Actions runner's GPG key and push the
-#  attestation to the GitHub Container Registry.
+#  attestation to the GitHub Container Registry
+
 name: Build Attested Iimage
 
 on:
-#  push:
-#    branches: [main]
-#  pull_request:
-#    branches: [main]
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
   workflow_dispatch:
 jobs:
   build:

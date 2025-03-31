@@ -1,3 +1,5 @@
+# Deploy to Firebase Hosting on manual trigger
+
 name: Manually Deploy to Firebase Hosting
 on:
   workflow_dispatch:

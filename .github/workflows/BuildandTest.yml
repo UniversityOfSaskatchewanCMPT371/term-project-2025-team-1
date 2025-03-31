@@ -1,4 +1,6 @@
 #  Continuous Integration (CI) workflow to build and test our project
+#  This workflow will run on every push to the repository and on every pull request
+
 name: Build and Test
 
 # Controls when the workflow will run
@@ -30,31 +32,26 @@ jobs:
           npm run lint:gherkin
       - name: Build
         run: npm run build
-      - name: Run tests
-        run: |
-          npx pm2 start logger-server.js --name logger
-          npm run unittests 
-          npm run smoketests
-          npm run logtests
-          npx pm2 delete logger
 
-#  job-windows:
-#    runs-on: windows-latest
-#    steps:
-#      - uses: actions/checkout@v4
-#      - name: Install dependencies
-#        run: npm ci --verbose
-#      - name: Run linter
-#        run: npm run lint
-#      - name: Build
-#        run: npm run build
-#      - name: Test
-#        run: |
-#          npx pm2 start logger-server.js --name logger
-#          npm run test
-#          npx pm2 delete logger
-#        timeout-minutes: 3
+      # Starting tests. Fire up logging server
+      - name: Start up logging server
+        run: npx pm2 start logger-server.js --name logger
+      # Run unit tests
+      - name: Run unit tests
+        run: npm run unittests
+      # Run smoke tests / integration tests
+      - name: Run smoketests
+        run: npm run smoketests
+        # Run log parsing tests
+      - name: Run log parsing tests
+        run: npm run logtests
+      # Kill logging server
+      - name: Kill logging server
+        run: npx pm2 delete logger
 
+#  job-windows: removed from workflow
+
+# Elastic running at OC during term
   send-logs-to-elastic:
       runs-on: ubuntu-latest
       needs: [job-linux]

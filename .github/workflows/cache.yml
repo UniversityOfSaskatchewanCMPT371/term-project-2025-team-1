@@ -1,4 +1,5 @@
-# Will cache the npm modules to speed up the build process.
+# Will cache the npm modules to speed up the build process
+
 name: Caching with npm
 on: push
 defaults:

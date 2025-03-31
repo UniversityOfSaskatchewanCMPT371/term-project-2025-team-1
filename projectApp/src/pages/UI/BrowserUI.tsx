@@ -1,6 +1,5 @@
 import { button, useControls } from "leva";
 import mainController from "../../controller/MainController";
-import { ButtonInput } from "leva/dist/declarations/src/types";
 import React, { useState } from "react";
 
 import { sendLog, sendError } from "../../logger-frontend.ts";

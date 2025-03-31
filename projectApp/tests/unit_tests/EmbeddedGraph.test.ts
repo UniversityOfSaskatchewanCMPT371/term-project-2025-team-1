@@ -110,6 +110,18 @@ describe("Embedded Graph test", () => {
     expect(graph.getPoints3D()[0].getObject().selected).toBe(false);
   });
 
+    // Testing updateEmbeddedPoints()
+    test("updateEmbeddedPoints recreates points array", () => {
+      graph.addPoints();
+      const originalPoints = graph.getPoints3D();
+  
+      graph.updateEmbeddedPoints();
+      const newPoints = graph.getPoints3D();
+  
+      expect(newPoints).not.toBe(originalPoints); // Should be new array
+      expect(newPoints.length).toBe(originalPoints.length);
+    });
+
   test("testing if RangeError will be thrown when CSV data is empty", () => {
     // An empty array
     const originalGetData = graph.getCSVData().getData();
@@ -142,17 +154,6 @@ describe("Embedded Graph test", () => {
     expect(() => graph.getRange()).toThrow();
   });
 
-  // Testing updateEmbeddedPoints()
-  test("updateEmbeddedPoints recreates points array", () => {
-    graph.addPoints();
-    const originalPoints = graph.getPoints3D();
-
-    graph.updateEmbeddedPoints();
-    const newPoints = graph.getPoints3D();
-
-    expect(newPoints).not.toBe(originalPoints); // Should be new array
-    expect(newPoints.length).toBe(originalPoints.length);
-  });
 
   test("setting time to a negative value", () => {
     expect(() => {

@@ -36,7 +36,7 @@ export class Point2DObject implements Point2DInterface {
   }
 
   /**
-   * This method returns the x position of the point in the 2D Time Series Graph
+   * Get the x position of the point in the 2D Time Series Graph
    * @precondition none
    * @postcondition returns the x-coordinate of the 2D point
    */
@@ -45,7 +45,7 @@ export class Point2DObject implements Point2DInterface {
   }
 
   /**
-   * This method returns the y position of the point in the 2D Time Series Graph
+   * Get the y position of the point in the 2D Time Series Graph
    * @precondition none
    * @postcondition returns the y-coordinate of the 2D point
    */
@@ -54,7 +54,7 @@ export class Point2DObject implements Point2DInterface {
   }
 
   /**
-   * This method sets the position of the 2D point in the x axis of the 2D Time Series Graph
+   * Set the position of the 2D point in the x axis of the 2D Time Series Graph
    * @param x number representing the x position
    * @precondition none
    * @postcondition sets the x position of the 2d point
@@ -69,7 +69,7 @@ export class Point2DObject implements Point2DInterface {
   }
 
   /**
-   * This method sets the position of the 2D point in the y axis of the 2D Time Series Graph
+   * Set the position of the 2D point in the y axis of the 2D Time Series Graph
    * @param y number representing the y position
    * @precondition none
    * @postcondition sets the y position of the 2d point
@@ -84,10 +84,10 @@ export class Point2DObject implements Point2DInterface {
   }
 
   /**
-   * This method sets the x and y positions of the 2d point in the 2D Time Series Graph
+   * Set the x and y positions of the 2d point in the 2D Time Series Graph
    * @param position [number, number] representing the x and y coordinate
    * @precondition `position` must be an array of two numbers
-   * @postcondition On success, this method will set the new position of the 2d point
+   * @postcondition On success, set the new position of the 2d point
    */
   setPoint2DPosition(position: [number, number]): void {
     this.point2Dposition = position;

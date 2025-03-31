@@ -77,6 +77,26 @@ export class TimeSeriesGraphObject
   }
 
   /**
+   * Finds a point based on given x and y data.
+   * pre-codition: xData is a string, yData is a number
+   * post-condition: returns the corresponding Points instance if found, otherwise undefined
+   * @param {string} xData - The x-coordinate (string representation).
+   * @param {number} yData - The y-coordinate (numeric value).
+   * @returns {PointInterface | undefined} The corresponding Points instance if found, otherwise undefined.
+   */
+  findPoint(xData: string, yData: number): Point2DObject | undefined {
+    sendLog(
+      "info",
+      `findPoint() is searching for a point at ${xData}, ${yData} (TimeSeriesGraphObject.ts)`,
+    );
+    return this.points2D.find(
+      (point) =>
+        point.getObject().getTimeData() === xData &&
+        point.getObject().getYData() === yData,
+    );
+  }
+
+  /**
    * Updates all points' selection status.
    * If additional properties (like color) need updating, modify here.
    * pre-codition: none

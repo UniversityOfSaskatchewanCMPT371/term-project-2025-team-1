@@ -105,7 +105,6 @@ export class CSVController implements ControllerInterface {
    * Retrieves the controller's associated model
    * @precondition none
    * @returns {CSVReaderModel} The CSV reader model instance
-   * @postcondition the existing model is not modified
    */
   getModel(): CSVReaderModel {
     return this.model;

@@ -222,7 +222,7 @@ export class CSVDataObject implements CSVDataInterface {
    * - `time` must be a valid time string format
    * - this.data must be initialized
    * - this.yHeader must be set
-   * @returns matching record if found or null otherwise without modifying data
+   * @postconditions does not modify data when searching
    */
   getDataByTime(time: string): Record<string, string | number> | null {
     let result: Record<string, string | number> | null = null;

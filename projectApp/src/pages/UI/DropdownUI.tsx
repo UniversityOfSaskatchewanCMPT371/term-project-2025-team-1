@@ -34,6 +34,8 @@ export default function DropdownUI({
     useState<boolean>(false);
   const [infoFirstDifferencing, setInfoFirstDifferencing] = useState();
 
+  const [selectedHeaderIndex, setSelectedHeaderIndex] = useState<number>(-1);
+  let headerList: string[] | undefined = [];
   /**
    * This is the function for creating a loaded csv object displayed in the DropDown UI
    * @preconditions A csv data to be displayed
@@ -74,9 +76,9 @@ export default function DropdownUI({
    * Generates the graph, and then updates main scene
    */
   function update(): void {
+    mainController.getCSVController().generate(selectTau, isFirstDifferencing);
     const graphController = mainController.getGraphController();
     const csvData = graphController.getModelEmData().getCSVData();
-    mainController.getCSVController().generate(selectTau, isFirstDifferencing);
 
     // setting use states for the information box
     setInfoTau(graphController.getTauForDropDown()); //Later change this to getting tau value from the graph itself rather than the other useState
@@ -279,7 +281,43 @@ export default function DropdownUI({
     );
   }
 
+  function setOnHeaderIncrease(): void {
+    if (headerList) {
+      if (headerList.length < 3) {
+        return;
+      }
+
+      let start = selectedHeaderIndex;
+      const timeHeader = mainController.getCSVController().getModelData()?.getTimeHeader();
+      
+      if (start == headerList.length - 1) {
+        if (headerList[0] != timeHeader) {
+          setSelectedHeaderIndex(0)
+        } else {
+          setSelectedHeaderIndex(1)
+        }
+        return;
+      }
+
+      if ( start == headerList.length - 2 && headerList[headerList.length-1] == timeHeader) {
+        setSelectedHeaderIndex(0);
+      }
+
+      const currentHeader = mainController.getCSVController().getModelData()?.getYHeader();
+      for (start; start < headerList.length; start++) {
+        if (headerList[start] != timeHeader && headerList[start] != currentHeader) {
+          setSelectedHeaderIndex(start);
+        }
+      }
+    }
+  }
+
+  function setOnHeaderDecrease(): void {
+
+  }
+
   function GenerateHeaderSelector(): React.JSX.Element {
+    headerList = mainController.getCSVController().getModelData()?.getCSVHeaders();
     return (
       <Container
         width={"100%"}
@@ -323,7 +361,9 @@ export default function DropdownUI({
           justifyContent={"center"}
         >
           <Text fontWeight={"bold"} positionTop={4}>
-            Add Headers here
+            {headerList ? 
+              selectedHeaderIndex >= 0 ? headerList[selectedHeaderIndex] : "No Header Selected"
+             : "No Headers"}
           </Text>
         </Container>
 
@@ -347,7 +387,7 @@ export default function DropdownUI({
             borderWidth={2}
             borderColor={"gray"}
             onClick={() => {
-              
+              setOnHeaderIncrease();
             }}
           >
             <Text>&gt;</Text>

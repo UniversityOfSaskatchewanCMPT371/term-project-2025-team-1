@@ -7,13 +7,12 @@ import { addTestSceneInfo } from "../../pages/Scene/TestScene";
  * Read the headers of a csv file and stores it
  *
  * @param file File path for csv file
- * @returns list of Record pairs of (attribute,value) as Promise<Record<string,string | number>[]>
  *
  * @preconditions `file` path must be a valid file path to a .csv file
- * @postconditions
- *    - None (does not modify any external state)
- *    - The returned promise resolves to an object containing a list of record of (attribute,value) pairs
- *    - If the file is empty or cannot be parsed, an error is thrown
+ * @postcondition
+ * - returns a list of Record pairs of (attribute,value) as a Promise
+ * - does not modify any external state
+ * - If the file is empty or cannot be parsed, an error is thrown
  **/
 export async function LocalCSVReader(
   file: string,
@@ -60,13 +59,12 @@ export async function LocalCSVReader(
  * Reads a CSV file from a File Object (local reader) and returns an array of time series data.
  *
  * @param file File object that contains a csv file
- * @returns list of Record pairs of (attribute,value) as Promise<Record<string,string | number>[]>
  *
  * @preconditions `File` must have a name that ends with ".csv" extension
  * @postconditions
- *    - None (does not modify any external state)
- *    - The returned promise resolves to an object containing a list of record of (attribute,value) pairs
- *    - If the file is empty or cannot be parsed, an error is thrown
+ * - returns a list of Record pairs of (attribute,value) as a Promise
+ * - does not modify any external state
+ * - If the file is empty or cannot be parsed, an error is thrown
  **/
 export function LocalCsvReader(
   file: File,
@@ -138,13 +136,12 @@ export function LocalCsvReader(
  * Get the time series data from a file at a url
  *
  * @param url address of the file
- * @returns list of Record pairs of (attribute,value) as Promise<Record<string,string | number>[]>
  *
  * @precondition `url` must be a valid url to a csv file, either ends with ".csv" or contains a csv file
  * @postcondition
- *    - None (does not modify any external state)
- *    - The returned promise resolves to an object containing a list of record of (attribute,value) pairs
- *    - If the file is empty or cannot be parsed, an error is thrown
+ * - returns a list of Record pairs of (attribute,value) as a Promise
+ * - does not modify any external state
+ * - If the file is empty or cannot be parsed, an error is thrown
  */
 export async function UrlCSVReader(
   url: string,

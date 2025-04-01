@@ -209,7 +209,7 @@ export class GraphObject implements GraphInterface {
   /**
    * Gets the CSV Data Object used by the graph
    * @precondition none
-   * @returns the csv data object linked to the graph
+   * @postcondition returns the csv data object linked to the graph
    */
   getCSVData(): CSVDataObject {
     return this.csvData;

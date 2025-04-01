@@ -22,7 +22,7 @@ export function addTestSceneInfo(s: string) {
 /**
  * Peek at test info while in the vr environment
  * @param inVr boolean for vr functions
- * @returns the test scene for tester information within the vr environment
+ * @postconditions returns the test scene for tester information within the vr environment
  */
 export default function TestScene({
   inVR,

@@ -13,7 +13,7 @@ import Create2DPoint from "../../components/Graph_Components/Points/Create2DPoin
  * - Will contain Points connected by lines to represent the values of the specified data fields.
  * @param graph the TimeSeriesGraphObject this graph visualizes.
  * @preconditions `graph` must be a defined TimeSeriesGraphObject.
- * @returns a React JSX Element that represents a 2D Time Series Graph.
+ * @postconditions returns a React JSX Element that represents a 2D Time Series Graph.
  */
 
 export default function TimeSeriesGraph({
@@ -59,7 +59,7 @@ export default function TimeSeriesGraph({
   /**
    * Renders the Y Header Selection
    * @preconditions None
-   * @returns The container that shows the current Y header and allows the cycle of the Graph's Y Header
+   * @postconditions returns The container that shows the current Y header and allows the cycle of the Graph's Y Header
    */
   function HeaderSelection(): React.JSX.Element {
     setHeader(graph.getCSVData().getYHeader());
@@ -119,7 +119,7 @@ export default function TimeSeriesGraph({
    * Renders the container left of the graph with a skyblue background.
    * This will show the HeaderSelection() and in the future, the data sets of selected points
    * @preconditions None
-   * @returns the left side container for showing graph data
+   * @postconditions returns the left side container for showing graph data
    */
   function GenerateSideBar(): React.JSX.Element {
     sendLog(
@@ -167,7 +167,7 @@ export default function TimeSeriesGraph({
    * Renders the 2D point used in the graph
    * @param point a reference to the 2D Point object
    * @preconditions `point` is an accepted 2D Point object in this graph
-   * @returns an interactable 2D Point for the graph
+   * @postconditions returns an interactable 2D Point for the graph
    */
   function GeneratePoint({
     point,
@@ -208,7 +208,7 @@ export default function TimeSeriesGraph({
   /**
    * Renders the line which connects the previous and current points
    * @precondition 'currentLine' and 'lastLine' properties are valid point positions
-   * @returns The line connecting the points in the 2D Time Series Graph
+   * @postconditions returns The line connecting the points in the 2D Time Series Graph
    */
   function GenerateLines(): React.JSX.Element {
     current = current + divider;
@@ -232,7 +232,7 @@ export default function TimeSeriesGraph({
    * Renders the range of the Y header values entered with a value
    * @param num the value of the y header
    * @preconditions `num` is a positive integer
-   * @returns The num value with a tick mark displayed on graph
+   * @postconditions returns The num value with a tick mark displayed on graph
    */
   function GenerateYRange({ num }: { num: number }): React.JSX.Element {
     sendLog(
@@ -246,7 +246,7 @@ export default function TimeSeriesGraph({
    * Generates the main graph of the Time Series Graph
    * - This generates both the X and Y axis of the graph with its assigned value
    * @precondition none
-   * @returns the body of the graph with a properly loaded X and Y axis and its components
+   * @postconditions returns the body of the graph with a properly loaded X and Y axis and its components
    */
   function GenerateGraph(): React.JSX.Element {
     sendLog(

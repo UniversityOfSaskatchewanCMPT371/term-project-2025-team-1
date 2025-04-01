@@ -41,7 +41,7 @@ export class CSVDataObject implements CSVDataInterface {
   /**
    * Create points from the csv file that will be referenced by the points of
    * both the 2D and 3D Graph
-   * @precondition none
+   * @postconditions none
    * @postcondition fills up the array of PointObjects used by the two graphs
    */
   populatePoints(): void {
@@ -67,7 +67,7 @@ export class CSVDataObject implements CSVDataInterface {
   /**
    * Get the array of Point Objects
    * @precondition none
-   * @returns the point objects array
+   * @postcondition returns the point objects array
    */
   getPoints(): PointObjectInterface[] {
     return this.points;
@@ -151,7 +151,7 @@ export class CSVDataObject implements CSVDataInterface {
    * - if theres only 1, then that means that there is only a "Time" header,
    *   or that the csv file loaded doesn't have a "Time" header,
    *   with both cases being invalid
-   * @returns the first non "Time" header in the data set
+   * @postcondition returns the first non "Time" header in the data set
    */
   findFirstHeader(): string {
     let error;
@@ -196,7 +196,7 @@ export class CSVDataObject implements CSVDataInterface {
    * @preconditions
    * - `key` must be a non-empty string
    * - this.data must be initialized
-   * @returns matching record or null without modifying data
+   * @postcondition returns matching record or null without modifying data
    */
   getDataByKey(key: string): Record<string, string | number> | null {
     let result: Record<string, string | number> | null = null;
@@ -217,12 +217,14 @@ export class CSVDataObject implements CSVDataInterface {
   /**
    * Retrieves data for a specific time value
    * @param time Time value to search for
-   * @returns Record object if found, null otherwise
    * @preconditions
    * - `time` must be a valid time string format
    * - this.data must be initialized
    * - this.yHeader must be set
-   * @postconditions does not modify data when searching
+   * @postconditions
+   * - returns Record object if found, null otherwise
+   * - does not modify data when searching
+   * 
    */
   getDataByTime(time: string): Record<string, string | number> | null {
     let result: Record<string, string | number> | null = null;
@@ -246,7 +248,7 @@ export class CSVDataObject implements CSVDataInterface {
   /**
    * Get this CSV's data
    * @precondition this.data is a valid non-empty data set
-   * @returns The complete data array
+   * @postcondition returns The complete data array
    */
   getData(): { key: Record<string, string | number> }[] {
     if (this.data.length <= 0) {
@@ -263,7 +265,7 @@ export class CSVDataObject implements CSVDataInterface {
   /**
    * Get this CSV's name
    * @precondition none
-   * @returns The name of the CSV data object
+   * @postcondition returns The name of the CSV data object
    */
   getName(): string {
     return this.name;
@@ -272,7 +274,7 @@ export class CSVDataObject implements CSVDataInterface {
   /**
    * Get the list of this CSV's headers
    * @precondition none
-   * @returns Array of CSV column headers
+   * @postcondition returns Array of CSV column headers
    */
   getCSVHeaders(): string[] {
     return this.csvHeaders;
@@ -281,7 +283,7 @@ export class CSVDataObject implements CSVDataInterface {
   /**
    * Get the label of this CSV's YHeader
    * @precondition none
-   * @returns Currently selected Y-axis header
+   * @postcondition returns Currently selected Y-axis header
    */
   getYHeader(): string {
     return this.yHeader;
@@ -290,7 +292,7 @@ export class CSVDataObject implements CSVDataInterface {
   /**
    * Get this CSV's BrowserSelected boolen
    * @precondition none
-   * @returns Boolean indicating if browser visualization is selected
+   * @postcondition returns Boolean indicating if browser visualization is selected
    */
   getBrowserSelected(): boolean {
     return this.browserSelected;
@@ -299,7 +301,7 @@ export class CSVDataObject implements CSVDataInterface {
   /**
    * Get this CSV's VRSelected boolean
    * @precondition none
-   * @returns Boolean indicating if VR visualization is selected
+   * @postcondition returns Boolean indicating if VR visualization is selected
    */
   getVRSelected(): boolean {
     return this.vrSelected;

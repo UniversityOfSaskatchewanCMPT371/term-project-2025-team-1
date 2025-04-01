@@ -6,7 +6,7 @@ import TestScene from "./TestScene";
  * Starting scene used by the program
  * All of the other used scenes will get called here
  * @param inVR boolean for vr functions
- * @returns the initial scene the contains the orbital controls and the main scene
+ * @postconditions returns the initial scene the contains the orbital controls and the main scene
  */
 export default function InitScene({
   inVR,

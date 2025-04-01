@@ -29,7 +29,7 @@ export class TimeSeriesGraphObject
   /**
    * Get the array of 2D Points
    * @precondition a valid array of points
-   * @returns the array of 2D points associated with the 2D Graph
+   * @postcondition returns the array of 2D points associated with the 2D Graph
    */
   getPoints2D(): Point2DInterface[] {
     return this.points2D;
@@ -38,7 +38,7 @@ export class TimeSeriesGraphObject
   /**
    * Get the number of ticks in the y-axis, the y range of the TimeSeriesGraph
    * @precondition none
-   * @returns the y range of the axis
+   * @postconditions returns the y range of the axis
    */
   getYRangeLength(): number {
     return this.yRangeLength;
@@ -84,13 +84,10 @@ export class TimeSeriesGraphObject
    * Finds a point based on given x and y data.
    * @param {string} xData The x-coordinate (string representation).
    * @param {number} yData The y-coordinate (numeric value).
-   * @returns {PointInterface | undefined}
-   * - The corresponding Points instance if found
-   * - otherwise undefined.
    * @preconditions
    * - xData is a string
    * - yData is a number
-   * @postcondition if the point is not found, undefined is returned
+   * @postcondition returns the corresponding Point instance if found, otherwise undefined.
    */
   findPoint(xData: string, yData: number): Point2DObject | undefined {
     sendLog(
@@ -159,7 +156,7 @@ export class TimeSeriesGraphObject
   /**
    * The Y values that will be displayed on ticks of the Y axis
    * @precondition a set y axis range
-   * @returns a number[] that is the values graph ticks
+   * @postconditions returns a number[] that is the values graph ticks
    */
   timeSeriesYRange(): number[] {
     const range: number[] = [];
@@ -182,7 +179,7 @@ export class TimeSeriesGraphObject
   /**
    * The number of X values that will be displayed on ticks of the X axis
    * @precondition requires x data of csv data
-   * @returns a string[] that is displayed on x axis
+   * @postconditions returns a string[] that is displayed on x axis
    */
   timeSeriesXRange(): string[] {
     const range: string[] = [];
@@ -383,7 +380,7 @@ export class TimeSeriesGraphObject
   /**
    * Retrieves the csv data of this graph
    * @precondition none
-   * @returns {CSVDataObject} graph csv data
+   * @postconditions returns {CSVDataObject} graph csv data
    */
   getCSVData(): CSVDataObject {
     return this.csvData;
@@ -392,7 +389,7 @@ export class TimeSeriesGraphObject
   /**
    * Retrieves all points in the graph.
    * @precondition none
-   * @returns {PointInterface[]} Array of PointInterface instances.
+   * @postconditions returns {PointInterface[]} Array of PointInterface instances.
    */
   get2DPoints(): Point2DObject[] {
     return this.points2D;
@@ -401,7 +398,7 @@ export class TimeSeriesGraphObject
   /**
    * Get number of points on the Graph
    * @precondition none
-   * @returns number of points
+   * @postconditions returns number of points
    */
   getNumPoints(): number {
     return this.points2D.length;
@@ -410,7 +407,7 @@ export class TimeSeriesGraphObject
   /**
    * Get max range of the Y axis
    * @precondition none
-   * @returns range of the Y axis
+   * @postconditions returns range of the Y axis
    */
   getYRange(): number {
     sendLog(

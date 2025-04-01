@@ -28,7 +28,7 @@ export interface GraphInterface extends DataInterface {
   /**
    * Gets the graph's unique identifier
    * @precondition none
-   * @returns the current id string, unchanged
+   * @postconditions returns the current id string, unchanged
    */
   getId(): string;
 
@@ -42,7 +42,7 @@ export interface GraphInterface extends DataInterface {
   /**
    * Gets the graph's position
    * @precondition none
-   * @returns the current position object
+   * @postconditions returns the current position object
    */
   getPosition(): { x: number; y: number; z?: number };
 
@@ -56,7 +56,7 @@ export interface GraphInterface extends DataInterface {
   /**
    * Gets the axes configuration
    * @precondition none
-   * @returns the current axes configuration object
+   * @postconditions returns the current axes configuration object
    */
   getAxes(): {
     xRange: [number, number];
@@ -73,7 +73,7 @@ export interface GraphInterface extends DataInterface {
   /**
    * Get the CSV Data
    * @precondition none
-   * @returns the current axes configuration object
+   * @postconditions returns the current axes configuration object
    */
   getCSVData(): CSVDataInterface;
 }

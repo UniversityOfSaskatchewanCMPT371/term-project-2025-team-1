@@ -70,12 +70,11 @@ export class EmbeddedGraphObject
    * @param time the index/time of the data set calculating the vector for
    * @param csvData the data contained in the csvDataObject of the graph
    * - this is passed in instead of calling the method to obtain it to avoid uneccessary calls to the methods for every point being calculated
-   * @returns an array contaning the coordinates of the vector in the form [x, y, z]
    * - for [data[time], data[time - tau], data[time - 2*tau]] of the selected data column
    * @preconditions
    * - `time` >= 0
    * - `csvDataObject` must contain valid data set and a valid data set much be selected
-   * @postcondition none
+   * @postcondition returns an array contaning the coordinates of the vector in the form [x, y, z]
    */
   calculateVectorPosition(
     time: number,
@@ -114,13 +113,12 @@ export class EmbeddedGraphObject
    * @param index line in csv file that contains the coordniate value being retreived
    * @param csvData the data contained in the csvDataObject of the graph
    * - this is passed in instead of calling the method to obtain it to avoid uneccessary calls to the methods for every point being calculated
-   * @returns
-   * - if `index` is >=0, the value at the index (line) of the csv in the column currently selected
-   * - otherwise, 0
    * @preconditions
    * - `csvData` contains valid data
    * - the graph has a column selected that exists in the csv file
-   * @postcondition none
+   * @postcondition
+   * - if `index` is >=0, the value at the index (line) of the csv in the column currently selected
+   * - otherwise, 0
    */
   retreiveCoordinateValue(
     index: number,
@@ -140,7 +138,7 @@ export class EmbeddedGraphObject
   /**
    * gets the dimensions of the graph
    * @precondition none
-   * @returns the current dimensions of the graph
+   * @postcondition returns the current dimensions of the graph
    */
   getDimensions(): { width: number; height: number; depth?: number } {
     return this.dimensions;
@@ -152,7 +150,7 @@ export class EmbeddedGraphObject
    * @param height new height of the graph
    * @param depth new depth of the graph
    * @preconditions `width`, `height`, and `depth` must be valid numbers for the dimensions of a graph
-   * @postconditions the dimension attribute of the graphis updated to contain the given values
+   * @postcondition the dimension attribute of the graphis updated to contain the given values
    */
   setDimensions(width: number, height: number, depth?: number): void {
     const newDimensions = { width: width, height: height, depth: depth };
@@ -162,7 +160,7 @@ export class EmbeddedGraphObject
   /**
    * Gets the value of tau
    * @precondition none
-   * @returns returns the current value of tau
+   * @postcondition returns the current value of tau
    */
   getTau(): number {
     return this.tau;
@@ -194,7 +192,7 @@ export class EmbeddedGraphObject
   /**
    * Get the points in the 3D Embedded Graph
    * @precondition a non-empty array of 3d points
-   * @returns the 3d points of the Embedded Graph
+   * @postcondition returns the 3d points of the Embedded Graph
    */
 
   getPoints3D(): Point3DInterface[] {

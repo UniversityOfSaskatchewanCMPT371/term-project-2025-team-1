@@ -6,11 +6,10 @@ import readline from "readline";
 /**
  * checks if the given string exists in the file at the given path
  * - NOTE: function is to be used for testing only
- * @precondition filePath is a path to a file that exists
- * @postconditions none
  * @param {string} filePath - the path to the file that is being checked
  * @param {string} text - the string that is being looked for in the given file
- * @returns {Promise<boolean>} a promise that will contains true if the given text appears in the file at the given location
+ * @precondition filePath is a path to a file that exists
+ * @postconditions returns {Promise<boolean>} a promise that will contains true if the given text appears in the file at the given location
  *                             otherwise, false (returns false if file does not exist)
  */
 export async function fileContainsText(

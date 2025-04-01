@@ -10,7 +10,7 @@ import Create3DPoint from "../../components/Graph_Components/Points/Create3DPoin
  * - This graph will be 3D.
  * @param graph the EmbeddedGraphObject this graph visualizes.
  * @precondition `graph` must be a defined EmbeddedGraphObject.
- * @returns a React JSX Element that represents a 3D Embedded Graph.
+ * @postconditions returns a React JSX Element that represents a 3D Embedded Graph.
  */
 export function EmbeddedGraph({
   graph,
@@ -21,7 +21,7 @@ export function EmbeddedGraph({
    * Renders the 3D point used in the graph
    * @param point a reference to the 3D Point object
    * @precondition `point` is an accepted 3D Point object in this graph
-   * @returns an interactable 3D Point for the graph
+   * @postconditions returns an interactable 3D Point for the graph
    */
   function GeneratePoint({
     point,
@@ -34,7 +34,7 @@ export function EmbeddedGraph({
   /**
    * Renders the axes used in the 3D Embedded Graph
    * @precondition none
-   * @returns an [x, y, z] set of axes on the VR Scene
+   * @postconditions returns an [x, y, z] set of axes on the VR Scene
    */
   function GenerateAxis() {
     return (
@@ -72,7 +72,7 @@ export function EmbeddedGraph({
   /**
    * Generates the main graph of the Embedded Graph
    * @precondition none
-   * @returns the body of the graph and its components
+   * @postconditions returns the body of the graph and its components
    */
   function GenerateGraph(): React.JSX.Element {
     sendLog(

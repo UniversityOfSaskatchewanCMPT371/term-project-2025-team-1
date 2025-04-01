@@ -10,7 +10,7 @@ import { CreateEmbeddedGraph } from "../../components/Graph_Components/CreateEmb
  * The main scene being used in the current program
  * For now contains shapes the could help with testing looking around in a VR Space
  * @param inVR boolean for vr functions
- * @returns main scene that holds the geometry for the vr environment
+ * @postconditions returns main scene that holds the geometry for the vr environment
  */
 export default function MainScene({
   inVR,

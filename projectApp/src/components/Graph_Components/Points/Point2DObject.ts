@@ -29,7 +29,7 @@ export class Point2DObject implements Point2DInterface {
   /**
    * Gets the point object that the 2D point is referencing to
    * @precondition none
-   * @returns the point object reference
+   * @postconditions returns the point object reference
    */
   getObject(): PointObjectInterface {
     return this.object;
@@ -38,7 +38,7 @@ export class Point2DObject implements Point2DInterface {
   /**
    * Get the x position of the point in the 2D Time Series Graph
    * @precondition none
-   * @returns the x-coordinate of the 2D point
+   * @postconditions returns the x-coordinate of the 2D point
    */
   getXPosition(): number {
     return this.point2Dposition[0];
@@ -47,7 +47,7 @@ export class Point2DObject implements Point2DInterface {
   /**
    * Get the y position of the point in the 2D Time Series Graph
    * @precondition none
-   * @returns the y-coordinate of the 2D point
+   * @postconditions returns the y-coordinate of the 2D point
    */
   getYPosition(): number {
     return this.point2Dposition[1];

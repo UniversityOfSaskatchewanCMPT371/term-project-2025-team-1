@@ -7,8 +7,7 @@ import { sendLog } from "../../logger-frontend";
  * The point can be interacted with through hover and click events.
  * @param {Point2DObject} pointRef Reference to the point data and state
  * @precondition `pointRef` must be a valid `Point2DObject` instance with position and selected state
- * @postcondition Renders an interactive 2D point with hover and click functionality
- * @returns a React JSX Component for the 2D point used on a `TimeSeriesGraph`
+ * @postcondition Renders an interactive 2D point with hover and click functionality used on a `TimeSeriesGraph`
  */
 export default function Point2D({ pointRef }: { pointRef: Point2DObject }) {
   const [hovered, hover] = useState(false);

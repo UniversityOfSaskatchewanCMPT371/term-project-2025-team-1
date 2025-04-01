@@ -32,7 +32,7 @@ export class MainController {
   /**
    * Retrieves the CSV controller instance
    * @precondition none
-   * @returns existing CSV controller without modification
+   * @postconditions returns existing CSV controller without modification
    */
   getCSVController(): CSVController {
     return this.csvController;
@@ -41,7 +41,7 @@ export class MainController {
   /**
    * Retrieves the Graph controller instance
    * @precondition none
-   * @returns existing Graph controller without modification
+   * @postconditions returns existing Graph controller without modification
    */
   getGraphController(): GraphController {
     return this.graphController;

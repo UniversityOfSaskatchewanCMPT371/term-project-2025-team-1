@@ -9,8 +9,7 @@ import { sendLog } from "../../logger-frontend";
  * The point can be interacted with through hover and click events.
  * @param {Point3DObject} pointRef Reference to the point data and state
  * @precondition `pointRef` must be a valid `Point3DObject` instance with position and selected state
- * @postcondition Renders an interactive 3D point with hover and click functionality
- * @returns a React JSX element for the 3D point used on an `EmbeddedGraph`
+ * @postcondition Renders an interactive 3D point with hover and click functionality used on an `EmbeddedGraph`
  */
 export default function Point3D({
   pointRef,

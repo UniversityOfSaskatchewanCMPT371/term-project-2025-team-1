@@ -22,8 +22,6 @@ export class CSVReaderModel implements CSVModelInterface {
    * @postconditions
    * - If the 'data' CSVDataObject is valid, it is returned.
    * - Otherwise, an informational log is recorded and null is returned.
-   *
-   * @returns The CSVData object if found, otherwise null.
    */
   getCSVFile(): CSVDataObject {
     const data = this.data;
@@ -102,8 +100,6 @@ export class CSVReaderModel implements CSVModelInterface {
    * @precondition The 'data' property containsa  CSVDataObject instance with a valid 'name' property
    *
    * @postcondition An array of tuples is returned where each tuple contains the CSV file name and its browser selection status.
-   *
-   * @returns An array of tuples where each tuple contains the CSV file name and its browser selection status.
    */
   loadedCsvBrowser(): [string, boolean][] {
     const csvBrowser: [string, boolean][] = [];
@@ -124,9 +120,7 @@ export class CSVReaderModel implements CSVModelInterface {
    *
    * @precondition none
    *
-   * @postcondition The internal 'data' CSVDataObject instance is returned.
-   *
-   * @returns the csv data of this model
+   * @postcondition returns the csv data of this model
    */
   getData(): CSVDataObject | undefined {
     return this.data;

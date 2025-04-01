@@ -26,7 +26,6 @@ export class GraphController implements ControllerInterface {
    * Generates a time series graph for the given CSV data object.
    *
    * @param csv The CSV data object for which to generate or retrieve the graph.
-   * @returns {TimeSeriesGraphClass} The generated or retrieved time series graph.
    *
    * @preconditions
    * - The `csv` parameter must be a valid `CSVDataObject`.
@@ -34,6 +33,7 @@ export class GraphController implements ControllerInterface {
    * - The `mainController` must be initialized and valid.
    *
    * @postconditions
+   * - returns the generated or retrieved time series graph.
    * - If a graph with the same name as `csv` exists, its range is updated
    * - otherwise, a new graph is created and returned
    * - The mainController's main scene is updated.
@@ -62,7 +62,6 @@ export class GraphController implements ControllerInterface {
    * Generates an embedded graph for the given CSV data object.
    *
    * @param csv The CSV data object for which to generate or retrieve the graph.
-   * @returns {EmbeddedGraphClass} The generated or retrieved time series graph.
    *
    * @preconditions
    * - The `csv` parameter must be a valid `CSVDataObject`.
@@ -70,6 +69,7 @@ export class GraphController implements ControllerInterface {
    * - The `mainController` must be initialized and valid.
    *
    * @postconditions
+   * - returns the generated or retrieved time series graph.
    * - If a graph with the same name as `csv` exists, its range is updated
    * - otherwise, a new graph is created and returned
    * - The mainController's main scene is updated.
@@ -117,9 +117,7 @@ export class GraphController implements ControllerInterface {
    *
    * @precondition none
    *
-   * @postcondition a valid GraphModel instance is returned.
-   *
-   * @returns The GraphModel instance.
+   * @postcondition returns the GraphModel instance.
    */
   getModel(): GraphModel {
     return this.model;
@@ -130,9 +128,7 @@ export class GraphController implements ControllerInterface {
    *
    * @precondition none
    *
-   * @postcondition The array of TimeSeriesGraphObject instances is returned.
-   *
-   * @returns The array of TimeSeriesGraphObject instances.
+   * @postcondition returns the array of TimeSeriesGraphObject instances.
    */
   getModelData(): TimeSeriesGraphObject {
     const emData = this.getModel().getData();
@@ -149,9 +145,7 @@ export class GraphController implements ControllerInterface {
    *
    * @precondition none
    *
-   * @postcondition The array of EmbeddedGraphObject instances is returned.
-   *
-   * @returns The array of EmbeddedGraphObject instances.
+   * @postcondition returns the array of EmbeddedGraphObject instances.
    */
   getModelEmData(): EmbeddedGraphObject {
     const emData = this.getModel().getEmbeddedGraphData();
@@ -166,7 +160,7 @@ export class GraphController implements ControllerInterface {
   /**
    * Get the max range used by the 3D Embedded Graph
    * @precondition for the Embedded Graph to exist and initialized
-   * @returns The max range of the Embedded Graph
+   * @postconditions returns The max range of the Embedded Graph
    */
   getEmbeddedRange(): number {
     const emData = this.getModel().getEmbeddedGraphData();
@@ -181,7 +175,7 @@ export class GraphController implements ControllerInterface {
   /**
    * Gets the tau value and turns it to a string to be displayed on the drop down ui
    * @precondition graph generated with a tau value implemented
-   * @returns a string of the assigned tau value
+   * @postconditions returns a string of the assigned tau value
    */
   getTauForDropDown(): string {
     const emData = this.getModel().getEmbeddedGraphData();

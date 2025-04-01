@@ -32,7 +32,7 @@ export default class MockFileReader {
  * Returns a file that has the contents of the file at the filePath
  * @param filePath path string to the file
  * @precondition `filePath` must be a valid file path
- * @returns `File` {fileBits: contents at filePath, name: filePath, options: in text/csv}
+ * @postconditions returns `File` {fileBits: contents at filePath, name: filePath, options: in text/csv}
  */
 export async function pathStrToFile(filePath: string): Promise<File> {
   const reader = readFile(filePath, "utf-8");

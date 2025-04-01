@@ -15,15 +15,15 @@ export interface TimeSeriesGraphInterface extends GraphInterface {
 
   /**
    * Finds a point based on given x and y data
+   * @param {string} xData The x-coordinate (string representation)
+   * @param {number} yData The y-coordinate (numeric value)
    * @preconditions
    * - xData is a string
    * - yData is a number
    * @postconditions
    * - data is not modified
-   * - if point is not found, return undefined
-   * @param {string} xData The x-coordinate (string representation)
-   * @param {number} yData The y-coordinate (numeric value)
-   * @returns {PointObject | undefined} The found point or undefined
+   * - if point is found, return it
+   * - otherwise, return undefined
    */
   findPoint(xData: string, yData: number): Point2DObject | undefined;
 
@@ -47,8 +47,7 @@ export interface TimeSeriesGraphInterface extends GraphInterface {
   /**
    * Gets all points in the graph
    * @precondition none
-   * @returns array of current points, unchanged
-   * @returns {PointObject[]} Array of points in the graph
+   * @postconditions returns {PointObject[]} Array of points in the graph
    */
   get2DPoints(): Point2DObject[];
 }

@@ -30,8 +30,6 @@ export default function DropdownUI({
   const itemGroup = [...Array(Math.ceil(headers.length / itemsPerColumn))].map(
     (_, i) => headers.slice(i * itemsPerColumn, (i + 1) * itemsPerColumn),
   );
-  const graphController = mainController.getGraphController();
-  const csvData = graphController.getModelEmData().getCSVData();
 
   /**
    * This is the function for creating a loaded csv object displayed in the DropDown UI
@@ -73,6 +71,8 @@ export default function DropdownUI({
    * Generates the graph, and then updates main scene
    */
   function update(): void {
+    const graphController = mainController.getGraphController();
+    const csvData = graphController.getModelEmData().getCSVData();
     mainController.getCSVController().generate(selectTau);
     setInfoTau(graphController.getTauForDropDown()); //Later change this to getting tau value from the graph itself rather than the other useState
     setInfoRange(graphController.getEmbeddedRange().toString());

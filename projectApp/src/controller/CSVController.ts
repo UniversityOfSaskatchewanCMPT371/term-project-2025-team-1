@@ -33,7 +33,7 @@ export class CSVController implements ControllerInterface {
    *   - A new TimeSeriesGraph is created and initialized
    *   - The graph is added to the main controller's graph collection
    */
-  generate(tau: number): void {
+  generate(tau: number, isFirstDiff: boolean): void {
     const emData = this.getModelData();
     if (emData === undefined) {
       const error = new SyntaxError("Error getting CSVDataObject");
@@ -41,6 +41,7 @@ export class CSVController implements ControllerInterface {
       throw error;
     }
 
+    emData.setIsFirstDifferencing(isFirstDiff);
     emData.setVRSelected(true);
     emData.populatePoints();
 

@@ -30,6 +30,9 @@ export default function DropdownUI({
   const itemGroup = [...Array(Math.ceil(headers.length / itemsPerColumn))].map(
     (_, i) => headers.slice(i * itemsPerColumn, (i + 1) * itemsPerColumn),
   );
+  const [isFirstDifferencing, setIsFirstDifferencing] =
+    useState<boolean>(false);
+  const [infoFirstDifferencing, setInfoFirstDifferencing] = useState();
 
   /**
    * This is the function for creating a loaded csv object displayed in the DropDown UI
@@ -73,7 +76,7 @@ export default function DropdownUI({
   function update(): void {
     const graphController = mainController.getGraphController();
     const csvData = graphController.getModelEmData().getCSVData();
-    mainController.getCSVController().generate(selectTau);
+    mainController.getCSVController().generate(selectTau, isFirstDifferencing);
     setInfoTau(graphController.getTauForDropDown()); //Later change this to getting tau value from the graph itself rather than the other useState
     setInfoRange(graphController.getEmbeddedRange().toString());
     setInfoHeader(csvData.getYHeader());
@@ -167,6 +170,22 @@ export default function DropdownUI({
             alignContent={"center"}
             justifyContent={"center"}
           >
+            <Container
+              width={"100%"}
+              height={"50%"}
+              flexDirection={"column"}
+              alignContent={"center"}
+            >
+              <Container
+                width={"100%"}
+                height={"50%"}
+                flexDirection={"row"}
+                justifyContent={"center"}
+              >
+                <Text>First Differencing</Text>
+              </Container>
+              <GenerateFirstDifferencingSelector />
+            </Container>
             {/* This contains for selecting Tau value on start up */}
             <Container
               width={"100%"}
@@ -184,26 +203,10 @@ export default function DropdownUI({
               </Container>
               <GenerateTauSelector />
             </Container>
-
-            {/* Planned Time Window selector */}
-            <Container
-              width={"100%"}
-              height={"50%"}
-              flexDirection={"column"}
-              alignContent={"center"}
-            >
-              <Container
-                width={"100%"}
-                height={"50%"}
-                flexDirection={"row"}
-                justifyContent={"center"}
-              >
-                <Text>Set Time Window</Text>
-              </Container>
-            </Container>
           </Container>
 
           {/* Information container?  */}
+          {/* TODO - add first differencing to info container???? */}
           <Container
             width={"50%"}
             height={"100%"}
@@ -253,6 +256,102 @@ export default function DropdownUI({
           </Container>
         </Container>
       </>
+    );
+  }
+
+  /**
+   * This function is used when the user wants to enable first differencing
+   */
+  function setOnFDIncrease(): void {
+    if (!isFirstDifferencing) {
+      setIsFirstDifferencing(!isFirstDifferencing);
+    }
+  }
+
+  /**
+   * This fuction is used when the user wants to disable first differencing
+   */
+  function setOnFDDecrease(): void {
+    if (isFirstDifferencing) {
+      setIsFirstDifferencing(!isFirstDifferencing);
+    }
+  }
+
+  function GenerateFirstDifferencingSelector(): React.JSX.Element {
+    return (
+      <Container
+        width={"100%"}
+        height={"50%"}
+        flexDirection={"row"}
+        alignContent={"center"}
+        justifyContent={"center"}
+      >
+        <Container
+          width={"45%"}
+          height={"100%"}
+          flexDirection={"row"}
+          alignContent={"center"}
+          justifyContent={"center"}
+        >
+          <Container
+            width={"60%"}
+            height={"30%"}
+            flexDirection={"row"}
+            alignContent={"center"}
+            justifyContent={"center"}
+            backgroundColor={"grey"}
+            backgroundOpacity={0.5}
+            hover={{ backgroundOpacity: 1 }}
+            borderRadius={15}
+            borderWidth={2}
+            borderColor={"grey"}
+            onClick={() => {
+              setOnFDDecrease();
+            }}
+          >
+            <Text>&lt;</Text>
+          </Container>
+        </Container>
+
+        <Container
+          width={"10%"}
+          height={"20%"}
+          flexDirection={"row"}
+          alignContent={"center"}
+          justifyContent={"center"}
+        >
+          <Text fontWeight={"bold"} positionTop={4}>
+            {isFirstDifferencing ? "Enabled" : "Disabled"}
+          </Text>
+        </Container>
+
+        <Container
+          width={"45%"}
+          height={"100%"}
+          flexDirection={"row"}
+          alignContent={"center"}
+          justifyContent={"center"}
+        >
+          <Container
+            width={"60%"}
+            height={"30%"}
+            flexDirection={"row"}
+            alignContent={"center"}
+            justifyContent={"center"}
+            backgroundColor={"gray"}
+            backgroundOpacity={0.5}
+            hover={{ backgroundOpacity: 1 }}
+            borderRadius={15}
+            borderWidth={2}
+            borderColor={"gray"}
+            onClick={() => {
+              setOnFDIncrease();
+            }}
+          >
+            <Text>&gt;</Text>
+          </Container>
+        </Container>
+      </Container>
     );
   }
 

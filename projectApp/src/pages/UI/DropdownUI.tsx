@@ -220,7 +220,7 @@ export default function DropdownUI({
 
   /**
    * Increase the tau value
-   * @preconditions expect tau to be between 1 and 5
+   * @preconditions expect tau to be between 1 and 5 (inclusive)
    * @postconditions if tau is less than 5, increase it by 1. Otherwise leave it at 5
    */
   function setOnTauIncrease(): void {
@@ -231,7 +231,7 @@ export default function DropdownUI({
 
   /**
    * Decrease the tau value
-   * @preconditions expect tau to be between 1 and 5
+   * @preconditions expect tau to be between 1 and 5 (inclusive)
    * @postconditions if tau is more than 1, decrease it by 1. Otherwise leave it at 1
    */
   function setOnTauDecrease(): void {

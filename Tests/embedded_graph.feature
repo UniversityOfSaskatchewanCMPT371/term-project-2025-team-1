@@ -42,10 +42,14 @@ Feature: Embedded Graph Creation
     When the user changes column header
     Then the embedded graph updates the new column header
 
-  #Scenario: Turning First Differencing On and Off
-   # Given the embedded graph is displayed with a valid CSV file
-   # When the user turns First Differencing on
-   # I got an error when I ran npm run server
+  Scenario: Turning First Differencing On
+    Given the embedded graph is displayed with a valid CSV file
+    When the user turns First Differencing on
+    Then the first differencing feature is activated
+
+  Scenario: Turning First Differencing Off
+    Given the embedded graph is displayed with a valid CSV file
+    When the user turns First Differencing on
+    Then the first differencing feature is deactivated
 
   # Scenario: Setting Point Size
-    

@@ -30,7 +30,9 @@ export class CSVController implements ControllerInterface {
   /**
    * Generates time series graphs for CSV data marked for VR display
    * @param tau value of tau used in generation
-   * @preconditions this.model must be initialized with CSV data
+   * @preconditions
+   * - this.model must be initialized with CSV data
+   * - `tau` must be an integer between 1 and 5 (inclusive)
    * @postconditions For each CSV:
    *   - VR selection is enabled
    *   - A new TimeSeriesGraph is created and initialized
@@ -114,7 +116,9 @@ export class CSVController implements ControllerInterface {
   /**
    * Gets the csv data linked to the model
    * @preconditions none
-   * @postconditions returns this model's csv data
+   * @postconditions
+   * - returns this model's csv data
+   * - if data is not defined, it will still return an undefined object
    */
   getModelData(): CSVDataObject | undefined {
     return this.model.getData();

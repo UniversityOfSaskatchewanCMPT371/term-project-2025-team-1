@@ -1,5 +1,5 @@
 import { Container, Text, Fullscreen } from "@react-three/uikit";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import mainController from "../../controller/MainController";
 import { CSVDataInterface } from "../../types/CSVInterfaces";
 import { sendLog } from "../../logger-frontend.ts";
@@ -35,7 +35,24 @@ export default function DropdownUI({
   const [infoFirstDifferencing, setInfoFirstDifferencing] = useState();
 
   const [selectedHeaderIndex, setSelectedHeaderIndex] = useState<number>(-1);
-  let headerList: string[] | undefined = [];
+  const [headerList, setHeaderList] = useState<string[]>([]);
+  // let headerList: string[] = [];
+
+  useEffect(() => {
+    const csvData = mainController
+      .getCSVController()
+      .getModelData()
+
+    if (csvData) {
+      let h = csvData.getCSVHeaders();
+      const yHeader = csvData.getYHeader();
+      const yHeaderIndex = h.indexOf(yHeader);
+      setSelectedHeaderIndex(yHeaderIndex);
+      setHeaderList(h);
+    }
+  }, [active])
+
+
   /**
    * This is the function for creating a loaded csv object displayed in the DropDown UI
    * @preconditions A csv data to be displayed
@@ -76,7 +93,7 @@ export default function DropdownUI({
    * Generates the graph, and then updates main scene
    */
   function update(): void {
-    mainController.getCSVController().generate(selectTau, isFirstDifferencing);
+    mainController.getCSVController().generate(selectTau, isFirstDifferencing, headerList[selectedHeaderIndex]);
     const graphController = mainController.getGraphController();
     const csvData = graphController.getModelEmData().getCSVData();
 
@@ -287,40 +304,22 @@ export default function DropdownUI({
         return;
       }
 
+      const timeHeader = mainController.getCSVController().getModelData()?.getTimeHeader();
+
       let start = selectedHeaderIndex;
-      const timeHeader = mainController
-        .getCSVController()
-        .getModelData()
-        ?.getTimeHeader();
-
-      if (start == headerList.length - 1) {
-        if (headerList[0] != timeHeader) {
-          setSelectedHeaderIndex(0);
-        } else {
-          setSelectedHeaderIndex(1);
-        }
-        return;
+      start += 1
+      if (start >= headerList.length) {
+        start = 0
       }
 
-      if (
-        start == headerList.length - 2 &&
-        headerList[headerList.length - 1] == timeHeader
-      ) {
-        setSelectedHeaderIndex(0);
-      }
-
-      const currentHeader = mainController
-        .getCSVController()
-        .getModelData()
-        ?.getYHeader();
-      for (start; start < headerList.length; start++) {
-        if (
-          headerList[start] != timeHeader &&
-          headerList[start] != currentHeader
-        ) {
-          setSelectedHeaderIndex(start);
+      if (headerList[start] == timeHeader) {
+        start += 1
+        if (start >= headerList.length) {
+          start = 0
         }
       }
+
+      setSelectedHeaderIndex(start);
     }
   }
 
@@ -330,42 +329,28 @@ export default function DropdownUI({
         return;
       }
 
-      let start = selectedHeaderIndex;
       const timeHeader = mainController
-        .getCSVController()
-        .getModelData()
-        ?.getTimeHeader();
+      .getCSVController()
+      .getModelData()
+      ?.getTimeHeader();
 
-      if (start == 0) {
-        if (headerList[headerList.length - 1] != timeHeader) {
-          setSelectedHeaderIndex(headerList.length - 1);
-        } else {
-          setSelectedHeaderIndex(headerList.length - 2);
-        }
-        return;
-      }
-
-      if (start == 1 && headerList[0] == timeHeader) {
-        setSelectedHeaderIndex(headerList.length - 1);
-        return;
-      }
-
-      // const currentYHeader = mainController.getCSVController().getModelData()?.getYHeader();
+      let start = selectedHeaderIndex;
       start -= 1;
-      for (start; start > 0; start--) {
-        if (headerList[start] != timeHeader) {
-          setSelectedHeaderIndex(start);
-          return;
+      if (start < 0) {
+        start = headerList.length - 1;
+      }
+
+      if (headerList[start] == timeHeader) {
+        start -= 1;
+        if (start < 0) {
+          start = headerList.length - 1;
         }
       }
+      setSelectedHeaderIndex(start)    
     }
   }
 
   function GenerateHeaderSelector(): React.JSX.Element {
-    headerList = mainController
-      .getCSVController()
-      .getModelData()
-      ?.getCSVHeaders();
     return (
       <Container
         width={"100%"}
@@ -410,7 +395,7 @@ export default function DropdownUI({
         >
           <Text fontWeight={"bold"} positionTop={4}>
             {headerList
-              ? selectedHeaderIndex >= 0
+              ? selectedHeaderIndex >= 0 && selectedHeaderIndex < headerList.length
                 ? headerList[selectedHeaderIndex]
                 : "No Header Selected"
               : "No Headers"}

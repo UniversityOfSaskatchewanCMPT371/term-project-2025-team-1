@@ -19,8 +19,6 @@ export class TimeSeriesGraphObject
   points2D: Point2DObject[];
   yRangeLength: number;
   constructor(csv: CSVDataObject) {
-    // Precondition: csv must be defined.
-    assert(csv !== undefined, "Constructor: CSVDataObject must be provided");
     super(csv);
     this.points2D = [];
     this.yRangeLength = 0;
@@ -142,11 +140,6 @@ export class TimeSeriesGraphObject
    * @postcondition sets the max Y range of graph to the largest value of the csv data
    */
   setRange(): void {
-    // Precondition: Validates that the CSVDataObject is defined.
-    assert(
-      this.getCSVData() !== undefined,
-      "setRange: CSVDataObject must be defined",
-    );
     // Precondition: Validates that the CSVDataObject has data.
     const points = this.getCSVData().getPoints();
     assert(
@@ -178,7 +171,7 @@ export class TimeSeriesGraphObject
     this.axes.yRange[1] = max;
     sendLog(
       "info",
-      `setRange() was called; yRange was set to ${this.axes.yRange[1]} (TimeSeriesGraphObject.ts)`,
+      `setRange() was called; yRange was set to ${String(this.axes.yRange[1])} (TimeSeriesGraphObject.ts)`,
     );
   }
 
@@ -188,11 +181,7 @@ export class TimeSeriesGraphObject
    * @postconditions returns a number[] that is the values graph ticks
    */
   timeSeriesYRange(): number[] {
-    // Precondition: Validates that the y axis is defined.
-    assert(
-      this.axes.yRange !== undefined,
-      "timeSeriesYRange: axes.yRange must be defined",
-    );
+    // Precondition: Validates that the yRange[1] of y axis is number.
     assert(
       typeof this.axes.yRange[1] === "number",
       "timeSeriesYRange: axes.yRange[1] must be a number",
@@ -222,12 +211,7 @@ export class TimeSeriesGraphObject
    * @postconditions returns a string[] that is displayed on x axis
    */
   timeSeriesXRange(): string[] {
-    // Precondition: Validates that the csv data is defined.
-    const csvData = this.getCSVData();
-    assert(
-      csvData !== undefined,
-      "timeSeriesXRange: CSVDataObject must be defined",
-    );
+    const csvData = this.getCSVData(); 
     // Precondition: Validates that the CSVDataObject has data.
     const points = csvData.getData();
     assert(

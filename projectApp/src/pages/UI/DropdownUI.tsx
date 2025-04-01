@@ -32,7 +32,7 @@ export default function DropdownUI({
   );
   const [isFirstDifferencing, setIsFirstDifferencing] =
     useState<boolean>(false);
-  const [infoFirstDifferencing, setInfoFirstDifferencing] = useState();
+  const [infoFirstDifferencing, setInfoFirstDifferencing] = useState<string>("");
 
   const [selectedHeaderIndex, setSelectedHeaderIndex] = useState<number>(-1);
   const [headerList, setHeaderList] = useState<string[]>([]);
@@ -104,6 +104,7 @@ export default function DropdownUI({
     setInfoRange(graphController.getEmbeddedRange().toString());
     setInfoHeader(csvData.getYHeader());
     setHeaders(csvData.getCSVHeaders());
+    setInfoFirstDifferencing(csvData.getIsFirstDifferencing() ? "Enabled" : "Disabled");
 
     mainController.updateMainScene();
   }
@@ -266,7 +267,8 @@ export default function DropdownUI({
             >
               <Text positionLeft={10}>Tau Value: {infoTau}</Text>
             </Container>
-            <Text positionLeft={10}>Y Header: {infoHeader}</Text>
+            <Text positionLeft={10}>Selected Header: {infoHeader}</Text>
+            <Text positionLeft={10} positionTop={15}>First Differencing: {infoFirstDifferencing}</Text>
             <Text positionLeft={10} positionTop={15}>
               EG Range: {infoRange}
             </Text>

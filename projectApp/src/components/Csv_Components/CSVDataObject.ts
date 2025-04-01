@@ -117,7 +117,7 @@ export class CSVDataObject implements CSVDataInterface {
         ? await UrlCSVReader(file as string)
         : await LocalCsvReader(file as File);
 
-      if (data.length < 0) {
+      if (data.length === 0) {
         throw new Error("Loaded in an empty csv file CSVDataObject.ts");
       }
       const headers = Object.keys(data[0]);

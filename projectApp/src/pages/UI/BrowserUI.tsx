@@ -54,6 +54,7 @@ export default function BrowserUI() {
               alert(`Successfully Loaded: ${csv}`);
               sendLog("info", `URLComponent read: ${csv}`);
             } catch (error: unknown) {
+              // if url cannot be loaded, log the error
               addTestSceneInfo("url csv loading failed");
               alert(`${error} Failed Loading: ${csv}`);
               sendLog("info", `URLComponent read: ${csv}`);
@@ -100,6 +101,7 @@ export default function BrowserUI() {
                 alert(`Successfully Loaded: ${file.name}`);
                 sendLog("info", `LoadComponent read: ${file.name.toString()}`);
               } catch (error: unknown) {
+                // if file cannot be loaded, log the error
                 addTestSceneInfo("local csv file loading failed");
                 alert(`${error} Failed Loading: ${file.name}`);
                 sendError(
@@ -109,6 +111,7 @@ export default function BrowserUI() {
               }
               setControlKey(controlKey + 1);
             } else {
+              // if target file does not exist, log the error
               sendError(
                 new Error("Invalid File"),
                 "LoadComponent Return Error",

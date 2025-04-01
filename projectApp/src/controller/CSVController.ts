@@ -38,6 +38,7 @@ export class CSVController implements ControllerInterface {
    */
   generate(tau: number): void {
     const emData = this.getModelData();
+    // assert that model.data is defined
     if (emData === undefined) {
       const error = new SyntaxError("Error getting CSVDataObject");
       sendError(error, "Unable to get csv data object (CSVController.ts)");
@@ -70,7 +71,7 @@ export class CSVController implements ControllerInterface {
     try {
       await this.getModel().readLocalFile(file);
     } catch (error: unknown) {
-      // Log the error
+      // if readLocalFile errors out, log the error
       sendError(error, "loadLocalFile Error");
       throw error;
     }
@@ -86,7 +87,7 @@ export class CSVController implements ControllerInterface {
     try {
       await this.getModel().readURLFile(csv);
     } catch (error: unknown) {
-      // Log the error
+      // if readURLFile errors out, log the error
       sendError(error, "loadURLFile Error");
       throw error;
     }

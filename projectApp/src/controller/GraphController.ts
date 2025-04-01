@@ -40,6 +40,7 @@ export class GraphController implements ControllerInterface {
    */
   generateTimeSeriesGraph(): TimeSeriesGraphObject {
     const graph = this.getModel().getData();
+    // assert that model.data is defined
     if (graph === undefined) {
       const error = new SyntaxError("Error on Time Series Graph");
       sendError(
@@ -76,6 +77,7 @@ export class GraphController implements ControllerInterface {
    */
   generateEmbeddedGraph(): EmbeddedGraphObject {
     const graph = this.getModel().getEmbeddedGraphData();
+    // assert that model.embeddedGraphData is defined
     if (graph === undefined) {
       const error = new SyntaxError("Error Generating Embedded Graph");
       sendError(error, "Unable to generate Embedded Graph");
@@ -132,6 +134,7 @@ export class GraphController implements ControllerInterface {
    */
   getModelData(): TimeSeriesGraphObject {
     const emData = this.getModel().getData();
+    // assert that model.data is defined
     if (emData === undefined) {
       const error = new SyntaxError("Error getting Time Series Data");
       sendError(error, "Unable to get Time Series Data");
@@ -149,6 +152,7 @@ export class GraphController implements ControllerInterface {
    */
   getModelEmData(): EmbeddedGraphObject {
     const emData = this.getModel().getEmbeddedGraphData();
+    // assert that model.embeddedGraphData is defined
     if (emData === undefined) {
       const error = new SyntaxError("Error getting Embedded Data");
       sendError(error, "Unable to get Embedded Data");
@@ -164,6 +168,7 @@ export class GraphController implements ControllerInterface {
    */
   getEmbeddedRange(): number {
     const emData = this.getModel().getEmbeddedGraphData();
+    // assert that model.embeddedGraphData is defined
     if (emData === undefined) {
       const error = new SyntaxError("Error getting Embedded Data");
       sendError(error, "Unable to get range of Embedded graph");
@@ -179,6 +184,7 @@ export class GraphController implements ControllerInterface {
    */
   getTauForDropDown(): string {
     const emData = this.getModel().getEmbeddedGraphData();
+    // assert that model.embeddedGraphData is defined
     if (emData === undefined) {
       const error = new SyntaxError("Error getting Embedded Data");
       sendError(error, "Unable to get tau value");

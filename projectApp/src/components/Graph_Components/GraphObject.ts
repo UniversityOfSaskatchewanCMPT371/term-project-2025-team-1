@@ -70,6 +70,7 @@ export class GraphObject implements GraphInterface {
    * - If the ID is empty or not a string, an error is thrown.
    */
   setId(id: string): void {
+    // assert that id is a nonempty string
     if (id.trim() === "" || typeof id !== "string") {
       const error = new SyntaxError("Invalid ID");
       sendError(error, "ID must be a non-empty string. (GraphObject.ts");
@@ -105,6 +106,7 @@ export class GraphObject implements GraphInterface {
    * - If the title is empty or not a string, an error is thrown.
    */
   setName(title: string): void {
+    // assert that title is a nonempty string
     if (title.trim() === "" || typeof title !== "string") {
       const error = new SyntaxError("Invalid Name");
       sendError(error, "Name must be a non-empty string. (GraphObject.ts");
@@ -141,6 +143,7 @@ export class GraphObject implements GraphInterface {
    * @postconditions The 'position' property is set to an object with 'x', 'y', and 'z' properties. If any of the parameters are not numbers, an error is thrown.
    */
   setPosition(x: number, y: number, z: number): void {
+    // assert that x, y, and z are numbers
     if (
       typeof x !== "number" ||
       typeof y !== "number" ||
@@ -184,6 +187,7 @@ export class GraphObject implements GraphInterface {
   setAxes(axes: { xRange: [number, number]; yRange: [number, number] }): void {
     let error;
     if (axes.xRange[0] > axes.xRange[1]) {
+      // assert that xRange[0] min is less than xRange[1] max
       error = new RangeError("Invalid x axis range");
       sendError(
         error,
@@ -191,6 +195,7 @@ export class GraphObject implements GraphInterface {
       );
       throw error;
     } else if (axes.yRange[0] > axes.yRange[1]) {
+      // assert that yRange[0] min is less than yRange[1] max
       error = new RangeError("Invalid y axis range");
       sendError(
         error,

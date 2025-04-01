@@ -25,6 +25,7 @@ export class CSVReaderModel implements CSVModelInterface {
    */
   getCSVFile(): CSVDataObject {
     const data = this.data;
+    // assert that data is defined
     if (data === undefined) {
       const error = new SyntaxError("Error getting csvfile");
       sendError(error, "Unable to getCSVFile");
@@ -53,7 +54,7 @@ export class CSVReaderModel implements CSVModelInterface {
         `readLocalFile read a file\n${JSON.stringify(data.getData())}`,
       );
     } catch (error: unknown) {
-      // Log the Error
+      // if loadCSVData errors out, log the error
       sendError(error, "readLocalFile error");
       throw error;
     }
@@ -83,7 +84,7 @@ export class CSVReaderModel implements CSVModelInterface {
         `readURLFile read a file\n${JSON.stringify(data.getData())}`,
       );
     } catch (error: unknown) {
-      // Log the error
+      // if loadCSVData errors out, log the error
       sendError(error, "readURLFile error");
       throw error;
     }

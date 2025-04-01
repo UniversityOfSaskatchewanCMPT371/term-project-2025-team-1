@@ -80,6 +80,7 @@ export class EmbeddedGraphObject
     time: number,
     csvData: { key: Record<string, string | number> }[],
   ): [number, number, number] {
+    // assert that time is nonnegative
     if (time < 0) {
       const e = new Error("time must be >= 0");
       sendError(
@@ -173,6 +174,7 @@ export class EmbeddedGraphObject
    * @postconditions the value of tau is updated to newTau
    */
   setTau(newTau: number): void {
+    // assert that new tau is nonnegative
     if (newTau < 1) {
       const e = new TypeError("Tau must be greater than or equal to 1");
       sendError(
@@ -196,6 +198,7 @@ export class EmbeddedGraphObject
    */
 
   getPoints3D(): Point3DInterface[] {
+    // assert that points3D is not empty
     if (this.points3D.length <= 0) {
       const error = new RangeError("Invalid Points 3D");
       sendError(error, "Uninitialized 3d points (EmbeddedGraphObject.ts)");
@@ -210,6 +213,7 @@ export class EmbeddedGraphObject
    * @postconditions the range of the csv data set
    */
   getRange(): number {
+    // assert that yRange[0] min is less than yRange[1] max
     if (this.axes.yRange[0] >= this.axes.yRange[1]) {
       const error = new SyntaxError(
         "Start of range greater than or equal end of range",
@@ -227,6 +231,7 @@ export class EmbeddedGraphObject
    * @postconditions sets the max range used in the 3D Embedded graph
    */
   setRange(): void {
+    // assert that csv data is not empty
     if (this.getCSVData().getData().length <= 0) {
       const error = new RangeError("Invalid CSV Data Objects");
       sendError(

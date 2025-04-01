@@ -17,7 +17,7 @@ import { addTestSceneInfo } from "../../pages/Scene/TestScene";
 export async function LocalCSVReader(
   file: string,
 ): Promise<Record<string, string | number>[]> {
-  // any noncsv file is caught here and invalid csv files are thrown by fsPromise
+  // assert that file ends in .csv extension
   if (!file.endsWith(".csv")) {
     const notCsvErr = new Error("This file is not csv");
     sendError(notCsvErr, "LocalCSVReader(path) receives a non csv file");
@@ -50,6 +50,7 @@ export async function LocalCSVReader(
       return timeSeries;
     })
     .catch((err: unknown) => {
+      // if readFile or PapaParse errors out, log the error
       sendError(err, "LocalCSVReader error");
       throw err as Error;
     });
@@ -72,10 +73,8 @@ export function LocalCsvReader(
   addTestSceneInfo("reading local csv reader");
   return new Promise<{ key: Record<string, string | number> }[]>(
     (resolve, reject) => {
+      // assert that file ends in .csv extension
       if (!file.name.endsWith("csv")) {
-        // This is relying on the fact that we name the file with extension
-        // BrowserUI LoadComponent e.target.file gives the file name and extension
-        // any testing MUST have files that end with .csv for success
         const notCsvErr = new Error("This file is not csv");
         sendError(notCsvErr, "LocalCsvReader(file) receives a non csv file");
         throw notCsvErr;
@@ -90,6 +89,7 @@ export function LocalCsvReader(
 
         if (!fileContent.trim()) {
           const emptyFileErr = new Error("Empty file set");
+          // If fileContent is empty, log the error 
           sendError(emptyFileErr, `LocalCsvReader(file) ${file.name} is empty`);
           reject(emptyFileErr);
           return;
@@ -110,6 +110,7 @@ export function LocalCsvReader(
             resolve(typedData); // Resolve the promise with parsed data
           },
           error: function (parseError: Error) {
+            // if PapaParse errors out, log the error
             sendError(
               parseError,
               `LocalCsvReader(file) has errored for ${file.name}`,
@@ -121,6 +122,7 @@ export function LocalCsvReader(
 
       reader.onerror = () => {
         const readerErr = new Error("reader error");
+        // if reader errors out, log the error
         sendError(
           readerErr,
           `LocalCsvReader(file) has errored for ${file.name}`,
@@ -150,6 +152,7 @@ export async function UrlCSVReader(
   addTestSceneInfo("starting url reader");
   return fetch(url, { redirect: "follow" })
     .then((response: Response) => {
+      // after following redirects, if response is not ok, log the error
       if (!response.ok) {
         const badResponseErr = Error(
           `Failed to fetch the file. Status: ${response.status.toString()}`,
@@ -161,7 +164,7 @@ export async function UrlCSVReader(
       const resultUrl = response.url;
       const contentType = response.headers.get("Content-Type");
       // assert that either resultingURL is csv or contentType is text/csv
-      // if both fail, throw error
+      // if both fail, log the error
       if (!(resultUrl.endsWith(".csv") || contentType?.includes("text/csv"))) {
         const badResultErr = Error(
           `Failed to fetch csv format. ${response.url}, ${JSON.stringify(response.headers)}`,
@@ -196,6 +199,7 @@ export async function UrlCSVReader(
       return timeSeries;
     })
     .catch((err: unknown) => {
+      // if fetch or PapaParse errors out, log the error
       sendError(err, "URLCSVReader error");
       throw err as Error;
     });

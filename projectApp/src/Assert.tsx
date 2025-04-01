@@ -1,6 +1,5 @@
 import { sendError } from "./logger-frontend";
 
-
 /**
  * Asserts that a given condition is true.
  *

@@ -128,7 +128,7 @@ export class GraphController implements ControllerInterface {
   /**
    * Retrieves the array of TimeSeriesGraphObject instances stored in the model.
    *
-   * @preconditions none
+   * @preconditions model.data is defined
    *
    * @postconditions returns the array of TimeSeriesGraphObject instances.
    */
@@ -146,7 +146,7 @@ export class GraphController implements ControllerInterface {
   /**
    * Retrieves the array of EmbeddedGraphObject instances stored in the model.
    *
-   * @preconditions none
+   * @preconditions model.embeddedGraphData is defined
    *
    * @postconditions returns the array of EmbeddedGraphObject instances.
    */

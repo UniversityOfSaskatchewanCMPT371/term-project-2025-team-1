@@ -85,7 +85,7 @@ export default function DropdownUI({
     setInfoRange(graphController.getEmbeddedRange().toString());
     setInfoHeader(csvData.getYHeader());
     setHeaders(csvData.getCSVHeaders());
-    
+
     mainController.updateMainScene();
   }
 
@@ -288,24 +288,36 @@ export default function DropdownUI({
       }
 
       let start = selectedHeaderIndex;
-      const timeHeader = mainController.getCSVController().getModelData()?.getTimeHeader();
-      
+      const timeHeader = mainController
+        .getCSVController()
+        .getModelData()
+        ?.getTimeHeader();
+
       if (start == headerList.length - 1) {
         if (headerList[0] != timeHeader) {
-          setSelectedHeaderIndex(0)
+          setSelectedHeaderIndex(0);
         } else {
-          setSelectedHeaderIndex(1)
+          setSelectedHeaderIndex(1);
         }
         return;
       }
 
-      if ( start == headerList.length - 2 && headerList[headerList.length-1] == timeHeader) {
+      if (
+        start == headerList.length - 2 &&
+        headerList[headerList.length - 1] == timeHeader
+      ) {
         setSelectedHeaderIndex(0);
       }
 
-      const currentHeader = mainController.getCSVController().getModelData()?.getYHeader();
+      const currentHeader = mainController
+        .getCSVController()
+        .getModelData()
+        ?.getYHeader();
       for (start; start < headerList.length; start++) {
-        if (headerList[start] != timeHeader && headerList[start] != currentHeader) {
+        if (
+          headerList[start] != timeHeader &&
+          headerList[start] != currentHeader
+        ) {
           setSelectedHeaderIndex(start);
         }
       }
@@ -319,19 +331,22 @@ export default function DropdownUI({
       }
 
       let start = selectedHeaderIndex;
-      const timeHeader = mainController.getCSVController().getModelData()?.getTimeHeader();
+      const timeHeader = mainController
+        .getCSVController()
+        .getModelData()
+        ?.getTimeHeader();
 
       if (start == 0) {
-        if (headerList[headerList.length-1] != timeHeader) {
-          setSelectedHeaderIndex(headerList.length-1);
+        if (headerList[headerList.length - 1] != timeHeader) {
+          setSelectedHeaderIndex(headerList.length - 1);
         } else {
-          setSelectedHeaderIndex(headerList.length-2);
+          setSelectedHeaderIndex(headerList.length - 2);
         }
         return;
       }
 
       if (start == 1 && headerList[0] == timeHeader) {
-        setSelectedHeaderIndex(headerList.length-1);
+        setSelectedHeaderIndex(headerList.length - 1);
         return;
       }
 
@@ -347,7 +362,10 @@ export default function DropdownUI({
   }
 
   function GenerateHeaderSelector(): React.JSX.Element {
-    headerList = mainController.getCSVController().getModelData()?.getCSVHeaders();
+    headerList = mainController
+      .getCSVController()
+      .getModelData()
+      ?.getCSVHeaders();
     return (
       <Container
         width={"100%"}
@@ -376,7 +394,7 @@ export default function DropdownUI({
             borderWidth={2}
             borderColor={"grey"}
             onClick={() => {
-              setOnHeaderDecrease()
+              setOnHeaderDecrease();
             }}
           >
             <Text>&lt;</Text>
@@ -391,9 +409,11 @@ export default function DropdownUI({
           justifyContent={"center"}
         >
           <Text fontWeight={"bold"} positionTop={4}>
-            {headerList ? 
-              selectedHeaderIndex >= 0 ? headerList[selectedHeaderIndex] : "No Header Selected"
-             : "No Headers"}
+            {headerList
+              ? selectedHeaderIndex >= 0
+                ? headerList[selectedHeaderIndex]
+                : "No Header Selected"
+              : "No Headers"}
           </Text>
         </Container>
 
@@ -424,7 +444,7 @@ export default function DropdownUI({
           </Container>
         </Container>
       </Container>
-    )
+    );
   }
 
   /**

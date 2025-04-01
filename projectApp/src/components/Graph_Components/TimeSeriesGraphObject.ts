@@ -4,6 +4,7 @@ import { GraphObject } from "./GraphObject";
 import { sendLog } from "../../logger-frontend";
 import { Point2DObject } from "./Points/Point2DObject";
 import { Point2DInterface } from "../../types/GraphPointsInterfaces";
+import assert from "../../Assert";
 
 /**
  * TimeSeriesGraphObject is a class that extends GraphObject
@@ -18,6 +19,8 @@ export class TimeSeriesGraphObject
   points2D: Point2DObject[];
   yRangeLength: number;
   constructor(csv: CSVDataObject) {
+    // Precondition: csv must be defined.
+    assert(csv !== undefined, "Constructor: CSVDataObject must be provided");
     super(csv);
     this.points2D = [];
     this.yRangeLength = 0;
@@ -29,6 +32,12 @@ export class TimeSeriesGraphObject
    * @postcondition returns the array of 2D points associated with the 2D Graph
    */
   getPoints2D(): Point2DInterface[] {
+    // Precondition: points2D must be an array.
+    // Postcondition: returns the array of 2D points associated with the 2D Graph.
+    assert(
+      Array.isArray(this.points2D),
+      "getPoints2D: points2D must be an array",
+    );
     return this.points2D;
   }
 
@@ -43,10 +52,15 @@ export class TimeSeriesGraphObject
 
   /**
    * This method sets the range of the y-axis in the Time Series Graph
-   * @precondition number parameter wchich is the highest value in hte data set
+   * @precondition number parameter must be a finite number
    * @postcondition On success, updates the y range to the new one
    */
   setYRangeLength(num: number): void {
+    // Precondition: num must be a finite number.
+    assert(
+      Number.isFinite(num),
+      "setYRangeLength: num must be a finite number",
+    );
     this.yRangeLength = num;
 
     sendLog(
@@ -61,6 +75,12 @@ export class TimeSeriesGraphObject
    * post-condition: a new PointInterface instance is added to the graph
    */
   addPoints(): void {
+    // pre-condition: Validates the points in GraphObject by checking that points2D is an array.
+    const points = this.getCSVData().getPoints();
+    assert(
+      Array.isArray(points),
+      "addPoints: CSVDataObject.getPoints() must return an array",
+    );
     this.points2D = [];
     this.getCSVData()
       .getPoints()
@@ -70,6 +90,8 @@ export class TimeSeriesGraphObject
         //Get Header by key then assign
         this.points2D.push(newPoint);
       });
+    // post-condition: a new PointInterface instance is added to the graph
+    assert(this.points2D.length > 0, "addPoints: No points were added");
     sendLog(
       "info",
       "addPoint() has added new points to the graph (TimeSeriesGraphObject.tss)",
@@ -120,6 +142,17 @@ export class TimeSeriesGraphObject
    * @postcondition sets the max Y range of graph to the largest value of the csv data
    */
   setRange(): void {
+    // Precondition: Validates that the CSVDataObject is defined.
+    assert(
+      this.getCSVData() !== undefined,
+      "setRange: CSVDataObject must be defined",
+    );
+    // Precondition: Validates that the CSVDataObject has data.
+    const points = this.getCSVData().getPoints();
+    assert(
+      Array.isArray(points),
+      "setRange: CSVDataObject.getPoints() must return an array",
+    );
     let max = 0;
     this.getCSVData()
       .getData()
@@ -155,6 +188,15 @@ export class TimeSeriesGraphObject
    * @postconditions returns a number[] that is the values graph ticks
    */
   timeSeriesYRange(): number[] {
+    // Precondition: Validates that the y axis is defined.
+    assert(
+      this.axes.yRange !== undefined,
+      "timeSeriesYRange: axes.yRange must be defined",
+    );
+    assert(
+      typeof this.axes.yRange[1] === "number",
+      "timeSeriesYRange: axes.yRange[1] must be a number",
+    );
     const range: number[] = [];
 
     let cur = 0;
@@ -168,6 +210,8 @@ export class TimeSeriesGraphObject
       "info",
       `timeSeriesYRange() returned ${range} (TimeSeriesGraphObject.ts)`,
     );
+    // Postcondition: returns a number[] that is the values graph ticks
+    assert(Array.isArray(range), "timeSeriesYRange: range must be an array");
 
     return range;
   }
@@ -178,6 +222,24 @@ export class TimeSeriesGraphObject
    * @postconditions returns a string[] that is displayed on x axis
    */
   timeSeriesXRange(): string[] {
+    // Precondition: Validates that the csv data is defined.
+    const csvData = this.getCSVData();
+    assert(
+      csvData !== undefined,
+      "timeSeriesXRange: CSVDataObject must be defined",
+    );
+    // Precondition: Validates that the CSVDataObject has data.
+    const points = csvData.getData();
+    assert(
+      Array.isArray(points),
+      "timeSeriesXRange: CSVDataObject.getData() must return an array",
+    );
+    const timeHeader = csvData.getTimeHeader();
+    assert(
+      typeof timeHeader === "string",
+      "timeSeriesXRange: timeHeader must be a string",
+    );
+
     const range: string[] = [];
 
     this.getCSVData()
@@ -188,6 +250,8 @@ export class TimeSeriesGraphObject
         ] as unknown as string;
         range.push(temp);
       });
+    // Postcondition: returns a string[] that is displayed on x axis
+    assert(Array.isArray(range), "timeSeriesXRange: range must be an array");
     sendLog(
       "info",
       `timeSeriesXRange() was called and returned ${range} (TimeSeriesGraphObject.ts)`,
@@ -197,7 +261,7 @@ export class TimeSeriesGraphObject
 
   /**
    * Increment Y header
-   * @precondition nonde
+   * @precondition none
    * @postcondition Y header increments/changes properly
    */
   incrementYHeader(): void {
@@ -262,7 +326,7 @@ export class TimeSeriesGraphObject
 
   /**
    * Decrement Y header
-   * @precondition nonde
+   * @precondition none
    * @postcondition Y header decrements/changes properly
    */
   decrementYHeader(): void {

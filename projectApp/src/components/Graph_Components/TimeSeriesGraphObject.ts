@@ -211,7 +211,7 @@ export class TimeSeriesGraphObject
    * @postconditions returns a string[] that is displayed on x axis
    */
   timeSeriesXRange(): string[] {
-    const csvData = this.getCSVData(); 
+    const csvData = this.getCSVData();
     // Precondition: Validates that the CSVDataObject has data.
     const points = csvData.getData();
     assert(

@@ -116,25 +116,11 @@ export class CSVDataObject implements CSVDataInterface {
       const data = isUrl
         ? await UrlCSVReader(file as string)
         : await LocalCsvReader(file as File);
+      this.setData(data);
+      this.setName("Graph" + index.toString());
 
       if (data.length > 0) {
         const headers = Object.keys(data[0]);
-
-        for (const row of data) {
-          console.log(
-            Object.values(row).length,
-            " Header Length: ",
-            headers.length,
-          );
-          console.log(Object.values(row), " Header: ", headers);
-          if (Object.values(row).length !== headers.length) {
-            throw new Error(
-              `Row: ${Object.values(row)} doesn't match header length CSVDataObject.ts`,
-            );
-          }
-        }
-        this.setData(data);
-        this.setName("Graph" + index.toString());
         this.csvHeaders = headers;
         this.setTimeHeader();
         this.setYHeader(this.findFirstHeader());

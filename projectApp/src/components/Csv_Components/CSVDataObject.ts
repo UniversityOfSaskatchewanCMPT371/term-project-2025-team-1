@@ -336,6 +336,7 @@ export class CSVDataObject implements CSVDataInterface {
     throw error;
   }
 
+  // End of Getters
   // Setters
 
   /**
@@ -411,6 +412,8 @@ export class CSVDataObject implements CSVDataInterface {
     }
   }
 
+  // End of Setters
+
   /**
    * Gets the Time header used by the csv data file
    * @preconditions timeHeader must be "Time"
@@ -427,6 +430,7 @@ export class CSVDataObject implements CSVDataInterface {
     }
     return this.timeHeader;
   }
+  // todo: move this into getter section
 
   /**
    * Sets the time header used on the csv data set
@@ -441,4 +445,5 @@ export class CSVDataObject implements CSVDataInterface {
       `setTimeHeader() was called, finding the time header in the data set (CSVDataObject.ts)`,
     );
   }
+  // todo: move this into setter scetion
 }

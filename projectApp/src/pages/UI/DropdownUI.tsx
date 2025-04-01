@@ -36,13 +36,12 @@ export default function DropdownUI({
 
   const [selectedHeaderIndex, setSelectedHeaderIndex] = useState<number>(-1);
   const [headerList, setHeaderList] = useState<string[]>([]);
-  // let headerList: string[] = [];
 
   useEffect(() => {
     const csvData = mainController.getCSVController().getModelData();
 
     if (csvData) {
-      let h = csvData.getCSVHeaders();
+      const h = csvData.getCSVHeaders();
       const yHeader = csvData.getYHeader();
       const yHeaderIndex = h.indexOf(yHeader);
       setSelectedHeaderIndex(yHeaderIndex);
@@ -302,58 +301,54 @@ export default function DropdownUI({
   }
 
   function setOnHeaderIncrease(): void {
-    if (headerList) {
-      if (headerList.length < 3) {
-        return;
-      }
+    if (headerList.length < 3) {
+      return;
+    }
 
-      const timeHeader = mainController
-        .getCSVController()
-        .getModelData()
-        ?.getTimeHeader();
+    const timeHeader = mainController
+      .getCSVController()
+      .getModelData()
+      ?.getTimeHeader();
 
-      let start = selectedHeaderIndex;
+    let start = selectedHeaderIndex;
+    start += 1;
+    if (start >= headerList.length) {
+      start = 0;
+    }
+
+    if (headerList[start] == timeHeader) {
       start += 1;
       if (start >= headerList.length) {
         start = 0;
       }
-
-      if (headerList[start] == timeHeader) {
-        start += 1;
-        if (start >= headerList.length) {
-          start = 0;
-        }
-      }
-
-      setSelectedHeaderIndex(start);
     }
+
+    setSelectedHeaderIndex(start);
   }
 
   function setOnHeaderDecrease(): void {
-    if (headerList) {
-      if (headerList.length < 3) {
-        return;
-      }
+    if (headerList.length < 3) {
+      return;
+    }
 
-      const timeHeader = mainController
-        .getCSVController()
-        .getModelData()
-        ?.getTimeHeader();
+    const timeHeader = mainController
+      .getCSVController()
+      .getModelData()
+      ?.getTimeHeader();
 
-      let start = selectedHeaderIndex;
+    let start = selectedHeaderIndex;
+    start -= 1;
+    if (start < 0) {
+      start = headerList.length - 1;
+    }
+
+    if (headerList[start] == timeHeader) {
       start -= 1;
       if (start < 0) {
         start = headerList.length - 1;
       }
-
-      if (headerList[start] == timeHeader) {
-        start -= 1;
-        if (start < 0) {
-          start = headerList.length - 1;
-        }
-      }
-      setSelectedHeaderIndex(start);
     }
+    setSelectedHeaderIndex(start);
   }
 
   function GenerateHeaderSelector(): React.JSX.Element {
@@ -400,12 +395,9 @@ export default function DropdownUI({
           justifyContent={"center"}
         >
           <Text fontWeight={"bold"} positionTop={4}>
-            {headerList
-              ? selectedHeaderIndex >= 0 &&
-                selectedHeaderIndex < headerList.length
-                ? headerList[selectedHeaderIndex]
-                : "No Header Selected"
-              : "No Headers"}
+            {selectedHeaderIndex >= 0 && selectedHeaderIndex < headerList.length
+              ? headerList[selectedHeaderIndex]
+              : "No Header Selected"}
           </Text>
         </Container>
 

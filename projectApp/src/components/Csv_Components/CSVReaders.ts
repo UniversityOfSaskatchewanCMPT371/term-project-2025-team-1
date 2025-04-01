@@ -89,7 +89,7 @@ export function LocalCsvReader(
 
         if (!fileContent.trim()) {
           const emptyFileErr = new Error("Empty file set");
-          // If fileContent is empty, log the error 
+          // If fileContent is empty, log the error
           sendError(emptyFileErr, `LocalCsvReader(file) ${file.name} is empty`);
           reject(emptyFileErr);
           return;

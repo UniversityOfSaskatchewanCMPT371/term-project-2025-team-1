@@ -31,7 +31,7 @@ export default class MockFileReader {
 }
 /**
  * Returns a file that has the contents of the file at the filePath.
- * 
+ *
  * If await reader throws the error, vitest still receives ENOENT error.
  * Vitest cant handle errors outside of expect,
  * so instead data will be returned as empty (aka couldnt read).

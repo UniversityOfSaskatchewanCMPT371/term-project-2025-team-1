@@ -60,7 +60,7 @@ export default function DropdownUI({
 
   /**
    * Generates the graph, and then updates main scene
-   * @preconditions 
+   * @preconditions
    * - `mainController` has a `CSVController`, `GraphController`, and `MainScene`
    * @postconditions updates the main scene
    */

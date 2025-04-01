@@ -227,7 +227,7 @@ export class CSVDataObject implements CSVDataInterface {
    * @postconditions
    * - returns Record object if found, null otherwise
    * - does not modify data when searching
-   * 
+   *
    */
   getDataByTime(time: string): Record<string, string | number> | null {
     let result: Record<string, string | number> | null = null;

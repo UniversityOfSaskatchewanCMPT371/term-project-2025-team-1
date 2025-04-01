@@ -14,16 +14,6 @@ export interface TimeSeriesGraphInterface extends GraphInterface {
   addPoints(): void;
 
   /**
-   * Finds a point based on given x and y data
-   * pre-condition: xData is a string, yData is a number
-   * post-condition: returns the matching point or undefined if not found
-   * @param {string} xData - The x-coordinate (string representation)
-   * @param {number} yData - The y-coordinate (numeric value)
-   * @returns {PointObject | undefined} The found point or undefined
-   */
-  findPoint(xData: string, yData: number): Point2DObject | undefined;
-
-  /**
    * Updates all points' selection status
    * pre-condition: none
    * post-condition: all points' states are updated

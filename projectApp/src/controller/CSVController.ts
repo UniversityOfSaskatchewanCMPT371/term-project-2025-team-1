@@ -87,10 +87,6 @@ export class CSVController implements ControllerInterface {
     }
   }
 
-  browserCSVFiles(): [string, boolean][] {
-    return this.getModel().loadedCsvBrowser();
-  }
-
   /**
    * Retrieves the controller's associated model
    *

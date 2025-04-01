@@ -119,9 +119,6 @@ export class CSVDataObject implements CSVDataInterface {
 
       if (data.length > 0) {
         const headers = Object.keys(data[0]);
-        if (headers.includes("__parsed_extra")) {
-          throw new Error("Parsed an extra column without a proper header");
-        }
 
         for (const row of data) {
           console.log(
@@ -132,20 +129,8 @@ export class CSVDataObject implements CSVDataInterface {
           console.log(Object.values(row), " Header: ", headers);
           if (Object.values(row).length !== headers.length) {
             throw new Error(
-              `Row: ${Object.values(row)} doesn't match header length of ${headers.length} CSVDataObject.ts`,
+              `Row: ${Object.values(row)} doesn't match header length CSVDataObject.ts`,
             );
-          }
-          for (const key of headers) {
-            const value = row[key as keyof typeof row];
-            if (key == "Time") {
-              if (typeof value !== "string") {
-                throw new Error("Number on Time value");
-              }
-            } else {
-              if (typeof value !== "number") {
-                throw new Error("String on non Time header");
-              }
-            }
           }
         }
         this.setData(data);

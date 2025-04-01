@@ -193,6 +193,8 @@ export class CSVDataObject implements CSVDataInterface {
     );
   }
 
+  // Getters
+
   /**
    * Retrieves data by a specific key
    * @param key Key to search for in the data

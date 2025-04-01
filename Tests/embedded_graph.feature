@@ -52,4 +52,7 @@ Feature: Embedded Graph Creation
     When the user turns First Differencing on
     Then the first differencing feature is deactivated
 
-  # Scenario: Setting Point Size
+  Scenario: Setting Point Size
+    Given the embedded graph is displayed with a valid CSV file
+    When the user selects "1-15" using the right or left indicator
+    Then the Point size in the embedded graph is changed

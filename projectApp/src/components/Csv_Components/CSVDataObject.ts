@@ -116,11 +116,46 @@ export class CSVDataObject implements CSVDataInterface {
       const data = isUrl
         ? await UrlCSVReader(file as string)
         : await LocalCsvReader(file as File);
-      this.setData(data);
-      this.setName("Graph" + index.toString());
 
       if (data.length > 0) {
         const headers = Object.keys(data[0]);
+
+        //Checking if an extra unexpected header gets parsed
+        if (headers.includes("__parsed_extra")) {
+          throw new Error("Parsed an extra column without a proper header");
+        }
+
+        //Checking it the length of each row matches the length of the header
+        for (const row of data) {
+          console.log(
+            Object.values(row).length,
+            " Header Length: ",
+            headers.length,
+          );
+          console.log(Object.values(row), " Header: ", headers);
+          if (Object.values(row).length !== headers.length) {
+            throw new Error(
+              `Row: ${Object.values(row)} doesn't match header length of ${headers.length} CSVDataObject.ts`,
+            );
+          }
+
+          //Checking if the proper value types are found on each column
+          //Time header should have a string, while the rest of the column values should be numbers
+          for (const key of headers) {
+            const value = row[key as keyof typeof row];
+            if (key == "Time") {
+              if (typeof value !== "string") {
+                throw new Error("Number value found on Time column");
+              }
+            } else {
+              if (typeof value !== "number") {
+                throw new Error("String value found on non Time column");
+              }
+            }
+          }
+        }
+        this.setData(data);
+        this.setName("Graph" + index.toString());
         this.csvHeaders = headers;
         this.setTimeHeader();
         this.setYHeader(this.findFirstHeader());

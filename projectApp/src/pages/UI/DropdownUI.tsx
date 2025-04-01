@@ -77,10 +77,13 @@ export default function DropdownUI({
     const graphController = mainController.getGraphController();
     const csvData = graphController.getModelEmData().getCSVData();
     mainController.getCSVController().generate(selectTau, isFirstDifferencing);
+
+    // setting use states for the information box
     setInfoTau(graphController.getTauForDropDown()); //Later change this to getting tau value from the graph itself rather than the other useState
     setInfoRange(graphController.getEmbeddedRange().toString());
     setInfoHeader(csvData.getYHeader());
     setHeaders(csvData.getCSVHeaders());
+    
     mainController.updateMainScene();
   }
 
@@ -172,7 +175,24 @@ export default function DropdownUI({
           >
             <Container
               width={"100%"}
-              height={"50%"}
+              height={"33%"}
+              flexDirection={"column"}
+              alignContent={"center"}
+            >
+              <Container
+                width={"100%"}
+                height={"50%"}
+                flexDirection={"row"}
+                justifyContent={"center"}
+              >
+                <Text>Selected Header</Text>
+              </Container>
+              <GenerateHeaderSelector />
+            </Container>
+
+            <Container
+              width={"100%"}
+              height={"33%"}
               flexDirection={"column"}
               alignContent={"center"}
             >
@@ -189,7 +209,7 @@ export default function DropdownUI({
             {/* This contains for selecting Tau value on start up */}
             <Container
               width={"100%"}
-              height={"50%"}
+              height={"33%"}
               flexDirection={"column"}
               alignContent={"center"}
             >
@@ -257,6 +277,84 @@ export default function DropdownUI({
         </Container>
       </>
     );
+  }
+
+  function GenerateHeaderSelector(): React.JSX.Element {
+    return (
+      <Container
+        width={"100%"}
+        height={"50%"}
+        flexDirection={"row"}
+        alignContent={"center"}
+        justifyContent={"center"}
+      >
+        <Container
+          width={"45%"}
+          height={"100%"}
+          flexDirection={"row"}
+          alignContent={"center"}
+          justifyContent={"center"}
+        >
+          <Container
+            width={"60%"}
+            height={"30%"}
+            flexDirection={"row"}
+            alignContent={"center"}
+            justifyContent={"center"}
+            backgroundColor={"grey"}
+            backgroundOpacity={0.5}
+            hover={{ backgroundOpacity: 1 }}
+            borderRadius={15}
+            borderWidth={2}
+            borderColor={"grey"}
+            onClick={() => {
+              
+            }}
+          >
+            <Text>&lt;</Text>
+          </Container>
+        </Container>
+
+        <Container
+          width={"10%"}
+          height={"20%"}
+          flexDirection={"row"}
+          alignContent={"center"}
+          justifyContent={"center"}
+        >
+          <Text fontWeight={"bold"} positionTop={4}>
+            Add Headers here
+          </Text>
+        </Container>
+
+        <Container
+          width={"45%"}
+          height={"100%"}
+          flexDirection={"row"}
+          alignContent={"center"}
+          justifyContent={"center"}
+        >
+          <Container
+            width={"60%"}
+            height={"30%"}
+            flexDirection={"row"}
+            alignContent={"center"}
+            justifyContent={"center"}
+            backgroundColor={"gray"}
+            backgroundOpacity={0.5}
+            hover={{ backgroundOpacity: 1 }}
+            borderRadius={15}
+            borderWidth={2}
+            borderColor={"gray"}
+            onClick={() => {
+              
+            }}
+          >
+            <Text>&gt;</Text>
+          </Container>
+        </Container>
+      </Container>
+    )
   }
 
   /**

@@ -19,6 +19,17 @@ export default function DropdownUI({
   const [active, setActive] = useState(false);
   const [selectTau, setSelectTau] = useState(1);
   const [infoTau, setInfoTau] = useState("");
+  const [infoRange, setInfoRange] = useState("");
+  const [infoHeader, setInfoHeader] = useState("");
+  const [headers, setHeaders] = useState<string[]>([]);
+  const itemsPerColumn = 6; // Number of items per column for headers
+  /*  itemGroup creates an array of "groups" which represent the columns in the list of headers (info box).
+      First an undefined array is created based on the number of items per column.
+      Then, we use map and slice to divide the contents of headers among the columns.
+  */
+  const itemGroup = [...Array(Math.ceil(headers.length / itemsPerColumn))].map(
+    (_, i) => headers.slice(i * itemsPerColumn, (i + 1) * itemsPerColumn),
+  );
   const [isFirstDifferencing, setIsFirstDifferencing] =
     useState<boolean>(false);
   const [infoFirstDifferencing, setInfoFirstDifferencing] = useState();
@@ -63,8 +74,13 @@ export default function DropdownUI({
    * Generates the graph, and then updates main scene
    */
   function update(): void {
+    const graphController = mainController.getGraphController();
+    const csvData = graphController.getModelEmData().getCSVData();
     mainController.getCSVController().generate(selectTau, isFirstDifferencing);
-    setInfoTau(mainController.getGraphController().getTauForDropDown()); //Later change this to getting tau value from the graph itself rather than the other useState
+    setInfoTau(graphController.getTauForDropDown()); //Later change this to getting tau value from the graph itself rather than the other useState
+    setInfoRange(graphController.getEmbeddedRange().toString());
+    setInfoHeader(csvData.getYHeader());
+    setHeaders(csvData.getCSVHeaders());
     mainController.updateMainScene();
   }
 
@@ -209,6 +225,34 @@ export default function DropdownUI({
             >
               <Text positionLeft={10}>Tau Value: {infoTau}</Text>
             </Container>
+            <Text positionLeft={10}>Y Header: {infoHeader}</Text>
+            <Text positionLeft={10} positionTop={15}>
+              EG Range: {infoRange}
+            </Text>
+            <Container
+              flexDirection={"row"}
+              alignItems={"flex-start"}
+              justifyContent={"flex-start"}
+              positionLeft={10}
+              positionTop={30}
+            >
+              <Text>Headers:</Text>
+              {itemGroup.map((group, col) => (
+                <Container
+                  key={col}
+                  flexDirection={"column"}
+                  alignItems={"flex-start"}
+                  justifyContent={"flex-start"}
+                  marginRight={20}
+                  positionTop={25}
+                  positionLeft={15}
+                >
+                  {group.map((header, row) => (
+                    <Text key={row}>{header}</Text>
+                  ))}
+                </Container>
+              ))}
+            </Container>
           </Container>
         </Container>
       </>
@@ -331,7 +375,7 @@ export default function DropdownUI({
   }
 
   /**
-   * Thhis function creates the component for setting the Tau value on generation.
+   * This function creates the component for setting the Tau value on generation.
    * Shows the buttons for both decreasing and increasing the tau value, it will also display the current Tau value
    * @returns the Tau selector component
    */

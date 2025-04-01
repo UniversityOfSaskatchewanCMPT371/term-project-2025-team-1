@@ -30,8 +30,6 @@ export class TimeSeriesGraphObject
    * @postcondition returns the array of 2D points associated with the 2D Graph
    */
   getPoints2D(): Point2DInterface[] {
-    // Precondition: points2D must be an array.
-    // Postcondition: returns the array of 2D points associated with the 2D Graph.
     assert(
       Array.isArray(this.points2D),
       "getPoints2D: points2D must be an array",
@@ -54,7 +52,6 @@ export class TimeSeriesGraphObject
    * @postcondition On success, updates the y range to the new one
    */
   setYRangeLength(num: number): void {
-    // Precondition: num must be a finite number.
     assert(
       Number.isFinite(num),
       "setYRangeLength: num must be a finite number",
@@ -69,11 +66,10 @@ export class TimeSeriesGraphObject
 
   /**
    * Adds a new point to the graph.
-   * pre-codition: valid points in GraphObject
-   * post-condition: a new PointInterface instance is added to the graph
+   * @precodition valid points in GraphObject
+   * @postcondition a new PointInterface instance is added to the graph
    */
   addPoints(): void {
-    // pre-condition: Validates the points in GraphObject by checking that points2D is an array.
     const points = this.getCSVData().getPoints();
     assert(
       Array.isArray(points),
@@ -88,7 +84,6 @@ export class TimeSeriesGraphObject
         //Get Header by key then assign
         this.points2D.push(newPoint);
       });
-    // post-condition: a new PointInterface instance is added to the graph
     assert(this.points2D.length > 0, "addPoints: No points were added");
     sendLog(
       "info",
@@ -98,11 +93,11 @@ export class TimeSeriesGraphObject
 
   /**
    * Finds a point based on given x and y data.
-   * pre-codition: xData is a string, yData is a number
-   * post-condition: returns the corresponding Points instance if found, otherwise undefined
    * @param {string} xData - The x-coordinate (string representation).
    * @param {number} yData - The y-coordinate (numeric value).
    * @returns {PointInterface | undefined} The corresponding Points instance if found, otherwise undefined.
+   * @precodition xData is a string, yData is a number
+   * @postcondition returns the corresponding Points instance if found, otherwise undefined
    */
   findPoint(xData: string, yData: number): Point2DObject | undefined {
     sendLog(
@@ -119,8 +114,8 @@ export class TimeSeriesGraphObject
   /**
    * Updates all points' selection status.
    * If additional properties (like color) need updating, modify here.
-   * pre-codition: none
-   * post-condition: all points' selection status is updated
+   * @precodition none
+   * @postcondition all points' selection status is updated
    */
   updatePoints(): void {
     this.points2D.forEach((point) => {
@@ -140,7 +135,6 @@ export class TimeSeriesGraphObject
    * @postcondition sets the max Y range of graph to the largest value of the csv data
    */
   setRange(): void {
-    // Precondition: Validates that the CSVDataObject has data.
     const points = this.getCSVData().getPoints();
     assert(
       Array.isArray(points),
@@ -181,7 +175,6 @@ export class TimeSeriesGraphObject
    * @postconditions returns a number[] that is the values graph ticks
    */
   timeSeriesYRange(): number[] {
-    // Precondition: Validates that the yRange[1] of y axis is number.
     assert(
       typeof this.axes.yRange[1] === "number",
       "timeSeriesYRange: axes.yRange[1] must be a number",
@@ -199,7 +192,6 @@ export class TimeSeriesGraphObject
       "info",
       `timeSeriesYRange() returned ${range} (TimeSeriesGraphObject.ts)`,
     );
-    // Postcondition: returns a number[] that is the values graph ticks
     assert(Array.isArray(range), "timeSeriesYRange: range must be an array");
 
     return range;
@@ -212,7 +204,6 @@ export class TimeSeriesGraphObject
    */
   timeSeriesXRange(): string[] {
     const csvData = this.getCSVData();
-    // Precondition: Validates that the CSVDataObject has data.
     const points = csvData.getData();
     assert(
       Array.isArray(points),
@@ -234,7 +225,6 @@ export class TimeSeriesGraphObject
         ] as unknown as string;
         range.push(temp);
       });
-    // Postcondition: returns a string[] that is displayed on x axis
     assert(Array.isArray(range), "timeSeriesXRange: range must be an array");
     sendLog(
       "info",
@@ -425,9 +415,9 @@ export class TimeSeriesGraphObject
 
   /**
    * Retrieves all points in the graph.
-   * pre-codition: none
-   * post-condition: returns an array of PointInterface instances
    * @returns {PointInterface[]} Array of PointInterface instances.
+   * @precodition none
+   * @postcondition returns an array of PointInterface instances
    */
   get2DPoints(): Point2DObject[] {
     return this.points2D;

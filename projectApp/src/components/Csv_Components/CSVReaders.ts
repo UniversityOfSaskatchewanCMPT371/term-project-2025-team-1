@@ -19,6 +19,7 @@ export async function LocalCSVReader(
 ): Promise<Record<string, string | number>[]> {
   // assert that file ends in .csv extension
   if (!file.endsWith(".csv")) {
+    // log the error
     const notCsvErr = new Error("This file is not csv");
     sendError(notCsvErr, "LocalCSVReader(path) receives a non csv file");
     throw notCsvErr;
@@ -75,6 +76,7 @@ export function LocalCsvReader(
     (resolve, reject) => {
       // assert that file ends in .csv extension
       if (!file.name.endsWith("csv")) {
+        // log the error
         const notCsvErr = new Error("This file is not csv");
         sendError(notCsvErr, "LocalCsvReader(file) receives a non csv file");
         throw notCsvErr;

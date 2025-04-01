@@ -29,7 +29,7 @@ export class CSVController implements ControllerInterface {
 
   /**
    * Generates time series graphs for CSV data marked for VR display
-   * @param tau value of tau used in generation
+   * @param tau number value of tau used in generation
    * @preconditions
    * - this.model must be initialized with CSV data
    * - `tau` must be an integer between 1 and 5 (inclusive)

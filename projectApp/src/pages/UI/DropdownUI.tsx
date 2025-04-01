@@ -313,7 +313,37 @@ export default function DropdownUI({
   }
 
   function setOnHeaderDecrease(): void {
+    if (headerList) {
+      if (headerList.length < 3) {
+        return;
+      }
 
+      let start = selectedHeaderIndex;
+      const timeHeader = mainController.getCSVController().getModelData()?.getTimeHeader();
+
+      if (start == 0) {
+        if (headerList[headerList.length-1] != timeHeader) {
+          setSelectedHeaderIndex(headerList.length-1);
+        } else {
+          setSelectedHeaderIndex(headerList.length-2);
+        }
+        return;
+      }
+
+      if (start == 1 && headerList[0] == timeHeader) {
+        setSelectedHeaderIndex(headerList.length-1);
+        return;
+      }
+
+      // const currentYHeader = mainController.getCSVController().getModelData()?.getYHeader();
+      start -= 1;
+      for (start; start > 0; start--) {
+        if (headerList[start] != timeHeader) {
+          setSelectedHeaderIndex(start);
+          return;
+        }
+      }
+    }
   }
 
   function GenerateHeaderSelector(): React.JSX.Element {
@@ -346,7 +376,7 @@ export default function DropdownUI({
             borderWidth={2}
             borderColor={"grey"}
             onClick={() => {
-              
+              setOnHeaderDecrease()
             }}
           >
             <Text>&lt;</Text>

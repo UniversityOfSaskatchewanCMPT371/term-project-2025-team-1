@@ -39,9 +39,7 @@ export default function DropdownUI({
   // let headerList: string[] = [];
 
   useEffect(() => {
-    const csvData = mainController
-      .getCSVController()
-      .getModelData()
+    const csvData = mainController.getCSVController().getModelData();
 
     if (csvData) {
       let h = csvData.getCSVHeaders();
@@ -50,8 +48,7 @@ export default function DropdownUI({
       setSelectedHeaderIndex(yHeaderIndex);
       setHeaderList(h);
     }
-  }, [active])
-
+  }, [active]);
 
   /**
    * This is the function for creating a loaded csv object displayed in the DropDown UI
@@ -93,7 +90,13 @@ export default function DropdownUI({
    * Generates the graph, and then updates main scene
    */
   function update(): void {
-    mainController.getCSVController().generate(selectTau, isFirstDifferencing, headerList[selectedHeaderIndex]);
+    mainController
+      .getCSVController()
+      .generate(
+        selectTau,
+        isFirstDifferencing,
+        headerList[selectedHeaderIndex],
+      );
     const graphController = mainController.getGraphController();
     const csvData = graphController.getModelEmData().getCSVData();
 
@@ -304,18 +307,21 @@ export default function DropdownUI({
         return;
       }
 
-      const timeHeader = mainController.getCSVController().getModelData()?.getTimeHeader();
+      const timeHeader = mainController
+        .getCSVController()
+        .getModelData()
+        ?.getTimeHeader();
 
       let start = selectedHeaderIndex;
-      start += 1
+      start += 1;
       if (start >= headerList.length) {
-        start = 0
+        start = 0;
       }
 
       if (headerList[start] == timeHeader) {
-        start += 1
+        start += 1;
         if (start >= headerList.length) {
-          start = 0
+          start = 0;
         }
       }
 
@@ -330,9 +336,9 @@ export default function DropdownUI({
       }
 
       const timeHeader = mainController
-      .getCSVController()
-      .getModelData()
-      ?.getTimeHeader();
+        .getCSVController()
+        .getModelData()
+        ?.getTimeHeader();
 
       let start = selectedHeaderIndex;
       start -= 1;
@@ -346,7 +352,7 @@ export default function DropdownUI({
           start = headerList.length - 1;
         }
       }
-      setSelectedHeaderIndex(start)    
+      setSelectedHeaderIndex(start);
     }
   }
 
@@ -395,7 +401,8 @@ export default function DropdownUI({
         >
           <Text fontWeight={"bold"} positionTop={4}>
             {headerList
-              ? selectedHeaderIndex >= 0 && selectedHeaderIndex < headerList.length
+              ? selectedHeaderIndex >= 0 &&
+                selectedHeaderIndex < headerList.length
                 ? headerList[selectedHeaderIndex]
                 : "No Header Selected"
               : "No Headers"}

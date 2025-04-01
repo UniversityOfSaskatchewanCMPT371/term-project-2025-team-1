@@ -54,7 +54,6 @@ export default function TimeSeriesGraph({
         backgroundColor={"skyblue"}
         flexDirection={"column"}
       >
-
         {/* Section for showing point data sets */}
         <Container
           height={"50%"}

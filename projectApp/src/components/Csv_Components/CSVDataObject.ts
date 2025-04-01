@@ -102,8 +102,8 @@ export class CSVDataObject implements CSVDataInterface {
    * @param index Index number used to generate the graph name
    * @param file File object or URL string containing CSV data
    * @param isUrl Boolean indicating if the source is a URL
-   * @precondition if isUrl is true, file must be a string URL,if isUrl is false, file must be a File object
-   * index must be a non-negative number
+   * @precondition dataLoaded > 0, the loaded in csv file must be valid: Does not have an unexpected parsed header, each rows.length == headers.length,
+   * Time header column must have string values, other column Headers should contain numbers
    * @postcondition On success: data, csvHeaders, and name will be populated, On failure: error will be logged and method returns
    * May throw errors during file reading or parsing
    */
@@ -117,50 +117,46 @@ export class CSVDataObject implements CSVDataInterface {
         ? await UrlCSVReader(file as string)
         : await LocalCsvReader(file as File);
 
-      if (data.length > 0) {
-        const headers = Object.keys(data[0]);
+      if (data.length < 0) {
+        throw new Error("Loaded in an empty csv file CSVDataObject.ts");
+      }
+      const headers = Object.keys(data[0]);
 
-        //Checking if an extra unexpected header gets parsed
-        if (headers.includes("__parsed_extra")) {
-          throw new Error("Parsed an extra column without a proper header");
+      //Checking if an extra unexpected header gets parsed
+      if (headers.includes("__parsed_extra")) {
+        throw new Error(
+          "Parsed an extra column without a proper header CSVDataObject.ts",
+        );
+      }
+
+      //Checking it the length of each row matches the length of the header
+      for (const row of data) {
+        if (Object.values(row).length !== headers.length) {
+          throw new Error(
+            `Row: ${Object.values(row)} doesn't match header length of ${headers.length} CSVDataObject.ts`,
+          );
         }
 
-        //Checking it the length of each row matches the length of the header
-        for (const row of data) {
-          console.log(
-            Object.values(row).length,
-            " Header Length: ",
-            headers.length,
-          );
-          console.log(Object.values(row), " Header: ", headers);
-          if (Object.values(row).length !== headers.length) {
-            throw new Error(
-              `Row: ${Object.values(row)} doesn't match header length of ${headers.length} CSVDataObject.ts`,
-            );
-          }
-
-          //Checking if the proper value types are found on each column
-          //Time header should have a string, while the rest of the column values should be numbers
-          for (const key of headers) {
-            const value = row[key as keyof typeof row];
-            if (key == "Time") {
-              if (typeof value !== "string") {
-                throw new Error("Number value found on Time column");
-              }
-            } else {
-              if (typeof value !== "number") {
-                throw new Error("String value found on non Time column");
-              }
+        //Checking if the proper value types are found on each column
+        //Non-Time header values should contain numbers
+        for (const key of headers) {
+          const value = row[key as keyof typeof row];
+          if (key !== "Time") {
+            if (typeof value !== "number") {
+              throw new Error(
+                "String value found on non Time column CSVDataObject.ts",
+              );
             }
           }
         }
-        this.setData(data);
-        this.setName("Graph" + index.toString());
-        this.csvHeaders = headers;
-        this.setTimeHeader();
-        this.setYHeader(this.findFirstHeader());
-        addTestSceneInfo("setting headers in loadCSVData()");
       }
+      this.setData(data);
+      this.setName("Graph" + index.toString());
+      this.csvHeaders = headers;
+      this.setTimeHeader();
+      this.setYHeader(this.findFirstHeader());
+      addTestSceneInfo("setting headers in loadCSVData()");
+
       sendLog(
         "info",
         `loadCSVData has loaded csv data\n${JSON.stringify(this.data)}`,

@@ -41,9 +41,9 @@ export default function TimeSeriesGraph({
 
   /**
    * Updates the point positions for this graph
-   * @precondition the `GraphController` (which controls this)
+   * @preconditions the `GraphController` (which controls this)
    * must also control an `EmbeddedGraph` with the same csv data as this
-   * @postcondition points on this graph are updated, and linked `EmbeddedGraph` is updated as well
+   * @postconditions points on this graph are updated, and linked `EmbeddedGraph` is updated as well
    */
   function UpdateGraph(): void {
     graph.updatePointPosition();
@@ -207,7 +207,7 @@ export default function TimeSeriesGraph({
 
   /**
    * Renders the line which connects the previous and current points
-   * @precondition 'currentLine' and 'lastLine' properties are valid point positions
+   * @preconditions 'currentLine' and 'lastLine' properties are valid point positions
    * @postconditions returns The line connecting the points in the 2D Time Series Graph
    */
   function GenerateLines(): React.JSX.Element {
@@ -245,7 +245,7 @@ export default function TimeSeriesGraph({
   /**
    * Generates the main graph of the Time Series Graph
    * - This generates both the X and Y axis of the graph with its assigned value
-   * @precondition none
+   * @preconditions none
    * @postconditions returns the body of the graph with a properly loaded X and Y axis and its components
    */
   function GenerateGraph(): React.JSX.Element {

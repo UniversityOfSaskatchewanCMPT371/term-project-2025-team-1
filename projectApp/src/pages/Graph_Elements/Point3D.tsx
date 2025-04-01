@@ -8,8 +8,8 @@ import { sendLog } from "../../logger-frontend";
  * Renders a 3D Point on an `EmbeddedGraph`.
  * The point can be interacted with through hover and click events.
  * @param {Point3DObject} pointRef Reference to the point data and state
- * @precondition `pointRef` must be a valid `Point3DObject` instance with position and selected state
- * @postcondition Renders an interactive 3D point with hover and click functionality used on an `EmbeddedGraph`
+ * @preconditions `pointRef` must be a valid `Point3DObject` instance with position and selected state
+ * @postconditions Renders an interactive 3D point with hover and click functionality used on an `EmbeddedGraph`
  */
 export default function Point3D({
   pointRef,
@@ -28,8 +28,8 @@ export default function Point3D({
 
   /**
    * Toggles the point's selected state and updates local click state
-   * @precondition None
-   * @postcondition Updates both local clicked state and pointRef's selected state
+   * @preconditions None
+   * @postconditions Updates both local clicked state and pointRef's selected state
    */
   function setOnClick(): void {
     const selectedState = !pointRef.getObject().getSelected();

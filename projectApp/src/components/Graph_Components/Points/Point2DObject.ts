@@ -28,7 +28,7 @@ export class Point2DObject implements Point2DInterface {
 
   /**
    * Gets the point object that the 2D point is referencing to
-   * @precondition none
+   * @preconditions none
    * @postconditions returns the point object reference
    */
   getObject(): PointObjectInterface {
@@ -37,7 +37,7 @@ export class Point2DObject implements Point2DInterface {
 
   /**
    * Get the x position of the point in the 2D Time Series Graph
-   * @precondition none
+   * @preconditions none
    * @postconditions returns the x-coordinate of the 2D point
    */
   getXPosition(): number {
@@ -46,7 +46,7 @@ export class Point2DObject implements Point2DInterface {
 
   /**
    * Get the y position of the point in the 2D Time Series Graph
-   * @precondition none
+   * @preconditions none
    * @postconditions returns the y-coordinate of the 2D point
    */
   getYPosition(): number {
@@ -56,8 +56,8 @@ export class Point2DObject implements Point2DInterface {
   /**
    * Set the position of the 2D point in the x axis of the 2D Time Series Graph
    * @param x number representing the x position
-   * @precondition none
-   * @postcondition sets the x position of the 2d point
+   * @preconditions none
+   * @postconditions sets the x position of the 2d point
    */
   setXAxisPos(x: number): void {
     this.point2Dposition[0] = x;
@@ -71,8 +71,8 @@ export class Point2DObject implements Point2DInterface {
   /**
    * Set the position of the 2D point in the y axis of the 2D Time Series Graph
    * @param y number representing the y position
-   * @precondition none
-   * @postcondition sets the y position of the 2d point
+   * @preconditions none
+   * @postconditions sets the y position of the 2d point
    */
   setYAxisPos(y: number): void {
     this.point2Dposition[1] = y;
@@ -86,8 +86,8 @@ export class Point2DObject implements Point2DInterface {
   /**
    * Set the x and y positions of the 2d point in the 2D Time Series Graph
    * @param position [number, number] representing the x and y coordinate
-   * @precondition `position` must be an array of two numbers
-   * @postcondition On success, set the new position of the 2d point
+   * @preconditions `position` must be an array of two numbers
+   * @postconditions On success, set the new position of the 2d point
    */
   setPoint2DPosition(position: [number, number]): void {
     this.point2Dposition = position;

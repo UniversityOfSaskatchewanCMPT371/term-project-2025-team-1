@@ -29,8 +29,8 @@ export class EmbeddedGraphObject
 
   /**
    * Adds embedded point vectors to the graph.
-   * @precondition this graph's csv is a valid non-null data set
-   * @postcondition the points3D array now contains PointObjects for each point in the csv data
+   * @preconditions this graph's csv is a valid non-null data set
+   * @postconditions the points3D array now contains PointObjects for each point in the csv data
    */
   addPoints(): void {
     const data = this.csvData.getData();
@@ -74,7 +74,7 @@ export class EmbeddedGraphObject
    * @preconditions
    * - `time` >= 0
    * - `csvDataObject` must contain valid data set and a valid data set much be selected
-   * @postcondition returns an array contaning the coordinates of the vector in the form [x, y, z]
+   * @postconditions returns an array contaning the coordinates of the vector in the form [x, y, z]
    */
   calculateVectorPosition(
     time: number,
@@ -116,7 +116,7 @@ export class EmbeddedGraphObject
    * @preconditions
    * - `csvData` contains valid data
    * - the graph has a column selected that exists in the csv file
-   * @postcondition
+   * @postconditions
    * - if `index` is >=0, the value at the index (line) of the csv in the column currently selected
    * - otherwise, 0
    */
@@ -137,8 +137,8 @@ export class EmbeddedGraphObject
 
   /**
    * gets the dimensions of the graph
-   * @precondition none
-   * @postcondition returns the current dimensions of the graph
+   * @preconditions none
+   * @postconditions returns the current dimensions of the graph
    */
   getDimensions(): { width: number; height: number; depth?: number } {
     return this.dimensions;
@@ -150,7 +150,7 @@ export class EmbeddedGraphObject
    * @param height new height of the graph
    * @param depth new depth of the graph
    * @preconditions `width`, `height`, and `depth` must be valid numbers for the dimensions of a graph
-   * @postcondition the dimension attribute of the graphis updated to contain the given values
+   * @postconditions the dimension attribute of the graphis updated to contain the given values
    */
   setDimensions(width: number, height: number, depth?: number): void {
     const newDimensions = { width: width, height: height, depth: depth };
@@ -159,8 +159,8 @@ export class EmbeddedGraphObject
 
   /**
    * Gets the value of tau
-   * @precondition none
-   * @postcondition returns the current value of tau
+   * @preconditions none
+   * @postconditions returns the current value of tau
    */
   getTau(): number {
     return this.tau;
@@ -169,8 +169,8 @@ export class EmbeddedGraphObject
   /**
    * Sets the value of tau
    * @param newTau a number greater than or equal to 1
-   * @precondition `newTau` is a positive number
-   * @postcondition the value of tau is updated to newTau
+   * @preconditions `newTau` is a positive number
+   * @postconditions the value of tau is updated to newTau
    */
   setTau(newTau: number): void {
     if (newTau < 1) {
@@ -191,8 +191,8 @@ export class EmbeddedGraphObject
 
   /**
    * Get the points in the 3D Embedded Graph
-   * @precondition a non-empty array of 3d points
-   * @postcondition returns the 3d points of the Embedded Graph
+   * @preconditions a non-empty array of 3d points
+   * @postconditions returns the 3d points of the Embedded Graph
    */
 
   getPoints3D(): Point3DInterface[] {
@@ -206,8 +206,8 @@ export class EmbeddedGraphObject
 
   /**
    * Get the max range of the csv data file that will be used on the 3d embedded graph
-   * @precondition the max range must be greater than the min range
-   * @postcondition the range of the csv data set
+   * @preconditions the max range must be greater than the min range
+   * @postconditions the range of the csv data set
    */
   getRange(): number {
     if (this.axes.yRange[0] >= this.axes.yRange[1]) {
@@ -223,8 +223,8 @@ export class EmbeddedGraphObject
 
   /**
    * Set the max range that will be used on the 3d Embedded graph
-   * @precondition this graph's csv is a valid non-null data set
-   * @postcondition sets the max range used in the 3D Embedded graph
+   * @preconditions this graph's csv is a valid non-null data set
+   * @postconditions sets the max range used in the 3D Embedded graph
    */
   setRange(): void {
     if (this.getCSVData().getData().length <= 0) {
@@ -260,8 +260,8 @@ export class EmbeddedGraphObject
 
   /**
    * Update the 3D embedded graph
-   * @precondition this graph's csv is a valid non-null data set
-   * @postcondition the graph is cleared and updated with new points
+   * @preconditions this graph's csv is a valid non-null data set
+   * @postconditions the graph is cleared and updated with new points
    */
   updateEmbeddedPoints(): void {
     this.points3D = [];

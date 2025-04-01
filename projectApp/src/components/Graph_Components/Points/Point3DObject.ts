@@ -28,7 +28,7 @@ export class Point3DObject implements Point3DInterface {
 
   /**
    * Gets the point object that the 3D point is referencing to
-   * @precondition none
+   * @preconditions none
    * @postconditions returns the point object reference
    */
   getObject(): PointObjectInterface {
@@ -37,7 +37,7 @@ export class Point3DObject implements Point3DInterface {
 
   /**
    * Get the x position of the point in the VR scene
-   * @precondition none
+   * @preconditions none
    * @postconditions returns the x-coordinate of the 3D point
    */
   getXPosition(): number {
@@ -46,7 +46,7 @@ export class Point3DObject implements Point3DInterface {
 
   /**
    * Get the y position of the point in the VR scene
-   * @precondition none
+   * @preconditions none
    * @postconditions returns the y-coordinate of the 3D point
    */
   getYPosition(): number {
@@ -55,7 +55,7 @@ export class Point3DObject implements Point3DInterface {
 
   /**
    * Get the z position of the point in the VR scene
-   * @precondition none
+   * @preconditions none
    * @postconditions returns the z-coordinate of the 3D point
    */
   getZPosition(): number {
@@ -64,7 +64,7 @@ export class Point3DObject implements Point3DInterface {
 
   /**
    * Get the x, y and z position of the 3d point in the vr scene
-   * @precondition none
+   * @preconditions none
    * @postconditions returns [x, y, z] coordinate of the 3d point
    */
   getPosition(): [number, number, number] {
@@ -74,8 +74,8 @@ export class Point3DObject implements Point3DInterface {
   /**
    * Set the position of the 3D point in the x axis of the vr scene
    * @param x number representing the x position
-   * @precondition none
-   * @postcondition sets the x position of the 3d point
+   * @preconditions none
+   * @postconditions sets the x position of the 3d point
    */
   setXAxisPos(x: number): void {
     this.point3Dposition[0] = x;
@@ -89,8 +89,8 @@ export class Point3DObject implements Point3DInterface {
   /**
    * Set the position of the 3D point in the y axis of the vr scene
    * @param y number representing the y position
-   * @precondition none
-   * @postcondition sets the y position of the 3d point
+   * @preconditions none
+   * @postconditions sets the y position of the 3d point
    */
   setYAxisPos(y: number): void {
     this.point3Dposition[1] = y;
@@ -104,8 +104,8 @@ export class Point3DObject implements Point3DInterface {
   /**
    * Set the position of the 3D point in the z axis of the vr scene
    * @param z number representing the z position
-   * @precondition none
-   * @postcondition sets the z position of the 3d point
+   * @preconditions none
+   * @postconditions sets the z position of the 3d point
    */
   setZAxisPos(z: number): void {
     this.point3Dposition[2] = z;
@@ -118,8 +118,8 @@ export class Point3DObject implements Point3DInterface {
   /**
    * Set the [x, y, z] position of the 3d point in the vr scene
    * @param position [number, number, number] representing a x,y,z coordinate
-   * @precondition `position` must be an array of three numbers
-   * @postcondition On success, set the new position of the 3d point
+   * @preconditions `position` must be an array of three numbers
+   * @postconditions On success, set the new position of the 3d point
    */
   setPoint3DPosition(position: [number, number, number]): void {
     this.point3Dposition = position;

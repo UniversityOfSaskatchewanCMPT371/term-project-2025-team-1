@@ -47,7 +47,7 @@ export class GraphModel implements ModelInterface {
 
   /**
    * Returns the TimeSeriesGraphObject instances in the model.
-   * @precondition none
+   * @preconditions none
    * @postconditions returns {TimeSeriesGraphObject} the TimeSeriesGraphObject this models.
    */
   getData(): TimeSeriesGraphObject | undefined {
@@ -69,7 +69,7 @@ export class GraphModel implements ModelInterface {
 
   /**
    * Returns the EmbeddedGraphObject instances in the model.
-   * @precondition none.
+   * @preconditions none.
    * @postconditions returns {EmbeddedGraphObject} the EmbeddedGraphObject this models.
    */
   getEmbeddedGraphData(): EmbeddedGraphObject | undefined {

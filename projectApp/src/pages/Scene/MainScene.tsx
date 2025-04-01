@@ -24,8 +24,8 @@ export default function MainScene({
   /**
    * This is used as a reference so that the controller can update the main scene.
    * Only runs on the begining, might keep graph on and update file on graph instead
-   * @precondition none
-   * @postcondition the scene is updated
+   * @preconditions none
+   * @postconditions the scene is updated
    * */
   function updateScene(): void {
     setUpdateGraph(true);

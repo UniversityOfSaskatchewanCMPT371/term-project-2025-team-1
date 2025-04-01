@@ -28,8 +28,8 @@ export class TimeSeriesGraphObject
 
   /**
    * Get the array of 2D Points
-   * @precondition a valid array of points
-   * @postcondition returns the array of 2D points associated with the 2D Graph
+   * @preconditions a valid array of points
+   * @postconditions returns the array of 2D points associated with the 2D Graph
    */
   getPoints2D(): Point2DInterface[] {
     return this.points2D;
@@ -37,7 +37,7 @@ export class TimeSeriesGraphObject
 
   /**
    * Get the number of ticks in the y-axis, the y range of the TimeSeriesGraph
-   * @precondition none
+   * @preconditions none
    * @postconditions returns the y range of the axis
    */
   getYRangeLength(): number {
@@ -47,8 +47,8 @@ export class TimeSeriesGraphObject
   /**
    * Set the range of the y-axis in the Time Series Graph
    * @param num number to set YRange to
-   * @precondition `num` parameter must be the highest value in the data set
-   * @postcondition On success, updates the y range to the new one
+   * @preconditions `num` parameter must be the highest value in the data set
+   * @postconditions On success, updates the y range to the new one
    */
   setYRangeLength(num: number): void {
     this.yRangeLength = num;
@@ -61,8 +61,8 @@ export class TimeSeriesGraphObject
 
   /**
    * Adds a new point to the graph.
-   * @precondition GraphObject must have valid points
-   * @postcondition new PointObjects are added to the graph
+   * @preconditions GraphObject must have valid points
+   * @postconditions new PointObjects are added to the graph
    */
   addPoints(): void {
     this.points2D = [];
@@ -87,7 +87,7 @@ export class TimeSeriesGraphObject
    * @preconditions
    * - xData is a string
    * - yData is a number
-   * @postcondition returns the corresponding Point instance if found, otherwise undefined.
+   * @postconditions returns the corresponding Point instance if found, otherwise undefined.
    */
   findPoint(xData: string, yData: number): Point2DObject | undefined {
     sendLog(
@@ -103,8 +103,8 @@ export class TimeSeriesGraphObject
 
   /**
    * Updates all points' selection status.
-   * @precondition none
-   * @postcondition all points' selection status is updated
+   * @preconditions none
+   * @postconditions all points' selection status is updated
    */
   updatePoints(): void {
     this.points2D.forEach((point) => {
@@ -120,8 +120,8 @@ export class TimeSeriesGraphObject
   /**
    * Sets the Y range of a time series graph.
    * Increases each tick by 10, for larger data sets this could be tuned
-   * @precondition valid CSV data object
-   * @postcondition sets the max Y range of graph to the largest value of the csv data
+   * @preconditions valid CSV data object
+   * @postconditions sets the max Y range of graph to the largest value of the csv data
    */
   setRange(): void {
     let max = 0;
@@ -155,7 +155,7 @@ export class TimeSeriesGraphObject
 
   /**
    * The Y values that will be displayed on ticks of the Y axis
-   * @precondition a set y axis range
+   * @preconditions a set y axis range
    * @postconditions returns a number[] that is the values graph ticks
    */
   timeSeriesYRange(): number[] {
@@ -178,7 +178,7 @@ export class TimeSeriesGraphObject
 
   /**
    * The number of X values that will be displayed on ticks of the X axis
-   * @precondition requires x data of csv data
+   * @preconditions requires x data of csv data
    * @postconditions returns a string[] that is displayed on x axis
    */
   timeSeriesXRange(): string[] {
@@ -201,8 +201,8 @@ export class TimeSeriesGraphObject
 
   /**
    * Increment Y header
-   * @precondition nonde
-   * @postcondition Y header increments/changes properly
+   * @preconditions nonde
+   * @postconditions Y header increments/changes properly
    */
   incrementYHeader(): void {
     // If theres only two Y headers, increment to new column not possible
@@ -266,8 +266,8 @@ export class TimeSeriesGraphObject
 
   /**
    * Decrement Y header
-   * @precondition nonde
-   * @postcondition Y header decrements/changes properly
+   * @preconditions nonde
+   * @postconditions Y header decrements/changes properly
    */
   decrementYHeader(): void {
     // If theres only two Y headers, increment to new column not possible
@@ -342,8 +342,8 @@ export class TimeSeriesGraphObject
 
   /**
    * Update the graph when the model changes
-   * @precondition whenver the model changes
-   * @postcondition point positions are updated
+   * @preconditions whenver the model changes
+   * @postconditions point positions are updated
    */
   updatePointPosition(): void {
     this.setRange();
@@ -379,7 +379,7 @@ export class TimeSeriesGraphObject
 
   /**
    * Retrieves the csv data of this graph
-   * @precondition none
+   * @preconditions none
    * @postconditions returns {CSVDataObject} graph csv data
    */
   getCSVData(): CSVDataObject {
@@ -388,7 +388,7 @@ export class TimeSeriesGraphObject
 
   /**
    * Retrieves all points in the graph.
-   * @precondition none
+   * @preconditions none
    * @postconditions returns {PointInterface[]} Array of PointInterface instances.
    */
   get2DPoints(): Point2DObject[] {
@@ -397,7 +397,7 @@ export class TimeSeriesGraphObject
 
   /**
    * Get number of points on the Graph
-   * @precondition none
+   * @preconditions none
    * @postconditions returns number of points
    */
   getNumPoints(): number {
@@ -406,7 +406,7 @@ export class TimeSeriesGraphObject
 
   /**
    * Get max range of the Y axis
-   * @precondition none
+   * @preconditions none
    * @postconditions returns range of the Y axis
    */
   getYRange(): number {

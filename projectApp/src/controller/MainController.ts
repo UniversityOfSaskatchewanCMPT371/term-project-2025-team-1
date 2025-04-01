@@ -21,7 +21,7 @@ export class MainController {
   /**
    * Initializes the main controller with new instances of CSV and Graph controllers
    *
-   * @postcondition New controller instances are created and updateScene is set to null
+   * @postconditions New controller instances are created and updateScene is set to null
    */
   constructor() {
     this.csvController = new CSVController();
@@ -31,7 +31,7 @@ export class MainController {
 
   /**
    * Retrieves the CSV controller instance
-   * @precondition none
+   * @preconditions none
    * @postconditions returns existing CSV controller without modification
    */
   getCSVController(): CSVController {
@@ -40,7 +40,7 @@ export class MainController {
 
   /**
    * Retrieves the Graph controller instance
-   * @precondition none
+   * @preconditions none
    * @postconditions returns existing Graph controller without modification
    */
   getGraphController(): GraphController {
@@ -51,8 +51,8 @@ export class MainController {
    * Sets the reference to the scene update function
    *
    * @param {any} ref - Reference to the scene component
-   * @precondition `ref` must have a 'current' property
-   * @postcondition updateScene is set to the provided reference's current value
+   * @preconditions `ref` must have a 'current' property
+   * @postconditions updateScene is set to the provided reference's current value
    */
   setSceneRef(
     ref: React.MutableRefObject<{
@@ -65,8 +65,8 @@ export class MainController {
   /**
    * Triggers an update of the main scene if an update function is available
    *
-   * @precondition updateScene must be set and have an updateScene method
-   * @postcondition Scene update is triggered if preconditions are met
+   * @preconditions updateScene must be set and have an updateScene method
+   * @postconditions Scene update is triggered if preconditions are met
    */
   updateMainScene(): void {
     if (this.updateScene.current?.updateScene) {

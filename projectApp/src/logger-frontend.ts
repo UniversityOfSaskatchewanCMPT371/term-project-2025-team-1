@@ -3,10 +3,10 @@
  * sendLog: Creates and sends a log to the log server
  * @param level level of the log
  * @param message non-empty message string describing the log
- * @precondition
+ * @preconditions
  * - Level should be one of the following: "info", "warn", "error", "fatal", or "test", which determines severity of log message
  * - message != null
- * @postcondition A log will be written to the log server with the set level and message, along with timestamp etc.
+ * @postconditions A log will be written to the log server with the set level and message, along with timestamp etc.
  */
 export function sendLog(level: string, message: string) {
   // Send the log to the log server
@@ -26,10 +26,10 @@ export function sendLog(level: string, message: string) {
  * (used specifically in error cases to provide more info)
  * @param error type of error that is sent
  * @param message non-empty message string describing the error context
- * @precondition
+ * @preconditions
  * - "error" must represent the error object that is thrown
  * - message != null
- * @postcondition An error log will be written to the log server with additional messaging to provide context regarding the error
+ * @postconditions An error log will be written to the log server with additional messaging to provide context regarding the error
  */
 export function sendError(error: any, message: string) {
   // Send an error-specific log to the log server

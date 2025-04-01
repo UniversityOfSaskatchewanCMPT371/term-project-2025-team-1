@@ -17,7 +17,7 @@ export class CSVReaderModel implements CSVModelInterface {
 
   /**
    * Returns a CSVData object
-   * @precondition The 'data' property contains a valid CSVDataObject instance
+   * @preconditions The 'data' property contains a valid CSVDataObject instance
    *
    * @postconditions
    * - If the 'data' CSVDataObject is valid, it is returned.
@@ -36,7 +36,7 @@ export class CSVReaderModel implements CSVModelInterface {
   /**
    * Reads a local CSV file and sets it to 'data'.
    *
-   * @precondition The `file` parameter is a valid File object representing a CSV file.
+   * @preconditions The `file` parameter is a valid File object representing a CSV file.
    *
    * @postconditions
    * - If the file is successfully read, a new CSVDataObject is created and set in 'data' property.
@@ -66,7 +66,7 @@ export class CSVReaderModel implements CSVModelInterface {
   /**
    * Reads a CSV file from a URL and sets it to 'data'.
    *
-   * @precondition The 'file' parameter is a valid URL string representing a CSV file.
+   * @preconditions The 'file' parameter is a valid URL string representing a CSV file.
    *
    * @postconditions
    * - If the file is successfully read, a new CSVDataObject is created and set in 'data' property.
@@ -97,9 +97,9 @@ export class CSVReaderModel implements CSVModelInterface {
    * Provides an array of tuples for the browser UI, where each tuple contains the CSV file's name
    * and its browser selection status.
    *
-   * @precondition The 'data' property containsa  CSVDataObject instance with a valid 'name' property
+   * @preconditions The 'data' property containsa  CSVDataObject instance with a valid 'name' property
    *
-   * @postcondition An array of tuples is returned where each tuple contains the CSV file name and its browser selection status.
+   * @postconditions An array of tuples is returned where each tuple contains the CSV file name and its browser selection status.
    */
   loadedCsvBrowser(): [string, boolean][] {
     const csvBrowser: [string, boolean][] = [];
@@ -118,9 +118,9 @@ export class CSVReaderModel implements CSVModelInterface {
   /**
    * Returns the current array of CSVDataObject instances.
    *
-   * @precondition none
+   * @preconditions none
    *
-   * @postcondition returns the csv data of this model
+   * @postconditions returns the csv data of this model
    */
   getData(): CSVDataObject | undefined {
     return this.data;

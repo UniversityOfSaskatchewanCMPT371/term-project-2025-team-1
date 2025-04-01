@@ -8,8 +8,8 @@ import { GraphInterface } from "./GraphInterface";
 export interface TimeSeriesGraphInterface extends GraphInterface {
   /**
    * Adds a new point to the graph
-   * @precondition none
-   * @postcondition a new PointObject instance is added to the graph
+   * @preconditions none
+   * @postconditions a new PointObject instance is added to the graph
    */
   addPoints(): void;
 
@@ -29,15 +29,15 @@ export interface TimeSeriesGraphInterface extends GraphInterface {
 
   /**
    * Updates all points' selection status
-   * @precondition none
-   * @postcondition all points' states are updated
+   * @preconditions none
+   * @postconditions all points' states are updated
    */
   updatePoints(): void;
 
   /**
    * Updates point positions based on zoom factor
-   * @precondition zoomFactor is a positive number
-   * @postcondition all points' positions are scaled by the zoom factor
+   * @preconditions zoomFactor is a positive number
+   * @postconditions all points' positions are scaled by the zoom factor
    * @param {number} zoomFactor - The scaling factor for point positions
    */
 
@@ -46,7 +46,7 @@ export interface TimeSeriesGraphInterface extends GraphInterface {
 
   /**
    * Gets all points in the graph
-   * @precondition none
+   * @preconditions none
    * @postconditions returns {PointObject[]} Array of points in the graph
    */
   get2DPoints(): Point2DObject[];

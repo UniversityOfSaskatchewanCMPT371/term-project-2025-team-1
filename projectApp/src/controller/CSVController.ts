@@ -21,7 +21,7 @@ export class CSVController implements ControllerInterface {
   /**
    * Initializes a new CSVController with a fresh CSVReaderModel
    *
-   * @postcondition A new CSVReaderModel is created and assigned to this.model
+   * @postconditions A new CSVReaderModel is created and assigned to this.model
    */
   constructor() {
     this.model = new CSVReaderModel();
@@ -30,8 +30,8 @@ export class CSVController implements ControllerInterface {
   /**
    * Generates time series graphs for CSV data marked for VR display
    * @param tau value of tau used in generation
-   * @precondition this.model must be initialized with CSV data
-   * @postcondition For each CSV:
+   * @preconditions this.model must be initialized with CSV data
+   * @postconditions For each CSV:
    *   - VR selection is enabled
    *   - A new TimeSeriesGraph is created and initialized
    *   - The graph is added to the main controller's graph collection
@@ -63,8 +63,8 @@ export class CSVController implements ControllerInterface {
   /**
    * Get the csv file by opening a local file, and then loads it into the program
    * @param file local file that contains csv data
-   * @precondition `file` must be a valid csv file
-   * @postcondition On success, the csv file to be loaded to the program
+   * @preconditions `file` must be a valid csv file
+   * @postconditions On success, the csv file to be loaded to the program
    */
   async loadLocalFile(file: File): Promise<void> {
     try {
@@ -79,8 +79,8 @@ export class CSVController implements ControllerInterface {
   /**
    * Get the csv file using a url link, and then loads it into the program
    * @param csv url path to a csv file
-   * @precondition `csv` must be a valid csv file
-   * @postcondition On success, the csv file to be loaded to the program
+   * @preconditions `csv` must be a valid csv file
+   * @postconditions On success, the csv file to be loaded to the program
    */
   async loadURLFile(csv: string): Promise<void> {
     try {
@@ -94,7 +94,7 @@ export class CSVController implements ControllerInterface {
 
   /**
    * Get the loaded csv browser of this controller's model
-   * @precondition model must have a loadedCsvBrowser list
+   * @preconditions model must have a loadedCsvBrowser list
    * @postconditions returns tuple set of csv file names and selection status boolean
    */
   browserCSVFiles(): [string, boolean][] {
@@ -103,7 +103,7 @@ export class CSVController implements ControllerInterface {
 
   /**
    * Retrieves the controller's associated model
-   * @precondition none
+   * @preconditions none
    * @postconditions returns {CSVReaderModel} The CSV reader model instance
    */
   getModel(): CSVReaderModel {
@@ -112,7 +112,7 @@ export class CSVController implements ControllerInterface {
 
   /**
    * Gets the csv data linked to the model
-   * @precondition none
+   * @preconditions none
    * @postconditions returns this model's csv data
    */
   getModelData(): CSVDataObject | undefined {

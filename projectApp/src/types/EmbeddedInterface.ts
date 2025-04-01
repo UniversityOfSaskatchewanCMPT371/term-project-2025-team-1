@@ -19,8 +19,8 @@ export interface EmbeddedInterface extends GraphInterface {
 
   /**
    * Adds embedded point vectors to the graph.
-   * @precondition valid points exist in the csvDataObject of the graph
-   * @postcondition PointObject's containing the vectors are stored in the points array attribute
+   * @preconditions valid points exist in the csvDataObject of the graph
+   * @postconditions PointObject's containing the vectors are stored in the points array attribute
    */
   addPoints(): void;
 
@@ -61,7 +61,7 @@ export interface EmbeddedInterface extends GraphInterface {
 
   /**
    * Gets the graph's dimensions
-   * @precondition none
+   * @preconditions none
    * @postconditions returns the current dimensions object
    */
   getDimensions(): { width: number; height: number; depth?: number };
@@ -74,13 +74,13 @@ export interface EmbeddedInterface extends GraphInterface {
    * @preconditions
    * - `width` and `height` must be positive integers
    * - if `height` is specified, it must be a positive integer
-   * @postcondition graph's dimensions are updated to the new values
+   * @postconditions graph's dimensions are updated to the new values
    */
   setDimensions(width: number, height: number, depth?: number): void;
 
   /**
    * Gets the value of tau
-   * @precondition none
+   * @preconditions none
    * @postconditions returns the current value of tau
    */
   getTau(): number;
@@ -88,8 +88,8 @@ export interface EmbeddedInterface extends GraphInterface {
   /**
    * Sets the value of tau
    * @param newTau a number greater than or eqaul to 1
-   * @precondition `newTau'` must be a positive integer
-   * @postcondition the value of tau is updated to newTau
+   * @preconditions `newTau'` must be a positive integer
+   * @postconditions the value of tau is updated to newTau
    */
   setTau(newTau: number): void;
 }

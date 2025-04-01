@@ -42,7 +42,7 @@ export class CSVDataObject implements CSVDataInterface {
    * Create points from the csv file that will be referenced by the points of
    * both the 2D and 3D Graph
    * @postconditions none
-   * @postcondition fills up the array of PointObjects used by the two graphs
+   * @postconditions fills up the array of PointObjects used by the two graphs
    */
   populatePoints(): void {
     this.points = [];
@@ -66,8 +66,8 @@ export class CSVDataObject implements CSVDataInterface {
 
   /**
    * Get the array of Point Objects
-   * @precondition none
-   * @postcondition returns the point objects array
+   * @preconditions none
+   * @postconditions returns the point objects array
    */
   getPoints(): PointObjectInterface[] {
     return this.points;
@@ -76,8 +76,8 @@ export class CSVDataObject implements CSVDataInterface {
   /**
    * Set a new point object and replaces the current point object
    * @param points An array of point objects
-   * @precondition `points` is a valid array of PointObjects
-   * @postcondition sets the new array of point objects
+   * @preconditions `points` is a valid array of PointObjects
+   * @postconditions sets the new array of point objects
    */
   setPoints(points: PointObjectInterface[]): void {
     let error;
@@ -147,11 +147,11 @@ export class CSVDataObject implements CSVDataInterface {
 
   /**
    * Find the first non "Time" header in the csv data file and returns it
-   * @precondition The list of headers must be greater than 1
+   * @preconditions The list of headers must be greater than 1
    * - if theres only 1, then that means that there is only a "Time" header,
    *   or that the csv file loaded doesn't have a "Time" header,
    *   with both cases being invalid
-   * @postcondition returns the first non "Time" header in the data set
+   * @postconditions returns the first non "Time" header in the data set
    */
   findFirstHeader(): string {
     let error;
@@ -178,8 +178,8 @@ export class CSVDataObject implements CSVDataInterface {
 
   /**
    * Resets the array of point objects
-   * @precondition none
-   * @postcondition points array is cleared
+   * @preconditions none
+   * @postconditions points array is cleared
    */
   clearPoints() {
     this.points = [];
@@ -196,7 +196,7 @@ export class CSVDataObject implements CSVDataInterface {
    * @preconditions
    * - `key` must be a non-empty string
    * - this.data must be initialized
-   * @postcondition returns matching record or null without modifying data
+   * @postconditions returns matching record or null without modifying data
    */
   getDataByKey(key: string): Record<string, string | number> | null {
     let result: Record<string, string | number> | null = null;
@@ -247,8 +247,8 @@ export class CSVDataObject implements CSVDataInterface {
 
   /**
    * Get this CSV's data
-   * @precondition this.data is a valid non-empty data set
-   * @postcondition returns The complete data array
+   * @preconditions this.data is a valid non-empty data set
+   * @postconditions returns The complete data array
    */
   getData(): { key: Record<string, string | number> }[] {
     if (this.data.length <= 0) {
@@ -264,8 +264,8 @@ export class CSVDataObject implements CSVDataInterface {
 
   /**
    * Get this CSV's name
-   * @precondition none
-   * @postcondition returns The name of the CSV data object
+   * @preconditions none
+   * @postconditions returns The name of the CSV data object
    */
   getName(): string {
     return this.name;
@@ -273,8 +273,8 @@ export class CSVDataObject implements CSVDataInterface {
 
   /**
    * Get the list of this CSV's headers
-   * @precondition none
-   * @postcondition returns Array of CSV column headers
+   * @preconditions none
+   * @postconditions returns Array of CSV column headers
    */
   getCSVHeaders(): string[] {
     return this.csvHeaders;
@@ -282,8 +282,8 @@ export class CSVDataObject implements CSVDataInterface {
 
   /**
    * Get the label of this CSV's YHeader
-   * @precondition none
-   * @postcondition returns Currently selected Y-axis header
+   * @preconditions none
+   * @postconditions returns Currently selected Y-axis header
    */
   getYHeader(): string {
     return this.yHeader;
@@ -291,8 +291,8 @@ export class CSVDataObject implements CSVDataInterface {
 
   /**
    * Get this CSV's BrowserSelected boolen
-   * @precondition none
-   * @postcondition returns Boolean indicating if browser visualization is selected
+   * @preconditions none
+   * @postconditions returns Boolean indicating if browser visualization is selected
    */
   getBrowserSelected(): boolean {
     return this.browserSelected;
@@ -300,8 +300,8 @@ export class CSVDataObject implements CSVDataInterface {
 
   /**
    * Get this CSV's VRSelected boolean
-   * @precondition none
-   * @postcondition returns Boolean indicating if VR visualization is selected
+   * @preconditions none
+   * @postconditions returns Boolean indicating if VR visualization is selected
    */
   getVRSelected(): boolean {
     return this.vrSelected;
@@ -310,7 +310,7 @@ export class CSVDataObject implements CSVDataInterface {
   /**
    * Finds and returns the time header from CSV headers
    *
-   * @precondition csvHeaders must be initialized, not null and contains a Time column
+   * @preconditions csvHeaders must be initialized, not null and contains a Time column
    * @postconditions
    * - If found, returns a valid time header,
    *   (i.e The header string containing "Time" or "time" without modifying data)
@@ -337,8 +337,8 @@ export class CSVDataObject implements CSVDataInterface {
   /**
    * Sets the data array for the CSV object
    * @param data Array of key-value pair records
-   * @precondition `data` must be a non-null array
-   * @postcondition this.data will contain the provided data array
+   * @preconditions `data` must be a non-null array
+   * @postconditions this.data will contain the provided data array
    */
   setData(data: { key: Record<string, string | number> }[]): void {
     this.data = data;
@@ -351,8 +351,8 @@ export class CSVDataObject implements CSVDataInterface {
   /**
    * Sets the name for the CSV object
    * @param name string to name this CSV object
-   * @precondition `name` must be a string
-   * @postcondition The `name` property is updated to the provided name.
+   * @preconditions `name` must be a string
+   * @postconditions The `name` property is updated to the provided name.
    */
   setName(name: string) {
     sendLog("info", `setName, ${this.name} will now be called ${name}`);
@@ -362,8 +362,8 @@ export class CSVDataObject implements CSVDataInterface {
   /**
    * Sets the browser visualization selection state
    * @param bool Boolean value browserSelected is set to
-   * @precondition `bool` must be a boolean value
-   * @postcondition browserSelected will be set to the provided boolean value
+   * @preconditions `bool` must be a boolean value
+   * @postconditions browserSelected will be set to the provided boolean value
    */
   setBrowserSelected(bool: boolean) {
     sendLog(
@@ -376,8 +376,8 @@ export class CSVDataObject implements CSVDataInterface {
   /**
    * Sets the VR visualization selection state
    * @param bool Boolean value vrSelected is set to
-   * @precondition `bool` must be a boolean value
-   * @postcondition vrSelected will be set to the provided boolean value
+   * @preconditions `bool` must be a boolean value
+   * @postconditions vrSelected will be set to the provided boolean value
    */
   setVRSelected(bool: boolean) {
     sendLog(
@@ -409,7 +409,7 @@ export class CSVDataObject implements CSVDataInterface {
 
   /**
    * Gets the Time header used by the csv data file
-   * @precondition timeHeader must be "Time"
+   * @preconditions timeHeader must be "Time"
    * @postconditions
    * - if timeHeader is "Time", return it
    * - else, throw an error
@@ -425,8 +425,8 @@ export class CSVDataObject implements CSVDataInterface {
 
   /**
    * Sets the time header used on the csv data set
-   * @precondition none
-   * @postcondition sets the Time header used in the program
+   * @preconditions none
+   * @postconditions sets the Time header used in the program
    */
   setTimeHeader() {
     this.timeHeader = this.findTimeHeader();

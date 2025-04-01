@@ -9,7 +9,7 @@ import { addTestSceneInfo } from "../../pages/Scene/TestScene";
  * @param file File path for csv file
  *
  * @preconditions `file` path must be a valid file path to a .csv file
- * @postcondition
+ * @postconditions
  * - returns a list of Record pairs of (attribute,value) as a Promise
  * - does not modify any external state
  * - If the file is empty or cannot be parsed, an error is thrown
@@ -137,8 +137,8 @@ export function LocalCsvReader(
  *
  * @param url address of the file
  *
- * @precondition `url` must be a valid url to a csv file, either ends with ".csv" or contains a csv file
- * @postcondition
+ * @preconditions `url` must be a valid url to a csv file, either ends with ".csv" or contains a csv file
+ * @postconditions
  * - returns a list of Record pairs of (attribute,value) as a Promise
  * - does not modify any external state
  * - If the file is empty or cannot be parsed, an error is thrown

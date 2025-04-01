@@ -95,9 +95,9 @@ export class GraphController implements ControllerInterface {
    * @param graph The TimeSeriesGraphObject to add to the model.
    * @param emGraph The EmbeddedGraphObject to add to the model.
    *
-   * @precondition The provided `graph` is a valid TimeSeriesGraphObject and `emGraph` is a valid EmbeddedGraphObject.
+   * @preconditions The provided `graph` is a valid TimeSeriesGraphObject and `emGraph` is a valid EmbeddedGraphObject.
    *
-   * @postcondition The `graph` and `emGraph` graphs are added to the model's data collection.
+   * @postconditions The `graph` and `emGraph` graphs are added to the model's data collection.
    */
   pushDataToModel(
     graph: TimeSeriesGraphObject,
@@ -115,9 +115,9 @@ export class GraphController implements ControllerInterface {
   /**
    * Retrieves the GraphModel instance.
    *
-   * @precondition none
+   * @preconditions none
    *
-   * @postcondition returns the GraphModel instance.
+   * @postconditions returns the GraphModel instance.
    */
   getModel(): GraphModel {
     return this.model;
@@ -126,9 +126,9 @@ export class GraphController implements ControllerInterface {
   /**
    * Retrieves the array of TimeSeriesGraphObject instances stored in the model.
    *
-   * @precondition none
+   * @preconditions none
    *
-   * @postcondition returns the array of TimeSeriesGraphObject instances.
+   * @postconditions returns the array of TimeSeriesGraphObject instances.
    */
   getModelData(): TimeSeriesGraphObject {
     const emData = this.getModel().getData();
@@ -143,9 +143,9 @@ export class GraphController implements ControllerInterface {
   /**
    * Retrieves the array of EmbeddedGraphObject instances stored in the model.
    *
-   * @precondition none
+   * @preconditions none
    *
-   * @postcondition returns the array of EmbeddedGraphObject instances.
+   * @postconditions returns the array of EmbeddedGraphObject instances.
    */
   getModelEmData(): EmbeddedGraphObject {
     const emData = this.getModel().getEmbeddedGraphData();
@@ -159,7 +159,7 @@ export class GraphController implements ControllerInterface {
 
   /**
    * Get the max range used by the 3D Embedded Graph
-   * @precondition for the Embedded Graph to exist and initialized
+   * @preconditions for the Embedded Graph to exist and initialized
    * @postconditions returns The max range of the Embedded Graph
    */
   getEmbeddedRange(): number {
@@ -174,7 +174,7 @@ export class GraphController implements ControllerInterface {
 
   /**
    * Gets the tau value and turns it to a string to be displayed on the drop down ui
-   * @precondition graph generated with a tau value implemented
+   * @preconditions graph generated with a tau value implemented
    * @postconditions returns a string of the assigned tau value
    */
   getTauForDropDown(): string {

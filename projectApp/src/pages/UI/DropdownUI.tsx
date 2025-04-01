@@ -25,7 +25,7 @@ export default function DropdownUI({
    * Create a loaded csv object displayed in the DropDown UI
    * @param data data for row object
    * @preconditions A csv data to be displayed
-   * @postcondition Display loaded csv file
+   * @postconditions Display loaded csv file
    */
   function GenerateRowObject({
     data,
@@ -62,7 +62,7 @@ export default function DropdownUI({
    * Generates the graph, and then updates main scene
    * @preconditions 
    * - `mainController` has a `CSVController`, `GraphController`, and `MainScene`
-   * @postcondition updates the main scene
+   * @postconditions updates the main scene
    */
   function update(): void {
     mainController.getCSVController().generate(selectTau);
@@ -73,8 +73,8 @@ export default function DropdownUI({
   /**
    * Generates the list of loaded csv files and assigned RowObjectButtons
    * Also in charge of generating a new Time Series Graph
-   * @precondition none
-   * @postcondition Lists all loaded csv files and assigned components
+   * @preconditions none
+   * @postconditions Lists all loaded csv files and assigned components
    */
   function GenerateList(): React.JSX.Element {
     const modelData = mainController.getCSVController().getModelData();
@@ -136,7 +136,7 @@ export default function DropdownUI({
   /**
    * Create a React JSX Component which is the body of the Drop Down UI.
    * It allows the user to set the tau value and shows an information box for the current graph
-   * @precondition none
+   * @preconditions none
    * @postconditions returns the body of the drop down UI
    */
   function GenerateOptionsList(): React.JSX.Element {
@@ -220,8 +220,8 @@ export default function DropdownUI({
 
   /**
    * Increase the tau value
-   * @precondition expect tau to be between 1 and 5
-   * @postcondition if tau is less than 5, increase it by 1. Otherwise leave it at 5
+   * @preconditions expect tau to be between 1 and 5
+   * @postconditions if tau is less than 5, increase it by 1. Otherwise leave it at 5
    */
   function setOnTauIncrease(): void {
     if (selectTau != 5) {
@@ -231,8 +231,8 @@ export default function DropdownUI({
 
   /**
    * Decrease the tau value
-   * @precondition expect tau to be between 1 and 5
-   * @postcondition if tau is more than 1, decrease it by 1. Otherwise leave it at 1
+   * @preconditions expect tau to be between 1 and 5
+   * @postconditions if tau is more than 1, decrease it by 1. Otherwise leave it at 1
    */
   function setOnTauDecrease(): void {
     if (selectTau != 1) {
@@ -243,7 +243,7 @@ export default function DropdownUI({
   /**
    * This function creates the component for setting the Tau value on generation.
    * Shows the buttons for both decreasing and increasing the tau value, it will also display the current Tau value
-   * @postcondition none
+   * @postconditions none
    * @postconditions returns the Tau selector component
    */
   function GenerateTauSelector(): React.JSX.Element {

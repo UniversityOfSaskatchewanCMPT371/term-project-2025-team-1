@@ -30,7 +30,7 @@ export class GraphObject implements GraphInterface {
    * Construct a new GraphObject instance.
    * @param CSVDataObject - An object of the CSVDataObject class
    *
-   * @precondition The 'csvdata' parameter must be a valid instance of the CSVDataObject class.
+   * @preconditions The 'csvdata' parameter must be a valid instance of the CSVDataObject class.
    * @postconditions The new GraphClass instance is created with:
    * - The 'id' and 'name' properties set to the CSVDataObject name.
    * - The 'dimensions' property is set to default values of 10 for width, height, and depth.
@@ -53,8 +53,8 @@ export class GraphObject implements GraphInterface {
 
   /**
    * Get the ID of the graph.
-   * @precondition The graph instance must have a valid ID.
-   * @postcondition The 'id' property is returned as a string.
+   * @preconditions The graph instance must have a valid ID.
+   * @postconditions The 'id' property is returned as a string.
    */
   getId(): string {
     return this.id;
@@ -64,7 +64,7 @@ export class GraphObject implements GraphInterface {
    * Set the ID of the graph.
    * @param {string} id - A string representing the ID of the graph.
    *
-   * @precondition The `id` parameter must be a non-empty string.
+   * @preconditions The `id` parameter must be a non-empty string.
    * @postconditions
    * - The 'id' property is set to the provided ID.
    * - If the ID is empty or not a string, an error is thrown.
@@ -88,8 +88,8 @@ export class GraphObject implements GraphInterface {
    *
    * @param none
    *
-   * @precondition The graph instance must have a valid name.
-   * @postcondition The 'name' property is returned as a string.
+   * @preconditions The graph instance must have a valid name.
+   * @postconditions The 'name' property is returned as a string.
    */
   getName(): string {
     return this.name;
@@ -99,7 +99,7 @@ export class GraphObject implements GraphInterface {
    * Sets the name of the graph.
    * @param {string} title - A string representing the name of the graph.
    *
-   * @precondition `title` must be a non-empty string.
+   * @preconditions `title` must be a non-empty string.
    * @postconditions
    * - 'name' property is set to the provided title.
    * - If the title is empty or not a string, an error is thrown.
@@ -124,8 +124,8 @@ export class GraphObject implements GraphInterface {
    * Get the position of the graph.
    * @param none
    *
-   * @precondition The graph instance must have a valid position.
-   * @postcondition The 'position' property is returned as an object with 'x', 'y', and 'z' properties.
+   * @preconditions The graph instance must have a valid position.
+   * @postconditions The 'position' property is returned as an object with 'x', 'y', and 'z' properties.
    */
   getPosition(): { x: number; y: number; z?: number } {
     return this.position;
@@ -137,8 +137,8 @@ export class GraphObject implements GraphInterface {
    * @param {number} y - A number representing the y-coordinate of the graph.
    * @param {number} z - A number representing the z-coordinate of the graph.
    *
-   * @precondition The `x`, `y`, and `z` parameters must be numbers.
-   * @postcondition The 'position' property is set to an object with 'x', 'y', and 'z' properties. If any of the parameters are not numbers, an error is thrown.
+   * @preconditions The `x`, `y`, and `z` parameters must be numbers.
+   * @postconditions The 'position' property is set to an object with 'x', 'y', and 'z' properties. If any of the parameters are not numbers, an error is thrown.
    */
   setPosition(x: number, y: number, z: number): void {
     if (
@@ -163,8 +163,8 @@ export class GraphObject implements GraphInterface {
    * Get the axes of the graph.
    * @param none
    *
-   * @precondition the graph instance must have valid axes.
-   * @postcondition the 'axes' property is returned as an object with 'xLabel', 'yLabel', 'xRange', and 'yRange' properties.
+   * @preconditions the graph instance must have valid axes.
+   * @postconditions the 'axes' property is returned as an object with 'xLabel', 'yLabel', 'xRange', and 'yRange' properties.
    */
   getAxes(): {
     xRange: [number, number];
@@ -176,7 +176,7 @@ export class GraphObject implements GraphInterface {
   /**
    * Set the axes of the graph.
    * @param {{xRange: [number, number]; yRange: [number, number]}} axes An object with `xRange`, and `yRange` properties.
-   * @precondition the `axes` parameter must be an object with `xRange`, and `yRange` properties.
+   * @preconditions the `axes` parameter must be an object with `xRange`, and `yRange` properties.
    * @postconditions
    * - the 'axes' property is set to the provided object.
    * - If the `axes` parameter is invalid, an error is thrown.
@@ -208,8 +208,8 @@ export class GraphObject implements GraphInterface {
 
   /**
    * Gets the CSV Data Object used by the graph
-   * @precondition none
-   * @postcondition returns the csv data object linked to the graph
+   * @preconditions none
+   * @postconditions returns the csv data object linked to the graph
    */
   getCSVData(): CSVDataObject {
     return this.csvData;

@@ -192,6 +192,7 @@ export default function TimeSeriesGraph({
       "info",
       "a visual representation of points was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)",
     );
+
     return (
       <group
         onClick={() => {

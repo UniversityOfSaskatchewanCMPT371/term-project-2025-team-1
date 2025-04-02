@@ -152,14 +152,6 @@ export class TimeSeriesGraphObject
     max = Math.ceil(max / 10) * 10;
     min = Math.floor(min / 10) * 10;
 
-    // while (max % 10 != 0) {
-    //   max++;
-    // }
-
-    // while (min % 10 != 0){
-    //   min--;
-    // }
-
     this.axes.yRange[1] = max;
     this.axes.yRange[0] = min;
     sendLog(

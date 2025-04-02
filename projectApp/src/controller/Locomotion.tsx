@@ -3,6 +3,19 @@ import { useXRInputSourceState, XROrigin } from "@react-three/xr";
 import { useRef } from "react";
 import { Group } from "three";
 
+/**
+ * Creates an XROrigin component that allows user movement using the right controller
+ * @param speed number multiplier for step distance
+ * @preconditions
+ * - `speed` = 1 for default step speed
+ * - `speed` > 1 for increased step speed
+ * - 0 < `speed` < 1 for decreased step speed
+ * - `speed` < 0 inverts the controls
+ * - `speed` = 0 disables movement
+ * @postconditions
+ * - returns an XROrigin component that allows the right controller thumbstick to move the user
+ * - movement should be relative to the user's facing direction
+ */
 export default function Locomotion({ speed }: { speed: number }) {
   const controller = useXRInputSourceState("controller", "right");
   const ref = useRef<Group>(null);

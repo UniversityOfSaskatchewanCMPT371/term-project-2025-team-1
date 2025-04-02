@@ -3,6 +3,7 @@ import { useState } from "react";
 import mainController from "../../controller/MainController";
 import { CSVDataInterface } from "../../types/CSVInterfaces";
 import { sendLog } from "../../logger-frontend.ts";
+import { addTestSceneInfo } from "../Scene/TestScene.tsx";
 
 /**
  * This function is for creating the Dropdown UI in the VR Scene
@@ -60,9 +61,11 @@ export default function DropdownUI({
    * Generates the graph, and then updates main scene
    */
   function update(): void {
+    addTestSceneInfo("Genenerating graph for tau: " + selectTau);
     mainController.getCSVController().generate(selectTau);
     setInfoTau(mainController.getGraphController().getTauForDropDown()); //Later change this to getting tau value from the graph itself rather than the other useState
     mainController.updateMainScene();
+    addTestSceneInfo("Graph generated for tau: " + selectTau);
   }
 
   /**
@@ -116,6 +119,7 @@ export default function DropdownUI({
               pointerEvents={"auto"}
               hover={{ backgroundOpacity: 0.75 }}
               onClick={() => {
+                addTestSceneInfo("Generate button clicked");
                 update();
                 sendLog("info", "GenerateList [BUTTON]? pressed");
               }}
@@ -268,6 +272,7 @@ export default function DropdownUI({
               borderColor={"gray"}
               onClick={() => {
                 setOnTauDecrease();
+                addTestSceneInfo("Tau decreased to: " + (selectTau - 1));
               }}
             >
               <Text>&lt;</Text>
@@ -309,6 +314,7 @@ export default function DropdownUI({
               borderColor={"gray"}
               onClick={() => {
                 setOnTauIncrease();
+                addTestSceneInfo("Tau increased to: " + (selectTau + 1));
               }}
             >
               <Text>&gt;</Text>

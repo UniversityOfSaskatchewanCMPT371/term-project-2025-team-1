@@ -139,7 +139,8 @@ export class TimeSeriesGraphObject
         if (
           (data[
             this.getCSVData().getYHeader() as keyof typeof data
-          ] as unknown as number) < max
+          ] as unknown as number) < min ||
+          min === 0
         ) {
           min = data[
             this.getCSVData().getYHeader() as keyof typeof data
@@ -177,7 +178,7 @@ export class TimeSeriesGraphObject
     const max = this.axes.yRange[1] - this.axes.yRange[0];
     const spacing = max / 10;
 
-    let cur = 0;
+    let cur = this.axes.yRange[0];
     let current = this.axes.yRange[0] + spacing;
 
     while (cur < this.axes.yRange[1]) {
@@ -381,7 +382,7 @@ export class TimeSeriesGraphObject
       point.setXAxisPos(current);
       point.setYAxisPos(
         (point.getObject().getYData() / 100) *
-          (this.getYRange() / this.timeSeriesYRange().length) -
+          (this.getTotalYRange() / this.timeSeriesYRange().length) -
           1,
       );
 
@@ -417,16 +418,42 @@ export class TimeSeriesGraphObject
   }
 
   /**
-   * Get max range of the Y axis
+   * Gets the total range of the Y axis
    * @precondition none
-   * @postcondition range of the Y axis
+   * @postcondition total range of the Y axis
    */
-  getYRange(): number {
+  getTotalYRange(): number {
     sendLog(
       "info",
-      `getYRange returned ${this.axes.yRange[1]} (TimeSeriesGraphObject.ts)`,
+      `getTotalYRange returned ${this.axes.yRange[1] - this.axes.yRange[0]} (TimeSeriesGraphObject.ts)`,
+    );
+    return this.axes.yRange[1] - this.axes.yRange[0];
+  }
+
+  /**
+   * Get max range of the Y axis
+   * @precondition none
+   * @postcondition max range of the Y axis
+   */
+  getMaxYRange(): number {
+    sendLog(
+      "info",
+      `getMaxYRange returned ${this.axes.yRange[1]} (TimeSeriesGraphObject.ts)`,
     );
     return this.axes.yRange[1];
+  }
+
+  /**
+   * Get min range of the Y axis
+   * @precondition none
+   * @postcondition min range of the Y axis
+   */
+  getMinYRange(): number {
+    sendLog(
+      "info",
+      `getMinYRange returned ${this.axes.yRange[0]} (TimeSeriesGraphObject.ts)`,
+    );
+    return this.axes.yRange[0];
   }
 
   /**

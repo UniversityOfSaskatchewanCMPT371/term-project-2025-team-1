@@ -174,7 +174,8 @@ export default function TimeSeriesGraph({
 
     point.setXAxisPos(current);
     point.setYAxisPos(
-      (point.getObject().getYData() / graph.getYRange()) *
+      ((point.getObject().getYData() - graph.getMinYRange()) /
+        graph.getTotalYRange()) *
         (1.42 - (ySpacing / 100) * 2 + 1.05) -
         1.05,
     );

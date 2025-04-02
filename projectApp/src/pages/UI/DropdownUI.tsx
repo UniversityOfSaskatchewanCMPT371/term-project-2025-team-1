@@ -307,6 +307,13 @@ export default function DropdownUI({
     );
   }
 
+  /**
+   * increments the header to be used to generate the graph forward 1
+   * @preconditions none
+   * @postconditions selectedHeaderIndex is incremented forward to the next valid header
+   * - selectedHeaderIndex will not refer to the Time header
+   * - if at end of headers wraps back around to the beginning of the headers
+   */
   function setOnHeaderIncrease(): void {
     if (headerList.length < 3) {
       return;
@@ -333,6 +340,13 @@ export default function DropdownUI({
     setSelectedHeaderIndex(start);
   }
 
+  /**
+   * decrements the header to be used to generate the graph forward 1
+   * @preconditions none
+   * @postconditions selectedHeaderIndex is decremented backwards to the next valid header
+   * - selectedHeaderIndex will not refer to the Time header
+   * - if at beginning of headers wraps back around to the end of the headers
+   */
   function setOnHeaderDecrease(): void {
     if (headerList.length < 3) {
       return;
@@ -358,6 +372,11 @@ export default function DropdownUI({
     setSelectedHeaderIndex(start);
   }
 
+  /**
+   * Creates the components for selecting which header is used for graph generation
+   * Shows buttons for cycling through forward and backwards through the headers of the loaded csv file
+   * @postconditions returns the header selection component
+   */
   function GenerateHeaderSelector(): React.JSX.Element {
     return (
       <Container
@@ -456,6 +475,11 @@ export default function DropdownUI({
     }
   }
 
+  /**
+   * Creates the component for enabling and disabling the first differencing effect
+   * Shows buttons for cycling through enabling and diabling first differencing
+   * @postconditions returns the first differencing selector component
+   */
   function GenerateFirstDifferencingSelector(): React.JSX.Element {
     return (
       <Container

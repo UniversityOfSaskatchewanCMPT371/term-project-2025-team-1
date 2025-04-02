@@ -80,7 +80,7 @@ export class EmbeddedGraphObject
     time: number,
     csvData: { key: Record<string, string | number> }[],
   ): [number, number, number] {
-    // assert that time is nonnegative
+    // assert that time is non-negative
     if (time < 0) {
       const e = new Error("time must be >= 0");
       sendError(
@@ -152,7 +152,7 @@ export class EmbeddedGraphObject
    * @postconditions the value of tau is updated to newTau
    */
   setTau(newTau: number): void {
-    // assert that new tau is nonnegative
+    // assert that new tau is non-negative
     if (newTau < 1) {
       const e = new TypeError("Tau must be greater than or equal to 1");
       sendError(

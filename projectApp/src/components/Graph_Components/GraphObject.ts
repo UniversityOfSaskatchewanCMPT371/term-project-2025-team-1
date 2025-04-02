@@ -16,11 +16,8 @@ import { CSVDataObject } from "../Csv_Components/CSVDataObject";
  * - The 'points' array is mutable.
  */
 export class GraphObject implements GraphInterface {
-  id: string;
   name: string;
   csvData: CSVDataObject;
-  dimensions: { width: number; height: number; depth?: number };
-  position: { x: number; y: number; z: number };
   axes: {
     xRange: [number, number];
     yRange: [number, number];
@@ -40,48 +37,12 @@ export class GraphObject implements GraphInterface {
    */
   constructor(csvdata: CSVDataObject) {
     // CSVDataObject is required, so the check is unnecessary.
-    this.id = csvdata.getName();
     this.name = csvdata.getName();
     this.csvData = csvdata;
-    this.dimensions = { width: 10, height: 10, depth: 10 };
-    this.position = { x: 1, y: 1, z: 0 };
     this.axes = {
       xRange: [0, 0],
       yRange: [0, 0],
     };
-  }
-
-  /**
-   * Get the ID of the graph.
-   * @preconditions The graph instance must have a valid ID.
-   * @postconditions The 'id' property is returned as a string.
-   */
-  getId(): string {
-    return this.id;
-  }
-
-  /**
-   * Set the ID of the graph.
-   * @param {string} id - A string representing the ID of the graph.
-   *
-   * @preconditions The `id` parameter must be a non-empty string.
-   * @postconditions
-   * - The 'id' property is set to the provided ID.
-   * - If the ID is empty or not a string, an error is thrown.
-   */
-  setId(id: string): void {
-    // assert that id is a nonempty string
-    if (id.trim() === "" || typeof id !== "string") {
-      const error = new SyntaxError("Invalid ID");
-      sendError(error, "ID must be a non-empty string. (GraphObject.ts");
-      throw error;
-    }
-    this.id = id;
-
-    sendLog(
-      "info",
-      `setID() was called on Graph Object, ID is now ${id} (GraphObject.ts)`,
-    );
   }
 
   /**
@@ -117,47 +78,6 @@ export class GraphObject implements GraphInterface {
     sendLog(
       "info",
       `setName() was called on Graph Object, name of the Graph is now ${title} (GraphObject.ts)`,
-    );
-  }
-
-  // Position getters and setters
-
-  /**
-   * Get the position of the graph.
-   * @param none
-   *
-   * @preconditions The graph instance must have a valid position.
-   * @postconditions The 'position' property is returned as an object with 'x', 'y', and 'z' properties.
-   */
-  getPosition(): { x: number; y: number; z?: number } {
-    return this.position;
-  }
-
-  /**
-   * Set the position of the graph.
-   * @param {number} x - A number representing the x-coordinate of the graph.
-   * @param {number} y - A number representing the y-coordinate of the graph.
-   * @param {number} z - A number representing the z-coordinate of the graph.
-   *
-   * @preconditions The `x`, `y`, and `z` parameters must be numbers.
-   * @postconditions The 'position' property is set to an object with 'x', 'y', and 'z' properties. If any of the parameters are not numbers, an error is thrown.
-   */
-  setPosition(x: number, y: number, z: number): void {
-    // assert that x, y, and z are numbers
-    if (
-      typeof x !== "number" ||
-      typeof y !== "number" ||
-      typeof z !== "number"
-    ) {
-      const error = new TypeError("Invalid Positions");
-      sendError(error, "Position coordinates must be numbers. (GraphObject.ts");
-      throw error;
-    }
-    this.position = { x, y, z };
-
-    sendLog(
-      "info",
-      `setPosition() was called on Graph Object, position: [${x}, ${y}, ${z}] (GraphObject.ts)`,
     );
   }
 

@@ -17,9 +17,11 @@ export const readFile = vi.fn(
 /** mocks fs.writeFile to call memfs.writeFile instead */
 export const writeFile = vi.fn(
   (path: string, data: string, options?: IWriteFileOptions) => {
-    mockFs.promises.writeFile(path, data, options).catch((err: unknown) => {
-      throw err as Error;
-    });
+    return mockFs.promises
+      .writeFile(path, data, options)
+      .catch((err: unknown) => {
+        throw err as Error;
+      });
   },
 );
 

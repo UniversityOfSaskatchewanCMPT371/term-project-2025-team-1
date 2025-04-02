@@ -6,12 +6,6 @@ import { Point3DInterface } from "./GraphPointsInterfaces";
  * @extends GraphInterface
  */
 export interface EmbeddedInterface extends GraphInterface {
-  /** Dimension properties, may have depth for 3D graphs */
-  dimensions: {
-    width: number;
-    height: number;
-    depth?: number;
-  };
   /** tau value used in point position */
   tau: number;
   /** set of 3D points */
@@ -58,25 +52,6 @@ export interface EmbeddedInterface extends GraphInterface {
     index: number,
     csvData: { key: Record<string, string | number> }[],
   ): number;
-
-  /**
-   * Gets the graph's dimensions
-   * @preconditions none
-   * @postconditions returns the current dimensions object
-   */
-  getDimensions(): { width: number; height: number; depth?: number };
-
-  /**
-   * Sets the graph's dimensions
-   * @param width a number greater than or eqaul to 1
-   * @param height a number greater than or eqaul to 1
-   * @param depth a number greater than or eqaul to 1, can be excluded for 2D dimensions
-   * @preconditions
-   * - `width` and `height` must be positive integers
-   * - if `height` is specified, it must be a positive integer
-   * @postconditions graph's dimensions are updated to the new values
-   */
-  setDimensions(width: number, height: number, depth?: number): void;
 
   /**
    * Gets the value of tau

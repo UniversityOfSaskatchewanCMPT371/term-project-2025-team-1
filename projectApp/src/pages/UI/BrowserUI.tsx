@@ -1,6 +1,5 @@
 import { button, useControls } from "leva";
 import mainController from "../../controller/MainController";
-import { ButtonInput } from "leva/dist/declarations/src/types";
 import React, { useState } from "react";
 
 import { sendLog, sendError } from "../../logger-frontend.ts";
@@ -123,37 +122,10 @@ export default function BrowserUI() {
     );
   }
 
-  /**
-   * Create a component that displays the loaded csv files on the browser UI
-   * @preconditions None
-   * @postconditions Unmounted component that displays loaded csv files when opened
-   */
-  function UnmountedComponents(): null {
-    const names: [string, boolean][] = mainController
-      .getCSVController()
-      .browserCSVFiles();
-
-    // Setting the objects to be displayed
-    const controlsObject: Record<string, boolean | ButtonInput> = names.reduce(
-      (acc, [name, value]) => {
-        acc[name] = value;
-
-        sendLog("info", `UnmountedComponents unmount: ${String(controlKey)}`);
-        return acc;
-      },
-      {} as Record<string, boolean | ButtonInput>,
-    );
-
-    useControls(`Loaded Graphs`, controlsObject, { collapsed: true });
-
-    return null;
-  }
-
   return (
     <>
       <URLComponent />
       <LoadComponent />
-      <UnmountedComponents />
     </>
   );
 }

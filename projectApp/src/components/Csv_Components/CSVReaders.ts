@@ -1,61 +1,6 @@
 import Papa from "papaparse";
-import * as fsPromise from "fs/promises";
 import { sendError, sendLog } from "../../logger-frontend";
 import { addTestSceneInfo } from "../../pages/Scene/TestScene";
-
-/**
- * Read the headers of a csv file and stores it
- *
- * @param file File path for csv file
- *
- * @preconditions `file` path must be a valid file path to a .csv file
- * @postconditions
- * - returns a list of Record pairs of (attribute,value) as a Promise
- * - does not modify any external state
- * - If the file is empty or cannot be parsed, an error is thrown
- **/
-export async function LocalCSVReader(
-  file: string,
-): Promise<Record<string, string | number>[]> {
-  // assert that file ends in .csv extension
-  if (!file.endsWith(".csv")) {
-    // log the error
-    const notCsvErr = new Error("This file is not csv");
-    sendError(notCsvErr, "LocalCSVReader(path) receives a non csv file");
-    throw notCsvErr;
-  }
-  return fsPromise
-    .readFile(file, "utf8")
-    .then((data: string) => {
-      let timeSeries: Record<string, string | number>[] = [];
-      Papa.parse(data, {
-        header: true,
-        dynamicTyping: true,
-        complete: function (
-          parsed: Papa.ParseResult<Record<string, string | number>>,
-        ) {
-          timeSeries = parsed.data;
-          if (timeSeries.length === 0) {
-            throw new Error("LocalCSVReader is empty");
-          }
-          sendLog(
-            "info",
-            `LocalCSVReader has successfully parsed\n${JSON.stringify(timeSeries)}`,
-          );
-        },
-        error: function (parseError: Error) {
-          // this will be caught by promise.catch
-          throw parseError;
-        },
-      });
-      return timeSeries;
-    })
-    .catch((err: unknown) => {
-      // if readFile or PapaParse errors out, log the error
-      sendError(err, "LocalCSVReader error");
-      throw err as Error;
-    });
-}
 
 /**
  * Reads a CSV file from a File Object (local reader) and returns an array of time series data.

@@ -96,15 +96,6 @@ export class CSVController implements ControllerInterface {
   }
 
   /**
-   * Get the loaded csv browser of this controller's model
-   * @preconditions model must have a loadedCsvBrowser list
-   * @postconditions returns tuple set of csv file names and selection status boolean
-   */
-  browserCSVFiles(): [string, boolean][] {
-    return this.getModel().loadedCsvBrowser();
-  }
-
-  /**
    * Retrieves the controller's associated model
    * @preconditions none
    * @postconditions returns {CSVReaderModel} The CSV reader model instance

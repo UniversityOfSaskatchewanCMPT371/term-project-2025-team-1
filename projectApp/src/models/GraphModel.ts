@@ -1,7 +1,6 @@
 import { EmbeddedGraphObject } from "../components/Graph_Components/EmbeddedGraphObject";
 import { TimeSeriesGraphObject } from "../components/Graph_Components/TimeSeriesGraphObject";
 import { ModelInterface } from "../types/BaseInterfaces";
-import { CSVDataInterface } from "../types/CSVInterfaces";
 
 /**
  * The GraphModel class is responsible for managing a TimeSeriesGraphObject and EmbeddedGraphObject.
@@ -18,19 +17,6 @@ import { CSVDataInterface } from "../types/CSVInterfaces";
 export class GraphModel implements ModelInterface {
   data?: TimeSeriesGraphObject;
   embeddedGraphData?: EmbeddedGraphObject;
-
-  /**
-   * Sets the VRSelected flag of the given CSV data object to true.
-   *
-   * @preconditions The CSVDataInterface instance is a valid instance of CSVDataObject.
-   *
-   * @postconditions The CSVDataInterface instance's VRSelected flag is updated to true if it is a valid instance of CSVDataObject.
-   *
-   * @param {CSVDataInterface} csv - The CSVDataInterface instance whose VRSelected property will be set.
-   */
-  selectData(csv: CSVDataInterface): void {
-    csv.setVRSelected(true);
-  }
 
   /**
    * Sets a new TimeSeriesGraphObject to the model.

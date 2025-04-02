@@ -137,28 +137,6 @@ export class EmbeddedGraphObject
   }
 
   /**
-   * gets the dimensions of the graph
-   * @preconditions none
-   * @postconditions returns the current dimensions of the graph
-   */
-  getDimensions(): { width: number; height: number; depth?: number } {
-    return this.dimensions;
-  }
-
-  /**
-   * Sets the dimenstion of the graph to the new values
-   * @param width new width of the graph
-   * @param height new height of the graph
-   * @param depth new depth of the graph
-   * @preconditions `width`, `height`, and `depth` must be valid numbers for the dimensions of a graph
-   * @postconditions the dimension attribute of the graphis updated to contain the given values
-   */
-  setDimensions(width: number, height: number, depth?: number): void {
-    const newDimensions = { width: width, height: height, depth: depth };
-    this.dimensions = newDimensions;
-  }
-
-  /**
    * Gets the value of tau
    * @preconditions none
    * @postconditions returns the current value of tau

@@ -193,32 +193,6 @@ export class CSVDataObject implements CSVDataInterface {
     );
   }
 
-  // Getters
-
-  /**
-   * Retrieves data by a specific key
-   * @param key Key to search for in the data
-   * @preconditions
-   * - `key` must be a non-empty string
-   * - this.data must be initialized
-   * @postconditions returns matching record or null without modifying data
-   */
-  getDataByKey(key: string): Record<string, string | number> | null {
-    let result: Record<string, string | number> | null = null;
-    for (const value of this.data) {
-      const val = value;
-      for (const header of Object.keys(val)) {
-        if ([header as keyof typeof val].toString() == key) {
-          result = val[header as keyof typeof val];
-          sendLog("info", "getDataByKey has found data");
-          return result;
-        }
-      }
-    }
-    sendLog("info", "getDataByKey has returned null, is this expected?");
-    return result;
-  }
-
   /**
    * Retrieves data for a specific time value
    * @param time Time value to search for

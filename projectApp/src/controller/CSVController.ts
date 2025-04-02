@@ -11,6 +11,9 @@ import mainController from "./MainController";
  * Implements the ControllerInterface for standardized controller behavior.
  *
  * @implements {ControllerInterface}
+ *
+ * @invariants
+ * - The 'model' property is initialized on construction and is never set again
  */
 export class CSVController implements ControllerInterface {
   model: CSVReaderModel;
@@ -18,7 +21,7 @@ export class CSVController implements ControllerInterface {
   /**
    * Initializes a new CSVController with a fresh CSVReaderModel
    *
-   * @postcondition A new CSVReaderModel is created and assigned to this.model
+   * @postconditions A new CSVReaderModel is created and assigned to this.model
    */
   constructor() {
     this.model = new CSVReaderModel();
@@ -26,15 +29,18 @@ export class CSVController implements ControllerInterface {
 
   /**
    * Generates time series graphs for CSV data marked for VR display
-   *
-   * @precondition this.model must be initialized with CSV data
-   * @postcondition For each CSV:
+   * @param tau number value of tau used in generation
+   * @preconditions
+   * - this.model must be initialized with CSV data
+   * - `tau` must be an integer between 1 and 5 (inclusive)
+   * @postconditions For each CSV:
    *   - VR selection is enabled
    *   - A new TimeSeriesGraph is created and initialized
    *   - The graph is added to the main controller's graph collection
    */
   generate(tau: number): void {
     const emData = this.getModelData();
+    // assert that model.data is defined
     if (emData === undefined) {
       const error = new SyntaxError("Error getting CSVDataObject");
       sendError(error, "Unable to get csv data object (CSVController.ts)");
@@ -58,30 +64,32 @@ export class CSVController implements ControllerInterface {
   }
 
   /**
-   * This method gets the csv file by opening a local file, and then loads it into the program
-   * @precondition a file that represents the csv file, needs to be a valid csv file
-   * @postcondition On success, the csv file to be loaded to the program
+   * Get the csv file by opening a local file, and then loads it into the program
+   * @param file local file that contains csv data
+   * @preconditions `file` must be a valid csv file
+   * @postconditions On success, the csv file to be loaded to the program
    */
   async loadLocalFile(file: File): Promise<void> {
     try {
       await this.getModel().readLocalFile(file);
     } catch (error: unknown) {
-      //Log the error
+      // if readLocalFile errors out, log the error
       sendError(error, "loadLocalFile Error");
       throw error;
     }
   }
 
   /**
-   * This method gets the csv file using a url link, and then loads it into the program
-   * @precondition a string parameter representing the url link, needs to be a valid csv file
-   * @postcondition On success, the csv file to be loaded to the program
+   * Get the csv file using a url link, and then loads it into the program
+   * @param csv url path to a csv file
+   * @preconditions `csv` must be a valid csv file
+   * @postconditions On success, the csv file to be loaded to the program
    */
   async loadURLFile(csv: string): Promise<void> {
     try {
       await this.getModel().readURLFile(csv);
     } catch (error: unknown) {
-      //Log the error
+      // if readURLFile errors out, log the error
       sendError(error, "loadURLFile Error");
       throw error;
     }
@@ -89,9 +97,8 @@ export class CSVController implements ControllerInterface {
 
   /**
    * Retrieves the controller's associated model
-   *
-   * @returns {CSVReaderModel} The CSV reader model instance
-   * @postcondition Returns the existing model without modification
+   * @preconditions none
+   * @postconditions returns {CSVReaderModel} The CSV reader model instance
    */
   getModel(): CSVReaderModel {
     return this.model;
@@ -99,7 +106,10 @@ export class CSVController implements ControllerInterface {
 
   /**
    * Gets the csv data linked to the model
-   * @returns
+   * @preconditions none
+   * @postconditions
+   * - returns this model's csv data
+   * - if data is not defined, it will still return an undefined object
    */
   getModelData(): CSVDataObject | undefined {
     return this.model.getData();

@@ -5,8 +5,9 @@ import { CSVDataInterface } from "../../types/CSVInterfaces";
 import { sendLog } from "../../logger-frontend.ts";
 
 /**
- * This function is for creating the Dropdown UI in the VR Scene
+ * Create the Dropdown UI in the VR Scene
  * This displays loaded csv files and allows the generation of a TimeSeriesGraph
+ * @param inVR boolean for vr functions
  * @preconditions props used for position in the VR scene
  * @postconditions the specified drop down UI
  */
@@ -21,16 +22,17 @@ export default function DropdownUI({
   const [infoTau, setInfoTau] = useState("");
 
   /**
-   * This is the function for creating a loaded csv object displayed in the DropDown UI
+   * Create a loaded csv object displayed in the DropDown UI
+   * @param data data for row object
    * @preconditions A csv data to be displayed
-   * @postcondition Display loaded csv file
+   * @postconditions Display loaded csv file
    */
   function GenerateRowObject({
     data,
   }: {
     data: CSVDataInterface;
   }): React.JSX.Element {
-    //The list of objects/loaded csv files row by row
+    // The list of objects/loaded csv files row by row
     return (
       <>
         <Container
@@ -56,20 +58,23 @@ export default function DropdownUI({
     );
   }
 
-  /*
+  /**
    * Generates the graph, and then updates main scene
+   * @preconditions
+   * - `mainController` has a `CSVController`, `GraphController`, and `MainScene`
+   * @postconditions updates the main scene
    */
   function update(): void {
     mainController.getCSVController().generate(selectTau);
-    setInfoTau(mainController.getGraphController().getTauForDropDown()); //Later change this to getting tau value from the graph itself rather than the other useState
+    setInfoTau(mainController.getGraphController().getTauForDropDown()); // Later change this to getting tau value from the graph itself rather than the other useState
     mainController.updateMainScene();
   }
 
   /**
    * Generates the list of loaded csv files and assigned RowObjectButtons
    * Also in charge of generating a new Time Series Graph
-   * @precondition none
-   * @postcondition Lists all loaded csv files and assigned components
+   * @preconditions none
+   * @postconditions Lists all loaded csv files and assigned components
    */
   function GenerateList(): React.JSX.Element {
     const modelData = mainController.getCSVController().getModelData();
@@ -129,9 +134,10 @@ export default function DropdownUI({
   }
 
   /**
-   * This function creates a React JSX Component which is the body of the Drop Down UI.
+   * Create a React JSX Component which is the body of the Drop Down UI.
    * It allows the user to set the tau value and shows an information box for the current graph
-   * @returns the body of the drop down UI
+   * @preconditions none
+   * @postconditions returns the body of the drop down UI
    */
   function GenerateOptionsList(): React.JSX.Element {
     return (
@@ -213,17 +219,20 @@ export default function DropdownUI({
   }
 
   /**
-   * This function is used when the user wants to increase the tau value
+   * Increase the tau value
+   * @preconditions expect tau to be between 1 and 5 (inclusive)
+   * @postconditions if tau is less than 5, increase it by 1. Otherwise leave it at 5
    */
   function setOnTauIncrease(): void {
-    //For now max tau will be set to 5
     if (selectTau != 5) {
       setSelectTau(selectTau + 1);
     }
   }
 
   /**
-   * This function is used when the user wants to decrease the tau value
+   * Decrease the tau value
+   * @preconditions expect tau to be between 1 and 5 (inclusive)
+   * @postconditions if tau is more than 1, decrease it by 1. Otherwise leave it at 1
    */
   function setOnTauDecrease(): void {
     if (selectTau != 1) {
@@ -232,9 +241,10 @@ export default function DropdownUI({
   }
 
   /**
-   * Thhis function creates the component for setting the Tau value on generation.
+   * This function creates the component for setting the Tau value on generation.
    * Shows the buttons for both decreasing and increasing the tau value, it will also display the current Tau value
-   * @returns the Tau selector component
+   * @postconditions none
+   * @postconditions returns the Tau selector component
    */
   function GenerateTauSelector(): React.JSX.Element {
     return (
@@ -322,7 +332,7 @@ export default function DropdownUI({
   /**
    * The main display of the DropDownUI, along with the button that displays it
    * @preconditions none
-   * @postconditions The activation button and the drop down UI
+   * @postconditions returns the activation button and the drop down UI
    */
   function DropDownBody(): React.JSX.Element {
     return (

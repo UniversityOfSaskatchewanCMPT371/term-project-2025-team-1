@@ -1,28 +1,27 @@
+import { DataInterface } from "./BaseInterfaces";
+import { CSVDataInterface } from "./CSVInterfaces";
 /**
  * Interface for graph objects that can be used in both 2D and 3D contexts.
  * Provides a standardized structure for graph representation and manipulation.
  */
-import { DataInterface } from "./BaseInterfaces";
-import { CSVDataInterface } from "./CSVInterfaces";
-
 export interface GraphInterface extends DataInterface {
   // Basic graph properties
 
-  //The csv data used by the graph
+  /** The csv data used by the graph */
   csvData: CSVDataInterface;
 
-  // Axes configuration
+  /** Axes configuration, min and max for x-axis and y-axis */
   axes: {
-    xRange: [number, number]; // Min and max values for x-axis
-    yRange: [number, number]; // Min and max values for y-axis
+    xRange: [number, number];
+    yRange: [number, number];
   };
 
   // Basic getters and setters
 
   /**
    * Gets the axes configuration
-   * pre-condition: none
-   * post-condition: returns the current axes configuration object
+   * @preconditions none
+   * @postconditions returns the current axes configuration object
    */
   getAxes(): {
     xRange: [number, number];
@@ -31,10 +30,15 @@ export interface GraphInterface extends DataInterface {
 
   /**
    * Sets the axes configuration
-   * pre-condition: axes object must contain valid labels and ranges
-   * post-condition: graph's axes configuration is updated to the new values
+   * @preconditions axes object must contain valid labels and ranges
+   * @postconditions graph's axes configuration is updated to the new values
    */
   setAxes(axes: { xRange: [number, number]; yRange: [number, number] }): void;
 
+  /**
+   * Get the CSV Data
+   * @preconditions none
+   * @postconditions returns the current axes configuration object
+   */
   getCSVData(): CSVDataInterface;
 }

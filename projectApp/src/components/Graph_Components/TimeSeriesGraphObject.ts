@@ -7,9 +7,12 @@ import { Point2DInterface } from "../../types/GraphPointsInterfaces";
 
 /**
  * TimeSeriesGraphObject is a class that extends GraphObject
+ *
  * Holds attributes and methods required of a TimeSeriesGraph
- * @precondition A valid CSVDataObject
- * @postcondition Creates a Time Series Data Object
+ * @history
+ * - This inhenrits the history properties of `GraphObject`
+ * - The 'points2D' property is initialized as an empty set.
+ * - The 'yRangeLength' is initialized as 0.
  */
 export class TimeSeriesGraphObject
   extends GraphObject
@@ -24,27 +27,28 @@ export class TimeSeriesGraphObject
   }
 
   /**
-   * This methods gets the array of 2D Points
-   * @precondition a valid array of points
-   * @postcondition returns the array of 2D points associated with the 2D Graph
+   * Get the array of 2D Points
+   * @preconditions a valid array of points
+   * @postconditions returns the array of 2D points associated with the 2D Graph
    */
   getPoints2D(): Point2DInterface[] {
     return this.points2D;
   }
 
   /**
-   * This method gets the number of ticks in the y-axis, the y range of the TimeSeriesGraph
-   * @precondition none
-   * @postcondition returns the y range of the axis
+   * Get the number of ticks in the y-axis, the y range of the TimeSeriesGraph
+   * @preconditions none
+   * @postconditions returns the y range of the axis
    */
   getYRangeLength(): number {
     return this.yRangeLength;
   }
 
   /**
-   * This method sets the range of the y-axis in the Time Series Graph
-   * @precondition number parameter wchich is the highest value in hte data set
-   * @postcondition On success, updates the y range to the new one
+   * Set the range of the y-axis in the Time Series Graph
+   * @param num number to set YRange to
+   * @preconditions `num` parameter must be the highest value in the data set
+   * @postconditions On success, updates the y range to the new one
    */
   setYRangeLength(num: number): void {
     this.yRangeLength = num;
@@ -57,8 +61,8 @@ export class TimeSeriesGraphObject
 
   /**
    * Adds a new point to the graph.
-   * pre-codition: valid points in GraphObject
-   * post-condition: a new PointInterface instance is added to the graph
+   * @preconditions GraphObject must have valid points
+   * @postconditions new PointObjects are added to the graph
    */
   addPoints(): void {
     this.points2D = [];
@@ -67,7 +71,7 @@ export class TimeSeriesGraphObject
       .forEach((point) => {
         const newPoint = new Point2DObject(point);
 
-        //Get Header by key then assign
+        // Get Header by key then assign
         this.points2D.push(newPoint);
       });
     sendLog(
@@ -78,9 +82,8 @@ export class TimeSeriesGraphObject
 
   /**
    * Updates all points' selection status.
-   * If additional properties (like color) need updating, modify here.
-   * pre-codition: none
-   * post-condition: all points' selection status is updated
+   * @preconditions none
+   * @postconditions all points' selection status is updated
    */
   updatePoints(): void {
     this.points2D.forEach((point) => {
@@ -94,10 +97,10 @@ export class TimeSeriesGraphObject
   }
 
   /**
-   * Sets the Y range of a time series graph
+   * Sets the Y range of a time series graph.
    * Increases each tick by 10, for larger data sets this could be tuned
-   * @precondition valid CSV data object
-   * @postcondition sets the max Y range of graph to the largest value of the csv data
+   * @preconditions valid CSV data object
+   * @postconditions sets the max Y range of graph to the largest value of the csv data
    */
   setRange(): void {
     let max = 0;
@@ -131,7 +134,7 @@ export class TimeSeriesGraphObject
 
   /**
    * The Y values that will be displayed on ticks of the Y axis
-   * @precondition a set y axis range
+   * @preconditions a set y axis range
    * @postconditions returns a number[] that is the values graph ticks
    */
   timeSeriesYRange(): number[] {
@@ -139,7 +142,7 @@ export class TimeSeriesGraphObject
 
     let cur = 0;
 
-    //For larger data sets, it would be possible to create a case statement
+    // For larger data sets, it would be possible to create a case statement
     while (cur < this.axes.yRange[1]) {
       cur = cur + 10;
       range.push(cur);
@@ -154,7 +157,7 @@ export class TimeSeriesGraphObject
 
   /**
    * The number of X values that will be displayed on ticks of the X axis
-   * @precondition requires x data of csv data
+   * @preconditions requires x data of csv data
    * @postconditions returns a string[] that is displayed on x axis
    */
   timeSeriesXRange(): string[] {
@@ -177,11 +180,11 @@ export class TimeSeriesGraphObject
 
   /**
    * Increment Y header
-   * @precondition nonde
-   * @postcondition Y header increments/changes properly
+   * @preconditions nonde
+   * @postconditions Y header increments/changes properly
    */
   incrementYHeader(): void {
-    //If theres only two Y headers, increment to new column not possible
+    // If theres only two Y headers, increment to new column not possible
     if (this.getCSVData().getCSVHeaders().length < 3) {
       sendLog(
         "info",
@@ -194,7 +197,7 @@ export class TimeSeriesGraphObject
       .getCSVHeaders()
       .indexOf(this.getCSVData().getYHeader());
 
-    //Cycle to the beginning
+    // Cycle to the beginning
     if (start == this.getCSVData().getCSVHeaders().length - 1) {
       if (
         this.getCSVData().getCSVHeaders()[0] !=
@@ -202,7 +205,7 @@ export class TimeSeriesGraphObject
       ) {
         this.getCSVData().setYHeader(this.getCSVData().getCSVHeaders()[0]);
       } else {
-        //Go to the next available header
+        // Go to the next available header
         this.getCSVData().setYHeader(this.getCSVData().getCSVHeaders()[1]);
       }
       sendLog(
@@ -212,7 +215,7 @@ export class TimeSeriesGraphObject
       return;
     }
 
-    //If second to the last but last is the Time header, go to the start
+    // If second to the last but last is the Time header, go to the start
     if (
       start == this.getCSVData().getCSVHeaders().length - 2 &&
       this.getCSVData().getCSVHeaders()[
@@ -242,11 +245,11 @@ export class TimeSeriesGraphObject
 
   /**
    * Decrement Y header
-   * @precondition nonde
-   * @postcondition Y header decrements/changes properly
+   * @preconditions nonde
+   * @postconditions Y header decrements/changes properly
    */
   decrementYHeader(): void {
-    //If theres only two Y headers, increment to new column not possible
+    // If theres only two Y headers, increment to new column not possible
     if (this.getCSVData().getCSVHeaders().length < 3) {
       sendLog(
         "info",
@@ -259,7 +262,7 @@ export class TimeSeriesGraphObject
       .getCSVHeaders()
       .indexOf(this.getCSVData().getYHeader());
 
-    //Cycle to the end
+    // Cycle to the end
     if (start == 0) {
       if (
         this.getCSVData().getCSVHeaders()[
@@ -272,7 +275,7 @@ export class TimeSeriesGraphObject
           ],
         );
       } else {
-        //Go to the next available header
+        // Go to the next available header
         this.getCSVData().setYHeader(
           this.getCSVData().getCSVHeaders()[
             this.getCSVData().getCSVHeaders().length - 2
@@ -286,7 +289,7 @@ export class TimeSeriesGraphObject
       return;
     }
 
-    //If second to the first but first is the Time header, go to the end
+    // If second to the first but first is the Time header, go to the end
     if (
       start == 1 &&
       this.getCSVData().getCSVHeaders()[0] == this.getCSVData().getTimeHeader()
@@ -317,7 +320,9 @@ export class TimeSeriesGraphObject
   }
 
   /**
-   * This is used to update the graph when the model changes
+   * Update the graph when the model changes
+   * @preconditions whenver the model changes
+   * @postconditions point positions are updated
    */
   updatePointPosition(): void {
     this.setRange();
@@ -327,14 +332,14 @@ export class TimeSeriesGraphObject
     const divider = totalSpace / this.timeSeriesYRange().length;
     let current = -1.8 + divider / 2;
 
-    //Resetting points
+    // Resetting points
     this.points2D = [];
     this.getCSVData().clearPoints();
     this.getCSVData().populatePoints();
     this.addPoints();
     this.updatePoints();
 
-    //Assigning new position values to the points
+    // Assigning new position values to the points
     this.getPoints2D().forEach((point) => {
       point.setXAxisPos(current);
       point.setYAxisPos(
@@ -351,15 +356,19 @@ export class TimeSeriesGraphObject
     );
   }
 
-  getCSVData() {
+  /**
+   * Retrieves the csv data of this graph
+   * @preconditions none
+   * @postconditions returns {CSVDataObject} graph csv data
+   */
+  getCSVData(): CSVDataObject {
     return this.csvData;
   }
 
   /**
    * Retrieves all points in the graph.
-   * pre-codition: none
-   * post-condition: returns an array of PointInterface instances
-   * @returns {PointInterface[]} Array of PointInterface instances.
+   * @preconditions none
+   * @postconditions returns {PointInterface[]} Array of PointInterface instances.
    */
   get2DPoints(): Point2DObject[] {
     return this.points2D;
@@ -367,8 +376,8 @@ export class TimeSeriesGraphObject
 
   /**
    * Get number of points on the Graph
-   * @precondition none
-   * @postcondition return number of points
+   * @preconditions none
+   * @postconditions returns number of points
    */
   getNumPoints(): number {
     return this.points2D.length;
@@ -376,8 +385,8 @@ export class TimeSeriesGraphObject
 
   /**
    * Get max range of the Y axis
-   * @precondition none
-   * @postcondition range of the Y axis
+   * @preconditions none
+   * @postconditions returns range of the Y axis
    */
   getYRange(): number {
     sendLog(

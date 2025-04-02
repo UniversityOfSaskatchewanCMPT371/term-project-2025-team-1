@@ -4,35 +4,28 @@ import { addTestSceneInfo } from "../pages/Scene/TestScene";
 import { CSVModelInterface } from "../types/CSVInterfaces";
 
 /**
- * The CSVReaderModel class is responsible for managing the CSV data objects.
+ * The CSVReaderModel class is responsible for managing a CSV data object.
  *
  * @invariant
- * - The 'data' property is always an array of CSVDataObject objects.
- * - Each CSVDataObject object in the 'data' array represents a valid CSV file that was successfully loaded.
+ * - If 'data' property is defined, the CSVDataObject object in 'data' must be a valid CSV file that was successfully loaded.
  *
  * @history
- * - The 'data' array is initialized as an empty array.
- *
- * Note on the Index Parameter:
- * - The current implementation uses this.data.length as the unique index when loading files.
- *   This assumes that the index uniquely identifies a file at load time.
- *
+ * - The 'data' property is uninitialized, and must be set by `readLocalFile()` or `readURLFile()`.
  */
 export class CSVReaderModel implements CSVModelInterface {
   data?: CSVDataObject;
 
   /**
    * Returns a CSVData object
-   * @param {string} name - The name of the CSV file.
+   * @preconditions The 'data' property contains a valid CSVDataObject instance
    *
-   * @precondition The 'data' array contains CSVDataObject instances with a valid 'name' property
-   *
-   * @postcondition If a CSVDataObject with the specified name is found, it is returned. Otherwise, an informational log is recorded and null is returned.
-   *
-   * @returns The CSVData object if found, otherwise null.
+   * @postconditions
+   * - If the 'data' CSVDataObject is valid, it is returned.
+   * - Otherwise, an informational log is recorded and null is returned.
    */
   getCSVFile(): CSVDataObject {
     const data = this.data;
+    // assert that data is defined
     if (data === undefined) {
       const error = new SyntaxError("Error getting csvfile");
       sendError(error, "Unable to getCSVFile");
@@ -42,11 +35,13 @@ export class CSVReaderModel implements CSVModelInterface {
   }
 
   /**
-   * Reads a local CSV file and sets it as the data array.
+   * Reads a local CSV file and sets it to 'data'.
    *
-   * @precondition The 'file' parameter is a valid File object representing a CSV file. The CSV file is successfully read.
+   * @preconditions The `file` parameter is a valid File object representing a CSV file.
    *
-   * @postcondition If the file is successfully read, a new CSVDataObject is created and added to the 'data' array. Otherwise, an error is logged.
+   * @postconditions
+   * - If the file is successfully read, a new CSVDataObject is created and set in 'data' property.
+   * - Otherwise, an error is logged.
    *
    * @param {File} file - The File object representing the local CSV file.
    */
@@ -59,7 +54,7 @@ export class CSVReaderModel implements CSVModelInterface {
         `readLocalFile read a file\n${JSON.stringify(data.getData())}`,
       );
     } catch (error: unknown) {
-      // Log the Error
+      // if loadCSVData errors out, log the error
       sendError(error, "readLocalFile error");
       throw error;
     }
@@ -70,11 +65,13 @@ export class CSVReaderModel implements CSVModelInterface {
   }
 
   /**
-   * Reads a CSV file from a URL and adds it to the data array.
+   * Reads a CSV file from a URL and sets it to 'data'.
    *
-   * @precondition The 'file' parameter is a valid URL string representing a CSV file. The CSV file is successfully read.
+   * @preconditions The 'file' parameter is a valid URL string representing a CSV file.
    *
-   * @postcondition If the file is successfully read, a new CSVDataObject is created and added to the 'data' array. Otherwise, an error is logged.
+   * @postconditions
+   * - If the file is successfully read, a new CSVDataObject is created and set in 'data' property.
+   * - Otherwise, an error is logged.
    *
    * @param {string} file - The URL string of the CSV file.
    */
@@ -87,7 +84,7 @@ export class CSVReaderModel implements CSVModelInterface {
         `readURLFile read a file\n${JSON.stringify(data.getData())}`,
       );
     } catch (error: unknown) {
-      // Log the error
+      // if loadCSVData errors out, log the error
       sendError(error, "readURLFile error");
       throw error;
     }
@@ -100,11 +97,9 @@ export class CSVReaderModel implements CSVModelInterface {
   /**
    * Returns the current array of CSVDataObject instances.
    *
-   * @precondition none
+   * @preconditions none
    *
-   * @postcondition The internal data array of CSVDataObject instances is returned.
-   *
-   * @returns The internal data array of CSVDataObject instances.
+   * @postconditions returns the csv data of this model
    */
   getData(): CSVDataObject | undefined {
     return this.data;

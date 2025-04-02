@@ -3,15 +3,14 @@
 import fs from "fs";
 import readline from "readline";
 
-/*
+/**
  * checks if the given string exists in the file at the given path
- * pre-condition - filePath is a path to a file that exists
- * post-conditions - none
+ * - NOTE: function is to be used for testing only
  * @param {string} filePath - the path to the file that is being checked
  * @param {string} text - the string that is being looked for in the given file
- * @returns {Promise<boolean>} a promise that will contains true if the given text appears in the file at the given location
+ * @preconditions filePath is a path to a file that exists
+ * @postconditions returns {Promise<boolean>} a promise that will contains true if the given text appears in the file at the given location
  *                             otherwise, false (returns false if file does not exist)
- * NOTE: function is to be used for testing only
  */
 export async function fileContainsText(
   filePath: string,

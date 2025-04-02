@@ -12,8 +12,8 @@ import { CSVDataObject } from "../Csv_Components/CSVDataObject";
  * - The 'axes' property is an object with 'xLabel', 'yLabel', 'xRange', and 'yRange' properties that are defined.
  *
  * @history
- * Although the 'id' and 'name' can be updated, they must always remain non-empty.
- * The 'points' array is mutable.
+ * - Although the 'id' and 'name' can be updated, they must always remain non-empty.
+ * - The 'points' array is mutable.
  */
 export class GraphObject implements GraphInterface {
   name: string;
@@ -24,15 +24,16 @@ export class GraphObject implements GraphInterface {
   };
 
   /**
-   * Constructs a new GraphObject instance.
+   * Construct a new GraphObject instance.
    * @param CSVDataObject - An object of the CSVDataObject class
    *
-   * @precondition The 'csvdata' parameter must be a valid instance of the CSVDataObject class.
-   * @postcondition The new GraphClass instance is created with the 'id' and 'name' properties set to the CSVDataObject name.
-   * The 'dimensions' property is set to default values of 10 for width, height, and depth.
-   * The 'points' property is initialized as an empty array.
-   * The 'position' property is set to default values.
-   * The 'axes' property is set with the values from CSVDataObject for xLabel and yLabel, default values for xRange and yRange.
+   * @preconditions The 'csvdata' parameter must be a valid instance of the CSVDataObject class.
+   * @postconditions The new GraphClass instance is created with:
+   * - The 'id' and 'name' properties set to the CSVDataObject name.
+   * - The 'dimensions' property is set to default values of 10 for width, height, and depth.
+   * - The 'points' property is initialized as an empty array.
+   * - The 'position' property is set to default values.
+   * - The 'axes' property is set with the values from CSVDataObject for xLabel and yLabel, default values for xRange and yRange.
    */
   constructor(csvdata: CSVDataObject) {
     // CSVDataObject is required, so the check is unnecessary.
@@ -45,12 +46,12 @@ export class GraphObject implements GraphInterface {
   }
 
   /**
-   * Gets the name of the graph.
+   * Get the name of the graph.
    *
    * @param none
    *
-   * @precondition The graph instance must have a valid name.
-   * @postcondition The 'name' property is returned as a string.
+   * @preconditions The graph instance must have a valid name.
+   * @postconditions The 'name' property is returned as a string.
    */
   getName(): string {
     return this.name;
@@ -60,10 +61,13 @@ export class GraphObject implements GraphInterface {
    * Sets the name of the graph.
    * @param {string} title - A string representing the name of the graph.
    *
-   * @precondition 'title' must be a non-empty string.
-   * @postcondition 'name' property is set to the provided title. If the title is empty or not a string, an error is thrown.
+   * @preconditions `title` must be a non-empty string.
+   * @postconditions
+   * - 'name' property is set to the provided title.
+   * - If the title is empty or not a string, an error is thrown.
    */
   setName(title: string): void {
+    // assert that title is a nonempty string
     if (title.trim() === "" || typeof title !== "string") {
       const error = new SyntaxError("Invalid Name");
       sendError(error, "Name must be a non-empty string. (GraphObject.ts");
@@ -82,8 +86,8 @@ export class GraphObject implements GraphInterface {
    * Get the axes of the graph.
    * @param none
    *
-   * @precondition the graph instance must have valid axes.
-   * @postcondition the 'axes' property is returned as an object with 'xLabel', 'yLabel', 'xRange', and 'yRange' properties.
+   * @preconditions the graph instance must have valid axes.
+   * @postconditions the 'axes' property is returned as an object with 'xLabel', 'yLabel', 'xRange', and 'yRange' properties.
    */
   getAxes(): {
     xRange: [number, number];
@@ -94,14 +98,16 @@ export class GraphObject implements GraphInterface {
 
   /**
    * Set the axes of the graph.
-   * @param {xLabel: string; yLabel: string; xRange: [number, number]; yRange: [number, number]} axes
-   * - An object with 'xLabel', 'yLabel', 'xRange', and 'yRange' properties.
-   * @precondition the 'axes' parameter must be an object with 'xLabel', 'yLabel', 'xRange', and 'yRange' properties.
-   * @postcondition the 'axes' property is set to the provided object. If the 'axes' parameter is invalid, an error is thrown.
+   * @param {{xRange: [number, number]; yRange: [number, number]}} axes An object with `xRange`, and `yRange` properties.
+   * @preconditions the `axes` parameter must be an object with `xRange`, and `yRange` properties.
+   * @postconditions
+   * - the 'axes' property is set to the provided object.
+   * - If the `axes` parameter is invalid, an error is thrown.
    */
   setAxes(axes: { xRange: [number, number]; yRange: [number, number] }): void {
     let error;
     if (axes.xRange[0] > axes.xRange[1]) {
+      // assert that xRange[0] min is less than xRange[1] max
       error = new RangeError("Invalid x axis range");
       sendError(
         error,
@@ -109,6 +115,7 @@ export class GraphObject implements GraphInterface {
       );
       throw error;
     } else if (axes.yRange[0] > axes.yRange[1]) {
+      // assert that yRange[0] min is less than yRange[1] max
       error = new RangeError("Invalid y axis range");
       sendError(
         error,
@@ -126,8 +133,8 @@ export class GraphObject implements GraphInterface {
 
   /**
    * Gets the CSV Data Object used by the graph
-   * @precondition none
-   * @postcondition returns the csv data object linked to the graph
+   * @preconditions none
+   * @postconditions returns the csv data object linked to the graph
    */
   getCSVData(): CSVDataObject {
     return this.csvData;

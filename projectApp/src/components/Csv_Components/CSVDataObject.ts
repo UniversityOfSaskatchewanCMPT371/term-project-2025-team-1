@@ -102,30 +102,56 @@ export class CSVDataObject implements CSVDataInterface {
    * @param index Index number used to generate the graph name
    * @param file File object or URL string containing CSV data
    * @param isUrl Boolean indicating if the source is a URL
-   * @precondition if isUrl is true, file must be a string URL,if isUrl is false, file must be a File object
-   * index must be a non-negative number
+   * @precondition dataLoaded > 0, the loaded in csv file must be valid: Does not have an unexpected parsed header, each rows.length == headers.length,
+   * Time header column must have string values, other column Headers should contain numbers
    * @postcondition On success: data, csvHeaders, and name will be populated, On failure: error will be logged and method returns
    * May throw errors during file reading or parsing
    */
-  async loadCSVData(
-    index: number,
-    file: File | string,
-    isUrl: boolean,
-  ): Promise<void> {
+  async loadCSVData(file: File | string, isUrl: boolean): Promise<void> {
     try {
       const data = isUrl
         ? await UrlCSVReader(file as string)
         : await LocalCsvReader(file as File);
-      this.setData(data);
-      this.setName("Graph" + index.toString());
 
-      if (data.length > 0) {
-        const headers = Object.keys(data[0]);
-        this.csvHeaders = headers;
-        this.setTimeHeader();
-        this.setYHeader(this.findFirstHeader());
-        addTestSceneInfo("setting headers in loadCSVData()");
+      if (data.length === 0) {
+        throw new Error("Loaded in an empty csv file CSVDataObject.ts");
       }
+      const headers = Object.keys(data[0]);
+
+      //Checking if an extra unexpected header gets parsed
+      if (headers.includes("__parsed_extra")) {
+        throw new Error(
+          "Parsed an extra column without a proper header CSVDataObject.ts",
+        );
+      }
+
+      //Checking it the length of each row matches the length of the header
+      for (const row of data) {
+        if (Object.values(row).length !== headers.length) {
+          throw new Error(
+            `Row: ${Object.values(row)} doesn't match header length of ${headers.length} CSVDataObject.ts`,
+          );
+        }
+
+        //Checking if the proper value types are found on each column
+        //Non-Time header values should contain numbers
+        for (const key of headers) {
+          const value = row[key as keyof typeof row];
+          if (key !== "Time") {
+            if (typeof value !== "number") {
+              throw new Error(
+                "String value found on non Time column CSVDataObject.ts",
+              );
+            }
+          }
+        }
+      }
+      this.setData(data);
+      this.csvHeaders = headers;
+      this.setTimeHeader();
+      this.setYHeader(this.findFirstHeader());
+      addTestSceneInfo("setting headers in loadCSVData()");
+
       sendLog(
         "info",
         `loadCSVData has loaded csv data\n${JSON.stringify(this.data)}`,

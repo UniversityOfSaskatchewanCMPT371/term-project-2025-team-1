@@ -15,7 +15,7 @@ export interface CSVDataInterface extends DataInterface {
   getData(): { key: Record<string, string | number> }[]; //Get data attribute
   setData(data: { key: Record<string, string | number> }[]): void; //Set data attribute
   getDataByTime(time: string): Record<string, string | number> | null; //Get specific data by Time value
-  loadCSVData(index: number, file: File, isUrl: boolean): Promise<void>; //Load a csv file
+  loadCSVData(file: File, isUrl: boolean): Promise<void>; //Load a csv file
   getCSVHeaders(): string[]; //Get csv headers attribute
   getTimeHeader(): string; //Get the Time header
   getYHeader(): string; //Get the selected Y Header

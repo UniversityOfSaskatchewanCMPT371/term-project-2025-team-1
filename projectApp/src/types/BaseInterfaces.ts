@@ -14,5 +14,4 @@ export interface ControllerInterface {
 export interface DataInterface {
   name: string; //Data object name
   getName(): string; //Get name attribute
-  setName(name: string): void; //Set name attribute
 }

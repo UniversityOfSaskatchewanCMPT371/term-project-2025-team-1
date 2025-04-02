@@ -36,7 +36,7 @@ export class CSVController implements ControllerInterface {
   generate(tau: number): void {
     const emData = this.getModelData();
     if (emData === undefined) {
-      const error = new SyntaxError("Error getting CSVDataObject");
+      const error = new Error("Error getting CSVDataObject");
       sendError(error, "Unable to get csv data object (CSVController.ts)");
       throw error;
     }
@@ -45,11 +45,9 @@ export class CSVController implements ControllerInterface {
     emData.populatePoints();
 
     const TSGraph = new TimeSeriesGraphObject(emData);
-    TSGraph.setName(emData.getName());
     TSGraph.addPoints();
 
     const emGraph = new EmbeddedGraphObject(emData);
-    emGraph.setName(emData.getName());
     emGraph.setTau(tau);
     emGraph.addPoints();
 

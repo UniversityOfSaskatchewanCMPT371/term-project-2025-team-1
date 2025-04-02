@@ -46,27 +46,12 @@ describe("GraphObject", async () => {
   it("initializes with correct properties from CSVDataObject", () => {
     const graph = new GraphObject(csvDataMock);
 
-    // Verify id, position, and axes set by the constructor
-    graph.setId("TestGraph");
-    expect(graph.getId()).toBe("TestGraph");
+    // Verify position, and axes set by the constructor
     expect(graph.getPosition()).toEqual({ x: 1, y: 1, z: 0 });
     expect(graph.getAxes()).toEqual({
       xRange: [0, 0],
       yRange: [0, 0],
     });
-  });
-
-  /**
-   * Test: Setting and Getting the ID, Dimensions, Position, and Axes
-   */
-
-  it("sets and gets the id correctly", () => {
-    const graph = new GraphObject(csvDataMock);
-    graph.setId("NewGraphID");
-    expect(graph.getId()).toBe("NewGraphID");
-
-    graph.setName("NewName");
-    expect(graph.getName()).toBe("NewName");
   });
 
   it("sets and gets position correctly", () => {
@@ -85,23 +70,6 @@ describe("GraphObject", async () => {
     };
     graph.setAxes(newAxes);
     expect(graph.getAxes()).toEqual(newAxes);
-  });
-
-  /**
-   * Test: Error Handling for invalid ID and Name
-   */
-  it("throws error when setting invalid id", () => {
-    const graph = new GraphObject(csvDataMock);
-    expect(() => {
-      graph.setId("");
-    }).toThrowError("Invalid ID");
-  });
-
-  it("throws error when setting invalid name", () => {
-    const graph = new GraphObject(csvDataMock);
-    expect(() => {
-      graph.setName("");
-    }).toThrowError("Invalid Name");
   });
 
   /**

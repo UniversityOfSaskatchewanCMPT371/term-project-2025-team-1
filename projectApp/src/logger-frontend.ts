@@ -24,7 +24,7 @@ export function sendLog(level: string, message: string) {
 /**
  * sendError: Creates and sends an *error* log to the log server
  * (used specifically in error cases to provide more info)
- * @param error type of error that is sent
+ * @param error error object that is sent
  * @param message non-empty message string describing the error context
  * @preconditions
  * - "error" must represent the error object that is thrown

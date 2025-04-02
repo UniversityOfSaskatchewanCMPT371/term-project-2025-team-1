@@ -4,7 +4,7 @@ import { ModelInterface } from "../types/BaseInterfaces";
 import { CSVDataInterface } from "../types/CSVInterfaces";
 
 /**
- * The GraphModel class is responsible for managing a TimeSeriesGraphObject and .
+ * The GraphModel class is responsible for managing a TimeSeriesGraphObject and EmbeddedGraphObject.
  *
  * @invariants
  * - If 'data' property is defined, the TimeSeriesGraphObject object in it must be a valid TSGO.

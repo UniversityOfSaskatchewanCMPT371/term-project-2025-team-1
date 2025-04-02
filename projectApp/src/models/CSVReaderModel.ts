@@ -53,7 +53,7 @@ export class CSVReaderModel implements CSVModelInterface {
   async readLocalFile(file: File): Promise<void> {
     const data: CSVDataObject = new CSVDataObject();
     try {
-      await data.loadCSVData(0, file, false);
+      await data.loadCSVData(file, false);
       sendLog(
         "info",
         `readLocalFile read a file\n${JSON.stringify(data.getData())}`,
@@ -81,7 +81,7 @@ export class CSVReaderModel implements CSVModelInterface {
   async readURLFile(file: string): Promise<void> {
     const data: CSVDataObject = new CSVDataObject();
     try {
-      await data.loadCSVData(0, file, true);
+      await data.loadCSVData(file, true);
       sendLog(
         "info",
         `readURLFile read a file\n${JSON.stringify(data.getData())}`,

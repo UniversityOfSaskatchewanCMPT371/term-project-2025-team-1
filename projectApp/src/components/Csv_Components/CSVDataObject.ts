@@ -107,11 +107,7 @@ export class CSVDataObject implements CSVDataInterface {
    * @postcondition On success: data, csvHeaders, and name will be populated, On failure: error will be logged and method returns
    * May throw errors during file reading or parsing
    */
-  async loadCSVData(
-    index: number,
-    file: File | string,
-    isUrl: boolean,
-  ): Promise<void> {
+  async loadCSVData(file: File | string, isUrl: boolean): Promise<void> {
     try {
       const data = isUrl
         ? await UrlCSVReader(file as string)
@@ -151,7 +147,6 @@ export class CSVDataObject implements CSVDataInterface {
         }
       }
       this.setData(data);
-      this.setName("Graph" + index.toString());
       this.csvHeaders = headers;
       this.setTimeHeader();
       this.setYHeader(this.findFirstHeader());

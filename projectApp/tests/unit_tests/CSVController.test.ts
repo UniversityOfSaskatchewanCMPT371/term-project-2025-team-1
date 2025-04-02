@@ -29,9 +29,7 @@ describe("CSVController Tests", () => {
 
   //Testing parsing csv files locally and by url
   test("Testing methods of CSVReaderModel that parse csv files", async () => {
-    //Maybe a proper file would work better
-    //Does show that it still accepts blank files
-    //Then create a function that tests both Local and URl
+    //Then create a function that tests both Local and URl readers
     //As well as methods of csv Objects
 
     //URL link for testing
@@ -43,7 +41,8 @@ describe("CSVController Tests", () => {
     const getByName = csvController.getModelData();
 
     expect(getByName).toBeInstanceOf(CSVDataObject);
-    expect(getByName?.getName()).toBe("Graph0");
+    getByName?.setName("test.csv");
+    expect(getByName?.getName()).toBe("test.csv");
 
     getByName?.setYHeader("X");
     expect(getByName?.getYHeader()).toBe("X");

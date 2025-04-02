@@ -30,6 +30,10 @@ export class TimeSeriesGraphObject
    * @postcondition returns the array of 2D points associated with the 2D Graph
    */
   getPoints2D(): Point2DInterface[] {
+    assert(
+      this.points2D.length > 0,
+      "getPoints2D: points2D must be a non-empty array",
+    );
     return this.points2D;
   }
 
@@ -44,14 +48,11 @@ export class TimeSeriesGraphObject
 
   /**
    * This method sets the range of the y-axis in the Time Series Graph
-   * @precondition number parameter must be a finite number
+   * @precondition number parameter must be a positive, non-zero number
    * @postcondition On success, updates the y range to the new one
    */
   setYRangeLength(num: number): void {
-    assert(
-      Number.isFinite(num),
-      "setYRangeLength: num must be a finite number",
-    );
+    assert(num > 0, "setYRangeLength: num must be a positive, non-zero number");
     this.yRangeLength = num;
 
     sendLog(
@@ -188,7 +189,10 @@ export class TimeSeriesGraphObject
       "info",
       `timeSeriesYRange() returned ${range} (TimeSeriesGraphObject.ts)`,
     );
-    assert(Array.isArray(range), "timeSeriesYRange: range must be an array");
+    assert(
+      range.length > 0,
+      "timeSeriesYRange: range must contain at least one tick value",
+    );
 
     return range;
   }

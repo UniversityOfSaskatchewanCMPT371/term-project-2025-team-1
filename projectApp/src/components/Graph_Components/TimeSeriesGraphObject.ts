@@ -121,28 +121,46 @@ export class TimeSeriesGraphObject
    */
   setRange(): void {
     let max = 0;
+    let min = 0;
+
     this.getCSVData()
       .getData()
       .forEach((data) => {
         if (
           (data[
             this.getCSVData().getYHeader() as keyof typeof data
-          ] as unknown as number) >= max
+          ] as unknown as number) > max
         ) {
           max = data[
+            this.getCSVData().getYHeader() as keyof typeof data
+          ] as unknown as number;
+        }
+
+        if (
+          (data[
+            this.getCSVData().getYHeader() as keyof typeof data
+          ] as unknown as number) < max
+        ) {
+          min = data[
             this.getCSVData().getYHeader() as keyof typeof data
           ] as unknown as number;
         }
       });
 
     // If max is a float, convert it to an integer by rounding up.
-    max = Math.ceil(max);
+    max = Math.ceil(max / 10) * 10;
+    min = Math.floor(min / 10) * 10;
 
-    while (max % 10 != 0) {
-      max++;
-    }
+    // while (max % 10 != 0) {
+    //   max++;
+    // }
+
+    // while (min % 10 != 0){
+    //   min--;
+    // }
 
     this.axes.yRange[1] = max;
+    this.axes.yRange[0] = min;
     sendLog(
       "info",
       `setRange() was called; yRange was set to ${this.axes.yRange[1]} (TimeSeriesGraphObject.ts)`,
@@ -162,7 +180,7 @@ export class TimeSeriesGraphObject
     let cur = 0;
     let current = this.axes.yRange[0] + spacing;
 
-    while (cur < max) {
+    while (cur < this.axes.yRange[1]) {
       cur = current;
       current = current + spacing;
       range.push(cur);

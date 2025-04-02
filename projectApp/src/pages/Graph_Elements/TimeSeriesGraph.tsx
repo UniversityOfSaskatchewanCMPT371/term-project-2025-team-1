@@ -239,12 +239,30 @@ export default function TimeSeriesGraph({
       "a visual representation of the Y range was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)",
     );
     return (
-      <Container width={"100%"} height={"100%"} flexDirection={"row"}>
-        <Container width={"90%"} height={"100%"} flexDirection={"row-reverse"}>
-          <Text>{num.toString()}</Text>
-        </Container>
-        <Container width={"10%"} height={"100%"} flexDirection={"row-reverse"}>
-          <Text> -</Text>
+      <Container
+        width={"100%"}
+        height={`${ySpacing}%`}
+        alignContent={"flex-end"}
+        justifyContent={"flex-start"}
+        flexDirection={"column-reverse"}
+      >
+        <Container
+          width={"100%"}
+          height={"100%"}
+          flexDirection={"column-reverse"}
+          alignContent={"center"}
+          justifyContent={"flex-start"}
+        >
+          <Container
+            width={"100%"}
+            height={"100%"}
+            flexDirection={"row-reverse"}
+            alignContent={"center"}
+            justifyContent={"flex-start"}
+            positionBottom={"50%"}
+          >
+            <Text>{num.toString()} -</Text>
+          </Container>
         </Container>
       </Container>
     );
@@ -275,6 +293,7 @@ export default function TimeSeriesGraph({
             >
               <Container
                 height={`${ySpacing}%`}
+                width={"100%"}
                 alignContent={"flex-end"}
                 justifyContent={"flex-start"}
                 flexDirection={"column-reverse"}
@@ -284,35 +303,22 @@ export default function TimeSeriesGraph({
                   height={"100%"}
                   flexDirection={"column-reverse"}
                   alignContent={"center"}
-                  justifyContent={"center"}
+                  justifyContent={"flex-start"}
                 >
-                  <Container width={"100%"} positionBottom={"50%"}>
-                    <Text positionLeft={41}>0-</Text>
+                  <Container
+                    width={"100%"}
+                    height={"100%"}
+                    flexDirection={"row-reverse"}
+                    alignContent={"center"}
+                    justifyContent={"flex-start"}
+                    positionBottom={"50%"}
+                  >
+                    <Text>{graph.axes.yRange[0]} -</Text>
                   </Container>
                 </Container>
               </Container>
               {graph.timeSeriesYRange().map((range) => {
-                return (
-                  <Container
-                    width={"100%"}
-                    height={`${ySpacing}%`}
-                    alignContent={"flex-end"}
-                    justifyContent={"flex-start"}
-                    flexDirection={"column-reverse"}
-                  >
-                    <Container
-                      width={"100%"}
-                      height={"100%"}
-                      flexDirection={"column-reverse"}
-                      alignContent={"center"}
-                      justifyContent={"center"}
-                    >
-                      <Container width={"100%"} positionBottom={"50%"}>
-                        <GenerateYRange num={range} />
-                      </Container>
-                    </Container>
-                  </Container>
-                );
+                return <GenerateYRange num={range} />;
               })}
               ;
             </Container>

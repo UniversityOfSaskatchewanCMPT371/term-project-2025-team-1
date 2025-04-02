@@ -30,10 +30,6 @@ export class TimeSeriesGraphObject
    * @postcondition returns the array of 2D points associated with the 2D Graph
    */
   getPoints2D(): Point2DInterface[] {
-    assert(
-      Array.isArray(this.points2D),
-      "getPoints2D: points2D must be an array",
-    );
     return this.points2D;
   }
 
@@ -72,8 +68,8 @@ export class TimeSeriesGraphObject
   addPoints(): void {
     const points = this.getCSVData().getPoints();
     assert(
-      Array.isArray(points),
-      "addPoints: CSVDataObject.getPoints() must return an array",
+      points.length > 0,
+      "addPoints: CSVDataObject.getPoints() must return a non-empty array",
     );
     this.points2D = [];
     this.getCSVData()
@@ -137,8 +133,8 @@ export class TimeSeriesGraphObject
   setRange(): void {
     const points = this.getCSVData().getPoints();
     assert(
-      Array.isArray(points),
-      "setRange: CSVDataObject.getPoints() must return an array",
+      points.length > 0,
+      "setRange: CSVDataObject.getPoints() must return a non-empty array",
     );
     let max = 0;
     this.getCSVData()
@@ -176,8 +172,8 @@ export class TimeSeriesGraphObject
    */
   timeSeriesYRange(): number[] {
     assert(
-      typeof this.axes.yRange[1] === "number",
-      "timeSeriesYRange: axes.yRange[1] must be a number",
+      this.axes.yRange[0] >= 0 && this.axes.yRange[1] >= this.axes.yRange[0],
+      "timeSeriesYRange: axes.yRange[0] must be a non-negative number and axes.yRange[1] must be a number greater than or equal to axes.yRange[0]",
     );
     const range: number[] = [];
 
@@ -206,13 +202,13 @@ export class TimeSeriesGraphObject
     const csvData = this.getCSVData();
     const points = csvData.getData();
     assert(
-      Array.isArray(points),
-      "timeSeriesXRange: CSVDataObject.getData() must return an array",
+      points.length > 0,
+      "timeSeriesXRange: CSVDataObject.getData() must return a non-empty array",
     );
     const timeHeader = csvData.getTimeHeader();
     assert(
-      typeof timeHeader === "string",
-      "timeSeriesXRange: timeHeader must be a string",
+      timeHeader !== "",
+      "timeSeriesXRange: timeHeader must be a non-empty string",
     );
 
     const range: string[] = [];
@@ -225,7 +221,6 @@ export class TimeSeriesGraphObject
         ] as unknown as string;
         range.push(temp);
       });
-    assert(Array.isArray(range), "timeSeriesXRange: range must be an array");
     sendLog(
       "info",
       `timeSeriesXRange() was called and returned ${range} (TimeSeriesGraphObject.ts)`,

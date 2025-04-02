@@ -41,8 +41,6 @@ export class CSVController implements ControllerInterface {
       throw error;
     }
 
-    // TODO - set CSV YHeader before generating graph
-
     emData.setYHeader(selectedHeader);
     emData.setIsFirstDifferencing(isFirstDiff);
     emData.setVRSelected(true);

@@ -176,7 +176,7 @@ export default function TimeSeriesGraph({
     point.setYAxisPos(
       ((point.getObject().getYData() - graph.getMinYRange()) /
         graph.getTotalYRange()) *
-        (1.42 - (ySpacing / 100) * 2 + 1.05) -
+        (1.45 - (ySpacing / 100) * 2 + 1.05) -
         1.05,
     );
 
@@ -220,8 +220,20 @@ export default function TimeSeriesGraph({
     return (
       <Line
         points={[
-          [currentLine[0], currentLine[1], currentLine[2]],
-          [lastLine[0], lastLine[1], lastLine[2]],
+          [
+            currentLine[0] -
+              mainController.getGraphController().getPointSize() / 2,
+            currentLine[1] +
+              mainController.getGraphController().getPointSize() / 2,
+            currentLine[2],
+          ],
+          [
+            lastLine[0] -
+              mainController.getGraphController().getPointSize() / 2,
+            lastLine[1] +
+              mainController.getGraphController().getPointSize() / 2,
+            lastLine[2],
+          ],
         ]}
         color={"black"}
         lineWidth={mainController.getGraphController().getPointSize() * 10}

@@ -366,9 +366,10 @@ export class TimeSeriesGraphObject
     this.setRange();
 
     this.yRangeLength = this.timeSeriesYRange().length + 1;
-    const totalSpace = 5;
-    const divider = totalSpace / this.timeSeriesYRange().length;
-    let current = -1.8 + divider / 2;
+    const totalSpace = 6.38;
+    const divider = totalSpace / this.getNumPoints();
+    const ySpacing = 100 / this.getYRangeLength();
+    let current = -2.62 + divider / 2;
 
     //Resetting points
     this.points2D = [];
@@ -381,9 +382,10 @@ export class TimeSeriesGraphObject
     this.getPoints2D().forEach((point) => {
       point.setXAxisPos(current);
       point.setYAxisPos(
-        (point.getObject().getYData() / 100) *
-          (this.getTotalYRange() / this.timeSeriesYRange().length) -
-          1,
+        ((point.getObject().getYData() - this.getMinYRange()) /
+          this.getTotalYRange()) *
+          (1.42 - (ySpacing / 100) * 2 + 1.05) -
+          1.05,
       );
 
       current += divider;

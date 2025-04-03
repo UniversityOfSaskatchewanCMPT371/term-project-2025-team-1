@@ -101,47 +101,59 @@ export default function TestScene({
               </Container>
             </Container>
           </Container>
-{/* The Test Body Container */}
-<Container
-  width={"70%"}
-  height={inVR ? "62%" : "90%"}
-  alignContent={"flex-end"}
-  justifyContent={"flex-end"}
-  flexDirection={"column"}
->
-  {/* Graph Information + Logs side block */}
-  <Container
-    width={"30%"}
-    height={"auto"}
-    display={clicked ? "flex" : "none"}
-    flexDirection={"column"}
-    alignContent={"flex-start"}
-    justifyContent={"flex-start"}
-    backgroundOpacity={0.4}
-    padding={10}
-    borderWidth={2}
-    borderColor={"black"}
-    gap={6}
-  >
-    <Text fontSize={16} fontWeight={"bold"} color={"black"}>
-      Graph Information:
-    </Text>
-    <Text fontSize={14} color={"black"}>Tau Value: {infoTau}</Text>
-    <Text fontSize={14} color={"black"}>Selected Header: {infoHeader}</Text>
-    <Text fontSize={14} color={"black"}>First Differencing: {infoFirstDifferencing}</Text>
-    <Text fontSize={14} color={"black"}>EG Range: {infoRange}</Text>
+          {/* The Test Body Container */}
+          <Container
+            width={"70%"}
+            height={inVR ? "62%" : "90%"}
+            alignContent={"flex-end"}
+            justifyContent={"flex-end"}
+            flexDirection={"column"}
+          >
+            {/* Graph Information + Logs side block */}
+            <Container
+              width={"30%"}
+              height={"auto"}
+              display={clicked ? "flex" : "none"}
+              flexDirection={"column"}
+              alignContent={"flex-start"}
+              justifyContent={"flex-start"}
+              backgroundOpacity={0.4}
+              padding={10}
+              borderWidth={2}
+              borderColor={"black"}
+              gap={6}
+            >
+              <Text fontSize={16} fontWeight={"bold"} color={"black"}>
+                Graph Information:
+              </Text>
+              <Text fontSize={14} color={"black"}>
+                Tau Value: {infoTau}
+              </Text>
+              <Text fontSize={14} color={"black"}>
+                Selected Header: {infoHeader}
+              </Text>
+              <Text fontSize={14} color={"black"}>
+                First Differencing: {infoFirstDifferencing}
+              </Text>
+              <Text fontSize={14} color={"black"}>
+                EG Range: {infoRange}
+              </Text>
 
-    <Text fontSize={16} fontWeight={"bold"} color={"black"} marginTop={10}>
-      Debug Logs:
-    </Text>
-    {logs.map((item, index) => (
-      <Text key={index} fontSize={14} color={"black"}>
-        {item}
-      </Text>
-    ))}
-  </Container>
-</Container>
-
+              <Text
+                fontSize={16}
+                fontWeight={"bold"}
+                color={"black"}
+                marginTop={10}
+              >
+                Debug Logs:
+              </Text>
+              {logs.map((item, index) => (
+                <Text key={index} fontSize={14} color={"black"}>
+                  {item}
+                </Text>
+              ))}
+            </Container>
+          </Container>
         </Container>
       </Fullscreen>
     </>

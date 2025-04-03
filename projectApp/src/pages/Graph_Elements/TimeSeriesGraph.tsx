@@ -41,6 +41,8 @@ export default function TimeSeriesGraph({
   const xAxis = graph.timeSeriesXRange();
   const xAxisInterval = graph.intervalForXAxis(xAxis);
 
+  const pointRadius = mainController.getGraphController().getPointSize() / 4;
+
   //Used to update the graph, currently updates on Y header change
   function UpdateGraph(): void {
     graph.updatePointPosition();
@@ -172,6 +174,16 @@ export default function TimeSeriesGraph({
   }): React.JSX.Element {
     //Updating the position of the point
 
+    /**
+     * This basically arranges point position in the Y axis,
+     * Takes the Point data and then translates it to its position on the graph container
+     *
+     * Data value - minimum range / total range (which is max range - min range)
+     * Then translates its position to the graph
+     * maximum height of graph = 1.45
+     * ySpacing = container of a 2D graph y-axis point in percent form, we then scale it
+     * minimum height of graph = 1.05
+     */
     point.setXAxisPos(current);
     point.setYAxisPos(
       ((point.getObject().getYData() - graph.getMinYRange()) /
@@ -222,19 +234,11 @@ export default function TimeSeriesGraph({
       <Line
         points={[
           [
-            currentLine[0] -
-              mainController.getGraphController().getPointSize() / 4,
-            currentLine[1] +
-              mainController.getGraphController().getPointSize() / 4,
+            currentLine[0] - pointRadius,
+            currentLine[1] + pointRadius,
             currentLine[2],
           ],
-          [
-            lastLine[0] -
-              mainController.getGraphController().getPointSize() / 4,
-            lastLine[1] +
-              mainController.getGraphController().getPointSize() / 4,
-            lastLine[2],
-          ],
+          [lastLine[0] - pointRadius, lastLine[1] + pointRadius, lastLine[2]],
         ]}
         color={"black"}
         lineWidth={mainController.getGraphController().getPointSize() * 10}

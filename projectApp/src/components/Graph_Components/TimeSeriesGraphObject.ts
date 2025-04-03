@@ -126,25 +126,15 @@ export class TimeSeriesGraphObject
     this.getCSVData()
       .getData()
       .forEach((data) => {
-        if (
-          (data[
-            this.getCSVData().getYHeader() as keyof typeof data
-          ] as unknown as number) > max
-        ) {
-          max = data[
-            this.getCSVData().getYHeader() as keyof typeof data
-          ] as unknown as number;
+        const val = data[
+          this.getCSVData().getYHeader() as keyof typeof data
+        ] as unknown as number;
+        if (val > max) {
+          max = val;
         }
 
-        if (
-          (data[
-            this.getCSVData().getYHeader() as keyof typeof data
-          ] as unknown as number) < min ||
-          min === 0
-        ) {
-          min = data[
-            this.getCSVData().getYHeader() as keyof typeof data
-          ] as unknown as number;
+        if (val < min || min === 0) {
+          min = val;
         }
       });
 
@@ -373,10 +363,20 @@ export class TimeSeriesGraphObject
     //Assigning new position values to the points
     this.getPoints2D().forEach((point) => {
       point.setXAxisPos(current);
+      /**
+       * This basically arranges point position in the Y axis,
+       * Takes the Point data and then translates it to its position on the graph container
+       *
+       * Data value - minimum range / total range (which is max range - min range)
+       * Then translates its position to the graph
+       * maximum height of graph = 1.45
+       * ySpacing = container of a 2D graph y-axis point in percent form, we then scale it
+       * minimum height of graph = 1.05
+       */
       point.setYAxisPos(
         ((point.getObject().getYData() - this.getMinYRange()) /
           this.getTotalYRange()) *
-          (1.42 - (ySpacing / 100) * 2 + 1.05) -
+          (1.45 - (ySpacing / 100) * 2 + 1.05) -
           1.05,
       );
 

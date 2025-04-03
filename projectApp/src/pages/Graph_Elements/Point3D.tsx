@@ -31,19 +31,11 @@ export default function Point3D({
     pointRef.getObject().setSelected(selectedState);
     if (selectedState) {
       addTestSceneInfo(
-        "point " +
-          pointRef.getObject().getTimeData() +
-          " " +
-          pointRef.getObject().getYData() +
-          " (3D) selected",
+        `point ${pointRef.getObject().getTimeData()} ${pointRef.getObject().getYData()} (3D) selected`
       );
     } else {
       addTestSceneInfo(
-        "point " +
-          pointRef.getObject().getTimeData() +
-          " " +
-          pointRef.getObject().getYData() +
-          " (3D) deselected",
+        `point ${pointRef.getObject().getTimeData()} ${pointRef.getObject().getYData()} (3D) deselected`
       );
     }
     sendLog("info", `setOnClick(), 3D Point has been clicked (Point3D.tsx)`);

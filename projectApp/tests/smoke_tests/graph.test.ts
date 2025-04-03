@@ -10,7 +10,11 @@ describe("Test that graph objects are properly created", () => {
   // Before any of the tests are run, load a URL CSV file and generate a graph
   beforeAll(async () => {
     await mainController.getCSVController().loadURLFile(indexedDataUrl);
-    mainController.getCSVController().generate(1, false);
+    mainController
+      .getCSVController()
+      .getModelData()
+      ?.setName("indexedData.csv");
+    mainController.getCSVController().generate(1, false, "Some");
   });
   test("expect Time Series graph model to contain a 10 point graph", () => {
     // Get the Time Series model and check that 10 points are generated

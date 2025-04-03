@@ -139,7 +139,8 @@ export class TimeSeriesGraphObject
         if (
           (data[
             this.getCSVData().getYHeader() as keyof typeof data
-          ] as unknown as number) < min
+          ] as unknown as number) < min ||
+          min === 0
         ) {
           min = data[
             this.getCSVData().getYHeader() as keyof typeof data

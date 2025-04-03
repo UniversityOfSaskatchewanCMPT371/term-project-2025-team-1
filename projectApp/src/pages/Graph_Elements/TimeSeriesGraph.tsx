@@ -223,16 +223,16 @@ export default function TimeSeriesGraph({
         points={[
           [
             currentLine[0] -
-              mainController.getGraphController().getPointSize() / 2,
+              mainController.getGraphController().getPointSize() / 4,
             currentLine[1] +
-              mainController.getGraphController().getPointSize() / 2,
+              mainController.getGraphController().getPointSize() / 4,
             currentLine[2],
           ],
           [
             lastLine[0] -
-              mainController.getGraphController().getPointSize() / 2,
+              mainController.getGraphController().getPointSize() / 4,
             lastLine[1] +
-              mainController.getGraphController().getPointSize() / 2,
+              mainController.getGraphController().getPointSize() / 4,
             lastLine[2],
           ],
         ]}

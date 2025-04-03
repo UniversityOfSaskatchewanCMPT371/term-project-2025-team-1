@@ -174,7 +174,7 @@ export class CSVDataObject implements CSVDataInterface {
     }
 
     // if no first header is found, log the error
-    error = new SyntaxError("Invalid csv filer");
+    error = new SyntaxError("Invalid csv file");
     sendError(error, "Unable to find valid header (CSVDataObject.ts)");
     throw error;
   }

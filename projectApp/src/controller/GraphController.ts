@@ -70,7 +70,7 @@ export class GraphController implements ControllerInterface {
    * - The `mainController` must be initialized and valid.
    *
    * @postconditions
-   * - returns the generated or retrieved time series graph.
+   * - returns the generated or retrieved embedded graph
    * - If a graph with the same name as `csv` exists, its range is updated
    * - otherwise, a new graph is created and returned
    * - The mainController's main scene is updated.

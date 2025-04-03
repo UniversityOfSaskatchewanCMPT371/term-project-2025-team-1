@@ -1,36 +1,22 @@
-// import { CSVDataObject } from "../components/Csv_Components/CSVDataObject";
 import { EmbeddedGraphObject } from "../components/Graph_Components/EmbeddedGraphObject";
 import { TimeSeriesGraphObject } from "../components/Graph_Components/TimeSeriesGraphObject";
 import { ModelInterface } from "../types/BaseInterfaces";
-import { CSVDataInterface } from "../types/CSVInterfaces";
 
 /**
- * The GraphModel class is responsible for managing a collection of TimeSeriesGraphObject instances..
+ * The GraphModel class is responsible for managing a TimeSeriesGraphObject and EmbeddedGraphObject.
  *
  * @invariants
- * - The 'data' property is always an array of TimeSeriesGraphObject objects.
- * - The 'data' is initialized as an empty array when a new instance of GraphModel is created.
- * - Each TimeSeriesGraphObject object in the 'data' array represents a valid TimeSeriesGraph.
+ * - If 'data' property is defined, the TimeSeriesGraphObject object in it must be a valid TSGO.
+ * - If 'embeddedGraphData' property is defined, the EmbeddedGraphObject object in it must be a valid EGO.
+ * - 'data' and 'embeddedGraphData' should reference the same csv data
  *
- * @history The number of TimeSeriesGraphObject instances in 'data' is non-decreasing unless explicitly modified.
- *
+ * @history
+ * - The 'data' property is uninitialized, and must be set by setTimeSeriesGraph().
+ * - The 'embeddedGraphData' property is uninitialized, and must be set by setEmbeddedGraph().
  */
 export class GraphModel implements ModelInterface {
   data?: TimeSeriesGraphObject;
   embeddedGraphData?: EmbeddedGraphObject;
-
-  /**
-   * Sets the VRSelected flag of the given CSV data object to true.
-   *
-   * @preconditions The CSVDataInterface instance is a valid instance of CSVDataObject.
-   *
-   * @postconditions The CSVDataInterface instance's VRSelected flag is updated to true if it is a valid instance of CSVDataObject.
-   *
-   * @param {CSVDataInterface} csv - The CSVDataInterface instance whose VRSelected property will be set.
-   */
-  selectData(csv: CSVDataInterface): void {
-    csv.setVRSelected(true);
-  }
 
   /**
    * Sets a new TimeSeriesGraphObject to the model.
@@ -47,12 +33,8 @@ export class GraphModel implements ModelInterface {
 
   /**
    * Returns the TimeSeriesGraphObject instances in the model.
-   *
-   * @preconditions none.
-   *
-   * @postconditions Returns the current state of the 'data' array, which includes all added TimeSeriesGraphObject instances.
-   *
-   * @returns TimeSeriesGraphObject An array of TimeSeriesGraphObject instances.
+   * @preconditions none
+   * @postconditions returns {TimeSeriesGraphObject} the TimeSeriesGraphObject this models.
    */
   getData(): TimeSeriesGraphObject | undefined {
     return this.data;
@@ -73,12 +55,8 @@ export class GraphModel implements ModelInterface {
 
   /**
    * Returns the EmbeddedGraphObject instances in the model.
-   *
    * @preconditions none.
-   *
-   * @postconditions Returns the current state of the 'embeddedGraphData' array, which includes all added EmbeddedGraphObject instances.
-   *
-   * @returns {EmbeddedGraphObject} An EmbeddedGraphObject instance.
+   * @postconditions returns {EmbeddedGraphObject} the EmbeddedGraphObject this models.
    */
   getEmbeddedGraphData(): EmbeddedGraphObject | undefined {
     return this.embeddedGraphData;

@@ -1,4 +1,7 @@
-// Mock File class
+/**
+ * Mock File class,
+ * used for mockFileReader since original cant be called in non-browser environment
+ * */
 export default class {
   constructor(
     public fileBits: BlobPart[],

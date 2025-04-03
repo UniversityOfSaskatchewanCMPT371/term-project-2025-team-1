@@ -7,11 +7,12 @@ import { Point2DObject } from "../../components/Graph_Components/Points/Point2DO
 import Create2DPoint from "../../components/Graph_Components/Points/Create2DPoint";
 
 /**
- * This function will create a Time Series Graph on the VR scene using a TimeSeriesGraphObject.
- * A 2D Graph that will have the csv data's time for it's X values with the other columns as Y values
- * Will contain Points connected by lines to represent the values of the specified data fields
- * @preconditions A defined TimeSeriesGraphObject
- * @postconditions returns a React JSX Element that represents a 2D Time Series Graph
+ * Create a Time Series Graph in the VR envirornment using a TimeSeriesGraphObject.
+ * - This graph will be 2D Graph that has the csv data's time for it's X values with the other columns as Y values.
+ * - Will contain Points connected by lines to represent the values of the specified data fields.
+ * @param graph the TimeSeriesGraphObject this graph visualizes.
+ * @preconditions `graph` must be a defined TimeSeriesGraphObject.
+ * @postconditions returns a React JSX Element that represents a 2D Time Series Graph.
  */
 
 export default function TimeSeriesGraph({
@@ -37,10 +38,10 @@ export default function TimeSeriesGraph({
   const ySpacing = 100 / graph.getYRangeLength() + 1;
 
   /**
-   * The container left of the graph with a skyblue background.
+   * Renders the container left of the graph with a skyblue background.
    * This will show the HeaderSelection() and in the future, the data sets of selected points
    * @preconditions None
-   * @postconditions  Container for showing graph data
+   * @postconditions returns the left side container for showing graph data
    */
   function GenerateSideBar(): React.JSX.Element {
     sendLog(
@@ -74,16 +75,17 @@ export default function TimeSeriesGraph({
   }
 
   /**
-   * Will use a PointObject to display a 2D on the Time Series Graph
-   * @preconditions PointObject, used to show Point
-   * @postconditions  Interactable 2D Point in the Graph
+   * Renders the 2D point used in the graph
+   * @param point a reference to the 2D Point object
+   * @preconditions `point` is an accepted 2D Point object in this graph
+   * @postconditions returns an interactable 2D Point for the graph
    */
   function GeneratePoint({
     point,
   }: {
     point: Point2DObject;
   }): React.JSX.Element {
-    //Updating the position of the point
+    // Updating the position of the point
 
     point.setXAxisPos(current);
     point.setYAxisPos(
@@ -92,7 +94,7 @@ export default function TimeSeriesGraph({
         1.05,
     );
 
-    //Updating the position of the lines based off the point position
+    // Updating the position of the lines based off the point position
     currentLine = lastLine;
     lastLine = [point.getXPosition(), point.getYPosition(), 0.01];
     sendLog(
@@ -115,8 +117,9 @@ export default function TimeSeriesGraph({
   }
 
   /**
-   * Updates the current position and then creates the Line which connects the last two points
-   * @postconditions The Line connecting the Points in the 2D Time Series Graph
+   * Renders the line which connects the previous and current points
+   * @preconditions 'currentLine' and 'lastLine' properties are valid point positions
+   * @postconditions returns The line connecting the points in the 2D Time Series Graph
    */
   function GenerateLines(): React.JSX.Element {
     current = current + divider;
@@ -137,9 +140,10 @@ export default function TimeSeriesGraph({
   }
 
   /**
-   * The range of the Y header values, and creates the ticks with a value
-   * @preconditions num > 0
-   * @postconditions The num value with a tick mark displayed on graph
+   * Renders the range of the Y header values entered with a value
+   * @param num the value of the y header
+   * @preconditions `num` is a positive integer
+   * @postconditions returns The num value with a tick mark displayed on graph
    */
   function GenerateYRange({ num }: { num: number }): React.JSX.Element {
     sendLog(
@@ -150,9 +154,10 @@ export default function TimeSeriesGraph({
   }
 
   /**
-   * This Function creates the main graph of the Time Series Graph
-   * This generates both the X and Y axis of the graph with it's assigned value
-   * @postcondition Body of the graph with a properly loaded X and Y axis
+   * Generates the main graph of the Time Series Graph
+   * - This generates both the X and Y axis of the graph with its assigned value
+   * @preconditions none
+   * @postconditions returns the body of the graph with a properly loaded X and Y axis and its components
    */
   function GenerateGraph(): React.JSX.Element {
     sendLog(

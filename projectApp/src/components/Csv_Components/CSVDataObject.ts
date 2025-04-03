@@ -8,6 +8,11 @@ import { addTestSceneInfo } from "../../pages/Scene/TestScene";
 /**
  * Class representing a CSV data structure that implements the CSVData interface.
  * Handles loading, storing, and managing CSV data for VR visualization.
+ *
+ * @history
+ * - The 'name', 'yHeader', and 'timeHeader' properties are initialized as empty strings.
+ * - The 'csvHeaders', 'data', and 'points' properties are initialized as empty sets.
+ * - The 'browserSelected', and 'vrSelected' properties are initialized as false.
  */
 export class CSVDataObject implements CSVDataInterface {
   name: string;
@@ -69,10 +74,10 @@ export class CSVDataObject implements CSVDataInterface {
   }
 
   /**
-   * This method creates points from the csv file that will be referenced by the points of
+   * Create points from the csv file that will be referenced by the points of
    * both the 2D and 3D Graph
-   * @precondition none
-   * @postcondition fills up the array of PointObjects used by the two graphs
+   * @preconditions none
+   * @postconditions fills up the array of PointObjects used by the two graphs
    */
   populatePoints(): void {
     this.points = [];
@@ -108,22 +113,23 @@ export class CSVDataObject implements CSVDataInterface {
   }
 
   /**
-   * This method gets the array of Point Objects
-   * @precondition none
-   * @postcondition returns the point objects
+   * Get the array of Point Objects
+   * @preconditions none
+   * @postconditions returns the point objects array
    */
   getPoints(): PointObjectInterface[] {
     return this.points;
   }
 
   /**
-   * This method sets a new point object and replaces the current point object
+   * Set a new point object and replaces the current point object
    * @param points An array of point objects
-   * @precondition a valid array of objects
-   * @postcondition sets the new array of point objects
+   * @preconditions `points` is a valid array of PointObjects
+   * @postconditions sets the new array of point objects
    */
   setPoints(points: PointObjectInterface[]): void {
     let error;
+    // assert points is an array of PointObjects
     if (!Array.isArray(points)) {
       error = new TypeError("Invalid Points");
       sendError(error, "must be an array of PointObject instances");
@@ -150,10 +156,13 @@ export class CSVDataObject implements CSVDataInterface {
    * @param index Index number used to generate the graph name
    * @param file File object or URL string containing CSV data
    * @param isUrl Boolean indicating if the source is a URL
-   * @precondition if isUrl is true, file must be a string URL,if isUrl is false, file must be a File object
-   * index must be a non-negative number
-   * @postcondition On success: data, csvHeaders, and name will be populated, On failure: error will be logged and method returns
-   * May throw errors during file reading or parsing
+   * @preconditions
+   * - if `isUrl` is true, `file` must be a string URL, else `file` must be a File object
+   * - index must be a non-negative number
+   * @postconditions
+   * - On success: data, csvHeaders, and name will be populated
+   * - On failure: error will be logged and method returns
+   * - May throw errors during file reading or parsing
    */
   async loadCSVData(
     index: number,
@@ -179,20 +188,23 @@ export class CSVDataObject implements CSVDataInterface {
         `loadCSVData has loaded csv data\n${JSON.stringify(this.data)}`,
       );
     } catch (error: unknown) {
-      //Log the error
+      // if any portion errors out, log the error
       sendError(error, "loadCSVData error");
       throw error;
     }
   }
 
   /**
-   * This method finds the first non "Time" header in the csv data file and returns it
-   * @precondition The list of headers must be greater than 1, if theres only 1 then that means that there is only a
-   * "Time" header or that the csv file loaded doesn't have a "Time" header which makes it invalid
-   * @postcondition returns the first non "Time" header in the data set
+   * Find the first non "Time" header in the csv data file and returns it
+   * @preconditions The list of headers must be greater than 1
+   * - if theres only 1, then that means that there is only a "Time" header,
+   *   or that the csv file loaded doesn't have a "Time" header,
+   *   with both cases being invalid
+   * @postconditions returns the first non "Time" header in the data set
    */
   findFirstHeader(): string {
     let error;
+    // assert that csvHeader.Length is greater than 1
     if (this.csvHeaders.length <= 1) {
       error = new RangeError("Invalid csv file");
       sendError(error, "uninitialized csv file headers (CSVDataObject.ts)");
@@ -209,12 +221,17 @@ export class CSVDataObject implements CSVDataInterface {
       }
     }
 
-    error = new SyntaxError("Invalid csv filer");
+    // if no first header is found, log the error
+    error = new SyntaxError("Invalid csv file");
     sendError(error, "Unable to find valid header (CSVDataObject.ts)");
     throw error;
   }
 
-  //Resets the array of point objects
+  /**
+   * Resets the array of point objects
+   * @preconditions none
+   * @postconditions points array is cleared
+   */
   clearPoints() {
     this.points = [];
 
@@ -227,10 +244,14 @@ export class CSVDataObject implements CSVDataInterface {
   /**
    * Retrieves data for a specific time value
    * @param time Time value to search for
-   * @returns Record object if found, null otherwise
-   * @precondition time must be a valid time string format,
-   * this.data must be initialized, this.yHeader must be set
-   * @postcondition Returns matching record if found or null otherwise without modifying data
+   * @preconditions
+   * - `time` must be a valid time string format
+   * - this.data must be initialized
+   * - this.yHeader must be set
+   * @postconditions
+   * - returns Record object if found, null otherwise
+   * - does not modify data when searching
+   *
    */
   getDataByTime(time: string): Record<string, string | number> | null {
     let result: Record<string, string | number> | null = null;
@@ -252,10 +273,12 @@ export class CSVDataObject implements CSVDataInterface {
   }
 
   /**
-   * @precondition a valid non-empty data set
-   * @returns The complete data array
+   * Get this CSV's data
+   * @preconditions this.data is a valid non-empty data set
+   * @postconditions returns The complete data array
    */
   getData(): { key: Record<string, string | number> }[] {
+    // assert that data.length is not empty
     if (this.data.length <= 0) {
       const error = new RangeError("Invalid csv data object");
       sendError(
@@ -266,37 +289,47 @@ export class CSVDataObject implements CSVDataInterface {
     }
     return this.data;
   }
+
   /**
-   * @precondition none
-   * @returns The name of the CSV data object
+   * Get this CSV's name
+   * @preconditions none
+   * @postconditions returns The name of the CSV data object
    */
   getName(): string {
     return this.name;
   }
+
   /**
-   * @precondition none
-   * @returns Array of CSV column headers
+   * Get the list of this CSV's headers
+   * @preconditions none
+   * @postconditions returns Array of CSV column headers
    */
   getCSVHeaders(): string[] {
     return this.csvHeaders;
   }
+
   /**
-   * @precondition none
-   * @returns Currently selected Y-axis header
+   * Get the label of this CSV's YHeader
+   * @preconditions none
+   * @postconditions returns Currently selected Y-axis header
    */
   getYHeader(): string {
     return this.yHeader;
   }
+
   /**
-   * @precondition none
-   * @returns Boolean indicating if browser visualization is selected
+   * Get this CSV's BrowserSelected boolen
+   * @preconditions none
+   * @postconditions returns Boolean indicating if browser visualization is selected
    */
   getBrowserSelected(): boolean {
     return this.browserSelected;
   }
+
   /**
-   * @precondition none
-   * @returns Boolean indicating if VR visualization is selected
+   * Get this CSV's VRSelected boolean
+   * @preconditions none
+   * @postconditions returns Boolean indicating if VR visualization is selected
    */
   getVRSelected(): boolean {
     return this.vrSelected;
@@ -314,9 +347,11 @@ export class CSVDataObject implements CSVDataInterface {
   /**
    * Finds and returns the time header from CSV headers
    *
-   * @precondition csvHeaders must be initialized, not null and contains a Time column
-   * @postcondition Returns a valid time header,
-   * i.e The header string containing "Time" or "time" without modifying data
+   * @preconditions csvHeaders must be initialized, not null and contains a Time column
+   * @postconditions
+   * - If found, returns a valid time header,
+   *   (i.e The header string containing "Time" or "time" without modifying data)
+   * - Else, throws an error
    */
   findTimeHeader(): string {
     for (const head of this.getCSVHeaders()) {
@@ -328,17 +363,20 @@ export class CSVDataObject implements CSVDataInterface {
         return head;
       }
     }
-
+    // if no Time header is found, log the error
     const error = new SyntaxError("CSV file doesn't have a Time header");
     sendError(error, "No allowed time header in csv file (CSVDataObject.ts)");
     throw error;
   }
 
+  // End of Getters
+  // Setters
+
   /**
    * Sets the data array for the CSV object
    * @param data Array of key-value pair records
-   * @precondition data must be a non-null array
-   * @postcondition this.data will contain the provided data array
+   * @preconditions `data` must be a non-null array
+   * @postconditions this.data will contain the provided data array
    */
   setData(data: { key: Record<string, string | number> }[]): void {
     this.data = data;
@@ -347,8 +385,13 @@ export class CSVDataObject implements CSVDataInterface {
       `setData() was called, data has been set (CSVDataObject.ts)`,
     );
   }
-  // Setter getters
-  // Post-condition: The `name` property is updated to the provided name.
+
+  /**
+   * Sets the name for the CSV object
+   * @param name string to name this CSV object
+   * @preconditions `name` must be a string
+   * @postconditions The `name` property is updated to the provided name.
+   */
   setName(name: string) {
     sendLog("info", `setName, ${this.name} will now be called ${name}`);
     this.name = name;
@@ -356,9 +399,9 @@ export class CSVDataObject implements CSVDataInterface {
 
   /**
    * Sets the browser visualization selection state
-   * @param bool Boolean value to set
-   * @precondition bool must be a boolean value
-   * @postcondition browserSelected will be set to the provided boolean value
+   * @param bool Boolean value browserSelected is set to
+   * @preconditions `bool` must be a boolean value
+   * @postconditions browserSelected will be set to the provided boolean value
    */
   setBrowserSelected(bool: boolean) {
     sendLog(
@@ -370,9 +413,9 @@ export class CSVDataObject implements CSVDataInterface {
 
   /**
    * Sets the VR visualization selection state
-   * @param bool Boolean value to set
-   * @precondition bool must be a boolean value
-   * @postcondition vrSelected will be set to the provided boolean value
+   * @param bool Boolean value vrSelected is set to
+   * @preconditions `bool` must be a boolean value
+   * @postconditions vrSelected will be set to the provided boolean value
    */
   setVRSelected(bool: boolean) {
     sendLog(
@@ -385,9 +428,12 @@ export class CSVDataObject implements CSVDataInterface {
   /**
    * Sets the Y-axis header if it exists in CSV headers
    * @param header Header string to set as Y-axis
-   * @precondition csvHeaders must be initialized, header must exist in csvHeaders
-   * @postcondition yHeader will be set to header if it exists in csvHeaders,
-   * yHeader remains unchanged if header not found
+   * @preconditions
+   * - csvHeaders must be initialized
+   * - header must exist in csvHeaders
+   * @postconditions
+   * - if it exists in csvHeaders, yHeader will be set to header,
+   * - else, yHeader remains unchanged
    */
   setYHeader(header: string) {
     sendLog("info", `setYHeader, ${this.name} yHeader is set to ${header}`);
@@ -399,12 +445,17 @@ export class CSVDataObject implements CSVDataInterface {
     }
   }
 
+  // End of Setters
+
   /**
    * Gets the Time header used by the csv data file
-   * @precondition the time header to be "Time"
-   * @postcondition the Time header of the data set
+   * @preconditions timeHeader must be "Time"
+   * @postconditions
+   * - if timeHeader is "Time", return it
+   * - else, throw an error
    */
   getTimeHeader(): string {
+    // assert that timeHeader is "Time"
     if (this.timeHeader != "Time") {
       const error = new SyntaxError("No Time header");
       sendError(error, "Invalid time header, not Time (CSVDataObject.ts)");
@@ -412,11 +463,12 @@ export class CSVDataObject implements CSVDataInterface {
     }
     return this.timeHeader;
   }
+  // todo: move this into getter section
 
   /**
    * Sets the time header used on the csv data set
-   * @precondition none
-   * @postcondition sets the Time header used in the program
+   * @preconditions none
+   * @postconditions sets the Time header used in the program
    */
   setTimeHeader() {
     this.timeHeader = this.findTimeHeader();
@@ -426,6 +478,7 @@ export class CSVDataObject implements CSVDataInterface {
       `setTimeHeader() was called, finding the time header in the data set (CSVDataObject.ts)`,
     );
   }
+  // todo: move this into setter scetion
 
   /**
    * Sets the boolean for if first differening is in effect to the given value

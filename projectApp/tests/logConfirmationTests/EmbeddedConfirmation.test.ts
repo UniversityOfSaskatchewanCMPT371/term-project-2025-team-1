@@ -57,7 +57,7 @@ describe("Embedded graph log tests", () => {
   test("file contains GenerateGraph() logging", async () => {
     const response = await fileContainsText(
       filePath,
-      "an EmbeddedGraph visualization is being created [not yet functioning] (EmbeddedGraph.tsx)",
+      "an EmbeddedGraph visualization is being created (EmbeddedGraph.tsx)",
     );
     expect(response).toBe(true);
   });

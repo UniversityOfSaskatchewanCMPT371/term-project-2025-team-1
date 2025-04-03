@@ -411,6 +411,7 @@ export default function DropdownUI({
             borderRadius={15}
             borderWidth={2}
             borderColor={"grey"}
+            pointerEvents={"auto"}
             onClick={() => {
               setOnHeaderDecrease();
             }}
@@ -452,6 +453,7 @@ export default function DropdownUI({
             borderRadius={15}
             borderWidth={2}
             borderColor={"gray"}
+            pointerEvents={"auto"}
             onClick={() => {
               setOnHeaderIncrease();
             }}
@@ -514,6 +516,7 @@ export default function DropdownUI({
             borderRadius={15}
             borderWidth={2}
             borderColor={"grey"}
+            pointerEvents={"auto"}
             onClick={() => {
               setOnFDDecrease();
             }}
@@ -553,6 +556,7 @@ export default function DropdownUI({
             borderRadius={15}
             borderWidth={2}
             borderColor={"gray"}
+            pointerEvents={"auto"}
             onClick={() => {
               setOnFDIncrease();
             }}
@@ -622,6 +626,7 @@ export default function DropdownUI({
               borderRadius={15}
               borderWidth={2}
               borderColor={"gray"}
+              pointerEvents={"auto"}
               onClick={() => {
                 setOnTauDecrease();
               }}
@@ -663,6 +668,7 @@ export default function DropdownUI({
               borderRadius={15}
               borderWidth={2}
               borderColor={"gray"}
+              pointerEvents={"auto"}
               onClick={() => {
                 setOnTauIncrease();
               }}

@@ -47,11 +47,11 @@ export default function TestScene({
         {/* Main Container that encapsulates Test Scene */}
         {/* Possibly make some sizes dependent when inside or outside vr */}
         <Container
-          width={"100%"}
+          width={"80%"}
           height={"100%"}
           backgroundOpacity={clicked ? 0.5 : 0.01}
           alignContent={"center"}
-          justifyContent={"center"}
+          justifyContent={"flex-start"}
           flexDirection={"column"}
         >
           {/* Top filler */}
@@ -101,78 +101,47 @@ export default function TestScene({
               </Container>
             </Container>
           </Container>
+{/* The Test Body Container */}
+<Container
+  width={"70%"}
+  height={inVR ? "62%" : "90%"}
+  alignContent={"flex-end"}
+  justifyContent={"flex-end"}
+  flexDirection={"column"}
+>
+  {/* Graph Information + Logs side block */}
+  <Container
+    width={"30%"}
+    height={"auto"}
+    display={clicked ? "flex" : "none"}
+    flexDirection={"column"}
+    alignContent={"flex-start"}
+    justifyContent={"flex-start"}
+    backgroundOpacity={0.4}
+    padding={10}
+    borderWidth={2}
+    borderColor={"black"}
+    gap={6}
+  >
+    <Text fontSize={16} fontWeight={"bold"} color={"black"}>
+      Graph Information:
+    </Text>
+    <Text fontSize={14} color={"black"}>Tau Value: {infoTau}</Text>
+    <Text fontSize={14} color={"black"}>Selected Header: {infoHeader}</Text>
+    <Text fontSize={14} color={"black"}>First Differencing: {infoFirstDifferencing}</Text>
+    <Text fontSize={14} color={"black"}>EG Range: {infoRange}</Text>
 
-          {/* The Test Body Container */}
-          <Container
-            width={"100%"}
-            height={inVR ? "62%" : "90%"}
-            alignContent={"center"}
-            justifyContent={"center"}
-          >
-            <Container
-              width={"50%"}
-              height={"75%"}
-              borderWidth={2}
-              borderColor={"black"}
-              justifyContent={"center"}
-              alignContent={"center"}
-              display={clicked ? "flex" : "none"}
-              flexDirection={"column"}
-              alignItems={"center"}
-            >
-              {/* Items to be displayed in test scene will go here */}
-              <Container
-                width={"100%"}
-                height={"50%"}
-                alignContent={"center"}
-                justifyContent={"center"}
-                flexDirection={"column"}
-                marginTop={10}
-                alignItems={"center"}
-              >
-                <Text fontSize={16} fontWeight={"bold"} color={"black"}>
-                  Debug Logs:
-                </Text>
-                {logs.map((item, index) => (
-                  <Text key={index} fontSize={14} color={"black"}>
-                    {item}
-                  </Text>
-                ))}
-              </Container>
-            </Container>
-            {/* Graph information */}
-            <Container
-              width={"15%"}
-              height={"15%"}
-              flexDirection={"column"}
-              alignContent={"flex-start"}
-              justifyContent={"flex-end"}
-              display={clicked ? "flex" : "none"}
-              paddingTop={10}
-              paddingX={22}
-            >
-              <Text
-                fontSize={16}
-                fontWeight={"bold"}
-                color={"black"}
-                positionLeft={20}
-              >
-                Graph Information:
-              </Text>
-              <Text fontSize={14} color={"black"} positionLeft={20}>
-                Tau Value: {infoTau}
-              </Text>
-              <Text fontSize={14} color={"black"} positionLeft={20}>
-                Selected Header: {infoHeader}
-              </Text>
-              <Text fontSize={14} color={"black"} positionLeft={20}>
-                First Differencing: {infoFirstDifferencing}
-              </Text>
-              <Text fontSize={14} color={"black"} positionLeft={20}>
-                EG Range: {infoRange}
-              </Text>
-            </Container>
-          </Container>
+    <Text fontSize={16} fontWeight={"bold"} color={"black"} marginTop={10}>
+      Debug Logs:
+    </Text>
+    {logs.map((item, index) => (
+      <Text key={index} fontSize={14} color={"black"}>
+        {item}
+      </Text>
+    ))}
+  </Container>
+</Container>
+
         </Container>
       </Fullscreen>
     </>

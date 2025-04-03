@@ -3,7 +3,7 @@ import { Point3DObject } from "../../components/Graph_Components/Points/Point3DO
 import mainController from "../../controller/MainController";
 import { useFrame } from "@react-three/fiber";
 import { sendLog } from "../../logger-frontend";
-
+import { addTestSceneInfo } from "../Scene/TestScene";
 /**
  * This function will display and realize the 3D Point Object onto the VR Scene
  * @param param0 takes a Point3DObject
@@ -29,7 +29,11 @@ export default function Point3D({
     const selectedState = !pointRef.getObject().getSelected();
     click(selectedState);
     pointRef.getObject().setSelected(selectedState);
-
+    if (selectedState){
+      addTestSceneInfo("point " + pointRef.getObject().getTimeData() + " " + pointRef.getObject().getYData() + " (3D) selected");
+    }
+    else {    addTestSceneInfo("point " + pointRef.getObject().getTimeData() + " " + pointRef.getObject().getYData() + " (3D) deselected");
+    }
     sendLog("info", `setOnClick(), 3D Point has been clicked (Point3D.tsx)`);
   }
 

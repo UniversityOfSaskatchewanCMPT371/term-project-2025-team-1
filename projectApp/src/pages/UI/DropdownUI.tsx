@@ -164,7 +164,7 @@ export default function DropdownUI({
             borderColor={"black"}
           >
             <Container
-              width={"30%"}
+              width={inVR ? "25%" : "30%"}
               height={"70%"}
               backgroundColor={"gray"}
               backgroundOpacity={0.5}
@@ -178,7 +178,9 @@ export default function DropdownUI({
                 sendLog("info", "GenerateList [BUTTON]? pressed");
               }}
             >
-              <Text fontWeight={"bold"}>Generate</Text>
+              <Text fontWeight={"bold"} fontSize={inVR ? 13 : 16}>
+                Generate
+              </Text>
             </Container>
           </Container>
         </Container>
@@ -212,7 +214,7 @@ export default function DropdownUI({
           >
             <Container
               width={"100%"}
-              height={"33%"}
+              height={"25%"}
               flexDirection={"column"}
               alignContent={"center"}
             >
@@ -222,14 +224,14 @@ export default function DropdownUI({
                 flexDirection={"row"}
                 justifyContent={"center"}
               >
-                <Text>Selected Header</Text>
+                <Text fontSize={inVR ? 13 : 16}>Selected Header</Text>
               </Container>
               <GenerateHeaderSelector />
             </Container>
 
             <Container
               width={"100%"}
-              height={"33%"}
+              height={"25%"}
               flexDirection={"column"}
               alignContent={"center"}
             >
@@ -239,14 +241,32 @@ export default function DropdownUI({
                 flexDirection={"row"}
                 justifyContent={"center"}
               >
-                <Text>First Differencing</Text>
+                <Text fontSize={inVR ? 13 : 16}>First Differencing</Text>
               </Container>
               <GenerateFirstDifferencingSelector />
             </Container>
+
+            <Container
+              width={"100%"}
+              height={"25%"}
+              flexDirection={"column"}
+              alignContent={"center"}
+            >
+              <Container
+                width={"100%"}
+                height={"50%"}
+                flexDirection={"row"}
+                justifyContent={"center"}
+              >
+                <Text fontSize={inVR ? 13 : 16}>Set Time Delay</Text>
+              </Container>
+              <GenerateTauSelector />
+            </Container>
+
             {/* This contains for selecting Tau value on start up */}
             <Container
               width={"100%"}
-              height={"33%"}
+              height={"25%"}
               flexDirection={"column"}
               alignContent={"center"}
             >
@@ -265,28 +285,28 @@ export default function DropdownUI({
                   justifyContent={"center"}
                 >
                   <Container
-                    width={"60%"}
+                    width={"55%"}
                     height={"100%"}
                     flexDirection={"row"}
                     alignContent={"flex-end"}
                     justifyContent={"flex-end"}
                   >
-                    <Text>Point Size</Text>
+                    <Text fontSize={inVR ? 13 : 16}>Point Size</Text>
                   </Container>
                   <Container
-                    width={"40%"}
+                    width={inVR ? "30%" : "40%"}
                     height={"100%"}
                     flexDirection={"column"}
                     alignContent={"center"}
                     justifyContent={"center"}
                   >
                     <Container
-                      positionLeft={10}
+                      positionLeft={inVR ? 10 : 40}
                       borderWidth={1}
                       borderRadius={5}
                       borderColor={"black"}
-                      width={"35%"}
-                      height={"30%"}
+                      width={inVR ? "40%" : "30%"}
+                      height={"50%"}
                       flexDirection={"row"}
                       alignContent={"center"}
                       justifyContent={"center"}
@@ -297,18 +317,18 @@ export default function DropdownUI({
                         setOnlyPointSize();
                       }}
                     >
-                      <Text>Set</Text>
+                      <Text fontWeight={"bold"} fontSize={inVR ? 10 : 16}>
+                        Set
+                      </Text>
                     </Container>
                   </Container>
                 </Container>
               </Container>
               <GeneratePointSizeSelector />
-              <GenerateTauSelector />
             </Container>
           </Container>
 
           {/* Information container?  */}
-          {/* TODO - add first differencing to info container???? */}
           <Container
             width={"50%"}
             height={"100%"}
@@ -320,19 +340,26 @@ export default function DropdownUI({
           >
             <Container
               width={"100%"}
-              height={"15%"}
+              height={"11%"}
               flexDirection={"row"}
               alignContent={"center"}
               justifyContent={"flex-start"}
             >
-              <Text positionLeft={10}>Tau Value: {infoTau}</Text>
+              <Text positionLeft={10} fontSize={inVR ? 11 : 16}>
+                Tau Value: {infoTau}
+              </Text>
             </Container>
-            <Text positionLeft={10}>Selected Header: {infoHeader}</Text>
-            <Text positionLeft={10} positionTop={15}>
+            <Text positionLeft={10} fontSize={inVR ? 11 : 16}>
+              Selected Header: {infoHeader}
+            </Text>
+            <Text positionLeft={10} positionTop={15} fontSize={inVR ? 11 : 16}>
               First Differencing: {infoFirstDifferencing}
             </Text>
-            <Text positionLeft={10} positionTop={15}>
+            <Text positionLeft={10} positionTop={15} fontSize={inVR ? 11 : 16}>
               EG Range: {infoRange}
+            </Text>
+            <Text positionLeft={10} positionTop={15} fontSize={inVR ? 11 : 16}>
+              Point Size Value: {infoPointSize}
             </Text>
             <Container
               flexDirection={"row"}
@@ -341,7 +368,7 @@ export default function DropdownUI({
               positionLeft={10}
               positionTop={30}
             >
-              <Text>Headers:</Text>
+              <Text fontSize={inVR ? 11 : 16}>Headers:</Text>
               {itemGroup.map((group, col) => (
                 <Container
                   key={col}
@@ -353,19 +380,12 @@ export default function DropdownUI({
                   positionLeft={15}
                 >
                   {group.map((header, row) => (
-                    <Text key={row}>{header}</Text>
+                    <Text key={row} fontSize={inVR ? 10 : 16}>
+                      {header}
+                    </Text>
                   ))}
                 </Container>
               ))}
-            </Container>
-            <Container
-              width={"100%"}
-              height={"15%"}
-              flexDirection={"row"}
-              alignContent={"center"}
-              justifyContent={"flex-start"}
-            >
-              <Text positionLeft={10}>Point Size Value: {infoPointSize}</Text>
             </Container>
           </Container>
         </Container>
@@ -460,8 +480,8 @@ export default function DropdownUI({
           justifyContent={"center"}
         >
           <Container
-            width={"60%"}
-            height={"30%"}
+            width={"40%"}
+            height={"50%"}
             flexDirection={"row"}
             alignContent={"center"}
             justifyContent={"center"}
@@ -476,7 +496,7 @@ export default function DropdownUI({
               setOnHeaderDecrease();
             }}
           >
-            <Text>&lt;</Text>
+            <Text fontSize={11}>&lt;</Text>
           </Container>
         </Container>
 
@@ -487,10 +507,10 @@ export default function DropdownUI({
           alignContent={"center"}
           justifyContent={"center"}
         >
-          <Text fontWeight={"bold"} positionTop={4}>
+          <Text fontWeight={"bold"} positionTop={4} fontSize={inVR ? 12 : 16}>
             {selectedHeaderIndex >= 0 && selectedHeaderIndex < headerList.length
               ? headerList[selectedHeaderIndex]
-              : "No Header Selected"}
+              : "None"}
           </Text>
         </Container>
 
@@ -502,8 +522,8 @@ export default function DropdownUI({
           justifyContent={"center"}
         >
           <Container
-            width={"60%"}
-            height={"30%"}
+            width={"40%"}
+            height={"50%"}
             flexDirection={"row"}
             alignContent={"center"}
             justifyContent={"center"}
@@ -518,7 +538,7 @@ export default function DropdownUI({
               setOnHeaderIncrease();
             }}
           >
-            <Text>&gt;</Text>
+            <Text fontSize={11}>&gt;</Text>
           </Container>
         </Container>
       </Container>
@@ -565,8 +585,8 @@ export default function DropdownUI({
           justifyContent={"center"}
         >
           <Container
-            width={"60%"}
-            height={"30%"}
+            width={"40%"}
+            height={"50%"}
             flexDirection={"row"}
             alignContent={"center"}
             justifyContent={"center"}
@@ -581,7 +601,7 @@ export default function DropdownUI({
               setOnFDDecrease();
             }}
           >
-            <Text>&lt;</Text>
+            <Text fontSize={11}>&lt;</Text>
           </Container>
         </Container>
 
@@ -592,7 +612,7 @@ export default function DropdownUI({
           alignContent={"center"}
           justifyContent={"center"}
         >
-          <Text fontWeight={"bold"} positionTop={4}>
+          <Text fontWeight={"bold"} positionTop={4} fontSize={inVR ? 12 : 16}>
             {isFirstDifferencing ? "Enabled" : "Disabled"}
           </Text>
         </Container>
@@ -605,8 +625,8 @@ export default function DropdownUI({
           justifyContent={"center"}
         >
           <Container
-            width={"60%"}
-            height={"30%"}
+            width={"40%"}
+            height={"50%"}
             flexDirection={"row"}
             alignContent={"center"}
             justifyContent={"center"}
@@ -621,7 +641,7 @@ export default function DropdownUI({
               setOnFDIncrease();
             }}
           >
-            <Text>&gt;</Text>
+            <Text fontSize={11}>&gt;</Text>
           </Container>
         </Container>
       </Container>
@@ -675,8 +695,8 @@ export default function DropdownUI({
             justifyContent={"center"}
           >
             <Container
-              width={"60%"}
-              height={"30%"}
+              width={"40%"}
+              height={"50%"}
               flexDirection={"row"}
               alignContent={"center"}
               justifyContent={"center"}
@@ -691,7 +711,7 @@ export default function DropdownUI({
                 setOnTauDecrease();
               }}
             >
-              <Text>&lt;</Text>
+              <Text fontSize={11}>&lt;</Text>
             </Container>
           </Container>
 
@@ -703,7 +723,7 @@ export default function DropdownUI({
             alignContent={"center"}
             justifyContent={"center"}
           >
-            <Text fontWeight={"bold"} positionTop={4}>
+            <Text fontWeight={"bold"} positionTop={4} fontSize={inVR ? 12 : 16}>
               {selectTau.toString()}
             </Text>
           </Container>
@@ -717,8 +737,8 @@ export default function DropdownUI({
             justifyContent={"center"}
           >
             <Container
-              width={"60%"}
-              height={"30%"}
+              width={"40%"}
+              height={"50%"}
               flexDirection={"row"}
               alignContent={"center"}
               justifyContent={"center"}
@@ -733,7 +753,7 @@ export default function DropdownUI({
                 setOnTauIncrease();
               }}
             >
-              <Text>&gt;</Text>
+              <Text fontSize={11}>&gt;</Text>
             </Container>
           </Container>
         </Container>
@@ -794,8 +814,8 @@ export default function DropdownUI({
             justifyContent={"center"}
           >
             <Container
-              width={"60%"}
-              height={"30%"}
+              width={"40%"}
+              height={"50%"}
               flexDirection={"row"}
               alignContent={"center"}
               justifyContent={"center"}
@@ -809,7 +829,7 @@ export default function DropdownUI({
                 setOnPointSizeDecrease();
               }}
             >
-              <Text>&lt;</Text>
+              <Text fontSize={11}>&lt;</Text>
             </Container>
           </Container>
 
@@ -821,7 +841,7 @@ export default function DropdownUI({
             alignContent={"center"}
             justifyContent={"center"}
           >
-            <Text fontWeight={"bold"} positionTop={4}>
+            <Text fontWeight={"bold"} positionTop={4} fontSize={inVR ? 12 : 16}>
               {selectPointSize.toString()}
             </Text>
           </Container>
@@ -835,8 +855,8 @@ export default function DropdownUI({
             justifyContent={"center"}
           >
             <Container
-              width={"60%"}
-              height={"30%"}
+              width={"40%"}
+              height={"50%"}
               flexDirection={"row"}
               alignContent={"center"}
               justifyContent={"center"}
@@ -850,7 +870,7 @@ export default function DropdownUI({
                 setOnPointSizeIncrease();
               }}
             >
-              <Text>&gt;</Text>
+              <Text fontSize={11}>&gt;</Text>
             </Container>
           </Container>
         </Container>

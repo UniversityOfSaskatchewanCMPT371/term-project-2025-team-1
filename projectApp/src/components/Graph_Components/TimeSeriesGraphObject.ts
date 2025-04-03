@@ -146,7 +146,7 @@ export class TimeSeriesGraphObject
     this.axes.yRange[0] = min;
     sendLog(
       "info",
-      `setRange() was called; yRange was set to ${this.axes.yRange[1]} (TimeSeriesGraphObject.ts)`,
+      `setRange() was called; max yRange set to ${this.getMaxYRange()}, min yRange set to ${this.getMinYRange()} (TimeSeriesGraphObject.ts)`,
     );
   }
 
@@ -157,15 +157,14 @@ export class TimeSeriesGraphObject
    */
   timeSeriesYRange(): number[] {
     const range: number[] = [];
-    const max = this.axes.yRange[1] - this.axes.yRange[0];
-    const spacing = max / 10;
+    const spacing = this.getTotalYRange() / 10;
 
-    let cur = this.axes.yRange[0];
-    let current = this.axes.yRange[0] + spacing;
+    let cur = this.getMinYRange();
+    let next = this.getMinYRange() + spacing;
 
-    while (cur < this.axes.yRange[1]) {
-      cur = current;
-      current = current + spacing;
+    while (cur < this.getMaxYRange()) {
+      cur = next;
+      next = next + spacing;
       range.push(cur);
     }
 

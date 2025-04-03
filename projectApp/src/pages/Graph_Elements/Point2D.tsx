@@ -4,19 +4,18 @@ import { useFrame } from "@react-three/fiber";
 import { sendLog } from "../../logger-frontend";
 import mainController from "../../controller/MainController";
 /**
- * Renders a 2D point on a Time Series Graph.
+ * Renders a 2D point on a `TimeSeriesGraph`.
  * The point can be interacted with through hover and click events.
- * @param props - Component props
- * @param {PointClass} props.pointRef - Reference to the point data and state
- * @precondition pointRef must be a valid PointClass instance with position and selected state
- * @postcondition Renders an interactive 2D point with hover and click functionality
+ * @param {Point2DObject} pointRef Reference to the point data and state
+ * @preconditions `pointRef` must be a valid `Point2DObject` instance with position and selected state
+ * @postconditions Renders an interactive 2D point with hover and click functionality used on a `TimeSeriesGraph`
  */
 export default function Point2D({ pointRef }: { pointRef: Point2DObject }) {
   const [hovered, hover] = useState(false);
   const [clicked, click] = useState(false);
   const [pointSize, setPointSize] = useState(0);
 
-  //If the selection of this point doesn't match the selection status of the PointObject
+  // If the selection of this point doesn't match the selection status of the PointObject
   useFrame(() => {
     if (clicked !== pointRef.getObject().getSelected()) {
       click(pointRef.getObject().getSelected());
@@ -29,8 +28,8 @@ export default function Point2D({ pointRef }: { pointRef: Point2DObject }) {
 
   /**
    * Toggles the point's selected state and updates local click state
-   * @precondition None
-   * @postcondition Updates both local clicked state and pointRef's selected state
+   * @preconditions None
+   * @postconditions Updates both local clicked state and pointRef's selected state
    */
   function setOnClick(): void {
     const selectedState = !pointRef.getObject().getSelected();

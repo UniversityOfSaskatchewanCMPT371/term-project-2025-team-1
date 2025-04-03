@@ -10,7 +10,7 @@ describe("Test that graph objects are properly created", () => {
   // Before any of the tests are run, load a URL CSV file and generate a graph
   beforeAll(async () => {
     await mainController.getCSVController().loadURLFile(indexedDataUrl);
-    mainController.getCSVController().generate(1);
+    mainController.getCSVController().generate(1, false);
   });
   test("expect Time Series graph model to contain a 10 point graph", () => {
     // Get the Time Series model and check that 10 points are generated
@@ -27,25 +27,25 @@ describe("Test that graph objects are properly created", () => {
     const graphm = mainController.getGraphController().getModel();
     const points = graphm.getData()?.get2DPoints();
     if (points) {
-      expect(points[0].getObject().getTimeData()).toBe(0);
+      expect(points[0].getObject().getTimeData()).toBe("0");
       expect(points[0].getObject().getYData()).toBe(1);
-      expect(points[1].getObject().getTimeData()).toBe(1);
+      expect(points[1].getObject().getTimeData()).toBe("1");
       expect(points[1].getObject().getYData()).toBe(2);
-      expect(points[2].getObject().getTimeData()).toBe(2);
+      expect(points[2].getObject().getTimeData()).toBe("2");
       expect(points[2].getObject().getYData()).toBe(3);
-      expect(points[3].getObject().getTimeData()).toBe(3);
+      expect(points[3].getObject().getTimeData()).toBe("3");
       expect(points[3].getObject().getYData()).toBe(4);
-      expect(points[4].getObject().getTimeData()).toBe(4);
+      expect(points[4].getObject().getTimeData()).toBe("4");
       expect(points[4].getObject().getYData()).toBe(5);
-      expect(points[5].getObject().getTimeData()).toBe(5);
+      expect(points[5].getObject().getTimeData()).toBe("5");
       expect(points[5].getObject().getYData()).toBe(6);
-      expect(points[6].getObject().getTimeData()).toBe(6);
+      expect(points[6].getObject().getTimeData()).toBe("6");
       expect(points[6].getObject().getYData()).toBe(7);
-      expect(points[7].getObject().getTimeData()).toBe(7);
+      expect(points[7].getObject().getTimeData()).toBe("7");
       expect(points[7].getObject().getYData()).toBe(8);
-      expect(points[8].getObject().getTimeData()).toBe(8);
+      expect(points[8].getObject().getTimeData()).toBe("8");
       expect(points[8].getObject().getYData()).toBe(9);
-      expect(points[9].getObject().getTimeData()).toBe(9);
+      expect(points[9].getObject().getTimeData()).toBe("9");
       expect(points[9].getObject().getYData()).toBe(10);
     }
   });

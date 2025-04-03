@@ -44,9 +44,7 @@ describe("Time Series Graph Class", async () => {
     expect(graph.getMaxYRange()).toBe(40); //Largest value divisible by 10 on the csv file
     expect(graph.timeSeriesYRange().length).toBe(10);
 
-    //Testing if able to switch headers
-    graph.incrementYHeader();
-
+    graph.getCSVData().setYHeader("Y");
     expect(graph.getCSVData().getYHeader()).toBe("Y");
     expect(graph.getCSVData().getTimeHeader()).toBe("Time");
 
@@ -54,9 +52,7 @@ describe("Time Series Graph Class", async () => {
     expect(graph.getMaxYRange()).toBe(50);
     expect(graph.timeSeriesYRange().length).toBe(10);
 
-    //Switching back
-    graph.decrementYHeader();
-
+    graph.getCSVData().setYHeader("X");
     expect(graph.getCSVData().getYHeader()).toBe("X");
     expect(graph.getCSVData().getTimeHeader()).toBe("Time");
 

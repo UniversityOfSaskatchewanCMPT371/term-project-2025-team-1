@@ -1,12 +1,13 @@
 import { Container, Text, Fullscreen } from "@react-three/uikit";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import mainController from "../../controller/MainController";
 import { CSVDataInterface } from "../../types/CSVInterfaces";
 import { sendLog } from "../../logger-frontend.ts";
 
 /**
- * This function is for creating the Dropdown UI in the VR Scene
+ * Create the Dropdown UI in the VR Scene
  * This displays loaded csv files and allows the generation of a TimeSeriesGraph
+ * @param inVR boolean for vr functions
  * @preconditions props used for position in the VR scene
  * @postconditions the specified drop down UI
  */
@@ -20,18 +21,50 @@ export default function DropdownUI({
   const [infoTau, setInfoTau] = useState("");
   const [selectPointSize, setSelectPointSize] = useState(0);
   const [infoPointSize, setInfoPointSize] = useState("");
+  const [infoRange, setInfoRange] = useState("");
+  const [infoHeader, setInfoHeader] = useState("");
+  const [headers, setHeaders] = useState<string[]>([]);
+
+  const itemsPerColumn = 6; // Number of items per column for headers
+  /*  itemGroup creates an array of "groups" which represent the columns in the list of headers (info box).
+      First an undefined array is created based on the number of items per column.
+      Then, we use map and slice to divide the contents of headers among the columns.
+  */
+  const itemGroup = [...Array(Math.ceil(headers.length / itemsPerColumn))].map(
+    (_, i) => headers.slice(i * itemsPerColumn, (i + 1) * itemsPerColumn),
+  );
+  const [isFirstDifferencing, setIsFirstDifferencing] =
+    useState<boolean>(false);
+  const [infoFirstDifferencing, setInfoFirstDifferencing] =
+    useState<string>("");
+
+  const [selectedHeaderIndex, setSelectedHeaderIndex] = useState<number>(-1);
+  const [headerList, setHeaderList] = useState<string[]>([]);
+
+  useEffect(() => {
+    const csvData = mainController.getCSVController().getModelData();
+
+    if (csvData) {
+      const h = csvData.getCSVHeaders();
+      const yHeader = csvData.getYHeader();
+      const yHeaderIndex = h.indexOf(yHeader);
+      setSelectedHeaderIndex(yHeaderIndex);
+      setHeaderList(h);
+    }
+  }, [active]);
 
   /**
-   * This is the function for creating a loaded csv object displayed in the DropDown UI
+   * Create a loaded csv object displayed in the DropDown UI
+   * @param data data for row object
    * @preconditions A csv data to be displayed
-   * @postcondition Display loaded csv file
+   * @postconditions Display loaded csv file
    */
   function GenerateRowObject({
     data,
   }: {
     data: CSVDataInterface;
   }): React.JSX.Element {
-    //The list of objects/loaded csv files row by row
+    // The list of objects/loaded csv files row by row
     return (
       <>
         <Container
@@ -57,24 +90,44 @@ export default function DropdownUI({
     );
   }
 
-  /*
+  /**
    * Generates the graph, and then updates main scene
+   * @preconditions
+   * - `mainController` has a `CSVController`, `GraphController`, and `MainScene`
+   * @postconditions updates the main scene
    */
   function update(): void {
-    mainController.getCSVController().generate(selectTau);
+    mainController
+      .getCSVController()
+      .generate(
+        selectTau,
+        isFirstDifferencing,
+        headerList[selectedHeaderIndex],
+      );
     mainController.getGraphController().setPointSize(selectPointSize / 100);
-    setInfoTau(mainController.getGraphController().getTauForDropDown());
+    const graphController = mainController.getGraphController();
+    const csvData = graphController.getModelEmData().getCSVData();
+
+    // setting use states for the information box
+    setInfoTau(graphController.getTauForDropDown());
     setInfoPointSize(
       (mainController.getGraphController().getPointSize() * 100).toString(),
     );
+    setInfoRange(graphController.getEmbeddedRange().toString());
+    setInfoHeader(csvData.getYHeader());
+    setHeaders(csvData.getCSVHeaders());
+    setInfoFirstDifferencing(
+      csvData.getIsFirstDifferencing() ? "Enabled" : "Disabled",
+    );
+
     mainController.updateMainScene();
   }
 
   /**
    * Generates the list of loaded csv files and assigned RowObjectButtons
    * Also in charge of generating a new Time Series Graph
-   * @precondition none
-   * @postcondition Lists all loaded csv files and assigned components
+   * @preconditions none
+   * @postconditions Lists all loaded csv files and assigned components
    */
   function GenerateList(): React.JSX.Element {
     const modelData = mainController.getCSVController().getModelData();
@@ -134,9 +187,10 @@ export default function DropdownUI({
   }
 
   /**
-   * This function creates a React JSX Component which is the body of the Drop Down UI.
+   * Create a React JSX Component which is the body of the Drop Down UI.
    * It allows the user to set the tau value and shows an information box for the current graph
-   * @returns the body of the drop down UI
+   * @preconditions none
+   * @postconditions returns the body of the drop down UI
    */
   function GenerateOptionsList(): React.JSX.Element {
     return (
@@ -156,10 +210,9 @@ export default function DropdownUI({
             alignContent={"center"}
             justifyContent={"center"}
           >
-            {/* This contains for selecting Tau value on start up */}
             <Container
               width={"100%"}
-              height={"50%"}
+              height={"33%"}
               flexDirection={"column"}
               alignContent={"center"}
             >
@@ -169,15 +222,31 @@ export default function DropdownUI({
                 flexDirection={"row"}
                 justifyContent={"center"}
               >
-                <Text>Set Time Delay</Text>
+                <Text>Selected Header</Text>
               </Container>
-              <GenerateTauSelector />
+              <GenerateHeaderSelector />
             </Container>
 
-            {/* Planned Time Window selector */}
             <Container
               width={"100%"}
-              height={"50%"}
+              height={"33%"}
+              flexDirection={"column"}
+              alignContent={"center"}
+            >
+              <Container
+                width={"100%"}
+                height={"50%"}
+                flexDirection={"row"}
+                justifyContent={"center"}
+              >
+                <Text>First Differencing</Text>
+              </Container>
+              <GenerateFirstDifferencingSelector />
+            </Container>
+            {/* This contains for selecting Tau value on start up */}
+            <Container
+              width={"100%"}
+              height={"33%"}
               flexDirection={"column"}
               alignContent={"center"}
             >
@@ -234,10 +303,12 @@ export default function DropdownUI({
                 </Container>
               </Container>
               <GeneratePointSizeSelector />
+              <GenerateTauSelector />
             </Container>
           </Container>
 
           {/* Information container?  */}
+          {/* TODO - add first differencing to info container???? */}
           <Container
             width={"50%"}
             height={"100%"}
@@ -256,6 +327,37 @@ export default function DropdownUI({
             >
               <Text positionLeft={10}>Tau Value: {infoTau}</Text>
             </Container>
+            <Text positionLeft={10}>Selected Header: {infoHeader}</Text>
+            <Text positionLeft={10} positionTop={15}>
+              First Differencing: {infoFirstDifferencing}
+            </Text>
+            <Text positionLeft={10} positionTop={15}>
+              EG Range: {infoRange}
+            </Text>
+            <Container
+              flexDirection={"row"}
+              alignItems={"flex-start"}
+              justifyContent={"flex-start"}
+              positionLeft={10}
+              positionTop={30}
+            >
+              <Text>Headers:</Text>
+              {itemGroup.map((group, col) => (
+                <Container
+                  key={col}
+                  flexDirection={"column"}
+                  alignItems={"flex-start"}
+                  justifyContent={"flex-start"}
+                  marginRight={20}
+                  positionTop={25}
+                  positionLeft={15}
+                >
+                  {group.map((header, row) => (
+                    <Text key={row}>{header}</Text>
+                  ))}
+                </Container>
+              ))}
+            </Container>
             <Container
               width={"100%"}
               height={"15%"}
@@ -272,17 +374,275 @@ export default function DropdownUI({
   }
 
   /**
-   * This function is used when the user wants to increase the tau value
+   * increments the header to be used to generate the graph forward 1
+   * @preconditions none
+   * @postconditions selectedHeaderIndex is incremented forward to the next valid header
+   * - selectedHeaderIndex will not refer to the Time header
+   * - if at end of headers wraps back around to the beginning of the headers
+   */
+  function setOnHeaderIncrease(): void {
+    if (headerList.length < 3) {
+      return;
+    }
+
+    const timeHeader = mainController
+      .getCSVController()
+      .getModelData()
+      ?.getTimeHeader();
+
+    let start = selectedHeaderIndex;
+    start += 1;
+    if (start >= headerList.length) {
+      start = 0;
+    }
+
+    if (headerList[start] == timeHeader) {
+      start += 1;
+      if (start >= headerList.length) {
+        start = 0;
+      }
+    }
+
+    setSelectedHeaderIndex(start);
+  }
+
+  /**
+   * decrements the header to be used to generate the graph forward 1
+   * @preconditions none
+   * @postconditions selectedHeaderIndex is decremented backwards to the next valid header
+   * - selectedHeaderIndex will not refer to the Time header
+   * - if at beginning of headers wraps back around to the end of the headers
+   */
+  function setOnHeaderDecrease(): void {
+    if (headerList.length < 3) {
+      return;
+    }
+
+    const timeHeader = mainController
+      .getCSVController()
+      .getModelData()
+      ?.getTimeHeader();
+
+    let start = selectedHeaderIndex;
+    start -= 1;
+    if (start < 0) {
+      start = headerList.length - 1;
+    }
+
+    if (headerList[start] == timeHeader) {
+      start -= 1;
+      if (start < 0) {
+        start = headerList.length - 1;
+      }
+    }
+    setSelectedHeaderIndex(start);
+  }
+
+  /**
+   * Creates the components for selecting which header is used for graph generation
+   * Shows buttons for cycling through forward and backwards through the headers of the loaded csv file
+   * @postconditions returns the header selection component
+   */
+  function GenerateHeaderSelector(): React.JSX.Element {
+    return (
+      <Container
+        width={"100%"}
+        height={"50%"}
+        flexDirection={"row"}
+        alignContent={"center"}
+        justifyContent={"center"}
+      >
+        <Container
+          width={"45%"}
+          height={"100%"}
+          flexDirection={"row"}
+          alignContent={"center"}
+          justifyContent={"center"}
+        >
+          <Container
+            width={"60%"}
+            height={"30%"}
+            flexDirection={"row"}
+            alignContent={"center"}
+            justifyContent={"center"}
+            backgroundColor={"grey"}
+            backgroundOpacity={0.5}
+            hover={{ backgroundOpacity: 1 }}
+            borderRadius={15}
+            borderWidth={2}
+            borderColor={"grey"}
+            pointerEvents={"auto"}
+            onClick={() => {
+              setOnHeaderDecrease();
+            }}
+          >
+            <Text>&lt;</Text>
+          </Container>
+        </Container>
+
+        <Container
+          width={"10%"}
+          height={"20%"}
+          flexDirection={"row"}
+          alignContent={"center"}
+          justifyContent={"center"}
+        >
+          <Text fontWeight={"bold"} positionTop={4}>
+            {selectedHeaderIndex >= 0 && selectedHeaderIndex < headerList.length
+              ? headerList[selectedHeaderIndex]
+              : "No Header Selected"}
+          </Text>
+        </Container>
+
+        <Container
+          width={"45%"}
+          height={"100%"}
+          flexDirection={"row"}
+          alignContent={"center"}
+          justifyContent={"center"}
+        >
+          <Container
+            width={"60%"}
+            height={"30%"}
+            flexDirection={"row"}
+            alignContent={"center"}
+            justifyContent={"center"}
+            backgroundColor={"gray"}
+            backgroundOpacity={0.5}
+            hover={{ backgroundOpacity: 1 }}
+            borderRadius={15}
+            borderWidth={2}
+            borderColor={"gray"}
+            pointerEvents={"auto"}
+            onClick={() => {
+              setOnHeaderIncrease();
+            }}
+          >
+            <Text>&gt;</Text>
+          </Container>
+        </Container>
+      </Container>
+    );
+  }
+
+  /**
+   * This function is used when the user wants to enable first differencing
+   */
+  function setOnFDIncrease(): void {
+    if (!isFirstDifferencing) {
+      setIsFirstDifferencing(!isFirstDifferencing);
+    }
+  }
+
+  /**
+   * This fuction is used when the user wants to disable first differencing
+   */
+  function setOnFDDecrease(): void {
+    if (isFirstDifferencing) {
+      setIsFirstDifferencing(!isFirstDifferencing);
+    }
+  }
+
+  /**
+   * Creates the component for enabling and disabling the first differencing effect
+   * Shows buttons for cycling through enabling and diabling first differencing
+   * @postconditions returns the first differencing selector component
+   */
+  function GenerateFirstDifferencingSelector(): React.JSX.Element {
+    return (
+      <Container
+        width={"100%"}
+        height={"50%"}
+        flexDirection={"row"}
+        alignContent={"center"}
+        justifyContent={"center"}
+      >
+        <Container
+          width={"45%"}
+          height={"100%"}
+          flexDirection={"row"}
+          alignContent={"center"}
+          justifyContent={"center"}
+        >
+          <Container
+            width={"60%"}
+            height={"30%"}
+            flexDirection={"row"}
+            alignContent={"center"}
+            justifyContent={"center"}
+            backgroundColor={"grey"}
+            backgroundOpacity={0.5}
+            hover={{ backgroundOpacity: 1 }}
+            borderRadius={15}
+            borderWidth={2}
+            borderColor={"grey"}
+            pointerEvents={"auto"}
+            onClick={() => {
+              setOnFDDecrease();
+            }}
+          >
+            <Text>&lt;</Text>
+          </Container>
+        </Container>
+
+        <Container
+          width={"10%"}
+          height={"20%"}
+          flexDirection={"row"}
+          alignContent={"center"}
+          justifyContent={"center"}
+        >
+          <Text fontWeight={"bold"} positionTop={4}>
+            {isFirstDifferencing ? "Enabled" : "Disabled"}
+          </Text>
+        </Container>
+
+        <Container
+          width={"45%"}
+          height={"100%"}
+          flexDirection={"row"}
+          alignContent={"center"}
+          justifyContent={"center"}
+        >
+          <Container
+            width={"60%"}
+            height={"30%"}
+            flexDirection={"row"}
+            alignContent={"center"}
+            justifyContent={"center"}
+            backgroundColor={"gray"}
+            backgroundOpacity={0.5}
+            hover={{ backgroundOpacity: 1 }}
+            borderRadius={15}
+            borderWidth={2}
+            borderColor={"gray"}
+            pointerEvents={"auto"}
+            onClick={() => {
+              setOnFDIncrease();
+            }}
+          >
+            <Text>&gt;</Text>
+          </Container>
+        </Container>
+      </Container>
+    );
+  }
+
+  /**
+   * Increase the tau value
+   * @preconditions expect tau to be between 1 and 5 (inclusive)
+   * @postconditions if tau is less than 5, increase it by 1. Otherwise leave it at 5
    */
   function setOnTauIncrease(): void {
-    //For now max tau will be set to 5
     if (selectTau != 5) {
       setSelectTau(selectTau + 1);
     }
   }
 
   /**
-   * This function is used when the user wants to decrease the tau value
+   * Decrease the tau value
+   * @preconditions expect tau to be between 1 and 5 (inclusive)
+   * @postconditions if tau is more than 1, decrease it by 1. Otherwise leave it at 1
    */
   function setOnTauDecrease(): void {
     if (selectTau != 1) {
@@ -293,7 +653,8 @@ export default function DropdownUI({
   /**
    * This function creates the component for setting the Tau value on generation.
    * Shows the buttons for both decreasing and increasing the tau value, it will also display the current Tau value
-   * @returns the Tau selector component
+   * @postconditions none
+   * @postconditions returns the Tau selector component
    */
   function GenerateTauSelector(): React.JSX.Element {
     return (
@@ -325,6 +686,7 @@ export default function DropdownUI({
               borderRadius={15}
               borderWidth={2}
               borderColor={"gray"}
+              pointerEvents={"auto"}
               onClick={() => {
                 setOnTauDecrease();
               }}
@@ -366,6 +728,7 @@ export default function DropdownUI({
               borderRadius={15}
               borderWidth={2}
               borderColor={"gray"}
+              pointerEvents={"auto"}
               onClick={() => {
                 setOnTauIncrease();
               }}
@@ -498,7 +861,7 @@ export default function DropdownUI({
   /**
    * The main display of the DropDownUI, along with the button that displays it
    * @preconditions none
-   * @postconditions The activation button and the drop down UI
+   * @postconditions returns the activation button and the drop down UI
    */
   function DropDownBody(): React.JSX.Element {
     return (

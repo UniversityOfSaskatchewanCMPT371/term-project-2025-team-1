@@ -17,13 +17,11 @@ export function getGraphdataTest(
   header: string,
   differencing: string,
   range: string,
-  headers: string,
 ) {
   infoTau = tau;
   infoHeader = header;
   infoRange = range;
   infoFirstDifferencing = differencing;
-  headers = headers;
 }
 export default function TestScene({
   inVR,

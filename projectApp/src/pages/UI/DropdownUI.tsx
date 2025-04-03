@@ -91,7 +91,6 @@ export default function DropdownUI({
    * Generates the graph, and then updates main scene
    */
   function update(): void {
-    addTestSceneInfo("Genenerating graph for tau: " + selectTau);
     mainController
       .getCSVController()
       .generate(
@@ -115,10 +114,8 @@ export default function DropdownUI({
       csvData.getYHeader(),
       csvData.getIsFirstDifferencing() ? "Enabled" : "Disabled",
       graphController.getEmbeddedRange().toString(),
-      csvData.getCSVHeaders(),
     );
     mainController.updateMainScene();
-    addTestSceneInfo("Graph generated for tau: " + selectTau);
   }
 
   /**
@@ -348,6 +345,7 @@ export default function DropdownUI({
     }
 
     setSelectedHeaderIndex(start);
+    addTestSceneInfo(`Header changed to: ${headerList[selectedHeaderIndex]}`);
   }
 
   /**
@@ -380,6 +378,7 @@ export default function DropdownUI({
       }
     }
     setSelectedHeaderIndex(start);
+    addTestSceneInfo(`Header changed to: ${headerList[selectedHeaderIndex]}`);
   }
 
   /**
@@ -417,9 +416,6 @@ export default function DropdownUI({
             borderColor={"grey"}
             onClick={() => {
               setOnHeaderDecrease();
-              addTestSceneInfo(
-                "Header changed to:" + headerList[selectedHeaderIndex],
-              );
             }}
           >
             <Text>&lt;</Text>
@@ -461,7 +457,6 @@ export default function DropdownUI({
             borderColor={"gray"}
             onClick={() => {
               setOnHeaderIncrease();
-              addTestSceneInfo("Header changed to:" + selectedHeaderIndex);
             }}
           >
             <Text>&gt;</Text>
@@ -581,7 +576,7 @@ export default function DropdownUI({
     //For now max tau will be set to 5
     if (selectTau != 5) {
       setSelectTau(selectTau + 1);
-      addTestSceneInfo("Tau increased to:" + (selectTau + 1));
+      addTestSceneInfo(`Tau increased to: ${selectTau + 1}`);
     }
   }
 
@@ -591,7 +586,7 @@ export default function DropdownUI({
   function setOnTauDecrease(): void {
     if (selectTau != 1) {
       setSelectTau(selectTau - 1);
-      addTestSceneInfo("Tau decreased to:" + (selectTau - 1));
+      addTestSceneInfo(`Tau decreased to: ${selectTau - 1}`);
     }
   }
 

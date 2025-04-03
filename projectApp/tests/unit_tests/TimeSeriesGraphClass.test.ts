@@ -78,7 +78,7 @@ describe("Time Series Graph Class", async () => {
     graph.setYRangeLength(10);
     expect(graph.getYRangeLength()).toBe(10);
   });
-  
+
   test("Testing timeSeriesXRange", () => {
     // Check each value in the x range
     expect(graph.timeSeriesXRange()[0]).toBe("2025-01-18");
@@ -92,7 +92,7 @@ describe("Time Series Graph Class", async () => {
     graph.getCSVData().clearPoints();
     graph.getCSVData().populatePoints();
     graph.addPoints();
-    graph.get2DPoints()[0].setPoint2DPosition([10,10]);
+    graph.get2DPoints()[0].setPoint2DPosition([10, 10]);
     expect(graph.get2DPoints()[0].getXPosition()).toBe(10);
     // Calling updatePointPosition() should translate the point data values to their proper graph position
     graph.updatePointPosition();

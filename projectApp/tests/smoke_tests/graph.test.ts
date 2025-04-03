@@ -68,7 +68,7 @@ describe("Test that graph objects are properly created", () => {
   });
   test("expect correct Time Series range", () => {
     const graphm = mainController.getGraphController().getModel();
-    const graphaxes = graphm.getData()?.getYRange();
+    const graphaxes = graphm.getData()?.getMaxYRange();
     expect(graphaxes).toBe(0);
     // Currently expect y range to be zero, waiting on future implementation
   });

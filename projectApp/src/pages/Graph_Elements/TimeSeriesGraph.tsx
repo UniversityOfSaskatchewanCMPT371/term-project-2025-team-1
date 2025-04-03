@@ -26,17 +26,22 @@ export default function TimeSeriesGraph({
   ); // New state for selected point value
 
   // Values used to space Points in the X axis
-  const totalSpace = 5;
+  const totalSpace = 6.38;
   const divider = totalSpace / graph.getNumPoints();
-  let current = -1.8 + divider / 2;
+  let current = -2.62 + divider / 2;
 
   // Values used to position lines, currently set to starting position
   let currentLine: [number, number, number] = [0, 0, 0.01];
-  let lastLine: [number, number, number] = [-1.85, -1.05, 0.01];
+  let lastLine: [number, number, number] = [0, 0, 0.01];
 
   // Spacing used by X and Y axis
   const xSpacing = 100 / graph.getNumPoints();
-  const ySpacing = 100 / graph.getYRangeLength() + 1;
+  const ySpacing = 100 / graph.getYRangeLength();
+
+  const xAxis = graph.timeSeriesXRange();
+  const xAxisInterval = graph.intervalForXAxis(xAxis);
+
+  const pointRadius = mainController.getGraphController().getPointSize() / 4;
 
   //Used to update the graph, currently updates on Y header change
   function UpdateGraph(): void {
@@ -122,7 +127,7 @@ export default function TimeSeriesGraph({
     );
     return (
       <Container
-        width={"15%"}
+        width={"10%"}
         height={"100%"}
         backgroundColor={"skyblue"}
         flexDirection={"column"}
@@ -169,12 +174,28 @@ export default function TimeSeriesGraph({
   }): React.JSX.Element {
     //Updating the position of the point
 
+    /**
+     * This basically arranges point position in the Y axis,
+     * Takes the Point data and then translates it to its position on the graph container
+     *
+     * Data value - minimum range / total range (which is max range - min range)
+     * Then translates its position to the graph
+     * maximum height of graph = 1.45
+     * ySpacing = container of a 2D graph y-axis point in percent form, we then scale it
+     * minimum height of graph = 1.05
+     */
     point.setXAxisPos(current);
     point.setYAxisPos(
-      (point.getObject().getYData() / graph.getYRange()) *
-        (1.5 - (ySpacing / 100) * 2 + 1.05) -
+      ((point.getObject().getYData() - graph.getMinYRange()) /
+        graph.getTotalYRange()) *
+        (1.45 - (ySpacing / 100) * 2 + 1.05) -
         1.05,
     );
+
+    const index = graph.getPoints2D().indexOf(point);
+    if (index === 0) {
+      lastLine = [point.getXPosition(), point.getYPosition(), 0.01];
+    }
 
     //Updating the position of the lines based off the point position
     currentLine = lastLine;
@@ -183,6 +204,7 @@ export default function TimeSeriesGraph({
       "info",
       "a visual representation of points was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)",
     );
+
     return (
       <group
         onClick={() => {
@@ -211,11 +233,15 @@ export default function TimeSeriesGraph({
     return (
       <Line
         points={[
-          [currentLine[0], currentLine[1], currentLine[2]],
-          [lastLine[0], lastLine[1], lastLine[2]],
+          [
+            currentLine[0] - pointRadius,
+            currentLine[1] + pointRadius,
+            currentLine[2],
+          ],
+          [lastLine[0] - pointRadius, lastLine[1] + pointRadius, lastLine[2]],
         ]}
         color={"black"}
-        lineWidth={2}
+        lineWidth={mainController.getGraphController().getPointSize() * 10}
       />
     );
   }
@@ -230,7 +256,34 @@ export default function TimeSeriesGraph({
       "info",
       "a visual representation of the Y range was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)",
     );
-    return <Text positionLeft={30}>{num.toString()} -</Text>;
+    return (
+      <Container
+        width={"100%"}
+        height={`${ySpacing}%`}
+        alignContent={"flex-end"}
+        justifyContent={"flex-start"}
+        flexDirection={"column-reverse"}
+      >
+        <Container
+          width={"100%"}
+          height={"100%"}
+          flexDirection={"column-reverse"}
+          alignContent={"center"}
+          justifyContent={"flex-start"}
+        >
+          <Container
+            width={"100%"}
+            height={"100%"}
+            flexDirection={"row-reverse"}
+            alignContent={"center"}
+            justifyContent={"flex-start"}
+            positionBottom={"50%"}
+          >
+            <Text>{num.toString()} -</Text>
+          </Container>
+        </Container>
+      </Container>
+    );
   }
 
   /**
@@ -246,8 +299,8 @@ export default function TimeSeriesGraph({
     return (
       <>
         {/* Container responsible for Y section of the graph */}
-        <Container width={"85%"} height={"100%"} flexDirection={"row"}>
-          <Container width={"10%"} flexDirection={"row-reverse"}>
+        <Container width={"90%"} height={"100%"} flexDirection={"row"}>
+          <Container width={"8%"} flexDirection={"row-reverse"}>
             {/* This is the line on the left side */}
             <Container width={"4%"} height={"85%"} backgroundColor={"black"} />
 
@@ -258,6 +311,7 @@ export default function TimeSeriesGraph({
             >
               <Container
                 height={`${ySpacing}%`}
+                width={"100%"}
                 alignContent={"flex-end"}
                 justifyContent={"flex-start"}
                 flexDirection={"column-reverse"}
@@ -267,42 +321,29 @@ export default function TimeSeriesGraph({
                   height={"100%"}
                   flexDirection={"column-reverse"}
                   alignContent={"center"}
-                  justifyContent={"center"}
+                  justifyContent={"flex-start"}
                 >
-                  <Container width={"100%"} positionBottom={"50%"}>
-                    <Text positionLeft={30}>0 -</Text>
+                  <Container
+                    width={"100%"}
+                    height={"100%"}
+                    flexDirection={"row-reverse"}
+                    alignContent={"center"}
+                    justifyContent={"flex-start"}
+                    positionBottom={"50%"}
+                  >
+                    <Text>{graph.axes.yRange[0]} -</Text>
                   </Container>
                 </Container>
               </Container>
               {graph.timeSeriesYRange().map((range) => {
-                return (
-                  <Container
-                    width={"100%"}
-                    height={`${ySpacing}%`}
-                    alignContent={"flex-end"}
-                    justifyContent={"flex-start"}
-                    flexDirection={"column-reverse"}
-                  >
-                    <Container
-                      width={"100%"}
-                      height={"100%"}
-                      flexDirection={"column-reverse"}
-                      alignContent={"center"}
-                      justifyContent={"center"}
-                    >
-                      <Container width={"100%"} positionBottom={"50%"}>
-                        <GenerateYRange num={range} />
-                      </Container>
-                    </Container>
-                  </Container>
-                );
+                return <GenerateYRange num={range} />;
               })}
               ;
             </Container>
           </Container>
 
           {/* Container responsible for X section of the graph */}
-          <Container width={"90%"} flexDirection={"column"}>
+          <Container width={"92%"} flexDirection={"column"}>
             <Container
               height={"85%"}
               alignItems={"center"}
@@ -317,16 +358,47 @@ export default function TimeSeriesGraph({
               />
 
               <Container height={"96%"} width={"100%"}>
-                {graph.timeSeriesXRange().map((data) => {
-                  return (
-                    <Container
-                      height={"100%"}
-                      width={`${xSpacing}%`}
-                      justifyContent={"center"}
-                    >
-                      <Text>{data.toString()}</Text>
-                    </Container>
-                  );
+                {xAxis.map((data, index) => {
+                  if (index % xAxisInterval === 0) {
+                    return (
+                      <Container
+                        height={"100%"}
+                        width={`${xSpacing}%`}
+                        justifyContent={"center"}
+                      >
+                        <Container
+                          width={"100%"}
+                          height={"100%"}
+                          flexDirection={"column"}
+                        >
+                          <Container
+                            width={"100%"}
+                            flexDirection={"row"}
+                            alignContent={"center"}
+                            justifyContent={"center"}
+                          >
+                            <Text>|</Text>
+                          </Container>
+                          <Container
+                            width={"100%"}
+                            flexDirection={"row"}
+                            alignContent={"center"}
+                            justifyContent={"center"}
+                          >
+                            <Text>{data.toString()}</Text>
+                          </Container>
+                        </Container>
+                      </Container>
+                    );
+                  } else {
+                    return (
+                      <Container
+                        height={"100%"}
+                        width={`${xSpacing}%`}
+                        justifyContent={"center"}
+                      />
+                    );
+                  }
                 })}
                 ;
               </Container>
@@ -341,11 +413,19 @@ export default function TimeSeriesGraph({
     <>
       {/* Sets the mesh of the Time Series Graph in the scene */}
       <mesh position={[-1, 2, -3.5]}>
-        <Root sizeX={7} sizeY={3} backgroundColor={"lightgrey"}>
+        <Root sizeX={8} sizeY={3} backgroundColor={"lightgrey"}>
           <Container flexDirection={"row"} width={"100%"} height={"100%"}>
             {/* Bodies of the Graph */}
             <GenerateSideBar />
             <GenerateGraph />
+            <Container width={"2.5%"} flexDirection={"row"}>
+              {/* This is the line on the right side of the graph*/}
+              <Container
+                width={"8%"}
+                height={"85%"}
+                backgroundColor={"black"}
+              />
+            </Container>
           </Container>
         </Root>
 

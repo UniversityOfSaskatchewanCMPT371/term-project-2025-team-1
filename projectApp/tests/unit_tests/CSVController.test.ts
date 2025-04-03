@@ -1,8 +1,8 @@
 import { describe, test, expect, beforeEach } from "vitest";
 import { CSVController } from "../../src/controller/CSVController";
-import { CSVReaderModel } from "../../src/models/CSVReaderModel";
 import mainController from "../../src/controller/MainController";
 import { CSVDataObject } from "../../src/components/Csv_Components/CSVDataObject";
+import { CSVReaderModel } from "../../src/models/CSVReaderModel";
 
 /*
  * For testing CSVController

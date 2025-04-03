@@ -58,6 +58,8 @@ export default function MainScene({
         <meshStandardMaterial color="gray" />
       </mesh>
 
+      {/* Add panes for background wall */}
+
       {/* Displays the Sample Drop Down UI */}
       <DropdownUI inVR={inVR} />
       {graph && <CreateTimeSeries graphObject={graph} />}

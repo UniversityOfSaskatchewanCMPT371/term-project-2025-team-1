@@ -15,10 +15,11 @@ export default function DropdownUI({
 }: {
   inVR: boolean;
 }): React.JSX.Element {
-  const [pressed, press] = useState(false);
   const [active, setActive] = useState(false);
   const [selectTau, setSelectTau] = useState(1);
   const [infoTau, setInfoTau] = useState("");
+  const [selectPointSize, setSelectPointSize] = useState(0);
+  const [infoPointSize, setInfoPointSize] = useState("");
 
   /**
    * This is the function for creating a loaded csv object displayed in the DropDown UI
@@ -61,7 +62,11 @@ export default function DropdownUI({
    */
   function update(): void {
     mainController.getCSVController().generate(selectTau);
-    setInfoTau(mainController.getGraphController().getTauForDropDown()); //Later change this to getting tau value from the graph itself rather than the other useState
+    mainController.getGraphController().setPointSize(selectPointSize / 100);
+    setInfoTau(mainController.getGraphController().getTauForDropDown());
+    setInfoPointSize(
+      (mainController.getGraphController().getPointSize() * 100).toString(),
+    );
     mainController.updateMainScene();
   }
 
@@ -181,9 +186,54 @@ export default function DropdownUI({
                 height={"50%"}
                 flexDirection={"row"}
                 justifyContent={"center"}
+                alignContent={"center"}
               >
-                <Text>Set Time Window</Text>
+                <Container
+                  width={"100%"}
+                  height={"100%"}
+                  flexDirection={"row"}
+                  alignContent={"center"}
+                  justifyContent={"center"}
+                >
+                  <Container
+                    width={"60%"}
+                    height={"100%"}
+                    flexDirection={"row"}
+                    alignContent={"flex-end"}
+                    justifyContent={"flex-end"}
+                  >
+                    <Text>Point Size</Text>
+                  </Container>
+                  <Container
+                    width={"40%"}
+                    height={"100%"}
+                    flexDirection={"column"}
+                    alignContent={"center"}
+                    justifyContent={"center"}
+                  >
+                    <Container
+                      positionLeft={10}
+                      borderWidth={1}
+                      borderRadius={5}
+                      borderColor={"black"}
+                      width={"35%"}
+                      height={"30%"}
+                      flexDirection={"row"}
+                      alignContent={"center"}
+                      justifyContent={"center"}
+                      backgroundColor={"gray"}
+                      backgroundOpacity={0.5}
+                      hover={{ backgroundOpacity: 1 }}
+                      onClick={() => {
+                        setOnlyPointSize();
+                      }}
+                    >
+                      <Text>Set</Text>
+                    </Container>
+                  </Container>
+                </Container>
               </Container>
+              <GeneratePointSizeSelector />
             </Container>
           </Container>
 
@@ -205,6 +255,15 @@ export default function DropdownUI({
               justifyContent={"flex-start"}
             >
               <Text positionLeft={10}>Tau Value: {infoTau}</Text>
+            </Container>
+            <Container
+              width={"100%"}
+              height={"15%"}
+              flexDirection={"row"}
+              alignContent={"center"}
+              justifyContent={"flex-start"}
+            >
+              <Text positionLeft={10}>Point Size Value: {infoPointSize}</Text>
             </Container>
           </Container>
         </Container>
@@ -232,7 +291,7 @@ export default function DropdownUI({
   }
 
   /**
-   * Thhis function creates the component for setting the Tau value on generation.
+   * This function creates the component for setting the Tau value on generation.
    * Shows the buttons for both decreasing and increasing the tau value, it will also display the current Tau value
    * @returns the Tau selector component
    */
@@ -320,6 +379,123 @@ export default function DropdownUI({
   }
 
   /**
+   * This function is used when the user wants to increase the tau value
+   */
+  function setOnPointSizeIncrease(): void {
+    //For now max tau will be set to 5
+    if (selectPointSize != 16) {
+      setSelectPointSize(selectPointSize + 1);
+    }
+  }
+
+  /**
+   * This function is used when the user wants to decrease the tau value
+   */
+  function setOnPointSizeDecrease(): void {
+    if (selectPointSize != 1) {
+      setSelectPointSize(selectPointSize - 1);
+    }
+  }
+
+  /**
+   * This function is used to render only the point size change rather than generating the whole graph
+   */
+  function setOnlyPointSize(): void {
+    mainController.getGraphController().setPointSize(selectPointSize / 100);
+    setInfoPointSize(
+      (mainController.getGraphController().getPointSize() * 100).toString(),
+    );
+  }
+
+  /**
+   * This function creates the component for setting the Point size value on generation.
+   * Shows the buttons for both decreasing and increasing the Point size value, it will also display the current Point size value
+   * @returns the Point Size selector component
+   */
+  function GeneratePointSizeSelector(): React.JSX.Element {
+    return (
+      <>
+        <Container
+          width={"100%"}
+          height={"50%"}
+          flexDirection={"row"}
+          alignContent={"center"}
+          justifyContent={"center"}
+        >
+          {/* The container for the button that decreases the Point Size value */}
+          <Container
+            width={"45%"}
+            height={"100%"}
+            flexDirection={"row"}
+            alignContent={"center"}
+            justifyContent={"center"}
+          >
+            <Container
+              width={"60%"}
+              height={"30%"}
+              flexDirection={"row"}
+              alignContent={"center"}
+              justifyContent={"center"}
+              backgroundColor={"gray"}
+              backgroundOpacity={0.5}
+              hover={{ backgroundOpacity: 1 }}
+              borderRadius={15}
+              borderWidth={2}
+              borderColor={"gray"}
+              onClick={() => {
+                setOnPointSizeDecrease();
+              }}
+            >
+              <Text>&lt;</Text>
+            </Container>
+          </Container>
+
+          {/* Container for showing the current Point size value of the selector */}
+          <Container
+            width={"10%"}
+            height={"20%"}
+            flexDirection={"row"}
+            alignContent={"center"}
+            justifyContent={"center"}
+          >
+            <Text fontWeight={"bold"} positionTop={4}>
+              {selectPointSize.toString()}
+            </Text>
+          </Container>
+
+          {/* The container for the button that increases the Point Size value */}
+          <Container
+            width={"45%"}
+            height={"100%"}
+            flexDirection={"row"}
+            alignContent={"center"}
+            justifyContent={"center"}
+          >
+            <Container
+              width={"60%"}
+              height={"30%"}
+              flexDirection={"row"}
+              alignContent={"center"}
+              justifyContent={"center"}
+              backgroundColor={"gray"}
+              backgroundOpacity={0.5}
+              hover={{ backgroundOpacity: 1 }}
+              borderRadius={15}
+              borderWidth={2}
+              borderColor={"gray"}
+              onClick={() => {
+                setOnPointSizeIncrease();
+              }}
+            >
+              <Text>&gt;</Text>
+            </Container>
+          </Container>
+        </Container>
+      </>
+    );
+  }
+
+  /**
    * The main display of the DropDownUI, along with the button that displays it
    * @preconditions none
    * @postconditions The activation button and the drop down UI
@@ -365,6 +541,14 @@ export default function DropdownUI({
                 borderRadius={5}
                 onClick={() => {
                   setActive(!active);
+                  if (
+                    selectPointSize !==
+                    mainController.getGraphController().getPointSize() * 100
+                  ) {
+                    setSelectPointSize(
+                      mainController.getGraphController().getPointSize() * 100,
+                    );
+                  }
                   sendLog("info", "DropDownBody [active] button pressed");
                 }}
                 backgroundColor={"black"}
@@ -417,17 +601,9 @@ export default function DropdownUI({
                   height={"90%"}
                   width={"70%"}
                   margin={1}
-                  onClick={() => {
-                    press(!pressed);
-                    sendLog("info", "DropDownBody [create] button pressed");
-                  }}
                   backgroundColor={"lightgray"}
                   backgroundOpacity={0.8}
                 >
-                  {/* Create objects representing loaded graphs in model 
-                                    Each will have a button that sets a use state for selected
-                                    Then a button for loading selected graph, activate use state
-                                    Then on a useState, update*/}
                   <GenerateList />
                 </Container>
               </Container>

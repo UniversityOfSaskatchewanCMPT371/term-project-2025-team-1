@@ -91,6 +91,7 @@ export default function DropdownUI({
    * Generates the graph, and then updates main scene
    */
   function update(): void {
+    addTestSceneInfo(`Genenerating graph for tau: ${selectTau}`);
     mainController
       .getCSVController()
       .generate(
@@ -116,6 +117,7 @@ export default function DropdownUI({
       graphController.getEmbeddedRange().toString(),
     );
     mainController.updateMainScene();
+    addTestSceneInfo(`Graph generated for tau: ${selectTau}`);
   }
 
   /**

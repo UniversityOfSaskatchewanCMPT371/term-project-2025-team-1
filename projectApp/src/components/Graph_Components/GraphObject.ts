@@ -128,5 +128,6 @@ export class GraphObject implements GraphInterface {
       throw error;
     }
     this.name = name;
+    sendLog("info", `setName, ${this.name} will now be called ${name}`);
   }
 }

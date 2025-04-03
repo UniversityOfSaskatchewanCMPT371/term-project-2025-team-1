@@ -63,14 +63,14 @@ export default function TimeSeriesGraph({
       >
         {/* Section for showing point data sets */}
         <Container
-          height={"50%"}
+          height={"100%"}
           flexDirection={"column"}
           alignItems={"center"}
-          justifyContent={"center"}
+          justifyContent={"flex-start"}
         >
-          <Text>Point Value</Text>
-          <Text>(x, y):</Text>
-          <Text>
+          <Text fontSize={13}>Point Value</Text>
+          <Text fontSize={13}>(x, y):</Text>
+          <Text fontSize={13}>
             {selectedPoint !== null
               ? `(${selectedPoint.getObject().getTimeData()}, ${selectedPoint.getObject().getYData()})`
               : "None"}
@@ -200,7 +200,7 @@ export default function TimeSeriesGraph({
             justifyContent={"flex-start"}
             positionBottom={"50%"}
           >
-            <Text>{num.toString()} -</Text>
+            <Text fontSize={12}>{num.toString()} -</Text>
           </Container>
         </Container>
       </Container>
@@ -253,7 +253,7 @@ export default function TimeSeriesGraph({
                     justifyContent={"flex-start"}
                     positionBottom={"50%"}
                   >
-                    <Text>{graph.axes.yRange[0]} -</Text>
+                    <Text fontSize={12}>{graph.axes.yRange[0]} -</Text>
                   </Container>
                 </Container>
               </Container>
@@ -307,7 +307,7 @@ export default function TimeSeriesGraph({
                             alignContent={"center"}
                             justifyContent={"center"}
                           >
-                            <Text>{data.toString()}</Text>
+                            <Text fontSize={12}>{data.toString()}</Text>
                           </Container>
                         </Container>
                       </Container>

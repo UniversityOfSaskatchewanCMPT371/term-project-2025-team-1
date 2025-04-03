@@ -2,7 +2,7 @@ import { Container, Text, Fullscreen } from "@react-three/uikit";
 import { useEffect, useState } from "react";
 import mainController from "../../controller/MainController";
 import { CSVDataInterface } from "../../types/CSVInterfaces";
-import { sendLog } from "../../logger-frontend.ts";
+import { sendError, sendLog } from "../../logger-frontend.ts";
 
 /**
  * Create the Dropdown UI in the VR Scene
@@ -97,30 +97,35 @@ export default function DropdownUI({
    * @postconditions updates the main scene
    */
   function update(): void {
-    mainController
-      .getCSVController()
-      .generate(
-        selectTau,
-        isFirstDifferencing,
-        headerList[selectedHeaderIndex],
+    try {
+      mainController
+        .getCSVController()
+        .generate(
+          selectTau,
+          isFirstDifferencing,
+          headerList[selectedHeaderIndex],
+        );
+      mainController.getGraphController().setPointSize(selectPointSize / 100);
+      const graphController = mainController.getGraphController();
+      const csvData = graphController.getModelEmData().getCSVData();
+
+      // setting use states for the information box
+      setInfoTau(graphController.getTauForDropDown());
+      setInfoPointSize(
+        (mainController.getGraphController().getPointSize() * 100).toString(),
       );
-    mainController.getGraphController().setPointSize(selectPointSize / 100);
-    const graphController = mainController.getGraphController();
-    const csvData = graphController.getModelEmData().getCSVData();
+      setInfoRange(graphController.getEmbeddedRange().toString());
+      setInfoHeader(csvData.getYHeader());
+      setHeaders(csvData.getCSVHeaders());
+      setInfoFirstDifferencing(
+        csvData.getIsFirstDifferencing() ? "Enabled" : "Disabled",
+      );
 
-    // setting use states for the information box
-    setInfoTau(graphController.getTauForDropDown());
-    setInfoPointSize(
-      (mainController.getGraphController().getPointSize() * 100).toString(),
-    );
-    setInfoRange(graphController.getEmbeddedRange().toString());
-    setInfoHeader(csvData.getYHeader());
-    setHeaders(csvData.getCSVHeaders());
-    setInfoFirstDifferencing(
-      csvData.getIsFirstDifferencing() ? "Enabled" : "Disabled",
-    );
-
-    mainController.updateMainScene();
+      mainController.updateMainScene();
+    } catch (error: unknown) {
+      sendError(error, "Error on update() in DropdownUI.tsx");
+      throw error;
+    }
   }
 
   /**
@@ -313,11 +318,12 @@ export default function DropdownUI({
                       backgroundColor={"gray"}
                       backgroundOpacity={0.5}
                       hover={{ backgroundOpacity: 1 }}
+                      pointerEvents={"auto"}
                       onClick={() => {
                         setOnlyPointSize();
                       }}
                     >
-                      <Text fontWeight={"bold"} fontSize={inVR ? 10 : 16}>
+                      <Text fontWeight={"bold"} fontSize={inVR ? 10 : 14}>
                         Set
                       </Text>
                     </Container>
@@ -345,20 +351,20 @@ export default function DropdownUI({
               alignContent={"center"}
               justifyContent={"flex-start"}
             >
-              <Text positionLeft={10} fontSize={inVR ? 11 : 16}>
+              <Text positionLeft={10} fontSize={inVR ? 10 : 13}>
                 Tau Value: {infoTau}
               </Text>
             </Container>
-            <Text positionLeft={10} fontSize={inVR ? 11 : 16}>
+            <Text positionLeft={10} fontSize={inVR ? 10 : 13}>
               Selected Header: {infoHeader}
             </Text>
-            <Text positionLeft={10} positionTop={15} fontSize={inVR ? 11 : 16}>
+            <Text positionLeft={10} positionTop={15} fontSize={inVR ? 10 : 13}>
               First Differencing: {infoFirstDifferencing}
             </Text>
-            <Text positionLeft={10} positionTop={15} fontSize={inVR ? 11 : 16}>
+            <Text positionLeft={10} positionTop={15} fontSize={inVR ? 10 : 13}>
               EG Range: {infoRange}
             </Text>
-            <Text positionLeft={10} positionTop={15} fontSize={inVR ? 11 : 16}>
+            <Text positionLeft={10} positionTop={15} fontSize={inVR ? 10 : 13}>
               Point Size Value: {infoPointSize}
             </Text>
             <Container
@@ -368,7 +374,7 @@ export default function DropdownUI({
               positionLeft={10}
               positionTop={30}
             >
-              <Text fontSize={inVR ? 11 : 16}>Headers:</Text>
+              <Text fontSize={inVR ? 10 : 13}>Headers:</Text>
               {itemGroup.map((group, col) => (
                 <Container
                   key={col}
@@ -376,11 +382,14 @@ export default function DropdownUI({
                   alignItems={"flex-start"}
                   justifyContent={"flex-start"}
                   marginRight={20}
-                  positionTop={25}
-                  positionLeft={15}
+                  positionTop={inVR ? 15 : 25}
                 >
                   {group.map((header, row) => (
-                    <Text key={row} fontSize={inVR ? 10 : 16}>
+                    <Text
+                      key={row}
+                      fontWeight={"bold"}
+                      fontSize={inVR ? 7 : 10}
+                    >
                       {header}
                     </Text>
                   ))}
@@ -507,7 +516,7 @@ export default function DropdownUI({
           alignContent={"center"}
           justifyContent={"center"}
         >
-          <Text fontWeight={"bold"} positionTop={4} fontSize={inVR ? 12 : 16}>
+          <Text fontWeight={"bold"} positionTop={4} fontSize={inVR ? 10 : 12}>
             {selectedHeaderIndex >= 0 && selectedHeaderIndex < headerList.length
               ? headerList[selectedHeaderIndex]
               : "None"}
@@ -612,7 +621,7 @@ export default function DropdownUI({
           alignContent={"center"}
           justifyContent={"center"}
         >
-          <Text fontWeight={"bold"} positionTop={4} fontSize={inVR ? 12 : 16}>
+          <Text fontWeight={"bold"} positionTop={4} fontSize={inVR ? 10 : 12}>
             {isFirstDifferencing ? "Enabled" : "Disabled"}
           </Text>
         </Container>
@@ -723,7 +732,7 @@ export default function DropdownUI({
             alignContent={"center"}
             justifyContent={"center"}
           >
-            <Text fontWeight={"bold"} positionTop={4} fontSize={inVR ? 12 : 16}>
+            <Text fontWeight={"bold"} positionTop={4} fontSize={inVR ? 10 : 12}>
               {selectTau.toString()}
             </Text>
           </Container>
@@ -841,7 +850,7 @@ export default function DropdownUI({
             alignContent={"center"}
             justifyContent={"center"}
           >
-            <Text fontWeight={"bold"} positionTop={4} fontSize={inVR ? 12 : 16}>
+            <Text fontWeight={"bold"} positionTop={4} fontSize={inVR ? 10 : 12}>
               {selectPointSize.toString()}
             </Text>
           </Container>
@@ -866,6 +875,7 @@ export default function DropdownUI({
               borderRadius={15}
               borderWidth={2}
               borderColor={"gray"}
+              pointerEvents={"auto"}
               onClick={() => {
                 setOnPointSizeIncrease();
               }}

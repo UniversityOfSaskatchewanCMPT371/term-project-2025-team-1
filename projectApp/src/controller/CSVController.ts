@@ -39,25 +39,27 @@ export class CSVController implements ControllerInterface {
    *   - The graph is added to the main controller's graph collection
    */
   generate(tau: number, isFirstDiff: boolean, selectedHeader: string): void {
-    const emData = this.getModelData();
+    const csvData = this.getModelData();
     // assert that model.data is defined
-    if (emData === undefined) {
+    if (csvData === undefined) {
       const error = new Error("Error getting CSVDataObject");
       sendError(error, "Unable to get csv data object (CSVController.ts)");
       throw error;
     }
 
-    emData.setYHeader(selectedHeader);
-    emData.setIsFirstDifferencing(isFirstDiff);
-    emData.setVRSelected(true);
-    emData.populatePoints();
+    csvData.setYHeader(selectedHeader);
+    csvData.setIsFirstDifferencing(isFirstDiff);
+    csvData.setVRSelected(true);
+    csvData.populatePoints();
 
-    const TSGraph = new TimeSeriesGraphObject(emData);
+    const TSGraph = new TimeSeriesGraphObject(csvData);
     TSGraph.addPoints();
+    TSGraph.setName(csvData.getName());
 
-    const emGraph = new EmbeddedGraphObject(emData);
+    const emGraph = new EmbeddedGraphObject(csvData);
     emGraph.setTau(tau);
     emGraph.addPoints();
+    emGraph.setName(TSGraph.getName());
 
     mainController.getGraphController().pushDataToModel(TSGraph, emGraph);
     sendLog("info", "generate has pushed a new graph");

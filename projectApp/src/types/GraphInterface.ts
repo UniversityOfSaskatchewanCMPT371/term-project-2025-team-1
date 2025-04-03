@@ -1,9 +1,10 @@
+import { DataInterface } from "./BaseInterfaces";
 import { CSVDataInterface } from "./CSVInterfaces";
 /**
  * Interface for graph objects that can be used in both 2D and 3D contexts.
  * Provides a standardized structure for graph representation and manipulation.
  */
-export interface GraphInterface {
+export interface GraphInterface extends DataInterface {
   // Basic graph properties
 
   /** The csv data used by the graph */

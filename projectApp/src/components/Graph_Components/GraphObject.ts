@@ -1,4 +1,5 @@
 import { sendError, sendLog } from "../../logger-frontend";
+import { GraphInterface } from "../../types/GraphInterface";
 import { CSVDataObject } from "../Csv_Components/CSVDataObject";
 
 /**
@@ -14,8 +15,9 @@ import { CSVDataObject } from "../Csv_Components/CSVDataObject";
  * - Although the 'id' and 'name' can be updated, they must always remain non-empty.
  * - The 'points' array is mutable.
  */
-export class GraphObject {
+export class GraphObject implements GraphInterface {
   csvData: CSVDataObject;
+  name: string;
   axes: {
     xRange: [number, number];
     yRange: [number, number];
@@ -36,6 +38,7 @@ export class GraphObject {
   constructor(csvdata: CSVDataObject) {
     // CSVDataObject is required, so the check is unnecessary.
     this.csvData = csvdata;
+    this.name = "";
     this.axes = {
       xRange: [0, 0],
       yRange: [0, 0],
@@ -99,5 +102,31 @@ export class GraphObject {
    */
   getCSVData(): CSVDataObject {
     return this.csvData;
+  }
+
+  /**
+   * Gets the name used by the graph
+   * @preconditions none
+   * @postconditions returns the name attribute of the graph
+   */
+  getName(): string {
+    return this.name;
+  }
+
+  /**
+   * Sets the name of the graph
+   * @param {string} name the new name set for the graph
+   * @precondition the name parameter must be non-null and not empty ""
+   * @postcondition
+   * - the name of the graph is set to the name parameter of the method
+   * - throws an error if the parameter is invalid
+   */
+  setName(name: string): void {
+    if (name === "") {
+      const error = new Error("Empty string provided");
+      sendError(error, "Invalid name parameter, GraphObject.ts");
+      throw error;
+    }
+    this.name = name;
   }
 }

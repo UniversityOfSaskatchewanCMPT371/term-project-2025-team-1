@@ -3,18 +3,27 @@ import { Container, Fullscreen, Text } from "@react-three/uikit";
 import { useState } from "react";
 
 let info: string[] = [];
-let infoTau="";
-  let infoRange = "";
-  let infoHeader = "";
-  let infoFirstDifferencing= "";
+let infoTau = "";
+let infoRange = "";
+let infoHeader = "";
+let infoFirstDifferencing = "";
 export function addTestSceneInfo(s: string) {
   if (import.meta.env.VITE_TEST_MODE === "true") {
     info = [...info.slice(-4), s];
   }
 }
-export function getGraphdataTest(tau: string, header: string, differencing:string, range: string, headers: string) {
-  infoTau=tau; infoHeader = header; infoRange = range;  infoFirstDifferencing = differencing; headers = headers;
-    
+export function getGraphdataTest(
+  tau: string,
+  header: string,
+  differencing: string,
+  range: string,
+  headers: string,
+) {
+  infoTau = tau;
+  infoHeader = header;
+  infoRange = range;
+  infoFirstDifferencing = differencing;
+  headers = headers;
 }
 export default function TestScene({
   inVR,
@@ -134,33 +143,37 @@ export default function TestScene({
               </Container>
             </Container>
             {/* Graph information */}
-        <Container
-                width={"15%"}
-                height={"15%"}
-                flexDirection={"column"}
-                alignContent={"flex-start"}
-                justifyContent={"flex-end"}
-                display={clicked ? "flex" : "none"}
-                paddingTop={10}
-                paddingX={22}
+            <Container
+              width={"15%"}
+              height={"15%"}
+              flexDirection={"column"}
+              alignContent={"flex-start"}
+              justifyContent={"flex-end"}
+              display={clicked ? "flex" : "none"}
+              paddingTop={10}
+              paddingX={22}
+            >
+              <Text
+                fontSize={16}
+                fontWeight={"bold"}
+                color={"black"}
+                positionLeft={20}
               >
-                <Text fontSize={16} fontWeight={"bold"} color={"black"} positionLeft={20}>
-                  Graph Information:
-                </Text>
-                <Text fontSize={14} color={"black"} positionLeft={20}>
-                  Tau Value: {infoTau}
-                </Text>
-                <Text fontSize={14} color={"black"} positionLeft={20}>
-                  Selected Header: {infoHeader}
-                </Text>
-                <Text fontSize={14} color={"black"} positionLeft={20}>
-                  First Differencing: {infoFirstDifferencing}
-                </Text>
-                <Text fontSize={14} color={"black"} positionLeft={20}>
-                  EG Range: {infoRange}
-                </Text>
-                
-              </Container>
+                Graph Information:
+              </Text>
+              <Text fontSize={14} color={"black"} positionLeft={20}>
+                Tau Value: {infoTau}
+              </Text>
+              <Text fontSize={14} color={"black"} positionLeft={20}>
+                Selected Header: {infoHeader}
+              </Text>
+              <Text fontSize={14} color={"black"} positionLeft={20}>
+                First Differencing: {infoFirstDifferencing}
+              </Text>
+              <Text fontSize={14} color={"black"} positionLeft={20}>
+                EG Range: {infoRange}
+              </Text>
+            </Container>
           </Container>
         </Container>
       </Fullscreen>

@@ -2,7 +2,6 @@ import { Root, Container, Text } from "@react-three/uikit";
 import { Line } from "@react-three/drei";
 import { TimeSeriesGraphObject } from "../../components/Graph_Components/TimeSeriesGraphObject";
 import { useState } from "react";
-import mainController from "../../controller/MainController";
 import { sendLog } from "../../logger-frontend";
 import { Point2DObject } from "../../components/Graph_Components/Points/Point2DObject";
 import Create2DPoint from "../../components/Graph_Components/Points/Create2DPoint";
@@ -21,7 +20,6 @@ export default function TimeSeriesGraph({
 }: {
   graph: TimeSeriesGraphObject;
 }): React.JSX.Element {
-  const [header, setHeader] = useState(""); // useState for changes in the graph's Y header
   const [selectedPoint, setSelectedPoint] = useState<Point2DObject | null>(
     null,
   ); // New state for selected point value
@@ -38,82 +36,6 @@ export default function TimeSeriesGraph({
   // Spacing used by X and Y axis
   const xSpacing = 100 / graph.getNumPoints();
   const ySpacing = 100 / graph.getYRangeLength() + 1;
-
-  /**
-   * Updates the point positions for this graph
-   * @preconditions the `GraphController` (which controls this)
-   * must also control an `EmbeddedGraph` with the same csv data as this
-   * @postconditions points on this graph are updated, and linked `EmbeddedGraph` is updated as well
-   */
-  function UpdateGraph(): void {
-    graph.updatePointPosition();
-    setHeader(graph.getCSVData().getYHeader());
-    mainController.getGraphController().getModelEmData().updateEmbeddedPoints();
-    mainController.updateMainScene();
-    sendLog(
-      "info",
-      "a TimeSeriesGraph object was updated (TimeSeriesGraph.tsx)",
-    );
-  }
-
-  /**
-   * Renders the Y Header Selection
-   * @preconditions None
-   * @postconditions returns The container that shows the current Y header and allows the cycle of the Graph's Y Header
-   */
-  function HeaderSelection(): React.JSX.Element {
-    setHeader(graph.getCSVData().getYHeader());
-    sendLog(
-      "info",
-      "a TimeSeriesGraph object header was selected and visually updated to reflect selection (TimeSeriesGraph.tsx)",
-    );
-
-    return (
-      <>
-        {/* Shows the current header */}
-        <Container height={"30%"}>
-          <Text>{header}</Text>
-        </Container>
-
-        {/* These next couple of containers is the interactable element that allows the cycle of Y Headers */}
-        <Container
-          height={"50%"}
-          width={"100%"}
-          justifyContent={"space-evenly"}
-        >
-          <Container
-            width={"40%"}
-            height={"30%"}
-            backgroundColor={"gray"}
-            backgroundOpacity={0.8}
-            justifyContent={"center"}
-            hover={{ backgroundOpacity: 0.95 }}
-            onClick={() => {
-              graph.decrementYHeader();
-              UpdateGraph();
-            }}
-          >
-            <Text fontWeight={"bold"}>&lt;</Text>
-          </Container>
-
-          <Container
-            width={"40%"}
-            height={"30%"}
-            backgroundColor={"gray"}
-            backgroundOpacity={0.8}
-            justifyContent={"center"}
-            hover={{ backgroundOpacity: 0.95 }}
-            onClick={() => {
-              graph.incrementYHeader();
-              UpdateGraph();
-            }}
-          >
-            <Text fontWeight={"bold"}>&gt;</Text>
-          </Container>
-        </Container>
-      </>
-    );
-  }
 
   /**
    * Renders the container left of the graph with a skyblue background.
@@ -133,17 +55,6 @@ export default function TimeSeriesGraph({
         backgroundColor={"skyblue"}
         flexDirection={"column"}
       >
-        {/* Section for showing and cycling of Y Header */}
-        <Container
-          height={"50%"}
-          alignItems={"center"}
-          justifyContent={"center"}
-          flexDirection={"column"}
-        >
-          <Text>Y Header </Text>
-          <HeaderSelection />
-        </Container>
-
         {/* Section for showing point data sets */}
         <Container
           height={"50%"}

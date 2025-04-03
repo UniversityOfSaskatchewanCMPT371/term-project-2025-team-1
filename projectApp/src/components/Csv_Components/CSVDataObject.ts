@@ -23,6 +23,7 @@ export class CSVDataObject implements CSVDataInterface {
   browserSelected: boolean;
   vrSelected: boolean;
   points: PointObjectInterface[];
+  isFirstDifferencing: boolean;
 
   /**
    * Initializes a new CSVDataObject with default values
@@ -36,6 +37,40 @@ export class CSVDataObject implements CSVDataInterface {
     this.browserSelected = false;
     this.vrSelected = false;
     this.points = [];
+    this.isFirstDifferencing = false;
+  }
+
+  /**
+   * calculates the values to be used for yValues when first differencing is in effect
+   * @preconditions none
+   * @postconditions none
+   * @returns an array of the first differenced yValues
+   */
+  calculateFirstDifferencingValues(): number[] {
+    const differencedData: number[] = [0];
+    const numPoints = this.getData().length;
+
+    for (let i = 1; i < numPoints; i += 1) {
+      const currRow = this.data[i];
+      const prevRow = this.data[i - 1];
+
+      const currVal = currRow[
+        this.getYHeader() as keyof typeof currRow
+      ] as unknown as number;
+      const prevVal = prevRow[
+        this.getYHeader() as keyof typeof prevRow
+      ] as unknown as number;
+
+      // calculate the difference between value at yHeader in row i and row i-1
+      const difference = currVal - prevVal;
+      differencedData.push(difference);
+    }
+
+    sendLog(
+      "info",
+      `first differencing point calculation completed, result - ${differencedData} (CSVDataObject.ts)`,
+    );
+    return differencedData;
   }
 
   /**
@@ -46,17 +81,30 @@ export class CSVDataObject implements CSVDataInterface {
    */
   populatePoints(): void {
     this.points = [];
-    this.getData().forEach((data) => {
-      const newPoint = new PointObject();
+    if (this.isFirstDifferencing) {
+      const firstDiffedData = this.calculateFirstDifferencingValues();
 
-      newPoint.setTimeData(
-        data[this.getTimeHeader() as keyof typeof data] as unknown as string,
-      );
-      newPoint.setYData(
-        data[this.getYHeader() as keyof typeof data] as unknown as number,
-      );
-      this.points.push(newPoint);
-    });
+      firstDiffedData.forEach((data, index) => {
+        const newPoint = new PointObject();
+        newPoint.setTimeData(index.toString());
+        newPoint.setYData(data);
+        this.points.push(newPoint);
+      });
+    } else {
+      this.getData().forEach((data) => {
+        const newPoint = new PointObject();
+
+        newPoint.setTimeData(
+          (
+            data[this.getTimeHeader() as keyof typeof data] as unknown as string
+          ).toString(),
+        );
+        newPoint.setYData(
+          data[this.getYHeader() as keyof typeof data] as unknown as number,
+        );
+        this.points.push(newPoint);
+      });
+    }
 
     sendLog(
       "info",
@@ -288,6 +336,15 @@ export class CSVDataObject implements CSVDataInterface {
   }
 
   /**
+   * Gets the boolean for whether first differencing is in effect
+   * @precondition none
+   * @returns Boolean indicating if first differencing is in effect
+   */
+  getIsFirstDifferencing(): boolean {
+    return this.isFirstDifferencing;
+  }
+
+  /**
    * Finds and returns the time header from CSV headers
    *
    * @preconditions csvHeaders must be initialized, not null and contains a Time column
@@ -422,4 +479,18 @@ export class CSVDataObject implements CSVDataInterface {
     );
   }
   // todo: move this into setter scetion
+
+  /**
+   * Sets the boolean for if first differening is in effect to the given value
+   * @param firstDiff boolean indicating if first differencing is in effect
+   * @postcondition if firstDiff is true, first differencing is now if effect
+   *                else firstDiff is false, first differencing is not in effect
+   */
+  setIsFirstDifferencing(firstDiff: boolean): void {
+    this.isFirstDifferencing = firstDiff;
+    sendLog(
+      "info",
+      `setIsFirstDifferencing() was called, first differencing is set to ${firstDiff}`,
+    );
+  }
 }

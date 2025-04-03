@@ -5,6 +5,7 @@ import { Sky } from "@react-three/drei";
 import { createXRStore, useXR, XR } from "@react-three/xr";
 import BrowserUI from "./pages/UI/BrowserUI";
 import { useState } from "react";
+import Locomotion from "./controller/Locomotion";
 
 //Initializes and configures various parts integral to a VR experienceq
 const store = createXRStore();
@@ -42,6 +43,7 @@ function App() {
             <XRScene setInVR={setInVR} />
             <Sky sunPosition={[0.5, 0, 0.5]} />
             <ambientLight />
+            <Locomotion speed={2} />
             {/* InitScene starts up the scene displayed */}
             <InitScene inVR={inVR} />
           </XR>

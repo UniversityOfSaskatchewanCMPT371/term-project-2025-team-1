@@ -75,7 +75,7 @@ export default function TestScene({
             // paddingTop={inVR ? 200 : 0}
             positionType={inVR ? "absolute" : "relative"}
             positionRight={inVR ? 340 : 0}
-            positionTop={inVR ? 200 : 0}
+            positionTop={inVR ? 250 : 0}
 
           >
             <Text fontSize={12} color={"white"}>

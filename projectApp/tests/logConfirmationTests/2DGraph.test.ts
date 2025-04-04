@@ -120,7 +120,7 @@ describe("2D graph log tests", () => {
     expect(activateFirstDif).toBe(true);
   });
 
-  // Checking if logs for first differencing calculatin is performed
+  // Checking if logs for first differencing calculation is performed
   test("file contains logs for first differencing calculations being performed", async () => {
     const calculateFirstDif = await fileContainsText(
       filePath,

@@ -105,32 +105,54 @@ export class TimeSeriesGraphObject
   setRange(): void {
     let max = 0;
     let min = 0;
+    if (this.getCSVData().isFirstDifferencing) {
+      this.getCSVData()
+        .calculateFirstDifferencingValues()
+        .forEach((data) => {
+          if (data > max) {
+            max = data;
+          }
+          if (data < min || min === 0) {
+            min = data;
+          }
+        });
+      // If max is a float, convert it to an integer by rounding up.
+      max = Math.ceil(max / 10) * 10;
+      min = Math.floor(min / 10) * 10;
 
-    this.getCSVData()
-      .getData()
-      .forEach((data) => {
-        const val = data[
-          this.getCSVData().getYHeader() as keyof typeof data
-        ] as unknown as number;
-        if (val > max) {
-          max = val;
-        }
+      this.axes.yRange[1] = max;
+      this.axes.yRange[0] = min;
+      sendLog(
+        "info",
+        `setRange() was called; max yRange set to ${this.getMaxYRange()}, min yRange set to ${this.getMinYRange()} (TimeSeriesGraphObject.ts)`,
+      );
+    } else {
+      this.getCSVData()
+        .getData()
+        .forEach((data) => {
+          const val = data[
+            this.getCSVData().getYHeader() as keyof typeof data
+          ] as unknown as number;
+          if (val > max) {
+            max = val;
+          }
 
-        if (val < min || min === 0) {
-          min = val;
-        }
-      });
+          if (val < min || min === 0) {
+            min = val;
+          }
+        });
 
-    // If max is a float, convert it to an integer by rounding up.
-    max = Math.ceil(max / 10) * 10;
-    min = Math.floor(min / 10) * 10;
+      // If max is a float, convert it to an integer by rounding up.
+      max = Math.ceil(max / 10) * 10;
+      min = Math.floor(min / 10) * 10;
 
-    this.axes.yRange[1] = max;
-    this.axes.yRange[0] = min;
-    sendLog(
-      "info",
-      `setRange() was called; max yRange set to ${this.getMaxYRange()}, min yRange set to ${this.getMinYRange()} (TimeSeriesGraphObject.ts)`,
-    );
+      this.axes.yRange[1] = max;
+      this.axes.yRange[0] = min;
+      sendLog(
+        "info",
+        `setRange() was called; max yRange set to ${this.getMaxYRange()}, min yRange set to ${this.getMinYRange()} (TimeSeriesGraphObject.ts)`,
+      );
+    }
   }
 
   /**

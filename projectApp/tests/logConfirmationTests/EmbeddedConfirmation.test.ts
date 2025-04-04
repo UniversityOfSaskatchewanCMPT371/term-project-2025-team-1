@@ -70,4 +70,22 @@ describe("Embedded graph log tests", () => {
     );
     expect(newTau).toBe(true);
   });
+
+  // Checking if logs for setting first differencing true is reached
+  test("file contains logging for setting first differencing true", async () => {
+    const activateFirstDif = await fileContainsText(
+      filePath,
+      "setIsFirstDifferencing() was called, first differencing is set to true",
+    );
+    expect(activateFirstDif).toBe(true);
+  });
+
+  // Checking if logs for calculating points for first differencing is reached
+  test("file contains logs for calculating fist differencing points", async () => {
+    const calculateFirstDif = await fileContainsText(
+      filePath,
+      "first differencing point calculation completed",
+    );
+    expect(calculateFirstDif).toBe(true);
+  });
 });

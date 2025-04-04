@@ -32,9 +32,10 @@ export default function Point2D({ pointRef }: { pointRef: Point2DObject }) {
     const selectedState = !pointRef.getObject().getSelected();
     click(selectedState);
     pointRef.getObject().setSelected(selectedState);
+    const selecteData = pointRef.getObject();
     if (selectedState) {
       addTestSceneInfo(
-        `point ${pointRef.getObject().getTimeData()} ${pointRef.getObject().getYData()} (2D) selected`,
+        `point ${selecteData.getTimeData()} ${pointRef.getObject().getYData()} (2D) selected`,
       );
     } else {
       addTestSceneInfo(

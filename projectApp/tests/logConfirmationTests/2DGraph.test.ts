@@ -110,4 +110,31 @@ describe("2D graph log tests", () => {
     );
     expect(setSelected).toBe(true);
   });
+
+  // Check if the first differencing is properly set to true
+  test("file contains logs for first differencing being set to true", async () => {
+    const activateFirstDif = await fileContainsText(
+      filePath,
+      "setIsFirstDifferencing() was called, first differencing is set to true",
+    );
+    expect(activateFirstDif).toBe(true);
+  });
+
+  // Checking if logs for first differencing calculatin is performed
+  test("file contains logs for first differencing calculations being performed", async () => {
+    const calculateFirstDif = await fileContainsText(
+      filePath,
+      "first differencing point calculation completed",
+    );
+    expect(calculateFirstDif).toBe(true);
+  });
+
+  // Check if the first differencing is properly set to false
+  test("file contains logs for first differencing being set to false", async () => {
+    const activateFirstDif = await fileContainsText(
+      filePath,
+      "setIsFirstDifferencing() was called, first differencing is set to false",
+    );
+    expect(activateFirstDif).toBe(true);
+  });
 });

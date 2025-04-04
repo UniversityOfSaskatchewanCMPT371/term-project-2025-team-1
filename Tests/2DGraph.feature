@@ -29,19 +29,19 @@ Feature: 2DGraph
     Given the user has generated a 3D graph
     When the user clicks on a point on the 2D graph
     Then the corresponding point on the 3D graph should change color
-  
+
   # This case covers the action of turning first differencing on and having data values of points change accordingly
   Scenario: Turning First Differencing On
     Given the time series graph is displayed with a valid CSV file
     When the user turns First Differencing on
     Then the first differencing feature is activated and changes data values of points
-  
+
   # This case covers the action of turning first differencing of and reverting the data values of points
   Scenario: Turning First Differencing Off
     Given the time series graph is displayed with a valid CSV file
     When the user turns First Differencing off
     Then the first differencing feature is deactivated and reverts the data values of points
-  
+
   # This case covers the action of changing the size of points in the time series graph
   Scenario: Setting Point Size
     Given the time series graph is displayed with a valid CSV file

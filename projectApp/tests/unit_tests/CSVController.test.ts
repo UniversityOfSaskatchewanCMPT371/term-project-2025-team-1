@@ -90,7 +90,7 @@ describe("CSVController Tests", () => {
       .spyOn(csvController.getModel(), "readLocalFile")
       .mockResolvedValue();
     await csvController.loadLocalFile(file);
-    expect(readLocalFileSpy).toHaveBeenCalledWith(file);
+    expect(readLocalFileSpy).toHaveBeenCalledWith(file, expect.any(Function));
   });
 
   test("loadLocalFile should handle errors and log via sendError", async () => {

@@ -56,7 +56,7 @@ describe("CSVReaderModel", () => {
 
       await model.readLocalFile(file);
 
-      expect(loadCSVDataSpy).toHaveBeenCalledWith(0, file, false);
+      expect(loadCSVDataSpy).toHaveBeenCalledWith(file, false);
       expect(logger.sendLog).toHaveBeenCalled(); // Verify logging was done
       expect(testScene.addTestSceneInfo).toHaveBeenCalled();
       expect(model.data).toBeInstanceOf(CSVDataObject);
@@ -94,7 +94,7 @@ describe("CSVReaderModel", () => {
 
       await model.readURLFile(url);
 
-      expect(loadCSVDataSpy).toHaveBeenCalledWith(0, url, true);
+      expect(loadCSVDataSpy).toHaveBeenCalledWith(url, true);
       expect(logger.sendLog).toHaveBeenCalled();
       expect(testScene.addTestSceneInfo).toHaveBeenCalled();
       expect(model.data).toBeInstanceOf(CSVDataObject);

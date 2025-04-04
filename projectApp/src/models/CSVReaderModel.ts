@@ -1,5 +1,5 @@
 import { CSVDataObject } from "../components/Csv_Components/CSVDataObject";
-import mainController from "../controller/MainController";
+// import mainController from "../controller/MainController";
 import { sendError, sendLog } from "../logger-frontend";
 import { addTestSceneInfo } from "../pages/Scene/TestScene";
 import { CSVModelInterface } from "../types/CSVInterfaces";
@@ -27,7 +27,7 @@ export class CSVReaderModel implements CSVModelInterface {
   getCSVFile(): CSVDataObject {
     const data = this.data;
     // assert that data is defined
-    if (data === undefined) {
+    if (!data) {
       const error = new Error("Error getting csvfile");
       sendError(error, "Unable to getCSVFile");
       throw error;
@@ -46,7 +46,10 @@ export class CSVReaderModel implements CSVModelInterface {
    *
    * @param {File} file - The File object representing the local CSV file.
    */
-  async readLocalFile(file: File): Promise<void> {
+  async readLocalFile(
+    file: File,
+    setPointSize?: (data: CSVDataObject) => void,
+  ): Promise<void> {
     const data: CSVDataObject = new CSVDataObject();
     try {
       await data.loadCSVData(file, false);
@@ -60,7 +63,9 @@ export class CSVReaderModel implements CSVModelInterface {
       throw error;
     }
     this.data = data;
-    mainController.getGraphController().setRecommendedPointSize(this.data);
+    if (setPointSize) {
+      setPointSize(this.data);
+    }
     addTestSceneInfo(
       "CSVReaderModel now contains a CSVDataObject for the local file just read in",
     );
@@ -77,7 +82,10 @@ export class CSVReaderModel implements CSVModelInterface {
    *
    * @param {string} file - The URL string of the CSV file.
    */
-  async readURLFile(file: string): Promise<void> {
+  async readURLFile(
+    file: string,
+    setPointSize?: (data: CSVDataObject) => void,
+  ): Promise<void> {
     const data: CSVDataObject = new CSVDataObject();
     try {
       await data.loadCSVData(file, true);
@@ -91,7 +99,9 @@ export class CSVReaderModel implements CSVModelInterface {
       throw error;
     }
     this.data = data;
-    mainController.getGraphController().setRecommendedPointSize(this.data);
+    if (setPointSize) {
+      setPointSize(this.data);
+    }
     addTestSceneInfo(
       "CSVReaderModel now contains a CSVDataObject for the url file just read in",
     );

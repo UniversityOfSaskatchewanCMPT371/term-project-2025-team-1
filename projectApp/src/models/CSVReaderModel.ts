@@ -1,4 +1,5 @@
 import { CSVDataObject } from "../components/Csv_Components/CSVDataObject";
+import mainController from "../controller/MainController";
 import { sendError, sendLog } from "../logger-frontend";
 import { addTestSceneInfo } from "../pages/Scene/TestScene";
 import { CSVModelInterface } from "../types/CSVInterfaces";
@@ -48,7 +49,7 @@ export class CSVReaderModel implements CSVModelInterface {
   async readLocalFile(file: File): Promise<void> {
     const data: CSVDataObject = new CSVDataObject();
     try {
-      await data.loadCSVData(0, file, false);
+      await data.loadCSVData(file, false);
       sendLog(
         "info",
         `readLocalFile read a file\n${JSON.stringify(data.getData())}`,
@@ -59,6 +60,7 @@ export class CSVReaderModel implements CSVModelInterface {
       throw error;
     }
     this.data = data;
+    mainController.getGraphController().setRecommendedPointSize(this.data);
     addTestSceneInfo(
       "CSVReaderModel now contains a CSVDataObject for the local file just read in",
     );
@@ -78,7 +80,7 @@ export class CSVReaderModel implements CSVModelInterface {
   async readURLFile(file: string): Promise<void> {
     const data: CSVDataObject = new CSVDataObject();
     try {
-      await data.loadCSVData(0, file, true);
+      await data.loadCSVData(file, true);
       sendLog(
         "info",
         `readURLFile read a file\n${JSON.stringify(data.getData())}`,
@@ -89,6 +91,7 @@ export class CSVReaderModel implements CSVModelInterface {
       throw error;
     }
     this.data = data;
+    mainController.getGraphController().setRecommendedPointSize(this.data);
     addTestSceneInfo(
       "CSVReaderModel now contains a CSVDataObject for the url file just read in",
     );
@@ -96,10 +99,9 @@ export class CSVReaderModel implements CSVModelInterface {
 
   /**
    * Returns the current array of CSVDataObject instances.
-   *
-   * @preconditions none
-   *
-   * @postconditions returns the csv data of this model
+   * @precondition none
+   * @postcondition The internal data array of CSVDataObject instances is returned.
+   * @returns The internal data array of CSVDataObject instances.
    */
   getData(): CSVDataObject | undefined {
     return this.data;

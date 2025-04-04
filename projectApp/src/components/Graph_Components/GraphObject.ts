@@ -16,8 +16,8 @@ import { CSVDataObject } from "../Csv_Components/CSVDataObject";
  * - The 'points' array is mutable.
  */
 export class GraphObject implements GraphInterface {
-  name: string;
   csvData: CSVDataObject;
+  name: string;
   axes: {
     xRange: [number, number];
     yRange: [number, number];
@@ -37,48 +37,12 @@ export class GraphObject implements GraphInterface {
    */
   constructor(csvdata: CSVDataObject) {
     // CSVDataObject is required, so the check is unnecessary.
-    this.name = csvdata.getName();
     this.csvData = csvdata;
+    this.name = "";
     this.axes = {
       xRange: [0, 0],
       yRange: [0, 0],
     };
-  }
-
-  /**
-   * Get the name of the graph.
-   *
-   * @param none
-   *
-   * @preconditions The graph instance must have a valid name.
-   * @postconditions The 'name' property is returned as a string.
-   */
-  getName(): string {
-    return this.name;
-  }
-
-  /**
-   * Sets the name of the graph.
-   * @param {string} title - A string representing the name of the graph.
-   *
-   * @preconditions `title` must be a non-empty string.
-   * @postconditions
-   * - 'name' property is set to the provided title.
-   * - If the title is empty or not a string, an error is thrown.
-   */
-  setName(title: string): void {
-    // assert that title is a nonempty string
-    if (title.trim() === "" || typeof title !== "string") {
-      const error = new SyntaxError("Invalid Name");
-      sendError(error, "Name must be a non-empty string. (GraphObject.ts");
-      throw error;
-    }
-    this.name = title;
-
-    sendLog(
-      "info",
-      `setName() was called on Graph Object, name of the Graph is now ${title} (GraphObject.ts)`,
-    );
   }
 
   // Axes management
@@ -138,5 +102,32 @@ export class GraphObject implements GraphInterface {
    */
   getCSVData(): CSVDataObject {
     return this.csvData;
+  }
+
+  /**
+   * Gets the name used by the graph
+   * @preconditions none
+   * @postconditions returns the name attribute of the graph
+   */
+  getName(): string {
+    return this.name;
+  }
+
+  /**
+   * Sets the name of the graph
+   * @param {string} name the new name set for the graph
+   * @precondition the name parameter must be non-null and not empty ""
+   * @postcondition
+   * - the name of the graph is set to the name parameter of the method
+   * - throws an error if the parameter is invalid
+   */
+  setName(name: string): void {
+    if (name === "") {
+      const error = new Error("Empty string provided");
+      sendError(error, "Invalid name parameter, GraphObject.ts");
+      throw error;
+    }
+    this.name = name;
+    sendLog("info", `setName, ${this.name} will now be called ${name}`);
   }
 }

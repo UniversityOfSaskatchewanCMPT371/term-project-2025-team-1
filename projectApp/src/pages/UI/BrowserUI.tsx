@@ -51,6 +51,10 @@ export default function BrowserUI() {
               await mainController.getCSVController().loadURLFile(csv);
               addTestSceneInfo("url csv file upload succeded");
               alert(`Successfully Loaded: ${csv}`);
+              mainController
+                .getCSVController()
+                .getModelData()
+                ?.setName("URL File");
               sendLog("info", `URLComponent read: ${csv}`);
             } catch (error: unknown) {
               // if url cannot be loaded, log the error
@@ -98,6 +102,10 @@ export default function BrowserUI() {
                 await mainController.getCSVController().loadLocalFile(file);
                 addTestSceneInfo("local csv file loading succeeded");
                 alert(`Successfully Loaded: ${file.name}`);
+                mainController
+                  .getCSVController()
+                  .getModelData()
+                  ?.setName(file.name);
                 sendLog("info", `LoadComponent read: ${file.name.toString()}`);
               } catch (error: unknown) {
                 // if file cannot be loaded, log the error

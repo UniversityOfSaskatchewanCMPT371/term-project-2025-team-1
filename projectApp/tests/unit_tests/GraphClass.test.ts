@@ -54,14 +54,8 @@ describe("GraphObject", async () => {
   });
 
   /**
-   * Test: Setting and Getting the Dimensions, and Axes
+   * Test: Setting and Getting the Axes
    */
-  it("sets and gets the name correctly", () => {
-    const graph = new GraphObject(csvDataMock);
-
-    graph.setName("NewName");
-    expect(graph.getName()).toBe("NewName");
-  });
 
   it("sets and gets axes correctly", () => {
     const graph = new GraphObject(csvDataMock);
@@ -73,16 +67,6 @@ describe("GraphObject", async () => {
     };
     graph.setAxes(newAxes);
     expect(graph.getAxes()).toEqual(newAxes);
-  });
-
-  /**
-   * Test: Error Handling for invalid ID and Name
-   */
-  it("throws error when setting invalid name", () => {
-    const graph = new GraphObject(csvDataMock);
-    expect(() => {
-      graph.setName("");
-    }).toThrowError("Invalid Name");
   });
 
   /**

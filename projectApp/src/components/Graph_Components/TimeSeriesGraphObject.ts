@@ -1,7 +1,7 @@
 import { TimeSeriesGraphInterface } from "../../types/TimeSeriesGraphInterface";
 import { CSVDataObject } from "../Csv_Components/CSVDataObject";
 import { GraphObject } from "./GraphObject";
-import { sendLog } from "../../logger-frontend";
+import { sendError, sendLog } from "../../logger-frontend";
 import { Point2DObject } from "./Points/Point2DObject";
 import { Point2DInterface } from "../../types/GraphPointsInterfaces";
 
@@ -104,32 +104,55 @@ export class TimeSeriesGraphObject
    */
   setRange(): void {
     let max = 0;
-    this.getCSVData()
-      .getData()
-      .forEach((data) => {
-        if (
-          (data[
-            this.getCSVData().getYHeader() as keyof typeof data
-          ] as unknown as number) >= max
-        ) {
-          max = data[
+    let min = 0;
+    if (this.getCSVData().isFirstDifferencing) {
+      this.getCSVData()
+        .calculateFirstDifferencingValues()
+        .forEach((data) => {
+          if (data > max) {
+            max = data;
+          }
+          if (data < min || min === 0) {
+            min = data;
+          }
+        });
+      // If max is a float, convert it to an integer by rounding up.
+      max = Math.ceil(max / 10) * 10;
+      min = Math.floor(min / 10) * 10;
+
+      this.axes.yRange[1] = max;
+      this.axes.yRange[0] = min;
+      sendLog(
+        "info",
+        `setRange() was called; max yRange set to ${this.getMaxYRange()}, min yRange set to ${this.getMinYRange()} (TimeSeriesGraphObject.ts)`,
+      );
+    } else {
+      this.getCSVData()
+        .getData()
+        .forEach((data) => {
+          const val = data[
             this.getCSVData().getYHeader() as keyof typeof data
           ] as unknown as number;
-        }
-      });
+          if (val > max) {
+            max = val;
+          }
 
-    // If max is a float, convert it to an integer by rounding up.
-    max = Math.ceil(max);
+          if (val < min || min === 0) {
+            min = val;
+          }
+        });
 
-    while (max % 10 != 0) {
-      max++;
+      // If max is a float, convert it to an integer by rounding up.
+      max = Math.ceil(max / 10) * 10;
+      min = Math.floor(min / 10) * 10;
+
+      this.axes.yRange[1] = max;
+      this.axes.yRange[0] = min;
+      sendLog(
+        "info",
+        `setRange() was called; max yRange set to ${this.getMaxYRange()}, min yRange set to ${this.getMinYRange()} (TimeSeriesGraphObject.ts)`,
+      );
     }
-
-    this.axes.yRange[1] = max;
-    sendLog(
-      "info",
-      `setRange() was called; yRange was set to ${this.axes.yRange[1]} (TimeSeriesGraphObject.ts)`,
-    );
   }
 
   /**
@@ -139,14 +162,17 @@ export class TimeSeriesGraphObject
    */
   timeSeriesYRange(): number[] {
     const range: number[] = [];
+    const spacing = this.getTotalYRange() / 10;
 
-    let cur = 0;
+    let cur = this.getMinYRange();
+    let next = this.getMinYRange() + spacing;
 
-    // For larger data sets, it would be possible to create a case statement
-    while (cur < this.axes.yRange[1]) {
-      cur = cur + 10;
+    while (cur < this.getMaxYRange()) {
+      cur = next;
+      next = next + spacing;
       range.push(cur);
     }
+
     sendLog(
       "info",
       `timeSeriesYRange() returned ${range} (TimeSeriesGraphObject.ts)`,
@@ -179,147 +205,6 @@ export class TimeSeriesGraphObject
   }
 
   /**
-   * Increment Y header
-   * @preconditions nonde
-   * @postconditions Y header increments/changes properly
-   */
-  incrementYHeader(): void {
-    // If theres only two Y headers, increment to new column not possible
-    if (this.getCSVData().getCSVHeaders().length < 3) {
-      sendLog(
-        "info",
-        "incrementYHeader() was called but no changes were made (length < 3) (TimeSeriesGraphObject.ts)",
-      );
-      return;
-    }
-
-    let start = this.getCSVData()
-      .getCSVHeaders()
-      .indexOf(this.getCSVData().getYHeader());
-
-    // Cycle to the beginning
-    if (start == this.getCSVData().getCSVHeaders().length - 1) {
-      if (
-        this.getCSVData().getCSVHeaders()[0] !=
-        this.getCSVData().getTimeHeader()
-      ) {
-        this.getCSVData().setYHeader(this.getCSVData().getCSVHeaders()[0]);
-      } else {
-        // Go to the next available header
-        this.getCSVData().setYHeader(this.getCSVData().getCSVHeaders()[1]);
-      }
-      sendLog(
-        "info",
-        "incrementYHeader() was called and successfully incremented (TimeSeriesGraphObject.ts)",
-      );
-      return;
-    }
-
-    // If second to the last but last is the Time header, go to the start
-    if (
-      start == this.getCSVData().getCSVHeaders().length - 2 &&
-      this.getCSVData().getCSVHeaders()[
-        this.getCSVData().getCSVHeaders().length - 1
-      ] == this.getCSVData().getTimeHeader()
-    ) {
-      this.getCSVData().setYHeader(this.getCSVData().getCSVHeaders()[0]);
-      sendLog(
-        "info",
-        "incrementYHeader() was called and successfully incremented (TimeSeriesGraphObject.ts)",
-      );
-      return;
-    }
-
-    for (start; start < this.getCSVData().getCSVHeaders().length; start++) {
-      if (
-        this.getCSVData().getCSVHeaders()[start] !=
-          this.getCSVData().getTimeHeader() &&
-        this.getCSVData().getCSVHeaders()[start] !=
-          this.getCSVData().getYHeader()
-      ) {
-        this.getCSVData().setYHeader(this.getCSVData().getCSVHeaders()[start]);
-        return;
-      }
-    }
-  }
-
-  /**
-   * Decrement Y header
-   * @preconditions nonde
-   * @postconditions Y header decrements/changes properly
-   */
-  decrementYHeader(): void {
-    // If theres only two Y headers, increment to new column not possible
-    if (this.getCSVData().getCSVHeaders().length < 3) {
-      sendLog(
-        "info",
-        "decrementYHeader() was called but no changes were made (length < 3) (TimeSeriesGraphObject.ts)",
-      );
-      return;
-    }
-
-    let start = this.getCSVData()
-      .getCSVHeaders()
-      .indexOf(this.getCSVData().getYHeader());
-
-    // Cycle to the end
-    if (start == 0) {
-      if (
-        this.getCSVData().getCSVHeaders()[
-          this.getCSVData().getCSVHeaders().length - 1
-        ] != this.getCSVData().getTimeHeader()
-      ) {
-        this.getCSVData().setYHeader(
-          this.getCSVData().getCSVHeaders()[
-            this.getCSVData().getCSVHeaders().length - 1
-          ],
-        );
-      } else {
-        // Go to the next available header
-        this.getCSVData().setYHeader(
-          this.getCSVData().getCSVHeaders()[
-            this.getCSVData().getCSVHeaders().length - 2
-          ],
-        );
-      }
-      sendLog(
-        "info",
-        "decrementYHeader() was called and successfully deccremented (TimeSeriesGraphObject.ts)",
-      );
-      return;
-    }
-
-    // If second to the first but first is the Time header, go to the end
-    if (
-      start == 1 &&
-      this.getCSVData().getCSVHeaders()[0] == this.getCSVData().getTimeHeader()
-    ) {
-      this.getCSVData().setYHeader(
-        this.getCSVData().getCSVHeaders()[
-          this.getCSVData().getCSVHeaders().length - 1
-        ],
-      );
-      sendLog(
-        "info",
-        "decrementYHeader() was called and successfully deccremented (TimeSeriesGraphObject.ts)",
-      );
-      return;
-    }
-
-    for (start; start > 0; start--) {
-      if (
-        this.getCSVData().getCSVHeaders()[start] !=
-          this.getCSVData().getYHeader() &&
-        this.getCSVData().getCSVHeaders()[start] !=
-          this.getCSVData().getTimeHeader()
-      ) {
-        this.getCSVData().setYHeader(this.getCSVData().getCSVHeaders()[start]);
-        return;
-      }
-    }
-  }
-
-  /**
    * Update the graph when the model changes
    * @preconditions whenver the model changes
    * @postconditions point positions are updated
@@ -328,9 +213,10 @@ export class TimeSeriesGraphObject
     this.setRange();
 
     this.yRangeLength = this.timeSeriesYRange().length + 1;
-    const totalSpace = 5;
-    const divider = totalSpace / this.timeSeriesYRange().length;
-    let current = -1.8 + divider / 2;
+    const totalSpace = 6.38;
+    const divider = totalSpace / this.getNumPoints();
+    const ySpacing = 100 / this.getYRangeLength();
+    let current = -2.62 + divider / 2;
 
     // Resetting points
     this.points2D = [];
@@ -342,10 +228,22 @@ export class TimeSeriesGraphObject
     // Assigning new position values to the points
     this.getPoints2D().forEach((point) => {
       point.setXAxisPos(current);
+
+      /**
+       * Arranges the point position in the Y axis,
+       * Takes the Point data and then translates it to its position on the graph container
+       *
+       * Data value - minimum range / total range (which is max range - min range)
+       * Then translates its position to the graph
+       * maximum height of graph = 1.45
+       * ySpacing = container of a 2D graph y-axis point in percent form, we then scale it
+       * minimum height of graph = 1.05
+       */
       point.setYAxisPos(
-        (point.getObject().getYData() / 100) *
-          (this.getYRange() / this.timeSeriesYRange().length) -
-          1,
+        ((point.getObject().getYData() - this.getMinYRange()) /
+          this.getTotalYRange()) *
+          (1.45 - (ySpacing / 100) * 2 + 1.05) -
+          1.05,
       );
 
       current += divider;
@@ -384,15 +282,80 @@ export class TimeSeriesGraphObject
   }
 
   /**
-   * Get max range of the Y axis
-   * @preconditions none
-   * @postconditions returns range of the Y axis
+   * Gets the total range of the Y axis
+   * @precondition none
+   * @postcondition total range of the Y axis
    */
-  getYRange(): number {
+  getTotalYRange(): number {
     sendLog(
       "info",
-      `getYRange returned ${this.axes.yRange[1]} (TimeSeriesGraphObject.ts)`,
+      `getTotalYRange returned ${this.axes.yRange[1] - this.axes.yRange[0]} (TimeSeriesGraphObject.ts)`,
+    );
+    return this.axes.yRange[1] - this.axes.yRange[0];
+  }
+
+  /**
+   * Get max range of the Y axis
+   * @precondition none
+   * @postcondition max range of the Y axis
+   */
+  getMaxYRange(): number {
+    sendLog(
+      "info",
+      `getMaxYRange returned ${this.axes.yRange[1]} (TimeSeriesGraphObject.ts)`,
     );
     return this.axes.yRange[1];
+  }
+
+  /**
+   * Get min range of the Y axis
+   * @precondition none
+   * @postcondition min range of the Y axis
+   */
+  getMinYRange(): number {
+    sendLog(
+      "info",
+      `getMinYRange returned ${this.axes.yRange[0]} (TimeSeriesGraphObject.ts)`,
+    );
+    return this.axes.yRange[0];
+  }
+
+  /**
+   * Sets the interval for the x-axis of the Time Series Graph in order to deal with large data sets
+   * @precondition a valid array of time lables, the length cannot be 0
+   * @postcondition On success, sets the interval for the x-axis in the Time Series Graph
+   *
+   * @param range the array of time labels in the csv file
+   * @returns the interval to be used in the x-axis of the Time Series Graph
+   */
+  intervalForXAxis(range: string[]): number {
+    try {
+      if (range.length <= 0) {
+        const error = new Error("Invalid array of time labels");
+        throw error;
+      } else if (range.length >= 500) {
+        sendLog(
+          "warn",
+          "Loading an extremely large data set intervalForXAxis() on TimeSeriesGraphObject.ts",
+        );
+      }
+      let interval;
+
+      if (range.length <= 5) {
+        interval = 1;
+      } else if (range.length > 5 && range.length <= 10) {
+        interval = Math.ceil(range.length / 8);
+      } else {
+        interval = Math.floor(range.length / 4);
+      }
+
+      return interval;
+    } catch (error: unknown) {
+      sendError(
+        error,
+        "Error occurs in setting the interval for the x-axis of the Time Series Graph (TimeSeriesGraphObject.ts)",
+      );
+      throw error;
+    }
   }
 }

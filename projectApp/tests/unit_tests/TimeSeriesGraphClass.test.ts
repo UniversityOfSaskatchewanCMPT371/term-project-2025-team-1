@@ -37,32 +37,28 @@ describe("Time Series Graph Class", async () => {
     expect(graph.getCSVData().getYHeader()).toBe("X");
     expect(graph.getCSVData().getTimeHeader()).toBe("Time");
 
-    expect(graph.getYRange()).toBe(0);
+    expect(graph.getMinYRange()).toBe(0);
 
     //Setting the range of the Graph
     graph.setRange();
-    expect(graph.getYRange()).toBe(40); //Largest value divisible by 10 on the csv file
-    expect(graph.timeSeriesYRange().length).toBe(4);
+    expect(graph.getMaxYRange()).toBe(40); //Largest value divisible by 10 on the csv file
+    expect(graph.timeSeriesYRange().length).toBe(10);
 
-    //Testing if able to switch headers
-    graph.incrementYHeader();
-
+    graph.getCSVData().setYHeader("Y");
     expect(graph.getCSVData().getYHeader()).toBe("Y");
     expect(graph.getCSVData().getTimeHeader()).toBe("Time");
 
     graph.setRange();
-    expect(graph.getYRange()).toBe(50);
-    expect(graph.timeSeriesYRange().length).toBe(5);
+    expect(graph.getMaxYRange()).toBe(50);
+    expect(graph.timeSeriesYRange().length).toBe(10);
 
-    //Switching back
-    graph.decrementYHeader();
-
+    graph.getCSVData().setYHeader("X");
     expect(graph.getCSVData().getYHeader()).toBe("X");
     expect(graph.getCSVData().getTimeHeader()).toBe("Time");
 
     graph.setRange();
-    expect(graph.getYRange()).toBe(40);
-    expect(graph.timeSeriesYRange().length).toBe(4);
+    expect(graph.getMaxYRange()).toBe(40);
+    expect(graph.timeSeriesYRange().length).toBe(10);
 
     //Testing points now
     graph.getCSVData().clearPoints();

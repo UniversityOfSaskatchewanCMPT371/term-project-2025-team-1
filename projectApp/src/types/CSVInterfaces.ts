@@ -25,7 +25,7 @@ export interface CSVDataInterface extends DataInterface {
   /** Get specific data by Time value */
   getDataByTime(time: string): Record<string, string | number> | null;
   /** Load a csv file */
-  loadCSVData(index: number, file: File, isUrl: boolean): Promise<void>;
+  loadCSVData(file: File, isUrl: boolean): Promise<void>;
   /** Get csv headers attribute */
   getCSVHeaders(): string[];
   /** Get the Time header */

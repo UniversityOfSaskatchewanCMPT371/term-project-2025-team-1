@@ -72,7 +72,6 @@ export default function TestScene({
             <Text fontSize={12} color={"white"}>
               Test Scene
             </Text>
-            
           </Container>
         </Container>
 

@@ -81,7 +81,7 @@ describe("Embedded graph log tests", () => {
   });
 
   // Checking if logs for calculating points for first differencing is reached
-  test("file contains logs for calculating fist differencing points", async () => {
+  test("file contains logs for calculating first differencing points", async () => {
     const calculateFirstDif = await fileContainsText(
       filePath,
       "first differencing point calculation completed",

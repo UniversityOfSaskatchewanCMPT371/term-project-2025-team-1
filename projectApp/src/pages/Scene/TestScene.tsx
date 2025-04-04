@@ -72,7 +72,10 @@ export default function TestScene({
             borderRadius={10}
             alignContent="center"
             justifyContent="center"
-            paddingTop={inVR ? 200 : 0}
+            // paddingTop={inVR ? 200 : 0}
+            positionType="absolute"
+            positionRight={170}
+            positionBottom={190}
 
           >
             <Text fontSize={12} color={"white"}>

@@ -178,7 +178,12 @@ export class TimeSeriesGraphObject
    */
   timeSeriesXRange(): string[] {
     const range: string[] = [];
-
+    if(this.getCSVData().isFirstDifferencing){
+      this.getCSVData().calculateFirstDifferencingValues().forEach((data,index) => {
+        range.push(index.toString());
+      })
+    }
+    else{
     this.getCSVData()
       .getData()
       .forEach((data) => {
@@ -187,6 +192,7 @@ export class TimeSeriesGraphObject
         ] as unknown as string;
         range.push(temp);
       });
+    }
     sendLog(
       "info",
       `timeSeriesXRange() was called and returned ${range} (TimeSeriesGraphObject.ts)`,

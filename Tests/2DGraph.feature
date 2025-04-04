@@ -33,7 +33,7 @@ Feature: 2DGraph
   # This case covers the action of turning first differencing on and having data values of points change accordingly
   Scenario: Turning First Differencing On
     Given the time series graph is displayed with a valid CSV file
-    When the user turns first differencing on by clicking the assigned button to first differencing in the drop down UI and with the text stating "Enabled" 
+    When the user turns first differencing on by clicking the assigned button to first differencing in the drop down UI and with the text stating "Enabled"
     Then the first differencing feature is activated and changes data values of points when a time series graph is generated
 
   # This case covers the action of turning first differencing of and reverting the data values of points

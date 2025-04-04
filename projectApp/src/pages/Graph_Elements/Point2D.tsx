@@ -39,7 +39,7 @@ export default function Point2D({ pointRef }: { pointRef: Point2DObject }) {
       );
     } else {
       addTestSceneInfo(
-        `point ${pointRef.getObject().getTimeData()} ${pointRef.getObject().getYData()} (2D) deselected`,
+        `point ${selecteData.getTimeData()} ${selecteData.getYData()} (2D) deselected`,
       );
     }
     sendLog("info", `setOnClick(), 2D Point has been clicked (Point2D.tsx)`);

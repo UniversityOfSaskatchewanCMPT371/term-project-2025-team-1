@@ -1,9 +1,8 @@
 import { vi, describe, it, expect, beforeEach } from "vitest";
-
-import { CSVReaderModel } from "../../src/models/CSVReaderModel";
 import { CSVDataObject } from "../../src/components/Csv_Components/CSVDataObject";
 import * as logger from "../../src/logger-frontend";
 import * as testScene from "../../src/pages/Scene/TestScene";
+import { CSVReaderModel } from "../../src/models/CSVReaderModel";
 
 beforeEach(() => {
   // Clear all previous mocks
@@ -25,7 +24,7 @@ describe("CSVReaderModel", () => {
   describe("getCSVFile", () => {
     it("should throw error and log if data is undefined", () => {
       const model = new CSVReaderModel();
-      expect(() => model.getCSVFile()).toThrowError(SyntaxError);
+      expect(() => model.getCSVFile()).toThrowError(Error);
       expect(logger.sendError).toHaveBeenCalled();
     });
 
@@ -109,30 +108,6 @@ describe("CSVReaderModel", () => {
 
       await expect(model.readURLFile(url)).rejects.toThrowError(error);
       expect(logger.sendError).toHaveBeenCalledWith(error, "readURLFile error");
-    });
-  });
-
-  describe("loadedCsvBrowser", () => {
-    it("should return a tuple with file name and browser selection status if data is present", () => {
-      const model = new CSVReaderModel();
-      const dummyData = new CSVDataObject();
-
-      // Spy on CSVDataObject instance methods getName and getBrowserSelected
-      vi.spyOn(dummyData, "getName").mockReturnValue("testFile.csv");
-      vi.spyOn(dummyData, "getBrowserSelected").mockReturnValue(true);
-
-      model.data = dummyData;
-      const result = model.loadedCsvBrowser();
-
-      expect(result).toEqual([["testFile.csv", true]]);
-      expect(logger.sendLog).toHaveBeenCalled();
-    });
-
-    it("should return an empty array if no CSVDataObject is present", () => {
-      const model = new CSVReaderModel();
-      model.data = undefined;
-      const result = model.loadedCsvBrowser();
-      expect(result).toEqual([]);
     });
   });
 

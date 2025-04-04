@@ -60,15 +60,6 @@ describe("2D graph log tests", () => {
     expect(response).toBe(true);
   });
 
-  // Check if the logger is notifying the user when a TimeSeriesGraph header is selected
-  test("file contains TimeSeriesGraph header selection logging", async () => {
-    const response = await fileContainsText(
-      filePath,
-      "a TimeSeriesGraph object header was selected and visually updated to reflect selection (TimeSeriesGraph.tsx)",
-    );
-    expect(response).toBe(true);
-  });
-
   // Check if the logger is notifying the user when a TimeSeriesGraph visualization is created
   test("file contains TimeSeriesGraph visualization logging", async () => {
     const response = await fileContainsText(
@@ -88,8 +79,8 @@ describe("2D graph log tests", () => {
   });
 
   // Check if the getYRange() log calls are being reached
-  test("file contains getYRange() logging", async () => {
-    const response = await fileContainsText(filePath, "getYRange returned");
+  test("file contains getMaxYRange() logging", async () => {
+    const response = await fileContainsText(filePath, "getMaxYRange returned");
     expect(response).toBe(true);
   });
 

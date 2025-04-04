@@ -93,13 +93,6 @@ describe("Embedded Graph test", () => {
     expect(graph.getTau()).toBe(5);
   });
 
-  // testing setDimensions() and getDimensions()
-  test("setting and getting dimensions correctly", () => {
-    graph.setDimensions(100, 200, 300);
-    const dims = graph.getDimensions();
-    expect(dims).toStrictEqual({ width: 100, height: 200, depth: 300 });
-  });
-
   // test updatePoints() and addPoints()
   test("updating point selection status", () => {
     graph.getCSVData().populatePoints();

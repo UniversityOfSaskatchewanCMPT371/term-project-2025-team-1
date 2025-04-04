@@ -43,6 +43,7 @@ export default function TimeSeriesGraph({
 
   const pointRadius = mainController.getGraphController().getPointSize() / 4;
 
+  // Checking and updating based on the list of selected points
   useFrame(() => {
     if (
       selectedPoints.length !== graph.getCSVData().getSelectedPoints().length
@@ -78,14 +79,15 @@ export default function TimeSeriesGraph({
           <Text fontSize={13}>Point Value</Text>
           <Text fontSize={13}>(x, y):</Text>
           {selectedPoints.map((point) => {
-            return <Text>{point.getYData()}</Text>;
+            return (
+              <Text fontSize={8} fontWeight={"bold"}>
+                {" "}
+                {"("}
+                {point.getTimeData()}, {point.getYData()}
+                {")"}
+              </Text>
+            );
           })}
-
-          {/* <Text fontSize={13}>
-            {selectedPoint !== null
-              ? `(${selectedPoint.getObject().getTimeData()}, ${selectedPoint.getObject().getYData()})`
-              : "None"}
-          </Text> */}
         </Container>
       </Container>
     );
@@ -135,19 +137,7 @@ export default function TimeSeriesGraph({
       "a visual representation of points was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)",
     );
 
-    return (
-      // <group
-      //   onClick={() => {
-      //     if (point.getObject().getSelected()) {
-      //       setSelectedPoints(graph.getCSVData().getSelectedPoints());
-      //     } else {
-      //       setSelectedPoints(graph.getCSVData().getSelectedPoints());
-      //     }
-      //   }}
-      // >
-      <Create2DPoint pointRef={point} />
-      //  </group>
-    );
+    return <Create2DPoint pointRef={point} />;
   }
 
   /**

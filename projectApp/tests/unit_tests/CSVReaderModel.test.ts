@@ -2,7 +2,7 @@ import { vi, describe, it, expect, beforeEach } from "vitest";
 import { CSVDataObject } from "../../src/components/Csv_Components/CSVDataObject";
 import * as logger from "../../src/logger-frontend";
 import * as testScene from "../../src/pages/Scene/TestScene";
-import { CSVReaderModel } from "../../src/models/CSVReaderModel";
+import { CSVReaderModel } from "../../src/models/CSVReaderModel"
 
 beforeEach(() => {
   // Clear all previous mocks

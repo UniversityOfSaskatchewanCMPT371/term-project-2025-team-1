@@ -73,9 +73,9 @@ export default function TestScene({
             alignContent="center"
             justifyContent="center"
             // paddingTop={inVR ? 200 : 0}
-            positionType="absolute"
-            positionRight={170}
-            positionBottom={190}
+            positionType={inVR ? "absolute" : "relative"}
+            positionRight={inVR ? 250 : 0}
+            positionTop={inVR ? 190 : 0}
 
           >
             <Text fontSize={12} color={"white"}>

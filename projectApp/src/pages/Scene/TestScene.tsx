@@ -64,7 +64,7 @@ export default function TestScene({
             pointerEvents={"auto"}
             onPointerEnter={() => { setHovered(true); }}
             onPointerLeave={() => { setHovered(false); }}
-            onClick={() => setClicked(!clicked)}
+            onClick={() => {setClicked(!clicked); }}
             borderRadius={10}
             alignContent="center"
             justifyContent="center"

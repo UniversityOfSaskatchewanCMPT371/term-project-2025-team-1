@@ -72,8 +72,18 @@ describe("Test that graph objects are properly created", () => {
   });
   test("expect correct Time Series range", () => {
     const graphm = mainController.getGraphController().getModel();
-    const graphaxes = graphm.getData()?.getMaxYRange();
-    expect(graphaxes).toBe(0);
-    // Currently expect y range to be zero, waiting on future implementation
+    graphm.getData()?.setRange();
+
+    //Max range of the time series graph
+    const graphMax = graphm.getData()?.getMaxYRange();
+    expect(graphMax).toBe(10);
+
+    //Min range of the time series graph
+    const graphMin = graphm.getData()?.getMinYRange();
+    expect(graphMin).toBe(0);
+
+    //Total range of the time series graph
+    const graphTotal = graphm.getData()?.getTotalYRange();
+    expect(graphTotal).toBe(10);
   });
 });

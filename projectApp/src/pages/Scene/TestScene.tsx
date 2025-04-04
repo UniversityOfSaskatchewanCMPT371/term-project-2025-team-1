@@ -101,12 +101,6 @@ export default function TestScene({
             height={inVR ? "400px" : "30%"}
             display={clicked ? "flex" : "none"}
             flexDirection="column"
-            // backgroundOpacity={0.1}
-            // backgroundColor="white"
-            // borderWidth={1}
-            // borderColor="lightgray"
-            // borderRadius={8}
-            // padding={10}
           >
             <Text fontSize={16} fontWeight={"bold"} color={"black"}>
               Graph Information:

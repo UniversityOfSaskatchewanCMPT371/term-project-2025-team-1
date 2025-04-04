@@ -771,17 +771,23 @@ export default function DropdownUI({
   }
 
   /**
-   * This function is used when the user wants to increase the tau value
+   * Increases the point size that will be used in the points of the graphs
+   * @preconditions expect the point size to be between 1 and 16 (inclusive)
+   * @postconditions if point size is less than 16, increase it by 1. Otherwise leave it at 16
    */
   function setOnPointSizeIncrease(): void {
-    //For now max tau will be set to 5
+    //For now max point size will be set to 16
     if (selectPointSize != 16) {
       setSelectPointSize(selectPointSize + 1);
     }
   }
 
   /**
-   * This function is used when the user wants to decrease the tau value
+   * Decreases the point size that will be used in the points of the graphs
+   * @preconditions expect point size to be between 1 and 16 (inclusive)
+   * @postconditions
+   * - if point size is greater than 1, decreases it by 1.
+   * - Otherwise leave it at 1
    */
   function setOnPointSizeDecrease(): void {
     if (selectPointSize != 1) {
@@ -791,6 +797,11 @@ export default function DropdownUI({
 
   /**
    * This function is used to render only the point size change rather than generating the whole graph
+   * @precondition the point size being used should equal the point size set by the user, in order to avoid unnecessary re-renders
+   * @postcondition
+   * - if the selected point size doesn't equal the current set point size of the program,
+   * - - update the point size and re-render the points
+   * - Otherwise, do not set to avoid unneeded to re-rendering
    */
   function setOnlyPointSize(): void {
     mainController.getGraphController().setPointSize(selectPointSize / 100);
@@ -802,7 +813,8 @@ export default function DropdownUI({
   /**
    * This function creates the component for setting the Point size value on generation.
    * Shows the buttons for both decreasing and increasing the Point size value, it will also display the current Point size value
-   * @returns the Point Size selector component
+   * @precondition none
+   * @postcondition returns the Point Size selector component
    */
   function GeneratePointSizeSelector(): React.JSX.Element {
     return (

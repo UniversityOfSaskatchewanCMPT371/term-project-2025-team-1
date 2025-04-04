@@ -24,11 +24,8 @@ export class GraphModel implements ModelInterface {
   }
   /**
    * Sets a new TimeSeriesGraphObject to the model.
-   *
    * @preconditions The 'graph' parameter must be a valid TimeSeriesGraphObject instance.
-   *
    * @postconditions The provided 'graph' is appended to the internal 'data' array.
-   *
    * @param {TimeSeriesGraphObject} graph - The TimeSeriesGraphObject to add to the model.
    */
   setTimeSeriesGraph(graph: TimeSeriesGraphObject): void {
@@ -46,11 +43,8 @@ export class GraphModel implements ModelInterface {
 
   /**
    * Sets a EmbeddedGraphObject to the model.
-   *
    * @preconditions The 'graph' parameter must be a valid EmbeddedGraphObject instance.
-   *
    * @postconditions The provided 'graph' is appended to the internal 'embeddedGraphData' array.
-   *
    * @param {EmbeddedGraphObject} graph - The EmbeddedGraphObject to add to the model.
    */
   setEmbeddedGraph(graph: EmbeddedGraphObject): void {
@@ -68,11 +62,8 @@ export class GraphModel implements ModelInterface {
 
   /**
    * Returns the size of points in the program.
-   *
    * @preconditions none.
-   *
    * @postconditions Returns the size of points in the program.
-   *
    * @returns {number} Size of the points.
    */
   getPointSize(): number {
@@ -81,11 +72,8 @@ export class GraphModel implements ModelInterface {
 
   /**
    * Sets the size of the points.
-   *
    * @preconditions The size cant be zero or negative.
-   *
    * @postconditions The size of the points is set to the specified value.
-   *
    * @param {number} size - The new size of the points
    */
   setPointSize(size: number): void {

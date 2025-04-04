@@ -228,8 +228,9 @@ export class TimeSeriesGraphObject
     // Assigning new position values to the points
     this.getPoints2D().forEach((point) => {
       point.setXAxisPos(current);
+
       /**
-       * This basically arranges point position in the Y axis,
+       * Arranges the point position in the Y axis,
        * Takes the Point data and then translates it to its position on the graph container
        *
        * Data value - minimum range / total range (which is max range - min range)

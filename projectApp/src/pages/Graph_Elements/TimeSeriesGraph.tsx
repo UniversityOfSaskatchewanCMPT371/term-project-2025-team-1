@@ -94,7 +94,7 @@ export default function TimeSeriesGraph({
     // Updating the position of the point
 
     /**
-     * This basically arranges point position in the Y axis,
+     * Arranges point position in the Y axis,
      * Takes the Point data and then translates it to its position on the graph container
      *
      * Data value - minimum range / total range (which is max range - min range)

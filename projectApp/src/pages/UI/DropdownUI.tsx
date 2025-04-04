@@ -40,6 +40,7 @@ export default function DropdownUI({
 
   const [selectedHeaderIndex, setSelectedHeaderIndex] = useState<number>(-1);
   const [headerList, setHeaderList] = useState<string[]>([]);
+  const [maxTau, setMaxTau] = useState<number>(50);
 
   useEffect(() => {
     const csvData = mainController.getCSVController().getModelData();
@@ -50,6 +51,7 @@ export default function DropdownUI({
       const yHeaderIndex = h.indexOf(yHeader);
       setSelectedHeaderIndex(yHeaderIndex);
       setHeaderList(h);
+      setMaxTau(csvData.getData().length)
     }
   }, [active]);
 
@@ -352,7 +354,7 @@ export default function DropdownUI({
               justifyContent={"flex-start"}
             >
               <Text positionLeft={10} fontSize={inVR ? 10 : 13}>
-                Tau Value: {infoTau}
+                Tau Value: {infoTau}: {maxTau}
               </Text>
             </Container>
             <Text positionLeft={10} fontSize={inVR ? 10 : 13}>
@@ -663,7 +665,7 @@ export default function DropdownUI({
    * @postconditions if tau is less than 5, increase it by 1. Otherwise leave it at 5
    */
   function setOnTauIncrease(): void {
-    if (selectTau != 5) {
+    if (selectTau != maxTau) {
       setSelectTau(selectTau + 1);
     }
   }

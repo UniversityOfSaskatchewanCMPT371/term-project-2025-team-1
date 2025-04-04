@@ -47,7 +47,6 @@ app.post("/log", (req, res) => {
       break;
     case "debug":
       logger.debug(message);
-      console.log("debug");
       break;
     case "info":
       logger.info(message);

@@ -54,7 +54,7 @@ export default function TestScene({
         paddingTop={inVR ? 20 : 0}
         gap={inVR ? 220 : 0}
         >
-          <Container width="20%">
+          <Container width="20%" > 
             {/* Drop Down button area (you can add your actual button here) */}
           </Container>
           <Container
@@ -71,6 +71,8 @@ export default function TestScene({
             borderRadius={10}
             alignContent="center"
             justifyContent="center"
+            paddingTop={inVR ? 200 : 0}
+
           >
             <Text fontSize={12} color={"white"}>
               Test Scene

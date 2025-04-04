@@ -6,11 +6,20 @@ import pino from "pino";
 // we can customize the output of the logs more, i just wanted to get this out to everyone and that
 // can be changed later on - Madison
 const logger = pino({
+  level: "trace",
   transport: {
     targets: [
       // {target: 'pino/console'},
-      { target: "pino-pretty", options: { colorize: true } }, // outputs logs to console
-      { target: "pino/file", options: { destination: "logs.txt" } }, // writes logs to a file
+      {
+        target: "pino-pretty",
+        level: "trace",
+        options: { colorize: true },
+      }, // outputs logs to console
+      {
+        target: "pino/file",
+        level: "trace",
+        options: { destination: "logs.txt" },
+      }, // writes logs to a file
     ],
   },
   customLevels: {

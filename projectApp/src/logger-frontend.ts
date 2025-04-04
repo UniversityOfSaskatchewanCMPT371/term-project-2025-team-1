@@ -1,4 +1,3 @@
-// Note: trace and debug levels also exist but they don't log to the locations chosen currently
 /**
  * sendLog: Creates and sends a log to the log server
  * @param level level of the log

@@ -49,7 +49,10 @@ export default function TestScene({
           width="100%"
           height="10%"
           flexDirection="row"
-          justifyContent="space-between"
+          justifyContent={inVR ? "flex-start" : "space-between"}
+          paddingLeft={inVR ? 20 : 0}
+  paddingRight={inVR ? 0 : 20}
+  gap={inVR ? 20 : 0}
         >
           <Container width="20%">
             {/* Drop Down button area (you can add your actual button here) */}

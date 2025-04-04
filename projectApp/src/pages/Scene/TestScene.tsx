@@ -62,7 +62,7 @@ export default function TestScene({
             borderColor={"darkgray"}
             borderWidth={0.5}
             pointerEvents={"auto"}
-            onPointerEnter={() => setHovered(true)}
+            onPointerEnter={() => { setHovered(true); }}
             onPointerLeave={() => setHovered(false)}
             onClick={() => setClicked(!clicked)}
             borderRadius={10}

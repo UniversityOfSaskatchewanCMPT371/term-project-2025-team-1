@@ -29,6 +29,7 @@ export default function Point3D({
     const selectedState = !pointRef.getObject().getSelected();
     click(selectedState);
     pointRef.getObject().setSelected(selectedState);
+    const selecteData = pointRef.getObject();
     if (selectedState) {
       addTestSceneInfo(
         `point ${pointRef.getObject().getTimeData()} ${pointRef.getObject().getYData()} (3D) selected`,

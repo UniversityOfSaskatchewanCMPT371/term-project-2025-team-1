@@ -519,4 +519,21 @@ export class CSVDataObject implements CSVDataInterface {
       `setIsFirstDifferencing() was called, first differencing is set to ${firstDiff}`,
     );
   }
+
+  /**
+   * Gets the selected point object(s) in the program
+   * @precondition none
+   * @postcondition
+   * - On success, returns the array of selected point objects
+   */
+  getSelectedPoints(): PointObject[] {
+    const selectedP: PointObject[] = [];
+
+    this.getPoints().forEach((point) => {
+      if (point.getSelected()) {
+        selectedP.push(point);
+      }
+    });
+    return selectedP;
+  }
 }

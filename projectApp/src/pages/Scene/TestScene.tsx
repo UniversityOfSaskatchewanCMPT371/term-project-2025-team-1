@@ -74,8 +74,8 @@ export default function TestScene({
             justifyContent="center"
             // paddingTop={inVR ? 200 : 0}
             positionType={inVR ? "absolute" : "relative"}
-            positionRight={inVR ? 250 : 0}
-            positionTop={inVR ? 190 : 0}
+            positionRight={inVR ? 340 : 0}
+            positionTop={inVR ? 200 : 0}
 
           >
             <Text fontSize={12} color={"white"}>

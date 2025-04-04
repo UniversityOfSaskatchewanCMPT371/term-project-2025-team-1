@@ -43,3 +43,14 @@ export function sendError(error: any, message: string) {
     headers: { "Content-type": "application/json" },
   });
 }
+
+
+export function changeLogLevel(level: string) {
+  fetch("http://localhost:3030/changeLevel", {
+    method: "POST",
+    body: JSON.stringify({
+      level: level,
+    }),
+    headers: { "Content-type": "application/json" },
+  });
+}

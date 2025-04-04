@@ -22,7 +22,7 @@ const logger = pino({
 });
 
 // changes the level of log output that gets viewed
-logger.level = "trace";
+logger.level = "info";
 
 // server code
 const app = express();
@@ -74,6 +74,13 @@ app.post("/error", (req, res) => {
 
   res.sendStatus(200);
 });
+
+app.post("/changelevel", (req, res) => {
+  let level = req.body.level;
+  logger.level = level
+  // TODO - make not always successful make sure if not successful actually say it's not successful if  the level is invalid
+  res.sendStatus(200);
+})
 
 app.listen(PORT, () => {
   console.log("log server running at http://localhost:" + PORT);

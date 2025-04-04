@@ -51,7 +51,7 @@ export default function DropdownUI({
       const yHeaderIndex = h.indexOf(yHeader);
       setSelectedHeaderIndex(yHeaderIndex);
       setHeaderList(h);
-      setMaxTau(csvData.getData().length)
+      setMaxTau(csvData.getData().length);
     }
   }, [active]);
 

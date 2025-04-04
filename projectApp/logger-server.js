@@ -2,14 +2,11 @@ import express from "express";
 import cors from "cors";
 import pino from "pino";
 
-// logger code
-// we can customize the output of the logs more, i just wanted to get this out to everyone and that
-// can be changed later on - Madison
+// logger creation 
 const logger = pino({
   level: "trace",
   transport: {
     targets: [
-      // {target: 'pino/console'},
       {
         target: "pino-pretty",
         level: "trace",
@@ -21,10 +18,7 @@ const logger = pino({
         options: { destination: "logs.txt" },
       }, // writes logs to a file
     ],
-  },
-  customLevels: {
-    test: 35,
-  },
+  }
 });
 
 // changes the level of log output that gets viewed

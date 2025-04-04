@@ -72,7 +72,6 @@ export default function TestScene({
             borderRadius={10}
             alignContent="center"
             justifyContent="center"
-            // paddingTop={inVR ? 200 : 0}
             positionType={inVR ? "absolute" : "relative"}
             positionRight={inVR ? 340 : 0}
             positionTop={inVR ? 250 : 0}

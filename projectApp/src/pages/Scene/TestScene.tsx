@@ -51,7 +51,7 @@ export default function TestScene({
           flexDirection="row"
           justifyContent={inVR ? "flex-start" : "space-between"}
         >
-          <Container width="20%" > 
+          <Container width="20%">
             {/* Drop Down button area (you can add your actual button here) */}
           </Container>
           <Container
@@ -62,16 +62,21 @@ export default function TestScene({
             borderColor={"darkgray"}
             borderWidth={0.5}
             pointerEvents={"auto"}
-            onPointerEnter={() => { setHovered(true); }}
-            onPointerLeave={() => { setHovered(false); }}
-            onClick={() => {setClicked(!clicked); }}
+            onPointerEnter={() => {
+              setHovered(true);
+            }}
+            onPointerLeave={() => {
+              setHovered(false);
+            }}
+            onClick={() => {
+              setClicked(!clicked);
+            }}
             borderRadius={10}
             alignContent="center"
             justifyContent="center"
             positionType={inVR ? "absolute" : "relative"}
             positionRight={inVR ? 340 : 0}
             positionTop={inVR ? 250 : 0}
-
           >
             <Text fontSize={12} color={"white"}>
               Test Scene

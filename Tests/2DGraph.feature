@@ -33,17 +33,17 @@ Feature: 2DGraph
   # This case covers the action of turning first differencing on and having data values of points change accordingly
   Scenario: Turning First Differencing On
     Given the time series graph is displayed with a valid CSV file
-    When the user turns First Differencing on
-    Then the first differencing feature is activated and changes data values of points
+    When the user turns first differencing on by clicking the assigned button to first differencing in the drop down UI and with the text stating "Enabled" 
+    Then the first differencing feature is activated and changes data values of points when a time series graph is generated
 
   # This case covers the action of turning first differencing of and reverting the data values of points
   Scenario: Turning First Differencing Off
     Given the time series graph is displayed with a valid CSV file
-    When the user turns First Differencing off
-    Then the first differencing feature is deactivated and reverts the data values of points back to its original state
+    When the user turns first differencing off by clicking the assigned button to first differencing in the drop down UI and with the text stating "Disabled"
+    Then the first differencing feature is deactivated and reverts the data values of points back to its original state when a time series graph is generated
 
   # This case covers the action of changing the size of points in the time series graph
   Scenario: Setting Point Size
     Given the time series graph is displayed with a valid CSV file
-    When the user selects "1-15" using the right or left button
+    When the user selects a value between "1-16" using the right or left button assigned to the point size on the drop down UI
     Then the point size of the time series graph is changed according to the users selection

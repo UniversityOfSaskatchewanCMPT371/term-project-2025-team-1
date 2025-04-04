@@ -49,13 +49,15 @@ export default function TestScene({
           width="100%"
           height="10%"
           flexDirection="row"
-          justifyContent={inVR ? "flex-start" : "space-between"}
+          justifyContent="space-between"
+          paddingLeft={inVR ? 20 : 10}
+          paddingRight={inVR ? 20 : 10}
         >
           <Container width="20%">
             {/* Drop Down button area (you can add your actual button here) */}
           </Container>
           <Container
-            width="10%"
+            width={inVR ? "120px" : "10%"}
             height="80%"
             backgroundOpacity={hovered ? 0.9 : 0.25}
             backgroundColor={"gray"}
@@ -91,21 +93,20 @@ export default function TestScene({
           flexDirection="row"
           justifyContent="flex-end"
           alignItems="flex-end"
-          paddingRight={60}
-          paddingBottom={300}
+          padding={inVR ? 40 : 20}
         >
           {/* Test Scene Info Panel */}
           <Container
-            width="20%"
-            height="30%"
+            width={inVR ? "300px" : "20%"}
+            height={inVR ? "400px" : "30%"}
             display={clicked ? "flex" : "none"}
             flexDirection="column"
-            backgroundOpacity={0}
-            borderWidth={0}
-            zIndex={-1}
-            positionType="absolute"
-            positionRight={170}
-            positionBottom={190}
+            // backgroundOpacity={0.1}
+            // backgroundColor="white"
+            // borderWidth={1}
+            // borderColor="lightgray"
+            // borderRadius={8}
+            // padding={10}
           >
             <Text fontSize={16} fontWeight={"bold"} color={"black"}>
               Graph Information:

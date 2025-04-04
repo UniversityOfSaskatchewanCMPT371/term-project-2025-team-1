@@ -2,7 +2,7 @@ import express from "express";
 import cors from "cors";
 import pino from "pino";
 
-// logger creation 
+// logger creation
 const logger = pino({
   level: "trace",
   transport: {
@@ -18,7 +18,7 @@ const logger = pino({
         options: { destination: "logs.txt" },
       }, // writes logs to a file
     ],
-  }
+  },
 });
 
 // changes the level of log output that gets viewed

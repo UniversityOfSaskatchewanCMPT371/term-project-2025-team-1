@@ -96,7 +96,7 @@ export default function TestScene({
             zIndex={-1}
             positionType="absolute"
             positionRight={170}
-            positionBottom={170}
+            positionBottom={190}
           >
             <Text fontSize={16} fontWeight={"bold"} color={"black"}>
               Graph Information:

@@ -50,7 +50,6 @@ export default function TestScene({
           height="10%"
           flexDirection="row"
           justifyContent={inVR ? "flex-start" : "space-between"}
-        //  
         
         >
           <Container width="20%" > 

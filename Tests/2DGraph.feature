@@ -40,7 +40,7 @@ Feature: 2DGraph
   Scenario: Turning First Differencing Off
     Given the time series graph is displayed with a valid CSV file
     When the user turns First Differencing off
-    Then the first differencing feature is deactivated and reverts the data values of points
+    Then the first differencing feature is deactivated and reverts the data values of points back to its original state
 
   # This case covers the action of changing the size of points in the time series graph
   Scenario: Setting Point Size

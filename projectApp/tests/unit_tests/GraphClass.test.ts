@@ -98,10 +98,10 @@ describe("GraphObject", async () => {
     expect(() => {
       // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
       csvDataMock.setPoints(null as unknown as any[]);
-    }).toThrowError("Invalid Points");
+    }).toThrowError("assert failed");
     expect(() => {
       // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
       csvDataMock.setPoints([{}] as unknown as any[]);
-    }).toThrowError("Invalid points");
+    }).toThrowError("assert failed");
   });
 });

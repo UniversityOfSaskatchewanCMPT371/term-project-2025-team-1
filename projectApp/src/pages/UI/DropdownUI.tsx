@@ -573,9 +573,8 @@ export default function DropdownUI({
    * This function is used when the user wants to switch first differencing
    */
   function setOnFDClick(): void {
-    //if (!isFirstDifferencing) {
     setIsFirstDifferencing(!isFirstDifferencing);
-    //}
+    addTestSceneInfo(`First Differencing set to ${!isFirstDifferencing}`);
   }
 
   /**
@@ -643,6 +642,7 @@ export default function DropdownUI({
   function setOnTauIncrease(): void {
     if (selectTau != maxTau) {
       setSelectTau(selectTau + 1);
+      addTestSceneInfo(`Tau increased to: ${selectTau + 1}`);
     }
   }
 
@@ -654,6 +654,7 @@ export default function DropdownUI({
   function setOnTauDecrease(): void {
     if (selectTau != 1) {
       setSelectTau(selectTau - 1);
+      addTestSceneInfo(`Tau decreased to: ${selectTau - 1}`);
     }
   }
 

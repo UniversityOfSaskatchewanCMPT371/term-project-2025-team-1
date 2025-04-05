@@ -1,4 +1,5 @@
-# Will cache the npm modules to speed up the build process.
+# Will cache the npm modules to speed up the build process
+
 name: Caching with npm
 on: push
 defaults:
@@ -9,7 +10,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-
       - name: Cache node modules
         id: cache-npm
         uses: actions/cache@v4
@@ -23,17 +23,35 @@ jobs:
             ${{ runner.os }}-build-${{ env.cache-name }}-
             ${{ runner.os }}-build-
             ${{ runner.os }}-
-
       - if: ${{ steps.cache-npm.outputs.cache-hit != 'true' }}
         name: List the state of node modules
         continue-on-error: true
         run: npm list
+      - name: Install dependencies
+        run: npm ci
 
-      - name: Run the build, lint, test flow
-        run: |
-          npm ci
-          npm run lint
-          npm run build
-          npx pm2 start logger-server.js --name logger
-          npm run test
-          npx pm2 delete logger
+  # Elastic running at OC during term
+  send-logs-to-elastic:
+    runs-on: ubuntu-latest
+    needs: [build]
+    if: always()
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Install dependencies
+        run: npm install
+      - name: Upload GitHub Action workflows logs to elastic
+        uses: loop1dev/github-actions-to-elk@v1.0.0
+        with:
+          githubToken: "${{ secrets.GITHUB }}"
+          githubOrg: "UniversityOfSaskatchewanCMPT371"
+          githubRepository: "term-project-2025-team-1"
+          githubRunId: "${{ github.run_id }}"
+          elasticHost: "${{ secrets.ELASTIC_HOST }}"
+          elasticApiKeyId: "${{ secrets.ELASTIC_KEY_ID }}"
+          elasticApiKey: "${{ secrets.ELASTIC_API_KEY }}"
+          elasticIndex: "ci-cd"

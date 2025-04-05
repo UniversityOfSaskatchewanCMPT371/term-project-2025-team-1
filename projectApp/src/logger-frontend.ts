@@ -1,3 +1,8 @@
+// Keeps track of the current level the logger is loging
+let logLevel = "info";
+
+const allLevels = ["trace", "debug", "info", "warn", "error", "fatal"];
+
 /**
  * sendLog: Creates and sends a log to the log server
  * @param level level of the log
@@ -8,16 +13,22 @@
  * @postconditions A log will be written to the log server with the set level and message, along with timestamp etc.
  */
 export function sendLog(level: string, message: string) {
-  // Send the log to the log server
-  fetch("http://localhost:3030/log", {
-    method: "POST",
-    body: JSON.stringify({
-      level: level,
-      message: message,
-    }),
-    headers: { "Content-type": "application/json" },
-  });
-  // .then(() => {alert("log sent")});
+  if (allLevels.includes(level)) {
+    let index = allLevels.indexOf(logLevel);
+    const acceptedLevels = allLevels.slice(index);
+    console.log(acceptedLevels);
+    if (acceptedLevels.includes(level)) {
+      // Send the log to the log server
+      fetch("http://localhost:3030/log", {
+        method: "POST",
+        body: JSON.stringify({
+          level: level,
+          message: message,
+        }),
+        headers: { "Content-type": "application/json" },
+      });
+    }
+  }
 }
 
 /**
@@ -45,11 +56,19 @@ export function sendError(error: any, message: string) {
 }
 
 export function changeLogLevel(level: string) {
-  fetch("http://localhost:3030/changeLevel", {
-    method: "POST",
-    body: JSON.stringify({
-      level: level,
-    }),
-    headers: { "Content-type": "application/json" },
-  });
+  if (allLevels.includes(level)) {
+    fetch("http://localhost:3030/changeLevel", {
+      method: "POST",
+      body: JSON.stringify({
+        level: level,
+      }),
+      headers: { "Content-type": "application/json" },
+    })
+      .then(() => {
+        logLevel = level;
+      })
+      .catch(() => {
+        throw Error("Log level not changed");
+      });
+  }
 }

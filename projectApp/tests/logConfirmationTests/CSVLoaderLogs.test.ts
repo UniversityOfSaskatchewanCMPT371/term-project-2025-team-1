@@ -25,7 +25,7 @@ describe("emulating csvLoader.feature", () => {
     );
 
     // CSVDataObject
-    const CSVDataObjectSetName = "setName,  will now be called Graph0";
+    const CSVDataObjectSetName = "setName,  will now be called indexedData.csv";
     await expect(fileContainsText(path, CSVDataObjectSetName)).resolves.toBe(
       true,
     );
@@ -48,7 +48,8 @@ describe("emulating csvLoader.feature", () => {
       fileContainsText(path, CSVDataObjectFindFirstHeader),
     ).resolves.toBe(true);
 
-    const CSVDataObjectSetYHeader = "setYHeader, Graph0 yHeader is set to Some";
+    const CSVDataObjectSetYHeader =
+      "setYHeader, indexedData.csv yHeader is set to Some";
     await expect(fileContainsText(path, CSVDataObjectSetYHeader)).resolves.toBe(
       true,
     );
@@ -135,7 +136,8 @@ describe("emulating csvLoader.feature", () => {
       fileContainsText(path, CSVDataObjectFindFirstHeader),
     ).resolves.toBe(true);
 
-    const CSVDataObjectSetYHeader = "setYHeader, Graph0 yHeader is set to Some";
+    const CSVDataObjectSetYHeader =
+      "setYHeader, indexedData.csv yHeader is set to Some";
     await expect(fileContainsText(path, CSVDataObjectSetYHeader)).resolves.toBe(
       true,
     );

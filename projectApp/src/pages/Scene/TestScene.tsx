@@ -2,14 +2,44 @@ import { useFrame } from "@react-three/fiber";
 import { Container, Fullscreen, Text } from "@react-three/uikit";
 import { useState } from "react";
 
+// persists outside the component
 let info: string[] = [];
+let infoTau = "";
+let infoRange = "";
+let infoHeader = "";
+let infoFirstDifferencing = "";
 
+/**
+ * add a log to the TestScene
+ * @param s log string to be put into 'info'
+ * @preconditions `import.meta.env.VITE_TEST_MODE` must be true
+ * @postconditions
+ * - on success, `s` is pushed into info array
+ * - if 'info' has more than 4 entries, slice out the first (oldest)
+ * - if `VITE_TEST_MODE` is false, nothing happens
+ */
 export function addTestSceneInfo(s: string) {
   if (import.meta.env.VITE_TEST_MODE === "true") {
     info = [...info.slice(-4), s];
   }
 }
 
+export function getGraphdataTest(
+  tau: string,
+  header: string,
+  differencing: string,
+  range: string,
+) {
+  infoTau = tau;
+  infoHeader = header;
+  infoRange = range;
+  infoFirstDifferencing = differencing;
+}
+/**
+ * Peek at test info while in the vr environment
+ * @param inVr boolean for vr functions
+ * @postconditions returns the test scene for tester information within the vr environment
+ */
 export default function TestScene({
   inVR,
 }: {
@@ -99,25 +129,58 @@ export default function TestScene({
             <Container
               width={"50%"}
               height={"75%"}
-              borderWidth={2}
-              borderColor={"black"}
               justifyContent={"center"}
               alignContent={"center"}
               display={clicked ? "flex" : "none"}
-              flexDirection={"column"}
+              flexDirection={"row"}
               alignItems={"center"}
             >
-              {/* Items to be displayed in test scene will go here */}
+              {/* Left Container */}
               <Container
-                width={"100%"}
-                alignContent={"center"}
-                justifyContent={"center"}
+                width={"50%"}
+                height={"100%"}
+                alignContent={"flex-start"}
+                justifyContent={"flex-start"}
                 flexDirection={"column"}
                 marginTop={10}
-                alignItems={"center"}
+                alignItems={"flex-start"}
               >
+                <Text
+                  fontSize={inVR ? 12 : 16}
+                  fontWeight={"bold"}
+                  color={"black"}
+                >
+                  Graph Information:
+                </Text>
+                <Text fontSize={inVR ? 10 : 14} color={"black"}>
+                  Tau Value: {infoTau}
+                </Text>
+                <Text fontSize={inVR ? 10 : 14} color={"black"}>
+                  Selected Header: {infoHeader}
+                </Text>
+                <Text fontSize={inVR ? 10 : 14} color={"black"}>
+                  First Differencing: {infoFirstDifferencing}
+                </Text>
+                <Text fontSize={inVR ? 10 : 14} color={"black"}>
+                  EG Range: {infoRange}
+                </Text>
+              </Container>
+
+              <Container
+                width={"50%"}
+                height={"100%"}
+                alignContent={"flex-start"}
+                justifyContent={"flex-start"}
+                flexDirection={"column"}
+                marginTop={10}
+                alignItems={"flex-end"}
+              >
+                {/* Right  */}
+                <Text fontWeight={"bold"} fontSize={inVR ? 12 : 16}>
+                  Debug Logs:
+                </Text>
                 {logs.map((item, index) => (
-                  <Text key={index} fontSize={14} color={"black"}>
+                  <Text key={index} fontSize={inVR ? 10 : 14} color={"black"}>
                     {item}
                   </Text>
                 ))}

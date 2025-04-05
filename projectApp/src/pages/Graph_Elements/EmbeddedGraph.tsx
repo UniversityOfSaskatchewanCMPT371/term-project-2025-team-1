@@ -6,22 +6,22 @@ import { Point3DInterface } from "../../types/GraphPointsInterfaces";
 import Create3DPoint from "../../components/Graph_Components/Points/Create3DPoint";
 
 /**
- * This function will create an Embedded Graph in the VR environment using a EmbeddedGraphObject.
- * This graph will be 3D.
- * @preconditions A defined EmbeddedGraphObject.
- * @postconditions Returns a React JSX Element that represents a 3D Embedded Graph.
+ * Create an Embedded Graph in the VR environment using a EmbeddedGraphObject.
+ * - This graph will be 3D.
+ * @param graph the EmbeddedGraphObject this graph visualizes.
+ * @preconditions `graph` must be a defined EmbeddedGraphObject.
+ * @postconditions returns a React JSX Element that represents a 3D Embedded Graph.
  */
-
 export function EmbeddedGraph({
   graph,
 }: {
   graph: EmbeddedGraphObject;
 }): React.JSX.Element {
   /**
-   * This function renders the 3D point used in the graph
-   * @param param0 a reference to the 3D Point object
-   * @precondition an accepted 3D Point object
-   * @postcondition returns a React JSX Element that represents a 3D Point
+   * Renders the 3D point used in the graph
+   * @param point a reference to the 3D Point object
+   * @preconditions `point` is an accepted 3D Point object in this graph
+   * @postconditions returns an interactable 3D Point for the graph
    */
   function GeneratePoint({
     point,
@@ -32,9 +32,9 @@ export function EmbeddedGraph({
   }
 
   /**
-   * This function renders the axis used in the 3D Embedded Graph
-   * @precondition none
-   * @postcondition returns a x,y,z axis on the VR Scene
+   * Renders the axes used in the 3D Embedded Graph
+   * @preconditions none
+   * @postconditions returns an [x, y, z] set of axes on the VR Scene
    */
   function GenerateAxis() {
     return (
@@ -70,17 +70,17 @@ export function EmbeddedGraph({
   }
 
   /**
-   * This Function creates the main graph of the Embedded Graph
-   * @precondtiion none
-   * @postcondition the entire 3D Graph and its components
+   * Generates the main graph of the Embedded Graph
+   * @preconditions none
+   * @postconditions returns the body of the graph and its components
    */
   function GenerateGraph(): React.JSX.Element {
     sendLog(
-      "info",
-      "an EmbeddedGraph visualization is being created [not yet functioning] (EmbeddedGraph.tsx)",
+      "trace",
+      "an EmbeddedGraph visualization is being created (EmbeddedGraph.tsx)",
     );
     return (
-      <mesh position={[1, 1, 0]}>
+      <mesh position={[1.5, 1, 0]}>
         <boxGeometry args={[2, 2, 2]} />
         <meshBasicMaterial visible={false} />
         <GenerateAxis />

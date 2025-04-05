@@ -2,24 +2,28 @@ import express from "express";
 import cors from "cors";
 import pino from "pino";
 
-// logger code
-// we can customize the output of the logs more, i just wanted to get this out to everyone and that
-// can be changed later on - Madison
+// logger creation
 const logger = pino({
+  level: "trace",
   transport: {
     targets: [
-      // {target: 'pino/console'},
-      { target: "pino-pretty", options: { colorize: true } }, // outputs logs to console
-      { target: "pino/file", options: { destination: "logs.txt" } }, // writes logs to a file
+      {
+        target: "pino-pretty",
+        level: "trace",
+        options: { colorize: true },
+      }, // outputs logs to console
+      {
+        target: "pino/file",
+        level: "trace",
+        options: { destination: "logs.txt" },
+      }, // writes logs to a file
     ],
-  },
-  customLevels: {
-    test: 35,
   },
 });
 
 // changes the level of log output that gets viewed
-logger.level = "trace";
+// If this level is changed the level also needs to be changed in the logger-frontend.ts
+logger.level = "info";
 
 // server code
 const app = express();
@@ -38,7 +42,6 @@ app.post("/log", (req, res) => {
       break;
     case "debug":
       logger.debug(message);
-      console.log("debug");
       break;
     case "info":
       logger.info(message);
@@ -70,6 +73,13 @@ app.post("/error", (req, res) => {
   let message = req.body.message;
   logger.error({ name, errmessage, stack }, message);
 
+  res.sendStatus(200);
+});
+
+app.post("/changelevel", (req, res) => {
+  let level = req.body.level;
+  logger.level = level;
+  // TODO - make not always successful make sure if not successful actually say it's not successful if  the level is invalid
   res.sendStatus(200);
 });
 

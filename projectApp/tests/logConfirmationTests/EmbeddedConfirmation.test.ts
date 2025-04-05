@@ -57,7 +57,7 @@ describe("Embedded graph log tests", () => {
   test("file contains GenerateGraph() logging", async () => {
     const response = await fileContainsText(
       filePath,
-      "an EmbeddedGraph visualization is being created [not yet functioning] (EmbeddedGraph.tsx)",
+      "an EmbeddedGraph visualization is being created (EmbeddedGraph.tsx)",
     );
     expect(response).toBe(true);
   });
@@ -69,5 +69,23 @@ describe("Embedded graph log tests", () => {
       "value of tau in EmbeddedGraphObject updated to the value",
     );
     expect(newTau).toBe(true);
+  });
+
+  // Checking if logs for setting first differencing true is reached
+  test("file contains logging for setting first differencing true", async () => {
+    const activateFirstDif = await fileContainsText(
+      filePath,
+      "setIsFirstDifferencing() was called, first differencing is set to true",
+    );
+    expect(activateFirstDif).toBe(true);
+  });
+
+  // Checking if logs for calculating points for first differencing is reached
+  test("file contains logs for calculating first differencing points", async () => {
+    const calculateFirstDif = await fileContainsText(
+      filePath,
+      "first differencing point calculation completed",
+    );
+    expect(calculateFirstDif).toBe(true);
   });
 });

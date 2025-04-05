@@ -60,15 +60,6 @@ describe("2D graph log tests", () => {
     expect(response).toBe(true);
   });
 
-  // Check if the logger is notifying the user when a TimeSeriesGraph header is selected
-  test("file contains TimeSeriesGraph header selection logging", async () => {
-    const response = await fileContainsText(
-      filePath,
-      "a TimeSeriesGraph object header was selected and visually updated to reflect selection (TimeSeriesGraph.tsx)",
-    );
-    expect(response).toBe(true);
-  });
-
   // Check if the logger is notifying the user when a TimeSeriesGraph visualization is created
   test("file contains TimeSeriesGraph visualization logging", async () => {
     const response = await fileContainsText(
@@ -88,8 +79,8 @@ describe("2D graph log tests", () => {
   });
 
   // Check if the getYRange() log calls are being reached
-  test("file contains getYRange() logging", async () => {
-    const response = await fileContainsText(filePath, "getYRange returned");
+  test("file contains getMaxYRange() logging", async () => {
+    const response = await fileContainsText(filePath, "getMaxYRange returned");
     expect(response).toBe(true);
   });
 
@@ -118,5 +109,32 @@ describe("2D graph log tests", () => {
       "setSelected() was called on PointObject (PointObject.ts)",
     );
     expect(setSelected).toBe(true);
+  });
+
+  // Check if the first differencing is properly set to true
+  test("file contains logs for first differencing being set to true", async () => {
+    const activateFirstDif = await fileContainsText(
+      filePath,
+      "setIsFirstDifferencing() was called, first differencing is set to true",
+    );
+    expect(activateFirstDif).toBe(true);
+  });
+
+  // Checking if logs for first differencing calculation is performed
+  test("file contains logs for first differencing calculations being performed", async () => {
+    const calculateFirstDif = await fileContainsText(
+      filePath,
+      "first differencing point calculation completed",
+    );
+    expect(calculateFirstDif).toBe(true);
+  });
+
+  // Check if the first differencing is properly set to false
+  test("file contains logs for first differencing being set to false", async () => {
+    const activateFirstDif = await fileContainsText(
+      filePath,
+      "setIsFirstDifferencing() was called, first differencing is set to false",
+    );
+    expect(activateFirstDif).toBe(true);
   });
 });

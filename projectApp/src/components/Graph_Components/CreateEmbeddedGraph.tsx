@@ -3,20 +3,21 @@ import { EmbeddedGraphObject } from "./EmbeddedGraphObject";
 import { sendLog } from "../../logger-frontend";
 
 /**
- *   The CreateEmbeddedGraph component is a functional component that creates an EmbeddedGraph.
- *   It is responsible for:
- *     - Logging the creation of an EmbeddedGraph.
- *     - Rendering an EmbeddedGraph using the provided EmbeddedGraphObject.
+ * The CreateEmbeddedGraph component is a functional component that creates an EmbeddedGraph.
+ * It is responsible for:
+ *  - Logging the creation of an EmbeddedGraph.
+ *  - Rendering an EmbeddedGraph using the provided EmbeddedGraphObject.
  *
- * @param {Object} graphObject - An object with a single property "graphObject" of type EmbeddedGraphObject.
- * @returns {React.JSX.Element} - A React JSX element containing the EmbeddedGraph component.
+ * @param {Object} graphObject An object with a single property "graphObject" of type EmbeddedGraphObject.
  *
- * @precondition graphObject must be a valid instance of EmbeddedGraphObject. The logging system must be configured and available.
+ * @preconditions
+ * - `graphObject` must be a valid instance of EmbeddedGraphObject.
+ * - The logging system must be configured and available.
  *
- * @postcondition
+ * @postconditions
+ * - returns a React JSX element containing the EmbeddedGraph component.
  * - An informational log entry is recorded indicating that an EmbeddedGraph has been created.
  * - A valid React JSX element is returned that renders the EmbeddedGraph component.
- *
  */
 
 export function CreateEmbeddedGraph({
@@ -25,7 +26,7 @@ export function CreateEmbeddedGraph({
   graphObject: EmbeddedGraphObject;
 }): React.JSX.Element {
   sendLog(
-    "info",
+    "trace",
     "an EmbeddedGraph has been created (CreateEmbeddedGraph.tsx)",
   );
   return <EmbeddedGraph graph={graphObject} />;

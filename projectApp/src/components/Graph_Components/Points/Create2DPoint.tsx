@@ -7,8 +7,8 @@ import { Point2DObject } from "./Point2DObject";
  * Creates and renders a 2D point visualization based on provided point data.
  *
  * @param {PointRef} pointRef - Reference object containing point data and state
- * @precondition pointRef must be a valid PointRef object with defined position, selected state, and x/y data
- * @postcondition Returns a Point2D component with initialized PointClass data
+ * @preconditions `pointRef` must be a valid PointRef object with defined position, selected state, and x/y data
+ * @postconditions returns a Point2D component with initialized PointClass data
  */
 export default function Create2DPoint({
   pointRef,
@@ -23,6 +23,6 @@ export default function Create2DPoint({
   point.getObject().setTimeData(pointRef.getObject().getTimeData());
   point.getObject().setYData(pointRef.getObject().getYData());
 
-  sendLog("info", "a 2D Point has been created (Create2DPoint.tsx)");
+  sendLog("trace", "a 2D Point has been created (Create2DPoint.tsx)");
   return <Point2D pointRef={point} />;
 }

@@ -80,7 +80,7 @@ describe("GraphObject", async () => {
     };
     expect(() => {
       graph.setAxes(invalidAxes1);
-    }).toThrowError("Invalid x axis range");
+    }).toThrowError("assert failed");
 
     const invalidAxes2 = {
       xRange: [0, 10] as [number, number],
@@ -88,7 +88,7 @@ describe("GraphObject", async () => {
     };
     expect(() => {
       graph.setAxes(invalidAxes2);
-    }).toThrowError("Invalid y axis range");
+    }).toThrowError("assert failed");
   });
 
   /**
@@ -98,10 +98,10 @@ describe("GraphObject", async () => {
     expect(() => {
       // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
       csvDataMock.setPoints(null as unknown as any[]);
-    }).toThrowError("Invalid Points");
+    }).toThrowError("assert failed");
     expect(() => {
       // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
       csvDataMock.setPoints([{}] as unknown as any[]);
-    }).toThrowError("Invalid points");
+    }).toThrowError("assert failed");
   });
 });

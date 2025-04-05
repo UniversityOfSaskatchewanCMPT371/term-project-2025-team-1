@@ -1,6 +1,7 @@
 import { sendError, sendLog } from "../../logger-frontend";
 import { GraphInterface } from "../../types/GraphInterface";
 import { CSVDataObject } from "../Csv_Components/CSVDataObject";
+import assert from "../../Assert";
 
 /**
  * The GraphClass represents a graph structure that manages points, dimensions, styling, and interactivity.
@@ -69,24 +70,15 @@ export class GraphObject implements GraphInterface {
    * - If the `axes` parameter is invalid, an error is thrown.
    */
   setAxes(axes: { xRange: [number, number]; yRange: [number, number] }): void {
-    let error;
-    if (axes.xRange[0] > axes.xRange[1]) {
-      // assert that xRange[0] min is less than xRange[1] max
-      error = new RangeError("Invalid x axis range");
-      sendError(
-        error,
-        "Invalid xRange. First value must be less than the second value (GraphObject.ts)",
-      );
-      throw error;
-    } else if (axes.yRange[0] > axes.yRange[1]) {
-      // assert that yRange[0] min is less than yRange[1] max
-      error = new RangeError("Invalid y axis range");
-      sendError(
-        error,
-        "Invalid yRange. First value must be less than the second value (GraphObject.ts)",
-      );
-      throw error;
-    }
+    // Assert that the minimum is less than or equal to the maximum for both ranges.
+    assert(
+      axes.xRange[0] <= axes.xRange[1],
+      "Invalid x axis range: first value must be less than or equal to the second value (GraphObject.ts)",
+    );
+    assert(
+      axes.yRange[0] <= axes.yRange[1],
+      "Invalid y axis range: first value must be less than or equal to the second value (GraphObject.ts)",
+    );
     this.axes = axes;
 
     sendLog(

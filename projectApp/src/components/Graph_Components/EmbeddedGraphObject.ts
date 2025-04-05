@@ -222,9 +222,9 @@ export class EmbeddedGraphObject
   }
 
   /**
-   * Set the max range that will be used on the 3d Embedded graph
+   * Sets the maximum and the minimum range that will be used on the 3d Embedded graph
    * @preconditions this graph's csv is a valid non-null data set
-   * @postconditions sets the max range used in the 3D Embedded graph
+   * @postconditions sets the maximum and minimum range used in the 3D Embedded graph
    */
   setRange(): void {
     // assert that csv data is not empty
@@ -240,6 +240,7 @@ export class EmbeddedGraphObject
     let max = 0;
     let min = 0;
 
+    //If first differencing is enabled, set the range using the calculated differencing values
     if (this.getCSVData().getIsFirstDifferencing()) {
       this.getCSVData()
         .calculateFirstDifferencingValues()
@@ -252,6 +253,7 @@ export class EmbeddedGraphObject
           }
         });
     } else {
+      //If first differencing is disabled, set the ranges using the data set provided by the csv file
       this.getCSVData()
         .getData()
         .forEach((data, index) => {

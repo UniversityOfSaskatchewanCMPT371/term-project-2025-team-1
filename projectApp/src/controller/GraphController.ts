@@ -155,7 +155,7 @@ export class GraphController implements ControllerInterface {
     const emData = this.getModel().getEmbeddedGraphData();
     // assert that model.embeddedGraphData is defined
     if (emData === undefined) {
-      const error = new SyntaxError("Error getting Embedded Data");
+      const error = new Error("Error getting Embedded Data");
       sendError(error, "Unable to get Embedded Data");
       throw error;
     }
@@ -171,11 +171,11 @@ export class GraphController implements ControllerInterface {
     const emData = this.getModel().getEmbeddedGraphData();
     // assert that model.embeddedGraphData is defined
     if (emData === undefined) {
-      const error = new SyntaxError("Error getting Embedded Data");
+      const error = new Error("Error getting Embedded Data");
       sendError(error, "Unable to get range of Embedded graph");
       throw error;
     }
-    return emData.getRange();
+    return emData.getTotalRange();
   }
 
   /**
@@ -187,7 +187,7 @@ export class GraphController implements ControllerInterface {
     const emData = this.getModel().getEmbeddedGraphData();
     // assert that model.embeddedGraphData is defined
     if (emData === undefined) {
-      const error = new SyntaxError("Error getting Embedded Data");
+      const error = new Error("Error getting Embedded Data");
       sendError(error, "Unable to get tau value");
       throw error;
     }

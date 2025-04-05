@@ -178,15 +178,22 @@ export class TimeSeriesGraphObject
    */
   timeSeriesXRange(): string[] {
     const range: string[] = [];
-
-    this.getCSVData()
-      .getData()
-      .forEach((data) => {
-        const temp = data[
-          this.getCSVData().getTimeHeader() as keyof typeof data
-        ] as unknown as string;
-        range.push(temp);
-      });
+    if (this.getCSVData().isFirstDifferencing) {
+      this.getCSVData()
+        .calculateFirstDifferencingValues()
+        .forEach((_data, index) => {
+          range.push(index.toString());
+        });
+    } else {
+      this.getCSVData()
+        .getData()
+        .forEach((data) => {
+          const temp = data[
+            this.getCSVData().getTimeHeader() as keyof typeof data
+          ] as unknown as string;
+          range.push(temp);
+        });
+    }
     sendLog(
       "info",
       `timeSeriesXRange() was called and returned ${range} (TimeSeriesGraphObject.ts)`,

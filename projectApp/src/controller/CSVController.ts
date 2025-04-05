@@ -78,7 +78,9 @@ export class CSVController implements ControllerInterface {
    */
   async loadLocalFile(file: File): Promise<void> {
     try {
-      await this.getModel().readLocalFile(file);
+      await this.model.readLocalFile(file, (data) => {
+        mainController.getGraphController().setRecommendedPointSize(data);
+      });
     } catch (error: unknown) {
       // if readLocalFile errors out, log the error
       sendError(error, "loadLocalFile Error");
@@ -94,7 +96,9 @@ export class CSVController implements ControllerInterface {
    */
   async loadURLFile(csv: string): Promise<void> {
     try {
-      await this.getModel().readURLFile(csv);
+      await this.model.readURLFile(csv, (data) => {
+        mainController.getGraphController().setRecommendedPointSize(data);
+      });
     } catch (error: unknown) {
       // if readURLFile errors out, log the error
       sendError(error, "loadURLFile Error");

@@ -87,7 +87,7 @@ export interface EmbeddedInterface extends GraphInterface {
    * @preconditions the max range must be greater than the min range
    * @postconditions the range of the csv data set
    */
-  getRange(): number;
+  getMaxRange(): number;
 
   /**
    * Set the max range that will be used on the 3d Embedded graph

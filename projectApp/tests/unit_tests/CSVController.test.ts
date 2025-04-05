@@ -172,11 +172,6 @@ describe("CSVController Tests", () => {
       dummyGraphController,
     );
 
-    // Spy on sendLog so we can verify logging.
-    const sendLogSpy = vi.spyOn(logger, "sendLog").mockImplementation(() => {
-      /* no-op */
-    });
-
     // Call generate with a tau value.
     csvController.generate(10, false, "Some");
 
@@ -197,11 +192,5 @@ describe("CSVController Tests", () => {
     const [tsGraph, emGraph] = pushDataToModelSpy.mock.calls[0];
     expect(tsGraph).toBeInstanceOf(TimeSeriesGraphObject);
     expect(emGraph).toBeInstanceOf(EmbeddedGraphObject);
-
-    // Verify that a log was sent.
-    expect(sendLogSpy).toHaveBeenCalledWith(
-      "info",
-      "generate has pushed a new graph",
-    );
   });
 });

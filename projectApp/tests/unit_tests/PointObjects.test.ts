@@ -42,7 +42,7 @@ describe("Point2DObject", () => {
     point2D.setXAxisPos(x);
     expect(point2D.getXPosition()).toBe(x);
     expect(LoggerFrontend.sendLog).toHaveBeenCalledWith(
-      "info",
+      "debug",
       `setXAxisPos() was called; xPosition of 2D Point was set to ${x} (Point2DObject.ts)`,
     );
   });
@@ -52,7 +52,7 @@ describe("Point2DObject", () => {
     point2D.setYAxisPos(y);
     expect(point2D.getYPosition()).toBe(y);
     expect(LoggerFrontend.sendLog).toHaveBeenCalledWith(
-      "info",
+      "debug",
       `setYAxisPos() was called; yPosition of 2D Point was set to ${y} (Point2DObject.ts)`,
     );
   });
@@ -63,7 +63,7 @@ describe("Point2DObject", () => {
     expect(point2D.getXPosition()).toBe(position[0]);
     expect(point2D.getYPosition()).toBe(position[1]);
     expect(LoggerFrontend.sendLog).toHaveBeenCalledWith(
-      "info",
+      "debug",
       `setPoint2DPosition() was called; Position of 2D Point was set to ${position} (Point2DObject.ts)`,
     );
   });
@@ -98,7 +98,7 @@ describe("Point3DObject", () => {
     point3D.setXAxisPos(x);
     expect(point3D.getXPosition()).toBe(x);
     expect(LoggerFrontend.sendLog).toHaveBeenCalledWith(
-      "info",
+      "debug",
       `setXAxisPos() was called; xPosition of 3D Point was set to ${x} (Point3DObject.ts)`,
     );
   });
@@ -108,7 +108,7 @@ describe("Point3DObject", () => {
     point3D.setYAxisPos(y);
     expect(point3D.getYPosition()).toBe(y);
     expect(LoggerFrontend.sendLog).toHaveBeenCalledWith(
-      "info",
+      "debug",
       `setYAxisPos() was called; yPosition of 3D Point was set to ${y} (Point3DObject.ts)`,
     );
   });
@@ -118,7 +118,7 @@ describe("Point3DObject", () => {
     point3D.setZAxisPos(z);
     expect(point3D.getZPosition()).toBe(z);
     expect(LoggerFrontend.sendLog).toHaveBeenCalledWith(
-      "info",
+      "debug",
       `setZAxisPos() was called; zPosition of 3D Point was set to ${z} (Point3DObject.ts)`,
     );
   });
@@ -128,7 +128,7 @@ describe("Point3DObject", () => {
     point3D.setPoint3DPosition(position);
     expect(point3D.getPosition()).toEqual(position);
     expect(LoggerFrontend.sendLog).toHaveBeenCalledWith(
-      "info",
+      "debug",
       `setPoint3DPosition() was called; Position of 3D Point was set to ${position} (Point3DObject.ts)`,
     );
   });

@@ -458,17 +458,13 @@ export class CSVDataObject implements CSVDataInterface {
    * - else, yHeader remains unchanged
    */
   setYHeader(header: string) {
-    sendLog("debug", `setYHeader, ${this.name} yHeader is set to ${header}`);
+    sendLog("info", `setYHeader, ${this.name} yHeader is set to ${header}`);
     for (const head of this.getCSVHeaders()) {
       if (head == header) {
         this.yHeader = header;
         break;
       }
     }
-    // if no Time header is found, log the error
-    const error = new Error(`No valid header ${header}`);
-    sendError(error, "Unable to find specified header (CSVDataObject.ts)");
-    throw error;
   }
 
   // End of Setters

@@ -63,7 +63,7 @@ export class Point2DObject implements Point2DInterface {
     this.point2Dposition[0] = x;
 
     sendLog(
-      "trace",
+      "debug",
       `setXAxisPos() was called; xPosition of 2D Point was set to ${x} (Point2DObject.ts)`,
     );
   }
@@ -78,7 +78,7 @@ export class Point2DObject implements Point2DInterface {
     this.point2Dposition[1] = y;
 
     sendLog(
-      "trace",
+      "debug",
       `setYAxisPos() was called; yPosition of 2D Point was set to ${y} (Point2DObject.ts)`,
     );
   }

@@ -15,7 +15,7 @@ const allLevels = ["trace", "debug", "info", "warn", "error", "fatal"];
  */
 export function sendLog(level: string, message: string) {
   if (allLevels.includes(level)) {
-    let index = allLevels.indexOf(logLevel);
+    const index = allLevels.indexOf(logLevel);
     const acceptedLevels = allLevels.slice(index);
     if (acceptedLevels.includes(level)) {
       // Send the log to the log server

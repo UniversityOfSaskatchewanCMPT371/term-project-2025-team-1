@@ -1,5 +1,4 @@
 import { CSVDataObject } from "../components/Csv_Components/CSVDataObject";
-// import mainController from "../controller/MainController";
 import { sendError, sendLog } from "../logger-frontend";
 import { addTestSceneInfo } from "../pages/Scene/TestScene";
 import { CSVModelInterface } from "../types/CSVInterfaces";

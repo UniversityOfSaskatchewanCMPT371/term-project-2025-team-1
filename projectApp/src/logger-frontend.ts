@@ -1,4 +1,5 @@
-// Keeps track of the current level the logger is loging
+// Keeps track of the current level the logger is logging
+// If this is changed the initial log level also needs to be changed in the logger-server.js file
 let logLevel = "info";
 
 const allLevels = ["trace", "debug", "info", "warn", "error", "fatal"];
@@ -16,7 +17,6 @@ export function sendLog(level: string, message: string) {
   if (allLevels.includes(level)) {
     let index = allLevels.indexOf(logLevel);
     const acceptedLevels = allLevels.slice(index);
-    console.log(acceptedLevels);
     if (acceptedLevels.includes(level)) {
       // Send the log to the log server
       fetch("http://localhost:3030/log", {

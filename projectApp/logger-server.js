@@ -22,6 +22,7 @@ const logger = pino({
 });
 
 // changes the level of log output that gets viewed
+// If this level is changed the level also needs to be changed in the logger-frontend.ts
 logger.level = "info";
 
 // server code

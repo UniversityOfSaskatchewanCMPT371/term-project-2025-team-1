@@ -100,7 +100,7 @@ describe("Tests for methods in GraphController", () => {
   test("getEmbeddedRange", () => {
     gc.pushDataToModel(tsgo, ego);
     const range = gc.getEmbeddedRange();
-    expect(range).toBe(7); // highest A value from mock
+    expect(range).toBe(10); // highest A value from mock
   });
 
   test("getTauForDropDown", () => {

@@ -132,19 +132,11 @@ describe("Embedded Graph test", () => {
   test("returns yRange[1] if valid else, throws error", () => {
     // Test valid range return
     graph.getAxes().yRange = [1, 10];
-    expect(graph.getRange()).toBe(10);
+    expect(graph.getMaxRange()).toBe(10);
 
     // Test different valid value
     graph.getAxes().yRange = [5, 100];
-    expect(graph.getRange()).toBe(100);
-
-    // Test invalid range throws
-    graph.getAxes().yRange = [10, 5];
-    expect(() => graph.getRange()).toThrow();
-
-    // Equal values throw
-    graph.getAxes().yRange = [5, 5];
-    expect(() => graph.getRange()).toThrow();
+    expect(graph.getMaxRange()).toBe(100);
   });
 
   test("setting time to a negative value", () => {

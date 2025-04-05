@@ -35,7 +35,7 @@ export class GraphController implements ControllerInterface {
     const graph = this.getModel().getData();
     // assert that model.data is defined
     if (graph === undefined) {
-      const error = new SyntaxError("Error on Time Series Graph");
+      const error = new Error("Error on Time Series Graph");
       sendError(
         error,
         "Unable to generate Time Series Graph (GraphController.ts",

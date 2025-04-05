@@ -63,6 +63,8 @@ describe("Tests for methods in GraphController", () => {
     csv.setData(data);
     csv.csvHeaders = Object.keys(data[0]);
     csv.setYHeader("A");
+    csv.setTimeHeader();
+    csv.populatePoints();
     tsgo = new TimeSeriesGraphObject(csv);
     ego = new EmbeddedGraphObject(csv);
   });

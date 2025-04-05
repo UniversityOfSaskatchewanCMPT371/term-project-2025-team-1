@@ -483,7 +483,7 @@ export class CSVDataObject implements CSVDataInterface {
   getTimeHeader(): string {
     // assert that timeHeader is "Time"
     if (this.timeHeader != "Time") {
-      const error = new SyntaxError("No Time header");
+      const error = new Error("No Time header");
       sendError(error, "Invalid time header, not Time (CSVDataObject.ts)");
       throw error;
     }

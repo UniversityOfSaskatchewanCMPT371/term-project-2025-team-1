@@ -21,7 +21,7 @@ export interface TimeSeriesGraphInterface extends GraphInterface {
    * @postconditions returns the y range of the axis
    */
   getYRangeLength(): number;
-  
+
   /**
    * Set the range of the y-axis in the Time Series Graph
    * @param num number to set YRange to

@@ -24,6 +24,6 @@ export default function Create3DPoint({
   point.setXAxisPos(pointRef.getXPosition());
   point.setYAxisPos(pointRef.getYPosition());
   point.setZAxisPos(pointRef.getZPosition());
-  sendLog("info", "a 3D Point has been created (Create3DPoint.tsx)");
+  sendLog("trace", "a 3D Point has been created (Create3DPoint.tsx)");
   return <Point3D pointRef={point} />;
 }

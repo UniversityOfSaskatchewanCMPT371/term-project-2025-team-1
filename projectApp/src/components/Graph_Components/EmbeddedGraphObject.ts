@@ -58,7 +58,10 @@ export class EmbeddedGraphObject
     this.points3D.forEach((point) => {
       point.getObject().setSelected(false); // Update selection status
     });
-    sendLog("trace", "all points have been unselected (EmbeddedGraphObject.ts)");
+    sendLog(
+      "trace",
+      "all points have been unselected (EmbeddedGraphObject.ts)",
+    );
   }
 
   /**

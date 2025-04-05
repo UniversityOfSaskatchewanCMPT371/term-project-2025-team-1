@@ -237,15 +237,15 @@ export class CSVDataObject implements CSVDataInterface {
       "uninitialized csv file headers (CSVDataObject.ts)",
     );
 
-      for (const head of this.csvHeaders) {
-        if (head != "Time") {
-          sendLog(
-            "debug",
-            `findFirstHeader() was called, the first header was found ${head} (CSVDataObject.ts)`,
-          );
-          return head;
-        }
+    for (const head of this.csvHeaders) {
+      if (head != "Time") {
+        sendLog(
+          "debug",
+          `findFirstHeader() was called, the first header was found ${head} (CSVDataObject.ts)`,
+        );
+        return head;
       }
+    }
 
     // if no first header is found, log the error
     const error = new SyntaxError("Invalid csv file");

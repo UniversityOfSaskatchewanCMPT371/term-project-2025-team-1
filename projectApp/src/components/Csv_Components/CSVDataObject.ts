@@ -132,8 +132,8 @@ export class CSVDataObject implements CSVDataInterface {
     // assert points is an array of PointObjects
     assert(Array.isArray(points), "must be an array of PointObject instances");
     assert(
-      points.every(point => point instanceof PointObject),
-      "each element must be a PointObject instances"
+      points.every((point) => point instanceof PointObject),
+      "each element must be a PointObject instances",
     );
 
     this.points = points;
@@ -222,11 +222,10 @@ export class CSVDataObject implements CSVDataInterface {
    * @postconditions returns the first non "Time" header in the data set
    */
   findFirstHeader(): string {
-    let error;
     // assert that csvHeader.Length is greater than 1
     assert(
       this.csvHeaders.length > 1,
-      "uninitialized csv file headers (CSVDataObject.ts)"
+      "uninitialized csv file headers (CSVDataObject.ts)",
     );
 
     for (const head of this.csvHeaders) {
@@ -240,7 +239,7 @@ export class CSVDataObject implements CSVDataInterface {
     }
 
     // if no first header is found, log the error
-    error = new SyntaxError("Invalid csv file");
+    const error = new SyntaxError("Invalid csv file");
     sendError(error, "Unable to find valid header (CSVDataObject.ts)");
     throw error;
   }
@@ -299,7 +298,7 @@ export class CSVDataObject implements CSVDataInterface {
     // assert that data.length is not empty
     assert(
       this.data.length > 0,
-      "Unitialized data set for the csv file. (CSVDataObject.ts)"
+      "Unitialized data set for the csv file. (CSVDataObject.ts)",
     );
     return this.data;
   }
@@ -472,7 +471,7 @@ export class CSVDataObject implements CSVDataInterface {
     // assert that timeHeader is "Time"
     assert(
       this.timeHeader === "Time",
-      "Invalid time header, not Time (CSVDataObject.ts)"
+      "Invalid time header, not Time (CSVDataObject.ts)",
     );
     return this.timeHeader;
   }

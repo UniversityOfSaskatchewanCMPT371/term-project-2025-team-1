@@ -59,7 +59,7 @@ export default function TimeSeriesGraph({
    */
   function GenerateSideBar(): React.JSX.Element {
     sendLog(
-      "info",
+      "trace",
       "a TimeSeriesGraph object sidebar was created (TimeSeriesGraph.tsx)",
     );
     return (
@@ -133,7 +133,7 @@ export default function TimeSeriesGraph({
     currentLine = lastLine;
     lastLine = [point.getXPosition(), point.getYPosition(), 0.01];
     sendLog(
-      "info",
+      "trace",
       "a visual representation of points was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)",
     );
 
@@ -148,7 +148,7 @@ export default function TimeSeriesGraph({
   function GenerateLines(): React.JSX.Element {
     current = current + divider;
     sendLog(
-      "info",
+      "trace",
       "the lines on a TimeSeriesGraph object were created (TimeSeriesGraph.tsx)",
     );
     return (
@@ -175,7 +175,7 @@ export default function TimeSeriesGraph({
    */
   function GenerateYRange({ num }: { num: number }): React.JSX.Element {
     sendLog(
-      "info",
+      "trace",
       "a visual representation of the Y range was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)",
     );
     return (
@@ -216,7 +216,7 @@ export default function TimeSeriesGraph({
    */
   function GenerateGraph(): React.JSX.Element {
     sendLog(
-      "info",
+      "trace",
       "a TimeSeriesGraph visualization is being created (TimeSeriesGraph.tsx)",
     );
     return (

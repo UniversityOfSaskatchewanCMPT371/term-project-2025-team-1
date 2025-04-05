@@ -60,7 +60,7 @@ export class TimeSeriesGraphObject
     this.yRangeLength = num;
 
     sendLog(
-      "info",
+      "trace",
       `setYRangeLength() was called on TimeSeriesGraphObject (TimeSeriesGraphObject.ts)`,
     );
   }
@@ -87,7 +87,7 @@ export class TimeSeriesGraphObject
       });
     assert(this.points2D.length > 0, "addPoints: No points were added");
     sendLog(
-      "info",
+      "trace",
       "addPoint() has added new points to the graph (TimeSeriesGraphObject.tss)",
     );
   }
@@ -100,10 +100,9 @@ export class TimeSeriesGraphObject
   updatePoints(): void {
     this.points2D.forEach((point) => {
       point.getObject().setSelected(false); // Update selection status
-      // TODO: Add color update logic if necessary
     });
     sendLog(
-      "info",
+      "trace",
       "all points have been unselected (TimeSeriesGraphObject.ts)",
     );
   }
@@ -157,7 +156,7 @@ export class TimeSeriesGraphObject
     this.axes.yRange[1] = max;
     this.axes.yRange[0] = min;
     sendLog(
-      "info",
+      "debug",
       `setRange() was called; max yRange set to ${this.getMaxYRange()}, min yRange set to ${this.getMinYRange()} (TimeSeriesGraphObject.ts)`,
     );
   }
@@ -185,7 +184,7 @@ export class TimeSeriesGraphObject
     }
 
     sendLog(
-      "info",
+      "debug",
       `timeSeriesYRange() returned ${range} (TimeSeriesGraphObject.ts)`,
     );
     assert(
@@ -232,7 +231,7 @@ export class TimeSeriesGraphObject
         });
     }
     sendLog(
-      "info",
+      "debug",
       `timeSeriesXRange() was called and returned ${range} (TimeSeriesGraphObject.ts)`,
     );
     return range;
@@ -283,7 +282,7 @@ export class TimeSeriesGraphObject
       current += divider;
     });
     sendLog(
-      "info",
+      "trace",
       "updatePointPosition() has been called to update the graph (TimeSeriesGraphObject.ts)",
     );
   }
@@ -321,10 +320,6 @@ export class TimeSeriesGraphObject
    * @postcondition total range of the Y axis
    */
   getTotalYRange(): number {
-    sendLog(
-      "info",
-      `getTotalYRange returned ${this.axes.yRange[1] - this.axes.yRange[0]} (TimeSeriesGraphObject.ts)`,
-    );
     return this.axes.yRange[1] - this.axes.yRange[0];
   }
 
@@ -334,10 +329,6 @@ export class TimeSeriesGraphObject
    * @postcondition max range of the Y axis
    */
   getMaxYRange(): number {
-    sendLog(
-      "info",
-      `getMaxYRange returned ${this.axes.yRange[1]} (TimeSeriesGraphObject.ts)`,
-    );
     return this.axes.yRange[1];
   }
 
@@ -347,10 +338,6 @@ export class TimeSeriesGraphObject
    * @postcondition min range of the Y axis
    */
   getMinYRange(): number {
-    sendLog(
-      "info",
-      `getMinYRange returned ${this.axes.yRange[0]} (TimeSeriesGraphObject.ts)`,
-    );
     return this.axes.yRange[0];
   }
 

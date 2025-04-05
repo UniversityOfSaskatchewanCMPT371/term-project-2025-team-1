@@ -76,7 +76,7 @@ export function EmbeddedGraph({
    */
   function GenerateGraph(): React.JSX.Element {
     sendLog(
-      "info",
+      "trace",
       "an EmbeddedGraph visualization is being created (EmbeddedGraph.tsx)",
     );
     return (

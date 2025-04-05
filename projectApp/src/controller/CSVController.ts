@@ -63,7 +63,7 @@ export class CSVController implements ControllerInterface {
       emGraph.setName(TSGraph.getName());
 
       mainController.getGraphController().pushDataToModel(TSGraph, emGraph);
-      sendLog("info", "generate has pushed a new graph");
+      sendLog("trace", "generate has pushed a new graph");
     } catch (error: unknown) {
       sendError(error, "Failed in generating the graphs, CSVController.ts");
       throw error;

@@ -82,7 +82,7 @@ export class GraphObject implements GraphInterface {
     this.axes = axes;
 
     sendLog(
-      "info",
+      "debug",
       `setAxes() was called on Graph Object and now: ${axes} (GraphObject.ts)`,
     );
   }
@@ -120,6 +120,6 @@ export class GraphObject implements GraphInterface {
       throw error;
     }
     this.name = name;
-    sendLog("info", `setName, ${this.name} will now be called ${name}`);
+    sendLog("debug", `setName, ${this.name} will now be called ${name}`);
   }
 }

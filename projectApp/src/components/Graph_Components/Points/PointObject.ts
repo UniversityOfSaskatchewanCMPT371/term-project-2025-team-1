@@ -70,7 +70,7 @@ export class PointObject implements PointObjectInterface {
   setSelected(select: boolean): void {
     this.selected = select;
 
-    sendLog("info", `setSelected() was called on PointObject (PointObject.ts)`);
+    // sendLog("info", `setSelected() was called on PointObject (PointObject.ts)`);
   }
 
   /**
@@ -82,7 +82,7 @@ export class PointObject implements PointObjectInterface {
   setTimeData(time: string): void {
     this.timeData = time;
     sendLog(
-      "info",
+      "debug",
       `setTimeData() was called; time Data of Point set to ${time} (PointObject.ts)`,
     );
   }
@@ -96,7 +96,7 @@ export class PointObject implements PointObjectInterface {
     this.yData = y;
 
     sendLog(
-      "info",
+      "debug",
       `setYData() was called; y Data of Point set to ${y} (PointObject.ts)`,
     );
   }

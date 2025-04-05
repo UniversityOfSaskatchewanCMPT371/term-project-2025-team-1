@@ -47,7 +47,7 @@ export default function Point2D({ pointRef }: { pointRef: Point2DObject }) {
         `point ${selecteData.getTimeData()} ${selecteData.getYData()} (2D) deselected`,
       );
     }
-    sendLog("info", `setOnClick(), 2D Point has been clicked (Point2D.tsx)`);
+    sendLog("trace", `setOnClick(), 2D Point has been clicked (Point2D.tsx)`);
   }
 
   return (

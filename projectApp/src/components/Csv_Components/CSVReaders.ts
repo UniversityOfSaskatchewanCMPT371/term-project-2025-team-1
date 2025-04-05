@@ -49,7 +49,7 @@ export function LocalCsvReader(
             data: { key: Record<string, string | number> }[];
           }) {
             sendLog(
-              "info",
+              "debug",
               `LocalCsvReader(file) has read data\n${JSON.stringify(parsed.data)}`,
             );
             const typedData: { key: Record<string, string | number> }[] =
@@ -134,7 +134,7 @@ export async function UrlCSVReader(
             throw new Error("URLCSVReader is empty");
           }
           sendLog(
-            "info",
+            "debug",
             `URLCSVReader has successfully parsed\n${JSON.stringify(timeSeries)}`,
           );
         },

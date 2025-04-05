@@ -24,6 +24,6 @@ export default function CreateTimeSeries({
 }: {
   graphObject: TimeSeriesGraphObject;
 }): React.JSX.Element {
-  sendLog("info", "a TimeSeriesGraph has been created (CreateTimeSeries.tsx)");
+  sendLog("trace", "a TimeSeriesGraph has been created (CreateTimeSeries.tsx)");
   return <TimeSeriesGraph graph={graphObject} />;
 }

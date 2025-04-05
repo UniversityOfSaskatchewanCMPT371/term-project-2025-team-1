@@ -50,7 +50,7 @@ export default function Point3D({
         `point ${selecteData.getTimeData()} ${selecteData.getYData()} (3D) deselected`,
       );
     }
-    sendLog("info", `setOnClick(), 3D Point has been clicked (Point3D.tsx)`);
+    sendLog("trace", `setOnClick(), 3D Point has been clicked (Point3D.tsx)`);
   }
 
   return (

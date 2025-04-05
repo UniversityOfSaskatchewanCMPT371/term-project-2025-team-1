@@ -3,6 +3,8 @@ import { Point2DObject } from "../../components/Graph_Components/Points/Point2DO
 import { useFrame } from "@react-three/fiber";
 import { sendLog } from "../../logger-frontend";
 import mainController from "../../controller/MainController";
+import { addTestSceneInfo } from "../Scene/TestScene.tsx";
+
 /**
  * Renders a 2D point on a `TimeSeriesGraph`.
  * The point can be interacted with through hover and click events.
@@ -35,7 +37,16 @@ export default function Point2D({ pointRef }: { pointRef: Point2DObject }) {
     const selectedState = !pointRef.getObject().getSelected();
     click(selectedState);
     pointRef.getObject().setSelected(selectedState);
-
+    const selecteData = pointRef.getObject();
+    if (selectedState) {
+      addTestSceneInfo(
+        `point ${selecteData.getTimeData()} ${selecteData.getYData()} (2D) selected`,
+      );
+    } else {
+      addTestSceneInfo(
+        `point ${selecteData.getTimeData()} ${selecteData.getYData()} (2D) deselected`,
+      );
+    }
     sendLog("info", `setOnClick(), 2D Point has been clicked (Point2D.tsx)`);
   }
 

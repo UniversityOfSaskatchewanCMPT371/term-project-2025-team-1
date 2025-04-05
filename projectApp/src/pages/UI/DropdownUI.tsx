@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import mainController from "../../controller/MainController";
 import { CSVDataInterface } from "../../types/CSVInterfaces";
 import { sendError, sendLog } from "../../logger-frontend.ts";
+import { addTestSceneInfo, getGraphdataTest } from "../Scene/TestScene.tsx";
 
 /**
  * Create the Dropdown UI in the VR Scene
@@ -100,6 +101,7 @@ export default function DropdownUI({
    */
   function update(): void {
     try {
+      addTestSceneInfo(`Genenerating graph for tau: ${selectTau}`);
       mainController
         .getCSVController()
         .generate(
@@ -123,7 +125,15 @@ export default function DropdownUI({
         csvData.getIsFirstDifferencing() ? "Enabled" : "Disabled",
       );
 
+      getGraphdataTest(
+        graphController.getTauForDropDown(),
+        csvData.getYHeader(),
+        csvData.getIsFirstDifferencing() ? "Enabled" : "Disabled",
+        graphController.getEmbeddedRange().toString(),
+      );
+
       mainController.updateMainScene();
+      addTestSceneInfo(`Graph generated for tau: ${selectTau}`);
     } catch (error: unknown) {
       sendError(error, "Error on update() in DropdownUI.tsx");
       throw error;
@@ -182,6 +192,7 @@ export default function DropdownUI({
               hover={{ backgroundOpacity: 0.75 }}
               onClick={() => {
                 update();
+                addTestSceneInfo("Generate button clicked");
                 sendLog("info", "GenerateList [BUTTON]? pressed");
               }}
             >
@@ -435,6 +446,7 @@ export default function DropdownUI({
     }
 
     setSelectedHeaderIndex(start);
+    addTestSceneInfo(`Header changed to: ${headerList[selectedHeaderIndex]}`);
   }
 
   /**
@@ -467,6 +479,7 @@ export default function DropdownUI({
       }
     }
     setSelectedHeaderIndex(start);
+    addTestSceneInfo(`Header changed to: ${headerList[selectedHeaderIndex]}`);
   }
 
   /**
@@ -560,9 +573,8 @@ export default function DropdownUI({
    * This function is used when the user wants to switch first differencing
    */
   function setOnFDClick(): void {
-    //if (!isFirstDifferencing) {
     setIsFirstDifferencing(!isFirstDifferencing);
-    //}
+    addTestSceneInfo(`First Differencing set to ${!isFirstDifferencing}`);
   }
 
   /**
@@ -630,6 +642,7 @@ export default function DropdownUI({
   function setOnTauIncrease(): void {
     if (selectTau != maxTau) {
       setSelectTau(selectTau + 1);
+      addTestSceneInfo(`Tau increased to: ${selectTau + 1}`);
     }
   }
 
@@ -641,6 +654,7 @@ export default function DropdownUI({
   function setOnTauDecrease(): void {
     if (selectTau != 1) {
       setSelectTau(selectTau - 1);
+      addTestSceneInfo(`Tau decreased to: ${selectTau - 1}`);
     }
   }
 

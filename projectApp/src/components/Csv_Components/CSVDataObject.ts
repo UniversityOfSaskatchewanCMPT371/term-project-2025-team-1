@@ -483,7 +483,7 @@ export class CSVDataObject implements CSVDataInterface {
   getTimeHeader(): string {
     // assert that timeHeader is "Time"
     if (this.timeHeader != "Time") {
-      const error = new SyntaxError("No Time header");
+      const error = new Error("No Time header");
       sendError(error, "Invalid time header, not Time (CSVDataObject.ts)");
       throw error;
     }
@@ -518,5 +518,22 @@ export class CSVDataObject implements CSVDataInterface {
       "info",
       `setIsFirstDifferencing() was called, first differencing is set to ${firstDiff}`,
     );
+  }
+
+  /**
+   * Gets the selected point object(s) in the program
+   * @precondition none
+   * @postcondition
+   * - On success, returns the array of selected point objects
+   */
+  getSelectedPoints(): PointObject[] {
+    const selectedP: PointObject[] = [];
+
+    this.getPoints().forEach((point) => {
+      if (point.getSelected()) {
+        selectedP.push(point);
+      }
+    });
+    return selectedP;
   }
 }

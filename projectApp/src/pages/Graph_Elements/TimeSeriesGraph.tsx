@@ -6,6 +6,8 @@ import { sendLog } from "../../logger-frontend";
 import { Point2DObject } from "../../components/Graph_Components/Points/Point2DObject";
 import Create2DPoint from "../../components/Graph_Components/Points/Create2DPoint";
 import mainController from "../../controller/MainController";
+import { useFrame } from "@react-three/fiber";
+import { PointObject } from "../../components/Graph_Components/Points/PointObject";
 
 /**
  * Create a Time Series Graph in the VR envirornment using a TimeSeriesGraphObject.
@@ -21,9 +23,7 @@ export default function TimeSeriesGraph({
 }: {
   graph: TimeSeriesGraphObject;
 }): React.JSX.Element {
-  const [selectedPoint, setSelectedPoint] = useState<Point2DObject | null>(
-    null,
-  ); // New state for selected point value
+  const [selectedPoints, setSelectedPoints] = useState<PointObject[]>([]); // New state for selected point value
 
   // Values used to space Points in the X axis
   const totalSpace = 6.38;
@@ -43,9 +43,17 @@ export default function TimeSeriesGraph({
 
   const pointRadius = mainController.getGraphController().getPointSize() / 4;
 
+  // Checking and updating based on the list of selected points
+  useFrame(() => {
+    if (
+      selectedPoints.length !== graph.getCSVData().getSelectedPoints().length
+    ) {
+      setSelectedPoints(graph.getCSVData().getSelectedPoints());
+    }
+  });
   /**
    * Renders the container left of the graph with a skyblue background.
-   * This will show the HeaderSelection() and in the future, the data sets of selected points
+   * This will show the the data sets of selected points
    * @preconditions None
    * @postconditions returns the left side container for showing graph data
    */
@@ -70,11 +78,16 @@ export default function TimeSeriesGraph({
         >
           <Text fontSize={13}>Point Value</Text>
           <Text fontSize={13}>(x, y):</Text>
-          <Text fontSize={13}>
-            {selectedPoint !== null
-              ? `(${selectedPoint.getObject().getTimeData()}, ${selectedPoint.getObject().getYData()})`
-              : "None"}
-          </Text>
+          {selectedPoints.map((point) => {
+            return (
+              <Text fontSize={8} fontWeight={"bold"}>
+                {" "}
+                {"("}
+                {point.getTimeData()}, {point.getYData()}
+                {")"}
+              </Text>
+            );
+          })}
         </Container>
       </Container>
     );
@@ -124,19 +137,7 @@ export default function TimeSeriesGraph({
       "a visual representation of points was created for a TimeSeriesGraph object (TimeSeriesGraph.tsx)",
     );
 
-    return (
-      <group
-        onClick={() => {
-          if (point.getObject().getSelected()) {
-            setSelectedPoint(point);
-          } else {
-            setSelectedPoint(null);
-          }
-        }}
-      >
-        <Create2DPoint pointRef={point} />
-      </group>
-    );
+    return <Create2DPoint pointRef={point} />;
   }
 
   /**

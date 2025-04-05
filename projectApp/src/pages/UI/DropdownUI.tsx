@@ -40,6 +40,7 @@ export default function DropdownUI({
 
   const [selectedHeaderIndex, setSelectedHeaderIndex] = useState<number>(-1);
   const [headerList, setHeaderList] = useState<string[]>([]);
+  const [maxTau, setMaxTau] = useState<number>(50);
 
   useEffect(() => {
     const csvData = mainController.getCSVController().getModelData();
@@ -50,6 +51,7 @@ export default function DropdownUI({
       const yHeaderIndex = h.indexOf(yHeader);
       setSelectedHeaderIndex(yHeaderIndex);
       setHeaderList(h);
+      setMaxTau(csvData.getData().length);
     }
   }, [active]);
 
@@ -352,7 +354,7 @@ export default function DropdownUI({
               justifyContent={"flex-start"}
             >
               <Text positionLeft={10} fontSize={inVR ? 10 : 13}>
-                Tau Value: {infoTau}
+                Tau Value: {infoTau}: {maxTau}
               </Text>
             </Container>
             <Text positionLeft={10} fontSize={inVR ? 10 : 13}>
@@ -555,21 +557,12 @@ export default function DropdownUI({
   }
 
   /**
-   * This function is used when the user wants to enable first differencing
+   * This function is used when the user wants to switch first differencing
    */
-  function setOnFDIncrease(): void {
-    if (!isFirstDifferencing) {
-      setIsFirstDifferencing(!isFirstDifferencing);
-    }
-  }
-
-  /**
-   * This fuction is used when the user wants to disable first differencing
-   */
-  function setOnFDDecrease(): void {
-    if (isFirstDifferencing) {
-      setIsFirstDifferencing(!isFirstDifferencing);
-    }
+  function setOnFDClick(): void {
+    //if (!isFirstDifferencing) {
+    setIsFirstDifferencing(!isFirstDifferencing);
+    //}
   }
 
   /**
@@ -587,39 +580,12 @@ export default function DropdownUI({
         justifyContent={"center"}
       >
         <Container
-          width={"45%"}
-          height={"100%"}
+          width={"30%"}
+          height={"50%"}
           flexDirection={"row"}
           alignContent={"center"}
-          justifyContent={"center"}
-        >
-          <Container
-            width={"40%"}
-            height={"50%"}
-            flexDirection={"row"}
-            alignContent={"center"}
-            justifyContent={"center"}
-            backgroundColor={"grey"}
-            backgroundOpacity={0.5}
-            hover={{ backgroundOpacity: 1 }}
-            borderRadius={15}
-            borderWidth={2}
-            borderColor={"grey"}
-            pointerEvents={"auto"}
-            onClick={() => {
-              setOnFDDecrease();
-            }}
-          >
-            <Text fontSize={11}>&lt;</Text>
-          </Container>
-        </Container>
-
-        <Container
-          width={"10%"}
-          height={"20%"}
-          flexDirection={"row"}
-          alignContent={"center"}
-          justifyContent={"center"}
+          justifyContent={"flex-end"}
+          alignItems={"flex-end"}
         >
           <Text fontWeight={"bold"} positionTop={4} fontSize={inVR ? 10 : 12}>
             {isFirstDifferencing ? "Enabled" : "Disabled"}
@@ -632,26 +598,25 @@ export default function DropdownUI({
           flexDirection={"row"}
           alignContent={"center"}
           justifyContent={"center"}
+          alignItems={"flex-start"}
         >
           <Container
-            width={"40%"}
-            height={"50%"}
+            width={"35%"}
+            height={"70%"}
             flexDirection={"row"}
             alignContent={"center"}
             justifyContent={"center"}
             backgroundColor={"gray"}
-            backgroundOpacity={0.5}
+            backgroundOpacity={isFirstDifferencing ? 1 : 0.5}
             hover={{ backgroundOpacity: 1 }}
-            borderRadius={15}
-            borderWidth={2}
+            borderRadius={7}
+            borderWidth={4}
             borderColor={"gray"}
             pointerEvents={"auto"}
             onClick={() => {
-              setOnFDIncrease();
+              setOnFDClick();
             }}
-          >
-            <Text fontSize={11}>&gt;</Text>
-          </Container>
+          />
         </Container>
       </Container>
     );
@@ -663,7 +628,7 @@ export default function DropdownUI({
    * @postconditions if tau is less than 5, increase it by 1. Otherwise leave it at 5
    */
   function setOnTauIncrease(): void {
-    if (selectTau != 5) {
+    if (selectTau != maxTau) {
       setSelectTau(selectTau + 1);
     }
   }

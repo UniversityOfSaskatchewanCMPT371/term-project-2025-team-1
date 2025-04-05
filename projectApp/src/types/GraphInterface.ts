@@ -41,4 +41,21 @@ export interface GraphInterface extends DataInterface {
    * @postconditions returns the current axes configuration object
    */
   getCSVData(): CSVDataInterface;
+
+  /**
+   * Gets the name used by the graph
+   * @preconditions none
+   * @postconditions returns the name attribute of the graph
+   */
+  getName(): string;
+
+  /**
+   * Sets the name of the graph
+   * @param {string} name the new name set for the graph
+   * @precondition the name parameter must be non-null and not empty ""
+   * @postcondition
+   * - the name of the graph is set to the name parameter of the method
+   * - throws an error if the parameter is invalid
+   */
+  setName(name: string): void;
 }

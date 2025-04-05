@@ -53,7 +53,7 @@ export default function TimeSeriesGraph({
   });
   /**
    * Renders the container left of the graph with a skyblue background.
-   * This will show the HeaderSelection() and in the future, the data sets of selected points
+   * This will show the the data sets of selected points
    * @preconditions None
    * @postconditions returns the left side container for showing graph data
    */

@@ -36,7 +36,7 @@ export default function Point2D({ pointRef }: { pointRef: Point2DObject }) {
     click(selectedState);
     pointRef.getObject().setSelected(selectedState);
 
-    sendLog("info", `setOnClick(), 2D Point has been clicked (Point2D.tsx)`);
+    sendLog("trace", `setOnClick(), 2D Point has been clicked (Point2D.tsx)`);
   }
 
   return (

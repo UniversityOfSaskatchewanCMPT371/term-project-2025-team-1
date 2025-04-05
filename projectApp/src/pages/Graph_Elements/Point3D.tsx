@@ -41,7 +41,7 @@ export default function Point3D({
     click(selectedState);
     pointRef.getObject().setSelected(selectedState);
 
-    sendLog("info", `setOnClick(), 3D Point has been clicked (Point3D.tsx)`);
+    sendLog("trace", `setOnClick(), 3D Point has been clicked (Point3D.tsx)`);
   }
 
   return (

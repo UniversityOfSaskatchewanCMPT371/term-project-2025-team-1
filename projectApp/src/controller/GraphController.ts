@@ -54,7 +54,7 @@ export class GraphController implements ControllerInterface {
     graph.setRange();
     graph.setYRangeLength(graph.timeSeriesYRange().length + 1);
     sendLog(
-      "info",
+      "trace",
       `generateTimeSeriesGraph() was called; successfully generated Time Series Graph (GraphController.ts)`,
     );
     return graph;
@@ -86,7 +86,7 @@ export class GraphController implements ControllerInterface {
     }
     graph.setRange();
     sendLog(
-      "info",
+      "trace",
       `generateEmbeddedGraph() was called; successfully generated Embedded Graph (GraphController.ts)`,
     );
     return graph;
@@ -110,7 +110,7 @@ export class GraphController implements ControllerInterface {
     this.getModel().setEmbeddedGraph(emGraph);
 
     sendLog(
-      "info",
+      "trace",
       `pushDataToModel() was called; successfully added both 2D and 3D Graphs(GraphController.ts)`,
     );
   }

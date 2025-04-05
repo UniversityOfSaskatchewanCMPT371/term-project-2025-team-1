@@ -51,7 +51,7 @@ export class CSVReaderModel implements CSVModelInterface {
     try {
       await data.loadCSVData(file, false);
       sendLog(
-        "info",
+        "debug",
         `readLocalFile read a file\n${JSON.stringify(data.getData())}`,
       );
     } catch (error: unknown) {
@@ -82,7 +82,7 @@ export class CSVReaderModel implements CSVModelInterface {
     try {
       await data.loadCSVData(file, true);
       sendLog(
-        "info",
+        "debug",
         `readURLFile read a file\n${JSON.stringify(data.getData())}`,
       );
     } catch (error: unknown) {

@@ -67,7 +67,7 @@ export class CSVDataObject implements CSVDataInterface {
     }
 
     sendLog(
-      "info",
+      "debug",
       `first differencing point calculation completed, result - ${differencedData} (CSVDataObject.ts)`,
     );
     return differencedData;
@@ -107,7 +107,7 @@ export class CSVDataObject implements CSVDataInterface {
     }
 
     sendLog(
-      "info",
+      "trace",
       `populatePoints() was called, the program points loaded using the csv file (CSVDataObject.ts)`,
     );
   }
@@ -146,7 +146,7 @@ export class CSVDataObject implements CSVDataInterface {
     this.points = points;
 
     sendLog(
-      "info",
+      "trace",
       `setPoints() was called, the points has been succesfully set (CSVDataObject.ts)`,
     );
   }
@@ -210,7 +210,7 @@ export class CSVDataObject implements CSVDataInterface {
       addTestSceneInfo("setting headers in loadCSVData()");
 
       sendLog(
-        "info",
+        "debug",
         `loadCSVData has loaded csv data\n${JSON.stringify(this.data)}`,
       );
     } catch (error: unknown) {
@@ -240,7 +240,7 @@ export class CSVDataObject implements CSVDataInterface {
     for (const head of this.csvHeaders) {
       if (head != "Time") {
         sendLog(
-          "info",
+          "debug",
           `findFirstHeader() was called, the first header was found ${head} (CSVDataObject.ts)`,
         );
         return head;
@@ -262,7 +262,7 @@ export class CSVDataObject implements CSVDataInterface {
     this.points = [];
 
     sendLog(
-      "info",
+      "trace",
       `clearPoints() was called, array of points reset (CSVDataObject.ts)`,
     );
   }
@@ -292,7 +292,7 @@ export class CSVDataObject implements CSVDataInterface {
       }
     }
     sendLog(
-      "info",
+      "trace",
       "CSVDataObject.getDataByTime() has returned null, is this expected?",
     );
     return result;
@@ -383,7 +383,7 @@ export class CSVDataObject implements CSVDataInterface {
     for (const head of this.getCSVHeaders()) {
       if (head == "Time" || head == "time") {
         sendLog(
-          "info",
+          "debug",
           `findTimeHeader() was called, the time header in the data set has been found (CSVDataObject.ts)`,
         );
         return head;
@@ -407,7 +407,7 @@ export class CSVDataObject implements CSVDataInterface {
   setData(data: { key: Record<string, string | number> }[]): void {
     this.data = data;
     sendLog(
-      "info",
+      "trace",
       `setData() was called, data has been set (CSVDataObject.ts)`,
     );
   }
@@ -419,7 +419,7 @@ export class CSVDataObject implements CSVDataInterface {
    * @postconditions The `name` property is updated to the provided name.
    */
   setName(name: string) {
-    sendLog("info", `setName, ${this.name} will now be called ${name}`);
+    sendLog("debug", `setName, ${this.name} will now be called ${name}`);
     this.name = name;
   }
 
@@ -431,7 +431,7 @@ export class CSVDataObject implements CSVDataInterface {
    */
   setBrowserSelected(bool: boolean) {
     sendLog(
-      "info",
+      "debug",
       `setBrowserSelected, ${this.name} browser is set to ${bool.toString()}`,
     );
     this.browserSelected = bool;
@@ -445,7 +445,7 @@ export class CSVDataObject implements CSVDataInterface {
    */
   setVRSelected(bool: boolean) {
     sendLog(
-      "info",
+      "debug",
       `setVRSelected, ${this.name} vr is set to ${bool.toString()}`,
     );
     this.vrSelected = bool;
@@ -462,7 +462,7 @@ export class CSVDataObject implements CSVDataInterface {
    * - else, yHeader remains unchanged
    */
   setYHeader(header: string) {
-    sendLog("info", `setYHeader, ${this.name} yHeader is set to ${header}`);
+    sendLog("debug", `setYHeader, ${this.name} yHeader is set to ${header}`);
     for (const head of this.getCSVHeaders()) {
       if (head == header) {
         this.yHeader = header;
@@ -500,7 +500,7 @@ export class CSVDataObject implements CSVDataInterface {
     this.timeHeader = this.findTimeHeader();
 
     sendLog(
-      "info",
+      "trace",
       `setTimeHeader() was called, finding the time header in the data set (CSVDataObject.ts)`,
     );
   }
@@ -515,7 +515,7 @@ export class CSVDataObject implements CSVDataInterface {
   setIsFirstDifferencing(firstDiff: boolean): void {
     this.isFirstDifferencing = firstDiff;
     sendLog(
-      "info",
+      "debug",
       `setIsFirstDifferencing() was called, first differencing is set to ${firstDiff}`,
     );
   }

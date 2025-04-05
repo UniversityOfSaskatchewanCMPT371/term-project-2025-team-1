@@ -26,7 +26,7 @@ export function CreateEmbeddedGraph({
   graphObject: EmbeddedGraphObject;
 }): React.JSX.Element {
   sendLog(
-    "info",
+    "trace",
     "an EmbeddedGraph has been created (CreateEmbeddedGraph.tsx)",
   );
   return <EmbeddedGraph graph={graphObject} />;

@@ -49,7 +49,7 @@ export class EmbeddedGraphObject
         this.points3D.push(newPoint);
       });
     sendLog(
-      "info",
+      "trace",
       "Points added to EmbeddedGraphObject (EmbeddedGraphObject.addPoints())",
     );
   }
@@ -57,9 +57,8 @@ export class EmbeddedGraphObject
   updatePoints(): void {
     this.points3D.forEach((point) => {
       point.getObject().setSelected(false); // Update selection status
-      // TODO: Add color update logic if necessary
     });
-    sendLog("info", "all points have been unselected (EmbeddedGraphObject.ts)");
+    sendLog("trace", "all points have been unselected (EmbeddedGraphObject.ts)");
   }
 
   /**
@@ -103,7 +102,7 @@ export class EmbeddedGraphObject
     position[2] = this.retreiveCoordinateValue(zIndex, csvData);
 
     sendLog(
-      "info",
+      "debug",
       `vector position calculated for data at index/time ${time} (EmbeddedGraphObject.calculateVectorPosition())`,
     );
     return position;
@@ -164,7 +163,7 @@ export class EmbeddedGraphObject
 
     this.tau = newTau;
     sendLog(
-      "info",
+      "debug",
       `value of tau in EmbeddedGraphObject updated to the value ${newTau}`,
     );
   }
@@ -236,7 +235,7 @@ export class EmbeddedGraphObject
 
     this.axes.yRange[1] = max;
     sendLog(
-      "info",
+      "debug",
       `setRange() was called; yRange was set to ${this.axes.yRange[1]} (EmbeddedGraphObject.ts)`,
     );
   }
@@ -252,7 +251,7 @@ export class EmbeddedGraphObject
     // The csv data points are already being cleared on TimeSeries updatePointPosition()
     this.addPoints();
     sendLog(
-      "info",
+      "trace",
       `UpdateEmbeddedPoints() was called; 3D points in the Embedded Graph updated (EmbeddedGraphObject.ts)`,
     );
   }

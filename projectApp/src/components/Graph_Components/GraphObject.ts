@@ -73,11 +73,11 @@ export class GraphObject implements GraphInterface {
     // Assert that the minimum is less than or equal to the maximum for both ranges.
     assert(
       axes.xRange[0] <= axes.xRange[1],
-      "Invalid x axis range: first value must be less than or equal to the second value (GraphObject.ts)"
+      "Invalid x axis range: first value must be less than or equal to the second value (GraphObject.ts)",
     );
     assert(
       axes.yRange[0] <= axes.yRange[1],
-      "Invalid y axis range: first value must be less than or equal to the second value (GraphObject.ts)"
+      "Invalid y axis range: first value must be less than or equal to the second value (GraphObject.ts)",
     );
     this.axes = axes;
 

@@ -24,20 +24,12 @@ export class GraphController implements ControllerInterface {
   }
 
   /**
-   * Generates a time series graph for the given CSV data object.
-   *
-   * @param csv The CSV data object for which to generate or retrieve the graph.
-   *
+   * Generates a time series graph with set ranges using the models TimeSeriesGraphObject
    * @preconditions
-   * - The `csv` parameter must be a valid `CSVDataObject`.
-   * - The `model` property must be initialized and contain valid graph data.
-   * - The `mainController` must be initialized and valid.
-   *
+   * - The model's TimeSeriesGraphObject must be initialized
    * @postconditions
-   * - returns the generated or retrieved time series graph.
-   * - If a graph with the same name as `csv` exists, its range is updated
-   * - otherwise, a new graph is created and returned
-   * - The mainController's main scene is updated.
+   * - On success, returns {TimeSeriesGraphClass} The model's TimeseriesGraphObject with its ranges set
+   * - If the model's TimeSeriesGraphObject isn't initialized, throw an error
    */
   generateTimeSeriesGraph(): TimeSeriesGraphObject {
     const graph = this.getModel().getData();
@@ -61,26 +53,18 @@ export class GraphController implements ControllerInterface {
   }
 
   /**
-   * Generates an embedded graph for the given CSV data object.
-   *
-   * @param csv The CSV data object for which to generate or retrieve the graph.
-   *
-   * @preconditions
-   * - The `csv` parameter must be a valid `CSVDataObject`.
-   * - The `model` property must be initialized and contain valid graph data.
-   * - The `mainController` must be initialized and valid.
-   *
+   * Generates an embedded graph with set ranges using the model's EmbeddedGraphObject
+   * @precondition
+   * - the model's EmbeddedGraphObject must be initialized
    * @postconditions
-   * - returns the generated or retrieved embedded graph
-   * - If a graph with the same name as `csv` exists, its range is updated
-   * - otherwise, a new graph is created and returned
-   * - The mainController's main scene is updated.
+   * - On success, returns {EmbeddedGraphClass} The models EmbeddedGraphObject with set ranges
+   * - If the EmbeddedGraphObject isn't initialized, throw an error
    */
   generateEmbeddedGraph(): EmbeddedGraphObject {
     const graph = this.getModel().getEmbeddedGraphData();
     // assert that model.embeddedGraphData is defined
     if (graph === undefined) {
-      const error = new SyntaxError("Error Generating Embedded Graph");
+      const error = new Error("Error Generating Embedded Graph");
       sendError(error, "Unable to generate Embedded Graph");
       throw error;
     }
@@ -155,7 +139,7 @@ export class GraphController implements ControllerInterface {
     const emData = this.getModel().getEmbeddedGraphData();
     // assert that model.embeddedGraphData is defined
     if (emData === undefined) {
-      const error = new SyntaxError("Error getting Embedded Data");
+      const error = new Error("Error getting Embedded Data");
       sendError(error, "Unable to get Embedded Data");
       throw error;
     }
@@ -171,11 +155,11 @@ export class GraphController implements ControllerInterface {
     const emData = this.getModel().getEmbeddedGraphData();
     // assert that model.embeddedGraphData is defined
     if (emData === undefined) {
-      const error = new SyntaxError("Error getting Embedded Data");
+      const error = new Error("Error getting Embedded Data");
       sendError(error, "Unable to get range of Embedded graph");
       throw error;
     }
-    return emData.getRange();
+    return emData.getTotalRange();
   }
 
   /**
@@ -187,7 +171,7 @@ export class GraphController implements ControllerInterface {
     const emData = this.getModel().getEmbeddedGraphData();
     // assert that model.embeddedGraphData is defined
     if (emData === undefined) {
-      const error = new SyntaxError("Error getting Embedded Data");
+      const error = new Error("Error getting Embedded Data");
       sendError(error, "Unable to get tau value");
       throw error;
     }

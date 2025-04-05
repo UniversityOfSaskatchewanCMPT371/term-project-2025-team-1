@@ -19,6 +19,13 @@ export interface EmbeddedInterface extends GraphInterface {
   addPoints(): void;
 
   /**
+   * Updates the selection status for each point in the graph.
+   * @preconditions valid points exist in the csvDataObject of the graph
+   * @postconditions each 3D point in the graph is unselected
+   */
+  updatePoints(): void;
+
+  /**
    * Calculated the embedded time vector dimensions for the given time.
    * Uses the data set selected in the csvDataObject of the graph
    * Vector return is of the form [y[time], y[time - tau], y[time - 2*tau]] where y is the data set column selected
@@ -67,4 +74,32 @@ export interface EmbeddedInterface extends GraphInterface {
    * @postconditions the value of tau is updated to newTau
    */
   setTau(newTau: number): void;
+
+  /**
+   * Get the points in the 3D Embedded Graph
+   * @preconditions a non-empty array of 3d points
+   * @postconditions returns the 3d points of the Embedded Graph
+   */
+  getPoints3D(): Point3DInterface[];
+
+  /**
+   * Get the max range of the csv data file that will be used on the 3d embedded graph
+   * @preconditions the max range must be greater than the min range
+   * @postconditions the range of the csv data set
+   */
+  getMaxRange(): number;
+
+  /**
+   * Set the max range that will be used on the 3d Embedded graph
+   * @preconditions this graph's csv is a valid non-null data set
+   * @postconditions sets the max range used in the 3D Embedded graph
+   */
+  setRange(): void;
+
+  /**
+   * Update the 3D embedded graph
+   * @preconditions this graph's csv is a valid non-null data set
+   * @postconditions the graph is cleared and updated with new points
+   */
+  updateEmbeddedPoints(): void;
 }

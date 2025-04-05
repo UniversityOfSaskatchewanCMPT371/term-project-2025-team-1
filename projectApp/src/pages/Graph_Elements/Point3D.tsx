@@ -3,7 +3,7 @@ import { Point3DObject } from "../../components/Graph_Components/Points/Point3DO
 import mainController from "../../controller/MainController";
 import { useFrame } from "@react-three/fiber";
 import { sendLog } from "../../logger-frontend";
-
+import { addTestSceneInfo } from "../Scene/TestScene";
 /**
  * Renders a 3D Point on an `EmbeddedGraph`.
  * The point can be interacted with through hover and click events.
@@ -40,7 +40,16 @@ export default function Point3D({
     const selectedState = !pointRef.getObject().getSelected();
     click(selectedState);
     pointRef.getObject().setSelected(selectedState);
-
+    const selecteData = pointRef.getObject();
+    if (selectedState) {
+      addTestSceneInfo(
+        `point ${selecteData.getTimeData()} ${selecteData.getYData()} (3D) selected`,
+      );
+    } else {
+      addTestSceneInfo(
+        `point ${selecteData.getTimeData()} ${selecteData.getYData()} (3D) deselected`,
+      );
+    }
     sendLog("trace", `setOnClick(), 3D Point has been clicked (Point3D.tsx)`);
   }
 

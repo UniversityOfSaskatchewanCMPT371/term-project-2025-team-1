@@ -4,6 +4,7 @@ import { sendError, sendLog } from "../../logger-frontend";
 import { PointObjectInterface } from "../../types/PointInterface";
 import { PointObject } from "../Graph_Components/Points/PointObject";
 import { addTestSceneInfo } from "../../pages/Scene/TestScene";
+import assert from "../../Assert";
 
 /**
  * Class representing a CSV data structure that implements the CSVData interface.
@@ -137,20 +138,12 @@ export class CSVDataObject implements CSVDataInterface {
    * @postconditions sets the new array of point objects
    */
   setPoints(points: PointObjectInterface[]): void {
-    let error;
     // assert points is an array of PointObjects
-    if (!Array.isArray(points)) {
-      error = new TypeError("Invalid Points");
-      sendError(error, "must be an array of PointObject instances");
-      throw error;
-    }
-    for (const point of points) {
-      if (!(point instanceof PointObject)) {
-        error = new TypeError("Invalid points");
-        sendError(error, "each element must be a PointObject instances");
-        throw error;
-      }
-    }
+    assert(Array.isArray(points), "must be an array of PointObject instances");
+    assert(
+      points.every((point) => point instanceof PointObject),
+      "each element must be a PointObject instances",
+    );
 
     this.points = points;
 
@@ -238,14 +231,11 @@ export class CSVDataObject implements CSVDataInterface {
    * @postconditions returns the first non "Time" header in the data set
    */
   findFirstHeader(): string {
-    let error;
-    try {
-      // assert that csvHeader.Length is greater than 1
-      if (this.csvHeaders.length <= 1) {
-        error = new RangeError("Invalid csv file");
-        sendError(error, "uninitialized csv file headers (CSVDataObject.ts)");
-        throw error;
-      }
+    // assert that csvHeader.Length is greater than 1
+    assert(
+      this.csvHeaders.length > 1,
+      "uninitialized csv file headers (CSVDataObject.ts)",
+    );
 
       for (const head of this.csvHeaders) {
         if (head != "Time") {
@@ -257,14 +247,10 @@ export class CSVDataObject implements CSVDataInterface {
         }
       }
 
-      // if no first header is found, log the error
-      error = new Error("Invalid csv file");
-      sendError(error, "Unable to find valid header (CSVDataObject.ts)");
-      throw error;
-    } catch (errpr: unknown) {
-      sendError(error, "Unable to find first header");
-      throw error;
-    }
+    // if no first header is found, log the error
+    const error = new SyntaxError("Invalid csv file");
+    sendError(error, "Unable to find valid header (CSVDataObject.ts)");
+    throw error;
   }
 
   /**
@@ -319,14 +305,10 @@ export class CSVDataObject implements CSVDataInterface {
    */
   getData(): { key: Record<string, string | number> }[] {
     // assert that data.length is not empty
-    if (this.data.length <= 0) {
-      const error = new RangeError("Invalid csv data object");
-      sendError(
-        error,
-        "Unitialized data set for the csv file. (CSVDataObject.ts)",
-      );
-      throw error;
-    }
+    assert(
+      this.data.length > 0,
+      "Unitialized data set for the csv file. (CSVDataObject.ts)",
+    );
     return this.data;
   }
 
@@ -500,11 +482,10 @@ export class CSVDataObject implements CSVDataInterface {
    */
   getTimeHeader(): string {
     // assert that timeHeader is "Time"
-    if (this.timeHeader != "Time") {
-      const error = new Error("No Time header");
-      sendError(error, "Invalid time header, not Time (CSVDataObject.ts)");
-      throw error;
-    }
+    assert(
+      this.timeHeader === "Time",
+      "Invalid time header, not Time (CSVDataObject.ts)",
+    );
     return this.timeHeader;
   }
 
@@ -534,5 +515,22 @@ export class CSVDataObject implements CSVDataInterface {
       "debug",
       `setIsFirstDifferencing() was called, first differencing is set to ${firstDiff}`,
     );
+  }
+
+  /**
+   * Gets the selected point object(s) in the program
+   * @precondition none
+   * @postcondition
+   * - On success, returns the array of selected point objects
+   */
+  getSelectedPoints(): PointObject[] {
+    const selectedP: PointObject[] = [];
+
+    this.getPoints().forEach((point) => {
+      if (point.getSelected()) {
+        selectedP.push(point);
+      }
+    });
+    return selectedP;
   }
 }

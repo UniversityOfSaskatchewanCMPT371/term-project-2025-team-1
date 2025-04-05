@@ -4,6 +4,7 @@ import { GraphObject } from "./GraphObject";
 import { sendError, sendLog } from "../../logger-frontend";
 import { Point2DObject } from "./Points/Point2DObject";
 import { Point2DInterface } from "../../types/GraphPointsInterfaces";
+import assert from "../../Assert";
 
 /**
  * TimeSeriesGraphObject is a class that extends GraphObject
@@ -32,6 +33,10 @@ export class TimeSeriesGraphObject
    * @postconditions returns the array of 2D points associated with the 2D Graph
    */
   getPoints2D(): Point2DInterface[] {
+    assert(
+      this.points2D.length > 0,
+      "getPoints2D: points2D must be a non-empty array",
+    );
     return this.points2D;
   }
 
@@ -51,6 +56,7 @@ export class TimeSeriesGraphObject
    * @postconditions On success, updates the y range to the new one
    */
   setYRangeLength(num: number): void {
+    assert(num > 0, "setYRangeLength: num must be a positive, non-zero number");
     this.yRangeLength = num;
 
     sendLog(
@@ -65,6 +71,11 @@ export class TimeSeriesGraphObject
    * @postconditions new PointObjects are added to the graph
    */
   addPoints(): void {
+    const points = this.getCSVData().getPoints();
+    assert(
+      points.length > 0,
+      "addPoints: CSVDataObject.getPoints() must return a non-empty array",
+    );
     this.points2D = [];
     this.getCSVData()
       .getPoints()
@@ -74,6 +85,7 @@ export class TimeSeriesGraphObject
         // Get Header by key then assign
         this.points2D.push(newPoint);
       });
+    assert(this.points2D.length > 0, "addPoints: No points were added");
     sendLog(
       "trace",
       "addPoint() has added new points to the graph (TimeSeriesGraphObject.tss)",
@@ -102,6 +114,11 @@ export class TimeSeriesGraphObject
    * @postconditions sets the max Y range of graph to the largest value of the csv data
    */
   setRange(): void {
+    const points = this.getCSVData().getPoints();
+    assert(
+      points.length > 0,
+      "setRange: CSVDataObject.getPoints() must return a non-empty array",
+    );
     let max = 0;
     let min = 0;
     if (this.getCSVData().isFirstDifferencing) {
@@ -150,6 +167,10 @@ export class TimeSeriesGraphObject
    * @postconditions returns a number[] that is the values graph ticks
    */
   timeSeriesYRange(): number[] {
+    assert(
+      this.axes.yRange[0] >= 0 && this.axes.yRange[1] >= this.axes.yRange[0],
+      "timeSeriesYRange: axes.yRange[0] must be a non-negative number and axes.yRange[1] must be a number greater than or equal to axes.yRange[0]",
+    );
     const range: number[] = [];
     const spacing = this.getTotalYRange() / 10;
 
@@ -166,6 +187,10 @@ export class TimeSeriesGraphObject
       "debug",
       `timeSeriesYRange() returned ${range} (TimeSeriesGraphObject.ts)`,
     );
+    assert(
+      range.length > 0,
+      "timeSeriesYRange: range must contain at least one tick value",
+    );
 
     return range;
   }
@@ -176,16 +201,35 @@ export class TimeSeriesGraphObject
    * @postconditions returns a string[] that is displayed on x axis
    */
   timeSeriesXRange(): string[] {
-    const range: string[] = [];
+    const csvData = this.getCSVData();
+    const points = csvData.getData();
+    assert(
+      points.length > 0,
+      "timeSeriesXRange: CSVDataObject.getData() must return a non-empty array",
+    );
+    const timeHeader = csvData.getTimeHeader();
+    assert(
+      timeHeader !== "",
+      "timeSeriesXRange: timeHeader must be a non-empty string",
+    );
 
-    this.getCSVData()
-      .getData()
-      .forEach((data) => {
-        const temp = data[
-          this.getCSVData().getTimeHeader() as keyof typeof data
-        ] as unknown as string;
-        range.push(temp);
-      });
+    const range: string[] = [];
+    if (this.getCSVData().isFirstDifferencing) {
+      this.getCSVData()
+        .calculateFirstDifferencingValues()
+        .forEach((_data, index) => {
+          range.push(index.toString());
+        });
+    } else {
+      this.getCSVData()
+        .getData()
+        .forEach((data) => {
+          const temp = data[
+            this.getCSVData().getTimeHeader() as keyof typeof data
+          ] as unknown as string;
+          range.push(temp);
+        });
+    }
     sendLog(
       "debug",
       `timeSeriesXRange() was called and returned ${range} (TimeSeriesGraphObject.ts)`,

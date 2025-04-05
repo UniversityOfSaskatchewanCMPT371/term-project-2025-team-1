@@ -33,9 +33,10 @@ export class EmbeddedGraphObject
    * @postconditions the points3D array now contains PointObjects for each point in the csv data
    */
   addPoints(): void {
-    const data = this.csvData.getData();
     let time = 0;
     this.setRange();
+
+    const data = this.getCSVData().getData();
     this.getCSVData()
       .getPoints()
       .forEach((point) => {
@@ -130,11 +131,15 @@ export class EmbeddedGraphObject
     if (index < 0) {
       return 0;
     } else {
-      const line: { key: Record<string, string | number> } = csvData[index];
-      const position = line[
-        this.getCSVData().getYHeader() as keyof typeof line
-      ] as unknown as number;
-      return position;
+      if (this.getCSVData().getIsFirstDifferencing()) {
+        return this.getCSVData().calculateFirstDifferencingValues()[index];
+      } else {
+        const line: { key: Record<string, string | number> } = csvData[index];
+        const position = line[
+          this.getCSVData().getYHeader() as keyof typeof line
+        ] as unknown as number;
+        return position;
+      }
     }
   }
 
@@ -189,26 +194,40 @@ export class EmbeddedGraphObject
 
   /**
    * Get the max range of the csv data file that will be used on the 3d embedded graph
-   * @preconditions the max range must be greater than the min range
-   * @postconditions the range of the csv data set
+   * @preconditions none
+   * @postconditions the max range of the csv data set
    */
-  getRange(): number {
-    // assert that yRange[0] min is less than yRange[1] max
-    if (this.axes.yRange[0] >= this.axes.yRange[1]) {
-      const error = new Error(
-        "Start of range greater than or equal end of range",
-      );
-      sendError(error, "Invalid max yRange set (EmbeddedGraphObject.ts)");
-      throw error;
-    }
-
+  getMaxRange(): number {
     return this.axes.yRange[1];
   }
 
   /**
-   * Set the max range that will be used on the 3d Embedded graph
+   * Get the min range of the csv data file that will be used on the 3d embedded graph
+   * @preconditions none
+   * @postconditions the min range of the csv data set
+   */
+  getMinRange(): number {
+    return this.axes.yRange[0];
+  }
+
+  /**
+   * Get the total range of the csv data file that will be used on the 3d embedded graph
+   * @preconditions the max range must be larger than min range
+   * @postconditions the total range of the csv data set
+   */
+  getTotalRange(): number {
+    if (this.axes.yRange[1] < this.axes.yRange[0]) {
+      const error = new Error("Max range must be greater than the min range");
+      sendError(error, "Total Range error in EmbeddedGraphObject.ts");
+      throw error;
+    }
+    return this.axes.yRange[1] - this.axes.yRange[0];
+  }
+
+  /**
+   * Sets the maximum and the minimum range that will be used on the 3d Embedded graph
    * @preconditions this graph's csv is a valid non-null data set
-   * @postconditions sets the max range used in the 3D Embedded graph
+   * @postconditions sets the maximum and minimum range used in the 3D Embedded graph
    */
   setRange(): void {
     // assert that csv data is not empty
@@ -222,21 +241,43 @@ export class EmbeddedGraphObject
     }
 
     let max = 0;
-    this.getCSVData()
-      .getData()
-      .forEach((data) => {
-        if (
-          (data[
-            this.getCSVData().getYHeader() as keyof typeof data
-          ] as unknown as number) >= max
-        ) {
-          max = data[
+    let min = 0;
+
+    //If first differencing is enabled, set the range using the calculated differencing values
+    if (this.getCSVData().getIsFirstDifferencing()) {
+      this.getCSVData()
+        .calculateFirstDifferencingValues()
+        .forEach((data, index) => {
+          if (data > max) {
+            max = data;
+          }
+          if (data < min || index === 0) {
+            min = data;
+          }
+        });
+    } else {
+      //If first differencing is disabled, set the ranges using the data set provided by the csv file
+      this.getCSVData()
+        .getData()
+        .forEach((data, index) => {
+          const val = data[
             this.getCSVData().getYHeader() as keyof typeof data
           ] as unknown as number;
-        }
-      });
+          if (val > max) {
+            max = val;
+          }
+          if (val < min || index == 0) {
+            min = val;
+          }
+        });
+    }
+
+    // If max is a float, convert it to an integer by rounding up.
+    max = Math.ceil(max / 10) * 10;
+    min = Math.floor(min / 10) * 10;
 
     this.axes.yRange[1] = max;
+    this.axes.yRange[0] = min;
     sendLog(
       "debug",
       `setRange() was called; yRange was set to ${this.axes.yRange[1]} (EmbeddedGraphObject.ts)`,

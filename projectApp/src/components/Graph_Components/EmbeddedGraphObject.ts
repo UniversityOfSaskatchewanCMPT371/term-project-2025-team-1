@@ -58,7 +58,10 @@ export class EmbeddedGraphObject
     this.points3D.forEach((point) => {
       point.getObject().setSelected(false); // Update selection status
     });
-    sendLog("trace", "all points have been unselected (EmbeddedGraphObject.ts)");
+    sendLog(
+      "trace",
+      "all points have been unselected (EmbeddedGraphObject.ts)",
+    );
   }
 
   /**
@@ -192,7 +195,7 @@ export class EmbeddedGraphObject
   getRange(): number {
     // assert that yRange[0] min is less than yRange[1] max
     if (this.axes.yRange[0] >= this.axes.yRange[1]) {
-      const error = new SyntaxError(
+      const error = new Error(
         "Start of range greater than or equal end of range",
       );
       sendError(error, "Invalid max yRange set (EmbeddedGraphObject.ts)");

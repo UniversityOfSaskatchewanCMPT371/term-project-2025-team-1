@@ -50,6 +50,12 @@ export class CSVDataObject implements CSVDataInterface {
     const differencedData: number[] = [0];
     const numPoints = this.getData().length;
 
+    if (numPoints >= 500) {
+      sendLog(
+        "warn",
+        "A large number of data is being used to calculate First Differencing (CSVDataObject.ts",
+      );
+    }
     for (let i = 1; i < numPoints; i += 1) {
       const currRow = this.data[i];
       const prevRow = this.data[i - 1];
@@ -81,7 +87,9 @@ export class CSVDataObject implements CSVDataInterface {
    */
   populatePoints(): void {
     this.points = [];
-    if (this.isFirstDifferencing) {
+
+    //If first differencing is enabled
+    if (this.getIsFirstDifferencing()) {
       const firstDiffedData = this.calculateFirstDifferencingValues();
 
       firstDiffedData.forEach((data, index) => {
@@ -91,6 +99,7 @@ export class CSVDataObject implements CSVDataInterface {
         this.points.push(newPoint);
       });
     } else {
+      //If first differencing is enabled
       this.getData().forEach((data) => {
         const newPoint = new PointObject();
 
@@ -230,27 +239,32 @@ export class CSVDataObject implements CSVDataInterface {
    */
   findFirstHeader(): string {
     let error;
-    // assert that csvHeader.Length is greater than 1
-    if (this.csvHeaders.length <= 1) {
-      error = new RangeError("Invalid csv file");
-      sendError(error, "uninitialized csv file headers (CSVDataObject.ts)");
+    try {
+      // assert that csvHeader.Length is greater than 1
+      if (this.csvHeaders.length <= 1) {
+        error = new RangeError("Invalid csv file");
+        sendError(error, "uninitialized csv file headers (CSVDataObject.ts)");
+        throw error;
+      }
+
+      for (const head of this.csvHeaders) {
+        if (head != "Time") {
+          sendLog(
+            "debug",
+            `findFirstHeader() was called, the first header was found ${head} (CSVDataObject.ts)`,
+          );
+          return head;
+        }
+      }
+
+      // if no first header is found, log the error
+      error = new Error("Invalid csv file");
+      sendError(error, "Unable to find valid header (CSVDataObject.ts)");
+      throw error;
+    } catch (errpr: unknown) {
+      sendError(error, "Unable to find first header");
       throw error;
     }
-
-    for (const head of this.csvHeaders) {
-      if (head != "Time") {
-        sendLog(
-          "debug",
-          `findFirstHeader() was called, the first header was found ${head} (CSVDataObject.ts)`,
-        );
-        return head;
-      }
-    }
-
-    // if no first header is found, log the error
-    error = new SyntaxError("Invalid csv file");
-    sendError(error, "Unable to find valid header (CSVDataObject.ts)");
-    throw error;
   }
 
   /**
@@ -292,7 +306,7 @@ export class CSVDataObject implements CSVDataInterface {
       }
     }
     sendLog(
-      "trace",
+      "warn",
       "CSVDataObject.getDataByTime() has returned null, is this expected?",
     );
     return result;
@@ -390,7 +404,7 @@ export class CSVDataObject implements CSVDataInterface {
       }
     }
     // if no Time header is found, log the error
-    const error = new SyntaxError("CSV file doesn't have a Time header");
+    const error = new Error("CSV file doesn't have a Time header");
     sendError(error, "No allowed time header in csv file (CSVDataObject.ts)");
     throw error;
   }
@@ -469,6 +483,10 @@ export class CSVDataObject implements CSVDataInterface {
         break;
       }
     }
+    // if no Time header is found, log the error
+    const error = new Error(`No valid header ${header}`);
+    sendError(error, "Unable to find specified header (CSVDataObject.ts)");
+    throw error;
   }
 
   // End of Setters
@@ -483,13 +501,12 @@ export class CSVDataObject implements CSVDataInterface {
   getTimeHeader(): string {
     // assert that timeHeader is "Time"
     if (this.timeHeader != "Time") {
-      const error = new SyntaxError("No Time header");
+      const error = new Error("No Time header");
       sendError(error, "Invalid time header, not Time (CSVDataObject.ts)");
       throw error;
     }
     return this.timeHeader;
   }
-  // todo: move this into getter section
 
   /**
    * Sets the time header used on the csv data set
@@ -504,7 +521,6 @@ export class CSVDataObject implements CSVDataInterface {
       `setTimeHeader() was called, finding the time header in the data set (CSVDataObject.ts)`,
     );
   }
-  // todo: move this into setter scetion
 
   /**
    * Sets the boolean for if first differening is in effect to the given value

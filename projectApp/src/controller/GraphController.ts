@@ -43,7 +43,7 @@ export class GraphController implements ControllerInterface {
     const graph = this.getModel().getData();
     // assert that model.data is defined
     if (graph === undefined) {
-      const error = new SyntaxError("Error on Time Series Graph");
+      const error = new Error("Error on Time Series Graph");
       sendError(
         error,
         "Unable to generate Time Series Graph (GraphController.ts",
@@ -80,7 +80,7 @@ export class GraphController implements ControllerInterface {
     const graph = this.getModel().getEmbeddedGraphData();
     // assert that model.embeddedGraphData is defined
     if (graph === undefined) {
-      const error = new SyntaxError("Error Generating Embedded Graph");
+      const error = new Error("Error Generating Embedded Graph");
       sendError(error, "Unable to generate Embedded Graph");
       throw error;
     }
@@ -137,7 +137,7 @@ export class GraphController implements ControllerInterface {
     const emData = this.getModel().getData();
     // assert that model.data is defined
     if (emData === undefined) {
-      const error = new SyntaxError("Error getting Time Series Data");
+      const error = new Error("Error getting Time Series Data");
       sendError(error, "Unable to get Time Series Data");
       throw error;
     }
@@ -155,7 +155,7 @@ export class GraphController implements ControllerInterface {
     const emData = this.getModel().getEmbeddedGraphData();
     // assert that model.embeddedGraphData is defined
     if (emData === undefined) {
-      const error = new SyntaxError("Error getting Embedded Data");
+      const error = new Error("Error getting Embedded Data");
       sendError(error, "Unable to get Embedded Data");
       throw error;
     }
@@ -171,7 +171,7 @@ export class GraphController implements ControllerInterface {
     const emData = this.getModel().getEmbeddedGraphData();
     // assert that model.embeddedGraphData is defined
     if (emData === undefined) {
-      const error = new SyntaxError("Error getting Embedded Data");
+      const error = new Error("Error getting Embedded Data");
       sendError(error, "Unable to get range of Embedded graph");
       throw error;
     }
@@ -187,7 +187,7 @@ export class GraphController implements ControllerInterface {
     const emData = this.getModel().getEmbeddedGraphData();
     // assert that model.embeddedGraphData is defined
     if (emData === undefined) {
-      const error = new SyntaxError("Error getting Embedded Data");
+      const error = new Error("Error getting Embedded Data");
       sendError(error, "Unable to get tau value");
       throw error;
     }

@@ -88,7 +88,6 @@ export class TimeSeriesGraphObject
   updatePoints(): void {
     this.points2D.forEach((point) => {
       point.getObject().setSelected(false); // Update selection status
-      // TODO: Add color update logic if necessary
     });
     sendLog(
       "trace",

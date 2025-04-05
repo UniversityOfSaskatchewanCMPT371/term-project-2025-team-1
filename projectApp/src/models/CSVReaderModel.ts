@@ -28,7 +28,7 @@ export class CSVReaderModel implements CSVModelInterface {
     const data = this.data;
     // assert that data is defined
     if (data === undefined) {
-      const error = new SyntaxError("Error getting csvfile");
+      const error = new Error("Error getting csvfile");
       sendError(error, "Unable to getCSVFile");
       throw error;
     }

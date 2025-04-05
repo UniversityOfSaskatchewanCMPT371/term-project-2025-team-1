@@ -44,7 +44,6 @@ export function sendError(error: any, message: string) {
   });
 }
 
-
 export function changeLogLevel(level: string) {
   fetch("http://localhost:3030/changeLevel", {
     method: "POST",

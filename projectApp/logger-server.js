@@ -77,10 +77,10 @@ app.post("/error", (req, res) => {
 
 app.post("/changelevel", (req, res) => {
   let level = req.body.level;
-  logger.level = level
+  logger.level = level;
   // TODO - make not always successful make sure if not successful actually say it's not successful if  the level is invalid
   res.sendStatus(200);
-})
+});
 
 app.listen(PORT, () => {
   console.log("log server running at http://localhost:" + PORT);

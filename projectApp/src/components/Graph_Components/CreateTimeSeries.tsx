@@ -3,20 +3,21 @@ import { TimeSeriesGraphObject } from "./TimeSeriesGraphObject";
 import { sendLog } from "../../logger-frontend";
 
 /**
- *   The CreateTimeSeries component is a functional component that creates a TimeSeriesGraph.
- *   It is responsible for:
- *     - Logging the creation of a TimeSeriesGraph.
- *     - Rendering a TimeSeriesGraph using the provided TimeSeriesGraphObject.
+ * The CreateTimeSeries component is a functional component that creates a TimeSeriesGraph.
+ * It is responsible for:
+ *  - Logging the creation of a TimeSeriesGraph.
+ *  - Rendering a TimeSeriesGraph using the provided TimeSeriesGraphObject.
  *
- * @param {Object} graphObject - An object with a single property "graphObject" of type TimeSeriesGraphObject.
- * @returns {React.JSX.Element} - A React JSX element containing the TimeSeriesGraph component.
+ * @param {Object} graphObject An object with a single property "graphObject" of type TimeSeriesGraphObject.
  *
- * @precondition graphObject must be a valid instance of TimeSeriesGraphObject. The logging system must be configured and available.
+ * @preconditions
+ * - `graphObject` must be a valid instance of TimeSeriesGraphObject.
+ * - The logging system must be configured and available.
  *
- * @postcondition
+ * @postconditions
+ * - returns a React JSX element containing the TimeSeriesGraph component.
  * - An informational log entry is recorded indicating that a TimeSeriesGraph has been created.
  * - A valid React JSX element is returned that renders the TimeSeriesGraph component.
- *
  */
 export default function CreateTimeSeries({
   graphObject,

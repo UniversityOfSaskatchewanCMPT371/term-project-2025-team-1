@@ -7,8 +7,8 @@ import { Point3DObject } from "./Point3DObject";
  * Creates and renders a 3D point visualization based on provided point data.
  *
  * @param {PointRef} pointRef - Reference object containing point data and state
- * @precondition pointRef must be a valid PointRef object with defined position, selected state, and x,y,z data
- * @postcondition Returns a Point3D component with initialized Point Object data
+ * @preconditions `pointRef` must be a valid PointRef object with defined position, selected state, and x,y,z data
+ * @postconditions returns a Point3D component with initialized Point Object data
  */
 export default function Create3DPoint({
   pointRef,

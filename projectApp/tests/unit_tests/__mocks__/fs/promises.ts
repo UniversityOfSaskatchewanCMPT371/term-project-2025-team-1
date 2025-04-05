@@ -6,7 +6,7 @@ import {
   IWriteFileOptions,
 } from "memfs/lib/node/types/options";
 import { vi } from "vitest";
-
+/** mocks fs.readFile to call memfs.readFile instead */
 export const readFile = vi.fn(
   (path: string, options?: string | IReadFileOptions) => {
     return mockFs.promises.readFile(path, options).catch((err: unknown) => {
@@ -14,11 +14,14 @@ export const readFile = vi.fn(
     });
   },
 );
+/** mocks fs.writeFile to call memfs.writeFile instead */
 export const writeFile = vi.fn(
   (path: string, data: string, options?: IWriteFileOptions) => {
-    mockFs.promises.writeFile(path, data, options).catch((err: unknown) => {
-      throw err as Error;
-    });
+    return mockFs.promises
+      .writeFile(path, data, options)
+      .catch((err: unknown) => {
+        throw err as Error;
+      });
   },
 );
 

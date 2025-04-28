@@ -824,6 +824,7 @@ export default function DropdownUI({
               hover={{ backgroundOpacity: 1 }}
               borderRadius={15}
               borderWidth={2}
+              pointerEvents={"auto"}
               borderColor={"gray"}
               onClick={() => {
                 setOnPointSizeDecrease();
